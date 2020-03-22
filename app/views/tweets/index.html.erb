@@ -8,19 +8,20 @@
 
 <body>
 <header class="header">
-  <h1>掲示板</h1>
+  <h1>日記</h1>
   <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
 </header>
 <div class="comment">
+  <% @tweets.each do |tweet|%>
   <div class="comment-list">
-    <% @tweets.each do |tweet|%>
     <div class="title">
-      <%= tweet.title%>
-    <div class="comments">
-      <%= tweet.text %>
+    <%= link_to "#{tweet.title}","/tweets/new",class: "title"%>
     </div>
-    <% end %>
+    <div class="sub-title">
+      <%= tweet.title_info %>
+    </div>
   </div>
+   <% end %>
 </div>
 <%= paginate(@tweets)%>
 </div>

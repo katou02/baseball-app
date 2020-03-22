@@ -18,7 +18,14 @@
   padding: 5px;
 }
 
-.comments{
-  margin-top: 30px;
-  border-bottom: solid 0.1px gray;
+.comment-list{
+  margin-top: 100px;
+  background-color: #8dabb6;
+  font-size: 35px;
+  text-align: center;
+}
+
+.sub-title{
+  padding-top: 20px;
+  font-size: 25px;
 }
