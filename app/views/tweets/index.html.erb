@@ -14,6 +14,8 @@
 <div class="comment">
   <div class="comment-list">
     <% @tweets.each do |tweet|%>
+    <div class="title">
+      <%= tweet.title%>
     <div class="comments">
       <%= tweet.text %>
     </div>
