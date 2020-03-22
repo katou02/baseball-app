@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title> Sample boad</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+</head>
+
+<body>
+<header class="header">
+  <h1>掲示板</h1>
+  <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
+</header>
+<div class="comment">
+  <div class="comment-list">
+    <% @tweets.each do |tweet|%>
+    <div class="comments">
+      <%= tweet.text %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<%= paginate(@tweets)%>
+</div>
+</body>
+</html>

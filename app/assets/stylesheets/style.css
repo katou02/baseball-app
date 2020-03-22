@@ -1,0 +1,24 @@
+*{box-sizing: border-box;}
+.header{
+  text-align: center;
+  font-size: 40px;
+  height: 110px;
+  padding-top: 30px;
+  border-bottom: solid 3px grey;
+  position: relative;
+}
+
+.send_btn{
+  font-size: 20px;
+  position: absolute;
+  left: 0;
+  text-decoration: none;
+  border: 2px solid #57c3e9;
+  color: #57c3e9;
+  padding: 5px;
+}
+
+.comments{
+  margin-top: 30px;
+  border-bottom: solid 0.1px gray;
+}
