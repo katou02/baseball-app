@@ -30,6 +30,10 @@
   color: rgb(17, 0, 255);
 }
 
+.title:hover{
+  color: red;
+}
+
 .sub-title{
   padding-top: 20px;
   font-size: 25px;
