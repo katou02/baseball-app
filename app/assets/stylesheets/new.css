@@ -6,8 +6,16 @@
   max-width: 660px;
 }
 
+.contents{
+  text-align: center;
+}
+
 h3{
   text-align: center;
+}
+
+.btn{
+  margin: 0 auto;
 }
 
 .container{
