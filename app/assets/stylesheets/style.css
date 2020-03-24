@@ -66,3 +66,10 @@ html{
   padding-top: 20px;
   font-size: 18px;
 }
+
+.pagination{
+  font-size: 20px;
+  margin-left: 45%;
+  margin-top: 30px;
+  color: red;
+}
