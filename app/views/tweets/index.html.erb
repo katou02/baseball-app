@@ -8,19 +8,33 @@
 
 <body>
 <header class="header">
-  <h1>掲示板</h1>
+  <h1>試合記事</h1>
   <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
-</header>
-<div class="comment">
-  <div class="comment-list">
-    <% @tweets.each do |tweet|%>
-    <div class="title">
-      <%= tweet.title%>
-    <div class="comments">
-      <%= tweet.text %>
-    </div>
-    <% end %>
+  <div class="image_1">
+    <img src="https://marcoro.jp/large/l_yakyuu_004.png" width="100" height="100">
   </div>
+</header>
+<div class="main-content">
+  <div class="image_2">
+    <img src="https://kohacu.com/wp-content/uploads/2018/08/kohacu.com_001578_20180807-768x768.png" width=100 height="100">
+  </div>
+  <div class="image_3">
+    <img src="https://4.bp.blogspot.com/-rWCf6UQZCeM/XNE_fOv-TSI/AAAAAAABSyA/HWidm1tgO_4xEOwOUDfx_DmUDvVplgGAACLcBGAs/s800/sports_baseball_man_asia.png" width="100" height=100>
+  </div>
+  <div class="image_4">
+    <img src="https://sanchanne.com/wp-content/uploads/2019/09/fd72cd69ead1784014d1e58100d9a322.png" width="100" height="100">
+  </div>
+<div class="comment">
+  <% @tweets.each do |tweet|%>
+  <div class="comment-list">
+    <div class="title">
+    <%= link_to "#{tweet.title}","/tweets/#{tweet.id}",class: "title"%>
+    </div>
+    <div class="sub-title">
+      <%= tweet.title_info %>
+    </div>
+  </div>
+   <% end %>
 </div>
 <%= paginate(@tweets)%>
 </div>
