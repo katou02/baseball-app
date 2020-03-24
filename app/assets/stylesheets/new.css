@@ -1,0 +1,45 @@
+.row{
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 660px;
+}
+
+.contents{
+  text-align: center;
+}
+
+h3{
+  text-align: center;
+}
+
+.btn{
+  margin: 0 auto;
+}
+
+.container{
+  margin: 20px 0;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(41,41,41,0.2);
+}
+
+input,textarea{
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+textarea{
+  height: 200px;
+}
+
+input[type="submit"]{
+  background-color: #57c3e9;
+}
+
+a,.back{
+  margin-top: 20px;
+  text-decoration: none;
+  color: black;
+}

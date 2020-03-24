@@ -8,6 +8,26 @@
   position: relative;
 }
 
+.image_1{
+  position: absolute;
+  left: 30%;
+  bottom: 5%;
+}
+
+.image_2{
+  position: absolute;
+  margin-top: 10px;
+}
+
+.image_3{
+  position: absolute;
+  right: 0;
+}
+
+.image_4{
+  margin: 30px 0 0 660px;
+}
+
 .send_btn{
   font-size: 20px;
   position: absolute;
@@ -18,7 +38,38 @@
   padding: 5px;
 }
 
-.comments{
+html{
+  background-color: rgb(233, 243, 242);
+}
+
+.comment-list{
+  margin-top: 90px;
+  background-color: #bbb8b8f3;
+  font-size: 25px;
+  text-align: center;
+}
+
+.comment{
+  padding: 0 250px;
+}
+
+.title{
+  text-decoration: none;
+  color: rgb(17, 0, 255);
+}
+
+.title:hover{
+  color: red;
+}
+
+.sub-title{
+  padding-top: 20px;
+  font-size: 18px;
+}
+
+.pagination{
+  font-size: 20px;
+  margin-left: 45%;
   margin-top: 30px;
-  border-bottom: solid 0.1px gray;
+  color: red;
 }
