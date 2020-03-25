@@ -17,6 +17,6 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.permit(:title,:image,:text,:title_info,:score)
+    params.permit(:title,:image,:text,:title_info,:school_a,:school_b)
   end
 end
