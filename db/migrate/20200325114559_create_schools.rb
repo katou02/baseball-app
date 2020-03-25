@@ -5,6 +5,7 @@ class CreateSchools < ActiveRecord::Migration[5.2]
       t.string :school_b
       t.integer :school_a_score
       t.integer :school_b_score
+      t.integer :tweet_id
 
       t.timestamps
     end
