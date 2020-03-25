@@ -4,6 +4,8 @@ class CreateTweets < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :title
       t.string :title_info
+      t.string :school_a
+      t.string :school_b
       t.text   :text
       t.text   :image
       t.timestamps null: true

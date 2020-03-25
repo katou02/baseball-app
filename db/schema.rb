@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 2020_03_22_061505) do
     t.string "name"
     t.string "title"
     t.string "title_info"
+    t.string "school_a"
+    t.string "school_b"
     t.text "text"
     t.text "image"
     t.datetime "created_at"
