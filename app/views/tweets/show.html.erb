@@ -1,5 +1,15 @@
 <div class="text">
-    <div class=texts>
+  <div class="game_result">
+    <%=@tweet.school_a%>
+    <%=@tweet.school_a_score%>
+    <a>-</a>
+    <%=@tweet.school_b_score%>
+    <%=@tweet.school_b%>
+  </div>
+  <div class="sub_title">
+    <%=@tweet.title_info%>
+  </div>
+  <div class=texts>
     <%= @tweet.text%>
-    </div>
+  </div>
 </div>
