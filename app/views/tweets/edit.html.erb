@@ -4,6 +4,11 @@
         編集する
       </h3>
       <input placeholder="Image Url" type="text" name="image" value="<%= @tweet.image %>" autofocus="true">
+      <input placeholder="高校A" type="text" name=school_a value="<%= @tweet.school_a%>">
+      <input placeholder="高校A 得点" type="text" name=school_a_score value="<%= @tweet.school_a_score%>">
+      <input placeholder="高校B" type="text" name=school_b  value="<%= @tweet.school_b%>">
+      <input placeholder="高校B 得点" type="text" name=school_b_score  value="<%= @tweet.school_b_score%>">
+      <input placeholder="サブタイトル 30文字以下" type="text" name="title_info" value="<%= @tweet.title_info%>">
       <textarea cols="30" name="text" placeholder="text" rows="10"><%= @tweet.text %></textarea>
       <input type="submit" value="SENT">
     <% end %>
