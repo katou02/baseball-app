@@ -15,6 +15,11 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
   end
 
+  def destroy
+    tweet = Tweet.find(params[:id])
+    tweet.destroy
+  end
+
   private
   def tweet_params
     params.permit(:title,:image,:text,:title_info,:school_a,:school_b,:school_a_score,:school_b_score)
