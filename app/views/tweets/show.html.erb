@@ -1,4 +1,6 @@
 <div class="text">
+  <%= link_to "記事を削除する","/tweets/#{@tweet.id}",method: :delete%>
+  <%= link_to "トップページへ戻る",root_path%>
   <div class="game_result">
     <%=@tweet.school_a%>
     <%=@tweet.school_a_score%>
