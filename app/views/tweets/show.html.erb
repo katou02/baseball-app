@@ -10,6 +10,6 @@
     <%=@tweet.title_info%>
   </div>
   <div class=texts>
-    <%= @tweet.text%>
+    <%= simple_format(@tweet.text)%>
   </div>
 </div>
