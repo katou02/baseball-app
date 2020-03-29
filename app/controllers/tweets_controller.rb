@@ -1,5 +1,7 @@
 class TweetsController < ApplicationController
 
+  before_action :search_tweet,only:[:show,:destroy,:edit,:update]
+
   def index
     @tweets = Tweet.order("created_at DESC").page(params[:page]).per(5)
   end
@@ -16,22 +18,23 @@ class TweetsController < ApplicationController
   end
 
   def show
-    @tweet = Tweet.find(params[:id])
   end
 
   def destroy
-    tweet = Tweet.find(params[:id])
-    tweet.destroy
+    @tweet.destroy
   end
 
   def edit
-    @tweet = Tweet.find(params[:id])
   end
 
   def update
-    tweet = Tweet.find(params[:id])
-    tweet.update(tweet_params)
+    @tweet.update(tweet_params)
   end
+
+  def search_tweet
+    @tweet = Tweet.find(params[:id])
+  end
+
 
   private
   def tweet_params
