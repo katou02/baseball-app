@@ -1,10 +1,10 @@
 <div class="contents row">
   <div class="containe_r">
     <%= form_with url: tweets_path,local: true do |f|%>
-    <%= render 'layouts/error_messages', model: f.object %>
       <h3>
         投稿する
       </h3>
+    <%= render 'layouts/error_messages', model: f.object %>
       <%= f.text_field :school_a,placeholder: "高校A" %>
       <%= f.text_field :school_a_score,placeholder: "高校A 特点" %>
       <%= f.text_field :school_b,placeholder: "高校B" %>
