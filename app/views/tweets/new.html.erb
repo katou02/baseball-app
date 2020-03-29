@@ -1,17 +1,17 @@
 <div class="contents row">
   <div class="containe_r">
-    <%= form_tag('/tweets', method: :post) do %>
+    <%# <%= form_tag('/tweets', method: :post) do %>
+    <%= form_with url: tweets_path,local: true do |f|%>
       <h3>
         投稿する
       </h3>
-      <input placeholder="高校A" type="text" name=school_a>
-      <input placeholder="高校A 得点" type="text" name=school_a_score>
-      <input placeholder="高校B" type="text" name=school_b>
-      <input placeholder="高校B 得点" type="text" name=school_b_score>
-      <input placeholder="サブタイトル 30文字以下" type="text" name="title_info">
-      <input placeholder="Image Url" type="text" name="image">
-      <textarea cols="30" name="text" placeholder="text" rows="10"></textarea>
-      <input type="submit" value="SENT">
+      <%= f.text_field :school_a,placeholder: "高校A" %>
+      <%= f.text_field :school_a_score,placeholder: "高校A 特点" %>
+      <%= f.text_field :school_b,placeholder: "高校B" %>
+      <%= f.text_field :school_b_score,placeholder: "高校B 得点" %>
+      <%= f.text_field :title_info,placeholder: "サブタイトル" %>
+      <%= f.text_area :text, cols: 30 ,rows: 10 %>
+      <%=f.submit value: "SENT"%>
     <% end %>
     <div class="back">
       <%= link_to "戻る",root_path%>
