@@ -1,7 +1,7 @@
 <div class="contents row">
   <div class="containe_r">
-    <%# <%= form_tag('/tweets', method: :post) do %>
     <%= form_with url: tweets_path,local: true do |f|%>
+    <%= render 'layouts/error_messages', model: f.object %>
       <h3>
         投稿する
       </h3>
