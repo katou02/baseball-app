@@ -9,7 +9,17 @@
 <body>
 <header class="header">
   <h1>試合記事</h1>
-  <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
+  <% if user_signed_in? %>
+    <div class=sign_out>
+      <%= link_to "ログアウト", destroy_user_session_path,method: :delete %>
+      <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
+    </div>
+  <% else %>
+    <div class="sign_in">
+      <%= link_to "ログイン",new_user_session_path, class: "login_btn"%>
+      <%= link_to "新規登録",  new_user_registration_path,class: "up_btn"%>
+    </div>
+  <% end %>
   <div class="image_1">
     <img src="https://marcoro.jp/large/l_yakyuu_004.png" width="100" height="100">
   </div>
