@@ -1,3 +1,4 @@
+/* トップ画面 */
 *{box-sizing: border-box;}
 .header{
   text-align: center;
@@ -72,4 +73,30 @@ html{
   margin-left: 45%;
   margin-top: 30px;
   color: red;
+}
+
+
+.login_btn{
+  display: block;
+  font-size: 18px;
+  border: 2px solid #6de957;
+  padding: 5px; 
+  position: absolute
+}
+
+.login_btn:hover{
+  opacity: 0.5 ;
+}
+
+.up_btn{
+  display: block;
+  font-size: 18px;
+  border: 2px solid #e9ce57;
+  padding: 5px; 
+  position: absolute;
+  margin-left: 8%;
+}
+
+.up_btn:hover{
+  opacity: 0.5;
 }
