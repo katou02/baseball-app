@@ -112,6 +112,10 @@ input{
   font-size: 20px;
 }
 
-.sign_up_btn:hover{
+.sign_up_btn:hover,.devise_login_btn:hover{
   opacity: 0.5;
+}
+
+.sign_up_btn,.devise_login_btn{
+  margin-bottom: 10px;
 }
