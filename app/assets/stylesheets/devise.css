@@ -1,0 +1,32 @@
+.new_user{
+  margin-top: 30px;
+}
+
+/* 新規登録 ログインボタン */
+.sign_up_btn,.devise_login_btn{
+  margin-bottom: 10px;
+  margin-top: 20px;
+  width: 300px;
+}
+
+.up_field{
+  display: block;
+}
+
+.devise_login_btn{
+  text-align: center;
+}
+
+.sign_up_btn:hover,.devise_login_btn:hover{
+  opacity: 0.5;
+}
+
+/* 新規登録画面 */
+.up_field,.in_field{
+  text-align: center;
+}
+
+#user_nickname,#user_email,#user_password,#user_password_confirmation{
+  width: 300px;
+  margin-bottom: 20px;
+}
