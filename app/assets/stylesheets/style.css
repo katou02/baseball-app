@@ -88,6 +88,7 @@ html{
   opacity: 0.5 ;
 }
 
+/* ログイン 新規登録 */
 .up_btn{
   display: block;
   font-size: 18px;
@@ -98,5 +99,19 @@ html{
 }
 
 .up_btn:hover{
+  opacity: 0.5;
+}
+
+h2{
+  margin: 10px 0;
+  text-align: center;
+  font-size: 25px;
+}
+
+input{
+  font-size: 20px;
+}
+
+.sign_up_btn:hover{
   opacity: 0.5;
 }
