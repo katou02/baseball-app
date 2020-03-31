@@ -11,7 +11,7 @@
   <h1>試合記事</h1>
   <% if user_signed_in? %>
     <div class=sign_out>
-      <%= link_to "ログアウト", destroy_user_session_path,method: :delete %>
+      <%= link_to "ログアウト", destroy_user_session_path,method: :delete,class: "logout_btn" %>
       <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
     </div>
   <% else %>
