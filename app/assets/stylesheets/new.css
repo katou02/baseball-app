@@ -25,9 +25,7 @@ h3{
   box-shadow: 0 0 10px rgba(41,41,41,0.2);
 }
 
-input,textarea{
-  height: 50px;
-  width: 100%;
+.field{
   margin-top: 20px;
 }
 
@@ -43,4 +41,15 @@ a,.back{
   margin-top: 20px;
   text-decoration: none;
   color: black;
+}
+
+.game_record{
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+}
+
+textarea{
+  margin-top: 20px;
+  width: 100%;
 }
