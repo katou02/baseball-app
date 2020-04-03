@@ -8,7 +8,7 @@ class TweetsController < ApplicationController
   end
 
   def new
-    @tweet=Tweet.new
+    @tweet=Tweet.new(tweet_params)
   end
 
   def create

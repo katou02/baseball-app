@@ -5,16 +5,16 @@
         投稿する
       </h3>
     <%= render 'layouts/error_messages', model: f.object %>
-      <%= f.text_field :school_a,placeholder: "高校A",class: "game_record" %>
-      <%= f.text_field :school_a_score,placeholder: "高校A 得点",class: "game_record" %>
-      <%= f.text_field :school_b,placeholder: "高校B",class: "game_record" %>
-      <%= f.text_field :school_b_score,placeholder: "高校B 得点",class: "game_record" %>
-      <%= f.text_field :title_info,placeholder: "サブタイトル",class: "game_record" %>
-      <%= f.text_area :text, cols: 30 ,rows: 10 %>
+      <%= f.text_field :school_a,placeholder: "高校A",class: "game_record",value: "#{@tweet.school_a}" %>
+      <%= f.text_field :school_a_score,placeholder: "高校A 得点",class: "game_record",value: "#{@tweet.school_a_score}" %>
+      <%= f.text_field :school_b,placeholder: "高校B",class: "game_record",value: "#{@tweet.school_b}" %>
+      <%= f.text_field :school_b_score,placeholder: "高校B 得点",class: "game_record",value: "#{@tweet.school_b_score}" %>
+      <%= f.text_field :title_info,placeholder: "サブタイトル",class: "game_record",value: "#{@tweet.title_info}" %>
+      <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@tweet.text}" %>
       <%= f.label :image, class: "form-image" do %>
         <h4>画像投稿</h4>
         <i class="fa fa-image"></i>
-        <%= f.file_field :image, class: 'input-box_image_file'%>
+        <%= f.file_field :image, class: 'input-box_image_file',value: "#{@tweet.image}"%>
       <% end %>
       <%=f.submit value: "SENT",class: "game_record"%>
     <% end %>
