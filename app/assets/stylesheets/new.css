@@ -37,8 +37,14 @@ input[type="submit"]{
   background-color: #57c3e9;
 }
 
-a,.back{
+.back{
   margin-top: 20px;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+a{
   text-decoration: none;
   color: black;
 }
