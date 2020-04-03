@@ -18,4 +18,5 @@
       <textarea cols="30" name="text" placeholder="text" rows="10"><%= @tweet.text %></textarea>
       <input type="submit" value="SENT">
     <% end %>
+    <%= link_to "戻る","/tweets/#{@tweet.id}",class:"back"%>
   </div>
