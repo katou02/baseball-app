@@ -15,3 +15,21 @@
   margin: 50px 0 0 50px;
   font-size: 20px;
 }
+
+a:hover{
+  opacity: 0.5;
+}
+
+input{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+h3{
+  font-size: 25px;
+}
+
+h4{
+  margin: 20px 0 5px 0;
+}
