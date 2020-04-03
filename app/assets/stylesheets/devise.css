@@ -30,3 +30,7 @@
   width: 300px;
   margin-bottom: 20px;
 }
+
+#error_explanation{
+  text-align: center;
+}

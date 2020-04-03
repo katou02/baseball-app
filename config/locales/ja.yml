@@ -10,11 +10,11 @@ ja:
         school_b_score: "高校Bの特点"
         title_info: "サブタイトル"
         text: "テキスト"
-  activerecord:
-    attributes:
-      user:
-        name: 名前
-        password: パスワード
-        password_confirmation: パスワード再入力
-        email: メールアドレス
-        nickname: ユーザー名
+    activerecord:
+      attributes:
+        user:
+          name: 名前
+          password: パスワード
+          password_confirmation: パスワード再入力
+          email: メールアドレス
+          nickname: ユーザー名

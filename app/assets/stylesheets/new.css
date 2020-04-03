@@ -64,3 +64,16 @@ textarea{
 input{
   font-size: 20px;
 }
+
+.input-box_image_file{
+  display: none;
+}
+
+.fa{
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.fa:hover{
+  opacity: 0.5;
+}
