@@ -30,6 +30,7 @@ class TweetsController < ApplicationController
 
   def update
     @tweet.update(tweet_params)
+    redirect_to action: :show
   end
 
   def search_tweet
