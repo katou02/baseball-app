@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   before_action :move_to_index,except: :index
 
   def index
-    @tweets = Tweet.order("created_at DESC").page(params[:page]).per(5)
+    @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
 
   def new
@@ -12,13 +12,15 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet=Tweet.create(tweet_params)
+    @tweet=Tweet.create(image: tweet_params[:image],text: tweet_params[:text],title_info: tweet_params[:title_info],school_a: tweet_params[:school_a],school_b: tweet_params[:school_b],school_a_score: tweet_params[:school_a_score],school_b_score: tweet_params[:school_b_score],user_id: current_user.id)
     if !@tweet.save
       render "new"
     end
   end
 
   def show
+    @tweets = current_user.tweets.page(params[:page]).per(5).order("created_at DESC")
+    @nickname=current_user.nickname
   end
 
   def destroy
@@ -43,6 +45,6 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.permit(:title,:image,:text,:title_info,:school_a,:school_b,:school_a_score,:school_b_score)
+    params.permit(:image,:text,:title_info,:school_a,:school_b,:school_a_score,:school_b_score,:user_id)
   end
 end

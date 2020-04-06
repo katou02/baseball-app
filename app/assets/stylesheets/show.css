@@ -16,6 +16,11 @@
   font-size: 20px;
 }
 
+.image{
+  margin-top: 120px;
+  text-align: center;
+}
+
 a:hover{
   opacity: 0.5;
 }
