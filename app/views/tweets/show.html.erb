@@ -3,7 +3,7 @@
   <%= link_to "トップページへ戻る",root_path%>
   <%= link_to "記事を編集する","/tweets/#{@tweet.id}/edit",method: :get %>
   <div class="user_name">
-    <%= @tweet.user.nickname%>
+    <h4>投稿者 <%= @tweet.user.nickname%></h4>
   </div>
   <div class="game_result">
     <%=@tweet.school_a%>
