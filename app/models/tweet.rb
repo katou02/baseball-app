@@ -3,4 +3,5 @@ class Tweet < ApplicationRecord
   validates :school_a,:school_b,:school_a_score,:school_b_score,:text,:title_info ,presence: true
   validates :school_a_score,:school_b_score, numericality: true
   mount_uploader :image, ImageUploader
+  belongs_to :user
 end
