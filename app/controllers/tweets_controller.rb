@@ -24,14 +24,14 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    @tweet.destroy
+    tweet.destroy if tweet.user_id == current_user.id
   end
 
   def edit
   end
 
   def update
-    @tweet.update(tweet_params)
+    @tweet.update(tweet_params) if @tweet.user_id == current_user.id
     redirect_to action: :show
   end
 
