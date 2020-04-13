@@ -25,9 +25,7 @@ h3{
   box-shadow: 0 0 10px rgba(41,41,41,0.2);
 }
 
-input,textarea{
-  height: 50px;
-  width: 100%;
+.field{
   margin-top: 20px;
 }
 
@@ -39,8 +37,43 @@ input[type="submit"]{
   background-color: #57c3e9;
 }
 
-a,.back{
+.back{
   margin-top: 20px;
   text-decoration: none;
   color: black;
+  display: block;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.game_record{
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+}
+
+textarea{
+  margin-top: 20px;
+  width: 100%;
+}
+
+
+input{
+  font-size: 20px;
+}
+
+.input-box_image_file{
+  display: none;
+}
+
+.fa{
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.fa:hover{
+  opacity: 0.5;
 }

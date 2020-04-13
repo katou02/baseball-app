@@ -1,5 +1,23 @@
 <div class="text">
-    <div class=texts>
-    <%= @tweet.text%>
-    </div>
+  <%= link_to "記事を削除する","/tweets/#{@tweet.id}",method: :delete%>
+  <%= link_to "トップページへ戻る",root_path%>
+  <%= link_to "記事を編集する","/tweets/#{@tweet.id}/edit",method: :get %>
+  <div class="user_name">
+    <h4>投稿者 <%= @tweet.user.nickname%></h4>
+  </div>
+  <div class="game_result">
+    <%=@tweet.school_a%>
+    <%=@tweet.school_a_score%>
+    <a>-</a>
+    <%=@tweet.school_b_score%>
+    <%=@tweet.school_b%>
+  </div>
+  <div class="sub_title">
+    <%=@tweet.title_info%>
+  </div>
+  <div class=texts>
+    <%= simple_format(@tweet.text)%>
+  </div>
+  <div class="image">
+   <%= image_tag "#{@tweet.image}"%>
 </div>

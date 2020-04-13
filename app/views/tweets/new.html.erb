@@ -1,16 +1,22 @@
 <div class="contents row">
   <div class="containe_r">
-    <%= form_tag('/tweets', method: :post) do %>
+    <%= form_with url: tweets_path,local: true do |f| %>
       <h3>
         投稿する
       </h3>
-      <input placeholder="タイトル" type="text" name="title">
-      <input placeholder="高校A" type="text" name=a_score>
-      <input placeholder="高校B" type="text" name=b_score>
-      <input placeholder="サブタイトル 30文字以下" type="text" name="title_info">
-      <input placeholder="Image Url" type="text" name="image">
-      <textarea cols="30" name="text" placeholder="text" rows="10"></textarea>
-      <input type="submit" value="SENT">
+    <%= render 'layouts/error_messages', model: f.object %>
+      <%= f.text_field :school_a,placeholder: "高校A",class: "game_record",value: "#{@tweet.school_a}" %>
+      <%= f.text_field :school_a_score,placeholder: "高校A 得点",class: "game_record",value: "#{@tweet.school_a_score}" %>
+      <%= f.text_field :school_b,placeholder: "高校B",class: "game_record",value: "#{@tweet.school_b}" %>
+      <%= f.text_field :school_b_score,placeholder: "高校B 得点",class: "game_record",value: "#{@tweet.school_b_score}" %>
+      <%= f.text_field :title_info,placeholder: "サブタイトル",class: "game_record",value: "#{@tweet.title_info}" %>
+      <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@tweet.text}" %>
+      <%= f.label :image, class: "form-image" do %>
+        <h4>画像投稿</h4>
+        <i class="fa fa-image"></i>
+        <%= f.file_field :image, class: 'input-box_image_file',value: "#{@tweet.image}"%>
+      <% end %>
+      <%=f.submit value: "SENT",class: "game_record"%>
     <% end %>
     <div class="back">
       <%= link_to "戻る",root_path%>
