@@ -21,6 +21,17 @@
   <div class="image">
    <%= image_tag "#{@tweet.image}"%>
   </div>
+      <div class="comments">   
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
     <div class="comment_container"> 
     <!-- ここからフォーム -->
     <% if current_user %>
