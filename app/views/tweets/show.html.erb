@@ -20,4 +20,14 @@
   </div>
   <div class="image">
    <%= image_tag "#{@tweet.image}"%>
+  </div>
+    <div class="comment_container"> 
+    <!-- ここからフォーム -->
+    <% if current_user %>
+      <%= form_tag("/tweets/#{@tweet.id}/comments", method: :post) do %>
+        <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
+        <input type="submit" value="SENT">
+      <% end %>
+    <% end %>
+  </div>
 </div>
