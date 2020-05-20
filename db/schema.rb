@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_031116) do
+ActiveRecord::Schema.define(version: 2020_05_17_023912) do
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tweet_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title_info"
@@ -20,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_031116) do
     t.text "image"
     t.integer "school_a_score"
     t.integer "school_b_score"
+    t.integer "likes_count"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "user_id"
