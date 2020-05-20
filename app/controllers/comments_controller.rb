@@ -4,6 +4,15 @@ class CommentsController < ApplicationController
     redirect_to "/tweets/#{comment.tweet.id}"
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    if comment.user_id = current_user.id
+      comment.destroy
+      redirect_to "/tweets/#{comment.tweet.id}"
+    end
+  end
+
+
   private
   def comment_params
     params.permit(:text, :tweet_id)
