@@ -21,10 +21,14 @@ class TweetsController < ApplicationController
   def show
     @tweets = current_user.tweets.page(params[:page]).per(5).order("created_at DESC")
     @nickname=current_user.nickname
+    @comments = @tweet.comments.includes(:user)
   end
 
   def destroy
-    tweet.destroy if tweet.user_id == current_user.id
+    @tweet.destroy if @tweet.user_id == current_user.id
+    # else
+    #   redirect_to action: index
+    # end
   end
 
   def edit

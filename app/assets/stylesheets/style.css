@@ -72,6 +72,12 @@ html{
   font-size: 18px;
 }
 
+.tweets_at{
+  font-size: 11px;
+  margin-top: 10px;
+  padding-left: 790px;
+}
+
 .pagination{
   font-size: 20px;
   margin-left: 45%;
