@@ -121,3 +121,10 @@ h2{
   text-align: center;
   font-size: 25px;
 }
+
+/* 検索 */
+.search-form{
+  width: 30%;
+  margin: 0 auto;
+  padding-top: 50px;
+}
