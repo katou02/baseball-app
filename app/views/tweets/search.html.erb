@@ -1,3 +1,4 @@
+<%= link_to "トップページへ戻る",root_path %>
 <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search-form") do |form| %>
   <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
@@ -14,7 +15,7 @@
     <div class="tweets_at">
       <%= tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
     </div>
-    </div>
   </div>
+</div>
    <% end %>
 </div>
