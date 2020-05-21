@@ -29,7 +29,7 @@
         <% @comments.each do |comment| %>
           <p>
             <strong><%= comment.user.nickname %>：</strong>
-              <%= comment.text %>
+              <%= simple_format(comment.text) %>
               <% if user_signed_in? && current_user.id == comment.user_id %>
                 <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete_button" %>
               <% end %>
