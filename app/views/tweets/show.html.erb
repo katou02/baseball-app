@@ -1,7 +1,9 @@
 <div class="text">
+  <% if current_user.id == @tweet.user_id || current_user.admin? %>
   <%= link_to "記事を削除する","/tweets/#{@tweet.id}",method: :delete%>
-  <%= link_to "トップページへ戻る",root_path%>
   <%= link_to "記事を編集する","/tweets/#{@tweet.id}/edit",method: :get %>
+  <% end %>
+  <%= link_to "トップページへ戻る",root_path%>
   <div class="user_name">
     <h4>投稿者 <%= @tweet.user.nickname%></h4>
   </div>
@@ -27,8 +29,8 @@
         <% @comments.each do |comment| %>
           <p>
             <strong><%= comment.user.nickname %>：</strong>
-              <%= comment.text %>
-              <% if user_signed_in? && current_user.id == comment.user_id %>
+              <%= simple_format(comment.text) %>
+              <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
                 <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete_button" %>
               <% end %>
               <div class="comment_at">
