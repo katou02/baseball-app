@@ -36,10 +36,11 @@ class TweetsController < ApplicationController
   end
 
   def edit
+    @tweets = Tweet.find(params[:id])
   end
 
   def update
-    @tweet.update(tweet_params) if @tweet.user_id == current_user.id
+    @tweet.update(tweet_params) if @tweet.user_id == current_user.id || current_user.admin
     redirect_to action: :show
   end
 

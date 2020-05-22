@@ -12,7 +12,9 @@
   <% if user_signed_in? %>
     <div class=sign_out>
       <%= link_to "ログアウト", destroy_user_session_path,method: :delete,class: "logout_btn" %>
+      <%# <% if current_user.id == current_user.admin %>
       <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
+      <%# <% end %>
     </div>
   <% else %>
     <div class="sign_in">
