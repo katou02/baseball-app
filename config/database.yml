@@ -52,5 +52,6 @@ production:
   database: sample_boad_production
   username: sample_boad
   # username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  password: <%= ENV['SAMPLE_BOAD_DATABASE_PASSWORD'] %>
+  # password: <%= ENV['DATABASE_PASSWORD'] %>
   # socket: /var/lib/mysql/mysql.sock
