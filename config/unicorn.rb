@@ -1,17 +1,20 @@
+#サーバ上でのアプリケーションコードが設置されているディレクトリを変数に入れておく
+app_path = File.expand_path('../../', __FILE__)
 
-app_path = File.expand_path('../../../', __FILE__)
-
+#アプリケーションサーバの性能を決定する
 worker_processes 1
 
-working_directory "#{app_path}/current"
+#アプリケーションの設置されているディレクトリを指定
+working_directory app_path
 
-pid "#{app_path}/shared/tmp/pids/unicorn.pid"
+#Unicornの起動に必要なファイルの設置場所を指定
+pid "#{app_path}/tmp/pids/unicorn.pid"
 
-listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
+listen 3000
 
-stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
+stderr_path "#{app_path}/log/unicorn.stderr.log"
 
-stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
+stdout_path "#{app_path}/log/unicorn.stdout.log"
 
 timeout 60
 
@@ -38,7 +41,7 @@ before_fork do |server, worker|
     rescue Errno::ENOENT, Errno::ESRCH => e
       logger.error e
     end
-  end 
+  end
 end
 
 after_fork do |_server, _worker|
