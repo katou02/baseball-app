@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   end
   resources :tournaments,only:[:new,:create]
   resources :show,only:[:show]
-  get '/top' => "top#index"
+  resources :top,only:[:index,:show]
   # get 'users/:id' => 'users#show'
 end

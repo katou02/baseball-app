@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_13_080225) do
     t.text "image"
     t.integer "school_a_score"
     t.integer "school_b_score"
+    t.integer "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "user_id"
