@@ -1,12 +1,24 @@
 /* トップ画面 */
 *{box-sizing: border-box;}
 .header{
-  text-align: center;
   font-size: 40px;
-  height: 110px;
-  padding-top: 30px;
-  border-bottom: solid 3px grey;
+  height: 300px;
+  /* border-bottom: solid 3px grey; */
   position: relative;
+  background-image: url("https://pics.prcm.jp/feed9aaf1ab2e/81573810/jpeg/81573810.jpeg");
+  background-size: cover;
+  background-position: center center;
+}
+
+h1{
+text-align: center;
+line-height: 300px;
+color: white;
+}
+
+.images{
+  display: flex;
+  padding-top: 80px;
 }
 
 .image_1{
@@ -26,7 +38,7 @@
 }
 
 .image_4{
-  margin: 30px 0 0 660px;
+  margin: 0 auto;
 }
 
 .send_btn,.logout_btn{
@@ -37,14 +49,15 @@
   border: 2px solid #57c3e9;
   color: #57c3e9;
   padding: 5px;
+  margin-top: 15px;
 }
 
 .logout_btn{
   margin-left: 10%;
 }
 
-html{
-  background-color: rgb(233, 243, 242);
+.main-content{
+  background-color: rgb(233, 243, 243);
 }
 
 .comment-list{
@@ -96,7 +109,8 @@ html{
   font-size: 18px;
   border: 2px solid #6de957;
   padding: 5px; 
-  position: absolute
+  position: absolute;
+  margin-top: 15px;
 }
 
 .login_btn:hover{
@@ -110,6 +124,7 @@ html{
   padding: 5px; 
   position: absolute;
   margin-left: 8%;
+  margin-top: 15px;
 }
 
 .up_btn:hover{
