@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "top#index"
   resources :tweets do
     resources :comments,only:[:create,:destroy]
     collection do
@@ -9,6 +8,10 @@ Rails.application.routes.draw do
   end
   resources :tournaments,only:[:new,:create]
   resources :show,only:[:show]
-  resources :top,only:[:index,:show]
+  resources :top,only:[:index] do
+  collection do
+    get :choose
+  end
+end
   # get 'users/:id' => 'users#show'
 end
