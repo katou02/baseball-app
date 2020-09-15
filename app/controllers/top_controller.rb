@@ -2,7 +2,7 @@ class TopController < ApplicationController
   def index
   end
 
-  def show
+  def choose
     @tournaments = Tournament.order("id DESC")
   end
 end
