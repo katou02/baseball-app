@@ -77,3 +77,8 @@ input{
 .fa:hover{
   opacity: 0.5;
 }
+
+.tournament_select{
+  margin-top: 20px;
+  width: 30%;
+}
