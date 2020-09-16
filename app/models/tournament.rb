@@ -1,4 +1,3 @@
 class Tournament < ApplicationRecord
-
-  # belongs_to :tweet
+  belongs_to :tweet
 end
