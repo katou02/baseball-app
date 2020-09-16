@@ -1,6 +1,6 @@
 <div class="contents row">
   <div class="containe_r">
-    <%= form_with url: tweets_path,local: true do |f| %>
+    <%= form_with model: @tweet, local: true do |f| %>
       <h3>
         投稿する
       </h3>
@@ -11,7 +11,9 @@
       <%= f.text_field :school_b_score,placeholder: "高校B 得点",class: "game_record",value: "#{@tweet.school_b_score}" %>
       <%= f.text_field :title_info,placeholder: "サブタイトル",class: "game_record",value: "#{@tweet.title_info}" %>
       <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@tweet.text}" %>
-      <%= f.label :image, class: "form-image" do %>
+      <%= f.label "大会選択" %>
+      <%= f.collection_select :tournament_id, Tournament.all,:id,:name,{},{class: 'tournament_select'} %> 
+      <%= f.label :image, class: "form-image" do %> 
         <h4>画像投稿</h4>
         <i class="fa fa-image"></i>
         <%= f.file_field :image, class: 'input-box_image_file',value: "#{@tweet.image}"%>
