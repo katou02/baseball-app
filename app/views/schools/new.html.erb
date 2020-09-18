@@ -8,4 +8,13 @@
     <%= f.label "大会選択" %>
       <%= f.collection_select :tournament_ids, Tournament.all,:id,:name,{},{class: 'tournament_select'} %> 
   <%end%>
+
+  <div class="schools">
+    <% @schools.each do |schools|%>
+      <%= schools.name%>
+      <% schools.tournaments.each do |tournament| %>
+        <%= tournament.name%>
+      <%end%>
+    <%end%>
+  </div>
 </div>
