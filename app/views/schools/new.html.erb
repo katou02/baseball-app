@@ -5,5 +5,7 @@
     </h3>
     <%= f.text_field :name,placeholder: "高校名",class: "school_name"%>
     <%= f.submit value="SENT",class: "button"%>
+    <%= f.label "大会選択" %>
+      <%= f.collection_select :tournament_id, Tournament.all,:id,:name,{},{class: 'tournament_select'} %> 
   <%end%>
 </div>

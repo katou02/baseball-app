@@ -4,7 +4,7 @@ class SchoolsController < ApplicationController
   end
 
   def create
-    @school = School.create(name: name_params[:name])
+    @school = School.create(name: name_params[:name],tournament_id: name_params[:tournament_id])
     if @school.save
       redirect_to action: :new
     else
@@ -18,6 +18,6 @@ class SchoolsController < ApplicationController
 
   private
   def name_params
-    params.require(:school).permit(:name)
+    params.require(:school).permit(:name,:tournament_id)
   end
 end
