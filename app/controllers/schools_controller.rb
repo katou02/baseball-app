@@ -1,6 +1,7 @@
 class SchoolsController < ApplicationController
   def new
     @school = School.new
+    @schools = School.all
   end
 
   def create
