@@ -10,12 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_021100) do
+ActiveRecord::Schema.define(version: 2020_09_18_055548) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tweet_id"
     t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tournament_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "school_id"
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_tournament_schools_on_school_id"
+    t.index ["tournament_id"], name: "index_tournament_schools_on_tournament_id"
+  end
+
+  create_table "tournaments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_021100) do
     t.text "image"
     t.integer "school_a_score"
     t.integer "school_b_score"
-    t.integer "likes_count"
+    t.integer "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "user_id"
@@ -48,4 +69,6 @@ ActiveRecord::Schema.define(version: 2020_05_22_021100) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tournament_schools", "schools"
+  add_foreign_key "tournament_schools", "tournaments"
 end
