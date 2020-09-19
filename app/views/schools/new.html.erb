@@ -1,0 +1,20 @@
+<div class="contents row">
+  <%= form_with model: @school, local: true do |f|%>
+    <h3>
+    登録する
+    </h3>
+    <%= f.text_field :name,placeholder: "高校名",class: "school_name"%>
+    <%= f.submit value="SENT",class: "button"%>
+    <%= f.label "大会選択" %>
+      <%= f.collection_select :tournament_ids, Tournament.all,:id,:name,{},{class: 'tournament_select'} %> 
+  <%end%>
+
+  <div class="schools">
+    <% @schools.each do |schools|%>
+      <%= schools.name%>
+      <% schools.tournaments.each do |tournament| %>
+        <%= tournament.name%>
+      <%end%>
+    <%end%>
+  </div>
+</div>

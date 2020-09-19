@@ -10,5 +10,6 @@ class Tweet < ApplicationRecord
   validates :school_a_score,:school_b_score, numericality: true
   mount_uploader :image, ImageUploader
   belongs_to :user
+  has_many :tournaments
   has_many :comments
 end
