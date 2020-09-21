@@ -78,6 +78,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem "font-awesome-sass"
+gem 'ancestry'
 # gem 'fog-aws'
 
 group :production do
