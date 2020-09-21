@@ -2,6 +2,7 @@ class TweetsController < ApplicationController
 
   before_action :search_tweet,only:[:show,:destroy,:edit,:update]
   before_action :move_to_index,except: :index
+  before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
@@ -44,6 +45,14 @@ class TweetsController < ApplicationController
 
   def search_tweet
     @tweet = Tweet.find(params[:id])
+  end
+
+  def set_category
+    @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  def get_category_children
+    @category_children = Category.find(params[:tournament_id]).children
   end
 
   def move_to_index

@@ -12,7 +12,9 @@
       <%= f.text_field :title_info,placeholder: "サブタイトル",class: "game_record",value: "#{@tweet.title_info}" %>
       <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@tweet.text}" %>
       <%= f.label "大会選択" %>
-      <%= f.collection_select :tournament_id, Tournament.all,:id,:name,{},{class: 'tournament_select'} %> 
+      <%= f.collection_select :tournament_id, @category_parent_array,:id,:name,{},{class: 'tournament_select'} %> 
+      <%= f.label "学校選択"%>
+      <div class="school"></div>
       <%= f.label :image, class: "form-image" do %> 
         <h4>画像投稿</h4>
         <i class="fa fa-image"></i>
