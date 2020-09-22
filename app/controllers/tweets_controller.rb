@@ -11,6 +11,12 @@ class TweetsController < ApplicationController
 
   def new
     @tweet=Tweet.new
+    respond_to do |format|
+      format.html
+      format.json do
+      @category_children = Category.find(params[:tournament_id]).children
+      end
+    end
   end
 
   def create
@@ -25,9 +31,6 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet.destroy if @tweet.user_id == current_user.id
-    # else
-    #   redirect_to action: index
-    # end
   end
 
   def search
@@ -47,19 +50,16 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
   end
 
+  
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
+  
+  private
   def set_category
     @category_parent_array = Category.where(ancestry: nil)
   end
 
-  def get_category_children
-    @category_children = Category.find(params[:tournament_id]).children
-  end
-
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
-  end
-
-  private
   def tweet_params
     params.permit(:image,:text,:title_info,:school_a,:school_b,:school_a_score,:school_b_score,:user_id,:tournament_id)
   end

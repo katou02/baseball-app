@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  has_many :tournaments
-  has_ancestry 
+  has_many :tweets
+  has_ancestry
 end
