@@ -11,6 +11,7 @@ function appendChildrenBox(insertHTML) {
                       <option value="" data-category="" >選択してください</option>
                       ${insertHTML}</select>`
                     $(".school").append(childSelectHtml)
+                    $(".school2").append(childSelectHtml)
   }
 
   $("#parent_category").on("change",function(){
@@ -23,7 +24,8 @@ function appendChildrenBox(insertHTML) {
         dataType: 'json'
       })
       .done(function(children){
-        $(".tournament_select_child").empty();
+        $(".school").empty();
+        $(".school2").empty();
         let insertHTML = '';
         children.forEach(function(child) {
         insertHTML += appendOption(child);
