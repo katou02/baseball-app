@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', (function(){
 function appendOption(category) {
   let html = 
     `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
@@ -7,11 +7,15 @@ function appendOption(category) {
 function appendChildrenBox(insertHTML) {
   let childSelectHtml = '';
   childSelectHtml = 
-                    `<select class="tournament_select_child" id="children_category">
+                    `<select name="schoola_id" class="tournament_select_child" id="children_category">
                       <option value="" data-category="" >選択してください</option>
                       ${insertHTML}</select>`
                     $(".school").append(childSelectHtml)
-                    $(".school2").append(childSelectHtml)
+  childSelectHtml2 = 
+                    `<select name="schoolb_id" class="tournament_select_child" id="children_category">
+                      <option value="" data-category="" >選択してください</option>
+                      ${insertHTML}</select>`
+                    $(".school2").append(childSelectHtml2)
   }
 
   $("#parent_category").on("change",function(){
@@ -38,4 +42,4 @@ function appendChildrenBox(insertHTML) {
       })
     }
   });
-});
+}));
