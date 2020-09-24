@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_065351) do
+ActiveRecord::Schema.define(version: 2020_09_18_055548) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -59,7 +59,11 @@ ActiveRecord::Schema.define(version: 2020_09_21_065351) do
     t.integer "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.bigint "school_as_id", null: false
+    t.bigint "school_bs_id", null: false
     t.integer "user_id"
+    t.index ["school_as_id"], name: "index_tweets_on_school_as_id"
+    t.index ["school_bs_id"], name: "index_tweets_on_school_bs_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -78,4 +82,6 @@ ActiveRecord::Schema.define(version: 2020_09_21_065351) do
 
   add_foreign_key "tournament_schools", "schools"
   add_foreign_key "tournament_schools", "tournaments"
+  add_foreign_key "tweets", "categories", column: "school_as_id"
+  add_foreign_key "tweets", "categories", column: "school_bs_id"
 end

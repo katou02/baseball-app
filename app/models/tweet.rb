@@ -10,7 +10,10 @@ class Tweet < ApplicationRecord
   validates :school_a_score,:school_b_score, numericality: true
   mount_uploader :image, ImageUploader
   belongs_to :user
-  belongs_to :category
+  # belongs_to :category
   has_many :tournaments
   has_many :comments
+
+  belongs_to :school_as,class_name: 'Category', foreign_key: 'school_as_id'
+  belongs_to :school_bs,class_name: 'Category', foreign_key: 'school_bs_id'
 end
