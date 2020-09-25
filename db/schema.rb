@@ -50,8 +50,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_055548) do
 
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title_info"
-    t.string "school_a"
-    t.string "school_b"
     t.text "text"
     t.text "image"
     t.integer "school_a_score"
@@ -59,11 +57,11 @@ ActiveRecord::Schema.define(version: 2020_09_18_055548) do
     t.integer "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.bigint "school_as_id", null: false
-    t.bigint "school_bs_id", null: false
+    t.bigint "school_a_id", null: false
+    t.bigint "school_b_id", null: false
     t.integer "user_id"
-    t.index ["school_as_id"], name: "index_tweets_on_school_as_id"
-    t.index ["school_bs_id"], name: "index_tweets_on_school_bs_id"
+    t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
+    t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,6 +80,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_055548) do
 
   add_foreign_key "tournament_schools", "schools"
   add_foreign_key "tournament_schools", "tournaments"
-  add_foreign_key "tweets", "categories", column: "school_as_id"
-  add_foreign_key "tweets", "categories", column: "school_bs_id"
+  add_foreign_key "tweets", "categories", column: "school_a_id"
+  add_foreign_key "tweets", "categories", column: "school_b_id"
 end

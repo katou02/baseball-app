@@ -7,6 +7,7 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
     @tournaments = Tournament.all
+    @twee=Tweet.find_by(id: 1)
   end
 
   def new
@@ -20,7 +21,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet=Tweet.create!(tweet_params)
+    @tweet=Tweet.create(tweet_params)
     # binding.pry
   end
 
@@ -62,6 +63,6 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.permit(:image,:text,:title_info,:school_a,:school_b,:school_a_score,:school_b_score,:school_as_id,:school_bs_id,:tournament_id).merge(user_id: current_user.id)
+    params.permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id).merge(user_id: current_user.id)
   end
 end
