@@ -2,7 +2,7 @@
   <div class="comment">
     <div class="comment-list">
       <div class="title">
-      <%= link_to "#{tweet.school_a}vs#{tweet.school_b}","/tweets/#{tweet.id}",class: "title"%>
+      <%= link_to "#{tweet.school_a.name}vs#{tweet.school_b.name}","/tweets/#{tweet.id}",class: "title"%>
       </div>
       <div class="sub-title">
         <%= tweet.title_info %>
