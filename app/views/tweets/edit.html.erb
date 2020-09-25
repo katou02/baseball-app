@@ -1,16 +1,17 @@
   <div class="contents row">
     <%= form_tag("/tweets/#{@tweet.id}", method: :patch ) do %>
+    <%# <%= form_with model: @tweet do |f|%>
       <h3>
         編集する
       </h3>
       <h4>画像</h4>
       <input placeholder="Image Url" type="text" name="image" value="<%= @tweet.image %>" autofocus="true">
       <h4>高校A</h4>
-      <input placeholder="高校A" type="text" name=school_a value="<%= @tweet.school_a%>">
+      <input placeholder="高校A" type="text" name=school_a value="<%= @tweet.school_a.name%>">
       <h4>高校A 得点</h4>
       <input placeholder="高校A 得点" type="text" name=school_a_score value="<%= @tweet.school_a_score%>">
       <h4>高校B</h4>
-      <input placeholder="高校B" type="text" name=school_b  value="<%= @tweet.school_b%>">
+      <input placeholder="高校B" type="text" name=school_b  value="<%= @tweet.school_b.name%>">
       <h4>高校B 得点</h4>
       <input placeholder="高校B 得点" type="text" name=school_b_score  value="<%= @tweet.school_b_score%>">
       <h4>サブタイトル</h4>

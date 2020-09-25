@@ -78,8 +78,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_055548) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "tournament_schools", "schools"
-  add_foreign_key "tournament_schools", "tournaments"
   add_foreign_key "tweets", "categories", column: "school_a_id"
   add_foreign_key "tweets", "categories", column: "school_b_id"
 end
