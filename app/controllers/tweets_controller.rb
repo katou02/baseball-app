@@ -2,12 +2,10 @@ class TweetsController < ApplicationController
 
   before_action :search_tweet,only:[:show,:destroy,:edit,:update]
   before_action :move_to_index,except: :index
-  before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_category, only: [:index,:new, :edit, :create, :update, :destroy]
 
   def index
     @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
-    @tournaments = Tournament.all
-    @twee=Tweet.find_by(id: 1)
   end
 
   def new
