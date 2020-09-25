@@ -10,11 +10,11 @@
     <h4>投稿者 <%= @tweet.user.nickname%></h4>
   </div>
   <div class="game_result">
-    <%=@tweet.school_a%>
+    <%=@tweet.school_a.name%>
     <%=@tweet.school_a_score%>
     <a>-</a>
     <%=@tweet.school_b_score%>
-    <%=@tweet.school_b%>
+    <%=@tweet.school_b.name%>
   </div>
   <div class="sub_title">
     <%=@tweet.title_info%>
