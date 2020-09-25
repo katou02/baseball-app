@@ -6,7 +6,7 @@ class Tweet < ApplicationRecord
   end
 
   validates :title_info,length: {maximum: 30}
-  validates :school_a,:school_b,:school_a_score,:school_b_score,:text,:title_info ,presence: true
+  validates :school_a_score,:school_b_score,:text,:title_info ,presence: true
   validates :school_a_score,:school_b_score, numericality: true
   mount_uploader :image, ImageUploader
   belongs_to :user
@@ -14,6 +14,6 @@ class Tweet < ApplicationRecord
   has_many :tournaments
   has_many :comments
 
-  belongs_to :school_as,class_name: 'Category', foreign_key: 'school_as_id'
-  belongs_to :school_bs,class_name: 'Category', foreign_key: 'school_bs_id'
+  belongs_to :school_a,class_name: 'Category', foreign_key: 'school_a_id'
+  belongs_to :school_b,class_name: 'Category', foreign_key: 'school_b_id'
 end
