@@ -8,13 +8,13 @@ function appendChildrenBox(insertHTML) {
   let childSelectHtml = '';
   childSelectHtml = 
                     `<p>高校A</p>
-                    <select name="school_a_id" class="tournament_select_child" id="children_category">
+                    <select name="tweet[school_a_id]" class="tournament_select_child" id="children_category">
                       <option value="" data-category="" >選択してください</option>
                       ${insertHTML}</select>`
                     $(".school").append(childSelectHtml)
   childSelectHtml2 = 
                     `<p>高校B</p>
-                    <select name="school_b_id" class="tournament_select_child" id="children_category">
+                    <select name="tweet[school_b_id]" class="tournament_select_child" id="children_category">
                       <option value="" data-category="" >選択してください</option>
                       ${insertHTML}</select>`
                     $(".school2").append(childSelectHtml2)
