@@ -20,7 +20,6 @@ class TweetsController < ApplicationController
 
   def create
     @tweet=Tweet.create(tweet_params)
-    # binding.pry
   end
 
   def show
@@ -64,6 +63,6 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id).merge(user_id: current_user.id)
   end
 end
