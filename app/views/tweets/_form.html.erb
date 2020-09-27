@@ -1,11 +1,11 @@
       <%= f.label "大会選択" %>
-      <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}%>
+      <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{}, { class: "parent_category_box", id: "parent_category"}%>
       <div class="school"></div>
       <div class="school2"></div>
       <p>高校A 得点</p>     
-      <%= f.select :school_a_score, options_for_select((1..50).to_a) %>
+      <%= f.select :school_a_score, options_for_select((1..50).to_a,selected: @tweet.school_a_score) %>
       <p>高校B 得点</p>
-      <%= f.select :school_b_score, options_for_select((1..50).to_a) %>
+      <%= f.select :school_b_score, options_for_select((1..50).to_a,@tweet.school_b_score) %>
       <%= f.text_field :title_info,placeholder: "サブタイトル",class: "game_record",value: "#{@tweet.title_info}" %>
       <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@tweet.text}" %>
       <%= f.label :image, class: "form-image" do %> 
