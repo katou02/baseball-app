@@ -20,6 +20,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet=Tweet.create(tweet_params)
+    render "new" unless @tweet.save
   end
 
   def show
@@ -41,11 +42,21 @@ class TweetsController < ApplicationController
   end
 
   def edit
+    # respond_to do |format|
+    #   format.html
+    #   format.json do
+    #   @category_children = Category.find(params[:tournament_id]).children
+    #   end
+    # end
   end
-
+  
   def update
     @tweet.update(tweet_params) if @tweet.user_id == current_user.id || current_user.admin
     redirect_to action: :show
+  end
+
+  def get_category_children
+    @category_children = Category.find(params[:tournament_id]).children
   end
 
   def search_tweet

@@ -3,12 +3,10 @@ class Tweet < ApplicationRecord
   def self.search(search)
     return Tweet.all unless search
     self.joins(:categories).where('categories.name LIKE(?) OR text LIKE(?) OR title_info LIKE(?)',"%#{search}%","%#{search}%","%#{search}%")
-    
   end
 
   validates :title_info,length: {maximum: 30}
-  validates :school_a_id,:school_b_id,:school_a_score,:school_b_score,:text,:title_info ,presence: true
-  validates :school_a_score,:school_b_score, numericality: true
+  validates :tournament_id,:school_a,:school_b,:school_a_score,:school_b_score,:text,:title_info ,presence: true
   mount_uploader :image, ImageUploader
   belongs_to :user
   has_many :tournaments
