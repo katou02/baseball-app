@@ -49,7 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: sample_boad_production
+  database: sample_boad_development
   # username: sample_boad
   # username: root
   # password: <%= ENV['SAMPLE_BOAD_DATABASE_PASSWORD'] %>
