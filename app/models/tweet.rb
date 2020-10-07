@@ -2,7 +2,7 @@ class Tweet < ApplicationRecord
 
   def self.search(search)
     return Tweet.all unless search
-    self.joins(:categories).where('categories.name LIKE(?) OR text LIKE(?) OR title_info LIKE(?)',"%#{search}%","%#{search}%","%#{search}%")
+    self.where('text LIKE(?) OR title_info LIKE(?)',"%#{search}%","%#{search}%")
   end
 
   validates :title_info,length: {maximum: 30}
