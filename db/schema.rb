@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_055548) do
+ActiveRecord::Schema.define(version: 2020_10_06_114014) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2020_09_18_055548) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "tweet_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tweet_id"], name: "index_likes_on_tweet_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -57,9 +66,9 @@ ActiveRecord::Schema.define(version: 2020_09_18_055548) do
     t.integer "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "user_id"
     t.bigint "school_a_id", null: false
     t.bigint "school_b_id", null: false
-    t.integer "user_id"
     t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
     t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
   end
@@ -78,6 +87,10 @@ ActiveRecord::Schema.define(version: 2020_09_18_055548) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "likes", "tweets"
+  add_foreign_key "likes", "users"
+  add_foreign_key "tournament_schools", "schools"
+  add_foreign_key "tournament_schools", "tournaments"
   add_foreign_key "tweets", "categories", column: "school_a_id"
   add_foreign_key "tweets", "categories", column: "school_b_id"
 end
