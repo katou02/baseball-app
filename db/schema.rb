@@ -36,27 +36,6 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tournament_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "school_id"
-    t.bigint "tournament_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_tournament_schools_on_school_id"
-    t.index ["tournament_id"], name: "index_tournament_schools_on_tournament_id"
-  end
-
-  create_table "tournaments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title_info"
     t.text "text"
@@ -89,8 +68,6 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
 
   add_foreign_key "likes", "tweets"
   add_foreign_key "likes", "users"
-  add_foreign_key "tournament_schools", "schools"
-  add_foreign_key "tournament_schools", "tournaments"
   add_foreign_key "tweets", "categories", column: "school_a_id"
   add_foreign_key "tweets", "categories", column: "school_b_id"
 end
