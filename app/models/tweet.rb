@@ -12,6 +12,8 @@ class Tweet < ApplicationRecord
   has_many :tournaments
   has_many :comments
   has_many :categories
+  has_many :likes
+  has_many :liked_users,through: :likes,source: :user
   belongs_to :school_a,class_name: 'Category', foreign_key: 'school_a_id'
   belongs_to :school_b,class_name: 'Category', foreign_key: 'school_b_id'
 end
