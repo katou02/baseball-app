@@ -16,4 +16,5 @@ CarrierWave.configure do |config|
 
   config.fog_directory  = 'baseball-app'
   config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/baseball-app'
+  end
 end
