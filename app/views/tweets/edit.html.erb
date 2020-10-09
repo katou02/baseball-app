@@ -1,5 +1,10 @@
   <div class="contents row">
   <%= form_with(model: @tweet,local: true) do |f|%>
+    <%= f.label "大会選択" %>
+    <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category"}%>
+    <div class="school"></div>
+    <%# <%=f.select :school_a_id,options_for_select(@category_children.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{},{class: "tournament_select_child",id: "children_category"} %> %>
+    <div class="school2"></div>
     <%= render partial: "form",locals: {f: f} %>
     <% end %>
     <%= link_to "戻る","/tweets/#{@tweet.id}",class:"back"%>

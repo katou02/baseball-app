@@ -4,6 +4,10 @@
       <h2>
         投稿する
       </h2>
+      <%= f.label "大会選択" %>
+      <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category"}%>
+      <div class="school"></div>
+      <div class="school2"></div>
     <%= render 'layouts/error_messages', model: f.object %>
     <%= render partial: 'form',locals: {f: f} %>
     <% end %>
