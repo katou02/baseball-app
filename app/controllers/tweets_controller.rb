@@ -43,11 +43,7 @@ class TweetsController < ApplicationController
   end
 
   def edit
-    # respond_to do |format|
-    #   format.html
-    #   format.json do
-    #   end
-    # end
+    # @category_children = Category.find(params[:tournament_id]).children
   end
   
   def update

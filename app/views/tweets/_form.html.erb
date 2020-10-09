@@ -1,7 +1,3 @@
-      <%= f.label "大会選択" %>
-      <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category"}%>
-      <div class="school"></div>
-      <div class="school2"></div>
       <p>高校A 得点</p>     
       <%= f.select :school_a_score, options_for_select((1..50).to_a,selected: @tweet.school_a_score),{include_blank:"得点を選択してください"} %>
       <p>高校B 得点</p>
