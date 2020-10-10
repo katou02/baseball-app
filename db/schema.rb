@@ -42,14 +42,15 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
     t.text "image"
     t.integer "school_a_score"
     t.integer "school_b_score"
-    t.integer "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "user_id"
     t.bigint "school_a_id", null: false
     t.bigint "school_b_id", null: false
+    t.bigint "tournament_id", null: false
     t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
     t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
+    t.index ["tournament_id"], name: "index_tweets_on_tournament_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -70,4 +71,5 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
   add_foreign_key "likes", "users"
   add_foreign_key "tweets", "categories", column: "school_a_id"
   add_foreign_key "tweets", "categories", column: "school_b_id"
+  add_foreign_key "tweets", "categories", column: "tournament_id"
 end
