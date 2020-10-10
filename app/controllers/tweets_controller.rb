@@ -43,7 +43,13 @@ class TweetsController < ApplicationController
   end
 
   def edit
-    # @category_children = Category.find(params[:tournament_id]).children
+    @category = Category.find_by(name: @tweet.tournament.name)
+    @category_children = @category.children
+
+    @category_children_array = []
+    Category.where(ancestry: @category_children.first.ancestry).each do |children|
+      @category_children_array << children
+    end
   end
   
   def update
