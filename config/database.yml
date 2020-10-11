@@ -56,3 +56,7 @@ production:
   host: 127.0.0.1
   password: <%= ENV['DATABASE_PASSWORD'] %>
   # socket: /var/lib/mysql/mysql.sock
+
+deployment:
+  <<: *default
+  database: sample_boad_deployment
