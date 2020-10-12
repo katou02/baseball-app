@@ -6,7 +6,6 @@ class CreateTweets < ActiveRecord::Migration[5.2]
       t.text   :image
       t.integer :school_a_score
       t.integer :school_b_score
-      # t.integer :tournament_id
       t.timestamps null: true
     end
   end
