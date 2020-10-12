@@ -81,9 +81,6 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
     t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
     t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
     t.index ["tournament_id"], name: "index_tweets_on_tournament_id"
-#     t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
-#     t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
-
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -105,8 +102,4 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
   add_foreign_key "tweets", "categories", column: "school_a_id"
   add_foreign_key "tweets", "categories", column: "school_b_id"
   add_foreign_key "tweets", "categories", column: "tournament_id"
-#   add_foreign_key "tournament_schools", "schools"
-#   add_foreign_key "tournament_schools", "tournaments"
-#   add_foreign_key "tweets", "categories", column: "school_a_id"
-#   add_foreign_key "tweets", "categories", column: "school_b_id"
 end
