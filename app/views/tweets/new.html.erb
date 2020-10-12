@@ -1,24 +1,15 @@
 <div class="contents row">
   <div class="containe_r">
-    <%= form_with url: tweets_path,local: true do |f| %>
-      <h3>
+    <%= form_with model: @tweet, local: true do |f| %>
+      <h2>
         投稿する
-      </h3>
-    <%= render 'layouts/error_messages', model: f.object %>
-      <%= f.text_field :school_a,placeholder: "高校A",class: "game_record",value: "#{@tweet.school_a}" %>
-      <%= f.text_field :school_a_score,placeholder: "高校A 得点",class: "game_record",value: "#{@tweet.school_a_score}" %>
-      <%= f.text_field :school_b,placeholder: "高校B",class: "game_record",value: "#{@tweet.school_b}" %>
-      <%= f.text_field :school_b_score,placeholder: "高校B 得点",class: "game_record",value: "#{@tweet.school_b_score}" %>
-      <%= f.text_field :title_info,placeholder: "サブタイトル",class: "game_record",value: "#{@tweet.title_info}" %>
-      <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@tweet.text}" %>
+      </h2>
       <%= f.label "大会選択" %>
-      <%= f.collection_select :tournament_id, Tournament.all,:id,:name,{},{class: 'tournament_select'} %> 
-      <%= f.label :image, class: "form-image" do %> 
-        <h4>画像投稿</h4>
-        <i class="fa fa-image"></i>
-        <%= f.file_field :image, class: 'input-box_image_file',value: "#{@tweet.image}"%>
-      <% end %>
-      <%=f.submit value: "SENT",class: "game_record"%>
+      <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category"}%>
+      <div class="school"></div>
+      <div class="school2"></div>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <%= render partial: 'form',locals: {f: f} %>
     <% end %>
     <div class="back">
       <%= link_to "戻る",root_path%>

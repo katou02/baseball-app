@@ -1,0 +1,12 @@
+      <p>高校A 得点</p>     
+      <%= f.select :school_a_score, options_for_select((1..50).to_a,selected: @tweet.school_a_score),{include_blank:"得点を選択してください"} %>
+      <p>高校B 得点</p>
+      <%= f.select :school_b_score, options_for_select((1..50).to_a,@tweet.school_b_score),{include_blank: "得点を選択してください"} %>
+      <%= f.text_field :title_info,placeholder: "タイトル",class: "game_record",value: "#{@tweet.title_info}" %>
+      <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@tweet.text}" %>
+      <%= f.label :image, class: "form-image" do %> 
+        <h4>画像投稿</h4>
+        <i class="fa fa-image"></i>
+        <%= f.file_field :image, class: 'input-box_image_file',value: "#{@tweet.image}"%>
+      <% end %>
+      <%=f.submit value: "SENT",class: "game_record"%>

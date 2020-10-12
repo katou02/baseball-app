@@ -10,11 +10,11 @@
     <h4>投稿者 <%= @tweet.user.nickname%></h4>
   </div>
   <div class="game_result">
-    <%=@tweet.school_a%>
+    <%=@tweet.school_a.name%>
     <%=@tweet.school_a_score%>
     <a>-</a>
     <%=@tweet.school_b_score%>
-    <%=@tweet.school_b%>
+    <%=@tweet.school_b.name%>
   </div>
   <div class="sub_title">
     <%=@tweet.title_info%>
@@ -43,6 +43,16 @@
         <% end %>
       <% end %>
     </div>
+    <h3>いいね件数: <%= @tweet.likes.count%></h3>
+    <% if current_user.already_liked?(@tweet)%>
+      <%= button_to 'いいねを取り消す',tweet_like_path(@tweet),method: :delete%>
+    <% else %>
+      <%= button_to 'いいね',tweet_likes_path(@tweet)%>
+    <% end %>
+    <h2>いいねしたユーザー</h2>
+    <% @tweet.liked_users.each do |user|%>
+      <li><%=user.nickname%></li>
+    <% end %>
     <div class="comment_container"> 
     <!-- ここからフォーム -->
     <% if current_user %>
