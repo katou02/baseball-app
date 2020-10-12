@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
   #   t.datetime "updated_at", null: false
   # end
 
-  create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
 
-    t.string "name"
-    t.string "ancestry"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  #   t.string "name"
+  #   t.string "ancestry"
+  #   t.datetime "created_at", null: false
+  #   t.datetime "updated_at", null: false
+  # end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
     # t.bigint "school_b_id", null: false
     t.integer "user_id"
 
-    # t.bigint "school_a_id", null: false
-    # t.bigint "school_b_id", null: false
+    t.bigint "school_a_id", null: false
+    t.bigint "school_b_id", null: false
     t.bigint "tournament_id", null: false
     t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
     t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
