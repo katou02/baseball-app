@@ -23,20 +23,20 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "tweet_id"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  # create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  #   t.integer "user_id"
+  #   t.integer "tweet_id"
+  #   t.text "text"
+  #   t.datetime "created_at", null: false
+  #   t.datetime "updated_at", null: false
+  # end
 
-  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "tweet_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  # create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  #   t.integer "user_id"
+  #   t.integer "tweet_id"
+  #   t.datetime "created_at", null: false
+  #   t.datetime "updated_at", null: false
+  # end
 
   create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
 
