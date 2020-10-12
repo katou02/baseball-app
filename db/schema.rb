@@ -71,12 +71,12 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
     t.integer "school_b_score"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.bigint "school_a_id", null: false
-    t.bigint "school_b_id", null: false
+    # t.bigint "school_a_id", null: false
+    # t.bigint "school_b_id", null: false
     t.integer "user_id"
 
-    t.bigint "school_a_id", null: false
-    t.bigint "school_b_id", null: false
+    # t.bigint "school_a_id", null: false
+    # t.bigint "school_b_id", null: false
     t.bigint "tournament_id", null: false
     t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
     t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
