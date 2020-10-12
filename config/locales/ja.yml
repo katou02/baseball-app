@@ -8,8 +8,9 @@ ja:
         school_b: "高校B"
         school_a_score: "高校Aの得点"
         school_b_score: "高校Bの特点"
-        title_info: "サブタイトル"
+        title_info: "タイトル"
         text: "テキスト"
+        tournament_id: "大会"
     activerecord:
       attributes:
         user:
@@ -18,3 +19,4 @@ ja:
           password_confirmation: パスワード再入力
           email: メールアドレス
           nickname: ユーザー名
+          

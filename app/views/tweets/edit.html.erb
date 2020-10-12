@@ -1,23 +1,13 @@
   <div class="contents row">
-    <%= form_tag("/tweets/#{@tweet.id}", method: :patch ) do %>
-      <h3>
-        編集する
-      </h3>
-      <h4>画像</h4>
-      <input placeholder="Image Url" type="text" name="image" value="<%= @tweet.image %>" autofocus="true">
-      <h4>高校A</h4>
-      <input placeholder="高校A" type="text" name=school_a value="<%= @tweet.school_a%>">
-      <h4>高校A 得点</h4>
-      <input placeholder="高校A 得点" type="text" name=school_a_score value="<%= @tweet.school_a_score%>">
-      <h4>高校B</h4>
-      <input placeholder="高校B" type="text" name=school_b  value="<%= @tweet.school_b%>">
-      <h4>高校B 得点</h4>
-      <input placeholder="高校B 得点" type="text" name=school_b_score  value="<%= @tweet.school_b_score%>">
-      <h4>サブタイトル</h4>
-      <input placeholder="サブタイトル 30文字以下" type="text" name="title_info" value="<%= @tweet.title_info%>">
-      <h4>テキスト</h4>
-      <textarea cols="30" name="text" placeholder="text" rows="10"><%= @tweet.text %></textarea>
-      <input type="submit" value="SENT">
+  <%= form_with(model: @tweet,local: true) do |f|%>
+    <%= f.label "大会" %>
+      <%= @tweet.tournament.name%>
+    <%# <%=f.select :tournament_id, options_for_select( @category_children_array.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{}, { class: "parent_category_box", id: "parent_category_edit"}%>
+    <h4>高校A</h4>
+    <%=f.select :school_a_id,options_for_select(@category_children_array.map{|c| [c[:name], c[:id]]},selected: @tweet.school_a_id),{},{class: "tournament_select_child",id: "children_category"}%>
+    <h4>高校B</h4>
+      <%=f.select :school_b_id,options_for_select(@category_children_array.map{|c| [c[:name], c[:id]]},selected: @tweet.school_b_id),{},{class: "tournament_select_child",id: "children_category"}%>
+    <%= render partial: "form",locals: {f: f} %>
     <% end %>
     <%= link_to "戻る","/tweets/#{@tweet.id}",class:"back"%>
   </div>
