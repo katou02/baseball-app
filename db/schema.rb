@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_10_06_114014) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+# ActiveRecord::Schema.define(version: 2020_09_29_101411) do
+
+#   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tweet_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+
     t.string "name"
     t.string "ancestry"
     t.datetime "created_at", null: false
@@ -44,13 +71,19 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
     t.integer "school_b_score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.bigint "school_a_id", null: false
+    t.bigint "school_b_id", null: false
     t.integer "user_id"
+
     t.bigint "school_a_id", null: false
     t.bigint "school_b_id", null: false
     t.bigint "tournament_id", null: false
     t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
     t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
     t.index ["tournament_id"], name: "index_tweets_on_tournament_id"
+#     t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
+#     t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
+
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -72,4 +105,8 @@ ActiveRecord::Schema.define(version: 2020_10_06_114014) do
   add_foreign_key "tweets", "categories", column: "school_a_id"
   add_foreign_key "tweets", "categories", column: "school_b_id"
   add_foreign_key "tweets", "categories", column: "tournament_id"
+#   add_foreign_key "tournament_schools", "schools"
+#   add_foreign_key "tournament_schools", "tournaments"
+#   add_foreign_key "tweets", "categories", column: "school_a_id"
+#   add_foreign_key "tweets", "categories", column: "school_b_id"
 end
