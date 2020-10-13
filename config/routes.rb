@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     end
   end
   resources :tournaments,only:[:show]
-  resources :show,only:[:show]
-  resources :top,only:[:index]
-  # get 'users/:id' => 'users#show'
+  resources :analyses,only:[:index]
+  # get 'analyses/index' => 'analyses#index'
+  # resources :show,only:[:show]
+  # resources :top,only:[:index]
 end
