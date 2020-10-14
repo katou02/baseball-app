@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
   end
 
   def new
-    @tweet=Tweet.new
+    @tweet = Tweet.new
     respond_to do |format|
       format.html
       format.json do
@@ -19,13 +19,13 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet=Tweet.create(tweet_params)
+    @tweet = Tweet.create(tweet_params)
     render "new" unless @tweet.save
   end
 
   def show
     @tweets = current_user.tweets.page(params[:page]).per(5).order("created_at DESC")
-    @nickname=current_user.nickname
+    @nickname = current_user.nickname
     @comments = @tweet.comments.includes(:user)
     @like = Like.new
   end
