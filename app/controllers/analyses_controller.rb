@@ -15,6 +15,7 @@ class AnalysesController < ApplicationController
 
   def create
     @analyses = Analysis.create(analysis_params)
+    # binding.pry
     render "new" unless @analyses.save
   end
 
@@ -24,6 +25,6 @@ class AnalysesController < ApplicationController
   end
 
   def analysis_params
-    params.permit(:text)
+    params.require(:analysis).permit(:text,:tournament_id,:school_id)
   end
 end

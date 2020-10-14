@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', (function(){
     let childSelectHtml = '';
     childSelectHtml = 
                      `<p>高校</p>
-                      <select name= "school_id" class="tournament_select_child" id="children_category">
+                      <select name= "analysis[school_id]" class="tournament_select_child" id="children_category">
                         <option value="" data-category="" >学校を選択してください</option>
                         ${insertHTML}</select>`
                       $(".school").append(childSelectHtml)
