@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :tournaments,only:[:show]
-  resources :analyses,only:[:index,:new]
+  resources :analyses,only:[:index,:new,:create]
   # resources :show,only:[:show]
   # resources :top,only:[:index]
 end
