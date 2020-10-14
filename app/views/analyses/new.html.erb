@@ -1,0 +1,14 @@
+<div class="contents row">
+  <div class="container">
+    <%= form_with model: @analysis,local: true do |f|%>
+      <h1>投稿する</h1>
+      <h2>大会選択</h2>
+      <div class="school">
+      <%= render 'layouts/error_messages', model: f.object %>
+      <%= render partial: 'form',locals: {f: f} %>
+      <%end%>
+      <div class="back">
+        <%= link_to "戻る",root_path%>
+      </div>
+  </div>
+</div>

@@ -9,8 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :tournaments,only:[:show]
-  resources :analyses,only:[:index]
-  # get 'analyses/index' => 'analyses#index'
+  resources :analyses,only:[:index,:new]
   # resources :show,only:[:show]
   # resources :top,only:[:index]
 end
