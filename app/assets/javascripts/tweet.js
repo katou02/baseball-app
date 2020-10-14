@@ -40,7 +40,7 @@ function appendChildrenBox(insertHTML) {
     })
 
       .fail(function() {
-        alert('error：子カテゴリーの取得に失敗');
+        alert('error：取得に失敗');
       })
     }
   });
