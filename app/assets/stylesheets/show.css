@@ -39,16 +39,7 @@ input{
   text-align: center;
 }
 
-h3{
-  font-size: 25px;
-}
-
-h4{
-  margin: 20px 0 5px 0;
-}
-
-.comment_container
-{
+.comment_container{
   margin: 0 auto;
   padding: 30px;
   width: 50%;
