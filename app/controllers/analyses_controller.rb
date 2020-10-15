@@ -24,6 +24,6 @@ class AnalysesController < ApplicationController
   end
 
   def analysis_params
-    params.require(:analysis).permit(:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive)
+    params.require(:analysis).permit(:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive).merge(user_id: current_user.id)
   end
 end
