@@ -1,8 +1,7 @@
 <div class="contents row">
   <div class="container">
     <%= form_with model: @analysis,local: true do |f|%>
-      <h1>投稿する</h1>
-      <h2>大会選択</h2>
+      <p>大会選択<p>
       <%= f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category_analysis"} %>
       <div class="school">
       </div>
@@ -24,7 +23,7 @@
           <%= f.select :comprehensive,[["A","A"],["B+","B+"],["B","B"],["C","C"]],include_blank: "選択してください"%>
         </div>
       </div>
-      <%= f.text_area :text, cols: 30 ,rows: 10 %>
+      <%= f.text_area :text, cols: 30 ,rows: 10,placeholder: "分析内容を入力してください" %>
       <%# <%= render 'layouts/error_messages', model: f.object%>
       <%= f.submit value: "SENT",class: "game_record"%>
     <%end%>
