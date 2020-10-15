@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_111648) do
     t.string "defensive"
     t.string "pitcher"
     t.string "comprehensive"
+    t.integer "user_id"
     t.bigint "school_id", null: false
     t.bigint "tournament_id", null: false
     t.datetime "created_at", null: false

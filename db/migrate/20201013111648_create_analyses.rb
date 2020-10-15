@@ -6,6 +6,7 @@ class CreateAnalyses < ActiveRecord::Migration[5.2]
       t.string :defensive
       t.string :pitcher
       t.string :comprehensive
+      t.integer :user_id
       t.references :school, foreign_key: { to_table: :categories }, null: false
       t.references :tournament, foreign_key: { to_table: :categories }, null: false
       t.timestamps
