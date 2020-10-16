@@ -1,5 +1,4 @@
 class TweetsController < ApplicationController
-
   before_action :search_tweet,only:[:show,:destroy,:edit,:update]
   before_action :move_to_index,except: :index
   before_action :set_category, only: [:index,:new, :edit, :create, :update, :destroy]
