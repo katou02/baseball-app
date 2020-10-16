@@ -1,0 +1,31 @@
+    <% @analyses.each do |analysis|%>
+      <div class="content_anali">
+        <div class="school">
+          <%= analysis.school.name %>
+        </div>
+        <div class="select_main">
+          <div class="attack_i">
+            <p>攻撃力</p>
+            <%= analysis.attack%>
+          </div>
+          <div class="defensive_i">
+            <p>防御力</p>
+            <%= analysis.defensive%>
+          </div>
+          <div class="pitcher_i">
+            <p>投手力</p>
+            <%= analysis.pitcher%>
+          </div>
+          <div class="comprehensive_i">
+            <p>総合力</p>
+            <%= analysis.comprehensive%>
+          </div>
+        </div>
+      <div class="text">
+        <%= simple_format(analysis.text)%>
+      </div>
+      <div class="name">
+        <%= "投稿者 #{analysis.user.nickname}"%>
+      </div>
+    </div>
+    <% end %>
