@@ -1,13 +1,18 @@
-<html>
-<head>
-</head>
-
-<body>
-  <div class="analsis_up">
+  <div class="analysis_header">
+    <h1>戦力分析<h1>
   </div>
-  <div class="analsis_main">
+    <% @category_parent_array.each do |tournament|%>
+    <div class="by_tournament">
+      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}/watch",class: "title"%>
+    </div>
+  <% end %>
+  <%= render partial: "tweets/log" %>
+  <% if user_signed_in? %>
+    <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
+  <% end %>
+  <div class="analysis_main">
+  <%= render partial: "analyses/show"%>
   </div>
   <div class="analsis_bottom">
   </div>
-</body>
-</html>
+  <%= paginate(@analyses)%>
