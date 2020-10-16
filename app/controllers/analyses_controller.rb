@@ -1,6 +1,7 @@
 class AnalysesController < ApplicationController
-  before_action :set_category, only:[:new,:create]
+  before_action :set_category, only:[:index,:new,:create]
   def index
+    @analyses = Analysis.includes(:user).page(params[:page]).per(10).order("created_at DESC")
   end
 
   def new
@@ -8,7 +9,7 @@ class AnalysesController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-      @category_children = Category.find(params[:tournament_id]).children
+        @category_children = Category.find(params[:tournament_id]).children
       end
     end
   end

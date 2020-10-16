@@ -8,7 +8,11 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :tournaments,only:[:show]
+  resources :tournaments,only:[:show] do
+    member do
+      get "watch"
+    end
+  end
   resources :analyses,only:[:index,:new,:create]
   # resources :show,only:[:show]
   # resources :top,only:[:index]
