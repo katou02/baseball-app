@@ -18,7 +18,13 @@
           </div>
           <div class="comprehensive_i">
             <p>総合力</p>
-            <%= analysis.comprehensive%>
+            <% if analysis.comprehensive=="B" %>
+              <p>B+<p>
+            <% elsif analysis.comprehensive=="C" %>
+              <p>B<p>
+            <% else %>
+              <p>C<p>
+            <% end %>
           </div>
         </div>
       <div class="text">
