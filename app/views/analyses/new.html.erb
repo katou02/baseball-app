@@ -2,12 +2,13 @@
   <div class="container">
     <%= form_with model: @analysis,local: true do |f|%>
       <%# <h1>投稿</h1> %>
+      <%= render 'layouts/error_messages-ay', model: f.object %>
       <p>大会選択<p>
       <%= f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category_analysis"} %>
       <div class="school">
       </div>
       <div class="select">
-      　<div class="attack">
+        <div class="attack">
           <p>攻撃力</p>
           <%= f.select :attack,[["A","A"],["B","B"],["C","C"]],include_blank: "選択してください"%>
         </div>
@@ -24,7 +25,7 @@
           <%= f.select :comprehensive,[["A","A"],["B+","B"],["B","C"],["C","D"]],include_blank: "選択してください"%>
         </div>
       </div>
-      <%= f.text_area :text, cols: 30 ,rows: 10,placeholder: "分析内容を入力してください" %>
+      <%= f.text_area :text, cols: 30 ,rows: 10,placeholder: "分析内容を入力してください",value: "#{@analysis.text}" %>
       <%= f.submit value: "SENT",class: "game_record"%>
     <%end%>
       <div class="back">
