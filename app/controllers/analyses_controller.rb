@@ -15,8 +15,8 @@ class AnalysesController < ApplicationController
   end
 
   def create
-    @analyses = Analysis.create(analysis_params)
-    render "new" unless @analyses.save
+    @analysis = Analysis.create(analysis_params)
+    render "new" unless @analysis.save
   end
 
   private
