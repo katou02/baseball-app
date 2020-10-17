@@ -1,3 +1,38 @@
 <%= render :partial=>"tweets/log"%>
 <%= link_to "トップページへ戻る",analyses_path,class: "return-top"%>
 <%= render partial: "analyses/show"%>
+<div class="average">
+  <% @avg_attack.each do |avg|%>
+    <%= avg[:name]%>
+      <p>攻撃力<p>
+    <% if avg[:attack_num]<66 %>
+      <p>A<p>
+    <% elsif avg[:attack_num]>=66 && avg[:attack_num]<67 %>
+      <p>B<p>
+    <% else %>
+      <p>C<p>
+    <% end %>
+  <% end %>
+
+  <% @avg_defense.each do |avg|%>
+    <p>守備力<p>
+    <% if avg[:defense_num]<66 %>
+      <p>A<p>
+    <% elsif avg[:defense_num]>=66 && avg[:defense_num]<67 %>
+      <p>B<p>
+    <% else %>
+      <p>C<p>
+    <% end %>
+  <% end %>
+
+  <% @avg_pitch.each do |avg|%>
+    <p>守備力<p>
+    <% if avg[:pitch_num]<66 %>
+      <p>A<p>
+    <% elsif avg[:pitch_num]>=66 && avg[:pitch_num]<67 %>
+      <p>B<p>
+    <% else %>
+      <p>C<p>
+    <% end %>
+  <% end %>
+</div>
