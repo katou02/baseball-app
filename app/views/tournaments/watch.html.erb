@@ -1,48 +1,4 @@
 <%= render :partial=>"tweets/log"%>
 <%= link_to "トップページへ戻る",analyses_path,class: "return-top"%>
+<%= link_to "平均評価を見る",watch_avg_tournament_path,class: "title" %>
 <%= render partial: "analyses/show"%>
-
-<% @avgs.each do |avg|%>
-  <%=avg[:name]%>
-<div class="average">
-  <p>攻撃力<p>
-  <% if avg[:attack_num]<66 %>
-    <p>A<p>
-  <% elsif avg[:attack_num]>=66 && avg[:attack_num]<67 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-  
-  <p>守備力<p>
-  <% if avg[:defense_num]<66 %>
-    <p>A<p>
-  <% elsif avg[:defense_num]>=66 && avg[:defense_num]<67 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-
-  <p>投手力<p>
-  <% if avg[:pitch_num]<66 %>
-    <p>A<p>
-  <% elsif avg[:pitch_num]>=66 && avg[:pitch_num]<67 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-</div>
-
-  <p>総合力<p>
-  <% if avg[:total_num]<66 %>
-    <p>A<p>
-  <% elsif avg[:total_num]>=66 && avg[:total_num]<67 %>
-    <p>B+<p>
-  <% elsif avg[:total_num]>=67 && avg[:total_num]<68 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-</div>
-  <% end %>
- 

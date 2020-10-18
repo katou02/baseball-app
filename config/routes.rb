@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :tournaments,only:[:show] do
     member do
       get "watch"
+      get "watch_avg"
     end
   end
   resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update]

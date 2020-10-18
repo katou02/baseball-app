@@ -5,6 +5,10 @@ class TournamentsController < ApplicationController
 
   def watch
     @analyses = Analysis.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(10).order("created_at DESC")
+  end
+  
+  def watch_avg
+    @analyses = Analysis.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(10).order("created_at DESC")
     average(@analyses)
   end
   
