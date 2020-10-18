@@ -40,15 +40,31 @@
   right: 50px;
 }
 
-.name {
+.name_ays {
   position: absolute;
-  bottom:  10px;
+  bottom:  20px;
   right: 0;
 }
 
 /* watch */
 .average {
   display: flex;
+}
+
+.go-avg{
+  text-align: center;
+}
+
+.ays-avg {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #00BCD4;
+  background: #ECECEC;
+  transition: .4s;
+  margin-bottom: 5px;
 }
 
 /* new */
