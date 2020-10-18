@@ -1,0 +1,16 @@
+<div class="contents row">
+  <div class="container">
+    <%= form_with model: @analysis,local: true do |f|%>
+      <%# <h1>投稿</h1> %>
+      <%= render 'layouts/error_messages-ay', model: f.object %>
+      <p>大会選択<p>
+      <%= f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category_analysis"} %>
+      <div class="school">
+      </div>
+      <%= render partial: "analysis",locals:{f: f} %>
+    <%end%>
+      <div class="back">
+        <%= link_to "戻る",analyses_path%>
+      </div>
+  </div>
+</div>

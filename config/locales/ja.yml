@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       tweet: "投稿"
+      analysis: "分析"
     attributes:
       tweet:
         school_a: "高校A"
@@ -11,6 +12,14 @@ ja:
         title_info: "タイトル"
         text: "テキスト"
         tournament_id: "大会"
+      analysis:
+        attack: "攻撃力"
+        defensive: "守備力"
+        pitcher: "投手力"
+        comprehensive: "総合力"
+        tournament_id: "大会"
+        school: "学校"
+        text: "分析内容"
     activerecord:
       attributes:
         user:

@@ -1,13 +1,20 @@
 /* トップ画面 */
 *{box-sizing: border-box;}
-.header{
+.header,.analysis_header{
   font-size: 40px;
   height: 300px;
   /* border-bottom: solid 3px grey; */
   position: relative;
-  background-image: url("https://pics.prcm.jp/feed9aaf1ab2e/81573810/jpeg/81573810.jpeg");
   background-size: cover;
   background-position: center center;
+}
+
+.header {
+  background-image: url("https://pics.prcm.jp/feed9aaf1ab2e/81573810/jpeg/81573810.jpeg");
+}
+
+.analysis_header {
+  background-image: url("https://pics.prcm.jp/d1c2e60537af9/78615919/jpeg/78615919.jpeg");
 }
 
 h1{
@@ -92,7 +99,7 @@ color: white;
 }
 
 .name{
-  font-size: 11px;
+  font-size: 15px;
   margin-bottom: 10px;
   text-align: right;
 }

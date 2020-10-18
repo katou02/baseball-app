@@ -4,10 +4,16 @@
   padding-top: 30px;
 }
 
-.delete-article,.edit-article,.return-top{
+.edit-article,.return-top{
   border: 2px solid #57e963;
   color: #57e963;
   padding: 5px;
+}
+
+.delete-article {
+  padding: 5px;
+  color: #e45454;
+  border: 2px solid #e45454;
 }
 
 .sub_title{
@@ -39,16 +45,7 @@ input{
   text-align: center;
 }
 
-h3{
-  font-size: 25px;
-}
-
-h4{
-  margin: 20px 0 5px 0;
-}
-
-.comment_container
-{
+.comment_container{
   margin: 0 auto;
   padding: 30px;
   width: 50%;

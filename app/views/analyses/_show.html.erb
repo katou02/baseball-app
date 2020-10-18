@@ -1,0 +1,43 @@
+<% @analyses.each do |analysis|%>
+  <div class="content_anali">
+    <div class="school">
+      <%= analysis.school.name %>
+    </div>
+    <div class="select_main">
+      <div class="attack_i">
+        <p>攻撃力</p>
+        <%= analysis.attack%>
+      </div>
+      <div class="defensive_i">
+        <p>防御力</p>
+        <%= analysis.defensive%>
+      </div>
+      <div class="pitcher_i">
+        <p>投手力</p>
+        <%= analysis.pitcher%>
+      </div>
+      <div class="comprehensive_i">
+        <p>総合力</p>
+        <% if analysis.comprehensive=="A" %>
+          <%= analysis.comprehensive%>
+        <% elsif analysis.comprehensive=="B" %>
+          <p>B+<p>
+        <% elsif analysis.comprehensive=="C" %>
+          <p>B<p>
+        <% else %>
+          <p>C<p>
+        <% end %>
+      </div>
+    </div>
+  <div class="text">
+    <%= simple_format(analysis.text)%>
+  </div>
+  <div class="name_ays">
+    <%= "投稿者 #{analysis.user.nickname}"%>
+  </div>
+  <% if user_signed_in? && current_user.id == analysis.user_id%>
+    <%= link_to "削除","/analyses/#{analysis.id}/",method: :delete,data: { confirm: '削除しますか？' },class: "ays_delete" %>
+    <%= link_to "編集","/analyses/#{analysis.id}/edit",method: :get, class: "ays_edit"%>
+  <% end %>
+</div>
+<% end %>
