@@ -34,6 +34,12 @@
   right: 0;
 }
 
+.ays_edit {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+}
+
 .name {
   position: absolute;
   bottom:  10px;
