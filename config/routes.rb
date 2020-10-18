@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'tweets#index'
+  root 'tops#index'
   devise_for :users
   resources :tweets do
     resources :comments,only:[:create,:destroy]
@@ -15,4 +15,5 @@ Rails.application.routes.draw do
     end
   end
   resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update]
+  resources :tops,only:[:index]
 end
