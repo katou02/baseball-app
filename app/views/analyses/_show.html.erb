@@ -34,7 +34,7 @@
         <%= "投稿者 #{analysis.user.nickname}"%>
       </div>
       <% if user_signed_in? && current_user.id == analysis.user_id%>
-        <%= link_to "削除","/analyses/#{analysis.id}/",method: :delete,class: "ays_delete" %>
+        <%= link_to "削除","/analyses/#{analysis.id}/",method: :delete,data: { confirm: '削除しますか？' },class: "ays_delete" %>
       <% end %>
     </div>
     <% end %>

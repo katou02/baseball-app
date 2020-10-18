@@ -22,7 +22,7 @@ class AnalysesController < ApplicationController
 
   def destroy
     @analysis.destroy if @analysis.user_id == current_user.id
-    render "index" unless @analysis.destroy
+    redirect_to action: :index if @analysis.destroy
   end
 
   def search_analysis
