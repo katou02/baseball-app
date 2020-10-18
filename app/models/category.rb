@@ -7,4 +7,7 @@ class Category < ApplicationRecord
   has_many :tournament_tweets,class_name: 'Tweet',  foreign_key: 'tournament_id'
   has_many :school_analyses,class_name: 'Analysis',  foreign_key: 'school_id'
   has_many :tournament_analyses,class_name: 'Analysis',  foreign_key: 'tournament_id'
+  has_many :win_school_forecasts,class_name: 'Forecast',  foreign_key: 'win_school_id'
+  has_many :lose_school_forecasts,class_name: 'Forecast',  foreign_key: 'lose_school_id'
+  has_many :tournament_analyses,class_name: 'Forecast',  foreign_key: 'tournament_id'
 end
