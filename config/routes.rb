@@ -13,7 +13,5 @@ Rails.application.routes.draw do
       get "watch"
     end
   end
-  resources :analyses,only:[:index,:new,:create]
-  # resources :show,only:[:show]
-  # resources :top,only:[:index]
+  resources :analyses,only:[:index,:new,:create,:destroy]
 end
