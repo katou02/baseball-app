@@ -32,7 +32,7 @@
   <div class="text">
     <%= simple_format(analysis.text)%>
   </div>
-  <div class="name">
+  <div class="name_ays">
     <%= "投稿者 #{analysis.user.nickname}"%>
   </div>
   <% if user_signed_in? && current_user.id == analysis.user_id%>
