@@ -1,0 +1,75 @@
+.analysis_main {
+  padding: 0 250px;
+}
+
+.content_anali {
+  margin-top: 90px;
+  background-color: #00FF00;
+  position: relative;
+}
+
+.select_main {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.school {
+  font-size: 30px;
+  text-align: center;
+}
+
+.attack_i,.defensive_i,.pitcher_i,.comprehensive_i {
+  font-size: 20px;
+}
+
+.text {
+  margin: 50px 0;
+}
+
+.ays_delete {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.ays_edit {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+}
+
+.name_ays {
+  position: absolute;
+  bottom:  20px;
+  right: 0;
+}
+
+/* watch */
+.average {
+  display: flex;
+}
+
+.go-avg{
+  text-align: center;
+}
+
+.ays-avg {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #00BCD4;
+  background: #ECECEC;
+  transition: .4s;
+  margin: 20px 0px 10px;
+}
+
+/* new */
+.select {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}

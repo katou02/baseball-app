@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'tweets#index'
+  root 'tops#index'
   devise_for :users
   resources :tweets do
     resources :comments,only:[:create,:destroy]
@@ -8,8 +8,12 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :tournaments,only:[:show]
-  resources :show,only:[:show]
-  resources :top,only:[:index]
-  # get 'users/:id' => 'users#show'
+  resources :tournaments,only:[:show] do
+    member do
+      get "watch"
+      get "watch_avg"
+    end
+  end
+  resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update]
+  resources :tops,only:[:index]
 end
