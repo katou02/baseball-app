@@ -15,8 +15,17 @@ class ForecastsController < ApplicationController
     end
   end
 
+  def create
+    @forecast = Forecast.create(forecast_params)
+    render "new" unless @forecast.save
+  end
+
   private
   def set_category
     @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  def forecast_params
+    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id).merge(user_id: current_user.id)
   end
 end
