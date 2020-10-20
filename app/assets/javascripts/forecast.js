@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', (function(){
     }
 
   $("#parent_category_forecast").on("change",function(){
-    let parentCategory = $("parent_category_forecast").val();
+    let parentCategory = $("#parent_category_forecast").val();
     if(parentCategory !=""){
       $.ajax({
         type: "GET",
