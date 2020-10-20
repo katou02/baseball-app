@@ -11,8 +11,11 @@
       </div>
     </div>
     <div class="text_fcs">
-      <%= forecast.text%>
+      <%= simple_format(forecast.text)%>
     </div>
+    <% if user_signed_in? && forecast.user_id == current_user.id%>
+      <%= link_to "削除","/forecasts/#{forecast.id}",method: :delete,data: { confirm: '削除しますか？' },class: "ays_delete" %>
+    <% end %>
     <div class="name_ays">
       <%= "投稿者 #{forecast.user.nickname}"%>
     </div>
