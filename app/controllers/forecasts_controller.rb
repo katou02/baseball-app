@@ -1,7 +1,8 @@
 class ForecastsController < ApplicationController
-  before_action :set_category, only: [:new]
+  before_action :set_category, only: [:new,:create]
 
   def index
+    @tweets = Forecast.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
 
   def new
@@ -9,7 +10,7 @@ class ForecastsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-      @category_children = Category.find(params[:tournament_id]).children
+        @category_children = Category.find(params[:tournament_id]).children
       end
     end
   end
