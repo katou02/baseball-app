@@ -1,0 +1,10 @@
+.school_fcs{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  font-size: 26px;
+}
+
+.text_fcs{
+  margin: 50px 0;
+}

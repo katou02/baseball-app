@@ -1,0 +1,20 @@
+<%  @forecasts.each do |forecast|%>
+  <div class="content_anali">
+    <div class="school_fcs">
+      <div class="win_school">
+        <p>勝利予想<p>
+        <%= forecast.win_school.name%>
+      </div>
+      <div class="lose_school">
+        <p>敗退予想<p>
+        <%= forecast.lose_school.name%>
+      </div>
+    </div>
+    <div class="text_fcs">
+      <%= forecast.text%>
+    </div>
+    <div class="name_ays">
+      <%= "投稿者 #{forecast.user.nickname}"%>
+    </div>
+  </div>
+ <% end %>
