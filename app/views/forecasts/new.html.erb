@@ -1,13 +1,14 @@
-<div class="contents-fs">
+<div class="contents row">
   <div class="form">
     <%= form_with model: @forecast,local: true do |f| %>
+      <%= render 'layouts/error_messages_fcs', model: f.object %>
     <h2>
     投稿する
     <h2>
     <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @forecast.tournament_id),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category_forecast"} %>
     <div class="win-school"></div>
     <div class="lose-school"></div>
-    <%= f.text_area :text,cols: 30,rows: 10,value: "#{@forecast.text}"%>
+    <%= f.text_area :text,cols: 30,rows: 10,placeholder: "予想内容を入力してください",value: "#{@forecast.text}"%>
     <%=f.submit value: "SENT",class: "game_record"%>
     <% end %>
   </div>
