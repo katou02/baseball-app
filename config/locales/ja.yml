@@ -3,6 +3,7 @@ ja:
     models:
       tweet: "投稿"
       analysis: "分析"
+      forecast: "予想"
     attributes:
       tweet:
         school_a: "高校A"
@@ -20,6 +21,11 @@ ja:
         tournament_id: "大会"
         school: "学校"
         text: "分析内容"
+      forecast:
+        tournament: "大会"
+        win_school: "勝利予想"
+        lose_school: "敗退予想"
+        text: "予想内容"  
     activerecord:
       attributes:
         user:
