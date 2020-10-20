@@ -1,8 +1,8 @@
 class ForecastsController < ApplicationController
-  before_action :set_category, only: [:new,:create]
+  before_action :set_category, only: [:index,:new,:create]
 
   def index
-    @tweets = Forecast.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    @forecasts = Forecast.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
 
   def new

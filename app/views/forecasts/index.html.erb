@@ -1,0 +1,18 @@
+  <div class="analysis_header">
+    <h1>試合予想<h1>
+  </div>
+  <% @category_parent_array.each do |tournament|%>
+    <div class="by_tournament">
+      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}/watch",class: "title"%>
+    </div>
+  <% end %>
+    <%= render partial: "tweets/log" %>
+  <% if user_signed_in? %>
+    <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
+  <% end %>
+  <div class="analysis_main">
+  <%= render partial: "forecasts/show"%>
+  </div>
+  <div class="analsis_bottom">
+  </div>
+  <%= paginate(@forecasts)%>
