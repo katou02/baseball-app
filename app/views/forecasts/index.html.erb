@@ -8,7 +8,7 @@
   <% end %>
     <%= render partial: "tweets/log" %>
   <% if user_signed_in? %>
-    <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
+    <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
   <% end %>
   <div class="analysis_main">
   <%= render partial: "forecasts/show"%>
