@@ -15,6 +15,6 @@ Rails.application.routes.draw do
     end
   end
   resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update]
-  resources :forecasts,only:[:index,:new,:create,:destroy]
+  resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
 end

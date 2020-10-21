@@ -1,6 +1,6 @@
 class ForecastsController < ApplicationController
-  before_action :set_category, only: [:index,:new,:create]
-  before_action :search_forecast,only:[:destroy]
+  before_action :set_category, only: [:index,:new,:create,:edit]
+  before_action :search_forecast,only:[:destroy,:edit,:update]
 
   def index
     @forecasts = Forecast.includes(:user).page(params[:page]).per(5).order("created_at DESC")
@@ -28,6 +28,21 @@ class ForecastsController < ApplicationController
 
   def search_forecast
     @forecast = Forecast.find(params[:id])
+  end
+
+  def edit
+    @category = Category.find_by(name: @forecast.tournament.name)
+    @category_children = @category.children
+
+    @category_children_array = []
+    Category.where(ancestry: @category_children.first.ancestry).each do |children|
+      @category_children_array << children
+    end
+  end
+
+  def update
+    @forecast.update(forecast_params) if @forecast.user_id == current_user.id || current_user.admin
+    redirect_to action: :index
   end
 
   private
