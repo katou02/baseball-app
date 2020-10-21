@@ -12,8 +12,10 @@ Rails.application.routes.draw do
     member do
       get "watch"
       get "watch_avg"
+      get "watch_fcs"
     end
   end
   resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update]
+  resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
 end

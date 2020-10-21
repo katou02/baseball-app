@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_111648) do
+ActiveRecord::Schema.define(version: 2020_10_18_093244) do
 
   create_table "analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text"
@@ -40,6 +40,19 @@ ActiveRecord::Schema.define(version: 2020_10_13_111648) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "forecasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text"
+    t.integer "user_id"
+    t.bigint "win_school_id", null: false
+    t.bigint "lose_school_id", null: false
+    t.bigint "tournament_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lose_school_id"], name: "index_forecasts_on_lose_school_id"
+    t.index ["tournament_id"], name: "index_forecasts_on_tournament_id"
+    t.index ["win_school_id"], name: "index_forecasts_on_win_school_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,6 +97,9 @@ ActiveRecord::Schema.define(version: 2020_10_13_111648) do
 
   add_foreign_key "analyses", "categories", column: "school_id"
   add_foreign_key "analyses", "categories", column: "tournament_id"
+  add_foreign_key "forecasts", "categories", column: "lose_school_id"
+  add_foreign_key "forecasts", "categories", column: "tournament_id"
+  add_foreign_key "forecasts", "categories", column: "win_school_id"
   add_foreign_key "likes", "tweets"
   add_foreign_key "likes", "users"
   add_foreign_key "tweets", "categories", column: "school_a_id"

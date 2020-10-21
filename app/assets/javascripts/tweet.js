@@ -44,6 +44,7 @@ function appendChildrenBox(insertHTML) {
       })
     }
   });
+}));
   
   // 編集機能
   
@@ -98,4 +99,3 @@ function appendChildrenBox(insertHTML) {
 //       $('#parent_category_edit').remove();
 //     }
 //   });
-}));
