@@ -28,21 +28,21 @@
   margin: 50px 0;
 }
 
-.ays_delete {
+.ays_delete,.fcs_delete {
   position: absolute;
-  bottom: 0;
+  top: 20px;
   right: 0;
 }
 
-.ays_edit {
+.ays_edit,.fcs_edit {
   position: absolute;
-  bottom: 0;
+  top: 20px;
   right: 50px;
 }
 
 .name_ays {
   position: absolute;
-  bottom:  20px;
+  top:  0;
   right: 0;
 }
 
