@@ -12,6 +12,10 @@ class TournamentsController < ApplicationController
     @analyses = Analysis.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(10).order("created_at DESC")
     average(@analyses)
   end
+
+  def watch_fcs
+    @forecasts = Forecast.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(10).order("created_at DESC")
+  end
   
   def average(num)
     sum = []

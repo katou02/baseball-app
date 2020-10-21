@@ -3,7 +3,7 @@
   </div>
   <% @category_parent_array.each do |tournament|%>
     <div class="by_tournament">
-      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}/watch",class: "title"%>
+      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}/watch_fcs",class: "title"%>
     </div>
   <% end %>
     <%= render partial: "tweets/log" %>
