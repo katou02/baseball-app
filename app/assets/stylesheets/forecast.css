@@ -1,0 +1,17 @@
+.school_fcs{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  font-size: 26px;
+  padding-top: 20px;
+}
+
+.text_fcs{
+  margin: 50px 0;
+  padding-bottom: 20px;
+}
+
+.win-school,.lose-school{
+  margin-top: 20px;
+  font-size: 20px;
+}
