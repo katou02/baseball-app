@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
   namespace :admin do
-    resources :users,only: [:index]
+    resources :users,only: [:index,:destroy] do
+      collection do
+        get :users_show
+      end
+    end
   end
 end

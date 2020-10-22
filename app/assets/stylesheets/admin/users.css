@@ -1,0 +1,6 @@
+.users {
+  margin-top: 120px;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
