@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
+  
   namespace :admin do
     resources :users,only: [:index,:destroy] do
       collection do
