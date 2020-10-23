@@ -1,7 +1,9 @@
 class MypagesController < ApplicationController
   def show
     @nickname = current_user.nickname
-    user = User.find(params[:id])
+    if Mypage.exists?(user_id: current_user.id)
+      @my = Mypage.find_by(user_id: current_user.id)
+    end
   end
 
   def new

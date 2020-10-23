@@ -1,4 +1,6 @@
 <div class="myname">
   <%= @nickname%>
-  <%= link_to "プロフィール作成",new_mypage_path %>
+  <% unless @my.present?%>
+    <%= link_to "プロフィール作成",new_mypage_path %>
+  <% end %>
 </div>
