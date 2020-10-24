@@ -24,7 +24,17 @@
   </div>
   <div class="image">
    <%= image_tag "#{@tweet.image}"%>
+    <% if current_user.already_liked?(@tweet)%>
+      <%= button_to "#{@tweet.likes.count}いいね",tweet_like_path(@tweet),class: "good-after",method: :delete%>
+    <% else %>
+      <%= button_to "#{@tweet.likes.count}いいね",tweet_likes_path(@tweet),{class: "good"}%>
+    <% end %>
+    <h2>いいねしたユーザー</h2>
+    <% @tweet.liked_users.each do |user|%>
+      <li><%=user.nickname%></li>
+    <% end %>
   </div>
+</div>
     <div class="comments">   
       <h4>＜コメント一覧＞</h4>
       <% if @comments %>
@@ -38,28 +48,16 @@
               <div class="comment_at">
               <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
               </div>
-            </div>
           </p>
         <% end %>
       <% end %>
     </div>
-    <h3>いいね件数: <%= @tweet.likes.count%></h3>
-    <% if current_user.already_liked?(@tweet)%>
-      <%= button_to 'いいねを取り消す',tweet_like_path(@tweet),method: :delete%>
-    <% else %>
-      <%= button_to 'いいね',tweet_likes_path(@tweet)%>
-    <% end %>
-    <h2>いいねしたユーザー</h2>
-    <% @tweet.liked_users.each do |user|%>
-      <li><%=user.nickname%></li>
-    <% end %>
     <div class="comment_container"> 
     <!-- ここからフォーム -->
     <% if current_user %>
       <%= form_tag("/tweets/#{@tweet.id}/comments", method: :post) do %>
         <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
-        <input type="submit" value="SENT">
+        <input type="submit" value="SENT" class="game_record">
       <% end %>
     <% end %>
-  </div>
-</div>
+    </div>
