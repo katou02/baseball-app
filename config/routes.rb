@@ -18,7 +18,13 @@ Rails.application.routes.draw do
   resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
-  resources :mypages,only:[:show,:edit,:new,:create,:update]
+  resources :mypages,only:[:show,:edit,:new,:create,:update] do
+    member do
+      get "my_tweets"
+      get "my_analyses"
+      get "my_forecasts"
+    end
+  end
   namespace :admin do
     resources :users,only: [:index,:destroy] do
       collection do

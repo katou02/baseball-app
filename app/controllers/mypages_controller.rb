@@ -29,6 +29,18 @@ class MypagesController < ApplicationController
     redirect_to "/mypages/#{current_user.id}"
   end
 
+  def my_tweets
+    @tweets = Tweet.where(user_id: params[:id])
+  end
+
+  def my_analyses
+    @analyses = Analysis.where(user_id: params[:id])
+  end
+
+  def my_forecasts
+    @forecasts = Forecast.where(user_id: params[:id])
+  end
+
   def set_mypage
     @mypage = Mypage.find_by(user_id: params[:id])
   end
