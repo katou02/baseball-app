@@ -1,8 +1,24 @@
 <div class="myname">
-  <%= @nickname%>
-  <% if @my.present?%>
+  <h2><%= "#{@nickname}さんのプロフィール"%><h2>
+</div>
+  <% if @mypage.present?%>
     <%= link_to "プロフィール編集",edit_mypage_path %>
   <% else %>
     <%= link_to "プロフィール作成",new_mypage_path %>
   <% end %>
+
+</div class="myprof">
+  <div class="residence">
+    <p>住んでる場所<p>
+    <br>
+    <%= @mypage.prefectures %>
+  </div>
+  <div class="text-myname">
+    <p>自己紹介</p>
+    <br>
+    <% if Mypage.exists?(user_id: params[:id]) %>
+      <%=@mypage.text%>
+    <% end %>
+  </div>
 </div>
+  

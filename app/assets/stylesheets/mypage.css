@@ -1,0 +1,7 @@
+.myname,.text-myname,.residence {
+  text-align: center;
+}
+
+.text-myname,.residence {
+  margin-top: 120px;
+}

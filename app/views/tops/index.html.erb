@@ -2,7 +2,7 @@
 <%= link_to "試合記事",tweets_path%>
 <%= link_to "戦力分析",analyses_path%>
 <%= link_to "試合予想",forecasts_path%>
-<%= link_to "マイページ","/mypages/#{current_user.id}"%>
 <% if user_signed_in? && current_user.admin?%>
-<%= link_to "管理者ページ", users_show_admin_users_path%>
+  <%= link_to "マイページ","/mypages/#{current_user.id}"%>
+  <%= link_to "管理者ページ", users_show_admin_users_path%>
 <% end %>
