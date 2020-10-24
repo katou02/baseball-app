@@ -16,9 +16,7 @@
   <div class="text-myname">
     <p>自己紹介</p>
     <br>
-    <% if Mypage.exists?(user_id: params[:id]) %>
-      <%=@mypage.text%>
-    <% end %>
+      <%=@mypage.text %>
   </div>
   <%= link_to "投稿した試合記事","#{@mypage.id}/my_tweets" %>
   <%= link_to "投稿した戦力分析","#{@mypage.id}/my_analyses" %>
