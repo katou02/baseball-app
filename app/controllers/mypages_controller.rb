@@ -3,6 +3,7 @@ class MypagesController < ApplicationController
   before_action :move_to_new,except: [:new,:create]
 
   def show
+    @user = User.find(params[:id])
     @nickname = current_user.nickname
   end
 
@@ -40,11 +41,11 @@ class MypagesController < ApplicationController
   end
 
   def move_to_new
-    redirect_to action: :new unless Mypage.exists?(user_id: current_user.id)
+    redirect_to action: :new unless Mypage.exists?(user_id: params[:id])
   end
 
   def search_mypage
-    @mypage = Mypage.find_by(user_id: current_user.id)
+    @mypage = Mypage.find_by(user_id: params[:id])
   end
   
   private
