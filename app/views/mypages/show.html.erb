@@ -20,5 +20,8 @@
       <%=@mypage.text%>
     <% end %>
   </div>
+  <%= link_to "投稿した試合記事","#{@mypage.id}/my_tweets" %>
+  <%= link_to "投稿した戦力分析","#{@mypage.id}/my_analyses" %>
+  <%= link_to "投稿した試合予想","#{@mypage.id}/my_forecasts" %>
 </div>
   
