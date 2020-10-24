@@ -33,7 +33,7 @@
     <%= simple_format(analysis.text)%>
   </div>
   <div class="name_ays">
-    <%= "投稿者 #{analysis.user.nickname}"%>
+    <%= link_to "投稿者 #{analysis.user.nickname}","mypages/#{analysis.user_id}"%>
   </div>
   <% if user_signed_in? && current_user.id == analysis.user_id%>
     <%= link_to "削除","/analyses/#{analysis.id}/",method: :delete,data: { confirm: '削除しますか？' },class: "ays_delete" %>

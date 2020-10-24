@@ -8,7 +8,7 @@
         <%= tweet.title_info %>
       </div>
       <div class="name">
-        <%= "投稿者 #{tweet.user.nickname}"%>
+        <%=link_to "投稿者#{tweet.user.nickname}","mypages/#{tweet.user_id}"%>
       </div>
       <div class="tweets_at">
         <%= tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
