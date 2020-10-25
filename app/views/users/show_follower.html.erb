@@ -2,7 +2,7 @@
 <table>
 <tr>
   <td>  <%= user.nickname %> </td>
-  <td><%= link_to '詳細', user_path(user) %></td>
+  <td><%= link_to '詳細', "/mypages/#{user.id}" %></td>
 </tr>
 
 </table>
