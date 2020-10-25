@@ -1,6 +1,7 @@
 <div class="myname">
   <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
 </div>
+<%= render "users/stats" %>
 <% if @user.id == current_user.id %>
   <%= link_to "プロフィール編集",edit_mypage_path %>
 <% end %>
@@ -15,10 +16,11 @@
     <br>
       <%=@mypage.text %>
   </div>
-  <%= link_to "投稿した試合記事","#{@mypage.id}/my_tweets" %>
-  <%= link_to "投稿した戦力分析","#{@mypage.id}/my_analyses" %>
-  <%= link_to "投稿した試合予想","#{@mypage.id}/my_forecasts" %>
+  <div class="my-links">
+    <%= link_to "投稿した試合記事","#{@mypage.id}/my_tweets",class: "my-link" %>
+    <%= link_to "投稿した戦力分析","#{@mypage.id}/my_analyses",class: "my-link" %>
+    <%= link_to "投稿した試合予想","#{@mypage.id}/my_forecasts",class: "my-link" %>
+  </div>
 </div>
 <%= render "users/follow_form" %>
-<%= render "users/stats" %>
   
