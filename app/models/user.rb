@@ -9,6 +9,20 @@ class User < ApplicationRecord
   has_many :mypages
   has_many :likes,dependent: :destroy
   has_many :liked_tweets,through: :likes,source: :tweet
+  has_many :following_relationships,foreign_key: "follower_id",class_name: "Relationship",dependent: :destroy
+  has_many :followings,through: :following_relationships
+
+  def following?(other_user)
+    following_relationships.find_by(following_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    following_relationships.create!(following_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    following_relationships.find_by(following_id: other_user.id).destroy
+  end
 
   def already_liked?(tweet)
     self.likes.exists?(tweet_id: tweet.id)
