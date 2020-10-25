@@ -1,6 +1,6 @@
 class MypagesController < ApplicationController
-  before_action :search_mypage,only:[:edit,:update,:show,:move_to_new]
-  before_action :move_to_new,except: [:new,:create]
+  before_action :search_mypage,only:[:edit,:show,:move_to_new]
+  before_action :move_to_new,except: [:new,:create,:edit,:update]
 
   def show
     @user = User.find(params[:id])
@@ -24,6 +24,7 @@ class MypagesController < ApplicationController
   end
   
   def update
+    @mypage = Mypage.find_by(user_id: current_user.id)
     @mypage.update(mypage_params) if @mypage.user_id == current_user.id || current_user.admin
     redirect_to "/mypages/#{current_user.id}"
   end
