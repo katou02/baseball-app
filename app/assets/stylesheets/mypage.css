@@ -1,7 +1,33 @@
-.myname,.text-myname,.residence {
+.myname,.text-myname,.residence,.my-links {
   text-align: center;
 }
 
 .text-myname,.residence {
-  margin-top: 120px;
+  margin-top: 80px;
+}
+
+.text-myname,.my-links {
+  margin-bottom: 50px;
+}
+
+.my-link {
+  margin-left: 25px;
+}
+
+.follow-user,.unfollow-user {
+  width: 250px;
+  margin: 0 auto;
+}
+
+.follow-btn {
+  background-color: palevioletred;
+}
+
+.unfollow-btn {
+  background-color: rgb(105, 171, 216);
+}
+
+.stats {
+  margin-top: 20px;
+  text-align: center;
 }
