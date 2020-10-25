@@ -1,10 +1,9 @@
 class MypagesController < ApplicationController
-  before_action :search_mypage,only:[:edit,:show,:move_to_new]
-  before_action :move_to_new,except: [:new,:create,:edit,:update]
+  before_action :search_mypage,except:[:new,:create,:update]
 
   def show
     @user = User.find(params[:id])
-    @nickname = current_user.nickname
+    @mypages = @user.mypages
   end
 
   def new
@@ -39,10 +38,6 @@ class MypagesController < ApplicationController
 
   def my_forecasts
     @forecasts = Forecast.where(user_id: params[:id])
-  end
-
-  def move_to_new
-    redirect_to action: :new unless Mypage.exists?(user_id: params[:id])
   end
 
   def search_mypage
