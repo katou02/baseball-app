@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.followings
     render 'show_follow'
+    @user.create_notification_follow!(current_user)
   end
 
   def followers
