@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
     @tweet = comment.tweet
 
     @tweet.create_notification_comment!(current_user, comment.id)
-    # respond_to :js
   end
 
   def destroy
