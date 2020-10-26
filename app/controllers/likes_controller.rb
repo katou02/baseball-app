@@ -4,11 +4,8 @@ class LikesController < ApplicationController
     redirect_back(fallback_location: root_path)
 
     @tweet = Tweet.find(params[:tweet_id])
-    @tweet.create_notification_by(current_uset)
-    respond_to do |format|
-      format.html {redirect_to request.referrer}
-      format.js
-    end
+    @tweet.create_notification_like!(current_user)
+    # respond_to :js
   end
 
   def destroy
