@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.create(text: comment_params[:text], tweet_id: comment_params[:tweet_id], user_id: current_user.id)
     redirect_to "/tweets/#{comment.tweet.id}"
+    @tweet = comment.tweet
+
+    @tweet.create_notification_comment!(current_user, @comment.id)
+    respond_to :js
   end
 
   def destroy
