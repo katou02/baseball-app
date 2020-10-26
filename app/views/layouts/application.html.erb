@@ -8,6 +8,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <% if unchecked_notifications.any? %>
+    <i class="fa fa-circle" style="color: gold;"></i>
+    <% end %>
+    <li>
+    <%# <%= link_to "NOTICE", users_notifications_path, class: "btn-default" %> %>
+</li>
   </head>
   <body>
     <%= yield %>

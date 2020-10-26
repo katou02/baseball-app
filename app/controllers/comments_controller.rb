@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
     redirect_to "/tweets/#{comment.tweet.id}"
     @tweet = comment.tweet
 
-    @tweet.create_notification_comment!(current_user, @comment.id)
-    respond_to :js
+    @tweet.create_notification_comment!(current_user, comment.id)
+    # respond_to :js
   end
 
   def destroy
