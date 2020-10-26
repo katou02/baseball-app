@@ -17,4 +17,20 @@ class Tweet < ApplicationRecord
   belongs_to :school_a,class_name: 'Category', foreign_key: 'school_a_id'
   belongs_to :school_b,class_name: 'Category', foreign_key: 'school_b_id'
   belongs_to :tournament,class_name: 'Category', foreign_key: 'tournament_id'
+
+  def create_notification_like!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and tweet_id = ? and action = ?",current_user.id,user_id,id,"like"])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        tweet_id: id,
+        visited_id: user_id,
+        action: "like"
+      )
+      
+      if notification.visiter_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
+  end
 end
