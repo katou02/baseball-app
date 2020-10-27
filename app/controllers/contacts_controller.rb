@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
     if params[:back]
       render :action => 'index'
     else
-      MessageMailer.received_email(@contact).deliver_now
+      ContactMailer.send_email(@contact).deliver
       render :action => 'done'
     end
   end

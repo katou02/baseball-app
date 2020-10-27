@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   root 'tops#index'
   devise_for :users
   resources :tweets do
-    resources :comments,only:[:create,:destroy]
-    resources :likes,only:[:create,:destroy]
     collection do
       get :search
     end
+    resources :comments,only:[:create,:destroy]
+    resources :likes,only:[:create,:destroy]
   end
   resources :tournaments,only:[:show] do
     member do
@@ -39,9 +39,10 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create,:destroy]
   resources :notifications, only: :index
-  resources :contact,only:[:index] do
+  resources :contacts,only:[:index] do
     collection do
-      get :check,:done
+      post :check
+      post :done
     end
   end
 end
