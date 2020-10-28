@@ -23,7 +23,7 @@ class TweetsController < ApplicationController
   end
 
   def show
-    @tweets = current_user.tweets.page(params[:page]).per(5).order("created_at DESC")
+    @tweets = Tweet.find(params[:id])
     @nickname = current_user.nickname
     @comments = @tweet.comments.includes(:user)
     @like = Like.new
