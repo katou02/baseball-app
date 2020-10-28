@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
-  resources :mypages,only:[:show,:edit,:new,:create,:update] do
+  resources :mypages,only:[:show,:edit,:new,:create,:update,:index] do
     member do
       get "my_tweets"
       get "my_analyses"
@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create,:destroy]
   resources :notifications, only: :index
+  resources :messages, only: :create
+  resources :rooms,only: [:create,:show]
   resources :contacts,only:[:index] do
     collection do
       post :check

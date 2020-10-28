@@ -1,4 +1,4 @@
-.myname,.text-myname,.residence,.my-links {
+.myname,.text-myname,.residence,.my-links,.dm {
   text-align: center;
 }
 
@@ -6,7 +6,7 @@
   margin-top: 80px;
 }
 
-.text-myname,.my-links {
+.text-myname,.my-links,.dm {
   margin-bottom: 50px;
 }
 

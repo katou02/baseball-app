@@ -7,7 +7,7 @@
     <%= link_to "記事一覧へ戻る",tweets_path,class: "return-top"%>
   </div>
   <div class="user_name">
-    <h4>投稿者 <%= @tweet.user.nickname%></h4>
+    <h4>投稿者 <%= link_to "#{@tweet.user.nickname}","/mypages/#{@tweet.user_id}"%></h4>
   </div>
   <div class="game_result">
     <%=@tweet.school_a.name%>

@@ -9,7 +9,6 @@ class MypagesController < ApplicationController
     @myEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     if @user.id == current_user.id
-      @msg ="他のユーザーとDMしてみよう！"
     else
       @myEntry.each do |cu|
         @userEntry.each do |u|
