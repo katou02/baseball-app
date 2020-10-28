@@ -27,18 +27,18 @@
     </div>
   <%end%>
 </div>
-<% if @user.id == current_user.id %>
-    <%= @msg %>
-<% else %>
+<% if @user.id != current_user.id %>
     <% if @isRoom == true %>
-        <p><%= link_to 'DMへ', room_path(@roomId) %></p>
+       <div class="dm">
+         <%= link_to 'DMへ', room_path(@roomId) %>
+       </div>
     <% else %>
-        <%= form_for @room do |f| %>
-            <%= fields_for @entry do |e|%>
-                <% e.hidden_field :user_id, value: @user.id %>
-            <% end %>
-        <%= f.submit "DMを開始する"%>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e|%>
+          <% e.hidden_field :user_id, value: @user.id %>
         <% end %>
+        <%= f.submit "DMを開始する"%>
+      <% end %>
     <% end %>
 <% end %>
 </div>
