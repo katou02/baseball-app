@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'tops#index'
   devise_for :users
+  resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update,:show] do
+    resources :comments,only:[:create,:destroy]
+  end
   resources :tweets do
     collection do
       get :search
@@ -10,19 +13,14 @@ Rails.application.routes.draw do
   end
   resources :tournaments,only:[:show] do
     member do
-      get "watch"
-      get "watch_avg"
-      get "watch_fcs"
+      get :watch,:watch_avg,:watch_fcs
     end
   end
-  resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
   resources :mypages,only:[:show,:edit,:new,:create,:update,:index] do
     member do
-      get "my_tweets"
-      get "my_analyses"
-      get "my_forecasts"
+      get :my_tweets,:my_analyses,:my_forecasts
     end
   end
   namespace :admin do
