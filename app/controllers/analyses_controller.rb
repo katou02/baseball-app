@@ -9,6 +9,8 @@ class AnalysesController < ApplicationController
 
   def show
     @nickname = current_user.nickname
+    @comments = @analysis.comment_analyses.includes(:user)
+    @comment = current_user.comment_analyses.new
   end
 
   def new
