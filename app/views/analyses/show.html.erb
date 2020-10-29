@@ -1,0 +1,43 @@
+<div class="analysis-content">
+  <div class="choose-btn">
+    <% if current_user.id == @analysis.user_id || current_user.admin? %>
+    <%= link_to "記事を削除する","/tweets/#{@analysis.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-article"%>
+    <%= link_to "記事を編集する","/tweets/#{@analysis.id}/edit",method: :get,class: "edit-article" %>
+    <% end %>
+    <%= link_to "分析トップページへ戻る",analyses_path,class: "return-top"%>
+  </div>
+  <div class="user_name">
+    <h4>投稿者 <%= link_to "#{@analysis.user.nickname}","/mypages/#{@analysis.user_id}"%></h4>
+  </div>
+  <div class="school_name-ays">
+    <%= @analysis.school.name %>
+  </div>
+  <div class="select_main-show">
+      <div class="attack_i">
+        <p>攻撃力</p>
+        <%= @analysis.attack%>
+      </div>
+      <div class="defensive_i">
+        <p>守備力</p>
+        <%= @analysis.defensive%>
+      </div>
+      <div class="pitcher_i">
+        <p>投手力</p>
+        <%= @analysis.pitcher%>
+      </div>
+      <div class="comprehensive_i">
+        <p>総合力</p>
+        <% if @analysis.comprehensive=="A" %>
+          <%= @analysis.comprehensive%>
+        <% elsif @analysis.comprehensive=="B" %>
+          <p>B+<p>
+        <% elsif @analysis.comprehensive=="C" %>
+          <p>B<p>
+        <% else %>
+          <p>C<p>
+        <% end %>
+      </div>
+    </div>
+  <div class="text-ays_show">
+    <%= simple_format(@analysis.text)%>
+  </div>
