@@ -1,8 +1,8 @@
 <div class="analysis-content">
   <div class="choose-btn">
     <% if current_user.id == @analysis.user_id || current_user.admin? %>
-    <%= link_to "記事を削除する","/tweets/#{@analysis.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-article"%>
-    <%= link_to "記事を編集する","/tweets/#{@analysis.id}/edit",method: :get,class: "edit-article" %>
+    <%= link_to "記事を削除する","/analyses/#{@analysis.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-article"%>
+    <%= link_to "記事を編集する","/analyses/#{@analysis.id}/edit",method: :get,class: "edit-article" %>
     <% end %>
     <%= link_to "分析トップページへ戻る",analyses_path,class: "return-top"%>
   </div>
