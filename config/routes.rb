@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   root 'tops#index'
   devise_for :users
-  resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update,:show] do
-    resources :comments,only:[:create,:destroy]
-  end
+  resources :analyses,only:[:index,:new,:create,:destroy,:edit,:update,:show]
   resources :tweets do
     collection do
       get :search
