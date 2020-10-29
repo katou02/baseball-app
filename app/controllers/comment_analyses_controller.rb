@@ -1,0 +1,2 @@
+class CommentAnalysesController < ApplicationController
+end
