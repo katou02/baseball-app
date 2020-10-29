@@ -1,0 +1,8 @@
+ <% @user.followers.each do |user| %>
+<table>
+<tr>
+<td><%= link_to "#{user.nickname}", "/mypages/#{user.id}" %></td>
+</tr>
+
+</table>
+<% end %>

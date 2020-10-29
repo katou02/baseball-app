@@ -28,3 +28,9 @@ school1 = tournament2.children.create([{name: "旭川大高"},{name: "北照"},{
                                        {name: "鳴門"},{name: "済美"},{name: "高知商業"},{name: "折尾愛真"},
                                        {name: "沖学園"},{name: "佐賀商業"},{name: "創成館"},{name: "東海大熊本星翔"},
                                        {name: "藤蔭"},{name: "日南学園"},{name: "鹿児島実業"},{name: "興南"}])
+                                       
+User.create!(nickname: "yakumo",
+             email: ENV['EMAIL'],
+             password: ENV['PASSWORD'],
+             password_confirmation: ENV['PASSWORD'] ,
+             admin: true)

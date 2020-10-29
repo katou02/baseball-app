@@ -1,10 +1,14 @@
 class AnalysesController < ApplicationController
   before_action :set_category, only:[:index,:new,:create,:edit,:update]
-  before_action :search_analysis,only:[:destroy,:edit,:update]
+  before_action :search_analysis,only:[:destroy,:edit,:update,:show]
   before_action :move_to_index,except: :index
   
   def index
     @analyses = Analysis.includes(:user).page(params[:page]).per(10).order("created_at DESC")
+  end
+
+  def show
+    @nickname = current_user.nickname
   end
 
   def new

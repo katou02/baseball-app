@@ -1,7 +1,7 @@
 <% @analyses.each do |analysis|%>
   <div class="content_anali">
     <div class="school">
-      <%= analysis.school.name %>
+      <%= link_to "#{analysis.school.name}","/analyses/#{analysis.id}" %>
     </div>
     <div class="select_main">
       <div class="attack_i">
@@ -9,7 +9,7 @@
         <%= analysis.attack%>
       </div>
       <div class="defensive_i">
-        <p>防御力</p>
+        <p>守備力</p>
         <%= analysis.defensive%>
       </div>
       <div class="pitcher_i">
@@ -33,7 +33,8 @@
     <%= simple_format(analysis.text)%>
   </div>
   <div class="name_ays">
-    <%= "投稿者 #{analysis.user.nickname}"%>
+    <span>投稿者</span>
+    <%= analysis.user.nickname %>
   </div>
   <% if user_signed_in? && current_user.id == analysis.user_id%>
     <%= link_to "削除","/analyses/#{analysis.id}/",method: :delete,data: { confirm: '削除しますか？' },class: "ays_delete" %>

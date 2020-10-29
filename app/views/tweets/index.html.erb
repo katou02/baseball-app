@@ -1,9 +1,5 @@
 <html>
 <head>
-  <%# <title> 高校野球</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%# <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%# <%= csrf_meta_tags %>
 </head>
 
 <body>
@@ -35,7 +31,7 @@
   <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
   <% end %>
- <%= render :partial=>"tweet_show"%>
+ <%= render partial: "tweet_show"%>
 </div>
 <%= paginate(@tweets)%>
 </div>
