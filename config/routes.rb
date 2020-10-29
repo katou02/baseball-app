@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :analyses do
-    resources :comment_analyses
+    resources :comment_analyses,only:[:create,:destroy]
   end
   resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
