@@ -8,7 +8,7 @@
   position: relative;
 }
 
-.select_main {
+.select_main,.select_main-show {
   margin: 20px 0;
   display: flex;
   justify-content: space-evenly;
@@ -72,4 +72,19 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-evenly;
+}
+
+/* show */
+.school_name-ays {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 170px;
+}
+
+.select_main-show {
+  margin: 90px 0;
+}
+
+.text-ays_show {
+  text-align: center;
 }
