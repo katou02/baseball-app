@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :tweets
   has_many :comments
+  has_many :comment_analyses
   has_many :analyses
   has_many :mypages
   has_many :likes,dependent: :destroy
