@@ -13,7 +13,9 @@ Rails.application.routes.draw do
       get :watch,:watch_avg,:watch_fcs
     end
   end
-  resources :analyses
+  resources :analyses do
+    resources :comment_analyses
+  end
   resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
   resources :mypages,only:[:show,:edit,:new,:create,:update,:index] do
