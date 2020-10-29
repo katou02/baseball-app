@@ -41,3 +41,29 @@
   <div class="text-ays_show">
     <%= simple_format(@analysis.text)%>
   </div>
+      <div class="comments">   
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= comment.user.nickname %>：</strong>
+              <%= simple_format(comment.text) %>
+              <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
+                <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete_button" %>
+              <% end %>
+              <div class="comment_at">
+              <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+              </div>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="comment_container"> 
+    <!-- ここからフォーム -->
+    <% if current_user %>
+      <%= form_with(model:[@tweets, @comment], method: :post) do |f| %>
+        <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
+        <input type="submit" value="SENT" class="game_record">
+      <% end %>
+    <% end %>
+    </div>
