@@ -1,0 +1,21 @@
+<div class="user-in">
+<% @entries.each do |e| %>
+    <h3><%= link_to "#{e.user.nickname}","/mypages/#{e.user_id}"%></h3>
+<% end %>
+<p>ダイレクトメッセージ</p>
+</div>
+
+<div class="dmMain">
+    <% @messages.each do |m| %>
+        <strong><%= m.body %></strong>
+        <p><%= m.user.nickname %></p><hr>
+    <% end %>
+
+    <%= form_for @message do |f| %>
+    <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
+    <%= f.hidden_field :room_id, :value => @room.id %>
+    <br>
+    <%= f.submit "送信する" %>
+    <% end %>
+</div>
+<%= link_to "戻る",:back%>

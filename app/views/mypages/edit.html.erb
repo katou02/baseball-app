@@ -1,0 +1,11 @@
+<div class="contents row">
+  <div class="container">
+    <%= form_with model: @mypage,local: true do |f|%>
+      <%= f.select :prefectures,options_for_select(Mypage.prefectures.keys,selected: @mypage.prefectures),{prompt: "選択してください"},class: "form-control btn btn-info"%>
+      <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@mypage.text}"%>
+      <%=f.submit value: "SENT",class: "game_record"%>
+    <div class="residence">
+    </div>
+    <% end %>
+  </div>
+</div>

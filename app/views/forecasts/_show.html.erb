@@ -20,7 +20,8 @@
       <%= link_to "編集","/forecasts/#{forecast.id}/edit",method: :get,class: "fcs_edit" %>
     <% end %>
     <div class="name_ays">
-      <%= "投稿者 #{forecast.user.nickname}"%>
+      <span>投稿者</span>
+      <%= forecast.user.nickname %>
     </div>
   </div>
  <% end %>
