@@ -1,0 +1,2 @@
+class CommentAnalysis < ApplicationRecord
+end

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'tops#index'
   devise_for :users
-  resources :analyses
   resources :tweets do
     collection do
       get :search
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
       get :watch,:watch_avg,:watch_fcs
     end
   end
+  resources :analyses
   resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
   resources :tops,only:[:index]
   resources :mypages,only:[:show,:edit,:new,:create,:update,:index] do
