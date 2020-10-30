@@ -1,0 +1,2 @@
+module CommentForecastsHelper
+end
