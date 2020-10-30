@@ -59,7 +59,6 @@
       <% end %>
     </div>
     <div class="comment_container"> 
-    <!-- ここからフォーム -->
     <% if current_user %>
       <%= form_with(model:[@analysis, @comment], method: :post) do |f| %>
         <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
