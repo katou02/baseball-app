@@ -1,0 +1,27 @@
+<div class="choose-btn">
+  <% if current_user.id == @forecast.user_id || current_user.admin? %>
+    <%= link_to "記事を削除する","/forecasts/#{@forecast.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-article"%>
+    <%= link_to "記事を編集する","/forecasts/#{@forecast.id}/edit",method: :get,class: "edit-article" %>
+  <% end %>
+    <%= link_to "分析トップページへ戻る",analyses_path,class: "return-top"%>
+</div>
+<div class="user_name">
+  <h4>投稿者 <%= link_to "#{@forecast.user.nickname}","/mypages/#{@forecast.user_id}"%></h4>
+</div>
+<div class="content_fcs">
+  <div class="school_fcs">
+    <div class="win_school">
+      <p>勝利予想<p>
+      <br>
+      <%= @forecast.win_school.name%>
+    </div>
+    <div class="lose_school">
+      <p>敗退予想<p>
+      <br>
+      <%= @forecast.lose_school.name%>
+    </div>
+  </div>
+  <div class="text-show">
+    <%= simple_format(@forecast.text)%>
+  </div>
+</div>
