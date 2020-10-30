@@ -3,9 +3,11 @@ module NotificationsHelper
     @visiter = notification.visiter
     @comment = nil
     @message = nil
+    @comment_analysis = nil
     your_item = link_to 'あなたの投稿', tweets_path(notification), style:"font-weight: bold;"
     @visiter_comment = notification.comment_id
     @message_comment = notification.message_id
+    @analysis_comment = notification.comment_analysis_id
     case notification.action
       when "follow" then
         tag.a(notification.visiter.nickname, href:mypage_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
@@ -17,6 +19,9 @@ module NotificationsHelper
       when "dm" then
         @message = Message.find_by(id: @visiter_message)
         tag.a(@visiter.nickname, href:mypage_path(@visiter), style:"font-weight: bold;")+"があなたに"+tag.a('ダイレクトメッセージ', href:room_path(notification.room_id), style:"font-weight: bold;")+"を送りました"
+      when "comment_analysis"
+        @comment_analysis = CommentAnalysis.find_by(id: @analysis_comment)
+        tag.a(@visiter.nickname, href:mypage_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:analysis_path(notification.analysis_id), style:"font-weight: bold;")+"にコメントしました"
     end
   end
   
