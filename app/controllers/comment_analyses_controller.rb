@@ -3,6 +3,7 @@ class CommentAnalysesController < ApplicationController
     comment = CommentAnalysis.create(comment_params)
     redirect_to "/analyses/#{comment.analysis.id}"
     @analysis = comment.analysis
+    @analysis.create_notification_comment_analysis!(current_user, comment.id)
   end
 
   def destroy
