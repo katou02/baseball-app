@@ -1,0 +1,2 @@
+class CommentForecastsController < ApplicationController
+end
