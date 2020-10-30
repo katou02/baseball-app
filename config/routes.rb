@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :analyses do
     resources :comment_analyses,only:[:create,:destroy]
   end
-  resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
+  resources :forecasts do
+    resources :comment_forecasts,only:[:create,:destroy]
+  end
   resources :tops,only:[:index]
   resources :mypages,only:[:show,:edit,:new,:create,:update,:index] do
     member do
