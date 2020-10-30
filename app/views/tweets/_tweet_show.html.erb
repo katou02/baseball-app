@@ -1,8 +1,10 @@
 <% @tweets.each do |tweet|%>
+  <%= link_to tweet do %>
   <div class="comment">
     <div class="comment-list">
       <div class="title">
-      <%= link_to "#{tweet.school_a.name}vs#{tweet.school_b.name}","/tweets/#{tweet.id}",class: "title"%>
+      <%= tweet.school_a.name %>
+      <%= tweet.school_b.name %>
       </div>
       <div class="sub-title">
         <%= tweet.title_info %>
@@ -16,4 +18,5 @@
       </div>
     </div>
   </div>
+  <% end %>
 <% end %>
