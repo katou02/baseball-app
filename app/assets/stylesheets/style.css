@@ -1,6 +1,6 @@
 /* トップ画面 */
 *{box-sizing: border-box;}
-.header,.analysis_header{
+.header,.analysis_header {
   font-size: 40px;
   height: 300px;
   /* border-bottom: solid 3px grey; */
@@ -17,38 +17,38 @@
   background-image: url("https://pics.prcm.jp/d1c2e60537af9/78615919/jpeg/78615919.jpeg");
 }
 
-h1{
+h1 {
 text-align: center;
 line-height: 300px;
 color: white;
 }
 
-.images{
+.images {
   display: flex;
   padding-top: 80px;
 }
 
-.image_1{
+.image_1 {
   position: absolute;
   left: 30%;
   bottom: 5%;
 }
 
-.image_2{
+.image_2 {
   position: absolute;
   margin-top: 10px;
 }
 
-.image_3{
+.image_3 {
   position: absolute;
   right: 0;
 }
 
-.image_4{
+.image_4 {
   margin: 0 auto;
 }
 
-.send_btn,.logout_btn{
+.send_btn,.logout_btn {
   font-size: 20px;
   position: absolute;
   left: 0;
@@ -59,65 +59,65 @@ color: white;
   margin-top: 15px;
 }
 
-.logout_btn{
+.logout_btn {
   margin-left: 10%;
 }
 
-.main-content{
+.main-content {
   background-color: rgb(233, 243, 243);
 }
 
-.comment-list{
+.comment-list {
   margin-top: 90px;
   background-color: #bbb8b8f3;
   font-size: 25px;
   text-align: center;
 }
 
-.comment{
+.comment {
   padding: 0 250px;
 }
 
-.title{
+.comment:hover {
+  opacity: 0.7;
+}
+
+.title {
   text-decoration: none;
   color: rgb(17, 0, 255);
 }
 
-.title:hover{
-  color: red;
-}
-
-.sub-title{
+.sub-title {
   padding-top: 20px;
   font-size: 18px;
 }
 
-.tweets_at{
+.tweets_at {
   font-size: 11px;
   margin-top: 10px,0px,0px,auto;
   padding-left: 790px;
 }
 
-.name{
+.name {
   font-size: 15px;
   margin-bottom: 10px;
   text-align: right;
 }
 
-.pagination{
+.pagination {
   font-size: 20px;
   margin-left: 45%;
   margin-top: 30px;
   color: red;
 }
 
-.user_name{
+.user_name {
   position: absolute;
   margin: 60px 20px 20px;
 }
 /* ログイン 新規登録 ログアウト ボタン */
 
-.login_btn{
+.login_btn {
   display: block;
   font-size: 18px;
   border: 2px solid #6de957;
@@ -126,11 +126,11 @@ color: white;
   margin-top: 15px;
 }
 
-.login_btn:hover{
+.login_btn:hover {
   opacity: 0.5 ;
 }
 
-.up_btn{
+.up_btn {
   display: block;
   font-size: 18px;
   border: 2px solid #e9ce57;
@@ -140,18 +140,18 @@ color: white;
   margin-top: 15px;
 }
 
-.up_btn:hover{
+.up_btn:hover {
   opacity: 0.5;
 }
 
-h2{
+h2 {
   margin: 10px 0;
   text-align: center;
   font-size: 25px;
 }
 
 /* 検索 */
-.search-form{
+.search-form {
   width: 30%;
   margin: 0 auto;
   padding-top: 50px;

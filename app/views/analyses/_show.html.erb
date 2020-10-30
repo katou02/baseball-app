@@ -1,7 +1,8 @@
 <% @analyses.each do |analysis|%>
+  <%= link_to analysis do%>
   <div class="content_anali">
     <div class="school">
-      <%= link_to "#{analysis.school.name}","/analyses/#{analysis.id}" %>
+      <%= analysis.school.name %>
     </div>
     <div class="select_main">
       <div class="attack_i">
@@ -41,4 +42,5 @@
     <%= link_to "編集","/analyses/#{analysis.id}/edit",method: :get, class: "ays_edit"%>
   <% end %>
 </div>
+<% end %>
 <% end %>
