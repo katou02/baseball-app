@@ -1,19 +1,20 @@
 <%  @forecasts.each do |forecast|%>
+  <%= link_to forecast,class: "fcs_link" do %>
   <div class="content_anali">
     <div class="school_fcs">
       <div class="win_school">
         <p>勝利予想<p>
         <br>
-        <%= link_to "#{forecast.win_school.name}","/forecasts/#{forecast.id}"%>
+        <%= forecast.win_school.name %>
       </div>
       <div class="lose_school">
         <p>敗退予想<p>
         <br>
-        <%= forecast.lose_school.name%>
+        <%= forecast.lose_school.name %>
       </div>
     </div>
     <div class="text_fcs">
-      <%= simple_format(forecast.text)%>
+      <%= simple_format(forecast.text) %>
     </div>
     <% if user_signed_in? && forecast.user_id == current_user.id%>
       <%= link_to "削除","/forecasts/#{forecast.id}",method: :delete,data: { confirm: '削除しますか？' },class: "fcs_delete" %>
@@ -24,4 +25,5 @@
       <%= forecast.user.nickname %>
     </div>
   </div>
- <% end %>
+  <% end %>
+<% end %>
