@@ -1,0 +1,2 @@
+class CommentForecast < ApplicationRecord
+end
