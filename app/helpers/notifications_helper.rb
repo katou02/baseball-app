@@ -4,10 +4,12 @@ module NotificationsHelper
     @comment = nil
     @message = nil
     @comment_analysis = nil
+    @comment_forecast = nil
     your_item = link_to 'あなたの投稿', tweets_path(notification), style:"font-weight: bold;"
     @visiter_comment = notification.comment_id
     @message_comment = notification.message_id
     @analysis_comment = notification.comment_analysis_id
+    @forecast_comment = notification.comment_forecast_id
     case notification.action
       when "follow" then
         tag.a(notification.visiter.nickname, href:mypage_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
@@ -22,6 +24,9 @@ module NotificationsHelper
       when "comment_analysis"
         @comment_analysis = CommentAnalysis.find_by(id: @analysis_comment)
         tag.a(@visiter.nickname, href:mypage_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:analysis_path(notification.analysis_id), style:"font-weight: bold;")+"にコメントしました"
+      when "comment_forecast"
+        @comment_forecast = CommentForecast.find_by(id: @forecast_comment)
+        tag.a(@visiter.nickname, href:mypage_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:forecast_path(notification.forecast_id), style:"font-weight: bold;")+"にコメントしました"
     end
   end
   
