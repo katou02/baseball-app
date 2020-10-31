@@ -3,7 +3,7 @@
   <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
 </div>
 <%= render "users/stats" %>
-<% if @user.id == current_user.id  && @mypage.blank? %>
+<% if @user.id == current_user.id  && @mypages.blank? %>
   <%= link_to "プロフィール作成",new_mypage_path %>
 <% elsif @user.id == current_user.id %>
   <%= link_to "プロフィール編集",edit_mypage_path %>
