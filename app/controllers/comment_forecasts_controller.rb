@@ -2,7 +2,8 @@ class CommentForecastsController < ApplicationController
   def create
     comment = CommentForecast.create(comment_params)
     redirect_to "/forecasts/#{comment.forecast.id}"
-    @analysis = comment.forecast
+    @forecast = comment.forecast
+    @forecast.create_notification_comment_forecast!(current_user, comment.id)
   end
 
   def destroy
