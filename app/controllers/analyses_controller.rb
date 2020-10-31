@@ -29,7 +29,7 @@ class AnalysesController < ApplicationController
   end
 
   def destroy
-    @analysis.destroy if @analysis.user_id == current_user.id
+    @analysis.destroy if @analysis.user_id == current_user.id || current_user.admin
     redirect_to action: :index if @analysis.destroy
   end
 
