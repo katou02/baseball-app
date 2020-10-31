@@ -31,7 +31,7 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    @tweet.destroy if @tweet.user_id == current_user.id
+    @tweet.destroy if @tweet.user_id == current_user.id || current_user.admin
   end
 
   def search
