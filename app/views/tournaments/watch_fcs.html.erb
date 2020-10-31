@@ -1,27 +1,2 @@
 <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-top"%>
-<%  @forecasts.each do |forecast|%>
-  <div class="content_anali">
-    <div class="school_fcs">
-      <div class="win_school">
-        <p>勝利予想<p>
-        <br>
-        <%= forecast.win_school.name%>
-      </div>
-      <div class="lose_school">
-        <p>敗退予想<p>
-        <br>
-        <%= forecast.lose_school.name%>
-      </div>
-    </div>
-    <div class="text_fcs">
-      <%= simple_format(forecast.text)%>
-    </div>
-    <% if user_signed_in? && forecast.user_id == current_user.id%>
-      <%= link_to "削除","/forecasts/#{forecast.id}",method: :delete,data: { confirm: '削除しますか？' },class: "fcs_delete" %>
-      <%= link_to "編集","/forecasts/#{forecast.id}/edit",method: :get,class: "fcs_edit" %>
-    <% end %>
-    <div class="name_ays">
-      <%= "投稿者 #{forecast.user.nickname}"%>
-    </div>
-  </div>
- <% end %>
+<%= render partial: "forecasts/show"%>
