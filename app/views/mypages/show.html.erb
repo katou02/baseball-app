@@ -29,9 +29,11 @@
 </div>
 <% if @user.id != current_user.id %>
     <% if @isRoom == true %>
+      <% if current_user.following?(@user) %>
        <div class="dm">
-         <%= link_to 'DMへ', room_path(@roomId) %>
+         <%= link_to 'ダイレクトメッセージをする', room_path(@roomId) %>
        </div>
+      <% end %>
     <% else %>
       <%= form_for @room do |f| %>
         <%= fields_for @entry do |e|%>
