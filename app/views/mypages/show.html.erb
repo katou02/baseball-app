@@ -3,30 +3,29 @@
   <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
 </div>
 <%= render "users/stats" %>
-<% if @user.id == current_user.id  && @mypages.blank? %>
+<% if @user.id == current_user.id  && @mypage.blank? %>
   <%= link_to "プロフィール作成",new_mypage_path %>
+<% elsif @mypage.blank? %>
 <% elsif @user.id == current_user.id || current_user.admin %>
   <%= link_to "プロフィール編集",edit_mypage_path(@user) %>
 <% end %>
-</div class="myprof">
-  <% @mypages.each do |mypage| %>
+<% if @mypage.present? %>
+  </div class="myprof">
     <div class="residence">
-      <p>住んでる場所<p>
-      <br>
-      <%=mypage.prefectures %>
+      <p>住んでる場所</p>
+      <br><%= @mypage.prefectures %> 
     </div>
     <div class="text-myname">
       <p>自己紹介</p>
-      <br>
-      <%=mypage.text %>
+      <br><%= @mypage.text %>
     </div>
     <div class="my-links">
-      <%= link_to "投稿した試合記事","#{mypage.user_id}/my_tweets",class: "my-link" %>
-      <%= link_to "投稿した戦力分析","#{mypage.user_id}/my_analyses",class: "my-link" %>
-      <%= link_to "投稿した試合予想","#{mypage.user_id}/my_forecasts",class: "my-link" %>
+      <%= link_to "投稿した試合記事","#{@mypage.user_id}/my_tweets",class: "my-link" %>
+      <%= link_to "投稿した戦力分析","#{@mypage.user_id}/my_analyses",class: "my-link" %>
+      <%= link_to "投稿した試合予想","#{@mypage.user_id}/my_forecasts",class: "my-link" %>
     </div>
-  <%end%>
-</div>
+  </div>
+<% end %>
 <% if @user.id != current_user.id %>
     <% if @isRoom == true %>
       <% if current_user.following?(@user) %>
