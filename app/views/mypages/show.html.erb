@@ -24,6 +24,7 @@
       <%= link_to "投稿した戦力分析","#{@mypage.user_id}/my_analyses",class: "my-link" %>
       <%= link_to "投稿した試合予想","#{@mypage.user_id}/my_forecasts",class: "my-link" %>
       <%= link_to "いいねした試合記事","/users/#{@mypage.user_id}/likes",class: "my-link"%>
+      <%= link_to "いいねした戦力分析","/users/#{@mypage.user_id}/likes_ays",class: "my-link"%>
     </div>
   </div>
 <% end %>
