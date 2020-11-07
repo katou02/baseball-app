@@ -1,5 +1,5 @@
 class MypagesController < ApplicationController
-  before_action :search_mypage,except:[:new,:create,:update]
+  # before_action :search_mypage,except:[:new,:create,:update]
   before_action :authenticate_user!
 
   def show
@@ -40,10 +40,11 @@ class MypagesController < ApplicationController
   end
 
   def edit
+    @mypage = Mypage.find_by(user_id: params[:id])
   end
   
   def update
-    @mypage = Mypage.find_by(user_id: current_user.id)
+    @mypage = Mypage.find_by(id: params[:id])
     @mypage.update(mypage_params) if @mypage.user_id == current_user.id || current_user.admin
     redirect_to "/mypages/#{current_user.id}"
   end
@@ -60,9 +61,9 @@ class MypagesController < ApplicationController
     @forecasts = Forecast.where(user_id: params[:id])
   end
 
-  def search_mypage
-    @mypage = Mypage.find_by(user_id: params[:id])
-  end
+  # def search_mypage
+  #   @mypage = Mypage.find_by(user_id: params[:id])
+  # end
   
   private
   def mypage_params
