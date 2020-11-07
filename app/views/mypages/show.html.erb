@@ -5,8 +5,8 @@
 <%= render "users/stats" %>
 <% if @user.id == current_user.id  && @mypages.blank? %>
   <%= link_to "プロフィール作成",new_mypage_path %>
-<% elsif @user.id == current_user.id %>
-  <%= link_to "プロフィール編集",edit_mypage_path %>
+<% elsif @user.id == current_user.id || current_user.admin %>
+  <%= link_to "プロフィール編集",edit_mypage_path(@user) %>
 <% end %>
 </div class="myprof">
   <% @mypages.each do |mypage| %>
