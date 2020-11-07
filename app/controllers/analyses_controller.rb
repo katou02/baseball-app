@@ -44,7 +44,7 @@ class AnalysesController < ApplicationController
   end
 
   def update
-    @analysis.update(analysis_params) if @analysis.user_id == current_user.id
+    @analysis.update(update_params) if @analysis.user_id == current_user.id || current_user.admin
     redirect_to action: :index
   end
 
@@ -63,5 +63,9 @@ class AnalysesController < ApplicationController
 
   def analysis_params
     params.require(:analysis).permit(:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:analysis).permit(:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive)
   end
 end
