@@ -47,7 +47,7 @@ class ForecastsController < ApplicationController
   end
 
   def update
-    @forecast.update(forecast_params) if @forecast.user_id == current_user.id || current_user.admin
+    @forecast.update(update_params) if @forecast.user_id == current_user.id || current_user.admin
     redirect_to action: :index
   end
 
@@ -58,5 +58,9 @@ class ForecastsController < ApplicationController
 
   def forecast_params
     params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id)
   end
 end
