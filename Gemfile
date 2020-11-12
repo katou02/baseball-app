@@ -81,7 +81,7 @@ gem "font-awesome-sass"
 
 gem 'ancestry'
 gem 'fog'
-
+gem 'webpacker'
 
 group :production do
   gem 'unicorn', '5.4.1'
