@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_071015) do
+ActiveRecord::Schema.define(version: 2020_10_30_052859) do
 
   create_table "analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text"
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 2020_10_28_071015) do
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comment_analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "analysis_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comment_forecasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "forecast_id"
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,7 +111,13 @@ ActiveRecord::Schema.define(version: 2020_10_28_071015) do
     t.integer "visiter_id"
     t.integer "visited_id"
     t.integer "tweet_id"
+    t.integer "analysis_id"
+    t.integer "forecast_id"
+    t.integer "room_id"
+    t.integer "message_id"
     t.integer "comment_id"
+    t.integer "comment_analysis_id"
+    t.integer "comment_forecast_id"
     t.string "action"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false

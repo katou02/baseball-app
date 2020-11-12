@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :tweets
   has_many :comments
+  has_many :comment_analyses
+  has_many :comment_forecasts
   has_many :analyses
-  has_many :mypages
+  belongs_to :mypage
   has_many :likes,dependent: :destroy
   has_many :liked_tweets,through: :likes,source: :tweet
   has_many :messages, dependent: :destroy

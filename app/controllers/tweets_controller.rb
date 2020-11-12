@@ -26,19 +26,16 @@ class TweetsController < ApplicationController
     @tweets = Tweet.find(params[:id])
     @nickname = current_user.nickname
     @comments = @tweet.comments.includes(:user)
+    @comment = current_user.comments.new 
     @like = Like.new
   end
 
   def destroy
-    @tweet.destroy if @tweet.user_id == current_user.id
+    @tweet.destroy if @tweet.user_id == current_user.id || current_user.admin
   end
 
   def search
     @tweets = Tweet.search(params[:keyword])
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def edit
@@ -52,7 +49,7 @@ class TweetsController < ApplicationController
   end
   
   def update
-    @tweet.update(tweet_params) if @tweet.user_id == current_user.id || current_user.admin
+    @tweet.update(update_params) if @tweet.user_id == current_user.id || current_user.admin
     redirect_to action: :show
   end
 
@@ -77,4 +74,9 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id).merge(user_id: current_user.id)
   end
+
+  def update_params
+    params.require(:tweet).permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id)
+  end
+
 end

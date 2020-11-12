@@ -1,4 +1,5 @@
-<% @tweets.each do |tweet|%>
+<% @likes.each do |like|%>
+  <% tweet = Tweet.find_by(id: like.tweet_id) %>
   <%= link_to tweet do %>
   <div class="comment">
     <div class="comment-list">
@@ -19,4 +20,5 @@
     </div>
   </div>
   <% end %>
+  </div>
 <% end %>

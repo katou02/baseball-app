@@ -1,9 +1,15 @@
 class ForecastsController < ApplicationController
   before_action :set_category, only: [:index,:new,:create,:edit]
-  before_action :search_forecast,only:[:destroy,:edit,:update]
+  before_action :search_forecast,only:[:destroy,:edit,:update,:show]
 
   def index
     @forecasts = Forecast.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+  end
+
+  def show
+    @nickname = current_user.nickname
+    @comments = @forecast.comment_forecasts.includes(:user)
+    @comment = current_user.comment_forecasts.new
   end
 
   def new
@@ -41,7 +47,7 @@ class ForecastsController < ApplicationController
   end
 
   def update
-    @forecast.update(forecast_params) if @forecast.user_id == current_user.id || current_user.admin
+    @forecast.update(update_params) if @forecast.user_id == current_user.id || current_user.admin
     redirect_to action: :index
   end
 
@@ -52,5 +58,9 @@ class ForecastsController < ApplicationController
 
   def forecast_params
     params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id)
   end
 end
