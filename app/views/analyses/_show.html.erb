@@ -1,7 +1,8 @@
 <% @analyses.each do |analysis|%>
+  <%= link_to analysis do%>
   <div class="content_anali">
-    <div class="school">
-      <%= link_to "#{analysis.school.name}","/analyses/#{analysis.id}" %>
+    <div class="school_ays">
+      <%= analysis.school.name %>
     </div>
     <div class="select_main">
       <div class="attack_i">
@@ -36,9 +37,10 @@
     <span>投稿者</span>
     <%= analysis.user.nickname %>
   </div>
-  <% if user_signed_in? && current_user.id == analysis.user_id%>
+  <% if user_signed_in? && analysis.user_id == current_user.id || current_user.admin %>
     <%= link_to "削除","/analyses/#{analysis.id}/",method: :delete,data: { confirm: '削除しますか？' },class: "ays_delete" %>
     <%= link_to "編集","/analyses/#{analysis.id}/edit",method: :get, class: "ays_edit"%>
   <% end %>
 </div>
+<% end %>
 <% end %>

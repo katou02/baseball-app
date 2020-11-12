@@ -1,10 +1,10 @@
 class MypagesController < ApplicationController
-  before_action :search_mypage,except:[:new,:create,:update]
+  # before_action :search_mypage,except:[:new,:create,:update]
   before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
-    @mypages = @user.mypages
+    @mypage = Mypage.find_by(user_id: @user.id)
 
     @myEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
@@ -40,12 +40,13 @@ class MypagesController < ApplicationController
   end
 
   def edit
+    @mypage = Mypage.find_by(user_id: params[:id])
   end
   
   def update
-    @mypage = Mypage.find_by(user_id: current_user.id)
-    @mypage.update(mypage_params) if @mypage.user_id == current_user.id || current_user.admin
-    redirect_to "/mypages/#{current_user.id}"
+    @mypage = Mypage.find_by(id: params[:id])
+    @mypage.update(update_params) if @mypage.user_id == current_user.id || current_user.admin
+    redirect_to "/mypages/#{@mypage.user.id}"
   end
 
   def my_tweets
@@ -60,12 +61,12 @@ class MypagesController < ApplicationController
     @forecasts = Forecast.where(user_id: params[:id])
   end
 
-  def search_mypage
-    @mypage = Mypage.find_by(user_id: params[:id])
-  end
-  
   private
   def mypage_params
     params.require(:mypage).permit(:text,:prefectures).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:mypage).permit(:text,:prefectures)
   end
 end

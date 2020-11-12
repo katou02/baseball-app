@@ -9,6 +9,8 @@ class AnalysesController < ApplicationController
 
   def show
     @nickname = current_user.nickname
+    @comments = @analysis.comment_analyses.includes(:user)
+    @comment = current_user.comment_analyses.new
   end
 
   def new
@@ -27,7 +29,7 @@ class AnalysesController < ApplicationController
   end
 
   def destroy
-    @analysis.destroy if @analysis.user_id == current_user.id
+    @analysis.destroy if @analysis.user_id == current_user.id || current_user.admin
     redirect_to action: :index if @analysis.destroy
   end
 
@@ -42,7 +44,7 @@ class AnalysesController < ApplicationController
   end
 
   def update
-    @analysis.update(analysis_params) if @analysis.user_id == current_user.id
+    @analysis.update(update_params) if @analysis.user_id == current_user.id || current_user.admin
     redirect_to action: :index
   end
 
@@ -61,5 +63,9 @@ class AnalysesController < ApplicationController
 
   def analysis_params
     params.require(:analysis).permit(:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:analysis).permit(:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive)
   end
 end

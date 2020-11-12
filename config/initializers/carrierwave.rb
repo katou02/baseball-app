@@ -14,7 +14,7 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = 'baseball-rails'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/baseball-rails'
+  config.fog_directory  = 'rails-baseball-app'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/rails-baseball-app'
   end
 end

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'tops#index'
   devise_for :users
-  resources :analyses
   resources :tweets do
     collection do
       get :search
@@ -14,7 +13,12 @@ Rails.application.routes.draw do
       get :watch,:watch_avg,:watch_fcs
     end
   end
-  resources :forecasts,only:[:index,:new,:create,:destroy,:edit,:update]
+  resources :analyses do
+    resources :comment_analyses,only:[:create,:destroy]
+  end
+  resources :forecasts do
+    resources :comment_forecasts,only:[:create,:destroy]
+  end
   resources :tops,only:[:index]
   resources :mypages,only:[:show,:edit,:new,:create,:update,:index] do
     member do
@@ -31,6 +35,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following,:followers
+      get :likes
     end
   end
   resources :relationships, only: [:create,:destroy]

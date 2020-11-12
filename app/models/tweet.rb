@@ -11,7 +11,7 @@ class Tweet < ApplicationRecord
   belongs_to :user
   has_many :comments
   has_many :categories
-  has_many :likes
+  has_many :likes,dependent: :destroy
   has_many :liked_users,through: :likes,source: :user
   has_many :notifications,dependent: :destroy
   belongs_to :school_a,class_name: 'Category', foreign_key: 'school_a_id'
