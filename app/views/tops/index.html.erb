@@ -9,4 +9,6 @@
   <% elsif user_signed_in? && current_user.admin? %>
     <%= link_to "管理者ページ", users_show_admin_users_path %>
   <% end %>
+ <p>{{message}}</p>
 </div>
+<%= javascript_pack_tag 'top' %>
