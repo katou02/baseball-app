@@ -1,14 +1,23 @@
 <div id="app">
-  <%= render partial: "/tweets/log"%>
-  <%= link_to "試合記事",tweets_path%>
-  <%= link_to "戦力分析",analyses_path%>
-  <%= link_to "試合予想",forecasts_path%>
-  <% if user_signed_in? %>
-    <%= link_to "マイページ","/mypages/#{current_user.id}"%>
-    <%= link_to "お問い合わせ",contacts_path %>
-  <% elsif user_signed_in? && current_user.admin? %>
-    <%= link_to "管理者ページ", users_show_admin_users_path %>
-  <% end %>
- <p>{{message}}</p>
+  <transition name="bounce" appear>
+    <div v-show="show">
+      <div class="top-header">
+        <%= render partial: "/tweets/log"%>
+        <% if user_signed_in? %>
+          <%= link_to "マイページ","/mypages/#{current_user.id}"%>
+          <%= link_to "お問い合わせ",contacts_path %>
+        <% elsif user_signed_in? && current_user.admin? %>
+          <%= link_to "管理者ページ", users_show_admin_users_path %>
+        <% end %>
+      </div>
+      <div class="top-container">
+        <div class="menu_select">
+          <li><%= link_to "試合記事",tweets_path%></li>
+          <li><%= link_to "戦力分析",analyses_path%><li>
+          <li><%= link_to "試合予想",forecasts_path%><li>
+        </div>
+      </div>
+    </div>
+  </transition>
 </div>
 <%= javascript_pack_tag 'top' %>
