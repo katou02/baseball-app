@@ -16,6 +16,38 @@
   }
 }
 
-.menu_select {
+.top-main {
+  height: 100%;
+}
+
+.mx-auto {
   list-style: none;
+  margin-top: 190px;
+}
+
+.btn-cool-blues {
+  background: #2193b0;
+  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+  background: linear-gradient(to right, #6dd5ed, #2193b0);
+  color: #fff;
+  line-height: 60px;
+  font-size: 30px;
+}
+
+.btn-green-moon {
+  background: #56ab2f;
+  background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);
+  background: linear-gradient(to right, #a8e063, #56ab2f);
+  color: #fff;
+  line-height: 60px;
+  font-size: 30px;
+}
+
+.btn-orange-moon {
+  background: #fc4a1a;
+  background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);
+  background: linear-gradient(to right, #f7b733, #fc4a1a);
+  color: #fff;
+  line-height: 60px;
+  font-size: 30px;
 }
