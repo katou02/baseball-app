@@ -34,3 +34,35 @@
 #error_explanation{
   text-align: center;
 }
+
+/* ログイン 新規登録 ログアウト ボタン */
+.log {
+  margin-left: 20px;
+}
+
+.login_btn {
+  display: block;
+  position: absolute;
+  &:hover {
+    opacity: 0.5 ;
+  }
+}
+
+.top_sign_up_btn {
+  display: block;
+  position: absolute;
+  margin-left: 8%;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.send_btn,.logout_btn {
+  font-size: 15px;
+  position: absolute;
+  left: 0;
+  text-decoration: none;
+  border: 2px solid #57c3e9;
+  color: #57c3e9;
+  padding: 5px;
+}

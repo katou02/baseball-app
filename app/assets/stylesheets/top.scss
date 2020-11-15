@@ -16,8 +16,18 @@
   }
 }
 
-.top-main {
-  height: 100%;
+.top-header {
+  height: 8%;
+  position: relative;
+  &_menu {
+    display: flex;
+    position: absolute;
+    right: 240px;
+  }
+}
+
+.mypage {
+  margin-right: 70px;
 }
 
 .mx-auto {

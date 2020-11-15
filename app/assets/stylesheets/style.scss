@@ -48,20 +48,6 @@ color: white;
   margin: 0 auto;
 }
 
-.send_btn,.logout_btn {
-  font-size: 20px;
-  position: absolute;
-  left: 0;
-  text-decoration: none;
-  border: 2px solid #57c3e9;
-  color: #57c3e9;
-  padding: 5px;
-  margin-top: 15px;
-}
-
-.logout_btn {
-  margin-left: 10%;
-}
 
 .main-content {
   background-color: rgb(233, 243, 243);
@@ -114,34 +100,6 @@ color: white;
 .user_name {
   position: absolute;
   margin: 60px 20px 20px;
-}
-/* ログイン 新規登録 ログアウト ボタン */
-
-.login_btn {
-  display: block;
-  font-size: 18px;
-  border: 2px solid #6de957;
-  padding: 5px; 
-  position: absolute;
-  margin-top: 15px;
-}
-
-.login_btn:hover {
-  opacity: 0.5 ;
-}
-
-.up_btn {
-  display: block;
-  font-size: 18px;
-  border: 2px solid #e9ce57;
-  padding: 5px; 
-  position: absolute;
-  margin-left: 8%;
-  margin-top: 15px;
-}
-
-.up_btn:hover {
-  opacity: 0.5;
 }
 
 h2 {
