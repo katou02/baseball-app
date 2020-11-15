@@ -12,9 +12,19 @@
       </div>
       <div class="top-container">
         <div class="menu_select">
-          <li><%= link_to "試合記事",tweets_path%></li>
-          <li><%= link_to "戦力分析",analyses_path%><li>
-          <li><%= link_to "試合予想",forecasts_path%><li>
+          <li>
+          <%= link_to tweets_path,class: "btn btn-info btn-lg" do %>
+            <span class="glyphicon glyphicon-pencil"></span>試合記事
+          <% end %>
+          </li>
+          <li>
+          <%= link_to analyses_path,class: "btn btn-success btn-lg" do %>
+            <span class="glyphicon glyphicon-search"></span>戦力分析
+          <% end %>
+          <li>
+          <%= link_to forecasts_path,class: "btn btn-danger btn-lg" do %>
+            <span class="glyphicon glyphicon-fire"></span>試合予想
+          <% end %>
         </div>
       </div>
     </div>
