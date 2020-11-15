@@ -1,35 +1,27 @@
-<div class="top-main">
+<div class="top-main h-100">
+    <%= render partial: "/tweets/header"%>
   <div id="app">
-        <div v-show="show">
-          <div class="top-header">
-            <%= render partial: "/tweets/log"%>
-            <% if user_signed_in? %>
-              <%= link_to "マイページ","/mypages/#{current_user.id}"%>
-              <%= link_to "お問い合わせ",contacts_path %>
-            <% elsif user_signed_in? && current_user.admin? %>
-              <%= link_to "管理者ページ", users_show_admin_users_path %>
-            <% end %>
-          </div>
-          <transition name="bounce" appear>
-          <div class="top-container">
-            <div class="mx-auto" style="width: 40%;">
-              <li>
-              <%= link_to tweets_path,class: "btn btn-cool-blues" do %>
-                <span class="glyphicon glyphicon-pencil"></span>試合記事
-              <% end %>
-              </li>
-              <li>
-              <%= link_to analyses_path,class: "btn btn-green-moon" do %>
-                <span class="glyphicon glyphicon-search"></span>戦力分析
-              <% end %>
-              </li>
-              <%= link_to forecasts_path,class: "btn btn-orange-moon" do %>
-                <span class="glyphicon glyphicon-fire"></span>試合予想
-              <% end %>
-            </div>
-          </div>
+    <transition name="bounce" appear>
+    <div v-show="show">
+      <div class="top-container">
+        <div class="mx-auto" style="width: 40%;">
+          <li>
+          <%= link_to tweets_path,class: "btn btn-cool-blues" do %>
+            <span class="glyphicon glyphicon-pencil"></span>試合記事
+          <% end %>
+          </li>
+          <li>
+          <%= link_to analyses_path,class: "btn btn-green-moon" do %>
+            <span class="glyphicon glyphicon-search"></span>戦力分析
+          <% end %>
+          </li>
+          <%= link_to forecasts_path,class: "btn btn-orange-moon" do %>
+            <span class="glyphicon glyphicon-fire"></span>試合予想
+          <% end %>
         </div>
-        </transition>
+      </div>
+    </div>
+    </transition>
   </div>
 </div>
 <%= javascript_pack_tag 'top' %>

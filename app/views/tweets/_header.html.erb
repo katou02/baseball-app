@@ -1,0 +1,31 @@
+<div class="top-header d-flex align-items-center">
+  <div class="top-header_menu">
+    <% if user_signed_in? %>
+      <%= link_to "/mypages/#{current_user.id}",class: "mypage" do %>
+        <i class="fa fa-user"></i>マイページ
+      <% end %>
+      <%= link_to contacts_path do %>
+        <i class="fa fa-envelope"></i>お問い合わせ
+      <% end %>
+    <% elsif user_signed_in? && current_user.admin? %>
+      <%= link_to "管理者ページ", users_show_admin_users_path %>
+    <% end %>
+  </div>
+  <div class="log">
+    <% if user_signed_in? %>
+      <%= link_to destroy_user_session_path,method: :delete do %>
+        <i class="fa fa-sign-out-alt"></i>ログアウト
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path,class: "login_btn" do %>
+        <i class="fa fa-sign-in-alt"></i>ログイン
+      <% end %>
+      <%= link_to new_user_registration_path,class: "top_sign_up_btn" do %>
+        <i class="fa fa-user-plus"></i>新規登録
+      <% end %>
+    <% end %>
+    <% unless current_page?(root_path)%>
+      <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
+    <%end%>
+  </div>
+</div>
