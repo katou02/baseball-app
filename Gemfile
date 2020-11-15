@@ -83,7 +83,7 @@ gem "font-awesome-sass"
 gem 'ancestry'
 gem 'fog'
 gem 'webpacker'
-gem "bootstrap-sass", "~>3.3.6"
+gem 'bootstrap', '~> 5.0.0.alpha2'
 
 group :production do
   gem 'unicorn', '5.4.1'
