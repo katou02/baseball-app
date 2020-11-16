@@ -1,11 +1,11 @@
+<%= render partial: "header"%>
 <div class="header">
   <h1>試合記事</h1>
 </div>
 <div class="main-content">
-<%= render partial: "header"%>
-<% if user_signed_in?%>
-  <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
-<% end %>
+  <% if user_signed_in?%>
+    <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
+  <% end %>
   <div class="images">
     <div class="image_2">
       <img src="https://kohacu.com/wp-content/uploads/2018/08/kohacu.com_001578_20180807-768x768.png" width=100 height="100">
@@ -18,8 +18,11 @@
     </div>
   </div>
   <% @category_parent_array.each do |tournament|%>
-    <div class="by_tournament">
-      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}",class: "title"%>
+    <div class="by_tournament d-inline-block">
+      <%= link_to "/tournaments/#{tournament.id}",class: "tournament_title" do %>
+        <i class="fa fa-baseball-ball"></i>
+        <p><%= tournament.name %></p>
+      <% end %>
     </div>
   <%end%>
   <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search-form") do |form| %>
@@ -29,4 +32,3 @@
  <%= render partial: "tweet_show"%>
 </div>
 <%= paginate(@tweets)%>
-</div>
