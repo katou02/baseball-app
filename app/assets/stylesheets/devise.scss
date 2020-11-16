@@ -36,26 +36,26 @@
 }
 
 /* ログイン 新規登録 ログアウト ボタン */
-.log {
-  margin-left: 20px;
-}
+// .log {
+//   margin-left: 20px;
+// }
 
-.login_btn {
-  display: block;
-  position: absolute;
-  &:hover {
-    opacity: 0.5 ;
-  }
-}
+// .login_btn {
+//   display: block;
+//   position: absolute;
+//   &:hover {
+//     opacity: 0.5 ;
+//   }
+// }
 
-.top_sign_up_btn {
-  display: block;
-  position: absolute;
-  margin-left: 8%;
-  &:hover {
-    opacity: 0.5;
-  }
-}
+// .top_sign_up_btn {
+//   display: block;
+//   position: absolute;
+//   margin-left: 8%;
+//   &:hover {
+//     opacity: 0.5;
+//   }
+// }
 
 .send_btn,.logout_btn {
   font-size: 15px;
