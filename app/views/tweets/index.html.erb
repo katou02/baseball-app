@@ -2,7 +2,7 @@
   <h1>試合記事</h1>
 </div>
 <div class="main-content">
-<%= render partial: "log"%>
+<%= render partial: "header"%>
 <% if user_signed_in?%>
   <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
 <% end %>

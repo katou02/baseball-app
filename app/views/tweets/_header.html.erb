@@ -1,7 +1,7 @@
 <div class="top-header d-flex align-items-center">
   <% if user_signed_in? %>
-    <%= link_to notifications_path, class: "btn-default" do %>
-      <i class="fa fa-bell"></i>新着通知
+    <%= link_to notifications_path, class: "info" do %>
+      <i class="fa fa-bell"></i>通知
     <% end %>
     <% if unchecked_notifications.any? %>
       <%= link_to notifications_path, class: "new_info" do %>
@@ -9,32 +9,29 @@
       <% end %>
     <% end %>
   <% end %>
-  <%# <div class="top-header_menu"> %>
-    <% if user_signed_in? %>
-      <%= link_to "/mypages/#{current_user.id}",class: "mypage" do %>
-        <i class="fa fa-user"></i>マイページ
-      <% end %>
-      <%= link_to contacts_path do %>
-        <i class="fa fa-envelope"></i>お問い合わせ
-      <% end %>
-    <% elsif user_signed_in? && current_user.admin? %>
-      <%= link_to "管理者ページ", users_show_admin_users_path %>
+  <% if user_signed_in? %>
+    <%= link_to "/mypages/#{current_user.id}",class: "mypage" do %>
+      <i class="fa fa-user"></i>マイページ
     <% end %>
-  <%# </div> %>
-  <%# <div class="log"> %>
-    <% if user_signed_in? %>
-      <%= link_to destroy_user_session_path,method: :delete do %>
-        <i class="fa fa-sign-out-alt"></i>ログアウト
-      <% end %>
-    <% else %>
-      <%= link_to new_user_session_path,class: "login_btn" do %>
-        <i class="fa fa-sign-in-alt"></i>ログイン
-      <% end %>
-      <%= link_to new_user_registration_path,class: "top_sign_up_btn" do %>
-        <i class="fa fa-user-plus"></i>新規登録
-      <% end %>
+    <%= link_to contacts_path,class: "contact" do %>
+      <i class="fa fa-envelope"></i>お問い合わせ
     <% end %>
-    <% unless current_page?(root_path)%>
-      <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
-    <%end%>
+  <% elsif user_signed_in? && current_user.admin? %>
+    <%= link_to "管理者ページ", users_show_admin_users_path %>
+  <% end %>
+  <% if user_signed_in? %>
+    <%= link_to destroy_user_session_path,method: :delete,class: "logout" do %>
+      <i class="fa fa-sign-out-alt"></i>ログアウト
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path,class: "login" do %>
+      <i class="fa fa-sign-in-alt"></i>ログイン
+    <% end %>
+    <%= link_to new_user_registration_path,class: "top_sign_up" do %>
+      <i class="fa fa-user-plus"></i>新規登録
+    <% end %>
+  <% end %>
+  <% unless current_page?(root_path)%>
+    <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
+  <%end%>
 </div>
