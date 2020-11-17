@@ -1,25 +1,31 @@
-<% @tweets.each do |tweet|%>
-  <%= link_to tweet do %>
-  <div class="article">
-    <div class="article-list">
-      <div class="article-image">
-      </div>
-      <div class="article-title">
-      <%= tweet.school_a.name %>
-      vs
-      <%= tweet.school_b.name %>
-      </div>
-      <div class="sub-title">
-        <%= tweet.title_info %>
-      </div>
-      <div class="name">
-        <span>投稿者</span>
-        <%= tweet.user.nickname %>
-      </div>
-      <div class="tweets_at">
-        <%= tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+<div class="article-main">
+  <div class="text-format mb-5">
+    みんなの試合記事
+  </div>
+  <% @tweets.each do |tweet|%>
+    <%= link_to tweet do %>
+    <div class="article">
+      <div class="article-list">
+        <div class="article-image">
+        </div>
+        <div class="article-title">
+        <%= tweet.school_a.name %>
+        vs
+        <%= tweet.school_b.name %>
+        </div>
+        <div class="sub-title">
+          <%= tweet.title_info %>
+        </div>
+        <div class="name">
+          <span>投稿者</span>
+          <%= tweet.user.nickname %>
+        </div>
+        <div class="tweets_at">
+          <%= tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+        </div>
       </div>
     </div>
-  </div>
+    <% end %>
   <% end %>
-<% end %>
+  <%= paginate(@tweets)%>
+</div>
