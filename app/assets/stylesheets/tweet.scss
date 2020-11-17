@@ -10,18 +10,12 @@
 }
 
 .header {
-  background-image: image-url("81573810.jpeg");
+  background-image: url("81573810.jpeg");
   line-height: 300px;
 }
 
 .analysis_header {
   background-image: url("https://pics.prcm.jp/d1c2e60537af9/78615919/jpeg/78615919.jpeg");
-}
-
-h1 {
-text-align: center;
-line-height: 300px;
-color: white;
 }
 
 .images {
@@ -49,11 +43,23 @@ color: white;
   margin: 0 auto;
 }
 
+.main-content {
+  margin-top: 20px;
+  &-btn{
+    display: flex;
+  }
+}
 
-.tournament-info,.article-info{
+.return-top {
+  margin-left: 100px;
+}
+
+.text-format{
+  margin-top: 150px;
   font-size: 25px;
   text-align: center;
   font-weight: bold;
+  color: rgb(241, 206, 4);
 }
 
 .tournament-info {
@@ -61,8 +67,8 @@ color: white;
 }
 
 .article {
-  padding: 0 250px;
   position: relative;
+  margin: 0 250px;
   &-list {
     margin-bottom: 70px;
     background-color: #68ccf9;
@@ -74,7 +80,7 @@ color: white;
   }
   &-image {
     position: absolute;
-    width: 5%;
+    width: 7.7%;
     height: 100%;
     background-image: url("04528d896c142111f9ad8f83522bb05d76dbf17a.png");
     background-size: contain;
@@ -82,7 +88,6 @@ color: white;
   &-info {
     margin-top: 150px;
     margin-bottom: 40px;
-    color: gold;
   }
   &:hover {
     opacity: 0.7;
@@ -131,6 +136,13 @@ h2 {
   margin: 10px 0;
   text-align: center;
   font-size: 25px;
+}
+
+.article-main {
+  background-image: url("sky_00010.jpg");
+  background-size: cover;
+  background-color:rgba(255,255,255,0.8);
+  background-blend-mode:lighten;
 }
 
 /* 検索 */
