@@ -1,9 +1,12 @@
 <% @tweets.each do |tweet|%>
   <%= link_to tweet do %>
-  <div class="comment">
-    <div class="comment-list">
-      <div class="title">
+  <div class="article">
+    <div class="article-list">
+      <div class="article-image">
+      </div>
+      <div class="article-title">
       <%= tweet.school_a.name %>
+      vs
       <%= tweet.school_b.name %>
       </div>
       <div class="sub-title">

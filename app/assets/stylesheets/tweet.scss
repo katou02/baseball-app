@@ -50,34 +50,53 @@ color: white;
 }
 
 
-.main-content {
-  background-color: rgb(233, 243, 243);
-}
-
-.comment-list {
-  margin-top: 90px;
-  background-color: #bbb8b8f3;
+.tournament-info,.article-info{
   font-size: 25px;
   text-align: center;
+  font-weight: bold;
 }
 
-.comment {
+.tournament-info {
+  color: #68ccf9;
+}
+
+.article {
   padding: 0 250px;
+  position: relative;
+  &-list {
+    margin-bottom: 70px;
+    background-color: #68ccf9;
+    font-size: 25px;
+    text-align: center;
+  }
+  &-title {
+    color: white;
+  }
+  &-image {
+    position: absolute;
+    width: 5%;
+    height: 100%;
+    background-image: url("04528d896c142111f9ad8f83522bb05d76dbf17a.png");
+    background-size: contain;
+  }
+  &-info {
+    margin-top: 150px;
+    margin-bottom: 40px;
+    color: gold;
+  }
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
-.comment:hover {
-  opacity: 0.7;
-}
 
 .by_tournament {
   position: relative;
-  left: 40%;
+  left: 35%;
   font-size: 13px;
+  background-color: #68ccf9;
 }
 
-.tournament_title,.title {
-  color: rgb(17, 0, 255);
-}
 
 .sub-title {
   padding-top: 20px;
@@ -115,8 +134,11 @@ h2 {
 }
 
 /* 検索 */
-.search-form {
+.search {
   width: 30%;
   margin: 0 auto;
   padding-top: 50px;
+  &-btn{
+    background-color: #68ccf9;
+  }
 }
