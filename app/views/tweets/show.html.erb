@@ -20,24 +20,32 @@
     <i class="fa fa-baseball-ball text-white"></i>
     <%=@tweet.title_info%>
   </div>
+  <div class="text-format mt-5 text-info">
+    <i class="fas fa-pen text-info"></i>
+    試合評・感想
+  </div>
   <div class=texts>
     <%= simple_format(@tweet.text)%>
   </div>
   <div class="image">
    <%= image_tag "#{@tweet.image}"%>
     <% if current_user.already_liked?(@tweet)%>
-      <%= button_to "#{@tweet.likes.count}いいね",tweet_like_path(@tweet),class: "good-after",method: :delete%>
+      <%= button_to tweet_like_path(@tweet),class: "good-after text-danger",method: :delete  do %>
+        <i class="fas fa-heart"></i><%= @tweet.likes.count %>
+      <% end %>
     <% else %>
-      <%= button_to "#{@tweet.likes.count}いいね",tweet_likes_path(@tweet),{class: "good"}%>
+      <%= button_to tweet_likes_path(@tweet),{class: "good"} do %>
+        <i class="fas fa-heart"></i><%= @tweet.likes.count %>
+      <% end %>
     <% end %>
-    <h2>いいねしたユーザー</h2>
+    <h2>いいねをしたユーザー</h2>
     <% @tweet.liked_users.each do |user|%>
       <li><%=user.nickname%></li>
     <% end %>
   </div>
   <div class="comment-content">
     <div class="comments">   
-      <div class="text-format mt-5 mb-4">
+      <div class="text-format mt-5 mb-4 text-warning">
       <i class="fa fa-baseball-ball text-warning"></i>
         コメント
       </div>
@@ -53,7 +61,7 @@
                 <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete_button" %>
               <% end %>
               <div class="comment_at">
-              <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+                <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
               </div>
           </p>
           <%@num+=1%>
