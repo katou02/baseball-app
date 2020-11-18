@@ -1,18 +1,32 @@
+  <%= render partial: "tweets/header" %>
   <div class="analysis_header">
     <h1>戦力分析<h1>
   </div>
+<div class="main-content">
+  <div class="main-content-btn">
+    <% if user_signed_in? %>
+      <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
+    <% end %>
+    <% unless current_page?(root_path)%>
+      <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
+    <%end%>
+  </div>
+  <div class="text-format mt-5 text-success">
+    戦力分析をみんなで共有してみましょう！
+  </div>
+  <div class="text-format mt-5 mb-4 text-warning">
+    大会別
+  </div>
     <% @category_parent_array.each do |tournament|%>
-    <div class="by_tournament">
-      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}/watch",class: "title"%>
-    </div>
-  <% end %>
-  <%= render partial: "tweets/header" %>
-  <% if user_signed_in? %>
-    <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
-  <% end %>
+      <div class="by_tournament d-inline-block">
+        <i class="fa fa-baseball-ball text-white"></i>
+        <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}/watch",class: "title text-white"%>
+      </div>
+    <% end %>
   <div class="analysis_main">
-  <%= render partial: "analyses/show"%>
+    <%= render partial: "analyses/show"%>
   </div>
   <div class="analsis_bottom">
   </div>
   <%= paginate(@analyses)%>
+</div>
