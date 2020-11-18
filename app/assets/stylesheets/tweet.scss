@@ -68,22 +68,17 @@
 
 .article {
   position: relative;
-  margin: 0 250px;
-  &-list {
-    margin-bottom: 70px;
-    background-color: #68ccf9;
-    font-size: 25px;
-    text-align: center;
-  }
+  margin-bottom: 70px;
+  background-color: #68ccf9;
+  text-align: center;
   &-title {
+    font-size: 25px;
     color: white;
   }
   &-image {
     position: absolute;
-    width: 7.7%;
     height: 100%;
-    background-image: url("04528d896c142111f9ad8f83522bb05d76dbf17a.png");
-    background-size: contain;
+    width: 10%;
   }
   &-info {
     margin-top: 150px;
@@ -108,10 +103,9 @@
   font-size: 18px;
 }
 
-.tweets_at {
+.tweets_at,.analyses_at {
   font-size: 11px;
-  margin-top: 10px,0px,0px,auto;
-  padding-left: 790px;
+  text-align: right;
 }
 
 .name {
@@ -143,6 +137,7 @@ h2 {
   background-size: cover;
   background-color:rgba(255,255,255,0.8);
   background-blend-mode:lighten;
+  padding: 0 250px;
 }
 
 /* 検索 */
