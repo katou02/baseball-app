@@ -18,10 +18,12 @@
     大会別
   </div>
     <% @category_parent_array.each do |tournament|%>
-      <div class="by_tournament d-inline-block">
-        <i class="fa fa-baseball-ball text-white"></i>
-        <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}/watch",class: "title text-white"%>
-      </div>
+      <%= link_to "/tournaments/#{tournament.id}/watch",class: "title text-white" do%>
+        <div class="by_tournament d-inline-block">
+          <i class="fa fa-baseball-ball text-white"></i>
+          <%=tournament.name%>
+        </div>
+      <% end %>
     <% end %>
   <div class="analysis_main">
     <%= render partial: "analyses/show"%>
