@@ -20,7 +20,8 @@
   margin-top: 40px;
   text-align: center;
   font-size: 30px;
-  background-color: #CCCC;
+  border: solid 1px #cececd;
+  background-color: #68ccf9;
 }
 
 .texts {
@@ -45,16 +46,16 @@ input {
   text-align: center;
 }
 
-.comment_container {
+.comment-form {
   margin: 0 auto;
   padding: 30px;
   width: 50%;
-  background-color: #CCFFFF;
 }
 
 .comment_at {
-  color: #33CC99;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
+  font-size: 11px;
+  margin-left: 30px;
 }
 
 .comment_delete_button {
@@ -65,8 +66,8 @@ input {
   border: double 4px #0aaee0;
   border-radius: 3px;
   transition: .4s;
-  font-size: 15px;
-  margin-top: 10px;
+  font-size: 11px;
+  margin: 20px 0 0 140px;
 }
 
 .comment_delete_button:hover {
