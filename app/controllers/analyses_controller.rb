@@ -11,6 +11,7 @@ class AnalysesController < ApplicationController
     @nickname = current_user.nickname
     @comments = @analysis.comment_analyses.includes(:user)
     @comment = current_user.comment_analyses.new
+    @num = 1
   end
 
   def new
