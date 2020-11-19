@@ -1,7 +1,7 @@
 <%= render partial: "tweets/header"%>
 <div class="main-content-btn">
   <% if user_signed_in? %>
-    <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
+    <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
   <% end %>
   <% unless current_page?(root_path)%>
     <%= link_to "分析一覧へ戻る",analyses_path,class: "return-btn_watch"%>
@@ -17,4 +17,5 @@
     <%= @analysis_tournament.tournament.name%>
   </div>
   <%= render partial: "analyses/show"%>
+  <%= paginate(@analyses)%>
 </div>

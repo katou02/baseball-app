@@ -4,7 +4,7 @@ class AnalysesController < ApplicationController
   before_action :move_to_index,except: :index
   
   def index
-    @analyses = Analysis.includes(:user).page(params[:page]).per(10).order("created_at DESC")
+    @analyses = Analysis.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
 
   def show
