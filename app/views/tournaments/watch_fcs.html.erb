@@ -12,4 +12,5 @@
     <%= @forecast.tournament.name%>
   </div>
   <%= render partial: "forecasts/forecasts"%>
+  <%= paginate(@forecasts)%>
 </div>
