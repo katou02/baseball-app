@@ -89,14 +89,15 @@
   }
 }
 
-
-.by_tournament {
-  position: relative;
-  left: 35%;
-  font-size: 13px;
+.title {
+  float: left;
   background-color: #68ccf9;
+  overflow: hidden;
+  margin-right: 15px;
+  left: 33%;
+  position: relative;
+  font-size: 15px;
 }
-
 
 .sub-title {
   padding-top: 20px;

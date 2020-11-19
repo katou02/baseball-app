@@ -18,6 +18,9 @@
     height: 100%;
     font-size: 30px;
   }
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .select_main,.select_main-show {
@@ -55,7 +58,7 @@
   right: 50px;
 }
 
-.name_ays {
+.name_ays,.name-fcs {
   text-align: right;
   padding-bottom: 10px;
 }

@@ -1,13 +1,9 @@
-.school_fcs{
+.school-fcs{
   display: flex;
   justify-content: space-evenly;
   text-align: center;
   font-size: 26px;
   padding-top: 20px;
-}
-
-.content_anali:hover {
-  opacity: 0.7;
 }
 
 .text_fcs{
@@ -17,9 +13,22 @@
 
 .win-school,.lose-school{
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 25px;
 }
 
-.content_fcs {
-  margin-top: 190px;
+.content-fcs {
+  border: solid 1px rgb(255, 255, 255);
+  margin-top: 90px;
+  background-color: #FFAD90;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.forecasts-main {
+  padding: 0 250px;
+  background-image: url("sky_00148.jpg");
+  background-size: cover;
+  background-color:rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
 }
