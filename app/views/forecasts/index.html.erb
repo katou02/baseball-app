@@ -1,18 +1,29 @@
-  <div class="analysis_header">
-    <h1>試合予想<h1>
+<%= render partial: "tweets/header" %>
+<div class="analysis_header">
+  <h1>試合予想<h1>
+</div>
+<div class="main-content">
+  <div class="main-content-btn">
+    <% if user_signed_in? %>
+      <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
+    <% end %>
+    <% unless current_page?(root_path)%>
+      <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
+    <%end%>
+  </div>
+  <div class="text-format mt-5 mb-4 text-primary">
+    試合予想をしてみましょう！
+  </div>
+  <div class="text-format mt-5 mb-4 text-warning">
+    大会別
   </div>
   <% @category_parent_array.each do |tournament|%>
-    <div class="by_tournament">
-      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}/watch_fcs",class: "title"%>
-    </div>
+      <%= link_to "/tournaments/#{tournament.id}/watch_fcs",class: "title text-white" do %>
+        <i class="fa fa-baseball-ball text-white"></i><%= tournament.name %>
+    <% end %>
   <% end %>
-    <%= render partial: "tweets/log" %>
-  <% if user_signed_in? %>
-    <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
-  <% end %>
-  <div class="analysis_main">
-  <%= render partial: "forecasts/show"%>
-  </div>
-  <div class="analsis_bottom">
+  <div class="forecasts-main">
+    <%= render partial: "forecasts/forecasts"%>
   </div>
   <%= paginate(@forecasts)%>
+</div>
