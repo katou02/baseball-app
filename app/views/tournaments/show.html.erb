@@ -1,3 +1,15 @@
 <%= render :partial=>"tweets/header"%>
-<%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn"%>
-<%= render partial: "tweets/tweet_show"%>
+<div class="main-content-btn">
+  <% if user_signed_in? %>
+    <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
+  <% end %>
+  <% unless current_page?(root_path)%>
+    <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn_watch"%>
+  <%end%>
+</div>
+<div class="article-main">
+  <div class="text-format text-success mt-5 mb-４">
+    <%= @tweet.tournament.name%>
+  </div>
+  <%= render partial: "tweets/tweet_show"%>
+</div>
