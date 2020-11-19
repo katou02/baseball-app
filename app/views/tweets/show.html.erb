@@ -22,9 +22,10 @@
   </div>
   <div class="text-format mt-5 text-info">
     <i class="fas fa-pen text-info"></i>
-    試合評・感想
+    試合評・感想<br><br>
+    <%= @tweet.tournament.name%>
   </div>
-  <div class=texts>
+  <div class=show-text>
     <%= simple_format(@tweet.text)%>
   </div>
   <div class="image">
