@@ -72,7 +72,7 @@
     <div class="comment-form"> 
     <!-- ここからフォーム -->
     <% if current_user %>
-      <%= form_with(model:[@tweets, @comment], method: :post) do |f| %>
+      <%= form_with(model:[@tweet, @comment], method: :post) do |f| %>
         <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
         <input type="submit" value="SENT" class="game_record">
       <% end %>
