@@ -38,27 +38,36 @@
         <% end %>
       </div>
     </div>
-  <div class="text-show">
+  <div class="show-text">
     <%= simple_format(@analysis.text)%>
   </div>
-      <div class="comments">   
-      <h4>＜コメント一覧＞</h4>
+   <div class="comment-content">
+    <div class="comments">   
+      <div class="text-format mt-5 mb-4 text-warning">
+      <i class="fa fa-baseball-ball text-warning"></i>
+        コメント
+      </div>
       <% if @comments %>
         <% @comments.each do |comment| %>
           <p>
-            <strong><%= comment.user.nickname %>：</strong>
-              <%= simple_format(comment.text) %>
+            <%= @num %>:
+            <strong><%= comment.user.nickname %></strong>
+              <div class="mt-3">
+                <%= simple_format(comment.text) %>
+              </div>
               <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
                 <%= link_to '削除', "/analyses/#{@analysis.id}/comment_analyses/#{comment.id}", method: :delete,class: "comment_delete_button" %>
               <% end %>
               <div class="comment_at">
-              <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+                <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
               </div>
           </p>
+          <%@num+=1%>
         <% end %>
       <% end %>
     </div>
-    <div class="comment_container"> 
+    <div class="comment-form"> 
+    <!-- ここからフォーム -->
     <% if current_user %>
       <%= form_with(model:[@analysis, @comment], method: :post) do |f| %>
         <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
@@ -66,3 +75,5 @@
       <% end %>
     <% end %>
     </div>
+  </div>
+</div>
