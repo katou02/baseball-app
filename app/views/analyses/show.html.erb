@@ -1,4 +1,4 @@
-<div class="analysis-content">
+<div class="analysis-show_content">
   <div class="choose-btn">
     <% if current_user.id == @analysis.user_id || current_user.admin? %>
     <%= link_to "記事を削除する","/analyses/#{@analysis.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-article"%>
@@ -9,10 +9,16 @@
   <div class="user_name">
     <h4>投稿者 <%= link_to "#{@analysis.user.nickname}","/mypages/#{@analysis.user_id}"%></h4>
   </div>
-  <div class="school_name-ays">
-    <%= @analysis.school.name %>
-  </div>
-  <div class="select_main-show">
+  <div class="content-fcs_show">
+    <div class="text-format mt-5 text-success">
+      <i class="fas fa-search"></i>
+      試合評・感想<br><br>
+      <%= @analysis.tournament.name%>
+    </div>
+    <div class="school_name-ays">
+      <%= @analysis.school.name %>
+    </div>
+    <div class="select_main-show">
       <div class="attack_i">
         <p>攻撃力</p>
         <%= @analysis.attack%>
@@ -38,6 +44,7 @@
         <% end %>
       </div>
     </div>
+  </div>
   <div class="show-text">
     <%= simple_format(@analysis.text)%>
   </div>
