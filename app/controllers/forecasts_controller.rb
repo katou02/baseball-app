@@ -7,7 +7,6 @@ class ForecastsController < ApplicationController
   end
 
   def show
-    # @forecast = Forecast.find(params[:id])
     @nickname = current_user.nickname
     @comments = @forecast.comment_forecasts.includes(:user)
     @comment = current_user.comment_forecasts.new
