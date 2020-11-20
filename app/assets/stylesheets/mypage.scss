@@ -4,6 +4,7 @@
 
 .myname {
   font-size: 30px;
+  position: relative;
 }
 
 .text-myname,.residence {
@@ -14,8 +15,29 @@
   margin-bottom: 50px;
 }
 
+.mypage-content {
+  background-color: #EEEEEE;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.myprof {
+  position: relative;
+}
+
+.my-links {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  display:flex;
+  flex-flow: column;
+}
+
 .my-link {
-  margin-left: 25px;
+  // background-color: rgb(184, 184, 184);
+  padding: 10px;
+  margin-bottom: 30px;
+  border-bottom: solid 2px rgb(189, 189, 201);
 }
 
 .follow-user,.unfollow-user {

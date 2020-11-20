@@ -1,13 +1,13 @@
 <%= render partial: "tweets/header"%>
-<%= link_to "トップページへ戻る",root_path %>
-<div class="mypage-content mt-5">
+<div class="mypage-content">
+  <%= link_to "トップページへ戻る",root_path %>
   <% if @user.id == current_user.id  && @mypage.blank? %>
     <%= link_to "プロフィール作成",new_mypage_path %>
   <% elsif @mypage.blank? %>
   <% elsif @user.id == current_user.id || current_user.admin %>
     <%= link_to "プロフィール編集",edit_mypage_path(@user) %>
   <% end %>
-  <div class="myname">
+  <div class="myname mt-5">
     <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
   </div>
   <%= render "users/stats" %>
@@ -22,10 +22,10 @@
         <br><%= @mypage.text %>
       </div>
       <div class="my-links">
-        <%= link_to "投稿した試合記事","#{@mypage.user_id}/my_tweets",class: "my-link" %>
-        <%= link_to "投稿した戦力分析","#{@mypage.user_id}/my_analyses",class: "my-link" %>
-        <%= link_to "投稿した試合予想","#{@mypage.user_id}/my_forecasts",class: "my-link" %>
-        <%= link_to "いいねした試合記事","/users/#{@mypage.user_id}/likes",class: "my-link"%>
+          <%= link_to "投稿した試合記事","#{@mypage.user_id}/my_tweets",class: "my-link" %>
+          <%= link_to "投稿した戦力分析","#{@mypage.user_id}/my_analyses",class: "my-link" %>
+          <%= link_to "投稿した試合予想","#{@mypage.user_id}/my_forecasts",class: "my-link" %>
+          <%= link_to "いいねした試合記事","/users/#{@mypage.user_id}/likes",class: "my-link"%>
       </div>
     </div>
   <% end %>
