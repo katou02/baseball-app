@@ -1,5 +1,5 @@
 <%= render :partial=>"tweets/header"%>
-<div class="main-content-btn">
+<div class="main-content-btn mt-1">
   <% if user_signed_in? %>
     <%= link_to "投稿する",new_tweet_path,class: "send_btn"%>
   <% end %>
@@ -8,7 +8,7 @@
   <%end%>
 </div>
 <div class="article-main">
-  <div class="text-format text-success mt-5 mb-４">
+  <div class="text-format text-success mt-1 mb-４">
     <%= @tweet.tournament.name%>
   </div>
   <%= render partial: "tweets/tweet_show"%>
