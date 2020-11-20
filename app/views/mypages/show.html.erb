@@ -1,39 +1,39 @@
 <%= render partial: "tweets/header"%>
 <%= link_to "トップページへ戻る",root_path %>
-<div class="myname">
-  <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
-</div>
-<%= render "users/stats" %>
-<% if @user.id == current_user.id  && @mypage.blank? %>
-  <%= link_to "プロフィール作成",new_mypage_path %>
-<% elsif @mypage.blank? %>
-<% elsif @user.id == current_user.id || current_user.admin %>
-  <%= link_to "プロフィール編集",edit_mypage_path(@user) %>
-<% end %>
-<% if @mypage.present? %>
-  </div class="myprof">
-    <div class="residence">
-      <p>住んでる場所</p>
-      <br><%= @mypage.prefectures %> 
-    </div>
-    <div class="text-myname">
-      <p>自己紹介</p>
-      <br><%= @mypage.text %>
-    </div>
-    <div class="my-links">
-      <%= link_to "投稿した試合記事","#{@mypage.user_id}/my_tweets",class: "my-link" %>
-      <%= link_to "投稿した戦力分析","#{@mypage.user_id}/my_analyses",class: "my-link" %>
-      <%= link_to "投稿した試合予想","#{@mypage.user_id}/my_forecasts",class: "my-link" %>
-      <%= link_to "いいねした試合記事","/users/#{@mypage.user_id}/likes",class: "my-link"%>
-    </div>
+<div class="mypage-content mt-5">
+  <% if @user.id == current_user.id  && @mypage.blank? %>
+    <%= link_to "プロフィール作成",new_mypage_path %>
+  <% elsif @mypage.blank? %>
+  <% elsif @user.id == current_user.id || current_user.admin %>
+    <%= link_to "プロフィール編集",edit_mypage_path(@user) %>
+  <% end %>
+  <div class="myname">
+    <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
   </div>
-<% end %>
-<% if @user.id != current_user.id %>
+  <%= render "users/stats" %>
+  <% if @mypage.present? %>
+    <div class="myprof">
+      <div class="residence">
+        <p>住んでる場所</p>
+        <br><%= @mypage.prefectures %> 
+      </div>
+      <div class="text-myname">
+        <p>自己紹介</p>
+        <br><%= @mypage.text %>
+      </div>
+      <div class="my-links">
+        <%= link_to "投稿した試合記事","#{@mypage.user_id}/my_tweets",class: "my-link" %>
+        <%= link_to "投稿した戦力分析","#{@mypage.user_id}/my_analyses",class: "my-link" %>
+        <%= link_to "投稿した試合予想","#{@mypage.user_id}/my_forecasts",class: "my-link" %>
+        <%= link_to "いいねした試合記事","/users/#{@mypage.user_id}/likes",class: "my-link"%>
+      </div>
+    </div>
+  <% end %>
+  <% if @user.id != current_user.id %>
     <% if @isRoom == true %>
       <% if current_user.following?(@user) %>
-       <div class="dm">
-         <%= link_to 'ダイレクトメッセージをする', room_path(@roomId) %>
-       </div>
+      <div class="dm">
+        <%= link_to 'ダイレクトメッセージをする', room_path(@roomId) %>
       <% end %>
     <% else %>
       <%= form_for @room do |f| %>
@@ -41,9 +41,10 @@
           <% e.hidden_field :user_id, value: @user.id %>
         <% end %>
         <%= f.submit "DMを開始する"%>
+      </div>
       <% end %>
     <% end %>
-<% end %>
+  <% end %>
+  <%= render "users/follow_form" %>
 </div>
-<%= render "users/follow_form" %>
   
