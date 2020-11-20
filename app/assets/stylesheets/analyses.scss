@@ -2,7 +2,7 @@
   padding: 0 250px;
   background-image: url("photo0000-0331.jpg");
   background-size: cover;
-  background-color:rgba(255,255,255,0.5);
+  background-color:#ffffff80;
   background-blend-mode:lighten;
 }
 
@@ -15,7 +15,7 @@
     position: absolute;
     text-align: center;
     width: 10%;
-    height: 100%;
+    // height: 100%;
     font-size: 30px;
   }
   &:hover {
