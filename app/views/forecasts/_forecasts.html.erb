@@ -1,5 +1,9 @@
 <div class="text-format mb-5 text-danger">
-  みんなの試合予想
+  <% if current_page?(forecasts_path) || current_page?(watch_fcs_tournament_path)  %>
+    みんなの試合予想
+  <% else %>
+    投稿した試合予想
+  <% end %>
 </div>
 <% @forecasts.each do |forecast| %>
   <%= link_to forecast do %>

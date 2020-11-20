@@ -1,5 +1,9 @@
 <div class="text-format mb-5 text-warning">
-  みんなの試合記事
+  <% if current_page?(tweets_path) || current_page?(tournament_path)  %>
+    みんなの試合記事
+  <% else %>
+    投稿した試合記事
+  <% end %>
 </div>
 <% @tweets.each do |tweet|%>
   <%= link_to tweet do %>
