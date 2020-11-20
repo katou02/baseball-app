@@ -1,5 +1,6 @@
  <% @user ||= current_user %>
 <div class="stats">
+  <i class="fas fa-user-friends text-info"></i>
   <a href="<%= following_user_path(@user) %>">
     <strong id="following" class="stat">
       <%= @user.followings.count %>
