@@ -1,32 +1,28 @@
 <%= form_for @contact, url: done_contacts_path do |f| %>
+<div class="contact">
   <div class="contact-main text-center pt-2">
     <h2>内容確認</h2>
-    <div class="contact-check">
-      <div class="contact-name mt-5">
-        名前
-        <p>
-          <%= f.hidden_field :name %>
-          <%= @contact.name %>
-        </p>
+    <div class="contact-check mt-5">
+      <div class="contact-check-name mt-2">
+        <p>名前</p>
+        <%= f.hidden_field :name %>
+        <%= @contact.name%>
       </div>
-      <div class="contact-mail mt-3">
-        メールアドレス
-        <p>
-          <%= f.hidden_field :email %>
-          <%= @contact.email %>
-        </p>
+      <div class="contact-check-mail mt-5">
+        <p>メールアドレス</p>
+        <%= f.hidden_field :email %>
+        <%= @contact.email %>
       </div>
-      <div class="contact-message mt-3">
-        内容
-        <p>
-          <%= f.hidden_field :content %>
-          <%= simple_format(@contact.content) %>
-        </p>
+      <div class="contact-message mt-4">
+        <p>内容</p>
+        <%= f.hidden_field :content %>
+        <%= simple_format(@contact.content) %>
       </div>
       <div class="contact-sent mt-5">
-        <%= f.submit '送信する' %>
-        <%= f.submit '戻る', name: 'back',class: "mt-5" %>
+        <%= f.submit "送信する",class:"btn btn-warning" %>
+        <%= f.submit '戻る', name: 'back',class: "btn btn-primary active mt-5" %>
       </div>
     </div>
   </div>
+</div>
 <% end %>
