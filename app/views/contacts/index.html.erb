@@ -1,9 +1,9 @@
 <%= form_for(@contact, url: { action: :check }) do |f| %>
-  <div>
-    <h2>お問い合わせ</h2>
-
+  <div class="contact text-center pt-2">
+    <h2>お問い合わせ</h2><br>
+    <p>管理人に、問い合わせ・要望などを送信できます
       <% if @contact.errors.present? %>
-        <div>
+        <div class="contact-error">
           <strong>入力内容にエラーがあります</strong>
           <ul>
             <% @contact.errors.each do |attr, error| %>
@@ -12,19 +12,22 @@
           </ul>
         </div>
       <% end %>
-
-    <div>
-      <strong>名前</strong>
-      <p><%= f.text_field :name, placeholder: '20文字以内' %></p>
+    <div class="contact-user-input mt-5">
+      <div class="contact-name">
+        名前
+        <p><%= f.text_field :name, placeholder: '20文字以内' %></p>
+      </div>
+      <div class="contact-mail mt-4">
+        メールアドレス
+        <p><%= f.text_field :email, placeholder: '30文字以内' %></p>
+      </div>
+      <div class="contact-message mt-4">
+        問い合わせ内容
+        <p><%= f.text_area :content, placeholder: '1000文字以内' %></p>
+      </div>
+      <div class="contact-sent mt-5">
+        <%= f.submit '確認画面へ' %>
+      </div>
     </div>
-    <div>
-      <strong>メールアドレス</strong>
-      <p><%= f.text_field :email, placeholder: '30文字以内' %></p>
-    </div>
-    <div>
-      <strong>内容</strong>
-      <p><%= f.text_area :content, placeholder: '1000文字以内' %></p>
-    </div>
-      <%= f.submit '確認画面へ' %>
   </div>
 <% end %>

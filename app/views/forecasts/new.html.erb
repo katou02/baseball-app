@@ -2,12 +2,9 @@
   <%= link_to "戻る",forecasts_path,class: "return-top"%>
 </div>
 <div class="contents row">
-  <div class="form">
+  <div class="form p-4">
     <%= form_with model: @forecast,local: true do |f| %>
       <%= render 'layouts/error_messages_fcs', model: f.object %>
-    <h2>
-    投稿する
-    <h2>
     <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @forecast.tournament_id),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category_forecast"} %>
     <div class="win-school mt-3"></div>
     <div class="lose-school mt-3"></div>
