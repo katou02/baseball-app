@@ -3,7 +3,6 @@
 .header,.analysis_header {
   font-size: 40px;
   height: 300px;
-  /* border-bottom: solid 3px grey; */
   position: relative;
   background-size: cover;
   background-position: center center;
@@ -91,6 +90,7 @@
     background-size: cover;
     background-color:rgba(255,255,255,0.8);
     background-blend-mode:lighten;
+    height: 100%;
   }
 }
 
@@ -146,4 +146,8 @@ h2 {
   &-btn{
     background-color: #68ccf9;
   }
+}
+
+.tournament-tweet {
+  height: 100%;
 }
