@@ -13,7 +13,7 @@ function appendChildrenBox(insertHTML) {
                       ${insertHTML}</select>`
                     $(".school").append(childSelectHtml)
   childSelectHtml2 = 
-                    `<p>高校B</p>
+                    `<br><p>高校B</p>
                     <select name="tweet[school_b_id]" class="tournament_select_child" id="children_category">
                       <option value="" data-category="" >学校を選択してください</option>
                       ${insertHTML}</select>`
