@@ -4,6 +4,7 @@
   background-size: cover;
   background-color:#ffffff80;
   background-blend-mode:lighten;
+  flex: 1 1 100%;
 }
 
 .content_anali {
@@ -15,7 +16,6 @@
     position: absolute;
     text-align: center;
     width: 10%;
-    // height: 100%;
     font-size: 30px;
   }
   &:hover {
