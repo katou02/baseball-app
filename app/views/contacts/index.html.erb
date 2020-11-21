@@ -1,5 +1,6 @@
 <%= form_for(@contact, url: { action: :check }) do |f| %>
-  <div class="contact text-center pt-2">
+<div class="contact">
+  <div class="contact-main text-center pt-2">
     <h2>お問い合わせ</h2><br>
     <p>管理人に、問い合わせ・要望などを送信できます
       <% if @contact.errors.present? %>
@@ -26,8 +27,12 @@
         <p><%= f.text_area :content, placeholder: '1000文字以内' %></p>
       </div>
       <div class="contact-sent mt-5">
-        <%= f.submit '確認画面へ' %>
+        <%= f.submit "確認画面へ" %>
+        <%= link_to root_path,class: "btn btn-primary active" do %>
+        戻る
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 <% end %>
