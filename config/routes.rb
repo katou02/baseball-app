@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :tournaments,only:[:show] do
     member do
-      get :watch,:watch_avg,:watch_fcs
+      get :watch_ays,:watch_avg,:watch_fcs
     end
   end
   resources :analyses do

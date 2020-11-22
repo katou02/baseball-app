@@ -13,7 +13,7 @@
     <%= link_to "/mypages/#{current_user.id}",class: "mypage" do %>
       <i class="fa fa-user"></i>マイページ
     <% end %>
-    <%= link_to contacts_path,class: "contact" do %>
+    <%= link_to contacts_path,class: "contact-header" do %>
       <i class="fa fa-envelope"></i>お問い合わせ
     <% end %>
   <% elsif user_signed_in? && current_user.admin? %>

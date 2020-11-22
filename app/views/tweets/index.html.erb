@@ -3,7 +3,7 @@
   <h1>試合記事</h1>
 </div>
 <div class="main-content">
-  <div class="main-content-btn">
+  <div class="main-content-btn pt-2">
     <% if user_signed_in?%>
       <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
     <% end %>
@@ -29,14 +29,17 @@
     大会別
   </div>
   <% @category_parent_array.each do |tournament|%>
-    <div class="by_tournament d-inline-block">
+    <%= link_to "/tournaments/#{tournament.id}",class: "title text-white" do%>
       <i class="fa fa-baseball-ball text-white"></i>
-      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}",class: "tournament-title text-white"%>
-    </div>
-  <%end%>
-    <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search") do |form| %>
-    <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
-    <%= form.submit "検索", class: "search-btn" %>
+      <%=tournament.name%>
     <% end %>
- <%= render partial: "tweet_show"%>
+  <% end %>
+  <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search mt-5 mb-5") do |form| %>
+  <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+  <% end %>
+  <div class="article-main">
+    <%= render partial: "tweet_show"%>
+    <%= paginate(@tweets) %>
+  </div>
 </div>

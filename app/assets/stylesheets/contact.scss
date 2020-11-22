@@ -1,0 +1,14 @@
+.contact {
+  background-color: #EEEEEE;
+  &-main{
+    width: 45%;
+    margin: 0 auto;
+    flex: 1 1 100%;
+  }
+  &-sent {
+    width: 20%;
+    margin: 0 auto;
+  }
+}
+
+
