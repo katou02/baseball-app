@@ -1,10 +1,39 @@
-<%= render partial: "/tweets/log"%>
-<%= link_to "試合記事",tweets_path%>
-<%= link_to "戦力分析",analyses_path%>
-<%= link_to "試合予想",forecasts_path%>
-<% if user_signed_in? %>
-  <%= link_to "マイページ","/mypages/#{current_user.id}"%>
-  <%= link_to "お問い合わせ",contacts_path %>
-<% elsif user_signed_in? && current_user.admin? %>
-  <%= link_to "管理者ページ", users_show_admin_users_path %>
-<% end %>
+<div class="top-main">
+    <%= render partial: "/tweets/header"%>
+  <div id="app">
+    <transition name="bounce" appear>
+    <div v-show="show">
+      <div class="top-container">
+        <div class="mx-auto" style="width: 40%;">
+        <div class="top-title font-weight-bold">
+          甲子園
+        </div>
+          <li>
+          <%= link_to tweets_path,class: "btn btn-cool-blues" do %>
+            <i class="fas fa-edit"></i>試合記事
+          <% end %>
+          </li>
+          <li>
+          <%= link_to analyses_path,class: "btn btn-green-moon" do %>
+            <i class="fas fa-search"></i>戦力分析
+          <% end %>
+          </li>
+          <%= link_to forecasts_path,class: "btn btn-orange-moon" do %>
+            <i class="fas fa-baseball-ball"></i>試合予想
+          <% end %>
+        </div>
+        <div class="top-image_one">
+          <%= image_tag "defense.png",width: '400',height: '300' %>
+        </div>
+        <div class="top-image_two">
+          <%= image_tag "s-20140422202730101600.png",width: '300',height: '300' %>
+        </div>
+        <div class="top-image_three">
+          <%= image_tag "04528d896c142111f9ad8f83522bb05d76dbf17a.png",width: '300',height: '300' %>
+        </div>
+      </div>
+    </div>
+    </transition>
+  </div>
+</div>
+<%= javascript_pack_tag 'top' %>

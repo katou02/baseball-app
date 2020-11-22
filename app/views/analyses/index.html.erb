@@ -6,7 +6,7 @@
       <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}/watch",class: "title"%>
     </div>
   <% end %>
-  <%= render partial: "tweets/log" %>
+  <%= render partial: "tweets/header" %>
   <% if user_signed_in? %>
     <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
   <% end %>

@@ -71,6 +71,7 @@ gem 'compass-rails', '3.1.0'
 gem 'sprockets', '3.7.2'
 gem 'kaminari'
 gem 'jquery-rails'
+gem "jquery-ui-rails"
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'rails-i18n'
@@ -81,7 +82,8 @@ gem "font-awesome-sass"
 
 gem 'ancestry'
 gem 'fog'
-
+gem 'webpacker'
+gem 'bootstrap', '~> 5.0.0.alpha2'
 
 group :production do
   gem 'unicorn', '5.4.1'

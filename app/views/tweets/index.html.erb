@@ -1,16 +1,19 @@
-<html>
-<head>
-</head>
-
-<body>
+<%= render partial: "header"%>
 <div class="header">
   <h1>試合記事</h1>
 </div>
 <div class="main-content">
-<%= render partial: "log"%>
-<% if user_signed_in?%>
-  <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
-<% end %>
+  <div class="main-content-btn">
+    <% if user_signed_in?%>
+      <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
+    <% end %>
+    <% unless current_page?(root_path)%>
+      <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
+    <%end%>
+  </div>
+  <div class="text-format mt-5 text-primary">
+    観た試合の感想をみんなに発信してみましょう！
+  </div>
   <div class="images">
     <div class="image_2">
       <img src="https://kohacu.com/wp-content/uploads/2018/08/kohacu.com_001578_20180807-768x768.png" width=100 height="100">
@@ -22,18 +25,18 @@
       <img src="https://sanchanne.com/wp-content/uploads/2019/09/fd72cd69ead1784014d1e58100d9a322.png" width="100" height="100">
     </div>
   </div>
+  <div class="text-format mt-5 mb-4 text-warning">
+    大会別
+  </div>
   <% @category_parent_array.each do |tournament|%>
-    <div class="by_tournament">
-      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}",class: "title"%>
+    <div class="by_tournament d-inline-block">
+      <i class="fa fa-baseball-ball text-white"></i>
+      <%= link_to "#{tournament.name}","/tournaments/#{tournament.id}",class: "tournament-title text-white"%>
     </div>
   <%end%>
-  <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
-  <% end %>
+    <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search") do |form| %>
+    <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
+    <% end %>
  <%= render partial: "tweet_show"%>
 </div>
-<%= paginate(@tweets)%>
-</div>
-</body>
-</html>
