@@ -84,7 +84,7 @@ gem 'ancestry'
 gem 'fog'
 gem 'webpacker'
 gem 'bootstrap', '~> 5.0.0.alpha2'
-
+ 
 group :production do
   gem 'unicorn', '5.4.1'
 end
