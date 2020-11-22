@@ -1,8 +1,18 @@
+<div class="text-format mb-5 pt-5 text-warning">
+  <% if current_page?(analyses_path) || current_page?(watch_ays_tournament_path)  %>
+    みんなの戦力分析
+  <% else %>
+    投稿した戦力分析
+  <% end %>
+</div>
 <% @analyses.each do |analysis|%>
   <%= link_to analysis do%>
   <div class="content_anali">
-    <div class="school_ays">
+    <div class="school_ays-name">
       <%= analysis.school.name %>
+    </div>
+    <div class="content_anali-image mt-4">
+      <i class="fas fa-search"></i>
     </div>
     <div class="select_main">
       <div class="attack_i">
@@ -30,17 +40,13 @@
         <% end %>
       </div>
     </div>
-  <div class="text">
-    <%= simple_format(analysis.text)%>
+    <div class="name_ays">
+      <span>投稿者</span>
+      <%= analysis.user.nickname %>
+    </div>
+    <div class="analyses_at">
+      <%= analysis.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+    </div>
   </div>
-  <div class="name_ays">
-    <span>投稿者</span>
-    <%= analysis.user.nickname %>
-  </div>
-  <% if user_signed_in? && analysis.user_id == current_user.id || current_user.admin %>
-    <%= link_to "削除","/analyses/#{analysis.id}/",method: :delete,data: { confirm: '削除しますか？' },class: "ays_delete" %>
-    <%= link_to "編集","/analyses/#{analysis.id}/edit",method: :get, class: "ays_edit"%>
   <% end %>
-</div>
-<% end %>
 <% end %>

@@ -4,13 +4,14 @@ class AnalysesController < ApplicationController
   before_action :move_to_index,except: :index
   
   def index
-    @analyses = Analysis.includes(:user).page(params[:page]).per(10).order("created_at DESC")
+    @analyses = Analysis.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
 
   def show
     @nickname = current_user.nickname
     @comments = @analysis.comment_analyses.includes(:user)
     @comment = current_user.comment_analyses.new
+    @num = 1
   end
 
   def new

@@ -10,6 +10,7 @@ class ForecastsController < ApplicationController
     @nickname = current_user.nickname
     @comments = @forecast.comment_forecasts.includes(:user)
     @comment = current_user.comment_forecasts.new
+    @num = 1
   end
 
   def new

@@ -1,2 +1,18 @@
-<%= link_to "予想一覧へ戻る",forecasts_path,class: "return-btn"%>
-<%= render partial: "forecasts/show"%>
+<%= render partial: "tweets/header"%>
+<div id="wrapper">
+  <div class="main-content-btn mt-1">
+    <% if user_signed_in? %>
+      <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
+    <% end %>
+    <% unless current_page?(root_path)%>
+      <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-btn_watch"%>
+    <%end%>
+  </div>
+  <div class="forecasts-main">
+    <div class="text-format text-danger mt-1 pt-5 mb-4">
+      <%= @forecast.tournament.name%>
+    </div>
+    <%= render partial: "forecasts/forecasts"%>
+    <%= paginate(@forecasts)%>
+  </div>
+</div>

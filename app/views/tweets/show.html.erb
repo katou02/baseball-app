@@ -16,15 +16,16 @@
     <%=@tweet.school_b_score%>
     <%=@tweet.school_b.name%>
   </div>
-  <div class="sub_title">
+  <div class="sub_title pb-2 mt-5">
     <i class="fa fa-baseball-ball text-white"></i>
     <%=@tweet.title_info%>
   </div>
   <div class="text-format mt-5 text-info">
     <i class="fas fa-pen text-info"></i>
-    試合評・感想
+    試合評・感想<br><br>
+    <%= @tweet.tournament.name%>
   </div>
-  <div class=texts>
+  <div class=show-text>
     <%= simple_format(@tweet.text)%>
   </div>
   <div class="image">
@@ -71,7 +72,7 @@
     <div class="comment-form"> 
     <!-- ここからフォーム -->
     <% if current_user %>
-      <%= form_with(model:[@tweets, @comment], method: :post) do |f| %>
+      <%= form_with(model:[@tweet, @comment], method: :post) do |f| %>
         <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
         <input type="submit" value="SENT" class="game_record">
       <% end %>

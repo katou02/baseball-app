@@ -1,23 +1,41 @@
-.analysis_main {
+.analysis-main {
   padding: 0 250px;
+  background-image: url("photo0000-0331.jpg");
+  background-size: cover;
+  background-color:#ffffff80;
+  background-blend-mode:lighten;
+  flex: 1 1 100%;
 }
 
 .content_anali {
   margin-top: 90px;
-  background-color: #00FF00;
+  background-color: lime;
   position: relative;
+  border: solid 1px rgb(255, 255, 255);
+  &-image {
+    position: absolute;
+    text-align: center;
+    width: 10%;
+    font-size: 30px;
+  }
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .select_main,.select_main-show {
-  margin: 20px 0;
+  padding-top: 30px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: space-evenly;
   text-align: center;
 }
 
-.school_ays {
+.school_ays-name {
+  color: white;
   font-size: 30px;
   text-align: center;
+  font-weight: bold;
 }
 
 .attack_i,.defensive_i,.pitcher_i,.comprehensive_i {
@@ -40,10 +58,9 @@
   right: 50px;
 }
 
-.name_ays {
-  position: absolute;
-  top:  0;
-  right: 0;
+.name_ays,.name-fcs {
+  text-align: right;
+  padding-bottom: 10px;
 }
 
 /* watch */
@@ -86,6 +103,5 @@
 }
 
 .text-show {
-  text-align: center;
   margin-top: 100px;
 }

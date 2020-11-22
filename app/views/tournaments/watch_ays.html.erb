@@ -1,0 +1,23 @@
+<%= render partial: "tweets/header"%>
+<div id="wrapper">
+  <div class="main-content-btn mt-1">
+    <% if user_signed_in? %>
+      <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
+    <% end %>
+    <% unless current_page?(root_path)%>
+      <%= link_to "分析一覧へ戻る",analyses_path,class: "return-btn_watch"%>
+    <%end%>
+  </div>
+  <div class="go-avg">
+    <%=@analysis.name%><br>
+    <%= link_to "平均評価を見る",watch_avg_tournament_path,class: "ays-avg" %>
+    <p>みんなの集計結果を元にした平均評価を見れます<p>
+  </div>
+  <div class="analysis-main">
+    <div class="text-format text-success mt-5 pt-5 mb-４">
+      <%= @analysis_tournament.tournament.name%>
+    </div>
+    <%= render partial: "analyses/show"%>
+    <%= paginate(@analyses)%>
+  </div>
+</div>
