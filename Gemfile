@@ -77,7 +77,6 @@ gem 'momentjs-rails'
 gem 'rails-i18n'
 gem 'devise'
 gem 'carrierwave'
-gem 'mini_magick'
 gem "font-awesome-sass"
 
 gem 'ancestry'
