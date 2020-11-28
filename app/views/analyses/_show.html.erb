@@ -29,15 +29,7 @@
       </div>
       <div class="comprehensive_i">
         <p>総合力</p>
-        <% if analysis.comprehensive=="A" %>
-          <%= analysis.comprehensive%>
-        <% elsif analysis.comprehensive=="B" %>
-          <p>B+<p>
-        <% elsif analysis.comprehensive=="C" %>
-          <p>B<p>
-        <% else %>
-          <p>C<p>
-        <% end %>
+        <%= analysis.comprehensive%>
       </div>
     </div>
     <div class="name_ays">
