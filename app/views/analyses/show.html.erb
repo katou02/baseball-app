@@ -19,32 +19,22 @@
     <div class="school_name-ays">
       <%= @analysis.school.name %>
     </div>
-    <div class="select_main-show">
-      <div class="attack_i">
-        <p>攻撃力</p>
-        <%= @analysis.attack%>
-      </div>
-      <div class="defensive_i">
-        <p>守備力</p>
-        <%= @analysis.defensive%>
-      </div>
-      <div class="pitcher_i">
-        <p>投手力</p>
-        <%= @analysis.pitcher%>
-      </div>
-      <div class="comprehensive_i">
-        <p>総合力</p>
-        <%= @analysis.comprehensive%>
-      </div>
-      <div class="expectations_i">
-        <p>期待度</p>
-        <%= @analysis.expectations%>
-      </div>
+    <div class="select_main-show">    
+      <p>攻撃力</p>
+      <div class="attack_i"><%= @analysis.attack%></div>
+      <p>守備力</p>
+      <div class="defensive_i"><%= @analysis.defensive%></div>
+      <p>投手力</p>
+      <div class="pitcher_i"><%= @analysis.pitcher%></div>
+      <p>総合力</p>
+      <div class="comprehensive_i"><%= @analysis.comprehensive%></div>
+      <p>期待度</p>
+      <div class="expectations_i"><%= @analysis.expectations%></div>
     </div>
     <div style="width:900px; height:500px;" >
       <canvas id="RaderChart"></canvas>
-      <%= render partial: "chart"%>
     </div>
+      <%= javascript_pack_tag 'analysis' %>
   </div>
   <div class="show-text">
     <%= simple_format(@analysis.text)%>
