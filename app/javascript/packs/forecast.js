@@ -9,8 +9,8 @@ var PieChart = new Chart(ctx, {
     labels: [win,lose],
     datasets: [{
       backgroundColor: [
-        "#DC3545",
-        "#0DCAF0",
+        "#FF0000",
+        "#33CCFF",
       ],
       data: [winnum,100-winnum]
     }]
