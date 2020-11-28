@@ -24,11 +24,12 @@ class TournamentsController < ApplicationController
     sum = []
     num.each do |analysis|
       sum << {
-        name: analysis.school.name,attack_num: analysis.attack.ord,
-        defense_num: analysis.defensive.ord,pitch_num: analysis.pitcher.ord,total_num: analysis.comprehensive.ord
+        name: analysis.school.name,attack_num: analysis.attack,defense_num: analysis.defensive,
+        pitch_num: analysis.pitcher,total_num: analysis.comprehensive,expectations_num:analysis.expectations
       }
     end
     @avgs = sum.group_by{|x| x[:name]}
-    .map{|k,x| {name: k, attack_num: x.sum(0.0){|y| y[:attack_num]}/x.size,defense_num: x.sum(0.0){|y| y[:defense_num]}/ x.size,pitch_num: x.sum(0.0){|y| y[:pitch_num]}/ x.size,total_num: x.sum(0.0){|y| y[:total_num]}/ x.size}}.to_a
+    .map{|k,x| {name: k, attack_num: x.sum(0.0){|y| y[:attack_num]}/x.size,defense_num: x.sum(0.0){|y| y[:defense_num]}/ x.size,pitch_num: x.sum(0.0){|y| y[:pitch_num]}/ x.size,total_num: x.sum(0.0){|y| y[:total_num]}/ x.size,
+                expectations_num: x.sum(0.0){|y| y[:expectations_num]}/x.size}}.to_a
   end
 end
