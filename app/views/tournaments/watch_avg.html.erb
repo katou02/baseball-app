@@ -2,42 +2,15 @@
   <%=avg[:name]%>
 <div class="average">
   <p>攻撃力<p>
-  <% if avg[:attack_num]<65.5 %>
-    <p>A<p>
-  <% elsif avg[:attack_num]>=65.5 && avg[:attack_num]<67 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-  
+  <%= avg[:attack_num].round %>
   <p>守備力<p>
-  <% if avg[:defense_num]<65.5 %>
-    <p>A<p>
-  <% elsif avg[:defense_num]>=65.5 && avg[:defense_num]<67 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-
+  <%= avg[:defense_num].round %>
   <p>投手力<p>
-  <% if avg[:pitch_num]<65.5 %>
-    <p>A<p>
-  <% elsif avg[:pitch_num]>=65.5 && avg[:pitch_num]<67 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-
+  <%= avg[:pitch_num].round %>
   <p>総合力<p>
-  <% if avg[:total_num]<65.5 %>
-    <p>A<p>
-  <% elsif avg[:total_num]>=65.5 && avg[:total_num]<67 %>
-    <p>B+<p>
-  <% elsif avg[:total_num]>=67 && avg[:total_num]<68 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
+  <%= avg[:total_num].round %>
+  <p>期待度</p>
+  <%= avg[:expectations_num].round %>
 </div>
   <% end %>
   <%= link_to "戻る",watch_ays_tournament_path%>
