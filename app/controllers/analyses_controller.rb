@@ -12,6 +12,7 @@ class AnalysesController < ApplicationController
     @comments = @analysis.comment_analyses.includes(:user)
     @comment = current_user.comment_analyses.new
     @num = 1
+    @data = [@analysis.attack,@analysis.defensive,@analysis.pitcher,@analysis.comprehensive,@analysis.expectations]
   end
 
   def new
