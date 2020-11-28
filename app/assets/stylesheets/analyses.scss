@@ -14,7 +14,6 @@
   border: solid 1px rgb(255, 255, 255);
   &-image {
     position: absolute;
-    text-align: center;
     width: 10%;
     font-size: 30px;
   }
@@ -28,7 +27,6 @@
   padding-bottom: 10px;
   display: flex;
   justify-content: space-evenly;
-  text-align: center;
 }
 
 .school_ays-name {
@@ -39,6 +37,12 @@
 }
 
 .attack_i,.defensive_i,.pitcher_i,.comprehensive_i,.expectations_i {
+  margin-right: 70px;
+  font-size: 20px;
+}
+
+.font {
+  margin-right: -80px;
   font-size: 20px;
 }
 

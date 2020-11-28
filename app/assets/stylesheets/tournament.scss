@@ -1,0 +1,20 @@
+.average {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.avg-expec {
+  font-size: 20px;
+  margin-left: -40px;
+}
+
+.avg-attack,.avg-defense,.avg-pitch,.avg-total {
+  margin-left: -200px;
+  font-size: 20px;
+}
+
+.avg-name {
+  font-size: 25px;
+}

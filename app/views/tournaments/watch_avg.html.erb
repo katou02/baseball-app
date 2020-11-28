@@ -1,21 +1,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 <% @avgs.each do |avg|%>
-  <%=avg[:name]%>
-<div class="average">
-  <p>攻撃力<p>
-  <div class="avg-attack"><%= avg[:attack_num].round %></div>
-  <p>守備力<p>
-  <div class="avg-defense"><%= avg[:defense_num].round %></div>
-  <p>投手力<p>
-  <div class="avg-pitch"><%= avg[:pitch_num].round %></div>
-  <p>総合力<p>
-  <div class="avg-total"><%= avg[:total_num].round %></div>
-  <p>期待度</p>
-  <div class="avg-expec"><%= avg[:expectations_num].round %></div>
-</div>
-<div style="width:900px; height:500px;" >
-  <canvas class="RaderChart"></canvas>
-</div>
-<%= javascript_pack_tag 'tournament' %>
+  <div class="avg-name text-center pt-5"><%=avg[:name]%></div>
+  <div class="average">
+    <p class="font">攻撃力<p>
+    <div class="avg-attack"><%= avg[:attack_num].round %></div>
+    <p class="font">守備力<p>
+    <div class="avg-defense"><%= avg[:defense_num].round %></div>
+    <p class="font">投手力<p>
+    <div class="avg-pitch"><%= avg[:pitch_num].round %></div>
+    <p class="font">総合力<p>
+    <div class="avg-total"><%= avg[:total_num].round %></div>
+    <p class="font">期待度</p>
+    <div class="avg-expec"><%= avg[:expectations_num].round %></div>
+  </div>
+  <div style="width:900px; height:500px;" >
+    <canvas class="RaderChart"></canvas>
+  </div>
+  <%= javascript_pack_tag 'tournament' %>
 <% end %>
 <%= link_to "戻る",watch_ays_tournament_path%>
