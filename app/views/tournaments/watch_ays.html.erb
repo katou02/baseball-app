@@ -14,10 +14,14 @@
     <p>みんなの集計結果を元にした平均評価を見れます<p>
   </div>
   <div class="analysis-main">
-    <div class="text-format text-success mt-5 pt-5 mb-４">
-      <%= @analysis_tournament.tournament.name%>
-    </div>
-    <%= render partial: "analyses/show"%>
+    <% if @analysis_tournament.present? %>
+      <div class="text-format text-success mt-5 pt-5 mb-４">
+        <%= @analysis_tournament.tournament.name%>
+      </div>
+      <%= render partial: "analyses/show"%>
+    <% else %>
+      <p class="text-center mt-5">投稿はありません</p>
+    <% end %>
     <%= paginate(@analyses)%>
   </div>
 </div>
