@@ -1,4 +1,5 @@
 <div class="forecast-show_content">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
   <div class="choose-btn pt-2">
     <% if current_user.id == @forecast.user_id || current_user.admin? %>
       <%= link_to "記事を削除する","/forecasts/#{@forecast.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-article"%>
@@ -19,14 +20,19 @@
       <div class="win-school text-danger">
         <p>勝利予想<p>
         <br>
-        <%= @forecast.win_school.name%>
+        <div class="win"><%= @forecast.win_school.name %></div>
       </div>
       <div class="lose-school text-info">
         <p>敗退予想<p>
         <br>
-        <%= @forecast.lose_school.name%>
+        <div class="lose"><%= @forecast.lose_school.name %></div>
       </div>
     </div>
+      <div hidden class="win-rate"><%= @forecast.probability%></div>
+      <div class="Pie mt-5" style="width:900px; height:500px;">
+        <canvas id="PieChart"></canvas>
+      </div>
+      <%= javascript_pack_tag 'forecast' %>
     <div class="show-text">
       <%= simple_format(@forecast.text)%>
     </div>
