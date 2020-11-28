@@ -47,7 +47,7 @@ class AnalysesController < ApplicationController
 
   def update
     @analysis.update(update_params) if @analysis.user_id == current_user.id || current_user.admin
-    redirect_to action: :index
+    redirect_to action: :show
   end
 
   def search_analysis
