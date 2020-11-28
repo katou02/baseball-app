@@ -1,16 +1,65 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 <% @avgs.each do |avg|%>
   <%=avg[:name]%>
 <div class="average">
   <p>攻撃力<p>
-  <%= avg[:attack_num].round %>
+  <div class="avg-attack"><%= avg[:attack_num].round %></div>
   <p>守備力<p>
-  <%= avg[:defense_num].round %>
+  <div class="avg-defense"><%= avg[:defense_num].round %></div>
   <p>投手力<p>
-  <%= avg[:pitch_num].round %>
+  <div class="avg-pitch"><%= avg[:pitch_num].round %></div>
   <p>総合力<p>
-  <%= avg[:total_num].round %>
+  <div class="avg-total"><%= avg[:total_num].round %></div>
   <p>期待度</p>
-  <%= avg[:expectations_num].round %>
+  <div class="avg-expec"><%= avg[:expectations_num].round %></div>
 </div>
-  <% end %>
-  <%= link_to "戻る",watch_ays_tournament_path%>
+<div style="width:900px; height:500px;" >
+  <canvas class="RaderChart"></canvas>
+</div>
+
+<script>
+  for (var num = 0; num < 50; num++) {
+  var ctx = document.getElementsByClassName("RaderChart")[num];
+  var attack = document.getElementsByClassName("avg-attack")[num].textContent;
+  var defense = document.getElementsByClassName("avg-defense")[num].textContent;
+  var pitch = document.getElementsByClassName("avg-pitch")[num].textContent;
+  var total = document.getElementsByClassName("avg-total")[num].textContent;
+  var expec = document.getElementsByClassName("avg-expec")[num].textContent;
+  var RaderChart = new Chart(ctx,{
+    type: 'radar',
+    data: {
+      labels: ["攻撃力","守備力","投手力","総合力","期待度"],
+      datasets: [{
+        label: '戦力',
+        data: [attack,defense,pitch,total,expec],
+        backgroundColor: 'RGBA(225,95,150, 0.5)',
+        borderColor: 'RGBA(225,95,150, 1)',
+        borderWidth: 1,
+        pointBackgroundColor: 'RGB(46,106,177)'
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+      },
+      layout: {
+        padding: {
+          left: 550,
+        }
+      },
+      scale: {
+        ticks: {
+          suggestedMin: 0,
+          suggestedMax: 5,
+          stepSize: 1,
+          callback: function(value,index,values){
+            return value
+          }
+        }
+      }
+    }
+  });
+  }
+</script>
+<% end %>
+<%= link_to "戻る",watch_ays_tournament_path%>
