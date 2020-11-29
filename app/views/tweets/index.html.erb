@@ -1,6 +1,12 @@
 <%= render partial: "header"%>
-<div class="header">
-  <h1>試合記事</h1>
+<div id="app">
+  <div class="header">
+    <transition name="fade">
+      <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
+        <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
+      </div>
+    </transition>
+  </div>
 </div>
 <div class="main-content">
   <div class="main-content-btn pt-2">
@@ -43,3 +49,4 @@
     <%= paginate(@tweets) %>
   </div>
 </div>
+<%= javascript_pack_tag 'tweet' %>
