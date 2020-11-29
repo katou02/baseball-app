@@ -49,7 +49,7 @@ class ForecastsController < ApplicationController
 
   def update
     @forecast.update(update_params) if @forecast.user_id == current_user.id || current_user.admin
-    redirect_to action: :index
+    redirect_to action: :show
   end
 
   private
