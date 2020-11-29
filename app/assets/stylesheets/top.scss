@@ -30,7 +30,7 @@
 .top-main {
   background-size: cover;
   background-position: center center;
-  background-image: image-url('f3060916f2bea25d52898539c7d62f27_s-e1552638207137.jpg');
+  background-image: image-url('dark-blue-geometrical-shapes-background_23-2148310370.jpg');
 }
 
 .top-header {
@@ -92,20 +92,38 @@
 .top-image {
   // position: absolute;
   &_one {
-    top: 450px;
+    top: 180px;
     left: 0;
     position: absolute;
     z-index: 0;
   }
   &_two {
-    top: 450px;
+    top: 550px;
     left: 1100px;
     position: absolute;
     z-index: 0;
   }
   &_three {
     top: 120px;
-    left: 500px;
+    left: 350px;
+    position: absolute;
+    z-index: 0;
+  }
+  &_four {
+    top: 50px;
+    left: 800px;
+    position: absolute;
+    z-index: 0;
+  }
+  &_five {
+    top: 500px;
+    left: 50px;
+    position: absolute;
+    z-index: 0;
+  }
+  &_six {
+    top: 100px;
+    left: 1200px;
     position: absolute;
     z-index: 0;
   }
