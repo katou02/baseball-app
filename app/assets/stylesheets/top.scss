@@ -19,10 +19,10 @@
 .top-title {
   text-align: center;
   color: white;
-  font-size: 70px;
+  font-size: 60px;
   font-family: "ＭＳ ゴシック",sans-serif;
-  text-shadow:4px 4px 0 #00CCFF, -4px -4px 0 #00CCFF,
-  -4px 4px 0 #00CCFF, 4px -4px 0 #00CCFF,
+  text-shadow:4px 4px 0 #219fbe, -4px -4px 0 #219fbe,
+  -4px 4px 0 #219fbe, 4px -4px 0 #219fbe,
   0px 1px 0 #FFF,  0-1px 0 #FFF,
   -1px 0 0 #FFF, 1px 0 0 #FFF;
 }
@@ -92,14 +92,14 @@
 .top-image {
   // position: absolute;
   &_one {
-    top: 180px;
+    top: 80px;
     left: 0;
     position: absolute;
     z-index: 0;
   }
   &_two {
-    top: 550px;
-    left: 1100px;
+    top: 100px;
+    left: 800px;
     position: absolute;
     z-index: 0;
   }
@@ -110,20 +110,20 @@
     z-index: 0;
   }
   &_four {
-    top: 50px;
-    left: 800px;
+    top: 370px;
+    left: 960px;
     position: absolute;
     z-index: 0;
   }
   &_five {
-    top: 500px;
+    top: 490px;
     left: 50px;
     position: absolute;
     z-index: 0;
   }
   &_six {
     top: 100px;
-    left: 1200px;
+    left: 1100px;
     position: absolute;
     z-index: 0;
   }
