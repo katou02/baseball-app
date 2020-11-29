@@ -12,7 +12,7 @@ module NotificationsHelper
     @forecast_comment = notification.comment_forecast_id
     case notification.action
       when "follow" then
-        tag.a(notification.visiter.nickname, href:mypage_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
+        tag.a(@visiter.nickname, href:mypage_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
       when "like" then
         tag.a(notification.visiter.nickname, href:mypage_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:tweet_path(notification.tweet_id), style:"font-weight: bold;")+"にいいねしました"
       when "comment" then
