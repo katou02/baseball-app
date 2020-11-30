@@ -57,12 +57,20 @@
 //   }
 // }
 
-.send_btn,.logout_btn {
+.send_btn {
   font-size: 15px;
   position: absolute;
   left: 0;
   text-decoration: none;
-  border: 2px solid #57c3e9;
-  color: #57c3e9;
   padding: 5px;
+  color: #fff;
+  border-top: 4px solid #48d9ec;
+  border-right: 4px solid #077f8a;
+  border-bottom: 4px solid #077f8a;
+  border-left: 4px solid #48d9ec;
+  border-radius: 0;
+  background: #42c6d8;
+  &:hover {
+    color: #fff;
+  }
 }

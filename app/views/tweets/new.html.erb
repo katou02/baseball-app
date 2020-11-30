@@ -1,7 +1,4 @@
-<div class="mt-4">
-  <%= link_to "戻る",tweets_path,class: "return-top",data: {"turbolinks" => false} %>
-</div>
-<div class="contents row">
+<div class="contents row mt-2">
   <div class="containe_r p-4">
     <%= form_with model: @tweet, local: true do |f| %>
       大会選択<br>
@@ -12,7 +9,7 @@
     <%= render partial: 'form',locals: {f: f} %>
     <% end %>
     <div class="back">
-      <%= link_to "戻る",tweets_path%>
+      <%= link_to "戻る",tweets_path,data: {"turbolinks" => false} %>
     </div>
   </div>
 </div>

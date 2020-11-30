@@ -23,31 +23,6 @@
   object-fit: hidden;
 }
 
-.images {
-  display: flex;
-  padding-top: 80px;
-}
-
-.image_1 {
-  position: absolute;
-  left: 30%;
-  bottom: 5%;
-}
-
-.image_2 {
-  position: absolute;
-  margin-top: 10px;
-}
-
-.image_3 {
-  position: absolute;
-  right: 0;
-}
-
-.image_4 {
-  margin: 0 auto;
-}
-
 .main-content {
   background-color: rgba(236, 236, 206,0.4);
   &-btn{

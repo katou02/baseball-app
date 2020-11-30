@@ -1,7 +1,4 @@
-<div class="mt-4">
-  <%= link_to "戻る",analyses_path,class: "return-top",data: {"turbolinks" => false} %>
-</div>
-<div class="contents row">
+<div class="contents row mt-2">
   <div class="container">
     <%= form_with model: @analysis,local: true do |f|%>
       <%= render 'layouts/error_messages-ay', model: f.object %>
@@ -12,7 +9,7 @@
       <%= render partial: "analysis",locals:{f: f} %>
     <%end%>
       <div class="back">
-        <%= link_to "戻る",analyses_path%>
+        <%= link_to "戻る",analyses_path,data: {"turbolinks" => false} %>
       </div>
   </div>
 </div>
