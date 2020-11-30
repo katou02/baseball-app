@@ -14,7 +14,7 @@
       <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
     <% end %>
     <% unless current_page?(root_path)%>
-      <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
+      <%= link_to "トップページへ戻る",root_path,class: "return-top",data: {"turbolinks" => false} %>
     <%end%>
   </div>
   <div class="text-format mt-5 text-primary">
