@@ -1,11 +1,11 @@
 <%= render partial: "tweets/header"%>
-<div class="mypage-content">
+<div class="mypage-content pt-3">
   <%= link_to "トップページへ戻る",root_path,class: "return-top ml-2" %>
   <% if @user.id == current_user.id  && @mypage.blank? %>
-    <%= link_to "プロフィール作成",new_mypage_path %>
+    <%= link_to "プロフィール作成",new_mypage_path,class: "edit-article" %>
   <% elsif @mypage.blank? %>
   <% elsif @user.id == current_user.id || current_user.admin %>
-    <%= link_to "プロフィール編集",edit_mypage_path(@user) %>
+    <%= link_to "プロフィール編集",edit_mypage_path(@user),class: "edit-article" %>
   <% end %>
   <div class="myname mt-5">
     <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>

@@ -4,8 +4,9 @@
       <%= f.select :prefectures,options_for_select(Mypage.prefectures.keys,selected: @mypage.prefectures),{prompt: "選択してください"},class: "form-control"%>
       <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@mypage.text}"%>
       <%=f.submit value: "SENT",class: "game_record"%>
-    <div class="residence">
-    </div>
     <% end %>
+    <div class="back">
+      <%= link_to "戻る","/mypages/#{current_user.id}",data: {"turbolinks" => false} %>
+    </div>
   </div>
 </div>
