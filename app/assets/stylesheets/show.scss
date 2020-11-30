@@ -5,15 +5,28 @@
 }
 
 .edit-article,.return-btn,.return-top,.return-btn_watch {
-  border: 2px solid #57e963;
-  color: #57e963;
   padding: 5px;
+  color: #fff;
+  border-top: 4px solid #48ecc4;
+  border-right: 4px solid #0a5f4a;
+  border-bottom: 4px solid #0f745b;
+  border-left: 4px solid #8cf9de;
+  border-radius: 0;
+  background: #11a37f;
+  &:hover {
+    color: #fff;
+  }
 }
 
-.delete-article {
+.delete-btn {
   padding: 5px;
-  color: #e45454;
-  border: 2px solid #e45454;
+  color: #fff;
+  border-top: 4px solid #f07373;
+  border-right: 4px solid #ca0b05;
+  border-bottom: 4px solid #ca0b05;
+  border-left: 4px solid #f07373;
+  border-radius: 0;
+  background: #eb4b46;
 }
 
 .sub_title {

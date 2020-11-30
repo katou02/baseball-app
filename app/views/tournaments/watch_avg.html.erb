@@ -1,5 +1,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-<%= link_to "戻る",watch_ays_tournament_path,class: "return"%>
+<%= link_to "大会別ページへ戻る",watch_ays_tournament_path,class: "return-btn d-inline-block mt-1"%>
 <% @avgs.each do |avg|%>
   <div class="avg-name text-center pt-5"><%=avg[:name]%></div>
   <div class="average">

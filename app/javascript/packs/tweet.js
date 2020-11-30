@@ -1,4 +1,3 @@
-document.addEventListener("turbolinks:load", function() {
 window.onload=function(){
   new Vue({
     el: '#app',
@@ -15,8 +14,7 @@ window.onload=function(){
     mounted() {
       setInterval(() => {
         this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
-      }, 4000)
+      }, 3000)
     }
   })
 };
-});

@@ -1,6 +1,6 @@
 <%= render partial: "tweets/header"%>
 <div class="mypage-content">
-  <%= link_to "トップページへ戻る",root_path %>
+  <%= link_to "トップページへ戻る",root_path,class: "return-top ml-2" %>
   <% if @user.id == current_user.id  && @mypage.blank? %>
     <%= link_to "プロフィール作成",new_mypage_path %>
   <% elsif @mypage.blank? %>

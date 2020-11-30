@@ -1,7 +1,4 @@
-<div class="mt-4">
-  <%= link_to "戻る",forecasts_path,class: "return",data: {"turbolinks" => false} %>
-</div>
-<div class="contents row">
+<div class="contents row mt-2">
   <div class="form p-4">
     <%= form_with model: @forecast,local: true do |f| %>
       <%= render 'layouts/error_messages_fcs', model: f.object %>
@@ -14,5 +11,8 @@
     <%= f.text_area :text,cols: 30,rows: 10,placeholder: "予想内容を入力してください",value: "#{@forecast.text}"%>
     <%=f.submit value: "SENT",class: "game_record"%>
     <% end %>
+    <div class="back">
+      <%= link_to "戻る",analyses_path,data: {"turbolinks" => false} %>
+    </div>
   </div>
 </div>

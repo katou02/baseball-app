@@ -6,22 +6,11 @@
       <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
     <% end %>
     <% unless current_page?(root_path)%>
-      <%= link_to "トップページへ戻る",root_path,class: "return-top",data: {"turbolinks" => false} %>
+      <%= link_to "トップページへ戻る",root_path,class: "return-top" %>
     <%end%>
   </div>
   <div class="text-format mt-5 text-primary">
     観た試合の感想をみんなに発信してみましょう！
-  </div>
-  <div class="images">
-    <div class="image_2">
-      <img src="https://kohacu.com/wp-content/uploads/2018/08/kohacu.com_001578_20180807-768x768.png" width=100 height="100">
-    </div>
-    <div class="image_3">
-      <img src="https://4.bp.blogspot.com/-rWCf6UQZCeM/XNE_fOv-TSI/AAAAAAABSyA/HWidm1tgO_4xEOwOUDfx_DmUDvVplgGAACLcBGAs/s800/sports_baseball_man_asia.png" width="100" height=100>
-    </div>
-    <div class="image_4">
-      <img src="https://sanchanne.com/wp-content/uploads/2019/09/fd72cd69ead1784014d1e58100d9a322.png" width="100" height="100">
-    </div>
   </div>
   <div class="text-format mt-5 mb-4 text-warning">
     大会別
