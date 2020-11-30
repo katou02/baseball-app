@@ -1,13 +1,5 @@
 <%= render partial: "tweets/header" %>
-<div id="app">
-  <div class="header">
-    <transition name="fade">
-      <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
-        <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
-      </div>
-    </transition>
-  </div>
-</div>
+<%= render partial: "slide/slide"%>
 <div class="main-content pt-2">
   <div class="main-content-btn">
     <% if user_signed_in? %>
