@@ -6,7 +6,7 @@
   <% end %>
 </div>
 <% @analyses.each do |analysis|%>
-  <%= link_to(analysis,data: {"turbolinks" => false}) do %>
+  <%= link_to analysis do %>
   <div class="content_anali">
     <div class="school_ays-name">
       <%= analysis.school.name %>

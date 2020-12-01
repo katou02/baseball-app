@@ -5,7 +5,7 @@
       <%= link_to "投稿する",new_tweet_path,class: "send_btn"%>
     <% end %>
     <% unless current_page?(root_path)%>
-      <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn_watch",data: {"turbolinks" => false} %>
+      <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn_watch" %>
     <%end%>
   </div>
   <div class="article-main">
