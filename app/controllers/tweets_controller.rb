@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
   before_action :move_to_index,except: :index
   before_action :set_category, only: [:index,:new, :edit, :create, :update, :destroy]
 
+  layout 'vue'
   def index
     @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
@@ -12,9 +13,10 @@ class TweetsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-      @category_children = Category.find(params[:tournament_id]).children
+        @category_children = Category.find(params[:tournament_id]).children
       end
     end
+    render layout: "application"
   end
 
   def create

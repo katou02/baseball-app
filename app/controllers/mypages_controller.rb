@@ -1,7 +1,7 @@
 class MypagesController < ApplicationController
   # before_action :search_mypage,except:[:new,:create,:update]
   before_action :authenticate_user!
-
+  layout 'vue'
   def show
     @user = User.find(params[:id])
     @mypage = Mypage.find_by(user_id: @user.id)
