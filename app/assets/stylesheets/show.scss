@@ -56,36 +56,33 @@ input {
   text-align: center;
 }
 
-.comment-form {
-  margin: 0 auto;
-  padding: 30px;
-  width: 50%;
-}
-
-.comment-content {
-  background-color: rgba(236, 236, 206,0.4);
-}
-
-.comment_at {
-  margin-bottom: 80px;
-  font-size: 11px;
-  margin-left: 30px;
-}
-
-.comment_delete_button {
-  display: inline-block;
-  padding: 0.1em 0.5em;
-  text-decoration: none;
-  color: #ff7e67;
-  border: double 3px #0aaee0;
-  border-radius: 3px;
-  transition: .4s;
-  font-size: 11px;
-  margin: 20px 0 0 140px;
-}
-
-.comment_delete_button:hover {
-  background: #fffbef;
+.comment {
+  text-align: center;
+  &-form {
+    margin: 0 auto;
+    padding: 30px;
+    width: 50%;
+  }
+  &-content {
+    background-color: rgba(236, 236, 206,0.4);
+  }
+  &-user {
+    font-size: 15px;
+    text-decoration: underline;
+  }
+  &_delete-button {
+    padding: 3px;
+    text-decoration: none;
+    color: #ff7e67;
+    border: solid 1.5px #0aaee0;
+    border-radius: 3px;
+    transition: .4s;
+    font-size: 14px;
+    margin: 20px 0 0 40px;
+    &:hover {
+      background: #fffbef;
+    }
+  }
 }
 
 .good,.good-after {
