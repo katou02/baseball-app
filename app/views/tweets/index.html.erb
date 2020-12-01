@@ -22,8 +22,8 @@
     <% end %>
   <% end %>
   <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search mt-5 mb-5") do |form| %>
-  <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
+    <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
   <% end %>
   <div class="article-main">
     <%= render partial: "tweet_show"%>
