@@ -10,6 +10,7 @@
     <h4>投稿者 <%= link_to "#{@tweet.user.nickname}","/mypages/#{@tweet.user_id}"%></h4>
   </div>
   <div class="game_result">
+    <%= @tweet.tournament.name%><br><br>
     <%=@tweet.school_a.name%>
     <%=@tweet.school_a_score%>
     -
@@ -23,7 +24,6 @@
   <div class="text-format mt-5 text-info">
     <i class="fas fa-pen text-info"></i>
     試合評・感想<br><br>
-    <%= @tweet.tournament.name%>
   </div>
   <div class=show-text>
     <%= simple_format(@tweet.text)%>

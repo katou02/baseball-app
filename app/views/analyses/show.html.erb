@@ -10,11 +10,10 @@
   <div class="user_name">
     <h4>投稿者 <%= link_to "#{@analysis.user.nickname}","/mypages/#{@analysis.user_id}"%></h4>
   </div>
-  <div class="content-fcs_show">
-    <div class="text-format mt-5 text-success">
-      <i class="fas fa-search"></i>
-      分析内容<br><br>
-      <%= @analysis.tournament.name%>
+  <div class="content-fcs_show text-success">
+    <div class="text-format mt-5">
+      <%= @analysis.tournament.name%><br>
+      <i class="fas fa-search mt-5">分析内容</i>
     </div>
     <div class="school_name-ays">
       <%= @analysis.school.name %>
