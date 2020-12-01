@@ -5,7 +5,10 @@ class MypagesController < ApplicationController
   def show
     @user = User.find(params[:id])
     @mypage = Mypage.find_by(user_id: @user.id)
-
+    @tweets = Tweet.where(user_id: params[:id])
+    @analyses = Analysis.where(user_id: params[:id])
+    @forecasts = Forecast.where(user_id: params[:id])
+    @likes = Like.where(user_id: @user.id)
     @myEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     if @user.id == current_user.id
@@ -47,18 +50,6 @@ class MypagesController < ApplicationController
     @mypage = Mypage.find_by(id: params[:id])
     @mypage.update(update_params) if @mypage.user_id == current_user.id || current_user.admin
     redirect_to "/mypages/#{@mypage.user.id}"
-  end
-
-  def my_tweets
-    @tweets = Tweet.where(user_id: params[:id])
-  end
-
-  def my_analyses
-    @analyses = Analysis.where(user_id: params[:id])
-  end
-
-  def my_forecasts
-    @forecasts = Forecast.where(user_id: params[:id])
   end
 
   private
