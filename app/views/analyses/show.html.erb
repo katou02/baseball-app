@@ -40,26 +40,24 @@
     <%= simple_format(@analysis.text)%>
   </div>
    <div class="comment-content">
-    <div class="comments">   
+    <div class="comment">   
       <div class="text-format mt-5 mb-4 text-warning">
       <i class="fa fa-baseball-ball text-warning"></i>
         コメント
       </div>
       <% if @comments %>
         <% @comments.each do |comment| %>
-          <p>
-            <%= @num %>:
-            <strong><%= link_to "#{comment.user.nickname}","/mypages/#{comment.user.id}" %></strong>
-              <div class="mt-3">
-                <%= simple_format(comment.text) %>
-              </div>
+            <div class="comment-user">
+              <%= @num %>:
+              <strong><%= link_to "#{comment.user.nickname}","/mypages/#{comment.user.id}",class: "pr-4" %></strong>
+              <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
               <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
-                <%= link_to '削除', "/analyses/#{@analysis.id}/comment_analyses/#{comment.id}", method: :delete,class: "comment_delete_button" %>
+                <%= link_to '削除', "/analyses/#{@analysis.id}/comments/#{comment.id}", method: :delete,class: "comment_delete-button" %>
               <% end %>
-              <div class="comment_at">
-                <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
-              </div>
-          </p>
+            </div>
+          <div class="mt-4 mb-4">
+            <%= simple_format(comment.text) %>
+          </div>
           <%@num+=1%>
         <% end %>
       <% end %>
