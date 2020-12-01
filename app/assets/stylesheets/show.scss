@@ -44,9 +44,7 @@
 }
 
 .image {
-  margin-top: 120px;
-  text-align: center;
-  position: relative;
+  margin: 120px 0 0 20px;
 }
 
 a:hover {
@@ -91,9 +89,9 @@ input {
 }
 
 .good,.good-after {
-  right: 20px;
   background-color: white;
   border: 2px solid white;
+  color: #C0C0C0;
 }
 
 .good:hover + .fukidashi {
