@@ -11,39 +11,9 @@
     <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
   </div>
   <%= render "users/stats" %>
-  <% if @mypage.present? %>
-    <div class="myprof">
-      <div class="residence">
-        <p>住んでる場所</p>
-        <br><%= @mypage.prefectures %> 
-      </div>
-      <div class="text-myname">
-        <p>自己紹介</p>
-        <br><%= @mypage.text %>
-      </div>
-      <div id="radio">
-        <div class="vue_radio">
-          <div class="tabs">
-            <input type="radio" id="tab1" name="tab" value="1" v-model="isActive">
-            <label for="tab1">投稿した試合記事</label>
-            <input type="radio" id="tab2" name="tab" value="2" v-model="isActive">
-            <label for="tab2">投稿した試合分析</label>
-            <input type="radio" id="tab3" name="tab" value="3" v-model="isActive">
-            <label for="tab3">投稿した試合予想</label>
-            <input type="radio" id="tab4" name="tab" value="4" v-model="isActive">
-            <label for="tab4">いいねした試合記事</label>
-          </div>
-          <ul class="contents">
-            <li v-if="isActive === '1' "><%= render partial: "tweets/tweet_show"%></li>
-            <li v-else-if="isActive === '2' "><%= render partial: "analyses/show" %></li>
-            <li v-else-if="isActive === '3' "><%= render partial: "forecasts/forecasts"%></li>
-            <Li v-else-if="isActive === '4' "><%= render partial: "users/likes"%></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <% if @user.id != current_user.id %>
+  <%= render "users/follow_form" %>
+  <%# メッセージ %>
+    <% if @user.id != current_user.id %>
     <% if @isRoom == true %>
       <% if current_user.following?(@user) %>
       <div class="dm">
@@ -61,6 +31,39 @@
       <% end %>
     <% end %>
   <% end %>
-  <%= render "users/follow_form" %>
+  <%# プロフィール %>
+  <% if @mypage.present? %>
+    <div class="myprof">
+      <div class="residence">
+        <p>住んでる場所</p>
+        <br><%= @mypage.prefectures %> 
+      </div>
+      <div class="text-myname">
+        <p>自己紹介</p>
+        <br><%= @mypage.text %>
+      </div>
+      <%# タブ %>
+      <div id="radio">
+        <div class="vue_radio">
+          <div class="tabs">
+            <input type="radio" id="tab1" class="tab-switch" value="1" v-model="isActive">
+            <label class="tab" for="tab1">投稿した試合記事</label>
+            <input type="radio" id="tab2" class="tab-switch" value="2" v-model="isActive">
+            <label class="tab" for="tab2">投稿した試合分析</label>
+            <input type="radio" id="tab3" class="tab-switch" value="3" v-model="isActive">
+            <label class="tab" for="tab3">投稿した試合予想</label>
+            <input type="radio" id="tab4" class="tab-switch" value="4" v-model="isActive">
+            <label class="tab" for="tab4">いいねした試合記事</label>
+          </div>
+          <ul class="contents">
+            <li v-if="isActive === '1' "><%= render partial: "tweets/tweet_show"%></li>
+            <li v-else-if="isActive === '2' "><%= render partial: "analyses/show" %></li>
+            <li v-else-if="isActive === '3' "><%= render partial: "forecasts/forecasts"%></li>
+            <Li v-else-if="isActive === '4' "><%= render partial: "users/likes"%></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 <%= javascript_pack_tag 'mypage' %>
