@@ -23,7 +23,7 @@ class AnalysesController < ApplicationController
         @category_children = Category.find(params[:tournament_id]).children
       end
     end
-    layout render: 'application'
+    render layout: "application"
   end
 
   def create
