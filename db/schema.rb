@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_10_30_052859) do
 
   create_table "analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "title"
     t.text "text"
     t.integer "attack"
     t.integer "defensive"
