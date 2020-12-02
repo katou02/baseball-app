@@ -1,6 +1,7 @@
 class CreateAnalyses < ActiveRecord::Migration[5.2]
   def change
     create_table :analyses do |t|
+      t.text :title
       t.text :text
       t.integer :attack
       t.integer :defensive
