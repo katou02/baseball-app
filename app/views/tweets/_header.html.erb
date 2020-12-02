@@ -10,7 +10,7 @@
     <% end %>
   <% end %>
   <% if user_signed_in? %>
-    <%= link_to "/mypages/#{current_user.id}",class: "mypage" do %>
+    <%= link_to "/mypages/#{current_user.id}",data: {"turbolinks" => false},class: "mypage" do %>
       <i class="fa fa-user"></i>マイページ
     <% end %>
     <%= link_to contacts_path,class: "contact-header" do %>
