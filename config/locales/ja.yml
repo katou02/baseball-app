@@ -22,6 +22,7 @@ ja:
         tournament: "大会"
         school: "学校"
         text: "分析内容"
+        title: "タイトル"
       forecast:
         tournament: "大会"
         win_school: "勝利予想"

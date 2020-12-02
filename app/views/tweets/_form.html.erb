@@ -2,7 +2,7 @@
 <%= f.select :school_a_score, options_for_select((1..50).to_a,selected: @tweet.school_a_score),{include_blank:"得点を選択してください"} %>
 <p><br>高校B 得点</p>
 <%= f.select :school_b_score, options_for_select((1..50).to_a,@tweet.school_b_score),{include_blank: "得点を選択してください"} %>
-<%= f.text_field :title_info,placeholder: "タイトル",class: "game_title",value: "#{@tweet.title_info}" %>
+<%= f.text_field :title_info,placeholder: "タイトル 30字以内",class: "game_title",value: "#{@tweet.title_info}" %>
 <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@tweet.text}" %>
 <%= f.label :image, class: "form-image" do %> 
   <h4>画像投稿</h4>

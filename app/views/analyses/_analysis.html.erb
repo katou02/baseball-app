@@ -21,5 +21,6 @@
     <%= f.select :expectations,[["1",1],["2",2],["3",3],["4",4],["5",5]],include_blank: "選択してください"%>
   </div>
 </div>
+<%= f.text_field :title,placeholder: "タイトル 30字以内",class: "game_title",value: "#{@analysis.title}" %>
 <%= f.text_area :text, cols: 30 ,rows: 10,placeholder: "分析内容を入力してください",value: "#{@analysis.text}" %>
 <%= f.submit value: "SENT",class: "game_record"%>
