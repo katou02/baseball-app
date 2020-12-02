@@ -28,11 +28,12 @@
       </div>
     </div>
       <div hidden class="win-rate"><%= @forecast.probability%></div>
-      <div class="Pie mt-5" style="width:900px; height:500px;">
+      <div class="Pie mt-5" style="width:700px; height:400px;">
         <canvas id="PieChart"></canvas>
       </div>
       <%= javascript_pack_tag 'forecast' %>
-    <div class="show-text">
+    <div class="show-text mt-5">
+      <div class="text-center"><予想内容></div>
       <%= simple_format(@forecast.text)%>
     </div>
   </div>
