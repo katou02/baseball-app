@@ -3,9 +3,9 @@ class TweetsController < ApplicationController
   before_action :move_to_index,except: :index
   before_action :set_category, only: [:index,:new, :edit, :create, :update, :destroy]
 
-  layout 'vue'
   def index
     @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    render layout: "vue"
   end
 
   def new
@@ -16,7 +16,6 @@ class TweetsController < ApplicationController
         @category_children = Category.find(params[:tournament_id]).children
       end
     end
-    render layout: "application"
   end
 
   def create
@@ -63,7 +62,6 @@ class TweetsController < ApplicationController
   def search_tweet
     @tweet = Tweet.find(params[:id])
   end
-
   
   def move_to_index
     redirect_to action: :index unless user_signed_in?
@@ -81,5 +79,4 @@ class TweetsController < ApplicationController
   def update_params
     params.require(:tweet).permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id)
   end
-
 end

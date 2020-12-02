@@ -1,10 +1,10 @@
 class ForecastsController < ApplicationController
   before_action :set_category, only: [:index,:new,:create,:edit]
   before_action :search_forecast,only:[:destroy,:edit,:update,:show]
-  layout 'vue'
 
   def index
     @forecasts = Forecast.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    render layout: "vue"
   end
 
   def show
@@ -22,7 +22,6 @@ class ForecastsController < ApplicationController
         @category_children = Category.find(params[:tournament_id]).children
       end
     end
-    render layout: "application"
   end
 
   def create

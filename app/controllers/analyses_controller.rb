@@ -2,10 +2,10 @@ class AnalysesController < ApplicationController
   before_action :set_category, only:[:index,:new,:create,:edit,:update]
   before_action :search_analysis,only:[:destroy,:edit,:update,:show]
   before_action :move_to_index,except: :index
-  layout 'vue'
   
   def index
     @analyses = Analysis.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    render layout: "vue"
   end
 
   def show
@@ -23,7 +23,6 @@ class AnalysesController < ApplicationController
         @category_children = Category.find(params[:tournament_id]).children
       end
     end
-    render layout: "application"
   end
 
   def create
