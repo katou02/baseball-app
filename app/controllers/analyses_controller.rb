@@ -28,7 +28,8 @@ class AnalysesController < ApplicationController
 
   def create
     @analysis = Analysis.create(analysis_params)
-    render "new" unless @analysis.save
+    return redirect_to analyses_path if @analysis.save
+    render "new"
   end
 
   def destroy

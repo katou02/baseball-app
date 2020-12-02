@@ -21,7 +21,8 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.create(tweet_params)
-    render "new" unless @tweet.save
+    return redirect_to tweets_path if @tweet.save
+    render "new"
   end
 
   def show
