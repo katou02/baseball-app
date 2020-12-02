@@ -34,14 +34,14 @@
       <p class="font">期待度</p>
       <div class="expectations_i"><%= @analysis.expectations%></div>
     </div>
-    <div style="width:900px; height:500px;" >
+  </div>
+    <div class="chart" style="width:900px; height:500px;" >
       <canvas id="RaderChart"></canvas>
     </div>
-      <%= javascript_pack_tag 'analysis' %>
-  </div>
   <div class="show-text">
-    <div class="text-center"><分析内容></div>
-    <%= simple_format(@analysis.text)%>
+    <div class="text-center"><分析内容>
+      <%= simple_format(@analysis.text)%>
+    </div>
   </div>
    <div class="comment-content">
     <div class="comment">   
@@ -76,3 +76,4 @@
     </div>
   </div>
 </div>
+<%= javascript_pack_tag 'analysis' %>

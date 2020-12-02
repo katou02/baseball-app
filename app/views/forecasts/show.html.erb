@@ -27,15 +27,15 @@
         <div class="lose"><%= @forecast.lose_school.name %></div>
       </div>
     </div>
-      <div hidden class="win-rate"><%= @forecast.probability%></div>
-      <div class="Pie mt-5" style="width:700px; height:400px;">
-        <canvas id="PieChart"></canvas>
+    <div hidden class="win-rate"><%= @forecast.probability%></div>
+    <div class="Pie mt-5">
+      <div style="width:50%; height:50%";><canvas id="PieChart"></canvas></div>
+      <div class="fcs-text">
+        <p>予想内容<p><br>
+        <p><%= simple_format(@forecast.text)%><p>
       </div>
-      <%= javascript_pack_tag 'forecast' %>
-    <div class="show-text mt-5">
-      <div class="text-center"><予想内容></div>
-      <%= simple_format(@forecast.text)%>
     </div>
+    <%= javascript_pack_tag 'forecast' %>
   </div>
 
    <div class="comment-content">
