@@ -6,6 +6,7 @@ class Analysis < ApplicationRecord
   has_many :comment_analyses
   has_many :categories
   validates :title,:text,:attack,:defensive,:pitcher,:comprehensive,:expectations,:school,:tournament,presence: true
+  validates :title,length: {maximum: 30}
 
 def create_notification_comment_analysis!(current_user, comment_analysis_id)
     temp_ids = CommentAnalysis.select(:user_id).where(analysis_id: id).where.not(user_id: current_user.id).distinct
