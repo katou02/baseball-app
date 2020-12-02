@@ -52,7 +52,6 @@
       </div>
       <% if @comments %>
         <% @comments.each do |comment| %>
-          <p>
             <div class="comment-user">
               <%= @num %>:
               <strong><%= link_to "#{comment.user.nickname}","/mypages/#{comment.user.id}",class: "pr-4" %></strong>
@@ -61,7 +60,6 @@
                 <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete-button" %>
               <% end %>
             </div>
-          </p>
           <div class="mt-4 mb-4">
             <%= simple_format(comment.text) %>
           </div>
