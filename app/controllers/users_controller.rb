@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   def following
     @user  = User.find(params[:id])
     @users = @user.followings
+    @mypage = Mypage.find_by(user_id: @user.id)
     render 'show_follow'
-    # @user.create_notification_follow!(current_user)
   end
 
   def followers

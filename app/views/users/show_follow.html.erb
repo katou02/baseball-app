@@ -1,9 +1,8 @@
-<h2>フォロー</h2>
-<% @user.followings.each do |user| %>
-<table>
-<tr>
-  <td><%= link_to "#{user.nickname}", "/mypages/#{user.id}" %></td>
-</tr>
-
-</table>
+<div class="follow">
+  <h2>フォロー::<%= @user.followings.count %>人</h2>
+  <% @user.followings.each do |user| %>
+    <div class="follow-users mt-5">
+      <%= link_to "#{user.nickname}", "/mypages/#{user.id}" %>
+    </div>
+</div>
 <% end %>

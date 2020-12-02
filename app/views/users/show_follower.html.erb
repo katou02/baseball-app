@@ -1,8 +1,8 @@
- <% @user.followers.each do |user| %>
-<table>
-<tr>
-<td><%= link_to "#{user.nickname}", "/mypages/#{user.id}" %></td>
-</tr>
-
-</table>
-<% end %>
+<div class="follow">
+  <h2>フォロワー::<%= @user.followers.count %>人</h2>
+  <% @user.followers.each do |user| %>
+    <div class="follow-users mt-5">
+      <%= link_to "#{user.nickname}", "/mypages/#{user.id}" %>
+    </div>
+  <% end %>
+</div>
