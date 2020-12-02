@@ -22,12 +22,13 @@ class ForecastsController < ApplicationController
         @category_children = Category.find(params[:tournament_id]).children
       end
     end
-    lrender layout: "application"
+    render layout: "application"
   end
 
   def create
     @forecast = Forecast.create(forecast_params)
-    render "new" unless @forecast.save
+    return redirect_to forecasts_path if @forecast.save
+    render "new"
   end
 
   def destroy
