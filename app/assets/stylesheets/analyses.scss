@@ -1,10 +1,13 @@
 .analysis-main {
   padding: 0 250px;
+  width: 100%;
   background-image: url("photo0000-0331.jpg");
   background-size: cover;
   background-color:#ffffff80;
   background-blend-mode:lighten;
   flex: 1 1 100%;
+  // position: absolute;
+  // bottom: 0;
 }
 
 .analysis_header {
