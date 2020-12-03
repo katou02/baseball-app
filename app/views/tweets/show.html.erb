@@ -68,12 +68,12 @@
       <% end %>
     </div>
     <div class="comment-form"> 
-    <% if current_user %>
-      <%= form_with(model:[@tweet, @comment], method: :post) do |f| %>
-        <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
-        <input type="submit" value="SENT" class="game_record">
+      <% if current_user %>
+        <%= form_with(model:[@tweet, @comment], method: :post) do |f| %>
+          <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
+          <input type="submit" value="SENT" class="game_record">
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </div>
 </div>
