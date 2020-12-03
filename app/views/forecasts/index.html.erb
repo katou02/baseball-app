@@ -15,11 +15,13 @@
   <div class="text-format mt-5 mb-4 text-warning">
     大会別
   </div>
-  <% @category_parent_array.each do |tournament|%>
-    <%= link_to "/tournaments/#{tournament.id}/watch_fcs",class: "title text-white" do %>
-      <i class="fa fa-baseball-ball text-white"></i><%= tournament.name %>
+  <div class="title">
+    <% @category_parent_array.each do |tournament|%>
+      <%= link_to "/tournaments/#{tournament.id}/watch_fcs",class: "title-child text-white" do %>
+        <i class="fa fa-baseball-ball text-white"></i><%= tournament.name %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   <div class="forecasts-main">
     <%= render partial: "forecasts/forecasts"%>
     <%= paginate(@forecasts)%>

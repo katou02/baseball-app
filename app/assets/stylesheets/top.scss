@@ -31,6 +31,7 @@
   background-size: cover;
   background-position: center center;
   background-image: image-url('dark-blue-geometrical-shapes-background_23-2148310370.jpg');
+  height: 100%;
 }
 
 .top-header {
@@ -58,7 +59,9 @@
 
 .mx-auto {
   list-style: none;
-  margin-top: 400px;
+  position: absolute;
+  bottom: 0;
+  left: 35%;
 }
 
 .btn-cool-blues {
@@ -92,38 +95,38 @@
 .top-image {
   // position: absolute;
   &_one {
-    top: 80px;
+    top: 12%;
     left: 0;
     position: absolute;
     z-index: 0;
   }
   &_two {
-    top: 100px;
+    top: 12%;
     left: 49%;
     position: absolute;
     z-index: 0;
   }
   &_three {
-    top: 120px;
+    top: 12%;
     left: 25%;
     position: absolute;
     z-index: 0;
   }
   &_four {
-    top: 370px;
-    left: 57%;
+    bottom: 0;
+    right: 0;
     position: absolute;
     z-index: 0;
   }
   &_five {
-    top: 490px;
-    left: 50px;
+    bottom: 0;
+    left: 0;
     position: absolute;
     z-index: 0;
   }
   &_six {
-    top: 100px;
-    left: 73%;
+    top: 10%;
+    right: 0;
     position: absolute;
     z-index: 0;
   }

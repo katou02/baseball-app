@@ -77,13 +77,14 @@
 }
 
 .title {
-  float: left;
-  background-color: #68ccf9;
-  overflow: hidden;
-  margin-right: 15px;
-  left: 33%;
-  position: relative;
-  font-size: 15px;
+  margin-left: 32%;
+  &-child {
+    float: left;
+    background-color: #68ccf9;
+    overflow: hidden;
+    margin-right: 3%;
+    font-size: 15px;
+  }
 }
 
 .sub-title {
