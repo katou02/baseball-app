@@ -30,7 +30,7 @@
     <div hidden class="win-rate"><%= @forecast.probability%></div>
     <div class="Pie mt-5">
       <div style="width:50%; height:50%";><canvas id="PieChart"></canvas></div>
-      <div class="fcs-text">
+      <div class="fcs-text mr-2">
         <p>予想内容<p><br>
         <p><%= simple_format(@forecast.text)%><p>
       </div>
