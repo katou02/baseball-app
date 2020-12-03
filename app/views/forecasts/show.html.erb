@@ -1,62 +1,66 @@
 <div class="forecast-show_content">
-  <div class="choose-btn">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+  <div class="choose-btn pt-2">
     <% if current_user.id == @forecast.user_id || current_user.admin? %>
-      <%= link_to "記事を削除する","/forecasts/#{@forecast.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-article"%>
+      <%= link_to "記事を削除する","/forecasts/#{@forecast.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
       <%= link_to "記事を編集する","/forecasts/#{@forecast.id}/edit",method: :get,class: "edit-article" %>
     <% end %>
-      <%= link_to "予想ページへ戻る",forecasts_path,class: "return-btn"%>
+      <%= link_to "予想ページへ戻る",forecasts_path,class: "return-btn" %>
   </div>
   <div class="user_name">
-    <h4>投稿者 <%= link_to "#{@forecast.user.nickname}","/mypages/#{@forecast.user_id}"%></h4>
+    <h5>投稿者 <%= link_to "#{@forecast.user.nickname}","/mypages/#{@forecast.user_id}"%></h5>
   </div>
   <div class="content-fcs_show">
     <div class="text-format text-danger mt-5 mb-5">
-      <i class="fas fa-fire"></i>
-      試合予想<br><br>
-      <%= @forecast.tournament.name%>
+      <%= @forecast.tournament.name%><br>
+      <i class="fas fa-fire mt-5">試合予想</i>
     </div>
     <div class="school-fcs">
       <div class="win-school text-danger">
         <p>勝利予想<p>
         <br>
-        <%= @forecast.win_school.name%>
+        <div class="win"><%= @forecast.win_school.name %></div>
       </div>
       <div class="lose-school text-info">
         <p>敗退予想<p>
         <br>
-        <%= @forecast.lose_school.name%>
+        <div class="lose"><%= @forecast.lose_school.name %></div>
       </div>
     </div>
-    <div class="show-text">
-      <%= simple_format(@forecast.text)%>
+    <div hidden class="win-rate"><%= @forecast.probability%></div>
+    <div class="Pie mt-5">
+      <div style="width:50%; height:50%";><canvas id="PieChart"></canvas></div>
+      <div class="fcs-text mr-2">
+        <p>予想内容<p><br>
+        <p><%= simple_format(@forecast.text)%><p>
+      </div>
     </div>
+    <%= javascript_pack_tag 'forecast' %>
   </div>
 
-    <div class="comment-content">
-      <div class="comments">   
-        <div class="text-format mt-5 mb-4 text-warning">
-        <i class="fa fa-baseball-ball text-warning"></i>
-          コメント
-        </div>
-        <% if @comments %>
-          <% @comments.each do |comment| %>
-            <p>
-              <%= @num %>:
-              <strong><%= comment.user.nickname %></strong>
-                <div class="mt-3">
-                  <%= simple_format(comment.text) %>
-                </div>
-                <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
-                  <%= link_to '削除', "/forecasts/#{@forecast.id}/comment_forecasts/#{comment.id}", method: :delete,class: "comment_delete_button" %>
-                <% end %>
-                <div class="comment_at">
-                  <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
-                </div>
-            </p>
-            <%@num+=1%>
-          <% end %>
-        <% end %>
+   <div class="comment-content">
+    <div class="comment">   
+      <div class="text-format mt-5 mb-4 text-warning">
+      <i class="fa fa-baseball-ball text-warning"></i>
+        コメント
       </div>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+            <div class="comment-user">
+              <%= @num %>:
+              <strong><%= link_to "#{comment.user.nickname}","/mypages/#{comment.user.id}",class: "pr-4" %></strong>
+              <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+              <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
+                <%= link_to '削除', "/forecasts/#{@forecast.id}/comment_forecasts/#{comment.id}", method: :delete,class: "comment_delete-button" %>
+              <% end %>
+            </div>
+          <div class="mt-4 mb-4">
+            <%= simple_format(comment.text) %>
+          </div>
+          <%@num+=1%>
+        <% end %>
+      <% end %>
+    </div>
       <div class="comment-form"> 
       <!-- ここからフォーム -->
       <% if current_user %>

@@ -26,13 +26,13 @@
         問い合わせ内容
         <p><%= f.text_area :content, placeholder: '1000文字以内' %></p>
       </div>
-      <div class="contact-sent mt-5">
-        <%= f.submit "確認画面へ",class: "btn btn-warning" %>
-        <%= link_to root_path,class: "btn btn-primary active" do %>
-        戻る
-        <% end %>
-      </div>
     </div>
+  </div>
+  <div class="contact-sent">
+    <%= f.submit "確認画面へ",class: "btn btn-warning" %>
+    <%= link_to 'javascript:history.back()',class: "btn btn-primary active" do %>
+      戻る
+    <% end %>
   </div>
 </div>
 <% end %>

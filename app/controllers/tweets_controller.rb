@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    render layout: "vue"
   end
 
   def new
@@ -12,14 +13,15 @@ class TweetsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-      @category_children = Category.find(params[:tournament_id]).children
+        @category_children = Category.find(params[:tournament_id]).children
       end
     end
   end
 
   def create
     @tweet = Tweet.create(tweet_params)
-    render "new" unless @tweet.save
+    return redirect_to tweets_path if @tweet.save
+    render "new"
   end
 
   def show
@@ -60,7 +62,6 @@ class TweetsController < ApplicationController
   def search_tweet
     @tweet = Tweet.find(params[:id])
   end
-
   
   def move_to_index
     redirect_to action: :index unless user_signed_in?
@@ -78,5 +79,4 @@ class TweetsController < ApplicationController
   def update_params
     params.require(:tweet).permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id)
   end
-
 end

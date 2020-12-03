@@ -5,6 +5,7 @@ class AnalysesController < ApplicationController
   
   def index
     @analyses = Analysis.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    render layout: "vue"
   end
 
   def show
@@ -26,7 +27,8 @@ class AnalysesController < ApplicationController
 
   def create
     @analysis = Analysis.create(analysis_params)
-    render "new" unless @analysis.save
+    return redirect_to analyses_path if @analysis.save
+    render "new"
   end
 
   def destroy
@@ -46,7 +48,7 @@ class AnalysesController < ApplicationController
 
   def update
     @analysis.update(update_params) if @analysis.user_id == current_user.id || current_user.admin
-    redirect_to action: :index
+    redirect_to action: :show
   end
 
   def search_analysis
@@ -63,10 +65,10 @@ class AnalysesController < ApplicationController
   end
 
   def analysis_params
-    params.require(:analysis).permit(:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive).merge(user_id: current_user.id)
+    params.require(:analysis).permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations).merge(user_id: current_user.id)
   end
 
   def update_params
-    params.require(:analysis).permit(:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive)
+    params.require(:analysis).permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations)
   end
 end

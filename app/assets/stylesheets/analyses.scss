@@ -1,10 +1,17 @@
 .analysis-main {
   padding: 0 250px;
+  width: 100%;
   background-image: url("photo0000-0331.jpg");
   background-size: cover;
   background-color:#ffffff80;
   background-blend-mode:lighten;
   flex: 1 1 100%;
+  // position: absolute;
+  // bottom: 0;
+}
+
+.analysis_header {
+  background-image: url("https://pics.prcm.jp/d1c2e60537af9/78615919/jpeg/78615919.jpeg");
 }
 
 .content_anali {
@@ -12,9 +19,9 @@
   background-color: lime;
   position: relative;
   border: solid 1px rgb(255, 255, 255);
+  text-align: center;
   &-image {
     position: absolute;
-    text-align: center;
     width: 10%;
     font-size: 30px;
   }
@@ -23,12 +30,17 @@
   }
 }
 
-.select_main,.select_main-show {
-  padding-top: 30px;
-  padding-bottom: 10px;
+.select_main{
   display: flex;
-  justify-content: space-evenly;
-  text-align: center;
+  margin-left: 5%;
+  margin-top: 20px;
+  justify-content: space-around;
+  &-show {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    display: flex;
+    margin-left: 21%;
+  }
 }
 
 .school_ays-name {
@@ -38,7 +50,22 @@
   font-weight: bold;
 }
 
-.attack_i,.defensive_i,.pitcher_i,.comprehensive_i {
+.attack_i,.defensive_i,.pitcher_i,.comprehensive_i,.expectations_i {
+  font-size: 20px;
+  margin-right: 10%;
+}
+
+.title_a{
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+
+.attack,.defencive,.pitcher,.comprehensive,.expectations {
+  margin-right: 10px;
+}
+
+.font {
   font-size: 20px;
 }
 
@@ -95,13 +122,16 @@
 .school_name-ays {
   font-size: 30px;
   text-align: center;
-  margin-top: 170px;
+  margin-top: 130px;
 }
 
-.select_main-show {
-  margin: 90px 0;
+.ays-text {
+  margin-top: 40px;
+  border: 1px solid #b3b4b4;
+  width: 100%;
 }
 
-.text-show {
-  margin-top: 100px;
+.reader {
+  margin-top: 110px;
+  display: flex;
 }

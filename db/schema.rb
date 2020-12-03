@@ -13,11 +13,13 @@
 ActiveRecord::Schema.define(version: 2020_10_30_052859) do
 
   create_table "analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "title"
     t.text "text"
-    t.string "attack"
-    t.string "defensive"
-    t.string "pitcher"
-    t.string "comprehensive"
+    t.integer "attack"
+    t.integer "defensive"
+    t.integer "pitcher"
+    t.integer "comprehensive"
+    t.integer "expectations"
     t.integer "user_id"
     t.bigint "school_id", null: false
     t.bigint "tournament_id", null: false
@@ -69,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_052859) do
 
   create_table "forecasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text"
+    t.integer "probability"
     t.integer "user_id"
     t.bigint "win_school_id", null: false
     t.bigint "lose_school_id", null: false

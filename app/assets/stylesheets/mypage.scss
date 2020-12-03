@@ -57,3 +57,17 @@
   margin-top: 20px;
   text-align: center;
 }
+
+.tab {
+  color: White;
+  background: rgb(184, 183, 183);
+  margin-right: 5px;
+  padding: 3px 12px;
+  &-switch {
+    display: none;
+  }
+}
+
+.tab-switch:checked + .tab {
+  background: DeepSkyBlue;
+}

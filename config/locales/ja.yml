@@ -18,9 +18,11 @@ ja:
         defensive: "守備力"
         pitcher: "投手力"
         comprehensive: "総合力"
+        expectations: "期待度"
         tournament: "大会"
         school: "学校"
         text: "分析内容"
+        title: "タイトル"
       forecast:
         tournament: "大会"
         win_school: "勝利予想"

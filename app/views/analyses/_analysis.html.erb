@@ -1,20 +1,26 @@
+<br><p>5段階評価</p>
 <div class="select">
   <div class="attack">
     <p>攻撃力</p>
-    <%= f.select :attack,[["A","A"],["B","B"],["C","C"]],include_blank: "選択してください"%>
+    <%= f.select :attack,[["1",1],["2",2],["3",3],["4",4],["5",5]],include_blank: "選択してください"%>
   </div>
   <div class="defencive">
     <p>守備力</p>
-    <%= f.select :defensive,[["A","A"],["B","B"],["C","C"]],include_blank: "選択してください"%>
+    <%= f.select :defensive,[["1",1],["2",2],["3",3],["4",4],["5",5]],include_blank: "選択してください"%>
   </div>
   <div class="pitcher">
     <p>投手力</p>
-    <%= f.select :pitcher,[["A","A"],["B","B"],["C","C"]],include_blank: "選択してください"%>
+    <%= f.select :pitcher,[["1",1],["2",2],["3",3],["4",4],["5",5]],include_blank: "選択してください"%>
   </div>
   <div class="comprehensive">
     <p>総合力</p>
-    <%= f.select :comprehensive,[["A","A"],["B+","B"],["B","C"],["C","D"]],include_blank: "選択してください"%>
+    <%= f.select :comprehensive,[["1",1],["2",2],["3",3],["4",4],["5",5]],include_blank: "選択してください"%>
+  </div>
+  <div class="expectations">
+    <p>期待度</p>
+    <%= f.select :expectations,[["1",1],["2",2],["3",3],["4",4],["5",5]],include_blank: "選択してください"%>
   </div>
 </div>
+<%= f.text_field :title,placeholder: "タイトル 30字以内",class: "game_title",value: "#{@analysis.title}" %>
 <%= f.text_area :text, cols: 30 ,rows: 10,placeholder: "分析内容を入力してください",value: "#{@analysis.text}" %>
 <%= f.submit value: "SENT",class: "game_record"%>

@@ -5,12 +5,12 @@
     <% end %>
     <% if unchecked_notifications.any? %>
       <%= link_to notifications_path, class: "new_info" do %>
-        <i class="fa fa-circle fa-xs" style="color: gold;"></i>新着あり
+        <i class="fa fa-circle fa-xs" style="color: gold;">新着あり</i>
       <% end %>
     <% end %>
   <% end %>
   <% if user_signed_in? %>
-    <%= link_to "/mypages/#{current_user.id}",class: "mypage" do %>
+    <%= link_to "/mypages/#{current_user.id}",data: {"turbolinks" => false},class: "mypage" do %>
       <i class="fa fa-user"></i>マイページ
     <% end %>
     <%= link_to contacts_path,class: "contact-header" do %>
