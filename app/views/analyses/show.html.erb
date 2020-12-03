@@ -15,10 +15,10 @@
       <%= @analysis.tournament.name%><br>
       <i class="fas fa-search mt-5">分析内容</i>
     </div>
-  <div class="sub_title bg-success text-white mt-5">
-    <i class="fa fa-baseball-ball"></i>
-    <%=@analysis.title%>
-  </div>
+    <div class="sub_title bg-success text-white mt-5">
+      <i class="fa fa-baseball-ball"></i>
+      <%=@analysis.title%>
+    </div>
     <div class="school_name-ays">
       <%= @analysis.school.name %>
     </div>
@@ -35,14 +35,15 @@
       <div class="expectations_i"><%= @analysis.expectations%></div>
     </div>
   </div>
-    <div class="chart" style="width:900px; height:500px;" >
-      <canvas id="RaderChart"></canvas>
-    </div>
-  <div class="show-text">
-    <div class="text-center"><分析内容>
-      <%= simple_format(@analysis.text)%>
+  <%# グラフ %>
+  <div class="reader">
+    <div style="width:70%; height:70%;" ><canvas id="RaderChart"></canvas></div>
+    <div class="ays-text mr-2">
+      <p>分析内容</p><br>
+      <p><%= simple_format(@analysis.text)%></p>
     </div>
   </div>
+  <%# コメント %>
    <div class="comment-content">
     <div class="comment">   
       <div class="text-format mt-5 mb-4 text-warning">

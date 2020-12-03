@@ -24,7 +24,7 @@ var RaderChart = new Chart(ctx,{
     },
     layout: {
       padding: {
-        left: 550,
+        left: 10,
       }
     },
     scale: {
