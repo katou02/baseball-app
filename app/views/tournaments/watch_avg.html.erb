@@ -1,43 +1,24 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<%= link_to "大会別ページへ戻る",watch_ays_tournament_path,class: "return-btn d-inline-block mt-1"%>
 <% @avgs.each do |avg|%>
-  <%=avg[:name]%>
-<div class="average">
-  <p>攻撃力<p>
-  <% if avg[:attack_num]<65.5 %>
-    <p>A<p>
-  <% elsif avg[:attack_num]>=65.5 && avg[:attack_num]<67 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-  
-  <p>守備力<p>
-  <% if avg[:defense_num]<65.5 %>
-    <p>A<p>
-  <% elsif avg[:defense_num]>=65.5 && avg[:defense_num]<67 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-
-  <p>投手力<p>
-  <% if avg[:pitch_num]<65.5 %>
-    <p>A<p>
-  <% elsif avg[:pitch_num]>=65.5 && avg[:pitch_num]<67 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-
-  <p>総合力<p>
-  <% if avg[:total_num]<65.5 %>
-    <p>A<p>
-  <% elsif avg[:total_num]>=65.5 && avg[:total_num]<67 %>
-    <p>B+<p>
-  <% elsif avg[:total_num]>=67 && avg[:total_num]<68 %>
-    <p>B<p>
-  <% else %>
-    <p>C<p>
-  <% end %>
-</div>
-  <% end %>
-  <%= link_to "戻る",watch_ays_tournament_path%>
+  <div class="avg-name text-center pt-5"><%=avg[:name]%></div>
+  <div class="average">
+    <p class="font">攻撃力<p>
+    <div class="avg-attack"><%= avg[:attack_num].round %></div>
+    <p class="font">守備力<p>
+    <div class="avg-defense"><%= avg[:defense_num].round %></div>
+    <p class="font">投手力<p>
+    <div class="avg-pitch"><%= avg[:pitch_num].round %></div>
+    <p class="font">総合力<p>
+    <div class="avg-total"><%= avg[:total_num].round %></div>
+    <p class="font">期待度</p>
+    <div class="avg-expec"><%= avg[:expectations_num].round %></div>
+  </div>
+  <div style="width:900px; height:500px;" >
+    <canvas class="RaderChart"></canvas>
+  </div>
+  <%= javascript_pack_tag 'tournament' %>
+<% end %>
+<% unless @avgs.present? %>
+<div class="text-center mt-5">投稿はありません</div>
+<% end %>

@@ -5,15 +5,28 @@
 }
 
 .edit-article,.return-btn,.return-top,.return-btn_watch {
-  border: 2px solid #57e963;
-  color: #57e963;
   padding: 5px;
+  color: #fff;
+  border-top: 4px solid #48ecc4;
+  border-right: 4px solid #0a5f4a;
+  border-bottom: 4px solid #0f745b;
+  border-left: 4px solid #8cf9de;
+  border-radius: 0;
+  background: #11a37f;
+  &:hover {
+    color: #fff;
+  }
 }
 
-.delete-article {
+.delete-btn {
   padding: 5px;
-  color: #e45454;
-  border: 2px solid #e45454;
+  color: #fff;
+  border-top: 4px solid #f07373;
+  border-right: 4px solid #ca0b05;
+  border-bottom: 4px solid #ca0b05;
+  border-left: 4px solid #f07373;
+  border-radius: 0;
+  background: #eb4b46;
 }
 
 .sub_title {
@@ -25,15 +38,14 @@
 }
 
 .show-text {
-  margin: 50px 0 0 50px;
+  display: inline-block;
+  margin: 0 0 0 50px;
   font-size: 20px;
   line-height: 2.5em;
 }
 
 .image {
-  margin-top: 120px;
-  text-align: center;
-  position: relative;
+  margin: 120px 0 0 20px;
 }
 
 a:hover {
@@ -45,44 +57,46 @@ input {
   text-align: center;
 }
 
-.comment-form {
-  margin: 0 auto;
-  padding: 30px;
-  width: 50%;
-}
-
-.comment-content {
-  background-color: rgba(236, 236, 206,0.4);
-}
-
-.comment_at {
-  margin-bottom: 80px;
-  font-size: 11px;
-  margin-left: 30px;
-}
-
-.comment_delete_button {
-  display: inline-block;
-  padding: 0.1em 0.5em;
-  text-decoration: none;
-  color: #ff7e67;
-  border: double 3px #0aaee0;
-  border-radius: 3px;
-  transition: .4s;
-  font-size: 11px;
-  margin: 20px 0 0 140px;
-}
-
-.comment_delete_button:hover {
-  background: #fffbef;
+.comment {
+  text-align: center;
+  &-form {
+    margin: 0 auto;
+    padding: 30px;
+    width: 50%;
+  }
+  &-content {
+    background-color: rgba(236, 236, 206,0.4);
+  }
+  &-user {
+    font-size: 15px;
+    text-decoration: underline;
+  }
+  &_delete-button {
+    padding: 3px;
+    text-decoration: none;
+    color: #ff7e67;
+    border: solid 1.5px #0aaee0;
+    border-radius: 3px;
+    transition: .4s;
+    font-size: 14px;
+    margin: 20px 0 0 40px;
+    &:hover {
+      background: #fffbef;
+    }
+  }
 }
 
 .good,.good-after {
-  right: 20px;
   background-color: white;
   border: 2px solid white;
+  color: #C0C0C0;
 }
 
 .good:hover + .fukidashi {
   display: block;
+}
+
+.game-article {
+  position: relative;
+  height: 100%;
 }

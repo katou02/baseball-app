@@ -1,7 +1,5 @@
 <%= render partial: "tweets/header" %>
-<div class="analysis_header">
-  <h1>戦力分析<h1>
-</div>
+<%= render partial: "slide/slide"%>
 <div class="main-content pt-2">
   <div class="main-content-btn">
     <% if user_signed_in? %>
@@ -17,14 +15,17 @@
   <div class="text-format mt-5 mb-4 text-warning">
     大会別
   </div>
-  <% @category_parent_array.each do |tournament|%>
-    <%= link_to "/tournaments/#{tournament.id}/watch_ays",class: "title text-white" do%>
-      <i class="fa fa-baseball-ball text-white"></i>
-      <%=tournament.name%>
+  <div class="title">
+    <% @category_parent_array.each do |tournament|%>
+      <%= link_to "/tournaments/#{tournament.id}/watch_ays",class: "title-child text-white" do%>
+        <i class="fa fa-baseball-ball text-white"></i>
+        <%=tournament.name%>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   <div class="analysis-main">
     <%= render partial: "analyses/show"%>
     <%= paginate(@analyses)%>
   </div>
 </div>
+<%= javascript_pack_tag 'tweet' %>

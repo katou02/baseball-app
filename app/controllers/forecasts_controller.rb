@@ -4,6 +4,7 @@ class ForecastsController < ApplicationController
 
   def index
     @forecasts = Forecast.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    render layout: "vue"
   end
 
   def show
@@ -25,7 +26,8 @@ class ForecastsController < ApplicationController
 
   def create
     @forecast = Forecast.create(forecast_params)
-    render "new" unless @forecast.save
+    return redirect_to forecasts_path if @forecast.save
+    render "new"
   end
 
   def destroy
@@ -49,7 +51,7 @@ class ForecastsController < ApplicationController
 
   def update
     @forecast.update(update_params) if @forecast.user_id == current_user.id || current_user.admin
-    redirect_to action: :index
+    redirect_to action: :show
   end
 
   private
@@ -58,10 +60,10 @@ class ForecastsController < ApplicationController
   end
 
   def forecast_params
-    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id).merge(user_id: current_user.id)
+    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id,:probability).merge(user_id: current_user.id)
   end
 
   def update_params
-    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id)
+    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id,:probability)
   end
 end

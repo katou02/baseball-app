@@ -1,15 +1,16 @@
 <div class="game-article">
-  <div class="choose-btn">
+  <div class="choose-btn pt-2">
     <% if current_user.id == @tweet.user_id || current_user.admin? %>
-    <%= link_to "記事を削除する","/tweets/#{@tweet.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-article"%>
+    <%= link_to "記事を削除する","/tweets/#{@tweet.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
     <%= link_to "記事を編集する","/tweets/#{@tweet.id}/edit",method: :get,class: "edit-article" %>
     <% end %>
-    <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn"%>
+    <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn" %>
   </div>
   <div class="user_name">
-    <h4>投稿者 <%= link_to "#{@tweet.user.nickname}","/mypages/#{@tweet.user_id}"%></h4>
+    <h5>投稿者 <%= link_to "#{@tweet.user.nickname}","/mypages/#{@tweet.user_id}"%></h5>
   </div>
   <div class="game_result">
+    <%= @tweet.tournament.name%><br><br>
     <%=@tweet.school_a.name%>
     <%=@tweet.school_a_score%>
     -
@@ -23,7 +24,6 @@
   <div class="text-format mt-5 text-info">
     <i class="fas fa-pen text-info"></i>
     試合評・感想<br><br>
-    <%= @tweet.tournament.name%>
   </div>
   <div class=show-text>
     <%= simple_format(@tweet.text)%>
@@ -35,48 +35,45 @@
         <i class="fas fa-heart"></i><%= @tweet.likes.count %>
       <% end %>
     <% else %>
-      <%= button_to tweet_likes_path(@tweet),{class: "good"} do %>
+      <%= button_to tweet_likes_path(@tweet),{class: "good mb-2"} do %>いいね
         <i class="fas fa-heart"></i><%= @tweet.likes.count %>
       <% end %>
     <% end %>
-    <h2>いいねをしたユーザー</h2>
+    <p>いいねをしたユーザー</p><br>
     <% @tweet.liked_users.each do |user|%>
-      <li><%=user.nickname%></li>
+      <%= link_to "#{user.nickname}","/mypages/#{user.id}" %><br>
     <% end %>
   </div>
   <div class="comment-content">
-    <div class="comments">   
+    <div class="comment">   
       <div class="text-format mt-5 mb-4 text-warning">
       <i class="fa fa-baseball-ball text-warning"></i>
         コメント
       </div>
       <% if @comments %>
         <% @comments.each do |comment| %>
-          <p>
-            <%= @num %>:
-            <strong><%= comment.user.nickname %></strong>
-              <div class="mt-3">
-                <%= simple_format(comment.text) %>
-              </div>
+            <div class="comment-user">
+              <%= @num %>:
+              <strong><%= link_to "#{comment.user.nickname}","/mypages/#{comment.user.id}",class: "pr-4" %></strong>
+              <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
               <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
-                <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete_button" %>
+                <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete-button" %>
               <% end %>
-              <div class="comment_at">
-                <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
-              </div>
-          </p>
+            </div>
+          <div class="mt-4 mb-4">
+            <%= simple_format(comment.text) %>
+          </div>
           <%@num+=1%>
         <% end %>
       <% end %>
     </div>
     <div class="comment-form"> 
-    <!-- ここからフォーム -->
-    <% if current_user %>
-      <%= form_with(model:[@tweet, @comment], method: :post) do |f| %>
-        <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
-        <input type="submit" value="SENT" class="game_record">
+      <% if current_user %>
+        <%= form_with(model:[@tweet, @comment], method: :post) do |f| %>
+          <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
+          <input type="submit" value="SENT" class="game_record">
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </div>
 </div>

@@ -5,14 +5,18 @@
       <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
     <% end %>
     <% unless current_page?(root_path)%>
-      <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-btn_watch"%>
+      <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-btn_watch" %>
     <%end%>
   </div>
   <div class="forecasts-main">
-    <div class="text-format text-danger mt-1 pt-5 mb-4">
-      <%= @forecast.tournament.name%>
-    </div>
-    <%= render partial: "forecasts/forecasts"%>
+    <% if @forecast.present? %>
+      <div class="text-format text-danger mt-1 pt-5 mb-4">
+        <%= @forecast.tournament.name%>
+      </div>
+      <%= render partial: "forecasts/forecasts"%>
+    <% else %>
+      <p class="text-center mt-5">投稿はありません<p>
+    <% end %>
     <%= paginate(@forecasts)%>
   </div>
 </div>

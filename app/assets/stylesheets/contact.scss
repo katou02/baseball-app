@@ -3,11 +3,13 @@
   &-main{
     width: 45%;
     margin: 0 auto;
-    flex: 1 1 100%;
+    // flex: 1 1 100%;
   }
   &-sent {
     width: 20%;
-    margin: 0 auto;
+    left: 41%;
+    position: absolute;
+    bottom: 0;
   }
 }
 

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comment_analyses
   has_many :comment_forecasts
   has_many :analyses
-  belongs_to :mypage
+  # belongs_to :mypage
   has_many :likes,dependent: :destroy
   has_many :liked_tweets,through: :likes,source: :tweet
   has_many :messages, dependent: :destroy

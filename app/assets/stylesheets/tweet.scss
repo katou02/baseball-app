@@ -9,41 +9,24 @@
 }
 
 .header {
-  background-image: url("81573810.jpeg");
-  line-height: 300px;
+  background-size: contain;
 }
 
-.analysis_header {
-  background-image: url("https://pics.prcm.jp/d1c2e60537af9/78615919/jpeg/78615919.jpeg");
-}
-
-.images {
-  display: flex;
-  padding-top: 80px;
-}
-
-.image_1 {
+.slider-inner{
   position: absolute;
-  left: 30%;
-  bottom: 5%;
+  width: 100%;
+  height: 300px;
 }
-
-.image_2 {
-  position: absolute;
-  margin-top: 10px;
-}
-
-.image_3 {
-  position: absolute;
-  right: 0;
-}
-
-.image_4 {
-  margin: 0 auto;
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: hidden;
 }
 
 .main-content {
   background-color: rgba(236, 236, 206,0.4);
+  position: relative;
+  // height: 100%;
   &-btn{
     display: flex;
   }
@@ -65,7 +48,6 @@
 }
 
 .article {
-  position: relative;
   margin-top: 70px;
   background-color: #68ccf9;
   text-align: center;
@@ -86,7 +68,10 @@
     opacity: 0.7;
   }
   &-main {
+    // position: absolute;
+    // bottom: 0;
     padding: 0 250px;
+    width: 100%;
     background-image: url("sky_00010.jpg");
     background-size: cover;
     background-color:rgba(255,255,255,0.8);
@@ -96,13 +81,14 @@
 }
 
 .title {
-  float: left;
-  background-color: #68ccf9;
-  overflow: hidden;
-  margin-right: 15px;
-  left: 33%;
-  position: relative;
-  font-size: 15px;
+  margin-left: 32%;
+  &-child {
+    float: left;
+    background-color: #68ccf9;
+    overflow: hidden;
+    margin-right: 3%;
+    font-size: 15px;
+  }
 }
 
 .sub-title {
@@ -123,9 +109,10 @@
 
 .pagination {
   font-size: 20px;
-  margin-left: 45%;
+  margin-left: 42%;
   margin-top: 30px;
   color: red;
+  letter-spacing: 0.15em;
 }
 
 .user_name {
@@ -153,4 +140,11 @@ h2 {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all 1s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }

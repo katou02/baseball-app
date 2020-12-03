@@ -1,16 +1,37 @@
 <%= render partial: "tweets/header"%>
-<div class="mypage-content">
-  <%= link_to "トップページへ戻る",root_path %>
+<div class="mypage-content pt-3">
+  <%= link_to "戻る",'javascript:history.back()',class: "return-top ml-2" %>
   <% if @user.id == current_user.id  && @mypage.blank? %>
-    <%= link_to "プロフィール作成",new_mypage_path %>
+    <%= link_to "プロフィール作成",new_mypage_path,class: "edit-article" %>
   <% elsif @mypage.blank? %>
   <% elsif @user.id == current_user.id || current_user.admin %>
-    <%= link_to "プロフィール編集",edit_mypage_path(@user) %>
+    <%= link_to "プロフィール編集",edit_mypage_path(@user),class: "edit-article" %>
   <% end %>
   <div class="myname mt-5">
     <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
   </div>
   <%= render "users/stats" %>
+  <%= render "users/follow_form" %>
+  <%# メッセージ %>
+    <% if @user.id != current_user.id %>
+    <% if @isRoom == true %>
+      <% if current_user.following?(@user) %>
+      <div class="dm">
+        <%= link_to 'ダイレクトメッセージをする', room_path(@roomId) %>
+      </div>
+      <% end %>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e|%>
+          <% e.hidden_field :user_id, value: @user.id %>
+        <% end %>
+        <% if current_user.following?(@user) %>
+          <%= f.submit "DMを開始する"%>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%# プロフィール %>
   <% if @mypage.present? %>
     <div class="myprof">
       <div class="residence">
@@ -21,30 +42,28 @@
         <p>自己紹介</p>
         <br><%= @mypage.text %>
       </div>
-      <div class="my-links">
-          <%= link_to "投稿した試合記事","#{@mypage.user_id}/my_tweets",class: "my-link" %>
-          <%= link_to "投稿した戦力分析","#{@mypage.user_id}/my_analyses",class: "my-link" %>
-          <%= link_to "投稿した試合予想","#{@mypage.user_id}/my_forecasts",class: "my-link" %>
-          <%= link_to "いいねした試合記事","/users/#{@mypage.user_id}/likes",class: "my-link"%>
+      <%# タブ %>
+      <div id="radio">
+        <div class="vue_radio">
+          <div class="tabs">
+            <input type="radio" id="tab1" class="tab-switch" value="1" v-model="isActive">
+            <label class="tab" for="tab1">投稿した試合記事</label>
+            <input type="radio" id="tab2" class="tab-switch" value="2" v-model="isActive">
+            <label class="tab" for="tab2">投稿した試合分析</label>
+            <input type="radio" id="tab3" class="tab-switch" value="3" v-model="isActive">
+            <label class="tab" for="tab3">投稿した試合予想</label>
+            <input type="radio" id="tab4" class="tab-switch" value="4" v-model="isActive">
+            <label class="tab" for="tab4">いいねした試合記事</label>
+          </div>
+          <ul class="contents">
+            <li v-if="isActive === '1' "><%= render partial: "tweets/tweet_show"%></li>
+            <li v-else-if="isActive === '2' "><%= render partial: "analyses/show" %></li>
+            <li v-else-if="isActive === '3' "><%= render partial: "forecasts/forecasts"%></li>
+            <Li v-else-if="isActive === '4' "><%= render partial: "users/likes"%></li>
+          </ul>
+        </div>
       </div>
     </div>
   <% end %>
-  <% if @user.id != current_user.id %>
-    <% if @isRoom == true %>
-      <% if current_user.following?(@user) %>
-      <div class="dm">
-        <%= link_to 'ダイレクトメッセージをする', room_path(@roomId) %>
-      <% end %>
-    <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e|%>
-          <% e.hidden_field :user_id, value: @user.id %>
-        <% end %>
-        <%= f.submit "DMを開始する"%>
-      </div>
-      <% end %>
-    <% end %>
-  <% end %>
-  <%= render "users/follow_form" %>
 </div>
-  
+<%= javascript_pack_tag 'mypage' %>

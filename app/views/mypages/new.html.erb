@@ -1,8 +1,8 @@
 <div class="contents row">
   <div class="container">
     <%= form_with model: @mypage,local: true do |f|%>
-      <%= f.select :prefectures,options_for_select(Mypage.prefectures.keys,selected: @mypage.prefectures),{prompt: "選択してください"},class: "form-control"%>
-      <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@mypage.text}"%>
+      <%= f.select :prefectures,options_for_select(Mypage.prefectures.keys,selected: @mypage.prefectures),{prompt: "住んでる地域を選択してください"},class: "form-control"%>
+      <%= f.text_area :text, cols: 30 ,rows: 10,placeholder: "自己紹介",value: "#{@mypage.text}"%>
       <%=f.submit value: "SENT",class: "game_record"%>
     <div class="residence">
     </div>

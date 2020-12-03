@@ -6,7 +6,7 @@
   <% end %>
 </div>
 <% @analyses.each do |analysis|%>
-  <%= link_to analysis do%>
+  <%= link_to analysis do %>
   <div class="content_anali">
     <div class="school_ays-name">
       <%= analysis.school.name %>
@@ -14,33 +14,10 @@
     <div class="content_anali-image mt-4">
       <i class="fas fa-search"></i>
     </div>
-    <div class="select_main">
-      <div class="attack_i">
-        <p>攻撃力</p>
-        <%= analysis.attack%>
-      </div>
-      <div class="defensive_i">
-        <p>守備力</p>
-        <%= analysis.defensive%>
-      </div>
-      <div class="pitcher_i">
-        <p>投手力</p>
-        <%= analysis.pitcher%>
-      </div>
-      <div class="comprehensive_i">
-        <p>総合力</p>
-        <% if analysis.comprehensive=="A" %>
-          <%= analysis.comprehensive%>
-        <% elsif analysis.comprehensive=="B" %>
-          <p>B+<p>
-        <% elsif analysis.comprehensive=="C" %>
-          <p>B<p>
-        <% else %>
-          <p>C<p>
-        <% end %>
-      </div>
+    <div class="title_a text-center">
+      <%= analysis.title%>
     </div>
-    <div class="name_ays">
+    <div class="name_ays mt-4">
       <span>投稿者</span>
       <%= analysis.user.nickname %>
     </div>
