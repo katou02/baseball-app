@@ -16,6 +16,7 @@
   background-color: lime;
   position: relative;
   border: solid 1px rgb(255, 255, 255);
+  text-align: center;
   &-image {
     position: absolute;
     width: 10%;
@@ -26,11 +27,17 @@
   }
 }
 
-.select_main,.select_main-show {
-  padding-top: 30px;
-  padding-bottom: 10px;
+.select_main{
   display: flex;
-  justify-content: space-evenly;
+  margin-left: 5%;
+  margin-top: 20px;
+  justify-content: space-around;
+  &-show {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    display: flex;
+    margin-left: 21%;
+  }
 }
 
 .school_ays-name {
@@ -41,16 +48,21 @@
 }
 
 .attack_i,.defensive_i,.pitcher_i,.comprehensive_i,.expectations_i {
-  margin-right: 70px;
   font-size: 20px;
+  margin-right: 10%;
 }
+
+.title_a{
+  font-size: 25px;
+  margin-top: 20px;
+}
+
 
 .attack,.defencive,.pitcher,.comprehensive,.expectations {
   margin-right: 10px;
 }
 
 .font {
-  margin-right: -80px;
   font-size: 20px;
 }
 

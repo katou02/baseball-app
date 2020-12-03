@@ -14,29 +14,10 @@
     <div class="content_anali-image mt-4">
       <i class="fas fa-search"></i>
     </div>
-    <div class="select_main text-center">
-      <div class="attack_i">
-        <p>攻撃力</p>
-        <%= analysis.attack%>
-      </div>
-      <div class="defensive_i">
-        <p>守備力</p>
-        <%= analysis.defensive%>
-      </div>
-      <div class="pitcher_i">
-        <p>投手力</p>
-        <%= analysis.pitcher%>
-      </div>
-      <div class="comprehensive_i">
-        <p>総合力</p>
-        <%= analysis.comprehensive%>
-      </div>
-      <div class="expectations_i">
-        <p>期待度</p>
-        <%= analysis.expectations%>
-      </div>
+    <div class="title_a text-center">
+      <%= analysis.title%>
     </div>
-    <div class="name_ays">
+    <div class="name_ays mt-4">
       <span>投稿者</span>
       <%= analysis.user.nickname %>
     </div>
