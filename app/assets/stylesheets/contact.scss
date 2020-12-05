@@ -1,15 +1,36 @@
 .contact {
   background-color: #EEEEEE;
+  width: 100%;
+  display: flex;
   &-main{
     width: 45%;
     margin: 0 auto;
-    // flex: 1 1 100%;
   }
   &-sent {
-    width: 20%;
-    left: 41%;
-    position: absolute;
-    bottom: 0;
+    margin: 0 auto;
+    margin-top: auto;
+  }
+}
+
+@media screen and (min-width: 200px) {
+  .contact-sent {
+    min-width: 100px;
+    display: flex;
+  }
+  .btn-primary {
+    margin-left: 20px;
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .contact-sent {
+    max-width: 10%;
+    display: inline;
+  }
+  .btn-primary {
+    margin-left: 0px;
+    width: 100%;
   }
 }
 
