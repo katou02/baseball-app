@@ -1,32 +1,34 @@
 <%= render partial: "header"%>
 <%= render partial: "slide/slide"%>
 <div class="main-content">
-  <div class="main-content-btn pt-2">
-    <% if user_signed_in?%>
-      <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
-    <% end %>
-    <% unless current_page?(root_path)%>
-      <%= link_to "トップページへ戻る",root_path,class: "return-top" %>
-    <%end%>
-  </div>
-    <div class="text-format mt-5 text-primary">
-      観た試合の感想をみんなに発信してみましょう！
-    </div>
-    <div class="text-format mt-5 mb-4 text-warning">
-      大会別
-    </div>
-    <div class="title">
-      <% @category_parent_array.each do |tournament|%>
-        <%= link_to "/tournaments/#{tournament.id}",class: "title-child text-white" do%>
-          <i class="fa fa-baseball-ball text-white"></i>
-          <%=tournament.name%>
-        <% end %>
+  <div class="center">
+    <div class="main-content-btn pt-2">
+      <% if user_signed_in?%>
+        <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
       <% end %>
+      <% unless current_page?(root_path)%>
+        <%= link_to "トップページへ戻る",root_path,class: "return-top" %>
+      <%end%>
     </div>
-    <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search mt-5 pb-5") do |form| %>
-      <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
-      <%= form.submit "検索", class: "search-btn" %>
-    <% end %>
+      <div class="text-format mt-5 text-primary">
+        観た試合の感想をみんなに発信してみましょう！
+      </div>
+      <div class="text-format mt-5 mb-4 text-warning">
+        大会別
+      </div>
+      <div class="title">
+        <% @category_parent_array.each do |tournament|%>
+          <%= link_to "/tournaments/#{tournament.id}",class: "title-child text-white" do%>
+            <i class="fa fa-baseball-ball text-white"></i>
+            <%=tournament.name%>
+          <% end %>
+        <% end %>
+      </div>
+      <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search mt-5 pb-5") do |form| %>
+        <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
+        <%= form.submit "検索", class: "search-btn" %>
+      <% end %>
+  </div>
   <div class="article-main">
     <%= render partial: "tweet_show"%>
     <%= paginate(@tweets) %>
