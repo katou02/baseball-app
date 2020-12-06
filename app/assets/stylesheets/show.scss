@@ -105,3 +105,16 @@ input {
   position: relative;
   height: 100%;
 }
+
+// @media screen and (max-width: 650px) {
+// }
+
+@media screen and (max-width: 620px) {
+  .choose-btn {
+    display: grid;
+    text-align: center;
+  }
+          .user_name {
+            margin-top: 0;
+          }
+}
