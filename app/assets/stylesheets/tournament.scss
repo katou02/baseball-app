@@ -45,7 +45,7 @@
 }
 
 @media screen and (max-width: 679px) {
-  .content_anali-image {
+  .analysis-image {
     position: static;
   }
   .name {
@@ -54,7 +54,17 @@
 }
 
 @media screen and (min-width: 680px) {
-  .content_anali-image {
+  .analysis-image {
     position: absolute;
+  }
+}
+
+// 予想
+@media screen and (min-width: 890px) {
+  .fcs-image {
+    width: 10%;
+    position: absolute;
+    top: 40%;
+    left: 2%;
   }
 }
