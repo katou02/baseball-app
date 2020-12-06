@@ -1,5 +1,4 @@
 .analysis-main {
-  padding: 0 250px;
   width: 100%;
   height: 1500px;
   background-image: image-url("photo0000-0331.jpg");
@@ -16,7 +15,9 @@
 }
 
 .content_anali {
-  margin-top: 90px;
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
   background-color: lime;
   position: relative;
   border: solid 1px rgb(255, 255, 255);
@@ -24,7 +25,6 @@
   &-image {
     position: absolute;
     width: 10%;
-    font-size: 30px;
   }
   &:hover {
     opacity: 0.5;
@@ -56,8 +56,8 @@
   margin-right: 10%;
 }
 
-.title_a{
-  font-size: 25px;
+.title_ays {
+  font-size: 18px;
   margin-top: 20px;
 }
 
@@ -94,10 +94,6 @@
 /* watch */
 .average {
   display: flex;
-}
-
-.go-avg{
-  text-align: center;
 }
 
 .ays-avg {

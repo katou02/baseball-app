@@ -1,3 +1,28 @@
+.return {
+  border: 2px solid #57e963;
+  color: #57e963;
+  padding: 7px 30px;
+  margin-left:  30px;
+  display: inline-block;
+}
+
+// 記事
+@media screen and (max-width: 679px) {
+  .article-image {
+    position: static;
+  }
+  .name {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .article-image {
+    position: absolute;
+  }
+}
+
+// 分析
 .average {
   padding-top: 30px;
   padding-bottom: 10px;
@@ -19,16 +44,8 @@
   font-size: 25px;
 }
 
-.return {
-  border: 2px solid #57e963;
-  color: #57e963;
-  padding: 7px 30px;
-  margin-left:  30px;
-  display: inline-block;
-}
-
 @media screen and (max-width: 679px) {
-  .article-image {
+  .content_anali-image {
     position: static;
   }
   .name {
@@ -37,7 +54,7 @@
 }
 
 @media screen and (min-width: 680px) {
-  .article-image {
+  .content_anali-image {
     position: absolute;
   }
 }
