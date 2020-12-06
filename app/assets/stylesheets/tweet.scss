@@ -50,9 +50,13 @@
 
 .article {
   margin-top: 70px;
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
   background-color: #68ccf9;
   text-align: center;
   border: solid 1px rgb(255, 255, 255);
+  height: auto;
   &-title {
     font-size: 25px;
     color: white;
@@ -70,7 +74,6 @@
   }
   &-main {
     height: calc(100%-40%);
-    padding: 0 250px;
     width: 100%;
     background-image: image-url("sky_00010.jpg");
     background-size: cover;
