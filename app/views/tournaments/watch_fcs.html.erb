@@ -8,7 +8,7 @@
       <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-btn_watch" %>
     <%end%>
   </div>
-  <div class="forecasts-main">
+  <div class="forecast-main">
     <% if @forecast.present? %>
       <div class="text-format text-danger mt-1 pt-5 mb-4">
         <%= @forecast.tournament.name%>
