@@ -9,7 +9,7 @@
   padding-top: 30px;
 }
 
-.edit-article,.return-btn,.return-top,.return-btn_watch {
+.edit-article,.return-btn,.return-top,.return-top-mypage,.return-btn_watch {
   padding: 5px;
   color: #fff;
   border-top: 4px solid #48ecc4;
@@ -71,11 +71,7 @@ input {
   }
   &-content {
     background-color: rgba(236, 236, 206,0.4);
-    min-height: 600px;
-    &-fcs {
-      background-color: rgba(236, 236, 206,0.4);
-      min-height: 780px;
-    }
+    min-height: 780px;
   }
   &-user {
     font-size: 15px;
