@@ -108,7 +108,7 @@
   justify-content: space-evenly;
 }
 
-/* show */
+// /*詳細
 .school_name-ays {
   font-size: 30px;
   text-align: center;
@@ -119,9 +119,34 @@
   margin-top: 40px;
   border: 1px solid #b3b4b4;
   width: 100%;
+  max-width: 100%;
+  min-width: 200px;
 }
 
 .reader {
   margin-top: 110px;
   display: flex;
+}
+
+@media screen and (max-width: 966px) {
+  .reader {
+    display: block;
+  }
+  .ays-text {
+    min-width: 200px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .select_main-show {
+    display: block;
+    text-align: center;
+    margin-left: 0;
+  }
+  .attack_i,.defensive_i,.pitcher_i,.comprehensive_i,.expectations_i {
+    margin-right: 0;
+  }
+  .comment-form {
+    min-width: 250px;
+  }
 }

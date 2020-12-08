@@ -131,7 +131,7 @@
     background-color: #68ccf9;
   }
 }
-
+// 詳細 大会別
 #wrapper,.contact,.notification-main {
   display: flex;
   flex-direction: column;
@@ -148,4 +148,20 @@
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+// 詳細
+.good,.good-after {
+  background-color: white;
+  border: 2px solid white;
+  color: #C0C0C0;
+}
+
+.good:hover + .fukidashi {
+  display: block;
+}
+
+.game-article {
+  position: relative;
+  height: 100%;
 }
