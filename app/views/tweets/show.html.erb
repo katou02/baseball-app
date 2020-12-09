@@ -28,8 +28,9 @@
   <div class=show-text>
     <%= simple_format(@tweet.text)%>
   </div>
+  <%# いいね %>
   <div class="image">
-   <%= image_tag "#{@tweet.image}"%>
+    <%= image_tag "#{@tweet.image}"%>
     <% if current_user.already_liked?(@tweet)%>
       <%= button_to tweet_like_path(@tweet),class: "good-after text-danger",method: :delete  do %>
         <i class="fas fa-heart"></i><%= @tweet.likes.count %>
@@ -44,6 +45,7 @@
       <%= link_to "#{user.nickname}","/mypages/#{user.id}" %><br>
     <% end %>
   </div>
+  <%# コメント %>
   <div class="comment-content">
     <div class="comment">   
       <div class="text-format mt-5 mb-4 text-warning">

@@ -26,7 +26,8 @@
         <br>
         <div class="lose"><%= @forecast.lose_school.name %></div>
       </div>
-    </div>
+   </div>
+    <%# グラフ %>
     <div hidden class="win-rate"><%= @forecast.probability%></div>
     <div class="Pie mt-5">
       <div style="width:50%; height:50%";><canvas id="PieChart"></canvas></div>
@@ -37,7 +38,7 @@
     </div>
     <%= javascript_pack_tag 'forecast' %>
   </div>
-
+<%# コメント %>
    <div class="comment-content">
     <div class="comment">   
       <div class="text-format mt-5 mb-4 text-warning">

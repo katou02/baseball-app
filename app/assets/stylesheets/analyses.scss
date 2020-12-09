@@ -1,21 +1,21 @@
 .analysis-main {
-  padding: 0 250px;
   width: 100%;
-  background-image: url("photo0000-0331.jpg");
+  height: 950px;
+  background-image: image-url("photo0000-0331.jpg");
   background-size: cover;
   background-color:#ffffff80;
   background-blend-mode:lighten;
   flex: 1 1 100%;
-  // position: absolute;
-  // bottom: 0;
 }
 
 .analysis_header {
   background-image: url("https://pics.prcm.jp/d1c2e60537af9/78615919/jpeg/78615919.jpeg");
 }
 
-.content_anali {
-  margin-top: 90px;
+.analysis {
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
   background-color: lime;
   position: relative;
   border: solid 1px rgb(255, 255, 255);
@@ -23,7 +23,6 @@
   &-image {
     position: absolute;
     width: 10%;
-    font-size: 30px;
   }
   &:hover {
     opacity: 0.5;
@@ -55,8 +54,8 @@
   margin-right: 10%;
 }
 
-.title_a{
-  font-size: 25px;
+.title_ays {
+  font-size: 18px;
   margin-top: 20px;
 }
 
@@ -85,18 +84,9 @@
   right: 50px;
 }
 
-.name_ays,.name-fcs {
-  text-align: right;
-  padding-bottom: 10px;
-}
-
 /* watch */
 .average {
   display: flex;
-}
-
-.go-avg{
-  text-align: center;
 }
 
 .ays-avg {
@@ -118,7 +108,7 @@
   justify-content: space-evenly;
 }
 
-/* show */
+// /*詳細
 .school_name-ays {
   font-size: 30px;
   text-align: center;
@@ -129,9 +119,34 @@
   margin-top: 40px;
   border: 1px solid #b3b4b4;
   width: 100%;
+  max-width: 100%;
+  min-width: 200px;
 }
 
 .reader {
   margin-top: 110px;
   display: flex;
+}
+
+@media screen and (max-width: 966px) {
+  .reader {
+    display: block;
+  }
+  .ays-text {
+    min-width: 200px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .select_main-show {
+    display: block;
+    text-align: center;
+    margin-left: 0;
+  }
+  .attack_i,.defensive_i,.pitcher_i,.comprehensive_i,.expectations_i {
+    margin-right: 0;
+  }
+  .comment-form {
+    min-width: 250px;
+  }
 }

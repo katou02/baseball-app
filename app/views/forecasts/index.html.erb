@@ -1,30 +1,33 @@
-<%= render partial: "tweets/header" %>
-<%= render partial: "slide/slide"%>
 <div class="main-content">
-  <div class="main-content-btn pt-2">
-    <% if user_signed_in? %>
-      <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
-    <% end %>
-    <% unless current_page?(root_path)%>
-      <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
-    <%end%>
+  <div class="wrap">
+    <%= render partial: "tweets/header" %>
+    <%= render partial: "slide/slide"%>
+    <div class="center">
+      <div class="main-content-btn pt-2">
+        <% if user_signed_in? %>
+          <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
+        <% end %>
+        <% unless current_page?(root_path)%>
+          <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
+        <%end%>
+      </div>
+      <div class="text-format mt-5 mb-4 text-primary">
+        試合予想をしてみましょう！
+      </div>
+      <div class="text-format mt-5 mb-4 text-warning">
+        大会別
+      </div>
+      <div class="title">
+        <% @category_parent_array.each do |tournament|%>
+          <%= link_to "/tournaments/#{tournament.id}/watch_fcs",class: "title-child text-white" do %>
+            <i class="fa fa-baseball-ball text-white"></i><%= tournament.name %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="text-format mt-5 mb-4 text-primary">
-    試合予想をしてみましょう！
-  </div>
-  <div class="text-format mt-5 mb-4 text-warning">
-    大会別
-  </div>
-  <div class="title">
-    <% @category_parent_array.each do |tournament|%>
-      <%= link_to "/tournaments/#{tournament.id}/watch_fcs",class: "title-child text-white" do %>
-        <i class="fa fa-baseball-ball text-white"></i><%= tournament.name %>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="forecasts-main">
+  <div class="forecast-main">
     <%= render partial: "forecasts/forecasts"%>
-    <%= paginate(@forecasts)%>
   </div>
 </div>
 <%= javascript_pack_tag 'tweet' %>

@@ -16,22 +16,25 @@
   font-size: 25px;
 }
 
-.content-fcs {
-  border: solid 1px rgb(255, 255, 255);
+.forecast {
   margin-top: 90px;
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
+  border: solid 1px rgb(255, 255, 255);
   background-color: #FFAD90;
+  position: relative;
   &:hover {
     opacity: 0.7;
   }
 }
 
-.forecasts-main {
-  padding: 0 250px;
-  background-image: url("sky_00148.jpg");
+.forecast-main {
+  background-image: image-url("sky_00148.jpg");
   background-size: cover;
   background-color:rgba(255,255,255,0.5);
   background-blend-mode:lighten;
-  height: 100%;
+  min-height: 1100px;
   flex: 1 1 100%;
 }
 

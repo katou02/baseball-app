@@ -1,3 +1,28 @@
+.return {
+  border: 2px solid #57e963;
+  color: #57e963;
+  padding: 7px 30px;
+  margin-left:  30px;
+  display: inline-block;
+}
+
+// 記事
+@media screen and (max-width: 679px) {
+  .article-image {
+    position: static;
+  }
+  .name {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .article-image {
+    position: absolute;
+  }
+}
+
+// 分析
 .average {
   padding-top: 30px;
   padding-bottom: 10px;
@@ -19,10 +44,27 @@
   font-size: 25px;
 }
 
-.return {
-  border: 2px solid #57e963;
-  color: #57e963;
-  padding: 7px 30px;
-  margin-left:  30px;
-  display: inline-block;
+@media screen and (max-width: 679px) {
+  .analysis-image {
+    position: static;
+  }
+  .name {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .analysis-image {
+    position: absolute;
+  }
+}
+
+// 予想
+@media screen and (min-width: 890px) {
+  .fcs-image {
+    width: 10%;
+    position: absolute;
+    top: 40%;
+    left: 2%;
+  }
 }
