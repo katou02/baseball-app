@@ -57,9 +57,9 @@
             <label class="tab" for="tab4">いいねした試合記事</label>
           </div>
           <ul class="contents">
-            <li v-if="isActive === '1' "><%= render partial: "tweets/tweet_show"%></li>
-            <li v-else-if="isActive === '2' "><%= render partial: "analyses/show" %></li>
-            <li v-else-if="isActive === '3' "><%= render partial: "forecasts/forecasts"%></li>
+            <li v-if="isActive === '1' "><%= render partial: "my_tweet"%></li>
+            <li v-else-if="isActive === '2' "><%= render partial: "my_analysis" %></li>
+            <li v-else-if="isActive === '3' "><%= render partial: "my_forecast"%></li>
             <Li v-else-if="isActive === '4' "><%= render partial: "users/likes"%></li>
           </ul>
         </div>

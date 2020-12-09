@@ -1,0 +1,32 @@
+<div class="text-format mb-5 pt-5 text-warning">
+  <% if current_page?(tweets_path) || current_page?(tournament_path)  %>
+    みんなの試合記事
+  <% else %>
+    投稿した試合記事
+  <% end %>
+</div>
+<% @my_tweet.each do |tweet|%>
+  <div class="article mt-5">
+    <%= link_to tweet do %>
+      <div class="article-title">
+        <%= tweet.school_a.name %>
+        vs
+        <%= tweet.school_b.name %>
+      </div>
+      <div class="article-image">
+        <i class="fa fa-baseball-ball text-white"></i>
+      </div>
+      <div class="sub-title">
+        <%= tweet.title_info %>
+      </div>
+      <div class="name">
+        <span>投稿者</span>
+        <%= tweet.user.nickname %>
+      </div>
+      <div class="tweets_at">
+        <%= tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<%= paginate @my_tweet %>
