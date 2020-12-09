@@ -4,7 +4,7 @@
 <% @likes.each do |like|%>
   <% tweet = Tweet.find_by(id: like.tweet_id) %>
   <%= link_to tweet do %>
-  <div class="article">
+  <div class="article mt-5">
     <div class="article-title">
       <%= tweet.school_a.name %>
       vs
@@ -26,3 +26,4 @@
   </div>
   <% end %>
 <% end %>
+<%= paginate @likes%>

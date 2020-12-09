@@ -1,10 +1,9 @@
-.game_result {
-  font-size: 30px;
-  text-align: center;
-  padding-top: 30px;
+.game-article {
+  position: relative;
+  height: 100%;
 }
 
-.edit-article,.return-btn,.return-top,.return-btn_watch {
+.edit-article,.return-btn,.return-top,.return-top-mypage,.return-btn_watch {
   padding: 5px;
   color: #fff;
   border-top: 4px solid #48ecc4;
@@ -66,6 +65,7 @@ input {
   }
   &-content {
     background-color: rgba(236, 236, 206,0.4);
+    min-height: 780px;
   }
   &-user {
     font-size: 15px;
@@ -86,17 +86,19 @@ input {
   }
 }
 
-.good,.good-after {
-  background-color: white;
-  border: 2px solid white;
-  color: #C0C0C0;
+
+@media screen and (max-width: 620px) {
+  .choose-btn {
+    display: grid;
+    text-align: center;
+  }
+  .user_name {
+    margin-top: 0;
+  }
 }
 
-.good:hover + .fukidashi {
-  display: block;
-}
-
-.game-article {
-  position: relative;
-  height: 100%;
+@media screen and (max-width: 342px) {
+  .comment_delete-button {
+    display: block;
+  }
 }

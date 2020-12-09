@@ -1,31 +1,34 @@
-<%= render partial: "tweets/header" %>
-<%= render partial: "slide/slide"%>
 <div class="main-content pt-2">
-  <div class="main-content-btn">
-    <% if user_signed_in? %>
-      <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
-    <% end %>
-    <% unless current_page?(root_path)%>
-      <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
-    <%end%>
-  </div>
-  <div class="text-format mt-5 text-success">
-    戦力分析をみんなで共有してみましょう！
-  </div>
-  <div class="text-format mt-5 mb-4 text-warning">
-    大会別
-  </div>
-  <div class="title">
-    <% @category_parent_array.each do |tournament|%>
-      <%= link_to "/tournaments/#{tournament.id}/watch_ays",class: "title-child text-white" do%>
-        <i class="fa fa-baseball-ball text-white"></i>
-        <%=tournament.name%>
-      <% end %>
-    <% end %>
+  <div class="wrap">
+    <%= render partial: "tweets/header" %>
+    <%= render partial: "slide/slide"%>
+    <div class="center">
+      <div class="main-content-btn">
+        <% if user_signed_in? %>
+          <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
+        <% end %>
+        <% unless current_page?(root_path)%>
+          <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
+        <%end%>
+      </div>
+      <div class="text-format mt-5 text-success">
+        戦力分析をみんなで共有してみましょう！
+      </div>
+      <div class="text-format mt-5 mb-4 text-warning">
+        大会別
+      </div>
+      <div class="title">
+        <% @category_parent_array.each do |tournament|%>
+          <%= link_to "/tournaments/#{tournament.id}/watch_ays",class: "title-child text-white" do%>
+            <i class="fa fa-baseball-ball text-white"></i>
+            <%=tournament.name%>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="analysis-main">
     <%= render partial: "analyses/show"%>
-    <%= paginate(@analyses)%>
   </div>
 </div>
 <%= javascript_pack_tag 'tweet' %>

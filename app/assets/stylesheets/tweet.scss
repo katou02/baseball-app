@@ -1,5 +1,6 @@
 /* トップ画面 */
-*{box-sizing: border-box;}
+*{box-sizing: border-box;
+}
 .header,.analysis_header {
   font-size: 40px;
   height: 300px;
@@ -48,10 +49,13 @@
 }
 
 .article {
-  margin-top: 70px;
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
   background-color: #68ccf9;
   text-align: center;
   border: solid 1px rgb(255, 255, 255);
+  height: auto;
   &-title {
     font-size: 25px;
     color: white;
@@ -68,11 +72,9 @@
     opacity: 0.7;
   }
   &-main {
-    // position: absolute;
-    // bottom: 0;
-    padding: 0 250px;
+    height: 900px;
     width: 100%;
-    background-image: url("sky_00010.jpg");
+    background-image: image-url("sky_00010.jpg");
     background-size: cover;
     background-color:rgba(255,255,255,0.8);
     background-blend-mode:lighten;
@@ -120,12 +122,6 @@
   margin: 60px 20px 20px;
 }
 
-h2 {
-  margin: 10px 0;
-  text-align: center;
-  font-size: 25px;
-}
-
 /* 検索 */
 .search {
   width: 30%;
@@ -135,16 +131,44 @@ h2 {
     background-color: #68ccf9;
   }
 }
-
+// 詳細 大会別
 #wrapper,.contact,.notification-main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+.wrap {
+  min-height: calc(100vh - 900px);
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: all 1s ease;
 }
+
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+// 詳細
+.good,.good-after {
+  background-color: white;
+  border: 2px solid white;
+  color: #C0C0C0;
+}
+
+.good:hover + .fukidashi {
+  display: block;
+}
+
+.game-article {
+  position: relative;
+  height: 100%;
+}
+
+.game_result {
+  font-size: 30px;
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 30px;
 }

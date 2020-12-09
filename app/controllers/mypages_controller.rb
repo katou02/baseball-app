@@ -1,16 +1,21 @@
 class MypagesController < ApplicationController
-  # before_action :search_mypage,except:[:new,:create,:update]
   before_action :authenticate_user!
   layout 'vue'
+  
   def show
     @user = User.find(params[:id])
     @mypage = Mypage.find_by(user_id: @user.id)
     @tweets = Tweet.where(user_id: params[:id])
+    @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
     @analyses = Analysis.where(user_id: params[:id])
+    @analyses = Analysis.includes(:user).page(params[:page]).per(5).order("created_at DESC")
     @forecasts = Forecast.where(user_id: params[:id])
+    @forecasts = Forecast.includes(:user).page(params[:page]).per(5).order("created_at DESC")
     @likes = Like.where(user_id: @user.id)
+    @likes = Like.includes(:user).page(params[:page]).per(5).order("created_at DESC")
     @myEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
+
     if @user.id == current_user.id
     else
       @myEntry.each do |cu|
