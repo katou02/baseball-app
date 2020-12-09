@@ -27,6 +27,9 @@
     <%= link_to new_user_session_path,class: "login" do %>
       <i class="fa fa-sign-in-alt"></i>ログイン
     <% end %>
+    <%= link_to  users_guest_sign_in_path, method: :post,class: "guest-login" do %>
+      <i class="fa fa-sign-in-alt"></i>ゲストログイン
+    <% end %>
     <%= link_to new_user_registration_path,class: "top_sign_up" do %>
       <i class="fa fa-user-plus"></i>新規登録
     <% end %>

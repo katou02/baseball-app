@@ -42,11 +42,16 @@
   justify-content: space-between;
 }
 
-.info,.mypage,.logout,.contact-header,.login,.top_sign_up {
+.info,.mypage,.logout,.contact-header,.login,.top_sign_up,.guest-login {
   color: rgba(29,161,242,1.00);;
 }
 
 .top_sign_up {
+  position: absolute;
+  left: 270px;
+}
+
+.guest-login {
   position: absolute;
   left: 110px;
 }
