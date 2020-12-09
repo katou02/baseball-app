@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :comment_analyses
   has_many :comment_forecasts
   has_many :analyses
-  # belongs_to :mypage
   has_many :likes,dependent: :destroy
   has_many :liked_tweets,through: :likes,source: :tweet
   has_many :messages, dependent: :destroy
@@ -50,6 +49,7 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.nickname = 'ゲスト'
     end
   end
 end
