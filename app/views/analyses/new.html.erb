@@ -6,7 +6,7 @@
       <%= f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category_analysis"} %>
       <div class="school">
       </div>
-      <%= render partial: "analysis",locals:{f: f} %>
+      <%= render partial: "form",locals:{f: f} %>
     <%end%>
       <div class="back">
         <%= link_to "戻る",analyses_path %>
