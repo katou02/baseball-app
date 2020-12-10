@@ -60,10 +60,10 @@ class ForecastsController < ApplicationController
   end
 
   def forecast_params
-    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id,:probability).merge(user_id: current_user.id)
+    params.require(:forecast).permit(:text,:round,:win_school_id,:lose_school_id,:tournament_id,:probability).merge(user_id: current_user.id)
   end
 
   def update_params
-    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id,:probability)
+    params.require(:forecast).permit(:text,:round,:win_school_id,:lose_school_id,:tournament_id,:probability)
   end
 end
