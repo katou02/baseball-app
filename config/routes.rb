@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
   resources :messages, only: :create
   resources :rooms,only: [:create,:show]
+  resources :champions,only: [:show]
   resources :contacts,only:[:index] do
     collection do
       post :check
