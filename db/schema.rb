@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_30_052859) do
+ActiveRecord::Schema.define(version: 2020_12_12_071407) do
 
   create_table "analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "title"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2020_10_30_052859) do
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "champions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.bigint "champion_school_id", null: false
+    t.bigint "tournament_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["champion_school_id"], name: "index_champions_on_champion_school_id"
+    t.index ["tournament_id"], name: "index_champions_on_tournament_id"
   end
 
   create_table "comment_analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -176,6 +186,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_052859) do
 
   add_foreign_key "analyses", "categories", column: "school_id"
   add_foreign_key "analyses", "categories", column: "tournament_id"
+  add_foreign_key "champions", "categories", column: "champion_school_id"
+  add_foreign_key "champions", "categories", column: "tournament_id"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
   add_foreign_key "forecasts", "categories", column: "lose_school_id"
