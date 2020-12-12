@@ -13,7 +13,8 @@ class ChampionsController < ApplicationController
 
   def create
     @champion = Champion.create(champion_params)
-    return redirect_to champions_path if @champion.save
+    # binding.pry
+    return redirect_to root_path if @champion.save
     render "new"
   end
 
@@ -23,5 +24,9 @@ class ChampionsController < ApplicationController
   private
   def set_category
     @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  def champion_params
+    params.require(:champion).permit(:tournament_id,:champion_school_id).merge(user_id: current_user.id)
   end
 end
