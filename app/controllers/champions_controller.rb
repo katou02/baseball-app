@@ -1,5 +1,5 @@
 class ChampionsController < ApplicationController
-  before_action :set_category, only:[:new,:create]
+  before_action :set_category, only:[:new,:create,:show]
 
   def new
     @champion = Champion.new
@@ -18,6 +18,7 @@ class ChampionsController < ApplicationController
   end
 
   def show
+    @category = Category.find(params[:id]) 
     champions = Champion.where(tournament_id: params[:id])
     @n=0
     ranking(champions)

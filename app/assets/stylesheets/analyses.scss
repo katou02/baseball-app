@@ -89,7 +89,7 @@
   display: flex;
 }
 
-.ays-avg {
+.ays-avg,.champ {
   position: relative;
   display: inline-block;
   font-weight: bold;
@@ -99,6 +99,12 @@
   background: #ECECEC;
   transition: .4s;
   margin: 20px 0px 10px;
+}
+
+.champ {
+  text-align: center;
+  margin: 0 auto;
+  width: 10%;
 }
 
 /* new */
