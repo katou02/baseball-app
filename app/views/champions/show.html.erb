@@ -1,13 +1,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js">
 </script>
-<%= link_to "投稿する",new_champion_path %>
-
+<%= link_to "投稿する",new_champion_path,class: "send_btn ml-3 mt-3" %>
+<div class="text-format">
+  <%= @category.name %>
+</div>
+<% @category_parent_array.each do |tournament|%>
+<%# 大会別 %>
+  <% unless current_page?("/champions/#{tournament.id}") %>
+    <div class="cp-tournamet mt-5 mb-5">
+      <%= link_to "/champions/#{tournament.id}",class: "text-white" do%>
+        <i class="fa fa-baseball-ball text-white"></i>
+        <%=tournament.name%>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+<div class="text-format ">
+  投票結果
+</div>
+<%# 投票結果 %>
 <% @school.each do |school| %>
-  <%= school.champion_school.name %>
-  <%= @num[0][@n][1] %>
+  <div class="school-cp mt-5">
+    <%= school.champion_school.name %>
+    <%= @num[0][@n][1] %>
+  </div>
   <% @n+=1%>
 <% end %>
-<div class="Pie mt-5">
-  <div style="width:50%; height:50%";><canvas id="PieChart"></canvas></div>
-</div>
-<%= javascript_pack_tag 'champion' %>

@@ -7,6 +7,8 @@
       <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-btn_watch" %>
     <%end%>
   </div>
+  <%= link_to "優勝予想","/champions/#{@forecast.tournament_id}",class: "champ mt-3 mb-3" %>
+  <p class="text-center mb-3">優勝校を予想してみましょう</p>
   <div class="forecast-main">
     <% if @forecast.present? %>
       <div class="text-format text-danger mt-1 pt-5 mb-4">
@@ -18,4 +20,3 @@
     <% end %>
   </div>
 </div>
-<%= link_to "優勝予想","/champions/#{@forecast.tournament_id}",class: "ays-avg" %>
