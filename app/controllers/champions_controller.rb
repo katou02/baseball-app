@@ -18,8 +18,25 @@ class ChampionsController < ApplicationController
   end
 
   def show
-    
+    champions = Champion.where(tournament_id: params[:id])
+    @n=0
+    ranking(champions)
   end
+
+  def ranking(champions)
+    @num = []
+    champion_count = champions.group(:champion_school_id).count
+    # 重複が多い順に並び替え
+    @num << champion_count.sort {|(k1, v1), (k2, v2)| v2 <=> v1 }
+    # @num[0].slice!(5,70)
+    @school = []
+    # 多い順に格納
+    @num[0].length.times do |n|
+      @school << Champion.find_by(champion_school_id: @num[0][n][0])
+    end
+    # binding.pry
+  end
+
 
   private
   def set_category

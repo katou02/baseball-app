@@ -1,1 +1,13 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js">
+</script>
 <%= link_to "投稿する",new_champion_path %>
+
+<% @school.each do |school| %>
+  <%= school.champion_school.name %>
+  <%= @num[0][@n][1] %>
+  <% @n+=1%>
+<% end %>
+<div class="Pie mt-5">
+  <div style="width:50%; height:50%";><canvas id="PieChart"></canvas></div>
+</div>
+<%= javascript_pack_tag 'champion' %>
