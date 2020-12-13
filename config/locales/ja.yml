@@ -27,7 +27,10 @@ ja:
         tournament: "大会"
         win_school: "勝利予想"
         lose_school: "敗退予想"
-        text: "予想内容"  
+        text: "予想内容"
+      champion:
+        champion_school: "高校" 
+        tournament: "大会"
     activerecord:
       attributes:
         user:
