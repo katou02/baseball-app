@@ -13,12 +13,12 @@ class ChampionsController < ApplicationController
 
   def create
     @champion = Champion.create(champion_params)
-    # binding.pry
-    return redirect_to root_path if @champion.save
+    return redirect_to action: 'show',id: @champion.tournament.id if @champion.save
     render "new"
   end
 
   def show
+    
   end
 
   private

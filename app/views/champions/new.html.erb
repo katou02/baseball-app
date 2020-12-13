@@ -1,13 +1,10 @@
 <div class="contents row mt-2">
   <div class="form p-4">
     <%= form_with model: @champion,local: true do |f| %>
-      <%# <%= render 'layouts/error_messages_fcs', model: f.object %> %>
+      <%= render 'layouts/error_messages_cp', model: f.object %>
       <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @champion.tournament_id),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category_champion"} %>
       <div class="champion-school"></div>
       <%=f.submit value: "SENT",class: "game_record"%>
     <% end %>
-    <div class="back">
-      <%= link_to "戻る",:back %>
-    </div>
   </div>
 </div>
