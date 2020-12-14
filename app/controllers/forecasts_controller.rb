@@ -54,6 +54,10 @@ class ForecastsController < ApplicationController
     redirect_to action: :show
   end
 
+  def search
+    @forecasts = Forecast.search(params[:keyword]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
+  end
+
   private
   def set_category
     @category_parent_array = Category.where(ancestry: nil)

@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     resources :comment_analyses,only:[:create,:destroy]
   end
   resources :forecasts do
+    collection do
+      get :search
+    end
     resources :comment_forecasts,only:[:create,:destroy]
   end
   resources :tops,only:[:index]
