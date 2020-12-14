@@ -34,6 +34,7 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet.destroy if @tweet.user_id == current_user.id || current_user.admin
+    redirect_to action: :index if @tweet.destroy
   end
 
   def search
