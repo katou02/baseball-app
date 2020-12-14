@@ -1,7 +1,10 @@
-<div class="user-list">
-  <% @users.each do |user| %>
-    <div class="user">
-      <%= link_to "#{user.nickname}","mypages/#{user.id}" %>
-    </div>
-  <% end %>
+<div class="users-content">
+  <h2>参加ユーザー</h2>
+  <div class="user-list">
+    <% @users.each do |user| %>
+      <div class="user">
+        <%= link_to "#{user.nickname}","mypages/#{user.id}" %>
+      </div>
+    <% end %>
+  </div>
 </div>
