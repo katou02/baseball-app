@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     end
   end
   resources :analyses do
+    collection do
+      get :search
+    end
     resources :comment_analyses,only:[:create,:destroy]
   end
   resources :forecasts do

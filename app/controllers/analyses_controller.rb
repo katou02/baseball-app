@@ -59,6 +59,10 @@ class AnalysesController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 
+  def search
+    @analyses = Analysis.search(params[:keyword]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
+  end
+
   private
   def set_category
     @category_parent_array = Category.where(ancestry: nil)
