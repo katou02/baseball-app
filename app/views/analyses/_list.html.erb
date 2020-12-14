@@ -1,0 +1,23 @@
+<% @analyses.each do |analysis|%>
+  <%= link_to analysis do %>
+  <div class="analysis mt-5">
+    <div class="school_ays-name">
+      <%= analysis.school.name %>
+    </div>
+    <div class="analysis-image">
+      <i class="fa fa-search"></i>
+    </div>
+    <div class="title_ays text-center">
+      <%= analysis.title%>
+    </div>
+    <div class="name">
+      <span>投稿者</span>
+      <%= analysis.user.nickname %>
+    </div>
+    <div class="analyses_at">
+      <%= analysis.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+<%= paginate @analyses%>
