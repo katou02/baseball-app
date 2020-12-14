@@ -8,6 +8,7 @@
     <%= link_to "プロフィール編集",edit_mypage_path(@user),class: "edit-article" %>
   <% end %>
   <%= link_to "ユーザー一覧",users_path,class: "users-btn" %>
+  <p class="text-center">ID:<%= @user.id%></p>
   <div class="myname mt-5">
     <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
   </div>
