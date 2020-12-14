@@ -80,7 +80,7 @@ gem 'carrierwave'
 gem "font-awesome-sass"
 
 gem 'ancestry'
-gem 'fog'
+gem 'fog-aws'
 gem 'webpacker'
 gem 'bootstrap', '~> 5.0.0.alpha2'
  
