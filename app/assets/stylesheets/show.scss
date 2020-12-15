@@ -37,14 +37,15 @@
 }
 
 .show-text {
-  display: inline-block;
   margin: 0 0 0 50px;
   font-size: 20px;
   line-height: 2.5em;
 }
 
 .image {
-  margin: 120px 0 0 20px;
+  display: inline-block;
+  margin: 7% 0 5% 35%;
+  max-width: 100%;
 }
 
 a:hover {
@@ -86,6 +87,11 @@ input {
   }
 }
 
+@media screen and (max-width: 850px) {
+  .image {
+    max-width: 250px;
+  }
+}
 
 @media screen and (max-width: 620px) {
   .choose-btn {
@@ -95,10 +101,16 @@ input {
   .user_name {
     margin-top: 0;
   }
+  .image {
+    max-width: 190px;
+  }
 }
 
 @media screen and (max-width: 342px) {
   .comment_delete-button {
     display: block;
+  }
+  .image {
+    max-width: 140px;
   }
 }
