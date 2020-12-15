@@ -71,3 +71,29 @@
 .tab-switch:checked + .tab {
   background: DeepSkyBlue;
 }
+
+.my-post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.my-article,.my-forecast,.my-analysis {
+  width: 560px;
+  max-width: 100%;
+  margin-left: 10%;
+  border: solid 1px white;
+  height: auto;
+}
+
+.my-article {
+  background-color: #68ccf9;
+}
+
+.my-forecast {
+  background-color: #FFAD90;
+}
+
+.my-analysis {
+  background-color: lime;
+}
