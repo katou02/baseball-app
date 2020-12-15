@@ -11,9 +11,9 @@ class MypagesController < ApplicationController
     @likes = Like.where(user_id: @user.id)
     @myEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
-    @my_tweet = @user.tweets.page(params[:page]).per(5).order("created_at DESC")
-    @my_analysis = @user.analyses.page(params[:page]).per(5).order("created_at DESC")
-    @my_forecasts = @user.forecasts.page(params[:page]).per(5).order("created_at DESC")
+    @my_tweet = @user.tweets.page(params[:tweet_page]).per(5).order("created_at DESC")
+    @my_analysis = @user.analyses.page(params[:analysis_page]).per(5).order("created_at DESC")
+    @my_forecasts = @user.forecasts.page(params[:forecast_page]).per(5).order("created_at DESC")
     @likes = @user.likes.page(params[:page]).per(5).order("created_at DESC")
 
     if @user.id == current_user.id
