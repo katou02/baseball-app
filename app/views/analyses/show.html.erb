@@ -1,6 +1,6 @@
 <div class="analysis-show_content">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-  <div class="choose-btn pt-2">
+  <div class="choose-btn  mt-2 pt-2">
     <% if current_user.id == @analysis.user_id || current_user.admin? %>
     <%= link_to "記事を削除する","/analyses/#{@analysis.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
     <%= link_to "記事を編集する","/analyses/#{@analysis.id}/edit",method: :get,class: "edit-article" %>
