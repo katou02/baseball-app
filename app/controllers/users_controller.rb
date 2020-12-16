@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   def following
     @user  = User.find(params[:id])
     @users = @user.followings
-    # @mypage = Mypage.find_by(user_id: @user.id)
     render 'show_follow'
   end
 
@@ -20,7 +19,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @mypage = Mypage.find_by(user_id: @user.id)
     @tweets = Tweet.where(user_id: params[:id])
     @analyses = Analysis.where(user_id: params[:id])
     @forecasts = Forecast.where(user_id: params[:id])
