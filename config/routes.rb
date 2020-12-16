@@ -29,11 +29,6 @@ Rails.application.routes.draw do
     resources :comment_forecasts,only:[:create,:destroy]
   end
   resources :tops,only:[:index]
-  resources :mypages,only:[:show,:edit,:new,:create,:update,:index] do
-    member do
-      get :my_tweets,:my_analyses,:my_forecasts
-    end
-  end
   namespace :admin do
     resources :users,only: [:index,:destroy] do
       collection do
