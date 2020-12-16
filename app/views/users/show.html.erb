@@ -1,8 +1,10 @@
 <div class="mypage-content pt-3">
   <%= link_to "戻る",'javascript:history.back()',class: "return-top ml-2" %>
   <%= link_to "トップページへ戻る",root_path,class: "return-top-mypage"%>
-  <%= link_to "編集する",edit_user_path(@user),class: "edit-article" %>
   <%= link_to "ユーザー一覧",users_path,class: "users-btn" %>
+  <% if @user.id == current_user.id %>
+    <%= link_to "編集する",edit_user_path(@user),class: "edit-article" %>
+  <% end %>
   <p class="text-center">ID:<%= @user.id%></p>
   <div class="myname mt-5">
     <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>

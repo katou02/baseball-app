@@ -3,7 +3,7 @@
   <div class="user-list">
     <% @users.each do |user| %>
       <div class="user">
-        <%= link_to "#{user.nickname}","mypages/#{user.id}" %>
+        <%= link_to "#{user.nickname}","users/#{user.id}" %>
       </div>
     <% end %>
   </div>
