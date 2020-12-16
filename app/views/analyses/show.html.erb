@@ -8,7 +8,7 @@
     <%= link_to "分析トップページへ戻る",analyses_path,class: "return-btn" %>
   </div>
   <div class="user_name">
-    <h5>投稿者 <%= link_to "#{@analysis.user.nickname}","/mypages/#{@analysis.user_id}"%></h5>
+    <h5>投稿者 <%= link_to "#{@analysis.user.nickname}","/users/#{@analysis.user_id}"%></h5>
   </div>
   <div class="content-fcs_show">
     <div class="text-format mt-5 text-success">

@@ -1,6 +1,6 @@
 <div class="user-in">
 <% @entries.each do |e| %>
-    <h3><%= link_to "#{e.user.nickname}","/mypages/#{e.user_id}"%></h3>
+    <h3><%= link_to "#{e.user.nickname}","/users/#{e.user_id}"%></h3>
 <% end %>
 <p>ダイレクトメッセージ</p>
 </div>
