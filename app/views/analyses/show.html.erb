@@ -54,7 +54,7 @@
         <% @comments.each do |comment| %>
             <div class="comment-user">
               <%= @num %>:
-              <strong><%= link_to "#{comment.user.nickname}","/mypages/#{comment.user.id}",class: "pr-4" %></strong>
+              <strong><%= link_to "#{comment.user.nickname}","/users/#{comment.user.id}",class: "pr-4" %></strong>
               <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
               <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
                 <%= link_to '削除', "/analyses/#{@analysis.id}/comment_analyses/#{comment.id}", method: :delete,class: "comment_delete-button" %>

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def following
     @user  = User.find(params[:id])
     @users = @user.followings
-    @mypage = Mypage.find_by(user_id: @user.id)
+    # @mypage = Mypage.find_by(user_id: @user.id)
     render 'show_follow'
   end
 
