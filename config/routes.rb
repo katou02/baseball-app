@@ -41,7 +41,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :users,only:[:index] do
+  resources :users,only:[:index,:show,:edit,:update] do
     member do
       get :following,:followers
       get :likes
