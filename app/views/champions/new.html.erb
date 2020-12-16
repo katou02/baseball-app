@@ -2,8 +2,8 @@
   <div class="form p-4">
     <%= form_with model: @champion,local: true do |f| %>
       <%= render 'layouts/error_messages_cp', model: f.object %>
-      <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @champion.tournament_id),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category_champion"} %>
-      <div class="champion-school"></div>
+      <%= f.hidden_field  :tournament_id,value: @tournament %>
+      <%= f.collection_select :champion_school_id, @school, :id, :name%>
       <%=f.submit value: "SENT",class: "game_record"%>
     <% end %>
   </div>

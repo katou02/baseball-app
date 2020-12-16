@@ -2,7 +2,10 @@ class ChampionsController < ApplicationController
   before_action :set_category, only:[:new,:create,:show]
 
   def new
+    @n = 1
     @champion = Champion.new
+    @tournament = params[:tournament_id]
+    @school = Category.where(ancestry: @tournament)
     respond_to do |format|
       format.html
       format.json do
@@ -20,8 +23,14 @@ class ChampionsController < ApplicationController
   def show
     @category = Category.find(params[:id]) 
     champions = Champion.where(tournament_id: params[:id])
+    @my_champion = Champion.find_by(user_id: current_user.id,tournament_id: params[:id])
     @n=0
     ranking(champions)
+  end
+
+  def destroy
+    @my_champion = Champion.find_by(user_id: current_user.id,tournament_id: params[:id])
+    @my_champion.destroy if @my_champion.user_id == current_user.id
   end
 
   def ranking(champions)
@@ -37,7 +46,6 @@ class ChampionsController < ApplicationController
     end
     # binding.pry
   end
-
 
   private
   def set_category
