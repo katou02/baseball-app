@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_071407) do
     t.datetime "remember_created_at"
     t.text "text"
     t.integer "prefecture"
-    t.text "image_id"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname"
