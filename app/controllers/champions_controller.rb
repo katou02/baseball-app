@@ -30,7 +30,7 @@ class ChampionsController < ApplicationController
 
   def destroy
     @my_champion = Champion.find_by(user_id: current_user.id,tournament_id: params[:id])
-    @my_champion.destroy if @my_champion.user_id == current_user.id
+    redirect_to action: :show if @my_champion.destroy
   end
 
   def ranking(champions)
