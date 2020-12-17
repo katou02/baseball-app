@@ -83,6 +83,8 @@ gem 'ancestry'
 gem 'fog-aws'
 gem 'webpacker'
 gem 'bootstrap', '~> 5.0.0.alpha2'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
  
 group :production do
   gem 'unicorn', '5.4.1'
