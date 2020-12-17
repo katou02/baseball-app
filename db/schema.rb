@@ -113,14 +113,6 @@ ActiveRecord::Schema.define(version: 2020_12_12_071407) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "mypages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "text"
-    t.integer "user_id"
-    t.integer "prefectures"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "visiter_id"
     t.integer "visited_id"
@@ -178,7 +170,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_071407) do
     t.datetime "remember_created_at"
     t.text "text"
     t.integer "prefecture"
-    t.text "image"
+    t.text "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname"

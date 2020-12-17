@@ -3,6 +3,14 @@
     <%= form_with model: @user,local: true do |f|%>
       <%= f.select :prefecture,options_for_select(User.prefectures.keys,selected: @user.prefecture),{prompt: "選択してください"},class: "form-control" %>
       <%= f.text_field :text, cols: 30 ,rows: 10,value: "#{@user.text}" %>
+      <div class="user-image">
+        <% if @user.image.present? %>
+          <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg' %>
+        <% else %>
+          <%= image_tag("no-image.png", class: "mypage-edit-image") %>
+        <% end %>
+      </div>
+      <%= f.attachment_field :image %>
       <%=f.submit value: "SENT",class: "game_record"%>
     <% end %>
     <div class="back">
