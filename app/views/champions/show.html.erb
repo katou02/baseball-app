@@ -8,13 +8,13 @@
     <%= link_to new_champion_path(tournament_id: params[:id]),class: "btn btn-warning champ-btn" do %>
       優勝予想をする
     <% end %>
-    <p>投票は1回限りです</p>
-    <div class="text-format">
-      <%= @category.name %>
-    </div>
   <% else%>
-    <%= link_to "記事を削除する","/champions/#{@my_champion.tournament_id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
+    <%= link_to "投票を削除する","/champions/#{@my_champion.tournament_id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
+    <p class="mt-4 mb-4"><%= "#{@my_champion.champion_school.name}に投票しています" %><p>
   <% end %>
+</div>
+<div class="text-format">
+  <%= @category.name %>
 </div>
 <% @category_parent_array.each do |tournament|%>
 <%# 大会別 %>
