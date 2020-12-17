@@ -13,8 +13,7 @@
       <%= @category.name %>
     </div>
   <% else%>
-    <%= link_to "記事を削除する","/champions/#{@my_champion.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
-    <p>投票済み</p>
+    <%= link_to "記事を削除する","/champions/#{@my_champion.tournament_id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
   <% end %>
 </div>
 <% @category_parent_array.each do |tournament|%>
