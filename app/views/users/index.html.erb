@@ -12,7 +12,7 @@
             <% end %>
           </th>
           <th class="user-list-name"><%= link_to "#{user.nickname}","users/#{user.id}" %></th>
-          <th class="user-text"><%= user.text %></th>
+          <th class="user-text"><%= "#{user.text}".truncate(15) %></th>
         </tr>
       </table>
     <% end %>
