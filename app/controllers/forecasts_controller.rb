@@ -8,6 +8,7 @@ class ForecastsController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: @forecast.user_id)
     @nickname = current_user.nickname
     @comments = @forecast.comment_forecasts.includes(:user)
     @comment = current_user.comment_forecasts.new
