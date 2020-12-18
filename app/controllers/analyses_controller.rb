@@ -9,6 +9,7 @@ class AnalysesController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: @analysis.user.id)
     @nickname = current_user.nickname
     @comments = @analysis.comment_analyses.includes(:user)
     @comment = current_user.comment_analyses.new

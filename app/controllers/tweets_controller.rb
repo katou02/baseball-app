@@ -26,6 +26,7 @@ class TweetsController < ApplicationController
 
   def show
     @num=1
+    @user = User.find_by(id: @tweet.user.id)
     @nickname = current_user.nickname
     @comments = @tweet.comments.includes(:user)
     @comment = current_user.comments.new 
