@@ -32,7 +32,11 @@
   <% end %>
   <%# プロフィール %>
   <div class="myprof">
-    <%= image_tag "#{@user.image}",class: "user-image mt-5" %>
+    <% if @user.image.present?%>
+      <%= image_tag "#{@user.image}",class: "user-image mt-5" %>
+    <% else %>
+      <%= image_tag "no-image.png",class: "user-icon mt-3" %>
+    <% end %>
     <div class="residence">
       <p>住んでる場所</p>
       <br><%= @user.prefecture %> 
