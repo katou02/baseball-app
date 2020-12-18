@@ -2,9 +2,19 @@
   <h2>参加ユーザー</h2>
   <div class="user-list">
     <% @users.each do |user| %>
-      <div class="user">
-        <%= link_to "#{user.nickname}","users/#{user.id}" %>
-      </div>
+      <table class="tablecell mt-5">
+        <tr class="user">
+          <th>
+            <% if user.image.present?%>
+              <%= link_to image_tag("#{user.image}",class: "user-icon mt-3"),"users/#{user.id}" %>
+            <% else %>
+              <%= image_tag "no-image.png",class: "user-icon mt-3" %>
+            <% end %>
+          </th>
+          <th class="user-list-name"><%= link_to "#{user.nickname}","users/#{user.id}" %></th>
+          <th class="user-text"><%= user.text %></th>
+        </tr>
+      </table>
     <% end %>
   </div>
 </div>
