@@ -21,6 +21,9 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   mount_uploader :image, ImageUploader
+  validates :nickname,:email,:password,presence: true
+  validates :nickname,length: {maximum: 10}
+  validates :email, uniqueness: true
 
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
