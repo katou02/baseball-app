@@ -1,4 +1,3 @@
-<%= render partial: "tweets/header"%>
 <div id="wrapper">
   <div class="main-content-btn mt-1">
     <% if user_signed_in? %>
@@ -18,7 +17,7 @@
       <div class="text-format text-success mt-5 pt-5 mb-４">
         <%= @analysis_tournament.tournament.name%>
       </div>
-      <%= render partial: "analyses/show"%>
+      <%= render partial: "analyses/analysis_show"%>
     <% else %>
       <div class="text-center mt-5">投稿はありません</div>
     <% end %>

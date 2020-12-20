@@ -1,19 +1,20 @@
-<%= render partial: "tweets/header"%>
 <div id="wrapper">
   <div class="main-content-btn mt-1">
     <% if user_signed_in? %>
       <%= link_to "投稿する",new_forecast_path,class: "send_btn"%>
     <% end %>
     <% unless current_page?(root_path)%>
-      <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-btn_watch" %>
+      <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-top" %>
     <%end%>
   </div>
+  <%= link_to "優勝予想","/champions/#{@category.id}",class: "champ mt-3 mb-3" %>
+  <p class="text-center mb-3">優勝校を予想してみましょう</p>
   <div class="forecast-main">
-    <% if @forecast.present? %>
+    <% if @category.present? %>
       <div class="text-format text-danger mt-1 pt-5 mb-4">
-        <%= @forecast.tournament.name%>
+        <%= @category.name%>
       </div>
-      <%= render partial: "forecasts/forecasts"%>
+      <%= render partial: "forecasts/forecast_show"%>
     <% else %>
       <p class="text-center mt-5">投稿はありません<p>
     <% end %>

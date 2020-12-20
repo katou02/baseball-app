@@ -1,0 +1,6 @@
+<%= link_to "記事一覧へ戻る",forecasts_path,class: "return-btn d-inline-block mt-2"  %>
+<%= form_with(url: search_forecasts_path, local: true, method: :get, class: "search mt-5 mb-5") do |form| %>
+  <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
+<%= render partial: "list" %>

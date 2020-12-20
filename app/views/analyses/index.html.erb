@@ -1,6 +1,5 @@
-<div class="main-content pt-2">
+<div class="main-content">
   <div class="wrap">
-    <%= render partial: "tweets/header" %>
     <%= render partial: "slide/slide"%>
     <div class="center">
       <div class="main-content-btn">
@@ -25,10 +24,14 @@
           <% end %>
         <% end %>
       </div>
+      <%= form_with(url: search_analyses_path, local: true, method: :get, class: "search mt-5 pb-5") do |form| %>
+        <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
+        <%= form.submit "検索", class: "search-btn" %>
+      <% end %>
     </div>
   </div>
   <div class="analysis-main">
-    <%= render partial: "analyses/show"%>
+    <%= render partial: "analysis_show"%>
   </div>
 </div>
 <%= javascript_pack_tag 'tweet' %>

@@ -1,0 +1,20 @@
+<div class="users-content">
+  <h2>参加ユーザー</h2>
+  <div class="user-list">
+    <% @users.each do |user| %>
+      <table class="tablecell mt-5">
+        <tr class="user">
+          <th>
+            <% if user.image.present?%>
+              <%= link_to image_tag("#{user.image}",class: "user-icon mt-3"),"users/#{user.id}" %>
+            <% else %>
+              <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"users/#{user.id}" %>
+            <% end %>
+          </th>
+          <th class="user-list-name"><%= link_to "#{user.nickname}","users/#{user.id}" %></th>
+          <th class="user-text"><%= "#{user.text}".truncate(15) %></th>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

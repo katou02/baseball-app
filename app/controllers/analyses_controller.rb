@@ -9,10 +9,13 @@ class AnalysesController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: @analysis.user.id)
     @nickname = current_user.nickname
     @comments = @analysis.comment_analyses.includes(:user)
     @comment = current_user.comment_analyses.new
     @num = 1
+    gon.data = []
+    gon.data.push(@analysis.attack,@analysis.defensive,@analysis.pitcher,@analysis.comprehensive,@analysis.expectations)
   end
 
   def new
@@ -57,6 +60,10 @@ class AnalysesController < ApplicationController
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
+  end
+
+  def search
+    @analyses = Analysis.search(params[:keyword]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
 
   private

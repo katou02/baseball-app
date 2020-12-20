@@ -1,5 +1,5 @@
 <div class="game-article">
-  <div class="choose-btn pt-2">
+  <div class="choose-btn mt-2 pt-2">
     <% if current_user.id == @tweet.user_id || current_user.admin? %>
     <%= link_to "記事を削除する","/tweets/#{@tweet.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
     <%= link_to "記事を編集する","/tweets/#{@tweet.id}/edit",method: :get,class: "edit-article" %>
@@ -7,7 +7,12 @@
     <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn" %>
   </div>
   <div class="user_name">
-    <h5>投稿者 <%= link_to "#{@tweet.user.nickname}","/mypages/#{@tweet.user_id}"%></h5>
+    <h5>投稿者 <%= link_to "#{@tweet.user.nickname}","/users/#{@tweet.user_id}"%></h5>
+    <% if @user.image.present?%>
+      <%= link_to image_tag("#{@user.image}",class: "user-icon mt-2"),"/users/#{@user.id}" %>
+    <% else %>
+      <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{@user.id}" %>
+    <% end %>
   </div>
   <div class="game_result">
     <%= @tweet.tournament.name%><br><br>
@@ -29,22 +34,20 @@
     <%= simple_format(@tweet.text)%>
   </div>
   <%# いいね %>
-  <div class="image">
-    <%= image_tag "#{@tweet.image}"%>
-    <% if current_user.already_liked?(@tweet)%>
-      <%= button_to tweet_like_path(@tweet),class: "good-after text-danger",method: :delete  do %>
-        <i class="fas fa-heart"></i><%= @tweet.likes.count %>
-      <% end %>
-    <% else %>
-      <%= button_to tweet_likes_path(@tweet),{class: "good mb-2"} do %>いいね
-        <i class="fas fa-heart"></i><%= @tweet.likes.count %>
-      <% end %>
+  <%= image_tag "#{@tweet.image}",width: "400",class: "image" %>
+  <% if current_user.already_liked?(@tweet)%>
+    <%= button_to tweet_like_path(@tweet),class: "good-after text-danger",method: :delete  do %>
+      <i class="fas fa-heart"></i><%= @tweet.likes.count %>
     <% end %>
-    <p>いいねをしたユーザー</p><br>
-    <% @tweet.liked_users.each do |user|%>
-      <%= link_to "#{user.nickname}","/mypages/#{user.id}" %><br>
+  <% else %>
+    <%= button_to tweet_likes_path(@tweet),{class: "good mb-2"} do %>いいね
+      <i class="fas fa-heart"></i><%= @tweet.likes.count %>
     <% end %>
-  </div>
+  <% end %>
+  <p>いいねをしたユーザー</p><br>
+  <% @tweet.liked_users.each do |user|%>
+    <%= link_to "#{user.nickname}","/users/#{user.id}" %><br>
+  <% end %>
   <%# コメント %>
   <div class="comment-content">
     <div class="comment">   
@@ -56,7 +59,7 @@
         <% @comments.each do |comment| %>
             <div class="comment-user">
               <%= @num %>:
-              <strong><%= link_to "#{comment.user.nickname}","/mypages/#{comment.user.id}",class: "pr-4" %></strong>
+              <strong><%= link_to "#{comment.user.nickname}","/users/#{comment.user.id}",class: "pr-4" %></strong>
               <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
               <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
                 <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete-button" %>
