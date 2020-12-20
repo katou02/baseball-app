@@ -8,6 +8,7 @@ class ForecastsController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: @forecast.user_id)
     @nickname = current_user.nickname
     @comments = @forecast.comment_forecasts.includes(:user)
     @comment = current_user.comment_forecasts.new
@@ -54,16 +55,20 @@ class ForecastsController < ApplicationController
     redirect_to action: :show
   end
 
+  def search
+    @forecasts = Forecast.search(params[:keyword]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
+  end
+
   private
   def set_category
     @category_parent_array = Category.where(ancestry: nil)
   end
 
   def forecast_params
-    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id,:probability).merge(user_id: current_user.id)
+    params.require(:forecast).permit(:text,:round,:win_school_id,:lose_school_id,:tournament_id,:probability).merge(user_id: current_user.id)
   end
 
   def update_params
-    params.require(:forecast).permit(:text,:win_school_id,:lose_school_id,:tournament_id,:probability)
+    params.require(:forecast).permit(:text,:round,:win_school_id,:lose_school_id,:tournament_id,:probability)
   end
 end

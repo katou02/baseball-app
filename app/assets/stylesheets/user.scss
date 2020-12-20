@@ -1,0 +1,44 @@
+.user {
+  margin-top: 10%;
+  &-list {
+    margin-top: 10%;
+    &-name {
+      vertical-align: middle;
+      padding: 2em;
+    }
+  }
+  &-image {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: solid;
+    border-color: #acafc3;
+  }
+  &-icon {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: solid;
+    border-color: #acafc3;
+  }
+  &-text {
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+table td {
+  overflow-wrap : break-word;
+}
+
+.users-content {
+  /*word-break: break-all;*/
+  padding: 0 550px;
+}

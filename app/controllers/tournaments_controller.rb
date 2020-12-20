@@ -17,7 +17,7 @@ class TournamentsController < ApplicationController
 
   def watch_fcs
     @forecasts = Forecast.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
-    @forecast = Forecast.find_by(tournament_id: params[:id])
+    @category = Category.find(params[:id])
   end
   
   def average(num)

@@ -16,9 +16,10 @@
 // const imagePath = (name) => images(name, true)
 //
 //= require jquery
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require Chart.min
 
+require("./rails-ujs.js");
 console.log('Hello World from Webpacker')

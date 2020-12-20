@@ -1,0 +1,40 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js">
+</script>
+<div class="main-content-btn">
+  <%= link_to "予想一覧へ戻る","/tournaments/#{@category.id}/watch_fcs",class: "return-top  ml-1 mt-3" %>
+</div>
+<div class="text-center">
+  <% if @my_champion.blank?%>
+    <%= link_to new_champion_path(tournament_id: params[:id]),class: "btn btn-warning champ-btn" do %>
+      優勝予想をする
+    <% end %>
+  <% else%>
+    <%= link_to "投票を削除する","/champions/#{@my_champion.tournament_id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
+    <p class="mt-4 mb-4"><%= "#{@my_champion.champion_school.name}に投票しています" %><p>
+  <% end %>
+</div>
+<div class="text-format">
+  <%= @category.name %>
+</div>
+<% @category_parent_array.each do |tournament|%>
+<%# 大会別 %>
+  <% unless current_page?("/champions/#{tournament.id}") %>
+    <div class="cp-tournamet mt-5 mb-5">
+      <%= link_to "/champions/#{tournament.id}",class: "text-white" do%>
+        <i class="fa fa-baseball-ball text-white"></i>
+        <%=tournament.name%>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+<div class="text-format ">
+  投票結果
+</div>
+<%# 投票結果 %>
+<% @school.each do |school| %>
+  <div class="school-cp mt-5">
+    <%= school.champion_school.name %>
+    <%= @num[0][@n][1] %>
+  </div>
+  <% @n+=1%>
+<% end %>

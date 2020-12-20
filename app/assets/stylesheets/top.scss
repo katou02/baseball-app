@@ -42,11 +42,16 @@
   justify-content: space-between;
 }
 
-.info,.mypage,.logout,.contact-header,.login,.top_sign_up {
+.info,.mypage,.logout,.contact-header,.login,.top_sign_up,.guest-login {
   color: rgba(29,161,242,1.00);;
 }
 
 .top_sign_up {
+  position: absolute;
+  left: 270px;
+}
+
+.guest-login {
   position: absolute;
   left: 110px;
 }
@@ -99,7 +104,6 @@
 
 @media screen and (min-width: 1200px) {
   .top-image {
-    
     &_one {
       top: 12%;
       left: 0;
@@ -162,7 +166,7 @@
   .top-title {
     font-size: 24px;
   }
-  .btn-cool-blues,.btn-green-moon,.btn-orange-moon {
+  .btn-cool-blues,.btn-green-moon,.btn-orange-moon,.btn-success {
     font-size: 15px;
   }
 }

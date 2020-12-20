@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MypageTest < ActiveSupport::TestCase
+class ChampionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

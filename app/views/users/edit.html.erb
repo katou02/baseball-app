@@ -1,0 +1,16 @@
+<div class="contents row">
+  <div class="container">
+    <%= form_with model: @user,local: true do |f|%>
+      <%= f.select :prefecture,options_for_select(User.prefectures.keys,selected: @user.prefecture),{prompt: "選択してください"},class: "form-control" %>
+      <%= f.text_field :text, cols: 30 ,rows: 10,value: "#{@user.text}" %>
+      <%= f.file_field :image %>
+      <div class="s3">
+
+      </div>
+      <%=f.submit value: "SENT",class: "game_record"%>
+    <% end %>
+    <div class="back">
+      <%= link_to "戻る","/users/#{current_user.id}",data: {"turbolinks" => false} %>
+    </div>
+  </div>
+</div>

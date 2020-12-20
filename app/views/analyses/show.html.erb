@@ -1,6 +1,6 @@
 <div class="analysis-show_content">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-  <div class="choose-btn pt-2">
+  <div class="choose-btn  mt-2 pt-2">
     <% if current_user.id == @analysis.user_id || current_user.admin? %>
     <%= link_to "記事を削除する","/analyses/#{@analysis.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
     <%= link_to "記事を編集する","/analyses/#{@analysis.id}/edit",method: :get,class: "edit-article" %>
@@ -8,7 +8,12 @@
     <%= link_to "分析トップページへ戻る",analyses_path,class: "return-btn" %>
   </div>
   <div class="user_name">
-    <h5>投稿者 <%= link_to "#{@analysis.user.nickname}","/mypages/#{@analysis.user_id}"%></h5>
+    <h5>投稿者 <%= link_to "#{@analysis.user.nickname}","/users/#{@analysis.user_id}"%></h5>
+    <% if @user.image.present?%>
+      <%= link_to image_tag("#{@user.image}",class: "user-icon mt-2"),"/users/#{@user.id}" %>
+    <% else %>
+      <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{@user.id}" %>
+    <% end %>
   </div>
   <div class="content-fcs_show">
     <div class="text-format mt-5 text-success">
@@ -54,7 +59,7 @@
         <% @comments.each do |comment| %>
             <div class="comment-user">
               <%= @num %>:
-              <strong><%= link_to "#{comment.user.nickname}","/mypages/#{comment.user.id}",class: "pr-4" %></strong>
+              <strong><%= link_to "#{comment.user.nickname}","/users/#{comment.user.id}",class: "pr-4" %></strong>
               <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
               <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
                 <%= link_to '削除', "/analyses/#{@analysis.id}/comment_analyses/#{comment.id}", method: :delete,class: "comment_delete-button" %>

@@ -26,6 +26,7 @@ class TweetsController < ApplicationController
 
   def show
     @num=1
+    @user = User.find_by(id: @tweet.user.id)
     @nickname = current_user.nickname
     @comments = @tweet.comments.includes(:user)
     @comment = current_user.comments.new 
@@ -34,11 +35,11 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet.destroy if @tweet.user_id == current_user.id || current_user.admin
+    redirect_to action: :index if @tweet.destroy
   end
 
   def search
-    @tweets = Tweet.search(params[:keyword])
-    @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    @tweets = Tweet.search(params[:keyword]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
 
   def edit

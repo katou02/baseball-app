@@ -7,7 +7,7 @@
       <div class="school">
         <%=f.select :school_id,options_for_select(@category_children_array.map{|c| [c[:name], c[:id]]},selected: @analysis.school_id),{},{class: "tournament_select_child",id: "children_category"} %>
       </div>
-      <%= render partial: "analysis",locals:{f: f} %>
+      <%= render partial: "form",locals:{f: f} %>
     <%end%>
       <div class="back">
         <%= link_to "戻る",analyses_path%>

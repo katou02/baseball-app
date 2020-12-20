@@ -44,6 +44,8 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -82,7 +84,9 @@ gem "font-awesome-sass"
 gem 'ancestry'
 gem 'fog-aws'
 gem 'webpacker'
+gem 'chart-js-rails', '~> 0.1.4'
 gem 'bootstrap', '~> 5.0.0.alpha2'
+gem 'gon', '~> 6.2.0'
  
 group :production do
   gem 'unicorn', '5.4.1'

@@ -1,14 +1,13 @@
-<div class="text-format mb-5 pt-5 text-danger">
-  <% if current_page?(forecasts_path) || current_page?(watch_fcs_tournament_path)  %>
-    みんなの試合予想
-  <% else %>
-    投稿した試合予想
-  <% end %>
-</div>
 <% @forecasts.each do |forecast| %>
   <div class="forecast mt-5">
   <%= link_to forecast do %>
+    <div class="text-format mt-1 font-weight-normal">
+      <%= forecast.round%>
+    </div>
     <div class="school-fcs">
+    <div class="fcs-image">
+      <i class="fa fa-balance-scale text-white"></i>
+    </div>
       <div class="win-school_fs">
         <p>勝利予想<p>
         <br>
@@ -19,9 +18,6 @@
         <br>
         <%= forecast.lose_school.name %>
       </div>
-    </div>
-    <div class="fcs-image">
-      <i class="fa fa-balance-scale text-white"></i>
     </div>
     <div class="name">
       <span>投稿者</span>
