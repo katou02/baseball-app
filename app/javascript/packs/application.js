@@ -19,6 +19,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require Chart.min
 
 require("./rails-ujs.js");
 console.log('Hello World from Webpacker')
