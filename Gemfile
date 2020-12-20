@@ -84,6 +84,7 @@ gem "font-awesome-sass"
 gem 'ancestry'
 gem 'fog-aws'
 gem 'webpacker'
+gem 'chart-js-rails', '~> 0.1.4'
 gem 'bootstrap', '~> 5.0.0.alpha2'
  
 group :production do
