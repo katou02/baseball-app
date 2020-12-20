@@ -10,9 +10,9 @@
   <div class="user_name">
     <h5>投稿者 <%= link_to "#{@forecast.user.nickname}","/users/#{@forecast.user_id}"%></h5>
     <% if @user.image.present?%>
-      <%= link_to image_tag("#{@user.image}",class: "user-icon mt-2"),"users/#{@user.id}" %>
+      <%= link_to image_tag("#{@user.image}",class: "user-icon mt-2"),"/users/#{@user.id}" %>
     <% else %>
-      <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"users/#{@user.id}" %>
+      <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{@user.id}" %>
     <% end %>
   </div>
   <div class="content-fcs_show">
