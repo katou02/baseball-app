@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
   describe 'バリデーションテスト' do
     let(:user){build(:user)}
     subject {user.valid?}
+    
     it "名前、メール、パスワードがあれば登録できる" do
       expect(user).to be_valid
     end
