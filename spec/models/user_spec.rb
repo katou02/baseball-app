@@ -2,95 +2,92 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  before do
-    @user = create(:user)
-  end
-  
-
   describe 'バリデーションテスト' do
-    subject {@user.valid?}
+    let(:user){build(:user)}
+    subject {user.valid?}
     it "名前、メール、パスワードがあれば登録できる" do
-      expect(@user).to be_valid
+      expect(user).to be_valid
     end
     
     context 'nicknameカラム' do
       it '未入力でないこと' do
-        @user.nickname = ''
+        user.nickname = ''
         is_expected.to eq false
       end
 
       it '名前が未入力であればエラー' do
-        @user.nickname = nil
-        @user.valid?
-        expect(@user.errors[:nickname]).to include("を入力してください")
+        user.nickname = nil
+        user.valid?
+        expect(user.errors[:nickname]).to include("を入力してください")
       end
 
       it '名前が11文字以上なら登録できない' do
-        @user.nickname = "a" * 11
-        @user.valid?
-        expect(@user.errors).to be_added(:nickname, :too_long, count: 10)
+        user.nickname = "a" * 11
+        user.valid?
+        expect(user.errors).to be_added(:nickname, :too_long, count: 10)
       end
   
       it '名前が10文字以下なら登録できる' do
-        @user.nickname = "a" * 10
-        expect(@user).to be_valid
+        user.nickname = "a" * 10
+        expect(user).to be_valid
       end
     end
     
     context 'emailカラム' do
       
       it '未入力でないこと' do
-        @user.email = ''
+        user.email = ''
         is_expected.to eq false
       end
 
       it 'メールアドレスが未入力であればエラー' do
-        @user.email = nil
-        @user.valid?
-        expect(@user.errors[:email]).to include("を入力してください")
+        user.email = nil
+        user.valid?
+        expect(user.errors[:email]).to include("を入力してください")
       end
 
       it 'メールアドレスが重複していると登録できない' do
-        @user2 = User.new(email: 'test@gmail.com')
-        @user2.valid?
-        expect(@user2.errors[:email]).to include('はすでに存在します')
+        user = create(:user)
+        user2 = build(:user,email: user.email)
+        user2.valid?
+        expect(user2.errors[:email]).to include('はすでに存在します')
       end
 
       it '半角英数字以外はエラー' do
-        @user.email = 'メール'
-        @user.valid?
-        expect(@user.errors[:email]).to include('は不正な値です')
+        user.email = 'メール'
+        user.valid?
+        expect(user.errors[:email]).to include('は不正な値です')
       end
     end
    
     context 'passwordカラム' do
 
       it '未入力でないこと' do
-        @user.password = ''
+        user.password = ''
         is_expected.to eq false
       end
 
       it 'パスワードが未入力であればエラー' do
-        @user.password = nil
-        @user.valid?
-        expect(@user.errors[:password]).to include("を入力してください")
+        user.password = nil
+        user.valid?
+        expect(user.errors[:password]).to include("を入力してください")
       end
 
       it 'パスワードが5文字以下なら登録できない' do
-        @user.password = 'ttt20'
-        @user.valid?
-        expect(@user.errors).to be_added(:password,:too_short,count: 6)
+        user.password = 'ttt20'
+        user.valid?
+        expect(user.errors).to be_added(:password,:too_short,count: 6)
       end
 
       it 'パスワードが6文字以上なら登録できる' do
-        @user.password = 'test2020'
-        expect(@user).to be_valid
+        user.password = 'test2020'
+        expect(user).to be_valid
       end
 
       it 'パスワードの再確認が不一致' do
-        @user.password_confirmation = 'test1010'
-        @user.valid?
-        expect(@user.errors[:password_confirmation]).to be_present
+        user.password_confirmation = 'test1010'
+        user.valid?
+        expect(user.errors[:password_confirmation]).to be_present
       end
     end
   end
