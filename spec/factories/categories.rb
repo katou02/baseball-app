@@ -10,7 +10,7 @@ FactoryBot.define do
   end
 
   factory :tournament,class: Category do
-    id { 1 }
+    id { 3 }
     name {"第99回全国高校野球選手権大会"}
   end
 end
