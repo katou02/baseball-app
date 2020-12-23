@@ -203,5 +203,12 @@ RSpec.describe Tweet, type: :model do
         expect(t.macro).to eq(:has_many)
       end
     end
+
+    context 'Userモデルとの関係' do
+      it '1:Nにとなっている' do
+        t = Tweet.reflect_on_association(:user)
+        expect(t.macro).to eq(:belongs_to)
+      end
+    end
   end
 end
