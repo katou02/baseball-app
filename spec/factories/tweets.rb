@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :tweet do
+    id { 1 }
     title_info { "テスト" }
     school_a_score { 1 }
     school_b_score { 2 }
