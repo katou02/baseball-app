@@ -122,7 +122,7 @@ RSpec.describe Analysis, type: :model do
         is_expected.to eq false
       end
 
-      it '学校Bが未入力だとエラー' do
+      it '学校が未入力だとエラー' do
         analysis.school_id = ''
         analysis.valid?
         expect(analysis.errors[:school]).to include('を入力してください')
