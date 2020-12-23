@@ -155,7 +155,7 @@ RSpec.describe Tweet, type: :model do
       end
 
       it '外部キーが存在するなら保存できる' do
-        tweet.tournament_id = 1
+        tweet.tournament_id = 3
         expect(tweet).to be_valid
       end
     end

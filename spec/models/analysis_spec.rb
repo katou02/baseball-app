@@ -158,7 +158,7 @@ RSpec.describe Analysis, type: :model do
       end
 
       it '外部キーが存在するなら保存できる' do
-        analysis.tournament_id = 1
+        analysis.tournament_id = 3
         expect(analysis).to be_valid
       end
     end
