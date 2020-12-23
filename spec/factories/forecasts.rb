@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :forecast do
+    id { 1 }
     text { "テキスト" }
     round { "1回戦" }
     probability {"80%"}
