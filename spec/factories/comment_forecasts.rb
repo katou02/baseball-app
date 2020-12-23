@@ -1,0 +1,7 @@
+FactoryBot.define do
+  factory :comment_forecast do
+    text { "テキスト" }
+    association :forecast,factory: :forecast
+    association :user,factory: :user
+  end
+end
