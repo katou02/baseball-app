@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :analysis do
+    id { 1 }
     title {"タイトル"}
     text { "テキスト" }
     attack { 5 }
