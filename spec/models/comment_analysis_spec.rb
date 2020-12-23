@@ -53,7 +53,7 @@ RSpec.describe CommentAnalysis, type: :model do
         is_expected.to eq false
       end
 
-      it 'ユーザーが空ならエラー' do
+      it 'analysis_idが空ならエラー' do
         comment_ays.analysis_id = ''
         comment_ays.valid?
         expect(comment_ays.errors[:analysis]).to include('を入力してください')
