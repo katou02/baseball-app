@@ -205,7 +205,7 @@ RSpec.describe Tweet, type: :model do
     end
 
     context 'Userモデルとの関係' do
-      it '1:Nにとなっている' do
+      it 'belongs_toになっている' do
         t = Tweet.reflect_on_association(:user)
         expect(t.macro).to eq(:belongs_to)
       end

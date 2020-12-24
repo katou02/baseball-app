@@ -65,7 +65,7 @@ RSpec.describe Champion, type: :model do
   describe 'アソシエーションテスト' do
     
     context 'USerテーブルとの関係' do
-      it '1:Nとなっている' do
+      it 'belongs_toになっている' do
         t = Champion.reflect_on_association(:user)
         expect(t.macro).to eq(:belongs_to)
       end

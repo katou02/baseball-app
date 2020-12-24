@@ -64,14 +64,14 @@ RSpec.describe CommentForecast, type: :model do
   describe 'アソシエーションのテスト' do
     
     context 'Forecastテーブルとの関係' do
-      it '1:Nとなっている' do
+      it 'belongs_toになっている' do
         t = CommentForecast.reflect_on_association(:forecast)
         expect(t.macro).to eq(:belongs_to)
       end
     end
 
     context 'Userテーブルとの関係' do
-      it '1:Nとなっている' do
+      it 'belongs_toになっている' do
         t = CommentForecast.reflect_on_association(:user)
         expect(t.macro).to eq(:belongs_to)
       end
