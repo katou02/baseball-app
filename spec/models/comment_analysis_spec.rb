@@ -64,14 +64,14 @@ RSpec.describe CommentAnalysis, type: :model do
   describe 'アソシエーションのテスト' do
     
     context 'Analysisテーブルとの関係' do
-      it '1:Nとなっている' do
+      it 'belongs_toになっている' do
         t = CommentAnalysis.reflect_on_association(:analysis)
         expect(t.macro).to eq(:belongs_to)
       end
     end
 
     context 'Userテーブルとの関係' do
-      it '1:Nとなっている' do
+      it 'belongs_toになっている' do
         t = CommentAnalysis.reflect_on_association(:user)
         expect(t.macro).to eq(:belongs_to)
       end

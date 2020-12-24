@@ -156,21 +156,21 @@ RSpec.describe Forecast, type: :model do
     end
 
     context 'CommentForecastテーブルとの関係' do
-      it '1:Nとなっている' do
+      it '1:Nになっている' do
         t = Forecast.reflect_on_association(:comment_forecasts)
         expect(t.macro).to eq(:has_many)     
       end
     end
 
     context 'Notificationテーブルとの関係' do
-      it '1:Nとなっている' do
+      it '1:Nになっている' do
         t = Forecast.reflect_on_association(:notifications)
         expect(t.macro).to eq(:has_many)
       end
     end
 
     context 'Userモデルとの関係' do
-      it '1:Nにとなっている' do
+      it 'belongs_toになっている' do
         t = Forecast.reflect_on_association(:user)
         expect(t.macro).to eq(:belongs_to)
       end
