@@ -86,7 +86,10 @@ gem 'fog-aws'
 gem 'webpacker'
 gem 'chart-js-rails', '~> 0.1.4'
 gem 'bootstrap', '~> 5.0.0.alpha2'
+# js + rails
 gem 'gon', '~> 6.2.0'
+# google map
+gem "geocoder" 
  
 group :production do
   gem 'unicorn', '5.4.1'
