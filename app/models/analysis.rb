@@ -7,6 +7,7 @@ class Analysis < ApplicationRecord
   has_many :categories
   validates :title,:text,:attack,:defensive,:pitcher,:comprehensive,:expectations,:school,:tournament,presence: true
   validates :title,length: {maximum: 30}
+  validates :text,length: {maximum: 2000}
 
   def self.search(search)
     return Analysis.all unless search
