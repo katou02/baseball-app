@@ -89,6 +89,7 @@ gem 'bootstrap', '~> 5.0.0.alpha2'
 # js + rails
 gem 'gon', '~> 6.2.0'
 gem 'geocoder', '~> 1.6', '>= 1.6.2'
+gem "dotenv-rails"
  
 group :production do
   gem 'unicorn', '5.4.1'
