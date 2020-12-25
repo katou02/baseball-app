@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_071407) do
+ActiveRecord::Schema.define(version: 2020_12_25_050329) do
 
   create_table "analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "title"
@@ -103,6 +103,16 @@ ActiveRecord::Schema.define(version: 2020_12_12_071407) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "maps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "school_id", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_maps_on_school_id"
+  end
+
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "room_id"
@@ -190,6 +200,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_071407) do
   add_foreign_key "forecasts", "categories", column: "win_school_id"
   add_foreign_key "likes", "tweets"
   add_foreign_key "likes", "users"
+  add_foreign_key "maps", "categories", column: "school_id"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "tweets", "categories", column: "school_a_id"
