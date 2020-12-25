@@ -16,9 +16,9 @@ class MapsController < ApplicationController
 
   def show
     @map = Map.find_by(id: 1)
-    gon.address = @map.address
-    gon.latitube = @map.latitude
-    gon.longitube = @map.longitude
+    @address = @map.address
+    @latitude = @map.latitude
+    @longitude = @map.longitude
   end
 
   private
