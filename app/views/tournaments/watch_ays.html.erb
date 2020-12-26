@@ -12,6 +12,7 @@
     <%= link_to "平均評価を見る",watch_avg_tournament_path,class: "ays-avg" %>
     <p>みんなの集計結果を元にした平均評価を見れます<p>
   </div>
+  <%= link_to "紹介",maps_path(tournament_id: params[:id]) %>
   <div class="analysis-main">
     <% if @analysis_tournament.present? %>
       <div class="text-format text-success mt-5 pt-5 mb-４">

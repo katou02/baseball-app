@@ -1,4 +1,4 @@
-<%= link_to "投稿",new_map_path %>
+<%= link_to "投稿",new_map_path(tournament_id: params[:tournament_id]) %>
 <% @maps.each do |map| %>
   <%= link_to "#{map.school.name}","maps/#{map.id}" %>
 <% end %>
