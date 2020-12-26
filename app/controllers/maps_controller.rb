@@ -1,7 +1,7 @@
 class MapsController < ApplicationController
 
   def index
-    @maps = Map.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    @maps = Map.where(tournament_id: params[:tournament_id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
   
   
@@ -13,7 +13,7 @@ class MapsController < ApplicationController
   
   def create
     @map = Map.create(map_params)
-    return redirect_to maps_path if @map.save
+    return redirect_to action: 'index',tournament_id: @map.tournament.id if @map.save
     render "new"
   end
   
