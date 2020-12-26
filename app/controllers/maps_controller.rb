@@ -1,11 +1,13 @@
 class MapsController < ApplicationController
 
   def index
+    @maps = Map.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
   
   
   def new
     @school = Category.where(ancestry: 1)
+    @tournament = Category.find_by(id: 1)
     @map = Map.new
   end
   
@@ -25,6 +27,6 @@ class MapsController < ApplicationController
   private
 
   def map_params
-    params.require(:map).permit(:address,:school_id,:text)
+    params.require(:map).permit(:address,:school_id,:text,:tournament_id).merge(user_id: current_user.id)
   end
 end
