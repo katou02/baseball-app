@@ -104,14 +104,17 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
   end
 
   create_table "maps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "school_id", null: false
     t.text "text"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "school_id", null: false
+    t.bigint "tournament_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["school_id"], name: "index_maps_on_school_id"
+    t.index ["tournament_id"], name: "index_maps_on_tournament_id"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -202,6 +205,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
   add_foreign_key "likes", "tweets"
   add_foreign_key "likes", "users"
   add_foreign_key "maps", "categories", column: "school_id"
+  add_foreign_key "maps", "categories", column: "tournament_id"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "tweets", "categories", column: "school_a_id"
