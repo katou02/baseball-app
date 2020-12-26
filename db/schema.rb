@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
 
   create_table "maps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "school_id", null: false
+    t.text "text"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
