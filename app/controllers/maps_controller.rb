@@ -6,8 +6,8 @@ class MapsController < ApplicationController
   
   
   def new
-    @school = Category.where(ancestry: 1)
-    @tournament = Category.find_by(id: 1)
+    @school = Category.where(ancestry: params[:tournament_id])
+    @tournament = params[:tournament_id]
     @map = Map.new
   end
   
