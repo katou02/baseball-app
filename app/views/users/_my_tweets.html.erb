@@ -1,29 +1,27 @@
 <div class="text-format mb-5 pt-5 text-warning">
-  <% if current_page?(analyses_path) || current_page?(watch_ays_tournament_path)  %>
-    みんなの戦力分析
-  <% else %>
-    投稿した戦力分析
-  <% end %>
+  投稿した試合記事
 </div>
 <div class="my-post-list">
-  <% @my_analysis.each do |analysis|%>
-    <div class="my-analysis mt-5">
-      <%= link_to analysis do %>
-        <div class="school_ays-name">
-          <%= analysis.school.name %>
+  <% @my_tweet.each do |tweet|%>
+    <div class="my-article mt-5">
+      <%= link_to tweet do %>
+        <div class="article-title">
+          <%= tweet.school_a.name %>
+          vs
+          <%= tweet.school_b.name %>
         </div>
-        <div class="analysis-image">
-          <i class="fa fa-search"></i>
+        <div class="article-image">
+          <i class="fa fa-baseball-ball text-white"></i>
         </div>
-        <div class="title_ays text-center">
-          <%= analysis.title%>
+        <div class="sub-title">
+          <%= tweet.title_info %>
         </div>
         <div class="name">
           <span>投稿者</span>
-          <%= analysis.user.nickname %>
+          <%= tweet.user.nickname %>
         </div>
-        <div class="analyses_at">
-          <%= analysis.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
+        <div class="tweets_at">
+          <%= tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
         </div>
       <% end %>
     </div>
