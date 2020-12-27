@@ -4,11 +4,11 @@ window.onload=function(){
     data: {
       current_slide: 0,
       slides: [
-        {img: "/assets/81573810.jpeg"},
-        {img: "/assets/ball.jpg"},
-        {img: "/assets/thumb_ground.jpg"},
-        {img: "/assets/thumb_front.jpg"},
-        {img: "/assets/mykosien.JPG"}
+        {img: "/images/81573810.jpeg"},
+        {img: "/images/ball.jpg"},
+        {img: "/images/thumb_ground.jpg"},
+        {img: "/images/thumb_front.jpg"},
+        {img: "/images/mykosien.JPG"}
       ],
     },
     mounted() {
