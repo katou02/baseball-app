@@ -28,7 +28,7 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
-
+<%= link_to "記事を削除する","/maps/#{@map.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
 <p id="notice"><%= notice %></p>
 
 <p>
