@@ -4,6 +4,7 @@ class Map < ApplicationRecord
   belongs_to :tournament,class_name: 'Category', foreign_key: 'tournament_id'
   has_many :categories
   validates :text,length: {maximum: 2000}
+  validates :text,:address,presence: true
   # 緯度経度
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

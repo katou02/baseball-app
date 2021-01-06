@@ -15,7 +15,7 @@ class MapsController < ApplicationController
   def create
     @map = Map.create(map_params)
     return redirect_to action: 'index',tournament_id: @map.tournament.id if @map.save
-    render "new"
+    redirect_to new_map_path(tournament_id: @map.tournament.id),notice: "全て記入してください"
   end
   
   def show
