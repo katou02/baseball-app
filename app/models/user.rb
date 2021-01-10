@@ -4,12 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # belongs_to :champion
-  has_many :tweets
-  has_many :comments
-  has_many :comment_analyses
-  has_many :comment_forecasts
-  has_many :analyses
-  has_many :forecasts
+  has_many :tweets,dependent: :destroy
+  has_many :comments,dependent: :destroy
+  has_many :comment_analyses,dependent: :destroy
+  has_many :comment_forecasts,dependent: :destroy
+  has_many :analyses,dependent: :destroy
+  has_many :forecasts,dependent: :destroy
   has_many :likes,dependent: :destroy
   has_many :liked_tweets,through: :likes,source: :tweet
   has_many :messages, dependent: :destroy
