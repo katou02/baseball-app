@@ -1,11 +1,14 @@
 <div class="contents row mt-2">
   <div class="containe_r p-4">
     <%= form_with model: @map, local: true do |f| %>
-    <%= f.text_field :address,placeholder: "住所",class: "game_title",value: "#{@map.address}" %>
-    <%= f.text_area :text,placeholder: "紹介",value: "#{@map.text}" %>
-    <%= f.collection_select :school_id, @school, :id, :name%>
-    <%= f.hidden_field  :tournament_id,value: @tournament %>
-    <%= f.submit value: "SENT",class: "game_record" %>
-  <% end %>
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+      <%= f.text_field :address,placeholder: "住所",class: "game_title",value: "#{@map.address}" %>
+      <%= f.text_area :text,placeholder: "紹介",value: "#{@map.text}" %>
+      <%= f.collection_select :school_id, @school, :id, :name %>
+      <%= f.hidden_field  :tournament_id,value: @tournament %>
+      <%= f.submit value: "SENT",class: "game_record" %>
+    <% end %>
   </div>
 </div>
