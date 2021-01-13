@@ -1,20 +1,34 @@
 <div class="users-content">
   <h2>参加ユーザー</h2>
-  <div class="user-list">
+  <div class="user-list row">
     <% @users.each do |user| %>
-      <table class="tablecell mt-5">
-        <tr class="user">
-          <th>
-            <% if user.image.present?%>
-              <%= link_to image_tag("#{user.image}",class: "user-icon mt-3"),"users/#{user.id}" %>
-            <% else %>
-              <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"users/#{user.id}" %>
+      <%# <table class="tablecell mt-5"> %>
+      <div class="col-xs-12 col-md-6 col-lg-3 mt-3">
+        <div class="user-list-image">
+          <% if user.image.present?%>
+            <%= link_to image_tag("#{user.image}",class: "user-icon mt-3"),"users/#{user.id}" %>
+          <% else %>
+            <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"users/#{user.id}" %>
+          <% end %>
+        </div>
+        <div class="user-list_body">
+          <div class="user-list_name mt-5">
+            <%= link_to "#{user.nickname}","users/#{user.id}" %>
+          </div>
+          <div class="user-list_text mt-5">
+            <%= "#{user.text}".truncate(15) %>
+            <% unless user.text.present?  %>
+              <p>自己紹介未記入</p>
             <% end %>
-          </th>
-          <th class="user-list-name"><%= link_to "#{user.nickname}","users/#{user.id}" %></th>
-          <th class="user-text"><%= "#{user.text}".truncate(15) %></th>
-        </tr>
-      </table>
+          </div>
+          <div class="user-address mt-5">
+            <%= user.prefecture %>
+            <% unless user.prefecture.present? %>
+              <p>未選択</p>
+            <% end %>
+          </div> 
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
