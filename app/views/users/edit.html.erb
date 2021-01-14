@@ -1,8 +1,8 @@
 <div class="contents row">
   <div class="container">
     <%= form_with model: @user,local: true do |f|%>
-      <%= f.select :prefecture,options_for_select(User.prefectures.keys,selected: @user.prefecture),{prompt: "選択してください"},class: "form-control" %>
-      <%= f.text_field :text, cols: 30 ,rows: 10,value: "#{@user.text}" %>
+      <%= f.select :prefecture,options_for_select(User.prefectures.keys,selected: @user.prefecture),{prompt: "住んでる場所を選択してください"},class: "form-control" %>
+      <%= f.text_area :text, cols: 30 ,rows: 10,value: "#{@user.text}" %>
       <%= f.file_field :image %>
       <div class="s3">
       </div>
