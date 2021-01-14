@@ -40,11 +40,11 @@
       <%= image_tag "no-image.png",class: "user-image mt-5" %>
     <% end %>
     <div class="residence">
-      <p>住んでる場所</p>
+      <p class="text-primary font-weight-bold">住んでる場所</p>
       <br><%= @user.prefecture %> 
     </div>
     <div class="text-myname">
-      <p>自己紹介</p>
+      <p class="text-primary font-weight-bold">自己紹介</p>
       <br><%= simple_format(@user.text) %>
     </div>
     <%# タブ %>
