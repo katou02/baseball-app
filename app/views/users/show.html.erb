@@ -43,7 +43,7 @@
     </div>
     <div class="text-myname">
       <p>自己紹介</p>
-      <br><%= @user.text %>
+      <br><%= simple_format(@user.text) %>
     </div>
     <%# タブ %>
     <div id="radio">
