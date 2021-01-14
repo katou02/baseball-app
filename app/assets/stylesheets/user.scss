@@ -1,11 +1,19 @@
 .user {
-  margin-top: 10%;
+  &-content {
+    background-color: #EEFFFF;
+  }
   &-list {
     margin-top: 10%;
     display: flex;
     text-align: center;
+    &_body {
+      background-color: white; 
+    }
     &_name {
-      
+      background-color: #00CCCC;
+    }
+    &-image {
+      background-color: white;
     }
   }
   &-image {
@@ -15,6 +23,7 @@
     object-fit: cover;
     border: solid;
     border-color: #acafc3;
+    background-color: white;
   }
   &-icon {
     border-radius: 50%;
@@ -26,6 +35,13 @@
   }
 }
 
-.users-content {
-  /*word-break: break-all;*/
+.card {
+  border: none;
+  background-color: #EEFFFF;
+  color: #00CCCC;
+  font-weight: bold;
+}
+
+.user-name { 
+  color: white;
 }
