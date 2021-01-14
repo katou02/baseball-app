@@ -16,7 +16,7 @@
 }
 
 .mypage-content {
-  background-color: #EEEEEE;
+  background-color: #EEFFFF;
   // height: 100%;
   padding-top: 10px;
 }
@@ -46,11 +46,31 @@
 }
 
 .follow-btn {
-  background-color: palevioletred;
+  color:rgb(13, 150, 241);
+  background-color: white;
+  border-radius: 9999px;
+  font-weight: bold;
+  border-color: rgb(13, 150, 241);
 }
 
 .unfollow-btn {
-  background-color: rgb(105, 171, 216);
+  color: white;
+  background-color: rgb(13, 150, 241);
+  border-radius: 9999px;
+  font-weight: bold;
+}
+
+.dm-btn {
+  width: 10%;
+  margin: 0 auto;
+  background-color: blue;
+}
+
+.dm-btn2 {
+  width: 10%;
+  color: #EEFFFF;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .stats {
