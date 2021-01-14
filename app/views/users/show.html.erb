@@ -15,8 +15,8 @@
     <% if @user.id != current_user.id %>
     <% if @isRoom == true %>
       <% if current_user.following?(@user) %>
-      <div class="dm">
-        <%= link_to 'ダイレクトメッセージをする', room_path(@roomId) %>
+      <div class="dm-btn2 mt-4">
+        <%= link_to 'DMをする', room_path(@roomId),class: "text-white bg-primary" %>
       </div>
       <% end %>
     <% else %>
@@ -25,7 +25,9 @@
           <% e.hidden_field :user_id, value: @user.id %>
         <% end %>
         <% if current_user.following?(@user) %>
-          <%= f.submit "DMを開始する"%>
+        <div class="dm-btn mt-4">
+          <%= f.submit "DMをはじめる",class: "text-white bg-primary"%>
+        </div>
         <% end %>
       <% end %>
     <% end %>
