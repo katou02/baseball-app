@@ -1,8 +1,4 @@
-<div class="follow">
-  <h2>フォロワー::<%= @user.followers.count %>人</h2>
-  <% @user.followers.each do |user| %>
-    <div class="follow-users mt-5">
-      <%= link_to "#{user.nickname}", "/users/#{user.id}" %>
-    </div>
-  <% end %>
+<div class="user-content pt-5">
+  <h2>フォロワー <%= @user.followers.count %>人</h2>
+  <%= render partial: "user_list"%>
 </div>
