@@ -1,0 +1,18 @@
+<div class="user-content pt-5">
+  <h2>DM一覧</h2>
+  <div class="user-list row">
+    <% @anotherEntries.each do |room| %>
+      <div class="col-xs-12 col-md-6 col-lg-3 mt-3 card">
+        <%= link_to "#{room.user.nickname}とのDM",room_path(room.room.id) %>
+        <div class="user-list-image">
+          <% if room.user.image.present?%>
+            <%= link_to image_tag("#{room.user.image}",class: "user-icon mt-3"),room_path(room.room.id) %>
+          <% else %>
+            <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),room_path(room.room.id) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @anotherEntries %>
+</div>
