@@ -4,6 +4,7 @@
   <%= link_to "ユーザー一覧",users_path,class: "users-btn" %>
   <% if @user.id == current_user.id %>
     <%= link_to "編集する",edit_user_path(@user),class: "edit-article" %>
+    <%= link_to "DM",rooms_path,class: "dm-btn" %>
   <% end %>
   <p class="text-center">ID:<%= @user.id%></p>
   <div class="myname mt-5">
