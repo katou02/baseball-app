@@ -1,14 +1,14 @@
 <div class="room-content">
   <div class="user-in">
     <% @member.each do |member| %>
-        <div class="room-member mr-5 pt-2">
+      <div class="room-member mr-5 pt-2">
         <%= link_to "#{member.user.nickname}","/users/#{member.user_id}"%>
         <% if member.user.image.present? %>
-            <%= link_to image_tag("#{member.user.image}",class: "user-icon mt-3"),"/users/#{member.user_id}" %>
+          <%= link_to image_tag("#{member.user.image}",class: "room-user-icon mt-3"),"/users/#{member.user_id}" %>
         <% else %>
-            <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{member.user_id}" %>
+          <%= link_to image_tag("no-image.png",class: "room-user-icon mt-3"),"/users/#{member.user_id}" %>
         <% end %>
-        </div>
+      </div>
     <% end %>
   </div>
   <div class="dmMain">
