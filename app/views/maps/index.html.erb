@@ -1,4 +1,22 @@
-<%= link_to "投稿",new_map_path(tournament_id: params[:tournament_id]) %>
-<% @maps.each do |map| %>
-  <%= link_to "#{map.school.name}","maps/#{map.id}" %>
-<% end %>
+<div class="map-content">
+  <%= link_to "投稿",new_map_path(tournament_id: params[:tournament_id]) %>
+  <div class="map-list row">
+    <% @maps.each do |map| %>
+      <div class="col-xs-12 col-md-6 col-lg-3 mt-3 mb-5 map-card">
+        <div class="map-name bg-white">
+          <%= link_to "#{map.school.name}","maps/#{map.id}" %>
+        </div>
+        <div class="map-user pt-3">
+          <%= map.user.nickname %>
+        </div>
+        <div class="map-user_image">
+          <% if map.user.image.present?%>
+            <%= link_to image_tag("#{map.user.image}",class: "map-user_icon mt-3"),"/users/#{map.user.id}" %>
+          <% else %>
+            <%= link_to image_tag("no-image.png",class: "map-user_icon mt-3"),"/users/#{map.user.id}" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
