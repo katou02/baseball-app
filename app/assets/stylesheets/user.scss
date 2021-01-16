@@ -1,10 +1,20 @@
 .user {
-  margin-top: 10%;
+  &-content {
+    background-color: #EEFFFF;
+    min-height: 100%;
+  }
   &-list {
     margin-top: 10%;
-    &-name {
-      vertical-align: middle;
-      padding: 2em;
+    display: flex;
+    text-align: center;
+    &_body {
+      background-color: white; 
+    }
+    &_name {
+      background-color: #00CCCC;
+    }
+    &-image {
+      background-color: white;
     }
   }
   &-image {
@@ -14,6 +24,7 @@
     object-fit: cover;
     border: solid;
     border-color: #acafc3;
+    background-color: white;
   }
   &-icon {
     border-radius: 50%;
@@ -23,22 +34,15 @@
     border: solid;
     border-color: #acafc3;
   }
-  &-text {
-    vertical-align: middle;
-    text-align: center;
-  }
 }
 
-table {
-  width: 100%;
-  table-layout: fixed;
+.card {
+  border: none;
+  background-color: #EEFFFF;
+  color: #00CCCC;
+  font-weight: bold;
 }
 
-table td {
-  overflow-wrap : break-word;
-}
-
-.users-content {
-  /*word-break: break-all;*/
-  padding: 0 550px;
+.user-name { 
+  color: white;
 }

@@ -2,18 +2,18 @@ class UsersController < ApplicationController
   before_action :authenticate_user!,only: [:show]
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(16).order("created_at DESC")
   end
   
   def following
     @user  = User.find(params[:id])
-    @users = @user.followings
+    @users = @user.followings.page(params[:page]).per(16).order("created_at DESC")
     render 'show_follow'
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page]).per(16).order("created_at DESC")
     render 'show_follower'
   end
 

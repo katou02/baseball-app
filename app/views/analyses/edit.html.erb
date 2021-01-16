@@ -2,9 +2,8 @@
   <div class="container">
     <%= form_with(model: @analysis,local: true) do |f|%>
       <%= render 'layouts/error_messages-ay', model: f.object %>
-      <p>大会名<p>
       <%= @analysis.tournament.name%>
-      <div class="school">
+      <div class="school mt-3">
         <%=f.select :school_id,options_for_select(@category_children_array.map{|c| [c[:name], c[:id]]},selected: @analysis.school_id),{},{class: "tournament_select_child",id: "children_category"} %>
       </div>
       <%= render partial: "form",locals:{f: f} %>
