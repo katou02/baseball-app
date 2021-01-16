@@ -1,4 +1,4 @@
-<br><p>高校A 得点</p>   
+<p>高校A 得点</p>   
 <%= f.select :school_a_score, options_for_select((1..50).to_a,selected: @tweet.school_a_score),{include_blank:"得点を選択してください"} %>
 <p><br>高校B 得点</p>
 <%= f.select :school_b_score, options_for_select((1..50).to_a,@tweet.school_b_score),{include_blank: "得点を選択してください"} %>

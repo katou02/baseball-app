@@ -1,12 +1,12 @@
   <div class="contents row">
-  <%= form_with(model: @tweet,local: true) do |f|%>
-    <%= f.label "大会" %>
+    <%= form_with(model: @tweet,local: true) do |f|%>
+    <%= f.label "大会",class: "mb-3" %>
       <%= @tweet.tournament.name%>
     <%# <%=f.select :tournament_id, options_for_select( @category_children_array.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{}, { class: "parent_category_box", id: "parent_category_edit"}%>
-    <h4>高校A</h4>
-    <%=f.select :school_a_id,options_for_select(@category_children_array.map{|c| [c[:name], c[:id]]},selected: @tweet.school_a_id),{},{class: "tournament_select_child",id: "children_category"}%>
-    <h4>高校B</h4>
-      <%=f.select :school_b_id,options_for_select(@category_children_array.map{|c| [c[:name], c[:id]]},selected: @tweet.school_b_id),{},{class: "tournament_select_child",id: "children_category"}%>
+    <p>高校A</p>
+    <%=f.select :school_a_id,options_for_select(@category_children_array.map{|c| [c[:name], c[:id]]},selected: @tweet.school_a_id),{},{class: "tournament_select_child mb-1 mt-1",id: "children_category"}%>
+    <p>高校B</p>
+      <%=f.select :school_b_id,options_for_select(@category_children_array.map{|c| [c[:name], c[:id]]},selected: @tweet.school_b_id),{},{class: "tournament_select_child mt-1 mb-3",id: "children_category"}%>
     <%= render partial: "form",locals: {f: f} %>
     <% end %>
     <%= link_to "戻る","/tweets/#{@tweet.id}",class:"back"%>
