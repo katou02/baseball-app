@@ -1,21 +1,43 @@
-<div class="user-in">
-<% @entries.each do |e| %>
-    <h3><%= link_to "#{e.user.nickname}","/users/#{e.user_id}"%></h3>
-<% end %>
-<p>ダイレクトメッセージ</p>
-</div>
-
-<div class="dmMain">
-    <% @messages.each do |m| %>
-        <strong><%= m.body %></strong>
-        <p><%= m.user.nickname %></p><hr>
+<div class="room-content">
+  <div class="user-in">
+    <% @member.each do |member| %>
+        <div class="room-member mr-5 pt-2">
+        <%= link_to "#{member.user.nickname}","/users/#{member.user_id}"%>
+        <% if member.user.image.present? %>
+            <%= link_to image_tag("#{member.user.image}",class: "user-icon mt-3"),"/users/#{member.user_id}" %>
+        <% else %>
+            <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{member.user_id}" %>
+        <% end %>
+        </div>
     <% end %>
-
+  </div>
+  <div class="dmMain">
+    <% @messages.each do |message| %>
+      <% if message.user.id == current_user.id%>
+        <div class="my-messages">
+          <p class="my-message mt-5 ml-5"><%= message.body %></p>
+        </div>
+      <% else %>
+        <div class="messages">
+          <% if message.user.image.present? %>
+            <%= link_to image_tag("#{message.user.image}",class: "user-icon mt-3"),"/users/#{message.user_id}" %>
+          <% else %>
+            <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{message.user_id}" %>
+          <% end %>
+          <p class="message mt-5 ml-5"><%= message.body %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="message-input">
     <%= form_for @message do |f| %>
-    <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
-    <%= f.hidden_field :room_id, :value => @room.id %>
-    <br>
-    <%= f.submit "送信する" %>
+      <div class="message-form">
+      <%= f.text_field :body , size: 100 %>
+      <%= f.hidden_field :room_id, :value => @room.id %>
+      <%= button_tag type: 'submit',class: "message-btn ml-3" do %>
+        <i class="fas fa-paper-plane"></i>
+      <% end %>
+      </div>
     <% end %>
+  </div>
 </div>
-<%= link_to "戻る",root_path %>
