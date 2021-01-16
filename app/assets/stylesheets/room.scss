@@ -5,7 +5,7 @@
 
 .user-in{
   text-align:center;
-  border:1px solid darkgray;
+  border-bottom:1px solid darkgray;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -100,7 +100,13 @@
 }
 
 .room-user-icon {
-  height: 50%;
-  width: 50%;
+  height: 180px;
+  width: 180px;
   border-radius: 50%;
+  background-color: white;
+  border: 2px solid  rgb(192, 189, 189);
+}
+
+.return-dm {
+  height: 60px;
 }
