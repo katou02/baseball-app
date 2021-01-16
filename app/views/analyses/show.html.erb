@@ -16,13 +16,16 @@
     <% end %>
   </div>
   <div class="content-fcs_show">
-    <div class="text-format mt-5 text-success">
+    <div class="game_result mt-5">
       <%= @analysis.tournament.name%><br>
-      <i class="fas fa-search mt-5">分析内容</i>
+      <p class="mt-5">戦力分析</p>
     </div>
-    <div class="sub_title bg-success text-white mt-5">
+    <div class="sub_title text-white mt-5">
       <i class="fa fa-baseball-ball"></i>
       <%=@analysis.title%>
+    </div>
+    <div class="text-format mt-5 text-info">
+      <i class="fas fa-search mt-5">分析内容</i>
     </div>
     <div class="school_name-ays">
       <%= @analysis.school.name %>
