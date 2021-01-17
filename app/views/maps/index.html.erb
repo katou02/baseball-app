@@ -3,11 +3,11 @@
   <div class="map-list row">
     <% @maps.each do |map| %>
       <div class="col-xs-12 col-md-6 col-lg-3 mt-3 mb-5 map-card">
-        <div class="map-name bg-white">
+        <div class="map-name bg-white pt-2">
           <%= link_to "#{map.school.name}","maps/#{map.id}" %>
         </div>
-        <div class="map-user pt-3">
-          <%= map.user.nickname %>
+        <div class="map-user pt-5">
+          投稿者 <%= map.user.nickname %>
         </div>
         <div class="map-user_image">
           <% if map.user.image.present?%>
