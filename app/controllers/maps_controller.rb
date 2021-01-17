@@ -36,6 +36,6 @@ class MapsController < ApplicationController
   private
 
   def map_params
-    params.require(:map).permit(:address,:school_id,:text,:tournament_id).merge(user_id: current_user.id)
+    params.require(:map).permit(:address,:school_id,:text,:tournament_id,:image).merge(user_id: current_user.id)
   end
 end
