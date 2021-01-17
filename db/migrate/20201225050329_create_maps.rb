@@ -2,6 +2,7 @@ class CreateMaps < ActiveRecord::Migration[5.2]
   def change
     create_table :maps do |t|
       t.text :text
+      t.text :image
       t.string :address
       t.float :latitude
       t.float :longitude
