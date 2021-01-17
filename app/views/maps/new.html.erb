@@ -9,6 +9,11 @@
       <%= f.collection_select :school_id, @school, :id, :name %>
       <%= f.hidden_field  :tournament_id,value: @tournament %>
       <%= f.submit value: "SENT",class: "game_record" %>
+      <%= f.label :image, class: "form-image" do %> 
+        <h4>画像投稿</h4>
+        <i class="fa fa-image"></i>
+        <%= f.file_field :image, class: 'input-box_image_file',value: "#{@map.image}"%>
+      <% end %>
     <% end %>
   </div>
 </div>
