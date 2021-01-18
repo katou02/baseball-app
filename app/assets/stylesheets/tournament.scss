@@ -44,6 +44,11 @@
   font-size: 25px;
 }
 
+.go-avg {
+  display: flex;
+  justify-content: space-evenly 
+}
+
 @media screen and (max-width: 679px) {
   .analysis-image {
     position: static;
