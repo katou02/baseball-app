@@ -13,7 +13,7 @@
           <%= link_to "#{user.nickname}","/users/#{user.id}",class: "user-name" %>
         </div>
         <div class="user-list_text mt-5">
-          <%= "#{user.text}".truncate(15) %>
+          <%= "#{user.text}".truncate(10) %>
           <% unless user.text.present?  %>
             <p>自己紹介未記入</p>
           <% end %>
