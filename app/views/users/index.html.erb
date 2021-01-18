@@ -1,3 +1,9 @@
 <div class="user-content pt-5">
   <h2>参加ユーザー</h2>
-  <%= render partial: "user_list"%>
+  <div class="user-list row">
+    <% @users.each do |user| %>
+      <%= render partial: "user_list",locals: {user: user}%>
+    <% end %>
+    <%= paginate @users %>
+  </div>
+</div>
