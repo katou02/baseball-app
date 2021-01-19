@@ -59,6 +59,7 @@
   &-title {
     font-size: 25px;
     color: white;
+    font-weight: bold;
   }
   &-image {
     position: absolute;
@@ -87,6 +88,7 @@
   &-child {
     float: left;
     background-color: #68ccf9;
+    font-weight: bold;
     overflow: hidden;
     margin-right: 3%;
     font-size: 15px;
@@ -152,9 +154,9 @@
 
 // 詳細
 .good,.good-after {
-  background-color: white;
-  border: 2px solid white;
+  border: 2px solid #EEFFFF;
   color: #C0C0C0;
+  background-color: #EEFFFF;
 }
 
 .good:hover + .fukidashi {
