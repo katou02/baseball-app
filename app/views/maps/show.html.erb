@@ -29,7 +29,13 @@
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
 <div class="map">
-  <%= link_to "記事を削除する","/maps/#{@map.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
+  <div class="choose-btn pt-3">
+    <% if current_user.id == @map.user_id || current_user.admin? %>
+      <%= link_to "記事を削除する","/maps/#{@map.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
+      <%= link_to "記事を編集する","/maps/#{@map.id}/edit",method: :get,class: "edit-article" %>
+    <% end %>
+    <%= link_to "戻る",maps_path,class: "return-top ml-1" %>
+  </div>
   <div class="map-info">
     <div class="map-school">
       <%= @map.school.name %>のふるさと紹介
