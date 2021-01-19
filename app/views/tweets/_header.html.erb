@@ -1,4 +1,10 @@
 <div class="top-header d-flex align-items-center">
+  <div class="apri-title">
+    <%= link_to root_path,class: "logo" do %>
+      <i class="fas fa-baseball-ball"></i>
+      高校野球
+    <% end %>
+  </div>
   <% if user_signed_in? %>
     <%= link_to notifications_path, class: "info" do %>
       <i class="fa fa-bell"></i>通知
