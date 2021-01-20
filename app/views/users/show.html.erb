@@ -26,7 +26,7 @@
           <% e.hidden_field :user_id, value: @user.id %>
         <% end %>
         <% if current_user.following?(@user) %>
-        <div class="dm-btn mt-4">
+        <div class="dm-btn2 mt-4">
           <%= f.submit "DMをはじめる",class: "text-white bg-primary"%>
         </div>
         <% end %>
