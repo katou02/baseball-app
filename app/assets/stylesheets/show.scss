@@ -84,11 +84,16 @@ input {
     border-radius: 3px;
     transition: .4s;
     font-size: 14px;
-    margin: 20px 0 0 40px;
+    // margin: 20px 0 0 40px;
+    margin-left: 24%;
     &:hover {
       background: #fffbef;
     }
   }
+}
+
+.comment-delete {
+  margin-top: -1%;
 }
 
 @media screen and (max-width: 850px) {
