@@ -83,6 +83,16 @@
   }
 }
 
+.search-tweet {
+  min-height: 100%;
+  width: 100%;
+  background-image: image-url("sky_00010.jpg");
+  background-size: cover;
+  background-color:rgba(255,255,255,0.8);
+  background-blend-mode:lighten;
+  flex: 1 1 100%;
+}
+
 .title {
   margin-left: 32%;
   &-child {
