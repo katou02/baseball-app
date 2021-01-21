@@ -10,7 +10,7 @@
       <% end %>
     <% end %>
     <div class="notification-deta mt-5 ml-5">
-      <%= notification_form(notification) %><span class="moderate-font ml-5"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+      <%= notification_form(notification) %><span class="moderate-font ml-2"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
     </div>
   </div>
   <% if @comment.nil? %>
