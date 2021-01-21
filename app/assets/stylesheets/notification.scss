@@ -3,6 +3,17 @@
 }
 
 .users-index {
-  background-color: #EEEEEE;
-  flex: 1 1 100%;
+  // flex: 1 1 100%;
+  text-align: center;
+  margin: 0 auto;
 }
+
+.notification {
+  background-color: #EEFFFF;
+  &-info {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
