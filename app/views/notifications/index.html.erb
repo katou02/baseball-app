@@ -1,9 +1,10 @@
 <h3 class="text-center">通知</h3>
     <hr>
 <% if @notifications.exists? %>
-  <div class="notification-main">
+  <div class="notification">
     <div class="users-index">
-        <%= render @notifications %>
+      <%= render @notifications %>
+      <%= paginate @notifications %>
     </div>
   </div>
 <% else %>
