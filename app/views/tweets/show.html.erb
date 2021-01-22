@@ -1,57 +1,59 @@
 <div class="game-article">
-  <div class="choose-btn mt-2 pt-2">
-    <% if current_user.id == @tweet.user_id || current_user.admin? %>
-    <%= link_to "記事を削除する","/tweets/#{@tweet.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
-    <%= link_to "記事を編集する","/tweets/#{@tweet.id}/edit",method: :get,class: "edit-article" %>
-    <% end %>
-    <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn" %>
-  </div>
-  <div class="user_name">
-    <h5>投稿者 <%= link_to "#{@tweet.user.nickname}","/users/#{@tweet.user_id}"%></h5>
-    <% if @user.image.present?%>
-      <%= link_to image_tag("#{@user.image}",class: "user-icon mt-2"),"/users/#{@user.id}" %>
+  <div class="data-info">
+    <div class="choose-btn pt-3">
+      <% if current_user.id == @tweet.user_id || current_user.admin? %>
+      <%= link_to "記事を削除する","/tweets/#{@tweet.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
+      <%= link_to "記事を編集する","/tweets/#{@tweet.id}/edit",method: :get,class: "edit-article" %>
+      <% end %>
+      <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn" %>
+    </div>
+    <div class="user_name">
+      <h5>投稿者 <%= link_to "#{@tweet.user.nickname}","/users/#{@tweet.user_id}"%></h5>
+      <% if @user.image.present?%>
+        <%= link_to image_tag("#{@user.image}",class: "user-icon mt-2"),"/users/#{@user.id}" %>
+      <% else %>
+        <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{@user.id}" %>
+      <% end %>
+    </div>
+    <div class="game_result">
+      <%= @tweet.tournament.name%><br><br>
+      <%=@tweet.school_a.name%>
+      <%=@tweet.school_a_score%>
+      -
+      <%=@tweet.school_b_score%>
+      <%=@tweet.school_b.name%>
+    </div>
+    <div class="sub_title pb-2 mt-5">
+      <i class="fa fa-baseball-ball text-white"></i>
+      <%=@tweet.title_info%>
+    </div>
+    <div class="text-format mt-5 text-info">
+      <i class="fas fa-pen text-info"></i>
+      試合評・感想<br><br>
+    </div>
+    <div class=show-text>
+      <%= simple_format(@tweet.text)%>
+    </div>
+    <%# いいね %>
+    <%= image_tag "#{@tweet.image}",width: "400",class: "image" %>
+    <% if current_user.already_liked?(@tweet)%>
+      <%= button_to tweet_like_path(@tweet),class: "good-after text-danger",method: :delete  do %>
+        <i class="fas fa-heart"></i><%= @tweet.likes.count %>
+      <% end %>
     <% else %>
-      <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{@user.id}" %>
+      <%= button_to tweet_likes_path(@tweet),{class: "good mb-2"} do %>いいね
+        <i class="fas fa-heart"></i><%= @tweet.likes.count %>
+      <% end %>
+    <% end %>
+    <p>いいねをしたユーザー</p><br>
+    <% @tweet.liked_users.each do |user|%>
+      <%= link_to "#{user.nickname}","/users/#{user.id}" %><br>
     <% end %>
   </div>
-  <div class="game_result">
-    <%= @tweet.tournament.name%><br><br>
-    <%=@tweet.school_a.name%>
-    <%=@tweet.school_a_score%>
-    -
-    <%=@tweet.school_b_score%>
-    <%=@tweet.school_b.name%>
-  </div>
-  <div class="sub_title pb-2 mt-5">
-    <i class="fa fa-baseball-ball text-white"></i>
-    <%=@tweet.title_info%>
-  </div>
-  <div class="text-format mt-5 text-info">
-    <i class="fas fa-pen text-info"></i>
-    試合評・感想<br><br>
-  </div>
-  <div class=show-text>
-    <%= simple_format(@tweet.text)%>
-  </div>
-  <%# いいね %>
-  <%= image_tag "#{@tweet.image}",width: "400",class: "image" %>
-  <% if current_user.already_liked?(@tweet)%>
-    <%= button_to tweet_like_path(@tweet),class: "good-after text-danger",method: :delete  do %>
-      <i class="fas fa-heart"></i><%= @tweet.likes.count %>
-    <% end %>
-  <% else %>
-    <%= button_to tweet_likes_path(@tweet),{class: "good mb-2"} do %>いいね
-      <i class="fas fa-heart"></i><%= @tweet.likes.count %>
-    <% end %>
-  <% end %>
-  <p>いいねをしたユーザー</p><br>
-  <% @tweet.liked_users.each do |user|%>
-    <%= link_to "#{user.nickname}","/users/#{user.id}" %><br>
-  <% end %>
   <%# コメント %>
-  <div class="comment-content">
+  <div class="comment-content_tweet">
     <div class="comment">   
-      <div class="text-format mt-5 mb-4 text-warning">
+      <div class="text-format mt-0 mb-4 text-warning">
       <i class="fa fa-baseball-ball text-warning"></i>
         コメント
       </div>
@@ -61,9 +63,11 @@
               <%= @num %>:
               <strong><%= link_to "#{comment.user.nickname}","/users/#{comment.user.id}",class: "pr-4" %></strong>
               <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
-              <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
-                <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete-button" %>
-              <% end %>
+              <div class="comment-delete">
+                <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
+                  <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete-button" %>
+                <% end %>
+              </div>
             </div>
           <div class="mt-4 mb-4">
             <%= simple_format(comment.text) %>
@@ -74,9 +78,9 @@
     </div>
     <div class="comment-form"> 
       <% if current_user %>
-        <%= form_with(model:[@tweet, @comment], method: :post) do |f| %>
-          <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
-          <input type="submit" value="SENT" class="game_record">
+        <%= form_with(model:[@tweet, @comment], local: true,id: "new_comment") do |f| %>
+          <%= f.text_area :text,placeholder: "コメント",rows: "2",cols: "30" %>
+          <%= f.submit "SEND",class: "game_record"%>
         <% end %>
       <% end %>
     </div>

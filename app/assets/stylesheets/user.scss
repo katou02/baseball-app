@@ -9,12 +9,16 @@
     text-align: center;
     &_body {
       background-color: white; 
+      border: solid #acafc3;
+      border-width:  0 1px 1px 1px;
     }
     &_name {
       background-color: #00CCCC;
     }
     &-image {
       background-color: white;
+      border: solid #acafc3;
+      border-width:  1px 1px 0 1px;
     }
   }
   &-image {

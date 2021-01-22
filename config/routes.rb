@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   resources :messages, only: :create
   resources :rooms,only: [:index,:create,:show]
   resources :champions,only: [:new,:create,:destroy,:show]
-  resources :maps,only: [:index,:new,:create,:show,:destroy]
+  resources :maps,only: [:index,:new,:create,:edit,:update,:show,:destroy]
   resources :contacts,only:[:index] do
     collection do
       post :check

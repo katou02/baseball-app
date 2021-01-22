@@ -1,26 +1,31 @@
 <div class="forecast-show_content">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-  <div class="choose-btn mt-2 pt-2">
-    <% if current_user.id == @forecast.user_id || current_user.admin? %>
-      <%= link_to "記事を削除する","/forecasts/#{@forecast.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
-      <%= link_to "記事を編集する","/forecasts/#{@forecast.id}/edit",method: :get,class: "edit-article" %>
-    <% end %>
-      <%= link_to "予想ページへ戻る",forecasts_path,class: "return-btn" %>
-  </div>
-  <div class="user_name">
-    <h5>投稿者 <%= link_to "#{@forecast.user.nickname}","/users/#{@forecast.user_id}"%></h5>
-    <% if @user.image.present?%>
-      <%= link_to image_tag("#{@user.image}",class: "user-icon mt-2"),"/users/#{@user.id}" %>
-    <% else %>
-      <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{@user.id}" %>
-    <% end %>
-  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
   <div class="content-fcs_show">
-    <div class="text-format text-danger mt-5 mb-5">
-      <%= @forecast.tournament.name%><br>
-      <i class="fas fa-fire mt-5">試合予想</i>
+    <%# ボタン %>
+    <div class="choose-btn pt-3">
+      <% if current_user.id == @forecast.user_id || current_user.admin? %>
+        <%= link_to "記事を削除する","/forecasts/#{@forecast.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
+        <%= link_to "記事を編集する","/forecasts/#{@forecast.id}/edit",method: :get,class: "edit-article" %>
+      <% end %>
+      <%= link_to "予想ページへ戻る",forecasts_path,class: "return-btn" %>
     </div>
-    <div class="text-format"><%= @forecast.round%></div>
+    <div class="user_name">
+      <h5>投稿者 <%= link_to "#{@forecast.user.nickname}","/users/#{@forecast.user_id}"%></h5>
+      <% if @user.image.present?%>
+        <%= link_to image_tag("#{@user.image}",class: "user-icon mt-2"),"/users/#{@user.id}" %>
+      <% else %>
+        <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{@user.id}" %>
+      <% end %>
+    </div>
+    <%# 予想内容 %>
+    <div class="text-format text-danger">
+      <%= @forecast.tournament.name%><br>
+      <i class="fas fa-fire mt-5 mb-5">試合予想</i>
+    </div>
+    <div class="data-title mt-5 ml-5">
+      勝敗予想
+    </div>
+    <div class="text-format mt-5"><%= @forecast.round%></div>
     <div class="school-fcs">
       <div class="win-school text-danger">
         <p>勝利予想<p>
@@ -33,21 +38,25 @@
         <div class="lose"><%= @forecast.lose_school.name %></div>
       </div>
    </div>
+    <div class="data-title mt-5 ml-5">
+      考察
+    </div>
+    <div class="fcs-text ml-5 mt-5">
+      <p><%= simple_format(@forecast.text)%><p>
+    </div>
+    <div class="data-title mt-5 ml-5">
+      勝利確率
+    </div>
     <%# グラフ %>
     <div hidden class="win-rate"><%= @forecast.probability%></div>
-    <div class="Pie mt-5">
-      <div style="width:50%; height:50%";><canvas id="PieChart"></canvas></div>
-      <div class="fcs-text mr-2">
-        <p>予想内容<p><br>
-        <p><%= simple_format(@forecast.text)%><p>
-      </div>
+    <div class="pie mt-5 pb-5">
+      <div style="width:60%; height:60%";><canvas id="PieChart"></canvas></div>
     </div>
-    <%= javascript_pack_tag 'forecast' %>
   </div>
-<%# コメント %>
+  <%# コメント %>
    <div class="comment-content">
     <div class="comment">   
-      <div class="text-format mt-5 mb-4 text-warning">
+      <div class="text-format mt-0 mb-4 text-warning">
       <i class="fa fa-baseball-ball text-warning"></i>
         コメント
       </div>
@@ -57,9 +66,11 @@
               <%= @num %>:
               <strong><%= link_to "#{comment.user.nickname}","/users/#{comment.user.id}",class: "pr-4" %></strong>
               <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
-              <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
-                <%= link_to '削除', "/forecasts/#{@forecast.id}/comment_forecasts/#{comment.id}", method: :delete,class: "comment_delete-button" %>
-              <% end %>
+              <div class="comment-delete">
+                <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
+                  <%= link_to '削除', "/forecasts/#{@forecast.id}/comment_forecasts/#{comment.id}", method: :delete,class: "comment_delete-button" %>
+                <% end %>
+              </div>
             </div>
           <div class="mt-4 mb-4">
             <%= simple_format(comment.text) %>
@@ -72,11 +83,12 @@
       <!-- ここからフォーム -->
       <% if current_user %>
         <%= form_with(model:[@forecast, @comment], method: :post) do |f| %>
-          <textarea cols="30" name="text" placeholder="コメントを記述" rows="2"></textarea>
-          <input type="submit" value="SENT" class="game_record">
+          <%= f.text_area :text,placeholder: "コメント",rows: "2",cols: "30" %>
+          <%= f.submit "SEND",class: "game_record"%>
         <% end %>
       <% end %>
       </div>
     </div>
   </div>
 </div>
+<%= javascript_pack_tag 'forecast' %>

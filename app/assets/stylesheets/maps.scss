@@ -1,6 +1,15 @@
 .map{
+  background-image: image-url('japan.jpg');
+  background-size: 300px 300px;
+  &-info {
+    width: 45%;
+    margin: 0 auto;
+  }
+  &-name {
+    font-size: 1.5rem;
+  }
   &-content {
-  background-color: #f6f6d1;
+  background-color: #f6f6d1;;
   min-height: 100%;
   }
   &-card {
@@ -14,6 +23,7 @@
       width: 55px;
       height: 50px;
       border-radius: 50%;
+      border: 2px solid  rgb(192, 189, 189);
     }
     &_image {
       background-color: white;
@@ -24,4 +34,37 @@
     display: flex;
     text-align: center;
   }
+  &-text {
+    border: solid;
+    border-width: 0 2px 2px 2px;
+    font-size: 1.2rem;
+    background-color: #f6f6d1;
+  }
+  &-school {
+    margin-top: 10%;
+    font-size: 1.8rem;
+    text-align: center;
+    border: solid 2px;
+    background-color: #f6f6d1;
+  }
+  &-image {
+    border: solid;
+    border-width: 0 2px 2px 2px;
+    background: cover;
+    margin: initial;
+    width: 100%;
+    &_content {
+      width: 100%;
+    }
+  }
+}
+
+#map {
+  height: 60%;
+  width: 45%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  border: solid;
+  border-width: 0 2px 2px 2px;
 }

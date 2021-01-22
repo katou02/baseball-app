@@ -5,7 +5,7 @@
       大会選択<br>
       <%=f.select :tournament_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{include_blank:"大会を選択してください"}, { class: "parent_category_box", id: "parent_category"} %>
       <div class="school mt-3"></div>
-      <div class="school2"></div>
+      <div class="school2 mb-3"></div>
     <%= render partial: 'form',locals: {f: f} %>
     <% end %>
     <div class="back">
