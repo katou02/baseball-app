@@ -59,6 +59,7 @@
   &-title {
     font-size: 25px;
     color: white;
+    font-weight: bold;
   }
   &-image {
     position: absolute;
@@ -82,11 +83,22 @@
   }
 }
 
+.search-tweet {
+  min-height: 100%;
+  width: 100%;
+  background-image: image-url("sky_00010.jpg");
+  background-size: cover;
+  background-color:rgba(255,255,255,0.8);
+  background-blend-mode:lighten;
+  flex: 1 1 100%;
+}
+
 .title {
   margin-left: 32%;
   &-child {
     float: left;
     background-color: #68ccf9;
+    font-weight: bold;
     overflow: hidden;
     margin-right: 3%;
     font-size: 15px;
@@ -132,7 +144,7 @@
   }
 }
 // 詳細 大会別
-#wrapper,.contact,.notification-main {
+#wrapper,.contact,.notification {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -152,9 +164,9 @@
 
 // 詳細
 .good,.good-after {
-  background-color: white;
-  border: 2px solid white;
+  border: 2px solid #EEFFFF;
   color: #C0C0C0;
+  background-color: #EEFFFF;
 }
 
 .good:hover + .fukidashi {
