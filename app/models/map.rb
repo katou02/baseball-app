@@ -5,7 +5,6 @@ class Map < ApplicationRecord
   has_many :categories
   validates :text,length: {maximum: 2000}
   validates :text,:address,presence: true
-  mount_uploader :image, ImageUploader
   # 緯度経度
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

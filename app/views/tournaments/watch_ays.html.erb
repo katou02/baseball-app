@@ -8,14 +8,10 @@
     <%end%>
   </div>
   <div class="go-avg text-center mt-4">
-    <div class="avg-ays">
-      <p>みんなの分析を元にした平均評価を見る<p>
-      <%= link_to "平均評価を見る",watch_avg_tournament_path,class: "ays-avg" %><br>
-    </div>
-    <div class="homedown">
-      <p>甲子園でお馴染みのふるさと紹介</p>
-      <%= link_to "ふるさと紹介",maps_path(tournament_id: params[:id]),class: "ays-avg" %>
-    </div>
+    <%=@analysis.name%><br>
+    <%= link_to "平均評価を見る",watch_avg_tournament_path,class: "ays-avg" %>
+    <p>みんなの集計結果を元にした平均評価を見れます<p>
+    <%= link_to "紹介",maps_path(tournament_id: params[:id]),class: "ays-avg" %>
   </div>
   <div class="analysis-main">
     <% if @analysis_tournament.present? %>

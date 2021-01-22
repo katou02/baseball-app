@@ -16,6 +16,6 @@ class CommentForecastsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment_forecast).permit(:text).merge(user_id: current_user.id,forecast_id: params[:forecast_id])
+    params.permit(:text, :forecast_id).merge(user_id: current_user.id)
   end
 end

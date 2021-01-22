@@ -27,32 +27,21 @@
   padding-top: 30px;
   padding-bottom: 10px;
   display: flex;
-  &-content {
-    min-height: 100%;
-    background-color: #EEFFFF;
-  }
+  justify-content: space-evenly;
 }
 
-.avg-font {
-  margin-left: 12%;
-  font-size: 1.2rem;
+.avg-expec {
+  font-size: 20px;
+  margin-left: -40px;
 }
 
-.avg-attack,.avg-defense,.avg-pitch,.avg-total,.avg-expec {
-  font-size: 1.2rem;
+.avg-attack,.avg-defense,.avg-pitch,.avg-total {
+  margin-left: -200px;
+  font-size: 20px;
 }
 
 .avg-name {
-  font-size: 30px;
-  margin-top: 5%;
-  text-align: center;
-  color: #68ccf9;;
-  font-weight: bold;
-}
-
-.go-avg {
-  display: flex;
-  justify-content: space-evenly 
+  font-size: 25px;
 }
 
 @media screen and (max-width: 679px) {

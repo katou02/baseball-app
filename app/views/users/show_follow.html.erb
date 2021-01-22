@@ -1,9 +1,3 @@
 <div class="user-content pt-5">
-  <h2>フォロー <%= @user.followings.count %>人</h2>
-  <div class="user-list row">
-    <% @users.each do |user| %>
-      <%= render partial: "user_list",locals: {user: user}%>
-    <% end %>
-    <%= paginate @users %>
-  </div>
-</div>
+  <h2>フォロワー <%= @user.followings.count %>人</h2>
+  <%= render partial: "user_list"%>

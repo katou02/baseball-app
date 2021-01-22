@@ -38,27 +38,16 @@
   flex: 1 1 100%;
 }
 
-.search-fcs {
-  background-image: image-url("sky_00148.jpg");
-  background-size: cover;
-  background-color:rgba(255,255,255,0.5);
-  background-blend-mode:lighten;
-  min-height: 100%;
-}
-
 .win-rate {
   margin-top: 30px;
   text-align: center;
 }
 
+.Pie {
+  display: flex;
+}
+
 .fcs-text {
-  font-size: 1.2rem;
-}
-
-.pie {
-  margin-left: 29%;
-}
-
-.content-fcs_show {
-  background-color: #EEFFFF;
+  width: 100%;
+  border: 1px solid #b3b4b4;
 }

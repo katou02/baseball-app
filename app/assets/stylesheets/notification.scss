@@ -3,29 +3,6 @@
 }
 
 .users-index {
-  // flex: 1 1 100%;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.notification {
-  background-color: #EEFFFF;
-  &-info {
-    display: flex;
-    margin: 0 auto;
-    width: 100%;
-  }
-  &-top {
-    font-weight: bold;
-    font-size: 40px;
-  }
-  &-content {
-    background-color: #EEFFFF;
-  }
-  &-title {
-    font-size: 40px;
-    text-align: center;
-    font-weight: bold;
-    color: #007bff;
-  }
+  background-color: #EEEEEE;
+  flex: 1 1 100%;
 }

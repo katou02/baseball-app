@@ -27,11 +27,6 @@
   -1px 0 0 #FFF, 1px 0 0 #FFF;
 }
 
-.logo {
-  font-weight: bold;
-  font-size: 2.0rem;
-}
-
 .top-main {
   background-size: cover;
   background-position: center center;
@@ -47,28 +42,23 @@
   justify-content: space-between;
 }
 
-.info,.mypage,.logout,.contact-header,.login,.top_sign_up,.guest-login,.logo {
-  color: rgba(29,161,242,1.00);
+.info,.mypage,.logout,.contact-header,.login,.top_sign_up,.guest-login {
+  color: rgba(29,161,242,1.00);;
 }
 
 .top_sign_up {
   position: absolute;
-  left: 28%;
+  left: 270px;
 }
 
 .guest-login {
   position: absolute;
-  left: 15%;
-}
-
-.login {
-  position: absolute;
-  right: 55%;
+  left: 110px;
 }
 
 .new_info {
-  top: 20%;
-  left: 30%;
+  top: 10px;
+  left: 17px;
   font-size: 13px;
   position: absolute;
 }

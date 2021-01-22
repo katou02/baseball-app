@@ -28,28 +28,20 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
-<div class="map">
-  <div class="choose-btn pt-3">
-    <% if current_user.id == @map.user_id || current_user.admin? %>
-      <%= link_to "記事を削除する","/maps/#{@map.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
-      <%= link_to "記事を編集する","/maps/#{@map.id}/edit",method: :get,class: "edit-article" %>
-    <% end %>
-    <%= link_to "戻る",maps_path(tournament_id: @map.tournament.id),class: "return-top ml-1" %>
-  </div>
-  <div class="map-info">
-    <div class="map-school">
-      <%= @map.school.name %>のふるさと紹介
-    </div>
-    <div class="map-text">
-      <%= simple_format(@map.text) %>
-    </div>
-    <div class="map-image">
-      <% if @map.image.present?%>
-        <%= image_tag "#{@map.image}",class: "map-image_content" %>
-      <% else %>
-        <%= image_tag "map-no-image.png",class: "map-image_content" %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= link_to "記事を削除する","/maps/#{@map.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>住所:</strong>
+  <%= @map.address %>
+</p>
+<%= @map.text %>
+
+<style type="text/css">
+  #map { height: 400px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    width: 80%;}
+</style>
 <div id="map"></div>
