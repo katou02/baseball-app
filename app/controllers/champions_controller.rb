@@ -25,7 +25,8 @@ class ChampionsController < ApplicationController
     champions = Champion.where(tournament_id: params[:id])
     @my_champion = Champion.find_by(user_id: current_user.id,tournament_id: params[:id])
     @n=0
-    ranking(champions)
+    ranking=ranking(champions)
+    graph(ranking)
   end
 
   def destroy
@@ -39,10 +40,23 @@ class ChampionsController < ApplicationController
     # 重複が多い順に並び替え
     @num << champion_count.sort {|(k1, v1), (k2, v2)| v2 <=> v1 }
     # @num[0].slice!(5,70)
+    # @num[0][n][1] 1つめのn学校,2つめは票数
     @school = []
     # 多い順に格納
     @num[0].length.times do |n|
       @school << Champion.find_by(champion_school_id: @num[0][n][0])
+    end
+  end
+
+  def graph(neok)
+    gon.date = []
+    gon.a = []
+    gon.b = []
+    gon.date.push(@school)
+
+    gon.date[0].size.times do |n|
+      gon.a<<gon.date[0][n].champion_school.name
+      gon.b<<@num[0][n][1]
     end
     # binding.pry
   end
