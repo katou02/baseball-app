@@ -25,8 +25,8 @@ class ChampionsController < ApplicationController
     champions = Champion.where(tournament_id: params[:id])
     @my_champion = Champion.find_by(user_id: current_user.id,tournament_id: params[:id])
     @n=0
-    neko=ranking(champions)
-    graf(neko)
+    ranking=ranking(champions)
+    graph(ranking)
   end
 
   def destroy
@@ -48,15 +48,15 @@ class ChampionsController < ApplicationController
     end
   end
 
-  def graf(neok)
+  def graph(neok)
     gon.date = []
-    gon.aa = []
-    gon.bb = []
+    gon.a = []
+    gon.b = []
     gon.date.push(@school)
 
     gon.date[0].size.times do |n|
-      gon.aa<<gon.date[0][n].champion_school.name
-      gon.bb<<@num[0][n][1]
+      gon.a<<gon.date[0][n].champion_school.name
+      gon.b<<@num[0][n][1]
     end
     # binding.pry
   end
