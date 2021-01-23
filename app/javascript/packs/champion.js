@@ -13,8 +13,13 @@ var myBarChart = new Chart(ctx, {
   options: {
     title: {
       display: true,
-      text: '上位5チーム'
+      text: '上位5チーム',
+      fontSize: 20,
+      fontColor: '#000'
     },
+    legend: {
+      display: false
+   },
     scales: {
       yAxes: [{
         ticks: {
