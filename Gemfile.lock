@@ -222,7 +222,7 @@ GEM
     mimemagic (0.3.4)
     mini_magick (4.10.1)
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.0)
     minitest (5.14.0)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
@@ -233,8 +233,9 @@ GEM
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.1.0)
     nio4r (2.5.2)
-    nokogiri (1.10.9)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     popper_js (1.16.0)
     pry (0.13.0)
@@ -244,6 +245,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.3)
     puma (3.12.4)
+    racc (1.5.2)
     rack (2.2.2)
     rack-proxy (0.6.5)
       rack
@@ -304,6 +306,8 @@ GEM
       rspec-mocks (~> 3.9.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.4)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
@@ -411,6 +415,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-i18n
   rspec-rails (~> 3.6)
+  rspec_junit_formatter
   sass-rails (= 5.0.7)
   selenium-webdriver
   spring
