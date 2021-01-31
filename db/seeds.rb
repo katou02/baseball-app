@@ -28,6 +28,26 @@ school1 = tournament2.children.create([{name: "旭川大高"},{name: "北照"},{
                                        {name: "鳴門"},{name: "済美"},{name: "高知商業"},{name: "折尾愛真"},
                                        {name: "沖学園"},{name: "佐賀商業"},{name: "創成館"},{name: "東海大熊本星翔"},
                                        {name: "藤蔭"},{name: "日南学園"},{name: "鹿児島実業"},{name: "興南"}])
+
+tournament3 = Category.create(name: "第92回選抜高校野球大会")
+school1 = tournament3.children.create([{name: "白樺学園"},{name: "仙台育英"},{name: "鶴岡東"},
+                                      {name: "健大高崎"},{name: "桐生第一"},{name: "花咲徳栄"},{name: "東海大相模"},
+                                      {name: "山梨学院"},{name: "国士舘"},{name: "中京大中京"},{name: "県立岐阜商"},
+                                      {name: "加藤学園"},{name: "星稜"},{name: "日本航空石川"},{name: "天理"},
+                                      {name: "大阪桐蔭"},{name: "履正社"},{name: "智弁学園"},{name: "明石商業"},
+                                      {name: "智弁和歌山"},{name: "倉敷商業"},{name: "鳥取城北"},{name: "広島新庄"},{name: "明徳義塾"},
+                                      {name: "尽誠学園"},{name: "明豊"},{name: "創成館"},{name: "大分商業"},
+                                      {name: "鹿児島城西"},{name: "帯広農業"},{name: "磐城"},{name: "平田"}])
+
+tournament4 = Category.create(name: "第93回選抜高校野球大会")
+school1 = tournament4.children.create([{name: "北海"},{name: "仙台育英"},{name: "柴田"},{name: "健大高崎"},
+                                      {name: "常総学院"},{name: "専大松戸"},{name: "東海大菅生"},{name: "東海大相模"},
+                                      {name: "東海大甲府"},{name: "中京大中京"},{name: "県岐阜商"},{name: "敦賀気比"},
+                                      {name: "上田西"},{name: "智弁学園"},{name: "大阪桐蔭"},{name: "京都国際"},
+                                      {name: "市立和歌山"},{name: "神戸国際大付"},{name: "天理"},{name: "広島新庄"},
+                                      {name: "下関国際"},{name: "鳥取城北"},{name: "明徳義塾"},{name: "聖カタリナ学園"},{name: "大崎"},
+                                      {name: "福岡大大濠"},{name: "明豊"},{name: "宮崎商業"},{name: "八戸西"},
+                                      {name: "三島南"},{name: "東播磨"},{name: "具志川商"}])
                                        
 User.create!(nickname: "yakumo",
              email: ENV['EMAIL'],
