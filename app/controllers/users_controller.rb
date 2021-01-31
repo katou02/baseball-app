@@ -55,8 +55,11 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    @user.update(user_params) if @user.id == current_user.id || current_user.admin
-    redirect_to "/users/#{@user.id}"
+    if (@user.id == current_user.id || current_user.admin) && current_user.nickname!="ゲスト"
+      @user.update(user_params)
+      redirect_to "/users/#{@user.id}"
+    end
+    render :edit
   end
 
   def short_description
