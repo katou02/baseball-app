@@ -94,7 +94,8 @@
 }
 
 .title {
-  margin-left: 32%;
+  display: flex;
+  justify-content: space-evenly;
   &-child {
     float: left;
     background-color: #68ccf9;
