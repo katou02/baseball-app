@@ -1,4 +1,7 @@
-<div class="contents row">
+<div class="contents row pt-3">
+  <% if current_user.nickname == "ゲスト"%>
+    <h5>ゲストユーザーは編集できません</h5>
+  <% end %>
   <div class="container">
     <%= form_with model: @user,local: true do |f|%>
       <%= f.select :prefecture,options_for_select(User.prefectures.keys,selected: @user.prefecture),{prompt: "住んでる場所を選択してください"},class: "form-control" %>
