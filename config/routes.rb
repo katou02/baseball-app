@@ -11,6 +11,13 @@ Rails.application.routes.draw do
     resources :comments,only:[:create,:destroy]
     resources :likes,only:[:create,:destroy]
   end
+
+  namespace :api,{format: 'json'} do
+    namespace :v1 do
+      resources :tweets,only:[:index]
+    end
+  end
+  
   resources :tournaments,only:[:show] do
     member do
       get :watch_ays,:watch_avg,:watch_fcs
