@@ -1,25 +1,30 @@
 <template>
-  <v-app id="app"> <!-- 追加 -->
-    <v-btn>Vuetifyのボタン</v-btn> <!-- 追加 -->
-    <div>  <!-- 更新 -->
-      <p>{{ message }}</p>
-    </div>
-  </v-app> <!-- 追加 -->
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+import TweetIndexPage from 'TweetIndexPage.vue'
+
+const router = new VueRouter({
+  mode: 'history',
+  routes: [
+    {path: '/tweets',
+     component: TweetIndexPage}
+  ]
+})
+
+Vue.use(VueRouter)
+
 export default {
-  data: function () {
-    return {
-      message: "Hello Vue"
-    }
-  }
+  router
 }
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
+
 </style>
