@@ -2,22 +2,22 @@
   <div id="app">
     <div v-for="e in tweets" :key="e.id">
       <div class="article mt-5">
-        <router-link :to="`tweets/${e.id}`">
-        <div class="article-title">
-          {{e.school_a}}vs{{e.school_b}}
-        </div>
-        <div class="article-image">
-          <i class="fa fa-baseball-ball text-white"></i>
-        </div>
-        <div class="sub-title">
-          {{e.title}}
-        </div>
-        <div class="name">
-          投稿者 {{e.nickname}}
-        </div>
-        <div class="tweets_at">
-          {{e.time}}
-        </div>
+        <router-link @click.native="reset" :to="`tweets/${e.id}`">
+          <div class="article-title">
+            {{e.school_a}}vs{{e.school_b}}
+          </div>
+          <div class="article-image">
+            <i class="fa fa-baseball-ball text-white"></i>
+          </div>
+          <div class="sub-title">
+            {{e.title}}
+          </div>
+          <div class="name">
+            投稿者 {{e.nickname}}
+          </div>
+          <div class="tweets_at">
+            {{e.time}}
+          </div>
         </router-link>
       </div>
     </div>
@@ -32,10 +32,16 @@ export default {
       tweets: []
     }
   },
+  
   mounted() {
     axios
     .get('/api/v1/tweets.json')
     .then(response => (this.tweets = response.data))
+  },
+    methods: {
+      reset: function () {
+      this.$router.go({path: this.$router.currentRoute.path, force: true})
+    }
   }
 }
 </script>
