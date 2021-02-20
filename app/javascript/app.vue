@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <v-btn>Vuetifyのボタン</v-btn>
     <router-view></router-view>
   </div>
 </template>

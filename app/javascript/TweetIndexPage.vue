@@ -25,7 +25,6 @@
         </p>
       </div>
     </div>
-    <v-btn>fff</v-btn>
   </div>
 </template>
 <script>
@@ -35,9 +34,10 @@ export default {
   data() {
     return {
       tweets: [],
-      currentPage: 3,
+      currentPage: 1,
       tweetsPerPage: 5,
-      totalPages: null
+      totalPages: null,
+      current_slide: 0,
     }
   },
   mounted() {
