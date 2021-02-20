@@ -1,7 +1,11 @@
 <template>
   <div class="app">
+    <input type="text" v-model="keyword">
+    <div class="text-format mt-5 text-primary">
+      観た試合の感想をみんなに発信してみましょう！
+    </div>
     <v-pagination v-model="currentPage" :length="totalPages" @input="fetchTweets"/>
-    <div v-for="e in tweets" :key="e.id">
+    <div v-for="e in filteredTweets" :key="e.id">
       <div class="article mt-5">
         <router-link @click.native="reset" :to="`tweets/${e.id}`">
           <div class="article-title">
@@ -33,6 +37,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      keyword: '',
       tweets: [],
       currentPage: 1,
       tweetsPerPage: 5,
@@ -55,6 +60,21 @@ export default {
         this.tweets = response.data;
         this.totalPages = response.data[0].total_page;
         })
+    }
+  },
+  computed: {
+    filteredTweets: function() {
+        var tweets = [];
+        for(var i in this.tweets) {
+            var tweet = this.tweets[i];
+            if(tweet.text.indexOf(this.keyword) !== -1 ||
+                tweet.school_a.indexOf(this.keyword) !== -1 ||
+                tweet.school_b.indexOf(this.keyword) !== -1 ||
+                tweet.title.indexOf(this.keyword) !== -1) {
+                tweets.push(tweet);
+            }
+        }
+        return tweets;
     }
   }
 }
