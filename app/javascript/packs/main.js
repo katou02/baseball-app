@@ -5,9 +5,8 @@ import App from '../app.vue';
 Vue.use(Vuetify);
 
 document.addEventListener('DOMContentLoaded', () => {
-  // const el = document.body.appendChild(document.createElement('tweet'))
   const app = new Vue({
-    // el,
+    el: "#app",
     vuetify: new Vuetify(),
     render: h => h(App)
   }).$mount();
