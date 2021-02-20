@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div class="app">
+    <v-pagination v-model="currentPage" :length="totalPages" @input="fetchTweets"/>
     <div v-for="e in tweets" :key="e.id">
       <div class="article mt-5">
         <router-link @click.native="reset" :to="`tweets/${e.id}`">
@@ -19,28 +20,41 @@
             {{e.time}}
           </div>
         </router-link>
+        <p ref="hoge">
+          {{e.total_pages}}
+        </p>
       </div>
     </div>
+    <v-btn>fff</v-btn>
   </div>
 </template>
 <script>
 import axios from 'axios';
 
 export default {
-  data: function() {
+  data() {
     return {
-      tweets: []
+      tweets: [],
+      currentPage: 3,
+      tweetsPerPage: 5,
+      totalPages: null
     }
   },
-  
   mounted() {
-    axios
-    .get('/api/v1/tweets.json')
-    .then(response => (this.tweets = response.data))
+    this.fetchTweets()
   },
-    methods: {
-      reset: function () {
-      this.$router.go({path: this.$router.currentRoute.path, force: true})
+  methods: {
+    reset: function () {
+    this.$router.go({path: this.$router.currentRoute.path, force: true})
+    },
+    fetchTweets() {
+      const url = `/api/v1/tweets?page=${this.currentPage}?per=${this.tweetsPerPage}`;
+      axios
+        .get(url)
+        .then(response =>{
+        this.tweets = response.data;
+        this.totalPages = response.data[0].total_page;
+        })
     }
   }
 }
