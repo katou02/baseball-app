@@ -9,7 +9,7 @@ class Api::V1::TweetsController < ApiController
     # @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
     page = params[:page] || 1
     per = params[:per] || 5
-    @tweets = Tweet.page(page).per(per)
+    @tweets = Tweet.page(page).per(per).order(created_at: "DESC")
     @total_pages = @tweets.total_pages
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
