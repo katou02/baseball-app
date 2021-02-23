@@ -4,7 +4,7 @@
       観た試合の感想をみんなに発信してみましょう！
     </div>
     <input type="text" v-model="keyword">
-    <div v-for="e in getTweets" :key="e.id">
+    <div v-for="e in getLists" :key="e.id">
       <div class="article mt-5">
         <a :href= "'tweets/' + e.id">
           <div class="article-title">
@@ -27,10 +27,11 @@
     </div>
     <!-- <v-pagination v-model="currentPage" :length="totalPages" @input="fetchTweets" /> -->
      <paginate
+    :v-model="currentPage" 
     :page-count="getPageCount"
+    :click-handler="clickCallback"
     :page-range="3"
     :margin-pages="2"
-    :click-handler="clickCallback"
     :prev-text="'＜'"
     :next-text="'＞'"
     :container-class="'pagination'"
@@ -85,12 +86,18 @@ export default {
     //     return tweets;
     // }
      getTweets: function() {
+       let self = this;
+       return this.tweets.filter(function(tweet){
+         return String(tweet.school_a).indexOf(self.keyword) !== -1;
+       });
+     },
+     getLists: function() {
        let current = this.currentPage * this.parPage;
        let start = current - this.parPage;
-       return this.tweets.slice(start, current);
+       return this.getTweets.slice(start, current);
      },
      getPageCount: function() {
-       return Math.ceil(this.tweets.length / this.parPage);
+       return Math.ceil(this.getTweets.length / this.parPage);
      }
   },
   watch: {
