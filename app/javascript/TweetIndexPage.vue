@@ -1,13 +1,12 @@
 <template>
-  <div class="app">
-    <input type="text" v-model="keyword">
+  <div class="article-main">
     <div class="text-format mt-5 text-primary">
       観た試合の感想をみんなに発信してみましょう！
     </div>
-    <v-pagination v-model="currentPage" :length="totalPages" @input="fetchTweets"/>
-    <div v-for="e in filteredTweets" :key="e.id">
+    <input type="text" v-model="keyword">
+    <div v-for="e in getTweets" :key="e.id">
       <div class="article mt-5">
-        <router-link @click.native="reset" :to="`tweets/${e.id}`">
+        <a :href= "'tweets/' + e.id">
           <div class="article-title">
             {{e.school_a}}vs{{e.school_b}}
           </div>
@@ -23,12 +22,20 @@
           <div class="tweets_at">
             {{e.time}}
           </div>
-        </router-link>
-        <p ref="hoge">
-          {{e.total_pages}}
-        </p>
+        </a>
       </div>
     </div>
+    <!-- <v-pagination v-model="currentPage" :length="totalPages" @input="fetchTweets" /> -->
+     <paginate
+    :page-count="getPageCount"
+    :page-range="3"
+    :margin-pages="2"
+    :click-handler="clickCallback"
+    :prev-text="'＜'"
+    :next-text="'＞'"
+    :container-class="'pagination'"
+    :page-class="'page-item'">
+  </paginate>
   </div>
 </template>
 <script>
@@ -40,8 +47,8 @@ export default {
       keyword: '',
       tweets: [],
       currentPage: 1,
-      tweetsPerPage: 5,
-      totalPages: null,
+      parPage: 5,
+      // totalPages: null,
       current_slide: 0,
     }
   },
@@ -49,32 +56,46 @@ export default {
     this.fetchTweets()
   },
   methods: {
-    reset: function () {
-    this.$router.go({path: this.$router.currentRoute.path, force: true})
-    },
     fetchTweets() {
-      const url = `/api/v1/tweets?page=${this.currentPage}?per=${this.tweetsPerPage}`;
+      // const url = `/api/v1/tweets?page=${this.currentPage}?per=${this.tweetsPerPage}`;
       axios
-        .get(url)
+        // .get(url)
+        .get('api/v1/tweets.json')
         .then(response =>{
         this.tweets = response.data;
-        this.totalPages = response.data[0].total_page;
+        // this.totalPages = response.data[0].total_page;
         })
+    },
+    clickCallback: function (pageNum) {
+       this.currentPage = Number(pageNum);
     }
   },
   computed: {
-    filteredTweets: function() {
-        var tweets = [];
-        for(var i in this.tweets) {
-            var tweet = this.tweets[i];
-            if(tweet.text.indexOf(this.keyword) !== -1 ||
-                tweet.school_a.indexOf(this.keyword) !== -1 ||
-                tweet.school_b.indexOf(this.keyword) !== -1 ||
-                tweet.title.indexOf(this.keyword) !== -1) {
-                tweets.push(tweet);
-            }
-        }
-        return tweets;
+    // filteredTweets() {
+    //     var tweets = [];
+    //     for(var i in this.tweets) {
+    //         var tweet = this.tweets[i];
+    //         if( tweet.text.indexOf(this.keyword) !== -1 ||
+    //             tweet.school_a.indexOf(this.keyword) !== -1 ||
+    //             tweet.school_b.indexOf(this.keyword) !== -1 ||
+    //             tweet.title.indexOf(this.keyword) !== -1) {
+    //             tweets.push(tweet);
+    //         }
+    //     }
+    //     return tweets;
+    // }
+     getTweets: function() {
+       let current = this.currentPage * this.parPage;
+       let start = current - this.parPage;
+       return this.tweets.slice(start, current);
+     },
+     getPageCount: function() {
+       return Math.ceil(this.tweets.length / this.parPage);
+     }
+  },
+  watch: {
+    keyword: function(){
+      this.currentPage = 1;
     }
   }
 }
@@ -107,4 +128,11 @@ export default {
   font-size: 18px;
 }
 
+.article-main{
+  background-image: url("/images/sky.jpg");
+   background-size: cover;
+   background-color:rgba(255,255,255,0.8);
+   background-blend-mode:lighten;
+   flex: 1 1 100%;
+}
 </style>
