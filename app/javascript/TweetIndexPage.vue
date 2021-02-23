@@ -1,6 +1,6 @@
 <template>
   <div class="article-main">
-    <div class="text-format mt-5 text-primary">
+    <div class="text-format pt-5 text-primary">
       観た試合の感想をみんなに発信してみましょう！
     </div>
     <input type="text" v-model="keyword">
