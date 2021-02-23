@@ -1,7 +1,7 @@
 <template>
   <div class="article-main">
     <div class="text-format pt-5 text-primary">
-      観た試合の感想をみんなに発信してみましょう！
+      みんなの試合記事
     </div>
     <div class="search-area mt-3">
       <input type="text" v-model="keyword" placeholder="検索">
