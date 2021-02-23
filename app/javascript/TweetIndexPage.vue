@@ -3,7 +3,9 @@
     <div class="text-format pt-5 text-primary">
       観た試合の感想をみんなに発信してみましょう！
     </div>
-    <input type="text" v-model="keyword">
+    <div class="search-area mt-3">
+      <input type="text" v-model="keyword" placeholder="検索">
+    </div>
     <div v-for="e in getLists" :key="e.id">
       <div class="article mt-5">
         <a :href= "'tweets/' + e.id">
@@ -26,17 +28,17 @@
       </div>
     </div>
     <!-- <v-pagination v-model="currentPage" :length="totalPages" @input="fetchTweets" /> -->
-     <paginate
-    :v-model="currentPage" 
-    :page-count="getPageCount"
-    :click-handler="clickCallback"
-    :page-range="3"
-    :margin-pages="2"
-    :prev-text="'＜'"
-    :next-text="'＞'"
-    :container-class="'pagination'"
-    :page-class="'page-item'">
-  </paginate>
+    <paginate
+      :v-model="currentPage" 
+      :page-count="getPageCount"
+      :click-handler="clickCallback"
+      :page-range="3"
+      :margin-pages="2"
+      :prev-text="'＜'"
+      :next-text="'＞'"
+      :container-class="'pagination'"
+      :page-class="'page-item'">
+    </paginate>
   </div>
 </template>
 <script>
@@ -48,7 +50,7 @@ export default {
       keyword: '',
       tweets: [],
       currentPage: 1,
-      parPage: 5,
+      parPage: 10,
       // totalPages: null,
       current_slide: 0,
     }
@@ -148,5 +150,13 @@ export default {
    background-color:rgba(255,255,255,0.8);
    background-blend-mode:lighten;
    flex: 1 1 100%;
+   height: 100%;
+}
+
+.search-area {
+  background-color: white;
+  width: 20%;
+  margin: 0 auto;
+  border-radius: 10px;
 }
 </style>
