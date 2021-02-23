@@ -7,16 +7,10 @@
       <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn_watch" %>
     <%end%>
   </div>
-  <%# <div class="article-main"> %>
-    <% if @tweet.present? %>
-      <div class="text-format text-success mt-1 pt-5">
-        <%= @tweet.tournament.name%>
-      </div>
-      <%# <%= render partial: "tweets/tweet_show"%> 
-    <% else %>
-      <p class="text-center mt-5">投稿はありません</p>
-    <% end %>
-  <%# </div> %>
 </div>
+<% if @tweet.present?%>
+<div class="text-format text-success mt-1 pt-5">
+  <%= @tweet.tournament.name%>
 </div>
+<% end %>
 <%= javascript_pack_tag 'main' %>

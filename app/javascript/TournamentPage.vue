@@ -1,40 +1,47 @@
 <template>
-  <div class="aaa">
-    <div class="search-area mt-3">
-      <input type="text" v-model="keyword" placeholder="検索">
-    </div>
-    <div v-for="e in getLists" :key="e.id">
-      <div class="article mt-5">
-        <a :href= "'/tweets/' + e.id">
-          <div class="article-title">
-            {{e.school_a}}vs{{e.school_b}}
-          </div>
-          <div class="article-image">
-            <i class="fa fa-baseball-ball text-white"></i>
-          </div>
-          <div class="sub-title">
-            {{e.title}}
-          </div>
-          <div class="name">
-            投稿者 {{e.nickname}}
-          </div>
-          <div class="tweets_at">
-            {{e.time}}
-          </div>
-        </a>
+  <div class="tournament-main">
+    <div class="tournament-content pt-5">
+      <div class="search-area mt-3">
+        <input  type="text" v-model="keyword" placeholder="検索">
       </div>
+      <div v-if="tweets.length">
+        <div v-for="e in getLists" :key="e.id">
+          <div class="article mt-5">
+            <a :href= "'/tweets/' + e.id">
+              <div class="article-title">
+                {{e.school_a}}vs{{e.school_b}}
+              </div>
+              <div class="article-image">
+                <i class="fa fa-baseball-ball text-white"></i>
+              </div>
+              <div class="sub-title">
+                {{e.title}}
+              </div>
+              <div class="name">
+                投稿者 {{e.nickname}}
+              </div>
+              <div class="tweets_at">
+                {{e.time}}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div v-else>
+        <p class="text-center mt-5">試合記事はありません</p>
+      </div>
+      <paginate
+        :v-model="currentPage" 
+        :page-count="getPageCount"
+        :click-handler="clickCallback"
+        :page-range="3"
+        :margin-pages="2"
+        :prev-text="'＜'"
+        :next-text="'＞'"
+        :container-class="'pagination'"
+        :page-class="'page-item'">
+      </paginate>
     </div>
-    <paginate
-      :v-model="currentPage" 
-      :page-count="getPageCount"
-      :click-handler="clickCallback"
-      :page-range="3"
-      :margin-pages="2"
-      :prev-text="'＜'"
-      :next-text="'＞'"
-      :container-class="'pagination'"
-      :page-class="'page-item'">
-    </paginate>
   </div>
 </template>
 <script>
@@ -45,7 +52,7 @@ export default {
       keyword: '',
       tweets: [],
       currentPage: 1,
-      parPage: 5,
+      parPage: 10,
     }
   },
   mounted() {
@@ -94,3 +101,20 @@ export default {
   }
 }
 </script>
+<style scoped>
+.tournament-main{
+  background-image: url("/images/sky.jpg");
+   background-size: cover;
+   background-color:rgba(255,255,255,0.8);
+   background-blend-mode:lighten;
+   flex: 1 1 100%;
+   min-height: 900px;
+}
+
+.search-area {
+  background-color: white;
+  width: 20%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+</style>
