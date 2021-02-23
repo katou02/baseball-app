@@ -86,10 +86,17 @@ export default {
     //     return tweets;
     // }
      getTweets: function() {
-       let self = this;
-       return this.tweets.filter(function(tweet){
-         return String(tweet.school_a).indexOf(self.keyword) !== -1;
-       });
+               var tweets = [];
+        for(var i in this.tweets) {
+            var tweet = this.tweets[i];
+            if( tweet.text.indexOf(this.keyword) !== -1 ||
+                tweet.school_a.indexOf(this.keyword) !== -1 ||
+                tweet.school_b.indexOf(this.keyword) !== -1 ||
+                tweet.title.indexOf(this.keyword) !== -1) {
+                tweets.push(tweet);
+            }
+        }
+        return tweets;
      },
      getLists: function() {
        let current = this.currentPage * this.parPage;
