@@ -8,16 +8,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import TweetIndexPage from './TweetIndexPage.vue'
+import TournamentPage from './TournamentPage.vue'
 
 Vue.use(VueRouter)
 
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    {
+     {
       path: '/tweets',
       component: TweetIndexPage,
       name: 'tweet'
+     },
+     {
+       path: '/tournaments/:id',
+       component: TournamentPage,
+       name: 'tournament'
      }
   ],
   scrollBehavior (to, from, savedPosition) {
