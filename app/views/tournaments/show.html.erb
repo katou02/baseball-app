@@ -9,8 +9,8 @@
   </div>
 </div>
 <% if @tweet.present?%>
-<div class="text-format text-success mt-1 pt-5">
-  <%= @tweet.tournament.name%>
-</div>
+  <div class="text-format text-success">
+    <%= @tweet.tournament.name%>
+  </div>
 <% end %>
 <%= javascript_pack_tag 'main' %>
