@@ -6,5 +6,5 @@ json.array! @tweets do |tweet|
   json.title tweet.title_info
   json.id tweet.id
   json.time tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")
-  json.total_page @total_pages
+  # json.total_page @total_pages
 end
