@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :tweets,only:[:index]
       resources :tournaments,only:[:show]
+      resources :analyses,only:[:index]
     end
   end
   
