@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         end
       end
       resources :analyses,only:[:index]
+      resources :forecasts,only:[:index]
     end
   end
   
