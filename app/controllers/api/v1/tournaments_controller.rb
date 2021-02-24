@@ -9,4 +9,11 @@ class Api::V1::TournamentsController < ApiController
     @tweet = Tweet.find_by(tournament_id: params[:id])
     render 'show', formats: 'json', handlers: 'jbuilder'
   end
+
+  def watch_ays
+    @analysis = Category.find(params[:id])
+    @analyses = Analysis.where(tournament_id: params[:id]).includes(:user).order("created_at DESC")
+    @analysis_tournament = Analysis.find_by(tournament_id: params[:id])
+    render 'watch_ays', formats: 'json', handlers: 'jbuilder'
+  end
 end
