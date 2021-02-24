@@ -10,6 +10,7 @@ import VueRouter from 'vue-router'
 import TweetIndexPage from './TweetIndexPage.vue'
 import TournamentPage from './TournamentPage.vue'
 import AnalysisPage from './AnalysisPage.vue'
+import WatchaysPage from './WatchaysPage.vue'
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,11 @@ const router = new VueRouter({
        path: '/analyses',
        component: AnalysisPage,
        name: 'anaysis'
+     },
+     {
+       path: '/tournaments/:id/watch_ays',
+       component: WatchaysPage,
+       name: 'watch_ays'
      }
   ],
   scrollBehavior (to, from, savedPosition) {
