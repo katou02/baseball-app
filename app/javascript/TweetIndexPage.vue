@@ -118,32 +118,6 @@ export default {
 </script>
 <style scoped>
 
-.article {
-  width: 800px;
-  max-width: 100%;
-  margin: 0 auto;
-  background-color: #68ccf9;
-  text-align: center;
-  border: solid 1px rgb(255, 255, 255);
-  height: auto;
-}
-
-.article-title {
-  font-size: 25px;
-  color: white;
-  font-weight: bold;
-}
-
-.article-image {
-  position: absolute;
-  width: 10%;
-}
-
-.sub-title {
-  padding-top: 20px;
-  font-size: 18px;
-}
-
 .article-main{
   background-image: url("/images/sky.jpg");
    background-size: cover;
@@ -151,12 +125,5 @@ export default {
    background-blend-mode:lighten;
    flex: 1 1 100%;
    height: 100%;
-}
-
-.search-area {
-  background-color: white;
-  width: 20%;
-  margin: 0 auto;
-  border-radius: 10px;
 }
 </style>
