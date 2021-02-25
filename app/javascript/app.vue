@@ -12,6 +12,7 @@ import TournamentPage from './TournamentPage.vue'
 import AnalysisPage from './AnalysisPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
 import ForecastPage from './ForecastPage.vue'
+import WatchfcsPage from './WatchfcsPage.vue'
 
 Vue.use(VueRouter)
 
@@ -42,6 +43,11 @@ const router = new VueRouter({
        path: '/forecasts',
        component: ForecastPage,
        name: 'forecast'
+     },
+     {
+       path: '/tournaments/:id/watch_fcs',
+       component: WatchfcsPage,
+       name: 'watch_fcs'
      }
   ],
   scrollBehavior (to, from, savedPosition) {
