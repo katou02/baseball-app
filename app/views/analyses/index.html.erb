@@ -16,7 +16,7 @@
       <div class="text-format mt-5 mb-4 text-warning">
         大会別
       </div>
-      <div class="title">
+      <div class="title pb-5">
         <% @category_parent_array.each do |tournament|%>
           <%= link_to "/tournaments/#{tournament.id}/watch_ays",class: "title-child text-white" do%>
             <i class="fa fa-baseball-ball text-white"></i>
