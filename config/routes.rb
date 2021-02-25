@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :tournaments,only:[:show] do
         member do
           get :watch_ays
+          get :watch_fcs
         end
       end
       resources :analyses,only:[:index]
