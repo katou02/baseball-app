@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="main-content-btn mt-1">
     <% if user_signed_in? %>
-      <%= link_to "投稿する",new_analysis_path,class: "send_btn"%>
+      <%= link_to "投稿する",new_analysis_path,class: "send_btn", data: {"turbolinks" => false} %>
     <% end %>
     <% unless current_page?(root_path)%>
       <%= link_to "分析一覧へ戻る",analyses_path,class: "return-btn_watch" %>
@@ -14,7 +14,7 @@
     </div>
     <div class="homedown">
       <p>甲子園でお馴染みのふるさと紹介</p>
-      <%= link_to "ふるさと紹介",maps_path(tournament_id: params[:id]),class: "ays-avg" %>
+      <%= link_to "ふるさと紹介",maps_path(tournament_id: params[:id]),class: "ays-avg", data: {"turbolinks" => false} %>
     </div>
   </div>
   <div class="text-format text-success">
