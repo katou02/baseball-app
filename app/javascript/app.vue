@@ -11,6 +11,7 @@ import TweetIndexPage from './TweetIndexPage.vue'
 import TournamentPage from './TournamentPage.vue'
 import AnalysisPage from './AnalysisPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
+import ForecastPage from './ForecastPage.vue'
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,11 @@ const router = new VueRouter({
        path: '/tournaments/:id/watch_ays',
        component: WatchaysPage,
        name: 'watch_ays'
+     },
+     {
+       path: '/forecasts',
+       component: ForecastPage,
+       name: 'forecast'
      }
   ],
   scrollBehavior (to, from, savedPosition) {
