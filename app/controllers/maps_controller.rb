@@ -4,6 +4,8 @@ class MapsController < ApplicationController
   def index
     @maps = Map.where(tournament_id: params[:tournament_id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
     @id = params[:tournament_id]
+    @categories = Category.where(ancestry: nil)
+    @tournament = Category.find_by(id: @id)
   end
   
   def new
