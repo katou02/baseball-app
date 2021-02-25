@@ -17,6 +17,9 @@
       <%= link_to "ふるさと紹介",maps_path(tournament_id: params[:id]),class: "ays-avg" %>
     </div>
   </div>
+  <div class="text-format text-success">
+    <%= @category.name%>
+  </div>
   <!--<div class="analysis-main">
     <% if @analysis_tournament.present? %>
       <div class="text-format text-success mt-5 pt-5 mb-４">
