@@ -97,26 +97,4 @@ export default {
 }
 </script>
 <style scoped>
-  .school_ays-name {
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .analysis-image {
-    position: absolute;
-    width: 10%;
-  }
-
-.title_ays {
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-.name {
-  font-size: 15px;
-  margin-bottom: 10px;
-  text-align: right;
-}
 </style>
