@@ -25,6 +25,12 @@ const slide = new Vue({
     }
   })
 
+    const aaa= new Vue({
+      el: '#radio',
+      data: {
+        isActive: '1'
+      }
+    })
   document.addEventListener('DOMContentLoaded', () => {
     const app = new Vue({
       el: "#app",
