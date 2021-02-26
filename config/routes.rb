@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :api,{format: 'json'} do
     namespace :v1 do
       resources :tweets,only:[:index]
+      resources :users,only:[:index]
       resources :tournaments,only:[:show] do
         member do
           get :watch_ays
