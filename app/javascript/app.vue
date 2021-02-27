@@ -1,25 +1,75 @@
 <template>
-  <v-app id="app"> <!-- 追加 -->
-    <v-btn>Vuetifyのボタン</v-btn> <!-- 追加 -->
-    <div>  <!-- 更新 -->
-      <p>{{ message }}</p>
-    </div>
-  </v-app> <!-- 追加 -->
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-export default {
-  data: function () {
-    return {
-      message: "Hello Vue"
-    }
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import TweetIndexPage from './TweetIndexPage.vue'
+import TournamentPage from './TournamentPage.vue'
+import AnalysisPage from './AnalysisPage.vue'
+import WatchaysPage from './WatchaysPage.vue'
+import ForecastPage from './ForecastPage.vue'
+import WatchfcsPage from './WatchfcsPage.vue'
+import UserPage from './UserPage.vue'
+
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+  mode: 'history',
+  routes: [
+     {
+      path: '/tweets',
+      component: TweetIndexPage,
+      name: 'tweet'
+     },
+     {
+       path: '/tournaments/:id',
+       component: TournamentPage,
+       name: 'tournament'
+     },
+     {
+       path: '/analyses',
+       component: AnalysisPage,
+       name: 'anaysis'
+     },
+     {
+       path: '/tournaments/:id/watch_ays',
+       component: WatchaysPage,
+       name: 'watch_ays'
+     },
+     {
+       path: '/forecasts',
+       component: ForecastPage,
+       name: 'forecast'
+     },
+     {
+       path: '/tournaments/:id/watch_fcs',
+       component: WatchfcsPage,
+       name: 'watch_fcs'
+     },
+     {
+       path: '/users',
+       component: UserPage,
+       name: 'user'
+     }
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+  } else {
+    return { x: 0, y: 0 }
   }
+}
+})
+
+export default {
+  router
 }
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
+
 </style>

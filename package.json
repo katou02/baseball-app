@@ -3,15 +3,17 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "5.2.1",
+    "axios": "^0.21.1",
+    "chart.js": "^2.7.1",
     "rails-ujs": "^5.2.4-4",
-    "vue": "^2.6.12",
     "vue-loader": "^15.9.5",
+    "vue-router": "^3.5.1",
     "vue-select": "^3.10.8",
     "vue-template-compiler": "^2.6.12",
-    "vuetify": "^2.3.17",
-    "chart.js": "^2.7.1"
+    "vuejs-paginate": "^2.1.0",
+    "vuetify": "^2.4.4"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.2"
   }
 }

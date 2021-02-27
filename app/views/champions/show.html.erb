@@ -2,7 +2,7 @@
 </script>
 <div class="champion-content">
   <div class="main-content-btn">
-    <%= link_to "予想一覧へ戻る","/tournaments/#{@category.id}/watch_fcs",class: "return-top  ml-1" %>
+    <%= link_to "予想一覧へ戻る","/tournaments/#{@category.id}/watch_fcs",class: "return-top  ml-1", data: {"turbolinks" => false} %>
   </div>
   <div class="champion-title">
     <i class="fas fa-crown text-warning"></i>
