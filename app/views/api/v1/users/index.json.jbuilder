@@ -3,4 +3,5 @@ json.array! @users do |user|
   json.text user.text
   json.prefecture user.prefecture
   json.image user.image
+  json.id user.id
 end
