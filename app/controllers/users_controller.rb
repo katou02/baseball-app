@@ -58,8 +58,9 @@ class UsersController < ApplicationController
     if (@user.id == current_user.id || current_user.admin) && current_user.nickname!="ゲスト"
       @user.update(user_params)
       redirect_to "/users/#{@user.id}"
+    else
+      render :edit
     end
-    render :edit
   end
 
   def short_description
