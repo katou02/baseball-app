@@ -1,6 +1,7 @@
 <template>
   <div class="user-content pt-5">
-    <div class="search-area mt-3">
+    <h2>ユーザー一覧</h2>
+    <div class="search-area mt-5">
       <input type="text" v-model="keyword" placeholder="検索">
     </div>
     <div class="user-list row mx-auto">
