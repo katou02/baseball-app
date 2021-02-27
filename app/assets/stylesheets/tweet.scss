@@ -38,7 +38,7 @@
 }
 
 .text-format{
-  margin-top: 100px;
+  // padding-top: 70px;
   font-size: 25px;
   text-align: center;
   font-weight: bold;
@@ -149,6 +149,11 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .wrap {

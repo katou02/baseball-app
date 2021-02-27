@@ -1,8 +1,11 @@
 <div class="map-content">
   <div class="text-center">
-    <h3 class="pt-4">出場校のふるさとを紹介してみませんか！？</h3>
-    <%= link_to "投稿する",new_map_path(tournament_id: params[:tournament_id]),class: "ays-avg" %>
-    <%= link_to "戻る","/tournaments/#{@id}/watch_ays",class: "ays-avg" %>
+    <div class="text-format pt-5 text-primary">
+      <%=@tournament.name%>
+    </div>
+    <h3 class="pt-4">出場校ふるさとを紹介</h3>
+    <%= link_to "紹介する",new_map_path(tournament_id: params[:tournament_id]),class: "ays-avg" %>
+    <%= link_to "戻る","/tournaments/#{@id}/watch_ays",class: "ays-avg", data: {"turbolinks" => false} %>
   </div>
   <div class="map-list row">
     <% @maps.each do |map| %>
@@ -21,6 +24,19 @@
           <% end %>
         </div>
       </div>
+    <% end %>
+  </div>
+  <%# 大会別 %>
+  <div class="d-flex">
+    <% @categories.each do |tournament|%>
+      <% unless current_page?("/maps?tournament_id=#{tournament.id}") %>
+        <div class="cp-tournamet mt-5 mb-5">
+          <%= link_to "/maps?tournament_id=#{tournament.id}",data: {"turbolinks" => false},class: "text-white" do%>
+            <i class="fa fa-baseball-ball text-white"></i>
+            <%=tournament.name%>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

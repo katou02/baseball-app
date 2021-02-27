@@ -5,12 +5,28 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in',to: 'users/sessions#new_guest'
   end
   resources :tweets do
-    collection do
-      get :search
-    end
+    # collection do
+    #   get :search
+    # end
     resources :comments,only:[:create,:destroy]
     resources :likes,only:[:create,:destroy]
   end
+
+  namespace :api,{format: 'json'} do
+    namespace :v1 do
+      resources :tweets,only:[:index]
+      resources :users,only:[:index]
+      resources :tournaments,only:[:show] do
+        member do
+          get :watch_ays
+          get :watch_fcs
+        end
+      end
+      resources :analyses,only:[:index]
+      resources :forecasts,only:[:index]
+    end
+  end
+  
   resources :tournaments,only:[:show] do
     member do
       get :watch_ays,:watch_avg,:watch_fcs
