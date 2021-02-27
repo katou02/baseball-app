@@ -13,6 +13,7 @@ import AnalysisPage from './AnalysisPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
 import ForecastPage from './ForecastPage.vue'
 import WatchfcsPage from './WatchfcsPage.vue'
+import UserPage from './UserPage.vue'
 
 Vue.use(VueRouter)
 
@@ -48,6 +49,11 @@ const router = new VueRouter({
        path: '/tournaments/:id/watch_fcs',
        component: WatchfcsPage,
        name: 'watch_fcs'
+     },
+     {
+       path: '/users',
+       component: UserPage,
+       name: 'user'
      }
   ],
   scrollBehavior (to, from, savedPosition) {
