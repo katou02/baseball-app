@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuetify from "vuetify";
-import "vuetify/dist/vuetify.min.css";
+// import "vuetify/dist/vuetify.min.css";
 import App from '../app.vue';
 import Paginate from 'vuejs-paginate'
 Vue.use(Vuetify);
@@ -25,7 +25,7 @@ const slide = new Vue({
     }
   })
 
-    const aaa= new Vue({
+    const mypage= new Vue({
       el: '#radio',
       data: {
         isActive: '1'
