@@ -5,15 +5,17 @@
   }
   &-list {
     margin-top: 10%;
-    display: flex;
+    // display: flex;
     text-align: center;
     &_body {
       background-color: white; 
       border: solid #acafc3;
       border-width:  0 1px 1px 1px;
+      color: #00CCCC;
     }
     &_name {
       background-color: #00CCCC;
+      color: white;
     }
     &-image {
       background-color: white;
@@ -43,7 +45,6 @@
 .card {
   border: none;
   background-color: #EEFFFF;
-  color: #00CCCC;
   font-weight: bold;
 }
 
