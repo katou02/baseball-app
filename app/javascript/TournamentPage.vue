@@ -106,7 +106,7 @@ export default {
 </script>
 <style scoped>
 .tournament-main{
-  background-image: url("/images/sky.jpg");
+  background-image: url("../assets/images/sky.jpg");
    background-size: cover;
    background-color:rgba(255,255,255,0.8);
    background-blend-mode:lighten;
