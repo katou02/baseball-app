@@ -36,6 +36,7 @@
     <div v-else>
       <p class="text-center mt-5">投稿された予想はありません</p>
     </div>
+    <div class="text-center">
     <paginate
       :v-model="currentPage" 
       :page-count="getPageCount"
@@ -49,6 +50,7 @@
       :container-class="'pagination'"
       :page-link-class="'page-link'">
     </paginate>
+    </div>
   </div>
 </template>
 <script>
@@ -114,5 +116,9 @@ export default {
     width: 20%;
     margin: 0 auto;
     border-radius: 10px;
+  }
+
+  .pagination {
+    justify-content: center;
   }
 </style>
