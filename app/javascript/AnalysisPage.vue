@@ -15,7 +15,7 @@
           <div class="analysis-image">
             <i class="fa fa-search"></i>
           </div>
-          <div class="title_ays text-center">
+          <div class="sub-title text-center">
             {{e.title}}
           </div>
           <div class="name">
@@ -28,19 +28,21 @@
         </a>
       </div>
     </div>
-    <paginate
-      :v-model="currentPage" 
-      :page-count="getPageCount"
-      :click-handler="clickCallback"
-      :page-range="3"
-      :margin-pages="2"
-      :prev-text="'＜'"
-      :next-text="'＞'"
-      :next-link-class="'page-link'"
-      :prev-link-class="'page-link'"
-      :container-class="'pagination'"
-      :page-link-class="'page-link'">
-    </paginate>
+    <div class="text-center">
+      <paginate
+        :v-model="currentPage" 
+        :page-count="getPageCount"
+        :click-handler="clickCallback"
+        :page-range="3"
+        :margin-pages="2"
+        :prev-text="'＜'"
+        :next-text="'＞'"
+        :next-link-class="'page-link'"
+        :prev-link-class="'page-link'"
+        :container-class="'pagination'"
+        :page-link-class="'page-link'">
+      </paginate>
+    </div>
   </div>
 </template>
 <script>
@@ -51,7 +53,7 @@ export default {
       keyword: '',
       analyses: [],
       currentPage: 1,
-      parPage: 10,
+      parPage: 4,
       current_slide: 0,
     }
   },
@@ -99,4 +101,7 @@ export default {
 }
 </script>
 <style scoped>
+a.page-link {
+  background-color: aqua;
+}
 </style>
