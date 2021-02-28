@@ -1,26 +1,31 @@
-<div class="wrapper">
-  <div class="main-content-btn mt-1">
-    <% if user_signed_in? %>
-      <%= link_to "投稿する",new_forecast_path,class: "send_btn", data: {"turbolinks" => false}%>
-    <% end %>
-    <% unless current_page?(root_path)%>
-      <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-top" %>
-    <%end%>
+<div class="main-content">
+  <div class="wrapper wrap">
+    <div class="main-content-btn mt-1">
+      <% if user_signed_in? %>
+        <%= link_to "投稿する",new_forecast_path,class: "send_btn", data: {"turbolinks" => false}%>
+      <% end %>
+      <% unless current_page?(root_path)%>
+        <%= link_to "予想一覧へ戻る",forecasts_path,class: "return-top" %>
+      <%end%>
+    </div>
+    <div class="text-format text-success">
+      <%= @category.name%>
+    </div>
+    <p class="text-center mb-3 mt-5">優勝校を予想してみましょう</p>
+    <%= link_to "優勝予想","/champions/#{@category.id}",class: "champ mt-3 mb-3" %>
+    <div class="text-format mt-5 mb-3 text-warning">
+      大会別
+    </div>
+    <div class="title pt-5 pb-5">
+      <% @category_parent_array.each do |tournament|%>
+        <% unless current_page?("/tournaments/#{tournament.id}/watch_fcs") %>
+          <%= link_to "/tournaments/#{tournament.id}/watch_fcs",class: "title-child text-white", data: {"turbolinks" => false} do%>
+            <i class="fa fa-baseball-ball text-white"></i>
+            <%=tournament.name%>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-  <%= link_to "優勝予想","/champions/#{@category.id}",class: "champ mt-3 mb-3" %>
-  <p class="text-center mb-3">優勝校を予想してみましょう</p>
-  <div class="text-format text-success">
-    <%= @category.name%>
-  </div>
-  <!--<div class="forecast-main">
-    <% if @category.present? %>
-      <div class="text-format text-danger mt-1 pt-5 mb-4">
-        <%= @category.name%>
-      </div>
-      <%= render partial: "forecasts/forecast_show"%>
-    <% else %>
-      <p class="text-center mt-5">投稿はありません<p>
-    <% end %>
-  </div>-->
 </div>
 <%= javascript_pack_tag 'main' %>
