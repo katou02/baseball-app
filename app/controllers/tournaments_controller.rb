@@ -1,5 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :set_category, except: [:average,:watch_avg] 
+  before_action :set_categories, except: [:average,:watch_avg] 
 
   def show
     @tweets = Tweet.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
@@ -36,5 +37,9 @@ class TournamentsController < ApplicationController
   private
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def set_categories
+    @category_parent_array = Category.where(ancestry: nil)
   end
 end
