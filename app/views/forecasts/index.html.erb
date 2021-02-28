@@ -10,13 +10,13 @@
           <%= link_to "トップページへ戻る",root_path,class: "return-top"%>
         <%end%>
       </div>
-      <div class="text-format mt-5 mb-4 text-primary">
+      <div class="text-format mt-5 mb-4 text-warning">
         試合予想をしてみましょう！
       </div>
       <div class="text-format mt-5 mb-4 text-warning">
         大会別
       </div>
-      <div class="title pb-5">
+      <div class="title pb-5 mt-5">
         <% @category_parent_array.each do |tournament|%>
           <%= link_to "/tournaments/#{tournament.id}/watch_fcs",class: "title-child text-white" do %>
             <i class="fa fa-baseball-ball text-white"></i><%= tournament.name %>
