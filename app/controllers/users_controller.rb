@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.page(params[:page]).per(16).order("created_at DESC")
+    render layout: "vue"
   end
   
   def following
