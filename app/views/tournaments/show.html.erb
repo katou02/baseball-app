@@ -16,9 +16,11 @@
     </div>
     <div class="title pt-5 pb-5">
       <% @category_parent_array.each do |tournament|%>
-        <%= link_to "/tournaments/#{tournament.id}",class: "title-child text-white", data: {"turbolinks" => false} do%>
-          <i class="fa fa-baseball-ball text-white"></i>
-          <%=tournament.name%>
+        <% unless current_page?("/tournaments/#{tournament.id}") %>
+          <%= link_to "/tournaments/#{tournament.id}",class: "title-child text-white", data: {"turbolinks" => false} do%>
+            <i class="fa fa-baseball-ball text-white"></i>
+            <%=tournament.name%>
+          <% end %>
         <% end %>
       <% end %>
     </div>
