@@ -53,7 +53,7 @@ export default {
       keyword: '',
       analyses: [],
       currentPage: 1,
-      parPage: 4,
+      parPage: 10,
       current_slide: 0,
     }
   },
