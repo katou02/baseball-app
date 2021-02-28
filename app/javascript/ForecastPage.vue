@@ -39,8 +39,10 @@
       :margin-pages="2"
       :prev-text="'＜'"
       :next-text="'＞'"
+      :next-link-class="'page-link'"
+      :prev-link-class="'page-link'"
       :container-class="'pagination'"
-      :page-class="'page-item'">
+      :page-link-class="'page-link'">
     </paginate>
   </div>
 </template>
