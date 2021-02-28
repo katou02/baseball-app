@@ -15,7 +15,7 @@
           <div class="analysis-image">
             <i class="fa fa-search"></i>
           </div>
-          <div class="title_ays text-center">
+          <div class="sub-title text-center">
             {{e.title}}
           </div>
           <div class="name">

@@ -11,12 +11,12 @@
         <div class="forecast mt-5">
           <a :href= "'forecasts/' + e.id">
             <div class="school-fcs">
-              <div class="win-school_fs">
+              <div class="win-school_fcs">
                 勝利予想
                 <br><br>
                 {{e.win_school}}
               </div>
-              <div class="lose-school_fs">
+              <div class="lose-school_fcs">
                 敗退予想
                 <br><br>
                 {{e.lose_school}}

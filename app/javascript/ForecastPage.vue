@@ -12,12 +12,12 @@
           <div class="school-fcs">
             <div class="win-school_fcs">
               勝利予想
-              <br>
+              <br><br>
               {{e.win_school}}
             </div>
             <div class="lose-school_fcs">
               敗退予想
-              <br>
+              <br><br>
               {{e.lose_school}}
             </div>
           </div>
