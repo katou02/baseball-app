@@ -35,18 +35,20 @@
   <% end %>
   <%# プロフィール %>
   <div class="myprof">
-    <% if @user.image.present?%>
-      <%= image_tag "#{@user.image}",class: "user-image mt-5" %>
-    <% else %>
-      <%= image_tag "no-image.png",class: "user-image mt-5" %>
-    <% end %>
-    <div class="residence">
-      <p class="text-primary font-weight-bold">住んでる場所</p>
-      <br><%= @user.prefecture %> 
-    </div>
-    <div class="text-myname">
-      <p class="text-primary font-weight-bold">自己紹介</p>
-      <br><%= simple_format(@user.text) %>
+    <div class="user-info">
+      <% if @user.image.present?%>
+        <%= image_tag "#{@user.image}",class: "user-image mt-5" %>
+      <% else %>
+        <%= image_tag "no-image.png",class: "user-image mt-5" %>
+      <% end %>
+      <div class="residence">
+        <p class="text-primary font-weight-bold">住んでる場所</p>
+        <br><%= @user.prefecture %> 
+      </div>
+      <div class="text-myname">
+        <p class="text-primary font-weight-bold">自己紹介</p>
+        <br><%= simple_format(@user.text) %>
+      </div>
     </div>
     <%# タブ %>
     <div id="radio">
