@@ -1,16 +1,29 @@
-<div class="wrapper">
-  <div class="main-content-btn mt-1">
-    <% if user_signed_in? %>
-      <%= link_to "投稿する",new_tweet_path,class: "send_btn", data: {"turbolinks" => false} %>
-    <% end %>
-    <% unless current_page?(root_path)%>
-      <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn_watch" %>
-    <%end%>
+<div class="main-content">
+  <div class="wrap">
+    <div class="main-content-btn mt-1">
+      <% if user_signed_in? %>
+        <%= link_to "投稿する",new_tweet_path,class: "send_btn", data: {"turbolinks" => false} %>
+      <% end %>
+      <% unless current_page?(root_path)%>
+        <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn_watch" %>
+      <%end%>
+    </div>
+    <div class="text-format mt-5 text-primary">
+      <%= @category.name%>
+    </div>
+    <div class="text-format mt-5 mb-3 text-warning">
+      大会別
+    </div>
+    <div class="title pt-5 pb-5">
+      <% @category_parent_array.each do |tournament|%>
+        <% unless current_page?("/tournaments/#{tournament.id}") %>
+          <%= link_to "/tournaments/#{tournament.id}",class: "title-child text-white", data: {"turbolinks" => false} do%>
+            <i class="fa fa-baseball-ball text-white"></i>
+            <%=tournament.name%>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-<% if @tweet.present?%>
-  <div class="text-format text-success">
-    <%= @category.name%>
-  </div>
-<% end %>
 <%= javascript_pack_tag 'main' %>

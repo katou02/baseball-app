@@ -10,14 +10,17 @@
       <div class="forecast mt-5">
         <a :href= "'forecasts/' + e.id">
           <div class="school-fcs">
-            <div class="win-school_fs">
+          <div class="fcs-icon">
+            <i class="fa fa-balance-scale text-white"></i>
+          </div>
+            <div class="win-school_fcs">
               勝利予想
-              <br><br>
+              <br>
               {{e.win_school}}
             </div>
-            <div class="lose-school_fs">
+            <div class="lose-school_fcs">
               敗退予想
-              <br><br>
+              <br>
               {{e.lose_school}}
             </div>
           </div>
@@ -31,17 +34,21 @@
         </a>
       </div>
     </div>
-    <paginate
-      :v-model="currentPage" 
-      :page-count="getPageCount"
-      :click-handler="clickCallback"
-      :page-range="3"
-      :margin-pages="2"
-      :prev-text="'＜'"
-      :next-text="'＞'"
-      :container-class="'pagination'"
-      :page-class="'page-item'">
-    </paginate>
+    <div class="text-center">
+      <paginate
+        :v-model="currentPage" 
+        :page-count="getPageCount"
+        :click-handler="clickCallback"
+        :page-range="3"
+        :margin-pages="2"
+        :prev-text="'＜'"
+        :next-text="'＞'"
+        :next-link-class="'page-link'"
+        :prev-link-class="'page-link'"
+        :container-class="'pagination'"
+        :page-link-class="'page-link'">
+      </paginate>
+    </div>
   </div>
 </template>
 <script>

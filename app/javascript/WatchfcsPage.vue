@@ -11,12 +11,12 @@
         <div class="forecast mt-5">
           <a :href= "'forecasts/' + e.id">
             <div class="school-fcs">
-              <div class="win-school_fs">
+              <div class="win-school_fcs">
                 勝利予想
                 <br><br>
                 {{e.win_school}}
               </div>
-              <div class="lose-school_fs">
+              <div class="lose-school_fcs">
                 敗退予想
                 <br><br>
                 {{e.lose_school}}
@@ -36,6 +36,7 @@
     <div v-else>
       <p class="text-center mt-5">投稿された予想はありません</p>
     </div>
+    <div class="text-center">
     <paginate
       :v-model="currentPage" 
       :page-count="getPageCount"
@@ -44,9 +45,12 @@
       :margin-pages="2"
       :prev-text="'＜'"
       :next-text="'＞'"
+      :next-link-class="'page-link'"
+      :prev-link-class="'page-link'"
       :container-class="'pagination'"
-      :page-class="'page-item'">
+      :page-link-class="'page-link'">
     </paginate>
+    </div>
   </div>
 </template>
 <script>
@@ -112,5 +116,9 @@ export default {
     width: 20%;
     margin: 0 auto;
     border-radius: 10px;
+  }
+
+  .pagination {
+    justify-content: center;
   }
 </style>
