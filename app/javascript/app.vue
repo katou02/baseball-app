@@ -14,6 +14,7 @@ import WatchaysPage from './WatchaysPage.vue'
 import ForecastPage from './ForecastPage.vue'
 import WatchfcsPage from './WatchfcsPage.vue'
 import UserPage from './UserPage.vue'
+import MapPage from './MapPage.vue'
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,11 @@ const router = new VueRouter({
        path: '/users',
        component: UserPage,
        name: 'user'
+     },
+     {
+       path: '/maps',
+       component: MapPage,
+       name: 'map'
      }
   ],
   scrollBehavior (to, from, savedPosition) {
