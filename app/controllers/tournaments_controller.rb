@@ -1,7 +1,9 @@
 class TournamentsController < ApplicationController
   before_action :set_category, except: [:average,:watch_avg] 
+  before_action :set_categories, except: [:average,:watch_avg] 
 
   def show
+    render layout: "vue"
     @tweets = Tweet.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
     @tweet = Tweet.find_by(tournament_id: params[:id])
   end
@@ -9,6 +11,7 @@ class TournamentsController < ApplicationController
   def watch_ays
     @analyses = Analysis.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
     @analysis_tournament = Analysis.find_by(tournament_id: params[:id])
+    render layout: "vue"
   end
   
   def watch_avg
@@ -17,6 +20,7 @@ class TournamentsController < ApplicationController
   end
 
   def watch_fcs
+    render layout: "vue"
     @forecasts = Forecast.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
   
@@ -36,5 +40,9 @@ class TournamentsController < ApplicationController
   private
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def set_categories
+    @category_parent_array = Category.where(ancestry: nil)
   end
 end

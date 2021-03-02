@@ -6,17 +6,15 @@
     <div class="my-forecast mt-5">
       <%= link_to forecast do %>
         <div class="school-fcs">
-          <div class="fcs-image">
+          <div class="fcs-icon">
             <i class="fa fa-balance-scale text-white"></i>
           </div>
-          <div class="win-school_fs">
+          <div class="win-school_fcs">
             <p>勝利予想<p>
-            <br>
             <%= forecast.win_school.name %>
           </div>
-          <div class="lose-school_fs">
+          <div class="lose-school_fcs">
             <p>敗退予想<p>
-            <br>
             <%= forecast.lose_school.name %>
           </div>
         </div>

@@ -1,7 +1,7 @@
 .user {
   &-content {
     background-color: #EEFFFF;
-    min-height: 100%;
+    height: 100vh;
   }
   &-list {
     margin-top: 10%;
@@ -40,6 +40,17 @@
     border: solid;
     border-color: #acafc3;
   }
+  &-info {
+    font-size: 18px;
+  }
+}
+
+.stats {
+  font-size: 18px;
+}
+
+.tabs {
+  font-size: 15px;
 }
 
 .card {

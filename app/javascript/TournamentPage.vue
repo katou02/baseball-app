@@ -33,17 +33,21 @@
       <div v-else>
         <p class="text-center mt-5">試合記事はありません</p>
       </div>
-      <paginate
-        :v-model="currentPage" 
-        :page-count="getPageCount"
-        :click-handler="clickCallback"
-        :page-range="3"
-        :margin-pages="2"
-        :prev-text="'＜'"
-        :next-text="'＞'"
-        :container-class="'pagination'"
-        :page-class="'page-item'">
-      </paginate>
+      <div class="text-center">
+        <paginate
+          :v-model="currentPage" 
+          :page-count="getPageCount"
+          :click-handler="clickCallback"
+          :page-range="3"
+          :margin-pages="2"
+          :prev-text="'＜'"
+          :next-text="'＞'"
+          :next-link-class="'page-link'"
+          :prev-link-class="'page-link'"
+          :container-class="'pagination'"
+          :page-link-class="'page-link'">
+        </paginate>
+      </div>
     </div>
   </div>
 </template>
