@@ -16,14 +16,15 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :tweets,only:[:index]
       resources :users,only:[:index]
+      resources :analyses,only:[:index]
+      resources :forecasts,only:[:index]
+      resources :maps,only:[:index]
       resources :tournaments,only:[:show] do
         member do
           get :watch_ays
           get :watch_fcs
         end
       end
-      resources :analyses,only:[:index]
-      resources :forecasts,only:[:index]
     end
   end
   
