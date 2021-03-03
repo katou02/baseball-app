@@ -7,6 +7,8 @@
   }
   &-name {
     font-size: 1.5rem;
+    color: black;
+    font-size: 1.8rem;
   }
   &-content {
   background-color: #f6f6d1;
@@ -16,9 +18,14 @@
   border: none;
   background-color: #f6f6d1;
   font-weight: bold;
+    &:hover {
+      opacity: 0.7;
+    }
   }
   &-user{
     background-color: white;
+    font-size: 1.4rem;
+    color: black;
     &_icon {
       width: 55px;
       height: 50px;
@@ -30,8 +37,6 @@
     }
   }
   &-list {
-    // margin-top: 10%;
-    display: flex;
     text-align: center;
   }
   &-text {
