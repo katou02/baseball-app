@@ -6,6 +6,7 @@ class MapsController < ApplicationController
     @id = params[:tournament_id]
     @categories = Category.where(ancestry: nil)
     @tournament = Category.find_by(id: @id)
+    render layout: "vue"
   end
   
   def new
