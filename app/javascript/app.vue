@@ -15,6 +15,7 @@ import ForecastPage from './ForecastPage.vue'
 import WatchfcsPage from './WatchfcsPage.vue'
 import UserPage from './UserPage.vue'
 import MapPage from './MapPage.vue'
+import TweetComment from './TweetComment.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,11 @@ const router = new VueRouter({
       path: '/tweets',
       component: TweetIndexPage,
       name: 'tweet'
+     },
+     {
+       path: '/tweets/:id(\\d+)',
+       component: TweetComment,
+       name: 'tweetcomment'
      },
      {
        path: '/tournaments/:id',

@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   namespace :api,{format: 'json'} do
     namespace :v1 do
-      resources :tweets,only:[:index]
+      resources :tweets,only:[:index] do
+        resources :comments,only: [:create,:destroy]
+      end
       resources :users,only:[:index]
       resources :analyses,only:[:index]
       resources :forecasts,only:[:index]
