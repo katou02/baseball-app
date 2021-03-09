@@ -31,11 +31,13 @@ const slide = new Vue({
         isActive: '1'
       }
     })
-  document.addEventListener('DOMContentLoaded', () => {
-    const app = new Vue({
-      el: "#app",
-      vuetify: new Vuetify(),
-      render: h => h(App)
-    }).$mount();
-    document.body.appendChild(app.$el);
-})
+    document.addEventListener('DOMContentLoaded', () => {
+      const app = new Vue({
+        el: "#app",
+        vuetify: new Vuetify(),
+        render: h => h(App)
+      }).$mount();
+      document.body.appendChild(app.$el);
+    })
+    
+    Vue.use(window["vue-js-modal"].default);
