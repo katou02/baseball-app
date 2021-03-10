@@ -51,38 +51,18 @@
     <% end %>
   </div>
   <%# コメント %>
-  <!--<div class="comment-content_tweet">
-    <div class="comment">   
+  <div class="comment-content_tweet">
+    <div class="comment"> 
       <div class="text-format mt-0 mb-4 text-warning">
-      <i class="fa fa-baseball-ball text-warning"></i>
+        <i class="fa fa-baseball-ball text-warning"></i>
         コメント
       </div>
-      <% if @comments %>
-        <% @comments.each do |comment| %>
-            <div class="comment-user">
-              <%= @num %>:
-              <strong><%= link_to "#{comment.user.nickname}","/users/#{comment.user.id}",class: "pr-4" %></strong>
-              <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
-              <div class="comment-delete">
-                <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
-                  <%= link_to '削除', "/tweets/#{@tweet.id}/comments/#{comment.id}", method: :delete,class: "comment_delete-button" %>
-                <% end %>
-              </div>
-            </div>
-          <div class="mt-4 mb-4">
-            <%= simple_format(comment.text) %>
-          </div>
-          <%@num+=1%>
-        <% end %>
-      <% end %>
+      <div id="comments_area">
+        <%= render partial: '/comments/index', locals: { comments: @comments }%>
+      </div>
     </div>
     <div class="comment-form"> 
-      <% if current_user %>
-        <%= form_with(model:[@tweet, @comment], local: true,id: "new_comment") do |f| %>
-          <%= f.text_area :text,placeholder: "コメント",rows: "2",cols: "30" %>
-          <%= f.submit "SEND",class: "game_record"%>
-        <% end %>
-      <% end %>
+      <%= render partial: 'comments/form', locals: { comment: @comment, tweet: @tweet } %>
     </div>
-  </div>-->
+  </div>
 <%= javascript_pack_tag 'main' %>

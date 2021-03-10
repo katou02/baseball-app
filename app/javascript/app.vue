@@ -27,11 +27,11 @@ const router = new VueRouter({
       component: TweetIndexPage,
       name: 'tweet'
      },
-     {
-       path: '/tweets/:id(\\d+)',
-       component: TweetComment,
-       name: 'tweetcomment'
-     },
+    //  {
+    //    path: '/tweets/:id(\\d+)',
+    //    component: TweetComment,
+    //    name: 'tweetcomment'
+    //  },
      {
        path: '/tournaments/:id',
        component: TournamentPage,
