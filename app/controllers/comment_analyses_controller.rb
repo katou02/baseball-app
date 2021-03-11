@@ -1,13 +1,8 @@
 class CommentAnalysesController < ApplicationController
   def create
-    # redirect_to "/analyses/#{comment.analysis.id}"
-    # comment = CommentAnalysis.create(comment_params)
-    # @analysis = comment.analysis
-    # @analysis.create_notification_comment_analysis!(current_user, comment.id)
     @analysis = Analysis.find(params[:analysis_id])
     @num = 1
     @comment = @analysis.comment_analyses.build(comment_params)
-    # @comment.user_id = current_user.id
     @comment.save
     render :comment
   end
