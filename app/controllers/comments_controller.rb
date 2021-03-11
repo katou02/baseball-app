@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     # @tweet = comment.tweet
     # @tweet.create_notification_comment!(current_user, comment.id)
     @tweet = Tweet.find(params[:tweet_id])
-    #投稿に紐づいたコメントを作成
+    @num = 1
     @comment = @tweet.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.save
@@ -13,10 +13,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    if comment.user_id = current_user.id
-      comment.destroy
-      redirect_to "/tweets/#{comment.tweet.id}"
+    @comment = Comment.find(params[:id])
+    @tweet = Tweet.find(params[:tweet_id])
+    @num = 1
+    if @comment.user_id = current_user.id
+      @comment.destroy
+      render :index
+      # redirect_to "/tweets/#{comment.tweet.id}"
     end
   end
 
