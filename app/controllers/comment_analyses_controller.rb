@@ -9,7 +9,7 @@ class CommentAnalysesController < ApplicationController
     @comment = @analysis.comment_analyses.build(comment_params)
     # @comment.user_id = current_user.id
     @comment.save
-    render :index
+    render :comment
   end
 
   def destroy
@@ -18,7 +18,7 @@ class CommentAnalysesController < ApplicationController
     @num = 1
     if @comment.user_id = current_user.id
       @comment.destroy
-      render :index
+      render :comment
     end
   end
 
