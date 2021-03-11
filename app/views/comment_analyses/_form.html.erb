@@ -1,0 +1,6 @@
+<% if current_user %>
+  <%= form_with(model:[analysis, comment], method: :post) do |f| %>
+    <%= f.text_area :text,placeholder: "コメント",rows: "2",cols: "30" %>
+    <%= f.submit "SEND",class: "game_record"%>
+  <% end %>
+<% end %>
