@@ -58,7 +58,7 @@
         コメント
       </div>
       <div id="comments_area">
-        <%= render partial: '/comments/index', locals: { comments: @comments }%>
+        <%= render partial: 'comments/comment', locals: { comments: @comments }%>
       </div>
     </div>
     <div class="comment-form"> 

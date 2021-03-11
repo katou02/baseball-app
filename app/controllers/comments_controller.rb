@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = @tweet.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-    render :index
+    render :comment
   end
 
   def destroy
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     @num = 1
     if @comment.user_id = current_user.id
       @comment.destroy
-      render :index
+      render :comment
       # redirect_to "/tweets/#{comment.tweet.id}"
     end
   end
