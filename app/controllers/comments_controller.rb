@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
   def create
-    # comment = Comment.create(comment_params)
-    # redirect_to "/tweets/#{comment.tweet.id}"
-    # @tweet = comment.tweet
-    # @tweet.create_notification_comment!(current_user, comment.id)
     @tweet = Tweet.find(params[:tweet_id])
     @num = 1
     @comment = @tweet.comments.build(comment_params)
