@@ -34,17 +34,11 @@
     <div class=show-text>
       <%= simple_format(@tweet.text)%>
     </div>
-    <%# いいね %>
     <%= image_tag "#{@tweet.image}",width: "400",class: "image" %>
-    <% if current_user.already_liked?(@tweet)%>
-      <%= button_to tweet_like_path(@tweet),class: "good-after text-danger",method: :delete  do %>
-        <i class="fas fa-heart"></i><%= @tweet.likes.count %>
-      <% end %>
-    <% else %>
-      <%= button_to tweet_likes_path(@tweet),{class: "good mb-2"} do %>いいね
-        <i class="fas fa-heart"></i><%= @tweet.likes.count %>
-      <% end %>
-    <% end %>
+    <%# いいね %>
+    <div id="like">
+      <%= render partial: 'likes/like', locals: { tweet: @tweet} %>
+    </div>
     <p>いいねをしたユーザー</p><br>
     <% @tweet.liked_users.each do |user|%>
       <%= link_to "#{user.nickname}","/users/#{user.id}" %><br>
