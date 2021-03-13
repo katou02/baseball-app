@@ -1,4 +1,5 @@
- <%= form_for(current_user.following_relationships.build(following_id: @user.id)) do |f| %>
+ <%= form_for(current_user.following_relationships.build(following_id: user),remote: true) do |f| %>
+ <%# <%binding.pry %> %>
  <div class="follow-user">
    <div><%= f.hidden_field :following_id %></div>
    <%= f.submit "フォローする", class: "follow-btn" %>

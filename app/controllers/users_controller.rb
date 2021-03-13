@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_id = @user.id
     @tweets = Tweet.where(user_id: params[:id])
     @analyses = Analysis.where(user_id: params[:id])
     @forecasts = Forecast.where(user_id: params[:id])
@@ -30,7 +31,6 @@ class UsersController < ApplicationController
     @my_analysis = @user.analyses.page(params[:analysis_page]).per(5).order("created_at DESC")
     @my_forecasts = @user.forecasts.page(params[:forecast_page]).per(5).order("created_at DESC")
     @likes = @user.likes.page(params[:page]).per(5).order("created_at DESC")
-
     if @user.id == current_user.id
     else
       @myEntry.each do |cu|
