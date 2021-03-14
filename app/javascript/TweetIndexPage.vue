@@ -78,19 +78,6 @@ export default {
     }
   },
   computed: {
-    // filteredTweets() {
-    //     var tweets = [];
-    //     for(var i in this.tweets) {
-    //         var tweet = this.tweets[i];
-    //         if( tweet.text.indexOf(this.keyword) !== -1 ||
-    //             tweet.school_a.indexOf(this.keyword) !== -1 ||
-    //             tweet.school_b.indexOf(this.keyword) !== -1 ||
-    //             tweet.title.indexOf(this.keyword) !== -1) {
-    //             tweets.push(tweet);
-    //         }
-    //     }
-    //     return tweets;
-    // }
      getTweets: function() {
                var tweets = [];
         for(var i in this.tweets) {
