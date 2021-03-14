@@ -15,7 +15,6 @@ import ForecastPage from './ForecastPage.vue'
 import WatchfcsPage from './WatchfcsPage.vue'
 import UserPage from './UserPage.vue'
 import MapPage from './MapPage.vue'
-import TweetComment from './TweetComment.vue'
 
 Vue.use(VueRouter)
 
