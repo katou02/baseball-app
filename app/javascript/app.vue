@@ -67,13 +67,16 @@ const router = new VueRouter({
        name: 'map'
      }
   ],
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-  } else {
-    return { x: 0, y: 0 }
-  }
-}
+    scrollBehavior(to, from, savedPosition) {
+      console.log(savedPosition)
+        if (savedPosition) {
+            sessionStorage.setItem('positionY', savedPosition.y);
+            return savedPosition
+        } else {
+          sessionStorage.setItem('positionY', 0);
+            return { x: 0, y: 0 }
+        }
+    }
 })
 
 export default {

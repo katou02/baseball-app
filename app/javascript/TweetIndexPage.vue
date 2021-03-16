@@ -103,6 +103,15 @@ export default {
   watch: {
     keyword: function(){
       this.currentPage = 1;
+    },
+    getLists: function() {
+        this.$nextTick(() => {
+            var positionY = sessionStorage.getItem('positionY')
+            scrollTo(0, positionY);
+            setTimeout(function(){
+                scrollTo(0, positionY);
+            }, 500);
+        })
     }
   }
 }
