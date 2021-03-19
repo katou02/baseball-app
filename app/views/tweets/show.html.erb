@@ -7,7 +7,7 @@
       <% end %>
       <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn",data: {"turbolinks" => false} %>
     </div>
-    <div class="user_name">
+    <!--<div class="user_name">
       <h5>投稿者 <%= link_to "#{@tweet.user.nickname}","/users/#{@tweet.user_id}"%></h5>
       <% if @user.image.present?%>
         <%= link_to image_tag("#{@user.image}",class: "user-icon mt-2"),"/users/#{@user.id}" %>
@@ -34,8 +34,10 @@
     <div class=show-text>
       <%= simple_format(@tweet.text)%>
     </div>
-    <%= image_tag "#{@tweet.image}",width: "400",class: "image" %>
+    <%= image_tag "#{@tweet.image}",width: "400",class: "image" %>-->
     <%# いいね %>
+    <div id="app">
+    </div>
     <div id="like">
       <%= render partial: 'likes/like', locals: { tweet: @tweet} %>
     </div>
