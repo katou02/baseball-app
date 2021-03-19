@@ -31,6 +31,7 @@ const slide = new Vue({
         isActive: '1'
       }
     })
+
     document.addEventListener('DOMContentLoaded', () => {
       const app = new Vue({
         el: "#app",
@@ -40,4 +41,4 @@ const slide = new Vue({
       document.body.appendChild(app.$el);
     })
     
-    Vue.use(window["vue-js-modal"].default);
+    // Vue.use(window["vue-js-modal"].default);

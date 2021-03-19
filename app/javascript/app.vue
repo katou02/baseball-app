@@ -8,6 +8,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import TweetIndexPage from './TweetIndexPage.vue'
+import TweetShowPage from './TweetShowPage.vue'
 import TournamentPage from './TournamentPage.vue'
 import AnalysisPage from './AnalysisPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
@@ -26,11 +27,11 @@ const router = new VueRouter({
       component: TweetIndexPage,
       name: 'tweet'
      },
-    //  {
-    //    path: '/tweets/:id(\\d+)',
-    //    component: TweetComment,
-    //    name: 'tweetcomment'
-    //  },
+     {
+       path: '/tweets/:id(\\d+)',
+       component: TweetShowPage,
+       name: 'tweetshow'
+     },
      {
        path: '/tournaments/:id',
        component: TournamentPage,
@@ -66,17 +67,17 @@ const router = new VueRouter({
        component: MapPage,
        name: 'map'
      }
-  ],
-    scrollBehavior(to, from, savedPosition) {
-      console.log(savedPosition)
-        if (savedPosition) {
-            sessionStorage.setItem('positionY', savedPosition.y);
-            return savedPosition
-        } else {
-          sessionStorage.setItem('positionY', 0);
-            return { x: 0, y: 0 }
-        }
-    }
+  ]
+    // scrollBehavior(to, from, savedPosition) {
+    //   // console.log(savedPosition)
+    //     if (savedPosition) {
+    //       sessionStorage.setItem('positionY', savedPosition.y);
+    //         return savedPosition
+    //     } else {
+    //       sessionStorage.setItem('positionY', 0);
+    //         return { x: 0, y: 0 }
+    //     }
+    // }
 })
 
 export default {
