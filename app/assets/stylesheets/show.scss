@@ -71,7 +71,7 @@ input {
     font-size: 15px;
     text-decoration: underline;
   }
-  &_delete-button {
+  &-delete_button {
     padding: 3px;
     text-decoration: none;
     color: #ff7e67;
@@ -80,7 +80,7 @@ input {
     transition: .4s;
     font-size: 14px;
     // margin: 20px 0 0 40px;
-    margin-left: 24%;
+    margin-left: 2%;
     &:hover {
       background: #fffbef;
     }
@@ -111,7 +111,7 @@ input {
 }
 
 @media screen and (max-width: 342px) {
-  .comment_delete-button {
+  .comment-delete_button {
     display: block;
   }
   .image {
