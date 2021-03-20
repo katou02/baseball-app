@@ -1,5 +1,5 @@
 class Api::V1::TweetsController < ApiController
-  before_action :search_tweet,only:[:show]
+  before_action :search_tweet,only:[:show,:destroy]
 
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
@@ -8,6 +8,7 @@ class Api::V1::TweetsController < ApiController
 
   def index
     @tweets = Tweet.all.order(created_at: "DESC")
+    @category = Category.where(ancestry: nil)
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 
@@ -20,6 +21,14 @@ class Api::V1::TweetsController < ApiController
     render 'show',formats: 'json',handlers: 'jbuilder'
     # @like = Like.new
     # @like = Like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
+  end
+
+  def destroy
+    if @tweet.destroy
+      head :no_content
+    else
+      render json: @tweet.errors, status: :unprocessable_entity
+    end
   end
 
   def search_tweet
