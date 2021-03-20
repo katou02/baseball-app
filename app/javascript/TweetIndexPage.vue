@@ -8,7 +8,8 @@
     </div>
     <div v-for="e in getLists" :key="e.id">
       <div class="article mt-5">
-        <a :href= "'tweets/' + e.id">
+        <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
+        <!-- <a :href= "'tweets/' + e.id"> -->
           <div class="article-title">
             {{e.school_a}}vs{{e.school_b}}
           </div>
@@ -24,7 +25,8 @@
           <div class="tweets_at">
             {{e.time}}
           </div>
-        </a>
+        </router-link>
+        <!-- </a> -->
       </div>
     </div>
     <!-- <v-pagination v-model="currentPage" :length="totalPages" @input="fetchTweets" /> -->
@@ -37,6 +39,7 @@
         :margin-pages="2"
         :prev-text="'＜'"
         :next-text="'＞'"
+        :force-page="currentPage"
         :next-link-class="'page-link'"
         :prev-link-class="'page-link'"
         :container-class="'pagination'"
@@ -53,7 +56,7 @@ export default {
     return {
       keyword: '',
       tweets: [],
-      currentPage: 1,
+      currentPage: this.$store.state.currentPage,
       parPage: 10,
       // totalPages: null,
       current_slide: 0,
@@ -70,11 +73,23 @@ export default {
         .get('api/v1/tweets.json')
         .then(response =>{
         this.tweets = response.data;
+        this.pageback()
         // this.totalPages = response.data[0].total_page;
         })
     },
-    clickCallback: function (pageNum) {
+    clickCallback(pageNum) {
        this.currentPage = Number(pageNum);
+       this.$store.state.currentPage = Number(pageNum);
+    },
+    pageback() {
+      this.$nextTick(() => {
+          var positionY = sessionStorage.getItem('positionY')
+          // console.log(positionY)
+          scrollTo(0, positionY);
+          setTimeout(function(){
+            scrollTo(0, positionY);
+          }, 500);
+      })
     }
   },
   computed: {
@@ -104,15 +119,21 @@ export default {
     keyword: function(){
       this.currentPage = 1;
     },
-    getLists: function() {
-        this.$nextTick(() => {
-            var positionY = sessionStorage.getItem('positionY')
-            scrollTo(0, positionY);
-            setTimeout(function(){
-                scrollTo(0, positionY);
-            }, 500);
-        })
-    }
+    // getLists: function() {
+    //   this.getTweets();
+    // },
+    // fetchTweets: function() {
+    //     this.$nextTick(() => {
+    //         var positionY = sessionStorage.getItem('positionY')
+    //         // console.log(positionY)
+    //         scrollTo(0, positionY);
+    //         setTimeout(function(){
+    //             scrollTo(0, positionY);
+    //         }, 500);
+    //     })
+    //     alert("ポポ")
+    //     // this.getTweets();
+    // }
   }
 }
 </script>
