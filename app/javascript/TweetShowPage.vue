@@ -1,18 +1,13 @@
 <template>
 <div class="game-article">
   <div class="data-info">
-
-    <!-- <div class="choose-btn pt-3">
-      <a :href= "'/tweets/' + tweet.id/edit"></a>
-    </div> -->
-
     <div class="user_name">
-      <h5>投稿者<a :href= "'/users/' + tweet.user_id">{{tweet.nickname}}</a></h5>
+      <h5>投稿者:<a :href= "'/users/' + tweet.user_id">{{tweet.nickname}}</a></h5>
        <div v-if="tweet.user_image.url"> 
-         <img :src= tweet.user_image.url class="user-icon mt-3 mb-5">
+         <img :src= tweet.user_image.url class="user-icon mt-1 mb-5">
        </div>
        <div v-else>
-        <img src="../assets/images/no-image.png" class="user-icon mt-3 mb-5">
+        <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
        </div>
     </div>
 
@@ -41,13 +36,14 @@
     <img :src= tweet.tweet_image.url class="image">
 <!-- コメント -->
     <div class="comment-content_tweet">
-      <div id="comments_area">
         <div v-for="e in comment" :key="e.id">
-          {{e.comment}}
-          {{e.time}}
-          {{e.comment_nickname}}
+          <div class="comment-user text-center">
+            <storng class="pr-4">{{e.comment_nickname}}</storng>
+            {{e.time}}
+            <button class="comment-delete_button" @click="deleteBook(e.id)">削除</button><br>
+          </div>
+          <div class="mt-4 mb-4 text-center">{{e.comment}}</div>
         </div>
-      </div>
       <div class="comment-form">
         <form @submit.prevent="createComment">
           <div  v-if="errors.length != 0">
@@ -130,29 +126,34 @@ export default {
             this.errors = error.response.data.errors;
           }
         });
+    },
+    deleteBook(id) {
+      axios.delete(`/api/v1/tweets/${id}/comments/${id}`).then(res => {
+        this.fetchComments();
+      })
     }
 //いいね
     // fetchLikeByPostId: async function() {
-    //   const res = await axios.get(`/api/likes/?tweet_id=${this.tweetId}`)
+      //   const res = await axios.get(`/api/likes/?tweet_id=${this.tweetId}`)
     //   if (res.status !== 200) { process.exit() }
     //   return res.data
     // },
     // registerLike: async function() {
-    //   const res = await axios.post('/api/likes', { tweet_id: this.tweetId })
+      //   const res = await axios.post('/api/likes', { tweet_id: this.tweetId })
     //   if (res.status !== 201) { process.exit() }
     //   this.fetchLikeByPostId().then(result => {
-    //     this.likeList = result
+      //     this.likeList = result
     //   })
     // },
     // deleteLike: async function() {
-    //   const likeId = this.findLikeId()
+      //   const likeId = this.findLikeId()
     //   const res = await axios.delete(`/api/likes/${likeId}`)
     //   if (res.status !== 200) { process.exit() }
     //   this.likeList = this.likeList.filter(n => n.id !== likeId)
     // },
     // findLikeId: function() {
-    //   const like = this.likeList.find((like) => {
-    //     return (like.user_id === this.userId)
+      //   const like = this.likeList.find((like) => {
+        //     return (like.user_id === this.userId)
     //   })
     //   if (like) { return like.id }
     // }
