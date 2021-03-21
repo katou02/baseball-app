@@ -1,4 +1,25 @@
 <template>
+<div class="main-content">
+  <div class="main-content-btn">
+    <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
+    <a :href= "'/'" class="return-top">トップページへ戻る</a>
+  </div>
+  <div class="text-format mt-5 text-success">
+    戦力分析をみんなで共有してみましょう！
+  </div>
+  <div class="text-format mt-5 mb-4 text-warning">
+    大会別
+  </div>
+  <div class="title pb-5 mt-5">
+    <div v-for="e in categories" :key="e.id">
+      <a :href= "'/tournaments/' + e.id + '/watch_ays'" class="title-child text-white">
+      <!-- <router-link :to="{name: 'tournament',params: {id: e.id}}" class="title-child text-white"> -->
+        <i class="fa fa-baseball-ball text-white"></i> 
+        {{e.category}}
+      </a>
+      <!-- </router-link> -->
+    </div>
+  </div>
   <div class="analysis-main">
     <div class="text-format pt-5 text-warning">
       みんなの戦力分析
@@ -44,6 +65,7 @@
       </paginate>
     </div>
   </div>
+</div>
 </template>
 <script>
 import axios from 'axios';
@@ -52,6 +74,7 @@ export default {
     return {
       keyword: '',
       analyses: [],
+      categories: [],
       currentPage: 1,
       parPage: 10,
       current_slide: 0,
@@ -59,6 +82,7 @@ export default {
   },
   mounted() {
     this.fetchAnayses()
+    this.fetchCategory()
   },
   methods: {
     fetchAnayses() {
@@ -66,6 +90,13 @@ export default {
         .get('api/v1/analyses.json')
         .then(response =>{
         this.analyses = response.data;
+        })
+    },
+    fetchCategory() {
+      axios
+        .get('api/v1/analyses/category.json')
+        .then(response =>{
+          this.categories = response.data;
         })
     },
     clickCallback: function (pageNum) {
