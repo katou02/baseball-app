@@ -1,5 +1,33 @@
 <template>
-  <div class="article-main">
+  <div class="main-content">
+    <div id="slide">
+      <div class="header">
+        <transition name="fade">
+        <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
+          <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
+        </div>
+        </transition>
+      </div>
+    </div>
+    <div class="main-content-btn">
+      <a :href= "'/tweets/new'" class="send-btn">投稿する</a>
+      <a :href= "'/'" class="return-top">トップページへ戻る</a>
+    </div>
+    <div class="text-format mt-5 text-primary">
+      観た試合の感想をみんなに発信してみましょう！
+    </div>
+    <div class="text-format mt-5 mb-4 text-warning">
+      大会別
+    </div>
+    <div class="title pb-5 mt-5">
+      <div v-for="e in categories" :key="e.id">
+        <a :href= "'/tournaments/' + e.id" class="title-child text-white">
+          <i class="fa fa-baseball-ball text-white"></i>
+          {{e.category}}
+        </a>
+      </div>
+    </div>
+    <div class="article-main">
     <div class="text-format pt-5 text-primary">
       みんなの試合記事
     </div>
@@ -9,7 +37,6 @@
     <div v-for="e in getLists" :key="e.id">
       <div class="article mt-5">
         <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
-        <!-- <a :href= "'tweets/' + e.id"> -->
           <div class="article-title">
             {{e.school_a}}vs{{e.school_b}}
           </div>
@@ -26,10 +53,8 @@
             {{e.time}}
           </div>
         </router-link>
-        <!-- </a> -->
       </div>
     </div>
-    <!-- <v-pagination v-model="currentPage" :length="totalPages" @input="fetchTweets" /> -->
     <div class="text-center">
       <paginate
         :v-model="currentPage" 
@@ -46,6 +71,7 @@
         :page-link-class="'page-link'">
       </paginate>
     </div>
+    </div>
   </div>
 </template>
 <script>
@@ -56,25 +82,40 @@ export default {
     return {
       keyword: '',
       tweets: [],
+      categories: [],
       currentPage: this.$store.state.currentPage,
       parPage: 10,
-      // totalPages: null,
       current_slide: 0,
+      slides: [
+        {img: "/images/81573810.jpeg"},
+        {img: "/images/ball.jpg"},
+        {img: "/images/thumb_ground.jpg"},
+        {img: "/images/thumb_front.jpg"},
+        {img: "/images/mykosien.JPG"}
+      ],
     }
   },
   mounted() {
+          setInterval(() => {
+        this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
+      }, 3000)
     this.fetchTweets()
+    this.fetchCategory()
   },
   methods: {
     fetchTweets() {
-      // const url = `/api/v1/tweets?page=${this.currentPage}?per=${this.tweetsPerPage}`;
       axios
-        // .get(url)
         .get('api/v1/tweets.json')
         .then(response =>{
-        this.tweets = response.data;
-        this.pageback()
-        // this.totalPages = response.data[0].total_page;
+          this.tweets = response.data;
+          this.pageback()
+        })
+    },
+    fetchCategory() {
+      axios
+        .get('api/v1/tweets/category.json')
+        .then(response =>{
+          this.categories = response.data;
         })
     },
     clickCallback(pageNum) {
@@ -84,7 +125,6 @@ export default {
     pageback() {
       this.$nextTick(() => {
           var positionY = sessionStorage.getItem('positionY')
-          // console.log(positionY)
           scrollTo(0, positionY);
           setTimeout(function(){
             scrollTo(0, positionY);
@@ -118,22 +158,7 @@ export default {
   watch: {
     keyword: function(){
       this.currentPage = 1;
-    },
-    // getLists: function() {
-    //   this.getTweets();
-    // },
-    // fetchTweets: function() {
-    //     this.$nextTick(() => {
-    //         var positionY = sessionStorage.getItem('positionY')
-    //         // console.log(positionY)
-    //         scrollTo(0, positionY);
-    //         setTimeout(function(){
-    //             scrollTo(0, positionY);
-    //         }, 500);
-    //     })
-    //     alert("ポポ")
-    //     // this.getTweets();
-    // }
+    }
   }
 }
 </script>
