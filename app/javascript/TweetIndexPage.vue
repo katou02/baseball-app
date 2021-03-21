@@ -21,62 +21,63 @@
     </div>
     <div class="title pb-5 mt-5">
       <div v-for="e in categories" :key="e.id">
-        <a :href= "'/tournaments/' + e.id" class="title-child text-white">
-          <i class="fa fa-baseball-ball text-white"></i>
+        <!-- <a :href= "'/tournaments/' + e.id" class="title-child text-white"> -->
+        <router-link :to="{name: 'tournament',params: {id: e.id}}" class="title-child text-white">
+          <i class="fa fa-baseball-ball text-white"></i> 
           {{e.category}}
-        </a>
-      </div>
-    </div>
-    <div class="article-main">
-    <div class="text-format pt-5 text-primary">
-      みんなの試合記事
-    </div>
-    <div class="search-area mt-3">
-      <input type="text" v-model="keyword" placeholder="検索">
-    </div>
-    <div v-for="e in getLists" :key="e.id">
-      <div class="article mt-5">
-        <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
-          <div class="article-title">
-            {{e.school_a}}vs{{e.school_b}}
-          </div>
-          <div class="article-image">
-            <i class="fa fa-baseball-ball text-white"></i>
-          </div>
-          <div class="sub-title">
-            {{e.title}}
-          </div>
-          <div class="name">
-            投稿者 {{e.nickname}}
-          </div>
-          <div class="tweets_at">
-            {{e.time}}
-          </div>
+        <!-- </a> -->
         </router-link>
       </div>
     </div>
-    <div class="text-center">
-      <paginate
-        :v-model="currentPage" 
-        :page-count="getPageCount"
-        :click-handler="clickCallback"
-        :page-range="3"
-        :margin-pages="2"
-        :prev-text="'＜'"
-        :next-text="'＞'"
-        :force-page="currentPage"
-        :next-link-class="'page-link'"
-        :prev-link-class="'page-link'"
-        :container-class="'pagination'"
-        :page-link-class="'page-link'">
-      </paginate>
-    </div>
+    <div class="article-main">
+      <div class="text-format pt-5 text-primary">
+        みんなの試合記事
+      </div>
+      <div class="search-area mt-3">
+        <input type="text" v-model="keyword" placeholder="検索">
+      </div>
+      <div v-for="e in getLists" :key="e.id">
+        <div class="article mt-5">
+          <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
+            <div class="article-title">
+              {{e.school_a}}vs{{e.school_b}}
+            </div>
+            <div class="article-image">
+              <i class="fa fa-baseball-ball text-white"></i>
+            </div>
+            <div class="sub-title">
+              {{e.title}}
+            </div>
+            <div class="name">
+              投稿者 {{e.nickname}}
+            </div>
+            <div class="tweets_at">
+              {{e.time}}
+            </div>
+          </router-link>
+        </div>
+      </div>
+      <div class="text-center">
+        <paginate
+          :v-model="currentPage" 
+          :page-count="getPageCount"
+          :click-handler="clickCallback"
+          :page-range="3"
+          :margin-pages="2"
+          :prev-text="'＜'"
+          :next-text="'＞'"
+          :force-page="currentPage"
+          :next-link-class="'page-link'"
+          :prev-link-class="'page-link'"
+          :container-class="'pagination'"
+          :page-link-class="'page-link'">
+        </paginate>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import axios from 'axios';
-
 export default {
   data() {
     return {
@@ -96,7 +97,7 @@ export default {
     }
   },
   mounted() {
-          setInterval(() => {
+    setInterval(() => {
         this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
       }, 3000)
     this.fetchTweets()
@@ -134,15 +135,15 @@ export default {
   },
   computed: {
      getTweets: function() {
-               var tweets = [];
+        var tweets = [];
         for(var i in this.tweets) {
-            var tweet = this.tweets[i];
-            if( tweet.text.indexOf(this.keyword) !== -1 ||
-                tweet.school_a.indexOf(this.keyword) !== -1 ||
-                tweet.school_b.indexOf(this.keyword) !== -1 ||
-                tweet.title.indexOf(this.keyword) !== -1) {
-                tweets.push(tweet);
-            }
+          var tweet = this.tweets[i];
+          if( tweet.text.indexOf(this.keyword) !== -1 ||
+            tweet.school_a.indexOf(this.keyword) !== -1 ||
+            tweet.school_b.indexOf(this.keyword) !== -1 ||
+            tweet.title.indexOf(this.keyword) !== -1) {
+            tweets.push(tweet);
+          }
         }
         return tweets;
      },
