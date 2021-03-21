@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       resources :forecasts,only:[:index]
       resources :maps,only:[:index]
       resources :tournaments,only:[:show] do
+        collection do
+          get :category
+        end
         member do
           get :watch_ays
           get :watch_fcs
