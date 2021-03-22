@@ -17,6 +17,15 @@ class Api::V1::CommentForecastsController < ApiController
     end
   end
 
+  def destroy
+    @comment = CommentForecast.find(params[:id])
+    if @comment.destroy
+      head :no_content
+    else
+      render json: @comment.errors, status: :unprocessable_entity
+    end
+  end
+
   private
   def comment_params
     params.require(:comment_forecast).permit(:text).merge(user_id: current_user.id,forecast_id: params[:forecast_id])
