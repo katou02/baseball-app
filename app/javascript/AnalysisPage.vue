@@ -38,7 +38,8 @@
     </div>
     <div v-for="e in getLists" :key="e.id">
       <div class="analysis mt-5">
-        <a :href= "'analyses/' + e.id">
+        <!-- <a :href= "'analyses/' + e.id"> -->
+        <router-link :to="{name: 'analysisshow',params: {id: e.id}}">
           <div class="school_ays-name">
             {{e.school}}
           </div>
@@ -55,7 +56,8 @@
           <div class="analyses_at">
             {{e.time}}
           </div>
-        </a>
+        <!-- </a> -->
+        </router-link>
       </div>
     </div>
     <div class="text-center">
@@ -67,6 +69,7 @@
         :margin-pages="2"
         :prev-text="'＜'"
         :next-text="'＞'"
+        :force-page="currentPage"
         :next-link-class="'page-link'"
         :prev-link-class="'page-link'"
         :container-class="'pagination'"
@@ -84,7 +87,7 @@ export default {
       keyword: '',
       analyses: [],
       categories: [],
-      currentPage: 1,
+      currentPage: this.$store.state.currentPage,
       parPage: 10,
       current_slide: 0,
       slides: [
@@ -120,6 +123,16 @@ export default {
     },
     clickCallback: function (pageNum) {
        this.currentPage = Number(pageNum);
+       this.$store.state.currentPage = Number(pageNum);
+    },
+    pageback() {
+      this.$nextTick(() => {
+          var positionY = sessionStorage.getItem('positionY')
+          scrollTo(0, positionY);
+          setTimeout(function(){
+            scrollTo(0, positionY);
+          }, 500);
+      })
     }
   },
   computed: {
