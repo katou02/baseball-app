@@ -7,4 +7,18 @@ class Api::V1::CommentForecastsController < ApiController
     @comments = CommentForecast.where(forecast_id: params[:forecast_id])
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
+
+  def create
+    comment = CommentForecast.new(comment_params)
+    if comment.save
+      render json: comment,status: :created
+    else
+      render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  private
+  def comment_params
+    params.require(:comment_forecast).permit(:text).merge(user_id: current_user.id,forecast_id: params[:forecast_id])
+  end
 end
