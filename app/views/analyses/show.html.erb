@@ -1,6 +1,6 @@
-<div class="analysis-show_content">
-  <div class="data-info pb-5">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<%# <div class="analysis-show_content">
+  <div class="data-info pb-5"> %>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <div class="choose-btn pt-3">
       <% if current_user.id == @analysis.user_id || current_user.admin? %>
       <%= link_to "記事を削除する","/analyses/#{@analysis.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
@@ -56,8 +56,8 @@
     <div class="reader">
       <div style="width:70%; height:70%;" ><canvas id="RaderChart"></canvas></div>
     </div>
-  </div>
-  <%# コメント %>
+   </div>
+   <%# コメント %>
    <div class="comment-content">
     <div class="comment">   
       <div class="text-format comment mt-0 mb-4 text-warning">
@@ -70,8 +70,8 @@
     </div>
     <div class="comment-form"> 
       <%= render partial: 'comment_analyses/form', locals: { comment: @comment, analysis: @analysis } %>
-    </div>
-  </div>
-</div>
-<%# <%= javascript_pack_tag 'analysis' %> %>
+    </div>-->
+  <%# </div> %>
+<%# </div> %>
+<%# <%= javascript_pack_tag 'analysis' %>
 <%= javascript_pack_tag 'main' %>
