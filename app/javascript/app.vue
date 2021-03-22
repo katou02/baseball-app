@@ -41,7 +41,7 @@ const router = new VueRouter({
      {
        path: '/analyses',
        component: AnalysisPage,
-       name: 'anaysis'
+       name: 'analysis'
      },
     {
       path: '/analyses/:id(\\d+)',

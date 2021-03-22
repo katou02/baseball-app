@@ -22,7 +22,7 @@ Rails.application.routes.draw do
         resources :likes, only: [:index, :create, :destroy]
       end
       resources :users,only:[:index]
-      resources :analyses,only:[:index,:show] do
+      resources :analyses,only:[:index,:show,:destroy] do
         collection do
           get :category
         end
