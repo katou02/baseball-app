@@ -12,4 +12,15 @@ class Api::V1::AnalysesController < ApiController
     @category = Category.where(ancestry: nil)
     render 'category',formats: 'json',handlers: 'jbuilder'
   end
+
+  def show
+    @current_user = current_user
+    @analysis = Analysis.find(params[:id])
+    @user = User.find_by(id: @analysis.user.id)
+    @nickname = current_user.nickname
+    @num = 1
+    # gon.data = []
+    # gon.data.push(@analysis.attack,@analysis.defensive,@analysis.pitcher,@analysis.comprehensive,@analysis.expectations)
+    render 'show',formats: 'json',handlers: 'jbuilder'
+  end
 end

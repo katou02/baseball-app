@@ -11,6 +11,7 @@ import TweetIndexPage from './TweetIndexPage.vue'
 import TweetShowPage from './TweetShowPage.vue'
 import TournamentPage from './TournamentPage.vue'
 import AnalysisPage from './AnalysisPage.vue'
+import AnalysisShowPage from './AnalysisShowPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
 import ForecastPage from './ForecastPage.vue'
 import WatchfcsPage from './WatchfcsPage.vue'
@@ -41,6 +42,11 @@ const router = new VueRouter({
        path: '/analyses',
        component: AnalysisPage,
        name: 'anaysis'
+     },
+    {
+      path: '/analyses/:id(\\d+)',
+      component: AnalysisShowPage,
+      name: 'analysisshow'
      },
      {
        path: '/tournaments/:id/watch_ays',
