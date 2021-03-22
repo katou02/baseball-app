@@ -125,7 +125,6 @@ export default {
     },
     deleteTweet(id) {
       axios.delete(`/api/v1/tweets/${id}`).then(response => {
-        // alert("クンニ")
         this.$router.push({ name: 'tweet' });
       })
     },

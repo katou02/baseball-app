@@ -1,6 +1,14 @@
 <template>
   <div class="analysis-show_content">
     <div class="data-info pb-5">
+      <div class="d-flex">
+      <div v-if="analysis.user_id==analysis.current_user">
+        <button class="delete-btn" @click="deleteAnalysis(analysis.id)">記事を削除する</button>
+        <a :href= "'/analyses/' + analysis.id + '/edit'" class="edit-article">記事を編集する</a>
+      </div>
+      <!-- <a :href= "'/tweets'" class="return-btn">記事一覧へ戻る</a> -->
+      <router-link :to="{name: 'analysis'}" class="return-btn">記事一覧へ戻る</router-link>
+    </div>
       <div class="user_name">
         <h5>投稿者:<a :href= "'/users/' + analysis.user_id">{{analysis.nickname}}</a></h5>
         <div v-if="analysis.user_image.url"> 
@@ -107,6 +115,11 @@ export default {
         .then(response => {
           this.comment = response.data
         })
+    },
+    deleteAnalysis(id) {
+      axios.delete(`/api/v1/analyses/${id}`).then(response => {
+        this.$router.push({ name: 'analysis' });
+      })
     },
    createComment: function() {
       axios
