@@ -1,53 +1,82 @@
 <template>
-  <div class="forecast-main">
-    <div class="text-format pt-5 text-primary">
-      みんなの試合記事
-    </div>
-    <div class="search-area mt-3">
-      <input type="text" v-model="keyword" placeholder="検索">
-    </div>
-    <div v-for="e in getLists" :key="e.id">
-      <div class="forecast mt-5">
-        <a :href= "'forecasts/' + e.id">
-          <div class="school-fcs">
-          <div class="fcs-icon">
-            <i class="fa fa-balance-scale text-white"></i>
-          </div>
-            <div class="win-school_fcs">
-              勝利予想
-              <br>
-              {{e.win_school}}
-            </div>
-            <div class="lose-school_fcs">
-              敗退予想
-              <br>
-              {{e.lose_school}}
-            </div>
-          </div>
-          <div class="name">
-            投稿者
-            {{e.nickname}}
-          </div>
-          <div class="tweets_at">
-            {{e.time}}
-          </div>
-        </a>
+  <div class="main-content">
+    <div id="slide">
+      <div class="header">
+        <transition name="fade">
+        <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
+          <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
+        </div>
+        </transition>
       </div>
     </div>
-    <div class="text-center">
-      <paginate
-        :v-model="currentPage" 
-        :page-count="getPageCount"
-        :click-handler="clickCallback"
-        :page-range="3"
-        :margin-pages="2"
-        :prev-text="'＜'"
-        :next-text="'＞'"
-        :next-link-class="'page-link'"
-        :prev-link-class="'page-link'"
-        :container-class="'pagination'"
-        :page-link-class="'page-link'">
-      </paginate>
+    <div class="main-content-btn">
+      <a :href= "'/forecasts/new'" class="send-btn">投稿する</a>
+      <a :href= "'/'" class="return-top">トップページへ戻る</a>
+    </div>
+    <div class="text-format mt-5 text-warning">
+      試合予想をしてみましょう！<br><br>
+      大会別
+    </div>
+    <div class="title pb-5 mt-5">
+      <div v-for="e in categories" :key="e.id">
+        <a :href= "'/tournaments/' + e.id + '/watch_fcs'" class="title-child text-white">
+        <!-- <router-link :to="{name: 'tournament',params: {id: e.id}}" class="title-child text-white"> -->
+          <i class="fa fa-baseball-ball text-white"></i> 
+          {{e.category}}
+        </a>
+        <!-- </router-link> -->
+      </div>
+    </div>
+    <div class="forecast-main">
+      <div class="text-format pt-5 text-primary">
+        みんなの試合記事
+      </div>
+      <div class="search-area mt-3">
+        <input type="text" v-model="keyword" placeholder="検索">
+      </div>
+      <div v-for="e in getLists" :key="e.id">
+        <div class="forecast mt-5">
+          <a :href= "'forecasts/' + e.id">
+            <div class="school-fcs">
+            <div class="fcs-icon">
+              <i class="fa fa-balance-scale text-white"></i>
+            </div>
+              <div class="win-school_fcs">
+                勝利予想
+                <br>
+                {{e.win_school}}
+              </div>
+              <div class="lose-school_fcs">
+                敗退予想
+                <br>
+                {{e.lose_school}}
+              </div>
+            </div>
+            <div class="name">
+              投稿者
+              {{e.nickname}}
+            </div>
+            <div class="tweets_at">
+              {{e.time}}
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="text-center">
+        <paginate
+          :v-model="currentPage" 
+          :page-count="getPageCount"
+          :click-handler="clickCallback"
+          :page-range="3"
+          :margin-pages="2"
+          :prev-text="'＜'"
+          :next-text="'＞'"
+          :next-link-class="'page-link'"
+          :prev-link-class="'page-link'"
+          :container-class="'pagination'"
+          :page-link-class="'page-link'">
+        </paginate>
+      </div>
     </div>
   </div>
 </template>
@@ -59,13 +88,24 @@ export default {
       keyword: '',
       forecasts: [],
       currentPage: 1,
-      parPage: 10,
-      // totalPages: null,
+      parPage: 3,
+      categories: [],
       current_slide: 0,
+      slides: [
+        {img: "/images/81573810.jpeg"},
+        {img: "/images/ball.jpg"},
+        {img: "/images/thumb_ground.jpg"},
+        {img: "/images/thumb_front.jpg"},
+        {img: "/images/mykosien.JPG"}
+      ],
     }
   },
   mounted() {
+    setInterval(() => {
+        this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
+      }, 3000)
     this.fetchForecasts()
+    this.fetchCategory()
   },
   methods: {
     fetchForecasts() {
@@ -75,8 +115,25 @@ export default {
         this.forecasts = response.data;
         })
     },
-    clickCallback: function (pageNum) {
-        this.currentPage = Number(pageNum);
+    fetchCategory() {
+      axios
+        .get('api/v1/tweets/category.json')
+        .then(response =>{
+          this.categories = response.data;
+        })
+    },
+    clickCallback(pageNum) {
+       this.currentPage = Number(pageNum);
+       this.$store.state.currentPage = Number(pageNum);
+    },
+    pageback() {
+      this.$nextTick(() => {
+          var positionY = sessionStorage.getItem('positionY')
+          scrollTo(0, positionY);
+          setTimeout(function(){
+            scrollTo(0, positionY);
+          }, 500);
+      })
     }
   },
   computed: {
