@@ -28,7 +28,9 @@ Rails.application.routes.draw do
         end
         resources :comment_analyses,only: [:index,:create,:destroy]
       end
-      resources :forecasts,only:[:index,:show]
+      resources :forecasts,only:[:index,:show] do
+        resources :comment_forecasts,only: [:index,:create,:destroy]
+      end
       resources :maps,only:[:index]
       resources :tournaments,only:[:show] do
         collection do
