@@ -2,13 +2,12 @@
   <div class="analysis-show_content">
     <div class="data-info pb-5">
       <div class="d-flex">
-      <div v-if="analysis.user_id==analysis.current_user">
-        <button class="delete-btn" @click="deleteAnalysis(analysis.id)">記事を削除する</button>
-        <a :href= "'/analyses/' + analysis.id + '/edit'" class="edit-article">記事を編集する</a>
+        <div v-if="analysis.user_id==analysis.current_user">
+          <button class="delete-btn" @click="deleteAnalysis(analysis.id)">記事を削除する</button>
+          <a :href= "'/analyses/' + analysis.id + '/edit'" class="edit-article">記事を編集する</a>
+        </div>
+        <router-link :to="{name: 'analysis'}" class="return-btn">記事一覧へ戻る</router-link>
       </div>
-      <!-- <a :href= "'/tweets'" class="return-btn">記事一覧へ戻る</a> -->
-      <router-link :to="{name: 'analysis'}" class="return-btn">記事一覧へ戻る</router-link>
-    </div>
       <div class="user_name">
         <h5>投稿者:<a :href= "'/users/' + analysis.user_id">{{analysis.nickname}}</a></h5>
         <div v-if="analysis.user_image.url"> 
@@ -56,6 +55,12 @@
         </div>
       </div>
       <Radar />
+    </div>
+    <div class="comment-content">
+      <div class="text-format mt-0 mb-4 text-warning">
+        <i class="fa fa-baseball-ball text-warning"></i>
+        コメント
+      </div>
       <div v-for="e in comment" :key="e.id">
         <div class="comment-user text-center">
           <em class="pr-4">{{e.comment_nickname}}</em>
