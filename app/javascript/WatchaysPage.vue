@@ -1,4 +1,40 @@
 <template>
+<div class="main-content">
+  <div class="main-content-btn">
+    <router-link :to= "'/analyses'" class="return-top">分析一覧へ戻る</router-link>
+    <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
+  </div>
+  <div class="text-format mt-5 text-success">
+    {{analyses[0].tournament}}
+  </div>
+  <div class="go-avg text-center mt-4">
+    <div class="avg-ays">
+      みんなの分析を元にした平均評価を見る<br>
+      <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a>
+      <!-- <%= link_to "平均評価を見る",watch_avg_tournament_path,class: "ays-avg" %><br> -->
+    </div>
+    <div class="homedown">
+      甲子園でお馴染みのふるさと紹介<br>
+      <a :href= "'/maps/' + num" class="ays-avg">ふるさと紹介</a>
+      <!-- <%= link_to "ふるさと紹介",maps_path(tournament_id: params[:id]),class: "ays-avg", data: {"turbolinks" => false} %> -->
+    </div>
+  </div>
+  <!-- 大会 -->
+  <div class="text-format mt-5 mb-3 text-warning">
+    大会別
+  </div>
+  <div class="title pb-5 mt-5">
+    <div v-for="e in categories" :key="e.id">
+      <div v-if="$route.params.id!=e.id">
+        <a :href= "'/tournaments/' + e.id + '/watch_ays'" class="title-child text-white">
+        <!-- <router-link :to="{name: 'tournament',params: {id: e.id}}" class="title-child"> -->
+          <i class="fa fa-baseball-ball text-white"></i>
+          {{e.category}}
+        <!-- </router-link> -->
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="analysis-main">
     <div class="text-format pt-5 text-warning">
       みんなの戦力分析
@@ -8,7 +44,7 @@
     </div>
     <div v-for="e in getLists" :key="e.id">
       <div class="analysis mt-5">
-        <a :href= "'/analyses/' + e.id">
+        <router-link :to= "'/analyses/' + e.id">
           <div class="school_ays-name">
             {{e.school}}
           </div>
@@ -25,7 +61,7 @@
           <div class="analyses_at">
             {{e.time}}
           </div>
-        </a>
+        </router-link>
       </div>
     </div>
     <div class="text-center">
@@ -35,6 +71,7 @@
         :click-handler="clickCallback"
         :page-range="3"
         :margin-pages="2"
+        :force-page="currentPage"
         :prev-text="'＜'"
         :next-text="'＞'"
         :next-link-class="'page-link'"
@@ -44,6 +81,7 @@
       </paginate>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -53,14 +91,16 @@ export default {
     return {
       keyword: '',
       analyses: [],
-      currentPage: 1,
-      parPage: 10,
-      // totalPages: null,
+      currentPage: this.$store.state.currentPage,
+      parPage: 1,
+      categories: [],
       current_slide: 0,
+      num: ''
     }
   },
   mounted() {
     this.fetchAnalyses()
+    this.fetchCategory()
   },
   methods: {
     fetchAnalyses() {
@@ -68,10 +108,28 @@ export default {
         .get(`/api/v1/tournaments/${this.$route.params.id}/watch_ays.json`)
         .then(response =>{
           this.analyses = response.data;
+          this.num = this.$route.params.id
         })
     },
-    clickCallback: function (pageNum) {
+    fetchCategory() {
+      axios
+        .get('/api/v1/tournaments/category.json')
+        .then(response =>{
+          this.categories = response.data;
+        })
+    },
+    clickCallback(pageNum) {
        this.currentPage = Number(pageNum);
+       this.$store.state.currentPage = Number(pageNum);
+    },
+    pageback() {
+      this.$nextTick(() => {
+          var positionY = sessionStorage.getItem('positionY')
+          scrollTo(0, positionY);
+          setTimeout(function(){
+            scrollTo(0, positionY);
+          }, 500);
+      })
     }
   },
   computed: {

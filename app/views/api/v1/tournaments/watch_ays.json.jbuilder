@@ -1,5 +1,6 @@
 json.array! @analyses do |analysis|
   json.nickname analysis.user.nickname
+  json.tournament analysis.tournament.name
   json.text  analysis.text
   json.school analysis.school.name
   json.title analysis.title
