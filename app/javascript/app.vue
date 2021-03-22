@@ -14,6 +14,7 @@ import AnalysisPage from './AnalysisPage.vue'
 import AnalysisShowPage from './AnalysisShowPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
 import ForecastPage from './ForecastPage.vue'
+import ForecastShowPage from './ForecastShowPage.vue'
 import WatchfcsPage from './WatchfcsPage.vue'
 import UserPage from './UserPage.vue'
 import MapPage from './MapPage.vue'
@@ -57,6 +58,11 @@ const router = new VueRouter({
        path: '/forecasts',
        component: ForecastPage,
        name: 'forecast'
+     },
+    {
+      path: '/forecasts/:id(\\d+)',
+      component: ForecastShowPage,
+      name: 'forecastshow'
      },
      {
        path: '/tournaments/:id/watch_fcs',
