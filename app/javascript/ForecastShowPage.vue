@@ -114,6 +114,11 @@ export default {
           }
         });
     },
+    deleteComment(id) {
+      axios.delete(`/api/v1/forecasts/${id}/comment_forecasts/${id}`).then(response => {
+        this.fetchComments();
+      })
+    },
   }
 }
 </script>
