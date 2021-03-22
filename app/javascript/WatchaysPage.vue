@@ -11,12 +11,10 @@
     <div class="avg-ays">
       みんなの分析を元にした平均評価を見る<br>
       <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a>
-      <!-- <%= link_to "平均評価を見る",watch_avg_tournament_path,class: "ays-avg" %><br> -->
     </div>
     <div class="homedown">
       甲子園でお馴染みのふるさと紹介<br>
-      <a :href= "'/maps/' + num" class="ays-avg">ふるさと紹介</a>
-      <!-- <%= link_to "ふるさと紹介",maps_path(tournament_id: params[:id]),class: "ays-avg", data: {"turbolinks" => false} %> -->
+      <a :href= "'/maps?tournament_id=' + num" class="ays-avg">ふるさと紹介</a>
     </div>
   </div>
   <!-- 大会 -->
