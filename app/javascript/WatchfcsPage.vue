@@ -5,7 +5,7 @@
       <a :href= "'/forecasts/new'" class="send-btn">投稿する</a>
     </div>
     <div class="text-format mt-5 text-success">
-      {{forecasts[0].tournament}}
+      <!-- {{forecasts[0].tournament}} -->
     </div>
     <p class="text-center h4 mb-3 mt-5">優勝校を予想してみよう</p>
     <div class="champ center-block">
@@ -78,6 +78,7 @@
         :margin-pages="2"
         :prev-text="'＜'"
         :next-text="'＞'"
+        :force-page="currentPage"
         :next-link-class="'page-link'"
         :prev-link-class="'page-link'"
         :container-class="'pagination'"
@@ -94,10 +95,9 @@ export default {
     return {
       keyword: '',
       forecasts: [],
-      currentPage: 1,
+      currentPage: this.$store.state.currentPage,
       parPage: 10,
       categories: [],
-      current_slide: 0,
       num: ''
     }
   },
@@ -121,8 +121,18 @@ export default {
           this.categories = response.data;
         })
     },
-    clickCallback: function (pageNum) {
-        this.currentPage = Number(pageNum);
+    clickCallback(pageNum) {
+       this.currentPage = Number(pageNum);
+       this.$store.state.currentPage = Number(pageNum);
+    },
+    pageback() {
+      this.$nextTick(() => {
+          var positionY = sessionStorage.getItem('positionY')
+          scrollTo(0, positionY);
+          setTimeout(function(){
+            scrollTo(0, positionY);
+          }, 500);
+      })
     }
   },
   computed: {
