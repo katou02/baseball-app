@@ -19,12 +19,10 @@
     </div>
     <div class="title pb-5 mt-5">
       <div v-for="e in categories" :key="e.id">
-        <a :href= "'/tournaments/' + e.id + '/watch_fcs'" class="title-child text-white">
-        <!-- <router-link :to="{name: 'tournament',params: {id: e.id}}" class="title-child text-white"> -->
+        <router-link :to="{name: 'watch_fcs',params: {id: e.id}}" class="title-child text-white">
           <i class="fa fa-baseball-ball text-white"></i> 
           {{e.category}}
-        </a>
-        <!-- </router-link> -->
+        </router-link>
       </div>
     </div>
     <div class="forecast-main">
