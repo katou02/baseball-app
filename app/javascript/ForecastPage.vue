@@ -71,6 +71,7 @@
           :margin-pages="2"
           :prev-text="'＜'"
           :next-text="'＞'"
+          :force-page="currentPage"
           :next-link-class="'page-link'"
           :prev-link-class="'page-link'"
           :container-class="'pagination'"
@@ -87,8 +88,8 @@ export default {
     return {
       keyword: '',
       forecasts: [],
-      currentPage: 1,
-      parPage: 3,
+      currentPage: this.$store.state.currentPage,
+      parPage: 10,
       categories: [],
       current_slide: 0,
       slides: [
