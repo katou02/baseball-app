@@ -1,6 +1,14 @@
 <template>
   <div class="game-article">
     <div class="data-info">
+      <div class="d-flex">
+        <div v-if="forecast.user_id==forecast.current_user">
+          <button class="delete-btn" @click="deleteForecast(forecast.id)">記事を削除する</button>
+          <a :href= "'/forecasts/' + forecast.id + '/edit'" class="edit-article">記事を編集する</a>
+        </div>
+        <!-- <a :href= "'/tweets'" class="return-btn">記事一覧へ戻る</a> -->
+        <router-link :to="{name: 'forecast'}" class="return-btn">記事一覧へ戻る</router-link>
+      </div>
       <div class="user_name">
         <h5>投稿者:<a :href= "'/users/' + forecast.user_id">{{forecast.nickname}}</a></h5>
         <div v-if="forecast.user_image.url"> 
@@ -92,6 +100,11 @@ export default {
         .then(response =>{
           this.forecast = response.data
         })
+    },
+    deleteForecast(id) {
+      axios.delete(`/api/v1/forecasts/${id}`).then(response => {
+        this.$router.push({ name: 'forecast' });
+      })
     },
     fetchComments() {
       axios
