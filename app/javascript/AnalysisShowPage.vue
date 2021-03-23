@@ -54,7 +54,9 @@
           <div class="expectations_i">{{analysis.expectations}}</div>
         </div>
       </div>
-      <Radar />
+       <div class="reader">
+         <div style="width:70%; height:70%;" ><canvas id="myChart"></canvas></div>
+       </div>
     </div>
     <div class="comment-content">
       <div class="text-format mt-0 mb-4 text-warning">
@@ -89,22 +91,22 @@
 
 <script>
 import axios from 'axios'
-import Radar from './Radar.vue'
+import { Radar } from 'vue-chartjs'
 export default {
-  components: {
-    Radar
-  },
+  extends: Radar,
   data() {
     return {
       analysis: [],
       comment: "",
       text: "",
-      errors: ''
+      errors: '',
+      manko: []
     }
   },
   mounted() {
     this.fetchAnalysis()
     this.fetchComments()
+    this.fetchchart()
   },
   methods: {
     fetchAnalysis() {
@@ -144,50 +146,52 @@ export default {
       axios.delete(`/api/v1/analyses/${id}/comment_analyses/${id}`).then(response => {
         this.fetchComments();
       })
+    },
+    fetchchart() {
+      axios
+        .get(`/api/v1/analyses/${this.$route.params.id}.json`)
+        .then(response =>{
+          this.manko = [response.data.attack,response.data.defensive,response.data.pitcher,response.data.comprehensive,response.data.expectations]
+          this.chart();
+        })
+    },
+    chart() {
+      var ctx = document.getElementById('myChart')
+      var myChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ["攻撃力","守備力","投手力","総合力","期待度"],
+          datasets: [{
+            label: '戦力',
+            data: this.manko,
+            backgroundColor: 'RGBA(225,95,150, 0.5)',
+            borderColor: 'RGBA(225,95,150, 1)',
+            borderWidth: 1,
+            pointBackgroundColor: 'RGB(46,106,177)'
+          }],
+        },
+        options: {
+          title: {
+            display: true,
+          },
+          layout: {
+            padding: {
+              left: 10,
+            }
+          },
+          scale: {
+            ticks: {
+              suggestedMin: 0,
+              suggestedMax: 5,
+              stepSize: 1,
+              callback: function(value,index,values){
+                return value
+              }
+            }
+          }
+        }
+      })
     }
-    // chart() {
-
-    //   var ctx = document.getElementById("RaderChart");
-    //   var attack = document.getElementsByClassName("attack_i").textContent;
-    //   var defense = document.getElementsByClassName("defensive_i").textContent;
-    //   var pitch = document.getElementsByClassName("pitcher_i").textContent;
-    //   var total = document.getElementsByClassName("comprehensive_i").textContent;
-    //   var expec = document.getElementsByClassName("expectations_i").textContent;
-    //   var RaderChart = new Chart(ctx,{
-    //     type: 'radar',
-    //     data: {
-    //       labels: ["攻撃力","守備力","投手力","総合力","期待度"],
-    //       datasets: [{
-    //         label: '戦力',
-    //         data: [2,2,2,2,2],
-    //         backgroundColor: 'RGBA(225,95,150, 0.5)',
-    //         borderColor: 'RGBA(225,95,150, 1)',
-    //         borderWidth: 1,
-    //         pointBackgroundColor: 'RGB(46,106,177)'
-    //       }]
-    //     },
-    //     options: {
-    //       title: {
-    //         display: true,
-    //       },
-    //       layout: {
-    //         padding: {
-    //           left: 10,
-    //         }
-    //       },
-    //       scale: {
-    //         ticks: {
-    //           suggestedMin: 0,
-    //           suggestedMax: 5,
-    //           stepSize: 1,
-    //           callback: function(value,index,values){
-    //             return value
-    //           }
-    //         }
-    //       }
-    //     }
-    //   });
-    // }
   }
 }
 </script>
