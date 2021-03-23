@@ -5,7 +5,7 @@
     <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
   </div>
   <div class="text-format mt-5 text-success">
-    {{analyses[0].tournament}}
+    <!-- {{analyses[0].tournament}} -->
   </div>
   <div class="go-avg text-center mt-4">
     <div class="avg-ays">
@@ -90,7 +90,7 @@ export default {
       keyword: '',
       analyses: [],
       currentPage: this.$store.state.currentPage,
-      parPage: 1,
+      parPage: 10,
       categories: [],
       current_slide: 0,
       num: ''
