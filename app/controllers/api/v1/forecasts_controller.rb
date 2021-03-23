@@ -18,10 +18,12 @@ class Api::V1::ForecastsController < ApiController
   end
 
   def destroy
-    if @forecast.destroy
-      head :no_content
-    else
-      render json: @forecast.errors, status: :unprocessable_entity
+    if @forecast.user_id == current_user.id
+      if @forecast.destroy
+        head :no_content
+      else
+        render json: @forecast.errors, status: :unprocessable_entity
+      end
     end
   end
 

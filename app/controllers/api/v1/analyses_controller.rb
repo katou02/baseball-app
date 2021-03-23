@@ -27,10 +27,12 @@ class Api::V1::AnalysesController < ApiController
   end
 
   def destroy
-    if @analysis.destroy
-      head :no_content
-    else
-      render json: @analysis.errors, status: :unprocessable_entity
+    if @analysis.user_id == current_user.id
+      if @analysis.destroy
+        head :no_content
+      else
+        render json: @analysis.errors, status: :unprocessable_entity
+      end
     end
   end
 

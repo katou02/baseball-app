@@ -23,10 +23,12 @@ class Api::V1::TweetsController < ApiController
   end
   
   def destroy
-    if @tweet.destroy
-      head :no_content
-    else
-      render json: @tweet.errors, status: :unprocessable_entity
+    if @tweet.user_id == current_user.id
+      if @tweet.destroy
+        head :no_content
+      else
+        render json: @tweet.errors, status: :unprocessable_entity
+      end
     end
   end
   
