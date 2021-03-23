@@ -29,14 +29,15 @@
     </div>
     <div class="forecast-main">
       <div class="text-format pt-5 text-primary">
-        みんなの試合記事
+        みんなの試合予想
       </div>
       <div class="search-area mt-3">
         <input type="text" v-model="keyword" placeholder="検索">
       </div>
       <div v-for="e in getLists" :key="e.id">
         <div class="forecast mt-5">
-          <a :href= "'forecasts/' + e.id">
+          <!-- <a :href= "'forecasts/' + e.id"> -->
+          <router-link :to="{name: 'forecastshow',params: {id: e.id}}">
             <div class="school-fcs">
             <div class="fcs-icon">
               <i class="fa fa-balance-scale text-white"></i>
@@ -59,7 +60,8 @@
             <div class="tweets_at">
               {{e.time}}
             </div>
-          </a>
+          <!-- </a> -->
+          </router-link>
         </div>
       </div>
       <div class="text-center">
