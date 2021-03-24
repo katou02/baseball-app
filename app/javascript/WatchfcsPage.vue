@@ -4,8 +4,12 @@
       <router-link :to= "'/forecasts'" class="return-top">分析一覧へ戻る</router-link>
       <a :href= "'/forecasts/new'" class="send-btn">投稿する</a>
     </div>
-    <div class="text-format mt-5 text-success">
-      <!-- {{forecasts[0].tournament}} -->
+    <div class="text-format mt-5 text-primary">
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.params.id==e.id">
+          {{e.category}}
+        </div>
+      </div>
     </div>
     <p class="text-center h4 mb-3 mt-5">優勝校を予想してみよう</p>
     <div class="champ center-block">

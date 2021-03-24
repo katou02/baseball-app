@@ -5,7 +5,11 @@
     <a :href= "'/tweets/new'" class="send-btn">投稿する</a>
     </div>
     <div class="text-format mt-5 text-primary">
-      {{tweets[0].tournament}}
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.params.id==e.id">
+          {{e.category}}
+        </div>
+      </div>
     </div>
     <div class="text-format mt-5 mb-4 text-warning">
       大会別

@@ -4,8 +4,12 @@
     <router-link :to= "'/analyses'" class="return-top">分析一覧へ戻る</router-link>
     <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
   </div>
-  <div class="text-format mt-5 text-success">
-    <!-- {{analyses[0].tournament}} -->
+  <div class="text-format mt-5 text-primary">
+    <div v-for="e in categories" :key="e.id">
+      <div v-if="$route.params.id==e.id">
+        {{e.category}}
+      </div>
+    </div>
   </div>
   <div class="go-avg text-center mt-4">
     <div class="avg-ays">
