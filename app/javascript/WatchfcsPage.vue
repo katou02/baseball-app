@@ -114,7 +114,7 @@ export default {
     },
     fetchCategory() {
       axios
-        .get('/api/v1/tournaments/category.json')
+        .get('/api/v1/tweets/category.json')
         .then(response =>{
           this.categories = response.data;
         })

@@ -21,9 +21,4 @@ class Api::V1::TournamentsController < ApiController
     @category = Category.find(params[:id])
     render 'watch_fcs', formats: 'json', handlers: 'jbuilder'
   end
-
-  def category
-    @category = Category.where(ancestry: nil)
-    render 'category',formats: 'json',handlers: 'jbuilder'
-  end
 end
