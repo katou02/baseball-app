@@ -100,7 +100,7 @@ export default {
       comment: "",
       text: "",
       errors: '',
-      manko: []
+      chart_data: []
     }
   },
   mounted() {
@@ -151,7 +151,7 @@ export default {
       axios
         .get(`/api/v1/analyses/${this.$route.params.id}.json`)
         .then(response =>{
-          this.manko = [response.data.attack,response.data.defensive,response.data.pitcher,response.data.comprehensive,response.data.expectations]
+          this.chart_data = [response.data.attack,response.data.defensive,response.data.pitcher,response.data.comprehensive,response.data.expectations]
           this.chart();
         })
     },
@@ -163,7 +163,7 @@ export default {
           labels: ["攻撃力","守備力","投手力","総合力","期待度"],
           datasets: [{
             label: '戦力',
-            data: this.manko,
+            data: this.chart_data,
             backgroundColor: 'RGBA(225,95,150, 0.5)',
             borderColor: 'RGBA(225,95,150, 1)',
             borderWidth: 1,
