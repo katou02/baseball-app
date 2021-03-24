@@ -10,11 +10,6 @@ class Api::V1::AnalysesController < ApiController
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 
-  def category
-    @category = Category.where(ancestry: nil)
-    render 'category',formats: 'json',handlers: 'jbuilder'
-  end
-
   def show
     @current_user = current_user
     # @analysis = Analysis.find(params[:id])

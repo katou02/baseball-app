@@ -23,9 +23,6 @@ Rails.application.routes.draw do
       end
       resources :users,only:[:index]
       resources :analyses,only:[:index,:show,:destroy] do
-        collection do
-          get :category
-        end
         resources :comment_analyses,only: [:index,:create,:destroy]
       end
       resources :forecasts,only:[:index,:show,:destroy] do
@@ -33,9 +30,6 @@ Rails.application.routes.draw do
       end
       resources :maps,only:[:index]
       resources :tournaments,only:[:show] do
-        collection do
-          get :category
-        end
         member do
           get :watch_ays
           get :watch_fcs
