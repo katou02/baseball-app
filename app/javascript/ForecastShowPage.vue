@@ -47,6 +47,9 @@
       <div class="data-title mt-5 ml-5">
         勝利確率
       </div>
+      <div class="pie mt-5 pb-5">
+        <div style="width:60%; height:60%"><canvas id="PieChart"></canvas></div>
+      </div>
       <div class="comment-content_tweet">
         <div class="text-format mt-0 mb-4 text-warning">
           <i class="fa fa-baseball-ball text-warning"></i>
@@ -86,12 +89,16 @@ export default {
       forecast: [],
       comment: "",
       text: "",
-      errors: ""
+      errors: "",
+      chart_data: '',
+      labels: [],
+      probability: ''
     }
   },
   mounted() {
     this.fetchForecasts()
     this.fetchComments()
+    this.fetchchart()
   },
   methods: {
     fetchForecasts() {
@@ -132,6 +139,38 @@ export default {
         this.fetchComments();
       })
     },
+    fetchchart() {
+      axios
+        .get(`/api/v1/forecasts/${this.$route.params.id}.json`)
+        .then(response =>{
+          this.chart_data = response.data.probability
+          this.labels = [response.data.win_school,response.data.lose_school]
+          this.probability = response.data.probability
+          this.chart();
+        })
+    },
+    chart() {
+      var ctx = document.getElementById("PieChart");
+      var PieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: this.labels,
+          datasets: [{
+            backgroundColor: [
+              "#FF0000",
+              "#33CCFF",
+            ],
+            data: [this.probability,100-this.probability]
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: '勝利確率'
+          }
+        }
+      });
+    }
   }
 }
 </script>
