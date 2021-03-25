@@ -1,4 +1,4 @@
-<div class="map-content">
+<!--<div class="map-content">
   <div class="text-center">
     <div class="text-format pt-5 text-primary">
       <%=@tournament.name%>
@@ -7,7 +7,7 @@
     <%= link_to "紹介する",new_map_path(tournament_id: params[:tournament_id]),class: "ays-avg" %>
     <%= link_to "戻る","/tournaments/#{@id}/watch_ays",class: "ays-avg", data: {"turbolinks" => false} %>
   </div>
-  <!--<div class="map-list row">
+  <div class="map-list row">
     <% @maps.each do |map| %>
       <div class="col-xs-12 col-md-6 col-lg-3 mt-3 mb-5 map-card">
         <div class="map-name bg-white pt-2">
@@ -25,7 +25,7 @@
         </div>
       </div>
     <% end %>
-  </div>-->
+  </div>
   <%# 大会別 %>
   <div class="title mt-5 pb-5">
     <% @categories.each do |tournament|%>
@@ -39,5 +39,5 @@
       <% end %>
     <% end %>
   </div>
-</div>
+</div>-->
 <%= javascript_pack_tag 'main'%>
