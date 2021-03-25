@@ -116,7 +116,7 @@ export default {
     },
     pageback() {
       this.$nextTick(() => {
-          var positionY = sessionStorage.getItem('positionY')
+          let positionY = sessionStorage.getItem('positionY')
           scrollTo(0, positionY);
           setTimeout(function(){
             scrollTo(0, positionY);
@@ -126,9 +126,9 @@ export default {
   },
   computed: {
     getTweets: function() {
-      var tweets = [];
-      for(var i in this.tweets) {
-        var tweet = this.tweets[i];
+      let tweets = [];
+      for(let i in this.tweets) {
+        let tweet = this.tweets[i];
         if( tweet.text.indexOf(this.keyword) !== -1 ||
           tweet.school_a.indexOf(this.keyword) !== -1 ||
           tweet.school_b.indexOf(this.keyword) !== -1 ||

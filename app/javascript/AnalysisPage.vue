@@ -127,7 +127,7 @@ export default {
     },
     pageback() {
       this.$nextTick(() => {
-          var positionY = sessionStorage.getItem('positionY')
+          let positionY = sessionStorage.getItem('positionY')
           scrollTo(0, positionY);
           setTimeout(function(){
             scrollTo(0, positionY);
@@ -137,9 +137,9 @@ export default {
   },
   computed: {
     getAnalyses: function() {
-    var analyses = [];
-      for(var i in this.analyses) {
-          var analysis = this.analyses[i];
+    let analyses = [];
+      for(let i in this.analyses) {
+          let analysis = this.analyses[i];
           if( analysis.school.indexOf(this.keyword) !== -1 ||
               analysis.title.indexOf(this.keyword) !== -1) {
               analyses.push(analysis);
