@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currentPage: 1
+    currentPage: 1,
+    tweets: [],
+    keyword: ''
   }
 })

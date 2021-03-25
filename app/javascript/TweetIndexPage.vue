@@ -81,7 +81,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      keyword: '',
+      keyword: this.$store.state.keyword,
       tweets: [],
       categories: [],
       currentPage: this.$store.state.currentPage,
@@ -145,12 +145,15 @@ export default {
             tweets.push(tweet);
           }
         }
-        return tweets;
+        this.$store.state.tweets = tweets
+        // return tweets
+        return this.$store.state.tweets 
      },
      getLists: function() {
        let current = this.currentPage * this.parPage;
        let start = current - this.parPage;
-       return this.getTweets.slice(start, current);
+      //  return this.getTweets.slice(start, current);
+       return this.$store.state.tweets.slice(start,current)
      },
      getPageCount: function() {
        return Math.ceil(this.getTweets.length / this.parPage);
@@ -158,6 +161,7 @@ export default {
   },
   watch: {
     keyword: function(){
+      this.$store.state.keyword = this.keyword
       this.currentPage = 1;
     }
   }
