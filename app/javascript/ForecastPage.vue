@@ -19,7 +19,7 @@
     </div>
     <div class="title pb-5 mt-5">
       <div v-for="e in categories" :key="e.id">
-        <router-link :to="{name: 'watch_fcs',params: {id: e.id}}" class="title-child text-white">
+        <router-link :to="{name: 'watch_fcs',params: {id: e.id}}"  class="title-child text-white">
           <i class="fa fa-baseball-ball text-white"></i> 
           {{e.category}}
         </router-link>
@@ -86,7 +86,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      keyword: '',
+      keyword: this.$store.state.keyword_fcs,
       forecasts: [],
       currentPage: this.$store.state.currentPage,
       parPage: 10,
@@ -126,26 +126,32 @@ export default {
     clickCallback(pageNum) {
        this.currentPage = Number(pageNum);
        this.$store.state.currentPage = Number(pageNum);
+       console.log(this.$store.state.currentPage)
     },
     pageback() {
       this.$nextTick(() => {
-          var positionY = sessionStorage.getItem('positionY')
+          let positionY = sessionStorage.getItem('positionY')
           scrollTo(0, positionY);
           setTimeout(function(){
             scrollTo(0, positionY);
           }, 500);
       })
+    },
+    reset() {
+      return {
+        currentPage: 1
+      }
     }
   },
   computed: {
     getForecasts: function() {
-      var forecasts = [];
-      for(var i in this.forecasts) {
-          var forecast = this.forecasts[i];
+      let forecasts = [];
+      for(let i in this.forecasts) {
+          let forecast = this.forecasts[i];
           if( forecast.round.indexOf(this.keyword) !== -1 ||
               forecast.win_school.indexOf(this.keyword) !== -1 ||
               forecast.lose_school.indexOf(this.keyword) !== -1 ) {
-            forecasts.push(forecast);
+              forecasts.push(forecast);
           }
       }
       return forecasts;
@@ -162,6 +168,7 @@ export default {
   watch: {
     keyword: function(){
       this.currentPage = 1;
+      this.$store.state.keyword_fcs = this.keyword
     }
   }
 }
