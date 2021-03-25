@@ -84,7 +84,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      keyword: '',
+      keyword: this.$store.state.keyword_ays,
       analyses: [],
       categories: [],
       currentPage: this.$store.state.currentPage,
@@ -154,12 +154,13 @@ export default {
      },
      getPageCount: function() {
        return Math.ceil(this.getAnalyses.length / this.parPage);
-     },
-     watch: {
-       keyword: function(){
-         this.currentPage = 1;
-       }
      }
+  },
+  watch: {
+    keyword: function(){
+      this.currentPage = 1;
+      this.$store.state.keyword_ays = this.keyword
+    }
   }
 }
 </script>

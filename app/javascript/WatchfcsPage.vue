@@ -95,7 +95,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      keyword: '',
+      keyword: this.$store.state.keyword_w_fcs,
       forecasts: [],
       currentPage: this.$store.state.currentPage,
       parPage: 10,
@@ -162,6 +162,7 @@ export default {
   watch: {
     keyword: function(){
       this.currentPage = 1;
+      this.$store.state.keyword_w_fcs = this.keyword
     }
   }
 }

@@ -161,8 +161,8 @@ export default {
   },
   watch: {
     keyword: function(){
-      this.$store.state.keyword = this.keyword
       this.currentPage = 1;
+      this.$store.state.keyword = this.keyword
     }
   }
 }

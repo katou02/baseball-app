@@ -8,6 +8,10 @@ export default new Vuex.Store({
     currentPage: 1,
     tweets: [],
     keyword: '',
-    keyword_tour: ''
+    keyword_fcs: '',
+    keyword_ays: '',
+    keyword_tour: '',
+    keyword_w_fcs: '',
+    keyword_w_ays: ''
   }
 })
