@@ -18,6 +18,7 @@
     </div>
     <div class="homedown">
       甲子園でお馴染みのふるさと紹介<br>
+      <router-link :to="{name: 'map',query: {tournament_id: num}}" class="ays-avg">ふるさと</router-link>
       <a :href= "'/maps?tournament_id=' + num" class="ays-avg">ふるさと紹介</a>
     </div>
   </div>

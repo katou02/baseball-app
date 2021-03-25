@@ -1,5 +1,30 @@
 <template>
-  <div class="map-contenta">
+  <div class="map-content">
+    <div class="text-format pt-4 text-primary">
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.query.tournament_id==e.id">
+          {{e.category}}
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <a :href= "'/maps/new?tournament_id=' + id" class="ays-avg">紹介する</a>
+      <router-link :to="{name: 'watch_ays',params: {id: $route.query.tournament_id}}" class="ays-avg">戻る</router-link>
+    </div>
+    <h3 class="pt-4">出場校ふるさとを紹介</h3>
+    <div class="text-format mt-5 mb-4 text-warning">
+      大会別
+    </div>
+    <div class="title pb-5 mt-5">
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.query.tournament_id!=e.id">
+          <router-link :to="{name: 'map',query: {tournament_id: e.id}}" @click.native="fetchMaps()" class="title-child text-white">
+            <i class="fa fa-baseball-ball text-white"></i> 
+            {{e.category}}
+          </router-link>
+        </div>
+      </div>
+    </div>
     <div class="search-area">
       <input type="text" v-model="keyword" placeholder="検索">
     </div>
@@ -48,14 +73,17 @@ export default {
     return {
       keyword: '',
       maps: [],
+      categories: [],
       currentPage: 1,
       parPage: 10,
       // totalPages: null,
       current_slide: 0,
+      id: ''
     }
   },
   mounted() {
     this.fetchMaps()
+    this.fetchCategory()
   },
   methods: {
     fetchMaps() {
@@ -63,11 +91,19 @@ export default {
         .get(`api/v1/maps.json?tournament_id=${this.$route.query.tournament_id}`)
         .then(response =>{
           this.maps = response.data;
+          this.id = this.$route.query.tournament_id
         })
     },
     clickCallback: function (pageNum) {
       this.currentPage = Number(pageNum);
-    }
+    },
+    fetchCategory() {
+      axios
+        .get('api/v1/tweets/category.json')
+        .then(response =>{
+          this.categories = response.data;
+        })
+    },
   },
   computed: {
     getMaps: function() {
