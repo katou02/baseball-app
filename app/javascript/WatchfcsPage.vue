@@ -129,7 +129,7 @@ export default {
     },
     pageback() {
       this.$nextTick(() => {
-          var positionY = sessionStorage.getItem('positionY')
+          let positionY = sessionStorage.getItem('positionY')
           scrollTo(0, positionY);
           setTimeout(function(){
             scrollTo(0, positionY);
@@ -139,9 +139,9 @@ export default {
   },
   computed: {
     getForecasts: function() {
-      var forecasts = [];
-      for(var i in this.forecasts) {
-          var forecast = this.forecasts[i];
+      let forecasts = [];
+      for(let i in this.forecasts) {
+          let forecast = this.forecasts[i];
           if( forecast.round.indexOf(this.keyword) !== -1 ||
               forecast.win_school.indexOf(this.keyword) !== -1 ||
               forecast.lose_school.indexOf(this.keyword) !== -1 ) {
