@@ -83,7 +83,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      keyword: '',
+      keyword: this.$store.state.keyword_tour,
       tweets: [],
       categories: [],
       currentPage: this.$store.state.currentPage,
@@ -151,6 +151,7 @@ export default {
   watch: {
     keyword: function(){
       this.currentPage = 1;
+      this.$store.state.keyword_tour = this.keyword
     }
   }
 }

@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     currentPage: 1,
     tweets: [],
-    keyword: ''
+    keyword: '',
+    keyword_tour: ''
   }
 })
