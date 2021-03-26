@@ -10,4 +10,9 @@ class Api::V1::MapsController < ApiController
     @tournament = Category.find_by(id: @id)
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
+
+  def show
+    @map = Map.find(params[:id])
+    render 'show',formats: 'json', handlers: 'jbuilder'
+  end
 end
