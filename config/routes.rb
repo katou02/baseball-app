@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         resources :comment_forecasts,only: [:index,:create,:destroy]
       end
       resources :maps,only:[:index,:show]
+      resources :champions,only:[:show]
       resources :tournaments,only:[:show] do
         member do
           get :watch_ays
