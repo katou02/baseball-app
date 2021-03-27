@@ -14,7 +14,7 @@
     <p class="text-center h4 mb-3 mt-5">優勝校を予想してみよう</p>
     <div class="champ center-block">
       <i class="fas fa-crown text-warning"></i>
-      <a :href= "'/champions/' + num">優勝予想</a>
+      <router-link :to="{name: 'champion',params: {id: num}}">優勝予想</router-link>
       <i class="fas fa-crown text-warning"></i>
     </div>
     <!-- 大会 -->
