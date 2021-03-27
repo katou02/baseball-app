@@ -95,9 +95,9 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      keyword: this.$store.state.keyword_w_fcs,
+      keyword: this.$store.state.keyword_wf,
       forecasts: [],
-      currentPage: this.$store.state.currentPage,
+      currentPage: this.$store.state.currentPage_wf,
       parPage: 10,
       categories: [],
       num: ''
@@ -125,7 +125,7 @@ export default {
     },
     clickCallback(pageNum) {
        this.currentPage = Number(pageNum);
-       this.$store.state.currentPage = Number(pageNum);
+       this.$store.state.currentPage_wf = Number(pageNum);
     },
     pageback() {
       this.$nextTick(() => {
@@ -162,7 +162,7 @@ export default {
   watch: {
     keyword: function(){
       this.currentPage = 1;
-      this.$store.state.keyword_w_fcs = this.keyword
+      this.$store.state.keyword_wf = this.keyword
     }
   }
 }

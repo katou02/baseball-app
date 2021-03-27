@@ -17,7 +17,7 @@
     <div class="title pb-5 mt-5">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="fetchTweets()" class="title-child">
+          <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="fetchTweets(); page_reset()" class="title-child">
             <i class="fa fa-baseball-ball text-white"></i>
             {{e.category}}
           </router-link>
@@ -86,8 +86,8 @@ export default {
       keyword: this.$store.state.keyword_tour,
       tweets: [],
       categories: [],
-      currentPage: this.$store.state.currentPage,
-      parPage: 10,
+      currentPage: this.$store.state.currentPage_t,
+      parPage: 2,
     }
   },
   mounted() {
@@ -100,7 +100,7 @@ export default {
         .get(`/api/v1/tournaments/${this.$route.params.id}.json`)
         .then(response =>{
           this.tweets = response.data;
-          this.pageback()
+          // this.pageback()
         })
     },
     fetchCategory() {
@@ -112,7 +112,7 @@ export default {
     },
     clickCallback(pageNum) {
        this.currentPage = Number(pageNum);
-       this.$store.state.currentPage = Number(pageNum);
+       this.$store.state.currentPage_t = Number(pageNum);
     },
     pageback() {
       this.$nextTick(() => {
@@ -122,6 +122,10 @@ export default {
             scrollTo(0, positionY);
           }, 500);
       })
+      // this.fetchTweets()
+    },
+    page_reset() {
+      this.currentPage = 1
     }
   },
   computed: {
