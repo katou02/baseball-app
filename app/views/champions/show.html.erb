@@ -38,9 +38,9 @@
     投票結果
   </div>
   <%# 投票結果 %>
-  <div class="reader">
+  <%# <div class="reader">
     <div style="width:75%; height:75%;" ><canvas id="myBarChart"></canvas></div>
-  </div>
+  </div> %>
   <h4 class="text-center mt-5">全投票</h4>
   <% @school.each do |school| %>
     <div class="school-cp mt-5">
@@ -52,3 +52,4 @@
   <% end %>
   <%= javascript_pack_tag 'champion' %>
 </div>
+<%= javascript_pack_tag 'main'%>

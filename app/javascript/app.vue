@@ -19,6 +19,7 @@ import WatchfcsPage from './WatchfcsPage.vue'
 import UserPage from './UserPage.vue'
 import MapPage from './MapPage.vue'
 import MapShowPage from './MapShowPage'
+import ChampionPage from './ChampionPage'
 
 Vue.use(VueRouter)
 
@@ -84,6 +85,11 @@ const router = new VueRouter({
        path: '/maps/:id',
        component: MapShowPage,
        name: 'mapshow'
+     },
+     {
+       path: '/champions/:id',
+       component: ChampionPage,
+       name: 'champion'
      }
   ],
   scrollBehavior(to, from, savedPosition) {
