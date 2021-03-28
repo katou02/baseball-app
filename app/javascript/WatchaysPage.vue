@@ -164,6 +164,7 @@ export default {
     },
     '$route'(to, from) {
       this.fetchAnalyses()
+      this.currentPage=1
     }
   }
 }

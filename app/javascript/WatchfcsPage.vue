@@ -169,6 +169,7 @@ export default {
     },
     '$route'(to, from) {
       this.fetchForecasts()
+      this.currentPage=1
     }
   }
 }
