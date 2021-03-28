@@ -107,6 +107,11 @@ export default {
       }, 3000)
     this.fetchForecasts()
     this.fetchCategory()
+    if (this.keyword == '') {
+    }
+    else {
+      this.currentPage = 1
+    }
   },
   methods: {
     fetchForecasts() {

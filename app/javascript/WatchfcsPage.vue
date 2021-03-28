@@ -107,6 +107,11 @@ export default {
     this.currentPage = this.$store.state.currentPage_wf
     this.fetchForecasts()
     this.fetchCategory()
+    if (this.keyword == '') {
+    }
+    else {
+      this.currentPage = 1
+    }
   },
   methods: {
     fetchForecasts() {

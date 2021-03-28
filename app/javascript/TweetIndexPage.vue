@@ -103,7 +103,11 @@ export default {
       }, 3000)
     this.fetchTweets()
     this.fetchCategory()
-    console.log(this.$store.state.currentPage_t)
+    if (this.keyword == '') {
+    }
+    else {
+      this.currentPage = 1
+    }
   },
   methods: {
     fetchTweets() {
