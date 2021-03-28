@@ -161,6 +161,9 @@ export default {
     keyword: function(){
       this.currentPage = 1;
       this.$store.state.keyword_wa = this.keyword
+    },
+    '$route'(to, from) {
+      this.fetchAnalyses()
     }
   }
 }
