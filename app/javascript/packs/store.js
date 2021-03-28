@@ -20,7 +20,6 @@ const store = new Vuex.Store({
   },
   mutations: {
     increment(state) {
-      alert('vv')
       state.currentPage_t = 1
       state.currentPage_wa = 1
       state.currentPage_wf = 1
