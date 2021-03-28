@@ -170,6 +170,9 @@ export default {
       this.currentPage = 1;
       this.$store.state.keyword_fcs = this.keyword
     }
-  }
+  },
+  beforeDestroy() {
+    this.$store.commit('increment')
+  },
 }
 </script>

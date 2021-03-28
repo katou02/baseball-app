@@ -104,6 +104,7 @@ export default {
     }
   },
   mounted() {
+    this.currentPage = this.$store.state.currentPage_wf
     this.fetchForecasts()
     this.fetchCategory()
   },

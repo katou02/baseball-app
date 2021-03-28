@@ -88,10 +88,11 @@ export default {
       tweets: [],
       categories: [],
       currentPage: this.$store.state.currentPage_t,
-      parPage: 1,
+      parPage: 10,
     }
   },
   mounted() {
+    this.currentPage = this.$store.state.currentPage_t
     this.fetchTweets()
     this.fetchCategory()
   },
@@ -101,7 +102,6 @@ export default {
         .get(`/api/v1/tournaments/${this.$route.params.id}.json`)
         .then(response =>{
           this.tweets = response.data;
-          // this.pageback()
         })
     },
     fetchCategory() {

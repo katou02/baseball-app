@@ -100,6 +100,7 @@ export default {
     }
   },
   mounted() {
+    this.currentPage = this.$store.state.currentPage_wa
     this.fetchAnalyses()
     this.fetchCategory()
   },
