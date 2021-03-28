@@ -162,6 +162,7 @@ export default {
     '$route'(to, from) {
       this.fetchTweets()
       this.currentPage=1
+      this.keyword = ''
     }
   }
 }
