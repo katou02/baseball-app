@@ -88,13 +88,18 @@ export default {
       tweets: [],
       categories: [],
       currentPage: this.$store.state.currentPage_t,
-      parPage: 1,
+      parPage: 10,
     }
   },
   mounted() {
     this.currentPage = this.$store.state.currentPage_t
     this.fetchTweets()
     this.fetchCategory()
+    if (this.keyword == '') {
+    }
+    else {
+      this.currentPage = 1
+    }
   },
   methods: {
     fetchTweets() {
