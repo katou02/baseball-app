@@ -24,7 +24,7 @@
     <div class="title pb-5 mt-5">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'watch_fcs',params: {id: e.id}}" @click.native="fetchForecasts(); reset()" class="title-child">
+          <router-link :to="{name: 'watch_fcs',params: {id: e.id}}" @click.native="fetchForecasts();" class="title-child">
             <i class="fa fa-baseball-ball text-white"></i>
             {{e.category}}
           </router-link>
@@ -135,9 +135,6 @@ export default {
             scrollTo(0, positionY);
           }, 500);
       })
-    },
-    reset() {
-      this.keyword = ''
     }
   },
   computed: {
