@@ -22,7 +22,7 @@
     <div class="title pb-5 mt-5">
       <div v-for="e in categories" :key="e.id">
         <!-- <a :href= "'/tournaments/' + e.id" class="title-child text-white"> -->
-        <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="page_reset()" class="title-child text-white">
+        <router-link :to="{name: 'tournament',params: {id: e.id}}"  class="title-child text-white">
           <i class="fa fa-baseball-ball text-white"></i> 
           {{e.category}}
         <!-- </a> -->
@@ -103,7 +103,7 @@ export default {
       }, 3000)
     this.fetchTweets()
     this.fetchCategory()
-    console.log(this.$store.state.currentPage)
+    console.log(this.$store.state.currentPage_t)
   },
   methods: {
     fetchTweets() {
@@ -133,9 +133,6 @@ export default {
             scrollTo(0, positionY);
           }, 500);
       })
-    },
-    page_reset() {
-      this.$store.commit('increment')
     }
   },
   computed: {
@@ -169,7 +166,10 @@ export default {
       this.currentPage = 1;
       this.$store.state.keyword = this.keyword
     }
-  }
+  },
+  beforeDestroy() {
+    this.$store.commit('increment')
+  },
 }
 </script>
 <style scoped>
