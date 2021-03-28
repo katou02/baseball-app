@@ -105,6 +105,11 @@ export default {
     }, 3000)
     this.fetchAnayses()
     this.fetchCategory()
+    if (this.keyword == '') {
+    }
+    else {
+      this.currentPage = 1
+    }
   },
   methods: {
     fetchAnayses() {

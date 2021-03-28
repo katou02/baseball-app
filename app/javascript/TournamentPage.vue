@@ -88,7 +88,7 @@ export default {
       tweets: [],
       categories: [],
       currentPage: this.$store.state.currentPage_t,
-      parPage: 10,
+      parPage: 1,
     }
   },
   mounted() {

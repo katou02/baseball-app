@@ -103,6 +103,11 @@ export default {
     this.currentPage = this.$store.state.currentPage_wa
     this.fetchAnalyses()
     this.fetchCategory()
+    if (this.keyword == '') {
+    }
+    else {
+      this.currentPage = 1
+    }
   },
   methods: {
     fetchAnalyses() {
