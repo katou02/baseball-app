@@ -166,6 +166,9 @@ export default {
     keyword: function(){
       this.currentPage = 1;
       this.$store.state.keyword_wf = this.keyword
+    },
+    '$route'(to, from) {
+      this.fetchForecasts()
     }
   }
 }

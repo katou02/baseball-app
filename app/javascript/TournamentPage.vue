@@ -68,6 +68,7 @@
             :prev-text="'＜'"
             :next-text="'＞'"
             :force-page="currentPage"
+            :hide-prev-next="true"
             :next-link-class="'page-link'"
             :prev-link-class="'page-link'"
             :container-class="'pagination'"
@@ -87,7 +88,7 @@ export default {
       tweets: [],
       categories: [],
       currentPage: this.$store.state.currentPage_t,
-      parPage: 2,
+      parPage: 1,
     }
   },
   mounted() {
@@ -126,6 +127,7 @@ export default {
     },
     reset() {
       this.keyword = ''
+      this.currentPage = 1
     }
   },
   computed: {
@@ -156,6 +158,9 @@ export default {
     keyword: function(){
       this.currentPage = 1;
       this.$store.state.keyword_tour = this.keyword
+    },
+    '$route'(to, from) {
+      this.fetchTweets()
     }
   }
 }
