@@ -31,6 +31,20 @@
         </div>
       </div>
     </div>
+    <div class="message-input">
+      <form @submit.prevent="createMessage">
+        <!--<div  v-if="errors.length != 0">
+          <ul v-for="e in errors" :key="e">
+            <li><font color="red">{{ e }}</font></li>
+          </ul>
+        </div>-->
+        <div class="message-form">
+          <textarea v-model="body" type="text"></textarea>
+          <button type="submit" class="message-btn ml-3" >投稿する</button>
+          <i class="fas fa-paper-plane"></i>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 <script>
@@ -41,7 +55,8 @@ export default {
       messages: [],
       member: '',
       id: '',
-      current_user: ''
+      current_user: '',
+      body: ""
     }
   },
   mounted() {
@@ -57,6 +72,20 @@ export default {
           this.id = response.data.member[0].user.id
           this.current_user = response.data.current_user
         })
+    },
+    createMessage() {
+      axios
+        .post('/api/v1/messages',{body: this.body,room_id: this.$route.params.id})
+        .then(response => {
+          this.body = "";
+          this.fetchMember()
+        })
+        .catch(error => {
+          console.error(error);
+          if (error.response.data && error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
+        });
     }
   }
 }

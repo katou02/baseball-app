@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         resources :comment_forecasts,only: [:index,:create,:destroy]
       end
       resources :maps,only:[:index,:show]
+      resources :messages,only: :create
       resources :champions,only:[:show]
       resources :rooms,only:[:index,:show]
       resources :tournaments,only:[:show] do
