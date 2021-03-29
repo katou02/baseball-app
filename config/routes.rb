@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       end
       resources :maps,only:[:index,:show]
       resources :champions,only:[:show]
+      resources :rooms,only:[:index,:show]
       resources :tournaments,only:[:show] do
         member do
           get :watch_ays
