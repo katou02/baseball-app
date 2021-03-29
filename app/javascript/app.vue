@@ -21,6 +21,7 @@ import MapPage from './MapPage.vue'
 import MapShowPage from './MapShowPage'
 import ChampionPage from './ChampionPage'
 import RoomPage from './RoomPage'
+import RoomShowPage from './RoomShowPage'
 
 Vue.use(VueRouter)
 
@@ -96,6 +97,11 @@ const router = new VueRouter({
        path: '/rooms',
        component: RoomPage,
        name: 'room'
+     },
+     {
+       path: '/rooms/:id',
+       component: RoomShowPage,
+       name: 'roomshow'
      }
   ],
   scrollBehavior(to, from, savedPosition) {
