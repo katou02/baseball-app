@@ -4,21 +4,20 @@
     <div class="search-area mt-3">
       <input type="text" v-model="keyword" placeholder="検索">
     </div>
-    <div class="user-list row">
-      <div v-for="e in getLists" :key="e.id">
-        <div class="col-xs-12 col-md-6 col-lg-3 mt-3 card">
-          <a :href= "'/rooms/' + e.room_id">{{e.user}}とのDM
-            <div class="user-list-image border-bottom">
-              <div v-if="e.user_image.url"> 
-                <img :src= e.user_image.url class="user-icon mt-3">
-              </div>
-              <div v-else>
-                <img src="../assets/images/no-image.png" class="user-icon mt-3">
-              </div>
+    <div class="user-list row mx-auto">
+      <div v-for="e in getLists" :key="e.id" class="col-xs-12 col-md-6 col-lg-3 mt-3 card">
+        <a :href= "'/rooms/' + e.room_id">{{e.user}}とのDM
+          <div class="user-list-image border-bottom">
+            <div v-if="e.user_image.url"> 
+              <img :src= e.user_image.url class="user-icon mt-3">
             </div>
-          </a>
-        </div>
+            <div v-else>
+              <img src="../assets/images/no-image.png" class="user-icon mt-3">
+            </div>
+          </div>
+        </a>
       </div>
+    </div>
       <div class="text-center">
         <paginate
           :v-model="currentPage" 
@@ -45,7 +44,7 @@ export default {
       rooms: [],
       keyword: '',
       currentPage: 1,
-      parPage: 1
+      parPage: 10
     }
   },
   mounted() {
