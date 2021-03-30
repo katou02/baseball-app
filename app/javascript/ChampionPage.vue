@@ -11,7 +11,8 @@
     </div>
     <div class="text-center">
       <div v-if="my_champion">
-        {{my_champion}}に投票しています
+        {{my_champion.school}}に投票しています<br>
+        <button class="delete-btn mt-2" @click="deleteChampion($route.params.id)">投票を取り消す</button>
       </div>
       <div v-else>
       <a :href= "'/champions/new?tournament_id=' + num" class="btn btn-warning champ-btn">
@@ -78,6 +79,12 @@ export default {
         .then(response =>{
           this.categories = response.data;
         })
+    },
+    deleteChampion(id) {
+      axios.delete(`/api/v1/champions/${id}`)
+      .then(response => {
+        this.fetchChampion();
+      })
     },
     chart() {
       var ctx = document.getElementById("myBarChart");
