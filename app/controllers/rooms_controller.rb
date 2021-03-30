@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
       myRoomIds << entry.room.id
     end
     @anotherEntries = Entry.where(room_id: myRoomIds).where.not(user_id: current_user.id).page(params[:page]).per(16).order("created_at DESC")
+    render layout: "vue"
   end
 
   def create
