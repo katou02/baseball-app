@@ -177,11 +177,4 @@ export default {
    flex: 1 1 100%;
    min-height: 900px;
 }
-
-.search-area {
-  background-color: white;
-  width: 20%;
-  margin: 0 auto;
-  border-radius: 10px;
-}
 </style>
