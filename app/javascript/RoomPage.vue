@@ -30,6 +30,7 @@
         :margin-pages="2"
         :prev-text="'＜'"
         :next-text="'＞'"
+        :force-page="currentPage"
         :next-link-class="'page-link'"
         :prev-link-class="'page-link'"
         :container-class="'pagination'"
@@ -44,13 +45,18 @@ export default {
   data() {
     return {
       rooms: [],
-      keyword: '',
-      currentPage: 1,
-      parPage: 10
+      keyword: this.$store.state.keyword_dm,
+      currentPage: this.$store.state.currentPage,
+      parPage: 1
     }
   },
   mounted() {
     this.fetchRooms()
+    if (this.keyword == '') {
+    }
+    else {
+      this.currentPage = 1
+    }
   },
   methods: {
     fetchRooms() {
@@ -62,6 +68,7 @@ export default {
     },
     clickCallback(pageNum) {
       this.currentPage = Number(pageNum);
+      this.$store.state.currentPage = Number(pageNum);
     }
   },
   computed: {
@@ -87,7 +94,7 @@ export default {
   watch: {
     keyword: function(){
       this.currentPage = 1;
-      // this.$store.state.keyword = this.keyword
+      this.$store.state.keyword_dm = this.keyword
     }
   }
 }
