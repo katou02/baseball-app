@@ -47,7 +47,7 @@ export default {
       rooms: [],
       keyword: this.$store.state.keyword_dm,
       currentPage: this.$store.state.currentPage,
-      parPage: 1
+      parPage: 10
     }
   },
   mounted() {
