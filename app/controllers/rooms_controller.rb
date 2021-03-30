@@ -29,5 +29,6 @@ class RoomsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
     @member=@entries.where.not(user_id: current_user.id)
+    render layout: "vue"
   end
 end
