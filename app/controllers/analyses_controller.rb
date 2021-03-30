@@ -16,6 +16,7 @@ class AnalysesController < ApplicationController
     @num = 1
     gon.data = []
     gon.data.push(@analysis.attack,@analysis.defensive,@analysis.pitcher,@analysis.comprehensive,@analysis.expectations)
+    render layout: "vue"
   end
 
   def new
