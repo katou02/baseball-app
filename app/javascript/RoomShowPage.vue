@@ -39,9 +39,12 @@
           </ul>
         </div>-->
         <div class="message-form">
-          <textarea v-model="body" type="text"></textarea>
-          <button type="submit" class="message-btn ml-3" >投稿する</button>
-          <i class="fas fa-paper-plane"></i>
+          <div class="mx-auto d-flex w-50 pb-2">
+            <textarea v-model="body" type="text" class="message-detail"></textarea>
+            <button type="submit" class="message-btn ml-2" >
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
         </div>
       </form>
     </div>
@@ -56,7 +59,8 @@ export default {
       member: '',
       id: '',
       current_user: '',
-      body: ""
+      body: '',
+      errors: ''
     }
   },
   mounted() {
