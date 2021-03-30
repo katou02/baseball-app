@@ -1,8 +1,3 @@
-.game-article {
-  position: relative;
-  height: 100%;
-}
-
 .edit-article,.return-btn,.return-top,.return-top-mypage,.return-btn_watch,.return-fcs,.users-btn,.dm-btn {
   padding: 5px;
   color: #fff;
@@ -76,7 +71,7 @@ input {
     font-size: 15px;
     text-decoration: underline;
   }
-  &_delete-button {
+  &-delete_button {
     padding: 3px;
     text-decoration: none;
     color: #ff7e67;
@@ -85,7 +80,7 @@ input {
     transition: .4s;
     font-size: 14px;
     // margin: 20px 0 0 40px;
-    margin-left: 24%;
+    margin-left: 2%;
     &:hover {
       background: #fffbef;
     }
@@ -116,7 +111,7 @@ input {
 }
 
 @media screen and (max-width: 342px) {
-  .comment_delete-button {
+  .comment-delete_button {
     display: block;
   }
   .image {

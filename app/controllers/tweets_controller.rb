@@ -31,6 +31,8 @@ class TweetsController < ApplicationController
     @comments = @tweet.comments.includes(:user)
     @comment = current_user.comments.new 
     @like = Like.new
+    @like = Like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
+    render layout: "vue"
   end
 
   def destroy

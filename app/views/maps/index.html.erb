@@ -1,4 +1,4 @@
-<div class="map-content">
+<!--<div class="map-content">
   <div class="text-center">
     <div class="text-format pt-5 text-primary">
       <%=@tournament.name%>
@@ -27,16 +27,17 @@
     <% end %>
   </div>
   <%# 大会別 %>
-  <div class="d-flex">
+  <div class="title mt-5 pb-5">
     <% @categories.each do |tournament|%>
       <% unless current_page?("/maps?tournament_id=#{tournament.id}") %>
-        <div class="cp-tournamet mt-5 mb-5">
-          <%= link_to "/maps?tournament_id=#{tournament.id}",data: {"turbolinks" => false},class: "text-white" do%>
+        <%# <div class="cp-tournamet mt-5 mb-5"> %>
+          <%= link_to "/maps?tournament_id=#{tournament.id}",data: {"turbolinks" => false},class: "title-child text-white" do%>
             <i class="fa fa-baseball-ball text-white"></i>
             <%=tournament.name%>
           <% end %>
-        </div>
+        <%# </div> %>
       <% end %>
     <% end %>
   </div>
-</div>
+</div>-->
+<%= javascript_pack_tag 'main'%>

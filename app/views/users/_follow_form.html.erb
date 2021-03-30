@@ -1,9 +1,18 @@
-<% unless current_user?(@user) %>
+<% unless current_user?(userr) %>
   <div class="follow_form mt-2">
-  <% if current_user.following?(@user) %>
-    <%= render 'users/unfollow' %>
-  <% else %>
-    <%= render 'users/follow' %>
-  <% end %>
+    <% if current_user.following?(userr) %>
+      <%= form_for(current_user.following_relationships.find_by(following_id: @user.id), html: { method: :delete }) do |f| %>
+        <div class="unfollow-user">
+          <%= f.submit "フォローを外す",class: "unfollow-btn" %>
+        </div>
+      <% end %>
+    <% else %>
+      <%= form_for(current_user.following_relationships.build(following_id: @user_id)) do |f| %>
+        <div class="follow-user">
+          <div><%= f.hidden_field :following_id %></div>
+          <%= f.submit "フォローする", class: "follow-btn" %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 <% end %>  

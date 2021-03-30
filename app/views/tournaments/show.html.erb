@@ -1,8 +1,8 @@
 <div class="main-content">
   <div class="wrap">
-    <div class="main-content-btn mt-1">
+    <!--<div class="main-content-btn mt-1">
       <% if user_signed_in? %>
-        <%= link_to "投稿する",new_tweet_path,class: "send_btn", data: {"turbolinks" => false} %>
+        <%= link_to "投稿する",new_tweet_path,class: "send-btn", data: {"turbolinks" => false} %>
       <% end %>
       <% unless current_page?(root_path)%>
         <%= link_to "記事一覧へ戻る",tweets_path,class: "return-btn_watch" %>
@@ -23,7 +23,7 @@
           <% end %>
         <% end %>
       <% end %>
-    </div>
+    </div>-->
   </div>
 </div>
 <%= javascript_pack_tag 'main' %>

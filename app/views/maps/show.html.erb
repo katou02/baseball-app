@@ -34,7 +34,7 @@
       <%= link_to "記事を削除する","/maps/#{@map.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
       <%= link_to "記事を編集する","/maps/#{@map.id}/edit",method: :get,class: "edit-article" %>
     <% end %>
-    <%= link_to "戻る",maps_path(tournament_id: @map.tournament.id),class: "return-top ml-1" %>
+    <%= link_to "戻る",maps_path(tournament_id: @map.tournament.id),class: "return-top ml-1", data: {"turbolinks" => false} %>
   </div>
   <div class="map-info">
     <div class="map-school">
@@ -54,3 +54,4 @@
   </div>
 <div id="map"></div>
 </div>
+<%# <%= javascript_pack_tag 'main'%> %>

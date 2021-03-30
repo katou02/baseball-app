@@ -3,8 +3,10 @@ import Vuetify from "vuetify";
 // import "vuetify/dist/vuetify.min.css";
 import App from '../app.vue';
 import Paginate from 'vuejs-paginate'
+import store from './store.js'
 Vue.use(Vuetify);
 Vue.component('paginate', Paginate)
+// const store = new Vuex.Store(_store);
 
 const slide = new Vue({
   el: '#slide',
@@ -31,11 +33,15 @@ const slide = new Vue({
         isActive: '1'
       }
     })
-  document.addEventListener('DOMContentLoaded', () => {
-    const app = new Vue({
-      el: "#app",
-      vuetify: new Vuetify(),
-      render: h => h(App)
-    }).$mount();
-    document.body.appendChild(app.$el);
-})
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const app = new Vue({
+        el: "#app",
+        store,
+        vuetify: new Vuetify(),
+        render: h => h(App)
+      }).$mount();
+      document.body.appendChild(app.$el);
+    })
+    
+    // Vue.use(window["vue-js-modal"].default);

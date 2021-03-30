@@ -1,12 +1,12 @@
-<div class="analysis-show_content">
-  <div class="data-info pb-5">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<%# <div class="analysis-show_content">
+  <div class="data-info pb-5"> %>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <div class="choose-btn pt-3">
       <% if current_user.id == @analysis.user_id || current_user.admin? %>
       <%= link_to "記事を削除する","/analyses/#{@analysis.id}",method: :delete,data: { confirm: '削除しますか？' },class: "delete-btn"%>
       <%= link_to "記事を編集する","/analyses/#{@analysis.id}/edit",method: :get,class: "edit-article" %>
       <% end %>
-      <%= link_to "分析トップページへ戻る",analyses_path,class: "return-btn" %>
+      <%= link_to "分析トップページへ戻る",analyses_path,class: "return-btn",data: {"turbolinks" => false} %>
     </div>
     <div class="user_name">
       <h5>投稿者 <%= link_to "#{@analysis.user.nickname}","/users/#{@analysis.user_id}"%></h5>
@@ -56,41 +56,22 @@
     <div class="reader">
       <div style="width:70%; height:70%;" ><canvas id="RaderChart"></canvas></div>
     </div>
-  </div>
-  <%# コメント %>
+   </div>
+   <%# コメント %>
    <div class="comment-content">
     <div class="comment">   
       <div class="text-format comment mt-0 mb-4 text-warning">
       <i class="fa fa-baseball-ball text-warning"></i>
         コメント
       </div>
-      <% if @comments %>
-        <% @comments.each do |comment| %>
-            <div class="comment-user">
-              <%= @num %>:
-              <strong><%= link_to "#{comment.user.nickname}","/users/#{comment.user.id}",class: "pr-4" %></strong>
-              <%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
-            <div class="comment-delete">
-              <% if user_signed_in? && current_user.id == comment.user_id || current_user.admin %>
-                <%= link_to '削除', "/analyses/#{@analysis.id}/comment_analyses/#{comment.id}", method: :delete,class: "comment_delete-button" %>
-              <% end %>
-            </div>
-            </div>
-          <div class="mt-4 mb-4">
-            <%= simple_format(comment.text) %>
-          </div>
-          <%@num+=1%>
-        <% end %>
-      <% end %>
+      <div id="comments_area">
+        <%= render partial: '/comment_analyses/comment', locals: { comments: @comments }%>
+      </div>
     </div>
     <div class="comment-form"> 
-    <% if current_user %>
-      <%= form_with(model:[@analysis, @comment], method: :post) do |f| %>
-        <%= f.text_area :text,placeholder: "コメント",rows: "2",cols: "30" %>
-        <%= f.submit "SEND",class: "game_record"%>
-      <% end %>
-    <% end %>
-    </div>
-  </div>
-</div>
-<%= javascript_pack_tag 'analysis' %>
+      <%= render partial: 'comment_analyses/form', locals: { comment: @comment, analysis: @analysis } %>
+    </div>-->
+  <%# </div> %>
+<%# </div> %>
+<%# <%= javascript_pack_tag 'analysis' %>
+<%= javascript_pack_tag 'main' %>
