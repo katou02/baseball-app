@@ -10,9 +10,14 @@
       <i class="fas fa-crown text-warning"></i>
     </div>
     <div class="text-center">
+      <div v-if="my_champion">
+        {{my_champion}}に投票しています
+      </div>
+      <div v-else>
       <a :href= "'/champions/new?tournament_id=' + num" class="btn btn-warning champ-btn">
         優勝予想をする
       </a>
+      </div>
     </div>
     <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
@@ -45,7 +50,7 @@ export default {
   data() {
     return {
       schools: [],
-      manko: [],
+      my_champion: [],
       vote: [],
       categories: [],
       num: 1
@@ -60,6 +65,7 @@ export default {
       axios
         .get(`/api/v1/champions/${this.$route.params.id}`)
         .then(response =>{
+          this.my_champion = response.data.my_champion
           this.schools = response.data.school
           this.vote = response.data.vote
           this.num = this.$route.params.id

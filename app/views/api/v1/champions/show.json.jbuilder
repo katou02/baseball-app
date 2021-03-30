@@ -13,3 +13,5 @@ end
 json.vote do
   json.array! @vote
 end
+
+json.my_champion @my_champion.champion_school.name
