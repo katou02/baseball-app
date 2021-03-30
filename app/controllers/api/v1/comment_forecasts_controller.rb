@@ -10,7 +10,9 @@ class Api::V1::CommentForecastsController < ApiController
 
   def create
     comment = CommentForecast.new(comment_params)
+    @forecast = comment.forecast
     if comment.save
+      @forecast.create_notification_comment_forecast!(current_user, comment.id)
       render json: comment,status: :created
     else
       render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity

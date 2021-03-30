@@ -10,7 +10,9 @@ class Api::V1::CommentAnalysesController < ApiController
 
   def create
     comment = CommentAnalysis.new(comment_params)
+    @analysis = comment.analysis
     if comment.save
+      @analysis.create_notification_comment_analysis!(current_user, comment.id)
       render json: comment,status: :created
     else
       render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity
