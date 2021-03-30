@@ -179,13 +179,6 @@ export default {
 }
 </script>
 <style>
-  .search-area {
-    background-color: white;
-    width: 20%;
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-
   .pagination {
     justify-content: center;
   }
