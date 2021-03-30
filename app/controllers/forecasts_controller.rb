@@ -13,6 +13,7 @@ class ForecastsController < ApplicationController
     @comments = @forecast.comment_forecasts.includes(:user)
     @comment = current_user.comment_forecasts.new
     @num = 1
+    render layout: "vue"
   end
 
   def new

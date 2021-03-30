@@ -11,7 +11,9 @@
     <h2><%= "#{@user.nickname}さんのプロフィール"%><h2>
   </div>
   <%= render "users/stats" %>
-  <%= render "users/follow_form" %>
+  <div id="aaa">
+    <%= render partial: "users/follow_form",locals: {userr: @user} %>
+  </div>
   <%# メッセージ %>
     <% if @user.id != current_user.id %>
     <% if @isRoom == true %>

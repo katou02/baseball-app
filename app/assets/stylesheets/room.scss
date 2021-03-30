@@ -46,19 +46,22 @@
   border-radius: 15px;
   text-align: center;
   &-input {
-    width: 40%;
-    margin: 0 auto;
-    padding-bottom: 2%;
-  }
-  &-form {
-    display: flex;
-    height: 10%;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%);
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+    background-color: #EEFFFF;
   }
   &-btn {
     width: 10%;
     background-color: #38aef0;
     color: white;
     border: none;
+  }
+  &-detail {
+    height: 30px;
   }
 }
 

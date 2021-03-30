@@ -9,7 +9,7 @@
       <%= render partial: "form",locals:{f: f} %>
     <%end%>
       <div class="back">
-        <%= link_to "戻る",analyses_path %>
+        <%= link_to "戻る",analyses_path,data: {"turbolinks" => false} %>
       </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="main-content">
   <div class="wrap">
-    <%= render partial: "slide/slide"%>
+    <!--<%= render partial: "slide/slide"%>
     <div class="center">
       <div class="main-content-btn pt-2">
         <% if user_signed_in? %>
@@ -23,7 +23,7 @@
           <% end %>
         <% end %>
       </div>
-      <!--<%= form_with(url: search_forecasts_path, local: true, method: :get, class: "search mt-5 pb-5") do |form| %>
+      <%= form_with(url: search_forecasts_path, local: true, method: :get, class: "search mt-5 pb-5") do |form| %>
         <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
         <%= form.submit "検索", class: "search-btn" %>
       <% end %>

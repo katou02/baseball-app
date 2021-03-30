@@ -1,16 +1,16 @@
-<div class="main-content">
-  <div class="wrap">
-    <%= render partial: "slide/slide" %>
-    <div class="center">
-      <div class="main-content-btn pt-2">
+<%# <div class="main-content"> %>
+  <%# <div class="wrap"> %>
+    <%# <%= render partial: "slide/slide" %>
+    <%# <div class="center"> %>
+      <!--<div class="main-content-btn pt-2">
         <% if user_signed_in?%>
-          <%= link_to "投稿する", "/tweets/new" ,class: "send_btn"%>
+          <%= link_to "投稿する", "/tweets/new" ,class: "send-btn"%>
         <% end %>
         <% unless current_page?(root_path)%>
           <%= link_to "トップページへ戻る",root_path,class: "return-top" %>
         <%end%>
-      </div>
-      <div class="text-format mt-5 text-primary">
+      </div>-->
+      <!--div class="text-format mt-5 text-primary">
         観た試合の感想をみんなに発信してみましょう！
       </div>
       <div class="text-format mt-5 mb-4 text-warning">
@@ -28,11 +28,11 @@
         <%# <%= form.text_field :keyword, placeholder: "記事を検索する", class: "search-input" %>
         <%# <%= form.submit "検索", class: "search-btn" %>
       <%# <% end %>
-    </div>
-  </div>
+    </div>-->
+  <%# </div> %>
   <%# <div class="article-main">
     <%= render partial: "tweet_show"%>
   <%# </div> %>
-</div>
+<%# </div> %>
 <%# <%= javascript_pack_tag 'tweet' %>
 <%= javascript_pack_tag 'main' %>
