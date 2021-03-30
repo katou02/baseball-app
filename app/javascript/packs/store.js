@@ -16,7 +16,8 @@ const store = new Vuex.Store({
     keyword_ays: '',
     keyword_tour: '',
     keyword_wa: '',
-    keyword_wf: ''
+    keyword_wf: '',
+    keyword_dm: ''
   },
   mutations: {
     increment(state) {
