@@ -17,7 +17,6 @@ class TournamentsController < ApplicationController
   def watch_avg
     @analyses = Analysis.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
     average(@analyses)
-    binding.pry
   end
 
   def watch_fcs
