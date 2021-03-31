@@ -33,6 +33,17 @@ class Api::V1::ChampionsController < ApiController
     end
   end
 
+  def destroy
+    @my_champion = Champion.find_by(user_id: current_user.id,tournament_id: params[:id])
+    if @my_champion.user_id == current_user.id
+      if @my_champion.destroy
+        head :no_content
+      else
+        render json: @my_champion.errors, status: :unprocessable_entity
+      end
+    end
+  end
+
   # def graph(neok)
   #   date = []
   #   a = []

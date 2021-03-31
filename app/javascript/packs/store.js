@@ -24,6 +24,9 @@ const store = new Vuex.Store({
       state.currentPage_t = 1
       state.currentPage_wa = 1
       state.currentPage_wf = 1
+      state.keyword_tour = ''
+      state.keyword_wa = ''
+      state.keyword_wf = ''
     }
   }
 })

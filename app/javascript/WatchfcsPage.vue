@@ -21,10 +21,10 @@
     <div class="text-format mt-5 mb-3 text-warning">
       大会別
     </div>
-    <div class="title pb-5 mt-5">
+    <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'watch_fcs',params: {id: e.id}}" @click.native="fetchForecasts();" class="title-child">
+          <router-link :to="{name: 'watch_fcs',params: {id: e.id}}" @click.native="fetchForecasts();" class="title-child ml-5">
             <i class="fa fa-baseball-ball text-white"></i>
             {{e.category}}
           </router-link>
@@ -104,10 +104,11 @@ export default {
     }
   },
   mounted() {
-    this.currentPage = this.$store.state.currentPage_wf
+    this.keyword = this.$store.state.keyword_wf
     this.fetchForecasts()
     this.fetchCategory()
     if (this.keyword == '') {
+      this.currentPage = this.$store.state.currentPage_wf
     }
     else {
       this.currentPage = 1
@@ -179,13 +180,6 @@ export default {
 }
 </script>
 <style>
-  .search-area {
-    background-color: white;
-    width: 20%;
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-
   .pagination {
     justify-content: center;
   }

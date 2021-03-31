@@ -14,10 +14,10 @@
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
-    <div class="title pb-5 mt-5">
+    <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="fetchTweets()" class="title-child">
+          <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="fetchTweets()" class="title-child ml-5">
             <i class="fa fa-baseball-ball text-white"></i>
             {{e.category}}
           </router-link>
@@ -92,10 +92,11 @@ export default {
     }
   },
   mounted() {
-    this.currentPage = this.$store.state.currentPage_t
+    this.keyword = this.$store.state.keyword_tour
     this.fetchTweets()
     this.fetchCategory()
     if (this.keyword == '') {
+      this.currentPage = this.$store.state.currentPage_t
     }
     else {
       this.currentPage = 1
@@ -168,7 +169,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 .tournament-main{
   background-image: url("../assets/images/sky.jpg");
    background-size: cover;
@@ -176,12 +177,5 @@ export default {
    background-blend-mode:lighten;
    flex: 1 1 100%;
    min-height: 900px;
-}
-
-.search-area {
-  background-color: white;
-  width: 20%;
-  margin: 0 auto;
-  border-radius: 10px;
 }
 </style>

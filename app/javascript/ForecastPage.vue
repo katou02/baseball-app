@@ -17,9 +17,9 @@
       試合予想をしてみましょう！<br><br>
       大会別
     </div>
-    <div class="title pb-5 mt-5">
+    <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">
-        <router-link :to="{name: 'watch_fcs',params: {id: e.id}}"  class="title-child text-white">
+        <router-link :to="{name: 'watch_fcs',params: {id: e.id}}"  class="title-child text-white ml-5">
           <i class="fa fa-baseball-ball text-white"></i> 
           {{e.category}}
         </router-link>

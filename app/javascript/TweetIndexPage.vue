@@ -19,10 +19,10 @@
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
-    <div class="title pb-5 mt-5">
+    <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">
         <!-- <a :href= "'/tournaments/' + e.id" class="title-child text-white"> -->
-        <router-link :to="{name: 'tournament',params: {id: e.id}}"  class="title-child text-white">
+        <router-link :to="{name: 'tournament',params: {id: e.id}}"  class="title-child text-white ml-5">
           <i class="fa fa-baseball-ball text-white"></i> 
           {{e.category}}
         <!-- </a> -->
@@ -176,8 +176,7 @@ export default {
   },
 }
 </script>
-<style scoped>
-
+<style>
 .article-main{
   background-image: url("../assets/images/sky.jpg");
    background-size: cover;

@@ -56,6 +56,18 @@
   font-size: 16px;
 }
 
+.title {
+  padding-bottom: 5%;
+  justify-content: space-evenly;
+  &-child {
+    float: left;
+    background-color: #68ccf9;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 15px;
+  }
+}
+
 @media screen and (max-width: 679px) {
   .analysis-image {
     position: static;
