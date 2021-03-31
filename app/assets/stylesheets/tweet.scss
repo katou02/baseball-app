@@ -78,9 +78,9 @@
     opacity: 0.7;
   }
   &-main {
-    height: 900px;
+    max-height: 1700px;
     width: 100%;
-    background-image: image-url("sky_00010.jpg");
+    background-image: image-url("sky.jpg");
     background-size: cover;
     background-color:rgba(255,255,255,0.8);
     background-blend-mode:lighten;
