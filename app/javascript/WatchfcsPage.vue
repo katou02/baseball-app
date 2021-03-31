@@ -105,6 +105,7 @@ export default {
   },
   mounted() {
     this.currentPage = this.$store.state.currentPage_wf
+    this.keyword = this.$store.state.keyword_wf
     this.fetchForecasts()
     this.fetchCategory()
     if (this.keyword == '') {
