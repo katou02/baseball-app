@@ -14,10 +14,10 @@
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
-    <div class="title pb-5 mt-5">
+    <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="fetchTweets()" class="title-child">
+          <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="fetchTweets()" class="title-child ml-5">
             <i class="fa fa-baseball-ball text-white"></i>
             {{e.category}}
           </router-link>
@@ -168,7 +168,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 .tournament-main{
   background-image: url("../assets/images/sky.jpg");
    background-size: cover;

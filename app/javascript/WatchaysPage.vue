@@ -26,10 +26,10 @@
   <div class="text-format mt-5 mb-3 text-warning">
     大会別
   </div>
-  <div class="title pb-5 mt-5">
+  <div class="title mt-5">
     <div v-for="e in categories" :key="e.id">
       <div v-if="$route.params.id!=e.id">
-        <router-link :to="{name: 'watch_ays',params: {id: e.id}}" @click.native="fetchAnalyses();" class="title-child">
+        <router-link :to="{name: 'watch_ays',params: {id: e.id}}" @click.native="fetchAnalyses();" class="title-child ml-5">
           <i class="fa fa-baseball-ball text-white"></i>
           {{e.category}}
         </router-link>
