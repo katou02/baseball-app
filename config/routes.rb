@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         member do
           get :watch_ays
           get :watch_fcs
+          get :watch_avg
         end
       end
     end
