@@ -176,13 +176,3 @@ export default {
   },
 }
 </script>
-<style>
-.article-main{
-  background-image: url("../assets/images/sky.jpg");
-   background-size: cover;
-   background-color:rgba(255,255,255,0.8);
-   background-blend-mode:lighten;
-   flex: 1 1 100%;
-   height: 100%;
-}
-</style>
