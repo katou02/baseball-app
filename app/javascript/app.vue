@@ -22,6 +22,7 @@ import MapShowPage from './MapShowPage'
 import ChampionPage from './ChampionPage'
 import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
+import Average from './Average'
 
 Vue.use(VueRouter)
 
@@ -102,6 +103,11 @@ const router = new VueRouter({
        path: '/rooms/:id',
        component: RoomShowPage,
        name: 'roomshow'
+     },
+     {
+       path: '/tournaments/:id/watch_avg',
+       component: Average,
+       name: 'average'
      }
   ],
   scrollBehavior(to, from, savedPosition) {
