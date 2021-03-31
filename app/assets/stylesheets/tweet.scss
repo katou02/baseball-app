@@ -98,18 +98,6 @@
   flex: 1 1 100%;
 }
 
-.title {
-  display: flex;
-  justify-content: space-evenly;
-  &-child {
-    float: left;
-    background-color: #68ccf9;
-    font-weight: bold;
-    overflow: hidden;
-    font-size: 15px;
-  }
-}
-
 .sub-title {
   color: black;
   padding-top: 13px;
