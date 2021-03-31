@@ -92,11 +92,11 @@ export default {
     }
   },
   mounted() {
-    this.currentPage = this.$store.state.currentPage_t
     this.keyword = this.$store.state.keyword_tour
     this.fetchTweets()
     this.fetchCategory()
     if (this.keyword == '') {
+      this.currentPage = this.$store.state.currentPage_t
     }
     else {
       this.currentPage = 1
