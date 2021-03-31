@@ -101,6 +101,7 @@ export default {
   },
   mounted() {
     this.currentPage = this.$store.state.currentPage_wa
+    this.keyword = this.$store.state.keyword_wa
     this.fetchAnalyses()
     this.fetchCategory()
     if (this.keyword == '') {
