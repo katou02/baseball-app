@@ -21,11 +21,9 @@
     </div>
     <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">
-        <!-- <a :href= "'/tournaments/' + e.id" class="title-child text-white"> -->
         <router-link :to="{name: 'tournament',params: {id: e.id}}"  class="title-child text-white ml-5">
           <i class="fa fa-baseball-ball text-white"></i> 
           {{e.category}}
-        <!-- </a> -->
         </router-link>
       </div>
     </div>
