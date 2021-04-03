@@ -1,10 +1,10 @@
 <template>
   <div class="average-content">
-    <h3 class="pt-2">戦力分析の平均評価</h3>
+    <h3 class="pt-5 mt-0">戦力分析の平均評価</h3>
     <div class="search-area mt-3">
-      <input type="text" v-model="keyword" placeholder="検索">
+      <input type="text mt-5" v-model="keyword" placeholder="検索">
     </div>
-    <div v-for=" (e,index) in getAverage" :key="e.id">
+    <div v-for=" (e,index) in getLists" :key="e.id">
       <div class="avg-name text-center">{{e.name}}</div>
       <div class="data-title mt-3 ml-5">
         戦力
@@ -26,6 +26,22 @@
         <canvas class="RaderChart"></canvas>
       </div>
     </div>
+    <div class="text-center">
+      <paginate
+        :v-model="currentPage" 
+        :page-count="getPageCount"
+        :click-handler="clickCallback"
+        :page-range="3"
+        :margin-pages="2"
+        :prev-text="'＜'"
+        :next-text="'＞'"
+        :force-page="currentPage"
+        :next-link-class="'page-link'"
+        :prev-link-class="'page-link'"
+        :container-class="'pagination'"
+        :page-link-class="'page-link'">
+      </paginate>
+    </div>
   </div>
 </template>
 <script>
@@ -36,6 +52,8 @@ export default {
       keyword: '',
       data: [],
       chart_data: [],
+      currentPage: 1,
+      parPage: 10
     }
   },
   mounted() {
@@ -59,6 +77,9 @@ export default {
           this.chart_data = [Math.floor(response.data.avgs[num].attack_num),Math.floor(response.data.avgs[num].defense_num),Math.floor(response.data.avgs[num].pitch_num),Math.floor(response.data.avgs[num].total_num),Math.floor(response.data.avgs[num].expectations_num)]
           this.chart(num);
         })
+    },
+    clickCallback(pageNum) {
+      this.currentPage = Number(pageNum);
     },
     chart(index) {
       for (let num = 0; num <= 1; num++) {
@@ -112,6 +133,20 @@ export default {
         }
       }
       return averages
+    },
+    getLists: function() {
+    let current = this.currentPage * this.parPage;
+    let start = current - this.parPage;
+     return this.getAverage.slice(start, current);
+    // return this.$store.state.tweets.slice(start,current)
+    },
+    getPageCount: function() {
+      return Math.ceil(this.getAverage.length / this.parPage);
+    }
+  },
+  watch: {
+    keyword: function(){
+      this.currentPage = 1;
     }
   }
 }
