@@ -15,15 +15,15 @@ class Api::V1::TournamentsController < ApiController
     @analysis_tournament = Analysis.find_by(tournament_id: params[:id])
     render 'watch_ays', formats: 'json', handlers: 'jbuilder'
   end
-
+  
   def watch_fcs
     @forecasts = Forecast.where(tournament_id: params[:id]).includes(:user).order("created_at DESC")
     @category = Category.find(params[:id])
     render 'watch_fcs', formats: 'json', handlers: 'jbuilder'
   end
-
+  
   def watch_avg
-    @analyses = Analysis.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    @analyses = Analysis.where(tournament_id: params[:id]).includes(:user)
     average(@analyses)
     render 'watch_avg', formats: 'json', handlers: 'jbuilder'
   end

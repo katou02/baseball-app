@@ -57,7 +57,7 @@ export default {
         })
     },
     chart(index) {
-      for (let num = 0; num <= 10; num++) {
+      for (let num = 0; num <= 1; num++) {
         let ctx = document.getElementsByClassName("RaderChart")[index];
         let myChart = new Chart(ctx, {
           type: 'radar',
