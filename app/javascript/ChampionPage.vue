@@ -15,9 +15,11 @@
         <button class="delete-btn mt-2" @click="deleteChampion($route.params.id)">投票を取り消す</button>
       </div>
       <div v-else>
-      <a :href= "'/champions/new?tournament_id=' + num" class="btn btn-warning champ-btn">
+      <router-link :to="{name: 'champion-new',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn">
+      <!-- <a :href= "'/champions/new?tournament_id=' + num" class="btn btn-warning champ-btn"> -->
         優勝予想をする
-      </a>
+      <!-- </a> -->
+      </router-link>
       </div>
     </div>
     <div class="text-format mt-5 text-primary">
