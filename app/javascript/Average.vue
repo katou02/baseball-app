@@ -1,7 +1,10 @@
 <template>
   <div class="average-content">
-    <h3>戦力分析の平均評価</h3>
-    <div v-for=" (e,index) in data" :key="e.id">
+    <h3 class="pt-2">戦力分析の平均評価</h3>
+    <div class="search-area mt-3">
+      <input type="text" v-model="keyword" placeholder="検索">
+    </div>
+    <div v-for=" (e,index) in getAverage" :key="e.id">
       <div class="avg-name text-center">{{e.name}}</div>
       <div class="data-title mt-3 ml-5">
         戦力
@@ -30,6 +33,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      keyword: '',
       data: [],
       chart_data: [],
     }
@@ -95,7 +99,19 @@ export default {
             }
           }
         })
+      }
     }
+  },
+  computed: {
+    getAverage: function() {
+      let averages = [];
+      for(let i in this.data) {
+        let avg = this.data[i];
+        if( avg.name.indexOf(this.keyword) !== -1) {
+          averages.push(avg);
+        }
+      }
+      return averages
     }
   }
 }
