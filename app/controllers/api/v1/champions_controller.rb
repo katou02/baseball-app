@@ -19,6 +19,15 @@ class Api::V1::ChampionsController < ApiController
     render 'show', formats: 'json', handlers: 'jbuilder'
   end
 
+  def create
+    champion = Champion.create(champion_params)
+    if champion.save
+      render json: champion, status: :created
+    else
+      render json: { errors: champion.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   def ranking(champions)
     @num = []
     champion_count = champions.group(:champion_school_id).count
@@ -42,6 +51,12 @@ class Api::V1::ChampionsController < ApiController
         render json: @my_champion.errors, status: :unprocessable_entity
       end
     end
+  end
+
+  private
+
+  def champion_params
+    params.require(:champion).permit(:tournament_id,:champion_school_id).merge(user_id: current_user.id)
   end
 
   # def graph(neok)
