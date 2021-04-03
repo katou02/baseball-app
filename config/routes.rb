@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       end
       resources :maps,only:[:index,:show]
       resources :messages,only: :create
-      resources :champions,only:[:show,:destroy]
+      resources :champions,only:[:show,:create,:destroy]
       resources :rooms,only:[:index,:show]
       resources :tournaments,only:[:show] do
         member do

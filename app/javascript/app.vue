@@ -23,6 +23,8 @@ import ChampionPage from './ChampionPage'
 import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
 import Average from './Average'
+import ChampionNewPage from './ChampionNewPage'
+// import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
 
@@ -90,7 +92,7 @@ const router = new VueRouter({
        name: 'mapshow'
      },
      {
-       path: '/champions/:id',
+       path: '/champions/:id(\\d+)',
        component: ChampionPage,
        name: 'champion'
      },
@@ -108,6 +110,11 @@ const router = new VueRouter({
        path: '/tournaments/:id/watch_avg',
        component: Average,
        name: 'average'
+     },
+     {
+       path: '/champions/new',
+       component: ChampionNewPage,
+       name: 'champion-new'
      }
   ],
   scrollBehavior(to, from, savedPosition) {
