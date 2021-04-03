@@ -3,6 +3,7 @@
    <form @submit.prevent="createChampion">
     <div class="form p-4">
       <select v-model="selected">
+        <option disabled value="">優勝予想を選択</option>
         <option v-for="school in schools" :value="school.id" :key="school.id">
           {{ school.name }}
         </option>
@@ -30,7 +31,6 @@ export default {
         .get(`/api/v1/champions/${this.$route.query.tournament_id}.json`)
         .then(response => {
           this.schools = response.data.select_schools
-          this.selected = response.data.select_schools[0].name
         })
     },
     createChampion() {
