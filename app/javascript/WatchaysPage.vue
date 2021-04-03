@@ -14,7 +14,8 @@
   <div class="go-avg text-center mt-4">
     <div class="avg-ays">
       みんなの分析を元にした平均評価を見る<br>
-      <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a>
+      <router-link :to="{name: 'average',params: {id: $route.params.id}}" class="ays-avg">平均評価を見る</router-link>
+      <!-- <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a> -->
     </div>
     <div class="homedown">
       甲子園でお馴染みのふるさと紹介<br>
