@@ -1,12 +1,15 @@
 <template>
   <div class="contents row">
+   <form @submit.prevent="createChampion">
     <div class="form p-4">
       <select v-model="selected">
-        <option v-for="school in schools" :value="school.name" :key="school.id">
+        <option v-for="school in schools" :value="school.id" :key="school.id">
           {{ school.name }}
         </option>
       </select>
+      <button type="submit">投票</button>
     </div>
+   </form>
   </div>
 </template>
 <script>
@@ -28,6 +31,13 @@ export default {
         .then(response => {
           this.schools = response.data.select_schools
           this.selected = response.data.select_schools[0].name
+        })
+    },
+    createChampion() {
+      axios
+        .post('/api/v1/champions',{champion_school_id: this.selected,tournament_id: this.$route.query.tournament_id})
+        .then(response => {
+          this.$router.push({ name: 'champion', params: { id: this.$route.query.tournament_id } });
         })
     }
   }
