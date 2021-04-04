@@ -21,7 +21,6 @@ class Api::V1::AnalysesController < ApiController
 
   def create
     analysis = Analysis.create(analysis_params)
-    # binding.pry
     if analysis.save
       render json: analysis, status: :created
     else
@@ -52,5 +51,11 @@ class Api::V1::AnalysesController < ApiController
 
   def search_analysis
     @analysis = Analysis.find(params[:id])
+  end
+
+  private
+
+  def analysis_params
+    params.require(:analysis).permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations).merge(user_id: current_user.id)
   end
 end
