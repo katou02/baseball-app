@@ -10,6 +10,16 @@ class Api::V1::TweetsController < ApiController
     @tweets = Tweet.all.order(created_at: "DESC")
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
+
+  def new
+    @roots = Category.roots
+    root_id = params[:root_id]
+    child_id = params[:child_id]
+    @children = root_id ? @roots.find(root_id).children : []
+    @grand_children = child_id ? @children.find(child_id).children : []
+    render 'new', formats: 'json', handlers: 'jbuilder'
+  end
+
   
   def show
     @current_user = current_user
