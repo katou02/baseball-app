@@ -10,6 +10,25 @@ class Api::V1::AnalysesController < ApiController
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 
+  def new
+    @roots = Category.roots
+    root_id = params[:root_id]
+    child_id = params[:child_id]
+    @children = root_id ? @roots.find(root_id).children : []
+    @grand_children = child_id ? @children.find(child_id).children : []
+    render 'new', formats: 'json', handlers: 'jbuilder'
+  end
+
+  def create
+    analysis = Analysis.create(analysis_params)
+    # binding.pry
+    if analysis.save
+      render json: analysis, status: :created
+    else
+      render json: { errors: analysis.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   def show
     @current_user = current_user
     # @analysis = Analysis.find(params[:id])
