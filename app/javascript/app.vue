@@ -25,6 +25,7 @@ import RoomShowPage from './RoomShowPage'
 import Average from './Average'
 import ChampionNewPage from './ChampionNewPage'
 import TweetNewPage from './TweetNewPage'
+import AnalysisNewPage from './AnalysisNewPage'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -56,6 +57,11 @@ const router = new VueRouter({
        path: '/analyses',
        component: AnalysisPage,
        name: 'analysis'
+     },
+     {
+       path: '/analyses/new',
+       component: AnalysisNewPage,
+       name: 'analysis-new'
      },
     {
       path: '/analyses/:id(\\d+)',
