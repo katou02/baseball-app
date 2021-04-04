@@ -1,12 +1,13 @@
 <template>
   <div class="contents row mt-2">
+    <h2>試合記事の投稿</h2>
     <form @submit.prevent="createTweet">
       <div class="select-from">
         <div class="containe_r p-4">
           <div class="select-tournament">
-            <label>大会</label><br>
+            <label>大会名</label><br>
             <select @change="findChildren" v-model="tournament">
-              <option value="">大会を選択</option>
+              <option disabled value="">大会を選択</option>
               <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
             </select>
           </div>
@@ -39,8 +40,8 @@
             </select>
           </div>
         </div>
-        <input v-model="title" type="text" rows="2" cols="30" class="game_title">
-        <textarea v-model="text" type="text" rows="2" cols="30"></textarea>
+        <input v-model="title" type="text" rows="2" cols="30" placeholder="タイトル 30字以内" class="game_title">
+        <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
         <button type="submit" class="game_record" >投稿する</button>
       </div>
     </form>
