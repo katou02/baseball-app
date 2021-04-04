@@ -1,5 +1,88 @@
 <template>
   <div class="contents row mt-2">
-  
+    <div class="select-from">
+      <div class="containe_r p-4">
+        <div class="select-tournament">
+          <label>大会</label><br>
+          <select @change="findChildren" v-model="tournament">
+            <option disabled value="">大会を選択</option>
+            <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
+          </select>
+        </div>
+        <div class="select-school mt-3">
+          <label>高校A</label><br>
+          <select @change="findGrandChildren">
+            <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+          </select>
+        </div>
+        <div class="select-school mt-3">
+          <label>高校B</label><br>
+          <select @change="findGrandChildren">
+            <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+          </select>
+        </div>
+        <div class="school-a_score mt-3">
+          <label>高校A 得点</label><br>
+          <select v-model="school_a_score">
+            <option v-for="school_a_score in 50" :value="school_a_score" :key="school_a_score.id">{{ school_a_score }}</option>
+          </select>
+        </div>
+        <div class="school-b_score mt-3">
+          <label>高校B 得点</label><br>
+          <select v-model="school_b_score">
+            <option v-for="school_b_score in 50" :value="school_b_score" :key="school_b_score.id">{{ school_b_score }}</option>
+          </select>
+        </div>
+      </div>
+      <input v-model="title" type="text" rows="2" cols="30" class="game_title">
+      <textarea v-model="text" type="text" rows="2" cols="30"></textarea>
+    </div>
   </div>
 </template>
+<script>
+import axios from 'axios';
+export default {
+  data: function() {
+    return {
+      tournament: '',
+      roots: [],
+      children: [],
+      grandChildren: [],
+      root_id: '',
+      child_id: '',
+      school_a_score: '1',
+      school_b_score: '1',
+      title: '',
+      text: ''
+    }
+  },
+  mounted() {
+    axios.get('/api/v1/tweets/new.json')
+    .then(response => (this.roots = response.data.roots,
+                       this.children = response.data.children,
+                       this.grandChildren = response.data.grandChildren))
+  },
+  methods: {
+    findChildren: function(event) {
+      let rootValue = event.target.value;
+      return this.root_id = rootValue;
+    },
+    findGrandChildren: function(event) {
+      let childValue = event.target.value;
+      return this.child_id = childValue;
+    }
+  },
+  watch: {
+    root_id: function() {
+      if (this.root_id !== "" ) {
+        axios.get('/api/v1/tweets/new.json', { params: { root_id: this.root_id } }).then(response => (this.children = response.data.children))
+      }
+    },
+    child_id: function() {
+      if (this.child_id !== "" ) {
+        axios.get('/api/v1/tweets/new.json', { params: { root_id: this.root_id, child_id: this.child_id } }).then(response => (this.grandChildren = response.data.grandChildren))
+      }
+    }
+  }
+}
+</script>
