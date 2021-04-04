@@ -24,6 +24,7 @@ import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
 import Average from './Average'
 import ChampionNewPage from './ChampionNewPage'
+import TweetNewPage from './TweetNewPage'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -40,6 +41,11 @@ const router = new VueRouter({
        path: '/tweets/:id(\\d+)',
        component: TweetShowPage,
        name: 'tweetshow'
+     },
+     {
+       path: '/tweets/new',
+       component: TweetNewPage,
+       name: 'tweet-new'
      },
      {
        path: '/tournaments/:id',
