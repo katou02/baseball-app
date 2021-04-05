@@ -1,5 +1,5 @@
 class Api::V1::AnalysesController < ApiController
-  before_action :search_analysis,only:[:show,:destroy]
+  before_action :search_analysis,only:[:show,:destroy,:edit,:update]
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404
@@ -25,6 +25,20 @@ class Api::V1::AnalysesController < ApiController
       render json: analysis, status: :created
     else
       render json: { errors: analysis.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @schools = Category.where(ancestry: @analysis.tournament_id)
+  end
+  
+  def update
+    if @analysis.user_id == current_user.id || current_user.admin
+      if @analysis.update(update_params) 
+        head :no_content
+      else
+        render json: { errors: @analysis.errors.full_messages }, status: :unprocessable_entity
+      end
     end
   end
 
@@ -57,5 +71,9 @@ class Api::V1::AnalysesController < ApiController
 
   def analysis_params
     params.require(:analysis).permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:analysis).permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations)
   end
 end

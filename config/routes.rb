@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :api,{format: 'json'} do
     namespace :v1 do
-      resources :tweets,only:[:index,:show,:destroy,:new,:create,:edit,:update] do
+      resources :tweets do
         collection do
           get :category
         end
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
         resources :likes, only: [:index, :create, :destroy]
       end
       resources :users,only:[:index]
-      resources :analyses,only:[:index,:show,:destroy,:new,:create] do
+      resources :analyses,only:[:index,:show,:destroy,:new,:create,:edit,:update] do
         resources :comment_analyses,only: [:index,:create,:destroy]
       end
       resources :forecasts,only:[:index,:show,:destroy,:new,:create] do
