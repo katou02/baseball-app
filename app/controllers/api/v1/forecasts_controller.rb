@@ -1,5 +1,5 @@
 class Api::V1::ForecastsController < ApiController
-  before_action :search_forecast,only:[:show,:destroy]
+  before_action :search_forecast,only:[:show,:destroy,:edit,:update]
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404
@@ -28,6 +28,20 @@ class Api::V1::ForecastsController < ApiController
     end
   end
 
+  def edit
+    @schools = Category.where(ancestry: @forecast.tournament_id)
+  end
+  
+  def update
+    if @forecast.user_id == current_user.id || current_user.admin
+      if @forecast.update(update_params) 
+        head :no_content
+      else
+        render json: { errors: @forecast.errors.full_messages }, status: :unprocessable_entity
+      end
+    end
+  end
+
   def show
     @current_user = current_user
     @user = User.find_by(id: @forecast.user.id)
@@ -53,5 +67,9 @@ class Api::V1::ForecastsController < ApiController
 
   def forecast_params
     params.require(:forecast).permit(:text,:round,:win_school_id,:lose_school_id,:tournament_id,:probability).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:forecast).permit(:text,:round,:win_school_id,:lose_school_id,:tournament_id,:probability)
   end
 end
