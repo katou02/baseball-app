@@ -1,5 +1,6 @@
 <template>
   <div class="contents row mt-2">
+    <router-link :to="{name: 'forecast'}" class="return-btn">戻る</router-link>
     <h2>試合記事の投稿</h2>
     <form @submit.prevent="createForecast">
       <div class="form p-4">
