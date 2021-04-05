@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :analyses do
         resources :comment_analyses,only: [:index,:create,:destroy]
       end
-      resources :forecasts,only:[:index,:show,:destroy,:new,:create,:edit,:update] do
+      resources :forecasts do
         resources :comment_forecasts,only: [:index,:create,:destroy]
       end
       resources :maps,only:[:index,:show]
