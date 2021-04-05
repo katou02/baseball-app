@@ -36,7 +36,7 @@
       <div v-for="e in getLists" :key="e.id">
         <div class="forecast mt-5">
           <!-- <a :href= "'forecasts/' + e.id"> -->
-          <router-link :to="{name: 'forecastshow',params: {id: e.id}}">
+          <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
             <div class="school-fcs">
             <div class="fcs-icon">
               <i class="fa fa-balance-scale text-white"></i>

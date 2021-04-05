@@ -95,7 +95,7 @@ const router = new VueRouter({
     {
       path: '/forecasts/:id(\\d+)',
       component: ForecastShowPage,
-      name: 'forecastshow'
+      name: 'forecast-show'
      },
      {
        path: '/forecasts/:id/edit',
