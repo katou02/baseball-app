@@ -42,7 +42,6 @@ class Api::V1::TweetsController < ApiController
   end
 
   def edit
-    @tweet = Tweet.find(params[:id])
     @schools = Category.where(ancestry: @tweet.tournament_id)
   end
   
@@ -51,7 +50,7 @@ class Api::V1::TweetsController < ApiController
       if @tweet.update(update_params) 
         head :no_content
       else
-        render json: { errors: @employee.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: @tweet.errors.full_messages }, status: :unprocessable_entity
       end
     end
   end
