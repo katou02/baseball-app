@@ -1,5 +1,5 @@
 class Api::V1::TweetsController < ApiController
-  before_action :search_tweet,only:[:show,:destroy]
+  before_action :search_tweet,only:[:show,:destroy,:edit,:update]
 
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
@@ -40,6 +40,19 @@ class Api::V1::TweetsController < ApiController
     # @like = Like.new
     # @like = Like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
   end
+
+  def edit
+  end
+  
+  def update
+    if @tweet.user_id == current_user.id || current_user.admin
+      if @tweet.update(update_params) 
+        head :no_content
+      else
+        render json: { errors: @employee.errors.full_messages }, status: :unprocessable_entity
+      end
+    end
+  end
   
   def destroy
     if @tweet.user_id == current_user.id
@@ -70,5 +83,9 @@ class Api::V1::TweetsController < ApiController
   
   def tweet_params
     params.require(:tweet).permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:tweet).permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id)
   end
 end
