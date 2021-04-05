@@ -24,6 +24,11 @@
           </select>
         </ul>
       </div>
+      <div class="round mt-3">
+        <select v-model="round_initial">
+          <option v-for="round in round_list" :value="round" :key="round.id">{{ round.round }}</option>
+        </select>
+      </div>
     </div>
   </div>
 </template>
@@ -39,7 +44,16 @@ export default {
       root_id: '',
       child_id: '',
       win_school: '',
-      lose_school: ''
+      lose_school: '',
+      round_initial: {round: '1回戦'},
+      round_list: [
+        {round: '1回戦'},
+        {round: '2回戦'},
+        {round: '3回戦'},
+        {round: '準々決勝'},
+        {round: '準決勝'},
+        {round: '決勝'}
+      ]
     }
   },
   mounted() {
