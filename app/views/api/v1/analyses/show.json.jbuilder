@@ -2,6 +2,7 @@ json.text @analysis.text
 json.tournament @analysis.tournament.name
 json.nickname @analysis.user.nickname
 json.school @analysis.school.name
+json.school_id @analysis.school.id
 json.title @analysis.title
 json.id @analysis.id
 json.user_id @analysis.user.id
