@@ -26,6 +26,7 @@ import Average from './Average'
 import ChampionNewPage from './ChampionNewPage'
 import TweetNewPage from './TweetNewPage'
 import AnalysisNewPage from './AnalysisNewPage'
+import ForecastNewPage from './ForecastNewPage'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -82,6 +83,11 @@ const router = new VueRouter({
       path: '/forecasts/:id(\\d+)',
       component: ForecastShowPage,
       name: 'forecastshow'
+     },
+     {
+       path: '/forecasts/new',
+       component: ForecastNewPage,
+       name: 'forecast-new'
      },
      {
        path: '/tournaments/:id/watch_fcs',
