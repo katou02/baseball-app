@@ -40,7 +40,7 @@
     <div v-for="e in getLists" :key="e.id">
       <div class="analysis mt-5">
         <!-- <a :href= "'analyses/' + e.id"> -->
-        <router-link :to="{name: 'analysisshow',params: {id: e.id}}">
+        <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
           <div class="school_ays-name">
             {{e.school}}
           </div>

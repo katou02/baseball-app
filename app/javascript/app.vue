@@ -28,7 +28,7 @@ import TweetNewPage from './TweetNewPage'
 import AnalysisNewPage from './AnalysisNewPage'
 import ForecastNewPage from './ForecastNewPage'
 import TweetEditPage from './TweetEditPage'
-import AnalysisEditPage from './AnalysisEditPage'
+import AnalysisEdit from './AnalysisEdit'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -73,13 +73,13 @@ const router = new VueRouter({
      },
      {
        path: '/analyses/:id/edit',
-       component: AnalysisEditPage,
+       component: AnalysisEdit,
        name: 'analysis-edit'
      },
     {
       path: '/analyses/:id(\\d+)',
       component: AnalysisShowPage,
-      name: 'analysisshow'
+      name: 'analysis-show'
      },
      {
        path: '/tournaments/:id/watch_ays',
