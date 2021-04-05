@@ -10,7 +10,8 @@
       </div>
     </div>
     <div class="main-content-btn">
-      <a :href= "'/forecasts/new'" class="send-btn">投稿する</a>
+      <!-- <a :href= "'/forecasts/new'" class="send-btn">投稿する</a> -->
+      <router-link :to="{name: 'forecast-new'}" class="send-btn">投稿する</router-link>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-warning">
