@@ -42,6 +42,8 @@ class Api::V1::TweetsController < ApiController
   end
 
   def edit
+    @tweet = Tweet.find(params[:id])
+    @schools = Category.where(ancestry: @tweet.tournament_id)
   end
   
   def update
