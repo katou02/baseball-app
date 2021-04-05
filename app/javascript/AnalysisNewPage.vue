@@ -54,7 +54,6 @@
             </select>
           </div>
         </div>
-        <input v-model="title" type="text" rows="2" cols="30" placeholder="タイトル 30字以内" class="game_title">
         <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
         <button type="submit" class="game_record" >投稿する</button>
       </div>
