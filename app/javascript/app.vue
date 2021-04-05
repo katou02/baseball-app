@@ -27,6 +27,7 @@ import ChampionNewPage from './ChampionNewPage'
 import TweetNewPage from './TweetNewPage'
 import AnalysisNewPage from './AnalysisNewPage'
 import ForecastNewPage from './ForecastNewPage'
+import TweetEditPage from './TweetEditPage'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -48,6 +49,11 @@ const router = new VueRouter({
        path: '/tweets/new',
        component: TweetNewPage,
        name: 'tweet-new'
+     },
+     {
+       path: '/tweets/:id/edit',
+       component: TweetEditPage,
+       name: 'tweet-edit'
      },
      {
        path: '/tournaments/:id',
