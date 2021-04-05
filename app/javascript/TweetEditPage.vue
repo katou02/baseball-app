@@ -1,13 +1,14 @@
 <template>
   <div class="contents row mt-2">
-    <h2>試合記事の投稿</h2>
-    <form @submit.prevent="createTweet">
+    <h2>試合記事の編集</h2>
+    <form @submit.prevent="editTweet">
       <div class="select-from">
+        {{tournament}}
         <div class="containe_r p-4">
           <div class="select-school mt-3">
             <ul>
               <label>高校A</label><br>
-              <select @change="findGrandChildren" v-model="school_a">
+              <select v-model="school_a">
                 <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
              </select>
             </ul>
@@ -15,7 +16,7 @@
           <div class="select-school mt-3">
             <ul>
               <label>高校B</label><br>
-              <select @change="findGrandChildren" v-model="school_b">
+              <select v-model="school_b">
                 <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
               </select>
             </ul>
@@ -35,37 +36,62 @@
         </div>
         <input v-model="title" type="text" rows="2" cols="30" placeholder="タイトル 30字以内" class="game_title">
         <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
-        <button type="submit" class="game_record" >投稿する</button>
+        <button type="submit" class="game_record" >編集する</button>
       </div>
     </form>
   </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
   data: function() {
     return {
       tournament: '',
-      roots: [],
       children: [],
       grandChildren: [],
-      root_id: '',
+      // root_id: '',
       child_id: '',
-      school_a_score: '1',
-      school_b_score: '1',
+      school_a_score: '',
+      school_b_score: '',
       school_a: '',
       school_b: '',
       title: '',
       text: '',
-      a: ''
+      errors: ''
     }
   },
   mounted() {
     axios
+      .get(`/api/v1/tweets/${this.$route.params.id}/edit.json`)
+      .then(response =>{
+        this.children = response.data;
+      })
+    axios
       .get(`/api/v1/tweets/${this.$route.params.id}.json`)
       .then(response =>{
-        this.school_a = response.data.school_a;
-        this.school_a_score = 3;
+        this.school_a = response.data.school_a_id;
+        this.school_b = response.data.school_b_id;
+        this.school_a_score = response.data.school_a_score
+        this.school_b_score = response.data.school_b_score
+        this.title = response.data.title
+        this.text = response.data.text
+        this.tournament = response.data.tournament
       })
+  },
+  methods: {
+    editTweet() {
+      axios
+        .patch(`/api/v1/tweets/${this.$route.params.id}`,{text: this.text,title_info: this.title,school_a_score: this.school_a_score,school_b_score: this.school_b_score,school_a_id: this.school_a,school_b_id: this.school_b})
+        .then(response => {
+          this.$router.push({ name: 'tweetshow',params: {id: this.$route.params.id}});
+        })
+        .catch(error => {
+          console.error(error);
+          if (error.response.data && error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
+        });
+    }
   }
 }
 </script>

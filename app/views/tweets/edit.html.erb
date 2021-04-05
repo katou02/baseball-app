@@ -1,4 +1,4 @@
-  <div class="contents row pt-3">
+  <!--<div class="contents row pt-3">
     <%= form_with(model: @tweet,local: true) do |f|%>
       <%= @tweet.tournament.name%>
     <%# <%=f.select :tournament_id, options_for_select( @category_children_array.map{|c| [c[:name], c[:id]]},selected: @tweet.tournament_id),{}, { class: "parent_category_box", id: "parent_category_edit"}%>
@@ -9,5 +9,5 @@
     <%= render partial: "form",locals: {f: f} %>
     <% end %>
     <%= link_to "戻る","/tweets/#{@tweet.id}",class:"back"%>
-  </div>
+  </div>-->
   <%= javascript_pack_tag 'main' %>
