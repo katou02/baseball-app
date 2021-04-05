@@ -4,7 +4,8 @@
       <div class="d-flex">
         <div v-if="analysis.user_id==analysis.current_user">
           <button class="delete-btn" @click="deleteAnalysis(analysis.id)">記事を削除する</button>
-          <a :href= "'/analyses/' + analysis.id + '/edit'" class="edit-article">記事を編集する</a>
+          <!-- <a :href= "'/analyses/' + analysis.id + '/edit'" class="edit-article">記事を編集する</a> -->
+          <router-link :to="{name: 'analysis-edit',params: {id: analysis.id}}" class="edit-article">記事を編集する</router-link>
         </div>
         <router-link :to="{name: 'analysis'}" class="return-btn">記事一覧へ戻る</router-link>
       </div>
