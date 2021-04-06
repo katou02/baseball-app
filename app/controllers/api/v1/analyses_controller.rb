@@ -24,7 +24,7 @@ class Api::V1::AnalysesController < ApiController
     if analysis.save
       render json: analysis, status: :created
     else
-      render json: { errors: analysis.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: analysis.errors.keys.map { |key| [key, analysis.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
 
