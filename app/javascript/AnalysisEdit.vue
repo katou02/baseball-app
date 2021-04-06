@@ -1,7 +1,7 @@
 <template>
   <div class="contents row">
     <form @submit.prevent="editAnalysis">
-    　{{tournament}}
+      {{tournament}}
       <div class="select-from">
         <div class="select-school mt-3">
           <ul>
@@ -45,7 +45,9 @@
           </div>
         </div>
         <input v-model="title" type="text" rows="2" cols="30" placeholder="タイトル 30字以内" class="game_title">
+        <p v-if="!!errors['title']" class="error" style="color: red;">{{ errors['title'][0]}}</p>
         <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
+        <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
         <button type="submit" class="game_record" >投稿する</button>
       </div>
     </form>
@@ -70,7 +72,8 @@ export default {
       comprehensive: '',
       expectation: '',
       title: '',
-      text: ''
+      text: '',
+      errors: ''
     }
   },
   mounted() {
