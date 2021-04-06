@@ -35,7 +35,9 @@
           </div>
         </div>
         <input v-model="title" type="text" rows="2" cols="30" placeholder="タイトル 30字以内" class="game_title">
+        <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
         <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
+        <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
         <button type="submit" class="game_record" >編集する</button>
       </div>
     </form>
@@ -86,10 +88,10 @@ export default {
           this.$router.push({ name: 'tweetshow',params: {id: this.$route.params.id}});
         })
         .catch(error => {
-          console.error(error);
           if (error.response.data && error.response.data.errors) {
             this.errors = error.response.data.errors;
           }
+          console.log(this.errors)
         });
     }
   }
