@@ -26,7 +26,8 @@ class Api::V1::TweetsController < ApiController
     if tweet.save
       render json: tweet, status: :created
     else
-      render json: { errors: tweet.errors.full_messages }, status: :unprocessable_entity
+      # render json: { errors: tweet.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: tweet.errors.keys.map { |key| [key, tweet.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
   
