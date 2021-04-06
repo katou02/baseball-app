@@ -37,7 +37,7 @@ class Api::V1::ForecastsController < ApiController
       if @forecast.update(update_params) 
         head :no_content
       else
-        render json: { errors: @forecast.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: @forecast.errors.keys.map { |key| [key, @forecast.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
       end
     end
   end

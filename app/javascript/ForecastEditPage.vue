@@ -34,6 +34,7 @@
         </div>
       </div>
       <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
+      <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
       <button type="submit" class="game_record" >投稿する</button>
     </form>
   </div>
@@ -54,6 +55,7 @@ export default {
       text: '',
       title: '',
       round: '',
+      errors: '',
       round_list: [
         {round: '1回戦'},
         {round: '2回戦'},
