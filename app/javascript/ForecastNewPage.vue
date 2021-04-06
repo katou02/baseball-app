@@ -11,6 +11,7 @@
             <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
           </select>
         </div>
+        <p v-if="!!errors['tournament']" class="error" style="color: red;">{{ errors['tournament'][0]}}</p>
         <div class="win-school mt-3">
           <ul>
             <label>勝利予想</label><br>
@@ -40,8 +41,8 @@
           </select>
         </div>
       </div>
-      <input v-model="title" type="text" rows="2" cols="30" placeholder="タイトル 30字以内" class="game_title">
       <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
+      <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
       <button type="submit" class="game_record" >投稿する</button>
     </form>
   </div>
@@ -61,6 +62,7 @@ export default {
       lose_school: '',
       text: '',
       title: '',
+      errors: '',
       round: '1回戦',
       round_list: [
         {round: '1回戦'},
@@ -102,6 +104,11 @@ export default {
         .then(response => {
           this.$router.push({ name: 'forecast'});
         })
+        .catch(error => {
+          if (error.response.data && error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
+        });
     },
     active() {
       let school = document.querySelectorAll('ul')
