@@ -45,8 +45,8 @@
         <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
         <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
         <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
-        <input type="file" label="画像" accept="image/png, image/jpeg, image/bmp">
-        <button type="submit" class="game_record" >投稿する</button>
+        <input type="file" label="画像" @change="setImage" accept="image/png, image/jpeg, image/bmp">
+        <button type="submit" class="game_record">投稿する</button>
       </div>
     </form>
   </div>
@@ -69,6 +69,7 @@ export default {
       title: '',
       text: '',
       errors: '',
+      image: ''
     }
   },
   mounted() {
@@ -88,8 +89,23 @@ export default {
       return this.child_id = childValue;
     },
     createTweet() {
+      let formData = new FormData();
+      formData.append("title_info", this.title);
+      formData.append("text", this.text);
+      formData.append("school_a_score",this.school_a_score);
+      formData.append("school_b_score",this.school_b_score);
+      formData.append("tournament_id",this.tournament);
+      formData.append("school_a_id",this.school_a);
+      formData.append("school_b_id",this.school_b);
+    const config = {
+      headers: {"content-type": "multipart/form-data",}
+    };
+      if (this.image !== null) {
+        formData.append("image", this.image);
+      }
       axios
-        .post('/api/v1/tweets',{text: this.text,title_info: this.title,school_a_score: this.school_a_score,school_b_score: this.school_b_score,tournament_id: this.tournament,school_a_id: this.school_a,school_b_id: this.school_b})
+        // .post('/api/v1/tweets',{image: this.image,text: this.text,title_info: this.title,school_a_score: this.school_a_score,school_b_score: this.school_b_score,tournament_id: this.tournament,school_a_id: this.school_a,school_b_id: this.school_b})
+        .post('/api/v1/tweets',formData,config)
         .then(response => {
           this.$router.push({ name: 'tweet'});
         })
@@ -103,6 +119,10 @@ export default {
       let school = document.querySelectorAll('ul')
       school[0].classList.add('active');
       school[1].classList.add('active');
+    },
+    setImage(e){
+      e.preventDefault();
+      this.image = e.target.files[0];
     }
   },
   watch: {

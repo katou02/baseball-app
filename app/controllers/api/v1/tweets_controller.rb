@@ -84,7 +84,7 @@ class Api::V1::TweetsController < ApiController
   private
   
   def tweet_params
-    params.require(:tweet).permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id).merge(user_id: current_user.id)
+    params.permit(:image,:text,:title_info,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id).merge(user_id: current_user.id)
   end
 
   def update_params
