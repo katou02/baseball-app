@@ -1,6 +1,7 @@
 <template>
   <div class="main-content">
-    <div id="slide">
+    <Header></Header>
+    <!--<div id="slide">
       <div class="header">
         <transition name="fade">
         <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
@@ -8,7 +9,7 @@
         </div>
         </transition>
       </div>
-    </div>
+    </div>-->
     <div class="main-content-btn">
       <a :href= "'/tweets/new'" class="send-btn">投稿する</a>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
@@ -76,8 +77,12 @@
 </template>
 <script>
 import axios from 'axios';
+import Header from './components/Header.vue'
 
 export default {
+  components: {
+    Header
+  },
   data() {
     return {
       keyword: this.$store.state.keyword,
@@ -85,20 +90,20 @@ export default {
       categories: [],
       currentPage: this.$store.state.currentPage,
       parPage: 10,
-      current_slide: 0,
-      slides: [
-        {img: "/images/81573810.jpeg"},
-        {img: "/images/ball.jpg"},
-        {img: "/images/thumb_ground.jpg"},
-        {img: "/images/thumb_front.jpg"},
-        {img: "/images/mykosien.JPG"}
-      ],
+      // current_slide: 0,
+      // slides: [
+      //   {img: "/images/81573810.jpeg"},
+      //   {img: "/images/ball.jpg"},
+      //   {img: "/images/thumb_ground.jpg"},
+      //   {img: "/images/thumb_front.jpg"},
+      //   {img: "/images/mykosien.JPG"}
+      // ],
     }
   },
   mounted() {
-    setInterval(() => {
-        this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
-      }, 3000)
+    // setInterval(() => {
+    //     this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
+    //   }, 3000)
     this.fetchTweets()
     this.fetchCategory()
     if (this.keyword == '') {
