@@ -45,7 +45,11 @@
         <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
         <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
         <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
-        <input type="file" label="画像" @change="setImage" accept="image/png, image/jpeg, image/bmp">
+        <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+        <div v-if="url">
+          <img :src="url" width="320px" height="300px">
+          <button type="submit" @click="deleteImage">削除</button>
+        </div>
         <button type="submit" class="game_record">投稿する</button>
       </div>
     </form>
@@ -69,7 +73,8 @@ export default {
       title: '',
       text: '',
       errors: '',
-      image: ''
+      image: '',
+      url: ''
     }
   },
   mounted() {
@@ -123,6 +128,13 @@ export default {
     setImage(e){
       e.preventDefault();
       this.image = e.target.files[0];
+      const file = this.$refs.preview.files[0];
+      this.url = URL.createObjectURL(file)
+      this.$refs.preview.value = "";
+    },
+    deleteImage(){
+      this.url = '';
+      URL.revokeObjectURL(this.url);
     }
   },
   watch: {
