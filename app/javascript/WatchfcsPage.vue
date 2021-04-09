@@ -1,8 +1,9 @@
 <template>
   <div class="main-content">
+    <Header></Header>
     <div class="main-content-btn">
-      <router-link :to= "'/forecasts'" class="return-top">分析一覧へ戻る</router-link>
       <a :href= "'/forecasts/new'" class="send-btn">投稿する</a>
+      <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
@@ -21,10 +22,14 @@
     <div class="text-format mt-5 mb-3 text-warning">
       大会別
     </div>
-    <div class="title mt-5">
+    <div class="title mt-5 ml-5">
+      <router-link :to= "'/forecasts'" class="title-child text-white">
+        全ての予想一覧
+        <i class="fa fa-baseball-ball text-white"></i>
+      </router-link>
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'watch_fcs',params: {id: e.id}}" @click.native="fetchForecasts();" class="title-child ml-5">
+          <router-link :to="{name: 'watch_fcs',params: {id: e.id}}" @click.native="fetchForecasts();" class="title-child text-white ml-5">
             <i class="fa fa-baseball-ball text-white"></i>
             {{e.category}}
           </router-link>
@@ -91,8 +96,12 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
+import axios from 'axios'
+import Header from './components/Header.vue'
 export default {
+  components: {
+    Header
+  },
   data() {
     return {
       keyword: this.$store.state.keyword_wf,
