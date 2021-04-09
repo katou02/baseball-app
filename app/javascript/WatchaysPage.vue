@@ -2,8 +2,8 @@
 <div class="main-content">
   <Header></Header>
   <div class="main-content-btn">
-    <router-link :to= "'/analyses'" class="return-top">分析一覧へ戻る</router-link>
     <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
+    <a :href= "'/'" class="return-top">トップページへ戻る</a>
   </div>
   <div class="text-format mt-5 text-primary">
     <div v-for="e in categories" :key="e.id">
