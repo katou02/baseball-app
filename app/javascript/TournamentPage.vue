@@ -1,8 +1,9 @@
 <template>
   <div class="main-content">
+    <Header></Header>
     <div class="main-content-btn">
-    <router-link :to= "'/tweets'" class="return-top">記事一覧へ戻る</router-link>
     <a :href= "'/tweets/new'" class="send-btn">投稿する</a>
+    <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
@@ -14,10 +15,14 @@
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
-    <div class="title mt-5">
+    <div class="title mt-5 ml-5">
+      <router-link :to= "'/tweets'" class="title-child text-white">
+        全ての試合記事
+        <i class="fa fa-baseball-ball text-white"></i>
+      </router-link>
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="fetchTweets()" class="title-child ml-5">
+          <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="fetchTweets()" class="title-child text-white ml-5">
             <i class="fa fa-baseball-ball text-white"></i>
             {{e.category}}
           </router-link>
@@ -81,7 +86,11 @@
 </template>
 <script>
 import axios from 'axios'
+import Header from './components/Header.vue'
 export default {
+  components: {
+    Header
+  },
   data() {
     return {
       keyword: this.$store.state.keyword_tour,
