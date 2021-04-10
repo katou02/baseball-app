@@ -30,6 +30,7 @@ import ForecastNewPage from './ForecastNewPage'
 import TweetEditPage from './TweetEditPage'
 import AnalysisEdit from './AnalysisEdit'
 import ForecastEditPage from './ForecastEditPage'
+import USerShowPage from './UserShowPage'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -115,6 +116,11 @@ const router = new VueRouter({
      {
        path: '/users',
        component: UserPage,
+       name: 'user'
+     },
+     {
+       path: '/users/:id',
+       component: USerShowPage,
        name: 'user'
      },
      {
