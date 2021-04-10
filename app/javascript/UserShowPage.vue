@@ -24,6 +24,93 @@
         <p class="text-primary font-weight-bold">自己紹介</p>
         <p style="white-space:pre-wrap;">{{user.text}}</p>
       </div>
+      <v-tabs>
+        <v-tab href="#tab-1">投稿した試合記事</v-tab>
+        <v-tab href="#tab-2">投稿した戦力分析</v-tab>
+        <v-tab href="#tab-3">投稿した試合予想</v-tab>
+        <v-tab-item value="tab-1" transition="fade-transition">
+          <div class="my-post-list">
+            <div v-for="e in my_tweets" :key="e.id">
+              <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
+                <div class="my-article mt-5">
+                  <div class="article-title">
+                    {{e.school_a}}vs{{e.school_b}}
+                  </div>
+                  <div class="article-image">
+                    <i class="fa fa-baseball-ball text-white"></i>
+                  </div>
+                  <div class="sub-title">
+                    {{e.title_info}}
+                  </div>
+                  <div class="name">
+                    <span>投稿者</span>
+                    {{e.nickname}}
+                  </div>
+                  <div class="tweets_at">
+                    {{e.time}}
+                  </div>
+                </div>
+              </router-link>
+            </div>
+          </div>
+        </v-tab-item>
+        <v-tab-item value="tab-2" transition="fade-transition">
+          <div class="my-post-list">
+            <div v-for="e in my_analyses" :key="e.id">
+              <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
+                <div class="my-analysis mt-5">
+                  <div class="school_ays-name">
+                    {{e.school}}
+                  </div>
+                  <div class="analysis-image">
+                    <i class="fa fa-search"></i>
+                  </div>
+                  <div class="title_ays text-center">
+                    {{e.title}}
+                  </div>
+                  <div class="name">
+                    <span>投稿者</span>
+                    {{e.nickname}}
+                  </div>
+                  <div class="analyses_at">
+                    {{e.time}}
+                  </div>
+                </div>
+              </router-link>
+            </div>
+          </div>
+        </v-tab-item>
+        <v-tab-item value="tab-3" transition="fade-transition">
+          <div class="my-post-list">
+            <div v-for="e in my_forecasts" :key="e.id">
+              <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
+                <div class="my-forecast mt-5">
+                  <div class="school-fcs">
+                    <div class="fcs-icon">
+                      <i class="fa fa-balance-scale text-white"></i>
+                    </div>
+                    <div class="win-school_fcs">
+                      勝利予想<br>
+                      {{e.win_school}}
+                    </div>
+                    <div class="lose-school_fcs">
+                      敗退予想<br>
+                      {{e.lose_school}}
+                    </div>
+                  </div>
+                  <div class="name">
+                    <span>投稿者</span>
+                    {{e.nickname}}
+                  </div>
+                  <div class="tweets_at">
+                    {{e.time}}
+                  </div>
+                </div>
+              </router-link>
+            </div>
+          </div>
+        </v-tab-item>
+      </v-tabs>
     </div>
   </div>
 </template>
@@ -34,8 +121,9 @@ export default {
     return {
       tab: null,
       user: [],
-      tabs: ['投稿した試合記事','投稿した戦力分析','投稿した試合予想','いいねした試合記事'],
-       text: 'Lorem ipsum dolor sit amet'
+      my_tweets: [],
+      my_analyses: [],
+      my_forecasts: []
     }
   },
   mounted() {
@@ -47,6 +135,9 @@ export default {
         .get(`/api/v1/users/${this.$route.params.id}.json`)
         .then(response =>{
           this.user = response.data
+          this.my_tweets = response.data.tweet
+          this.my_analyses = response.data.analysis
+          this.my_forecasts = response.data.forecast
         })
     }
   }

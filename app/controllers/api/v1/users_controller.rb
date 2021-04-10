@@ -14,10 +14,11 @@ class Api::V1::UsersController < ApiController
     @likes = Like.where(user_id: @user.id)
     @myEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
-    @my_tweets = @user.tweets.page(params[:tweet_page]).per(5).order("created_at DESC")
-    @my_analyses = @user.analyses.page(params[:analysis_page]).per(5).order("created_at DESC")
-    @my_forecasts = @user.forecasts.page(params[:forecast_page]).per(5).order("created_at DESC")
+    @my_tweets = @user.tweets.order("created_at DESC")
+    @my_analyses = @user.analyses.order("created_at DESC")
+    @my_forecasts = @user.forecasts.order("created_at DESC")
     @likes = @user.likes.page(params[:page]).per(5).order("created_at DESC")
+    # binding.pry
     if @user.id == current_user.id
     else
       @myEntry.each do |cu|
