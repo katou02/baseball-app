@@ -182,10 +182,6 @@ export default {
           this.my_forecasts = response.data.forecast
           this.follow_count = response.data.follow_count
           this.follower_count = response.data.follower_count
-
-          if(this.user.room_id){
-            this.$router.push({name: 'roomshow',params: {id: this.user.room_id}})
-          }
         })
     },
     followUser() {
@@ -207,8 +203,7 @@ export default {
         .post('/api/v1/rooms',{user_id: this.user.id})
         .then(res => {
           this.fetchUser()
-          // console.log(this.user.room_id)
-          // this.$router.push({name: 'roomshow',params: {id: this.user.room_id}})
+          this.$router.push({name: 'room'})
         })
     }
   }

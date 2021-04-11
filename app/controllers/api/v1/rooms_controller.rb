@@ -7,7 +7,7 @@ class Api::V1::RoomsController < ApiController
     @currentEntries.each do | entry |
       myRoomIds << entry.room.id
     end
-    @anotherEntries = Entry.where(room_id: myRoomIds).where.not(user_id: current_user.id)
+    @anotherEntries = Entry.where(room_id: myRoomIds).where.not(user_id: current_user.id).order(id: "DESC")
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 

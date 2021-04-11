@@ -146,7 +146,7 @@ const router = new VueRouter({
      {
        path: '/rooms/:id',
        component: RoomShowPage,
-       name: 'roomshow'
+       name: 'room-show'
      },
      {
        path: '/tournaments/:id/watch_avg',
