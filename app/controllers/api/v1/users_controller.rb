@@ -9,6 +9,8 @@ class Api::V1::UsersController < ApiController
   end
 
   def show
+    @follower = Relationship.where(following_id: params[:id])
+    @follow = Relationship.where(follower_id: params[:id])
     @user = User.find(params[:id])
     @user_id = @user.id
     @likes = Like.where(user_id: @user.id)
@@ -18,7 +20,6 @@ class Api::V1::UsersController < ApiController
     @my_analyses = @user.analyses.order("created_at DESC")
     @my_forecasts = @user.forecasts.order("created_at DESC")
     @likes = @user.likes.page(params[:page]).per(5).order("created_at DESC")
-    # binding.pry
     if @user.id == current_user.id
     else
       @myEntry.each do |cu|

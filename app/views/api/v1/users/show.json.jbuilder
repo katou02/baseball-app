@@ -3,6 +3,10 @@ json.nickname @user.nickname
 json.image @user.image
 json.prefecture @user.prefecture
 json.text @user.text
+json.follow @follow
+json.follower @follower
+json.follow_count @follow.count
+json.follower_count @follower.count
 
 json.set! :tweet do
   json.array! @my_tweets do |tweet|

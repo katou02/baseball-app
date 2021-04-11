@@ -3,26 +3,40 @@
     <a :href= "'/'" class="return-top">トップページへ戻る</a>
     <router-link :to="{name: 'user'}" class="users-btn">ユーザー一覧</router-link>
     <p class="text-center">{{user.id}}</p>
-
+    <div class="myname mt-5">
+      <h2>{{user.nickname}}さんのプロフィール</h2>
+    </div>
+    <!-- フォロー -->
+    <div class="stats mb-5">
+      <i class="fas fa-user-friends text-info"></i>
+      <strong id="following" class="stat">
+        {{follow_count}}
+      </strong>
+      フォロー
+      <i class="fas fa-user-friends text-info"></i>
+      <strong id="followers" class="stat">
+        {{follower_count}}
+      </strong>
+      フォロワー
+    </div>
+    <!-- フォローボタン -->
+    <div class="follow_form mt-2">
      <v-btn
         v-if="follow"
-        rounded
-        class="font-weight-bold follow"
+        min-width="135px"
+        class="unfollow-btn mx-auto"
         @click="unfollowUser"
       >フォロー中
      </v-btn>
       <v-btn
         v-else
-        min-width="125px"
-        rounded
-        outlined
-        color="blue"
+        min-width="135px"
+        class="follow-btn"
         @click="followUser"
       >フォロー
       </v-btn>
-    <div class="myname mt-5">
-      <h2>{{user.nickname}}さんのプロフィール</h2>
     </div>
+    <!-- プロフィール -->
     <div class="myprof">
       <div class="user-info">
         <div v-if="user.image.url"> 
@@ -40,6 +54,7 @@
         <p class="text-primary font-weight-bold">自己紹介</p>
         <p style="white-space:pre-wrap;">{{user.text}}</p>
       </div>
+      <!-- 投稿した -->
       <v-tabs>
         <v-tab href="#tab-1">投稿した試合記事</v-tab>
         <v-tab href="#tab-2">投稿した戦力分析</v-tab>
@@ -142,15 +157,11 @@ export default {
       my_tweets: [],
       my_analyses: [],
       my_forecasts: [],
+      follow_count: [],
+      follower_count: [],
       follow: false,
     }
   },
-  // props: {
-  //   user: {
-  //     type: Object,
-  //     required: true,
-  //   },
-  // },
   mounted() {
     this.fetchUser()
   },
@@ -163,6 +174,8 @@ export default {
           this.my_tweets = response.data.tweet
           this.my_analyses = response.data.analysis
           this.my_forecasts = response.data.forecast
+          this.follow_count = response.data.follow_count
+          this.follower_count = response.data.follower_count
         })
     },
     followUser() {
@@ -170,16 +183,24 @@ export default {
         .post('/api/v1/relationships', {following_id: this.user.id})
         .then(res =>{
           this.follow = true
+          this.fetchUser()
         })
     },
     unfollowUser() {
       axios
         .delete(`/api/v1/relationships/${this.$route.params.id}`,{params: {id: this.$route.params.id}})
+        .then(res =>{
+          this.follow = false
+          this.fetchUser()
+        })
     }
   }
 }
 </script>
 <style scoped>
+.follow_form {
+  text-align: center;
+}
 .v-leave-active {
   position: absolute;
 }
