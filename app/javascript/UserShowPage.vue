@@ -20,6 +20,7 @@
       フォロワー
     </div>
     <!-- フォローボタン -->
+    <div v-if="user.current_user.id !== user.id">
     <div class="follow_form mt-2">
      <v-btn
         v-if="user.check"
@@ -36,8 +37,9 @@
       >フォロー
       </v-btn>
     </div>
+    </div>
     <!-- プロフィール -->
-    <div class="myprof">
+    <div class="myprof mt-5">
       <div class="user-info">
         <div v-if="user.image.url"> 
           <img :src= user.image.url class="user-icon mt-1 mb-5">
