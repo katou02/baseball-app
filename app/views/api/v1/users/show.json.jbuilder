@@ -8,6 +8,7 @@ json.follower @follower
 json.follow_count @follow.count
 json.follower_count @follower.count
 json.check @check
+json.current_user @current
 
 json.set! :tweet do
   json.array! @my_tweets do |tweet|
