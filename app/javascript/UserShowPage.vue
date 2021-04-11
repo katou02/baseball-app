@@ -22,7 +22,7 @@
     <!-- フォローボタン -->
     <div class="follow_form mt-2">
      <v-btn
-        v-if="follow"
+        v-if="user.check"
         min-width="135px"
         class="unfollow-btn mx-auto"
         @click="unfollowUser"
@@ -159,7 +159,6 @@ export default {
       my_forecasts: [],
       follow_count: [],
       follower_count: [],
-      follow: false,
     }
   },
   mounted() {
@@ -182,7 +181,6 @@ export default {
       axios
         .post('/api/v1/relationships', {following_id: this.user.id})
         .then(res =>{
-          this.follow = true
           this.fetchUser()
         })
     },
@@ -190,7 +188,6 @@ export default {
       axios
         .delete(`/api/v1/relationships/${this.$route.params.id}`,{params: {id: this.$route.params.id}})
         .then(res =>{
-          this.follow = false
           this.fetchUser()
         })
     }
