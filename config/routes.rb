@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :forecasts do
         resources :comment_forecasts,only: [:index,:create,:destroy]
       end
+      resources :relationships, only: [:create,:destroy]
       resources :maps,only:[:index,:show]
       resources :messages,only: :create
       resources :champions,only:[:show,:create,:destroy]

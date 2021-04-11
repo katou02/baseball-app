@@ -4,6 +4,22 @@
     <router-link :to="{name: 'user'}" class="users-btn">ユーザー一覧</router-link>
     <p class="text-center">{{user.id}}</p>
 
+     <v-btn
+        v-if="follow"
+        rounded
+        class="font-weight-bold follow"
+        @click="unfollowUser"
+      >フォロー中
+     </v-btn>
+      <v-btn
+        v-else
+        min-width="125px"
+        rounded
+        outlined
+        color="blue"
+        @click="followUser"
+      >フォロー
+      </v-btn>
     <div class="myname mt-5">
       <h2>{{user.nickname}}さんのプロフィール</h2>
     </div>
@@ -28,7 +44,7 @@
         <v-tab href="#tab-1">投稿した試合記事</v-tab>
         <v-tab href="#tab-2">投稿した戦力分析</v-tab>
         <v-tab href="#tab-3">投稿した試合予想</v-tab>
-        <v-tab-item value="tab-1" transition="fade-transition">
+        <v-tab-item value="tab-1" transition="slide-fade">
           <div class="my-post-list">
             <div v-for="e in my_tweets" :key="e.id">
               <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
@@ -54,7 +70,8 @@
             </div>
           </div>
         </v-tab-item>
-        <v-tab-item value="tab-2" transition="fade-transition">
+        <v-tab-item value="tab-2">
+          <transition>
           <div class="my-post-list">
             <div v-for="e in my_analyses" :key="e.id">
               <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
@@ -79,6 +96,7 @@
               </router-link>
             </div>
           </div>
+          </transition>
         </v-tab-item>
         <v-tab-item value="tab-3" transition="fade-transition">
           <div class="my-post-list">
@@ -123,9 +141,16 @@ export default {
       user: [],
       my_tweets: [],
       my_analyses: [],
-      my_forecasts: []
+      my_forecasts: [],
+      follow: false,
     }
   },
+  // props: {
+  //   user: {
+  //     type: Object,
+  //     required: true,
+  //   },
+  // },
   mounted() {
     this.fetchUser()
   },
@@ -139,7 +164,29 @@ export default {
           this.my_analyses = response.data.analysis
           this.my_forecasts = response.data.forecast
         })
+    },
+    followUser() {
+      axios
+        .post('/api/v1/relationships', {following_id: this.user.id})
+        .then(res =>{
+          this.follow = true
+        })
+    },
+    unfollowUser() {
+      axios
+        .delete(`/api/v1/relationships/${this.$route.params.id}`,{params: {id: this.$route.params.id}})
     }
   }
 }
 </script>
+<style scoped>
+.v-leave-active {
+  position: absolute;
+}
+.v-enter {
+  transform: translateX(-100%);
+}
+.v-leave-to {
+  transform: translateX(100%);
+}
+</style>
