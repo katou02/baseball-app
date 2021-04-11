@@ -21,22 +21,27 @@
     </div>
     <!-- フォローボタン -->
     <div v-if="user.current_user.id !== user.id">
-    <div class="follow_form mt-2">
-     <v-btn
-        v-if="user.check"
-        min-width="135px"
-        class="unfollow-btn mx-auto"
-        @click="unfollowUser"
-      >フォロー中
-     </v-btn>
+      <div class="follow_form mt-2">
       <v-btn
-        v-else
-        min-width="135px"
-        class="follow-btn"
-        @click="followUser"
-      >フォロー
+          v-if="user.check"
+          min-width="135px"
+          class="unfollow-btn mx-auto"
+          @click="unfollowUser"
+        >フォロー中
       </v-btn>
-    </div>
+        <v-btn
+          v-else
+          min-width="135px"
+          class="follow-btn"
+          @click="followUser"
+        >フォロー
+        </v-btn>
+      </div>
+      <div v-if="user.check && user.room == null">
+        <form @submit.prevent="createRoom">
+          <button type="submit" class="text-white bg-primary" >DMをはじめる</button>
+        </form>
+      </div>
     </div>
     <!-- プロフィール -->
     <div class="myprof mt-5">
@@ -177,6 +182,10 @@ export default {
           this.my_forecasts = response.data.forecast
           this.follow_count = response.data.follow_count
           this.follower_count = response.data.follower_count
+
+          if(this.user.room_id){
+            this.$router.push({name: 'roomshow',params: {id: this.user.room_id}})
+          }
         })
     },
     followUser() {
@@ -191,6 +200,15 @@ export default {
         .delete(`/api/v1/relationships/${this.$route.params.id}`,{params: {id: this.$route.params.id}})
         .then(res =>{
           this.fetchUser()
+        })
+    },
+    createRoom() {
+      axios
+        .post('/api/v1/rooms',{user_id: this.user.id})
+        .then(res => {
+          this.fetchUser()
+          // console.log(this.user.room_id)
+          // this.$router.push({name: 'roomshow',params: {id: this.user.room_id}})
         })
     }
   }
