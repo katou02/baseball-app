@@ -8,6 +8,20 @@ class Api::V1::UsersController < ApiController
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if (@user.id == current_user.id || current_user.admin) && current_user.nickname!="ゲスト"
+      @user.update(user_params)
+      head :no_content
+    else
+      render json: { errors: @user.errors.keys.map { |key| [key, @user.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
+    end
+  end
+
   def show
     @follower = Relationship.where(following_id: params[:id])
     @follow = Relationship.where(follower_id: params[:id])
@@ -38,5 +52,10 @@ class Api::V1::UsersController < ApiController
       end
     end
     render 'show', formats: 'json', handlers: 'jbuilder'
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:text,:prefecture,:image)
   end
 end
