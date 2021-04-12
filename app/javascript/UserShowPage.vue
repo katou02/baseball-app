@@ -18,10 +18,12 @@
         フォロー
       </router-link>
       <i class="fas fa-user-friends text-info"></i>
-      <strong id="followers" class="stat">
-        {{follower_count}}
-      </strong>
-      フォロワー
+      <router-link :to="{name: 'follower',params: {id: $route.params.id}}">
+        <strong id="followers" class="stat">
+          {{follower_count}}
+        </strong>
+        フォロワー
+      </router-link>
     </div>
     <!-- フォローボタン -->
     <div v-if="user.current_user.id !== user.id">
