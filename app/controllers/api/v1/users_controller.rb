@@ -56,6 +56,6 @@ class Api::V1::UsersController < ApiController
 
   private
   def user_params
-    params.require(:user).permit(:text,:prefecture,:image)
+    params.permit(:text,:prefecture,:image)
   end
 end

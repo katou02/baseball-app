@@ -1,8 +1,10 @@
 <template>
   <div class="mypage-content pt-3">
-    <a :href= "'/'" class="return-top">トップページへ戻る</a>
+    <a :href= "'/'" class="return-top-mypage">トップページへ戻る</a>
     <router-link :to="{name: 'user'}" class="users-btn">ユーザー一覧</router-link>
-    <p class="text-center">{{user.id}}</p>
+    <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit-article">編集する</router-link>
+    <router-link :to="{name: 'room'}" class="dm-btn">DM</router-link>
+    <p class="text-center">ID:{{user.id}}</p>
     <div class="myname mt-5">
       <h2>{{user.nickname}}さんのプロフィール</h2>
     </div>
