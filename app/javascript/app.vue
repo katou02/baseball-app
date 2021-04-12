@@ -30,7 +30,8 @@ import ForecastNewPage from './ForecastNewPage'
 import TweetEditPage from './TweetEditPage'
 import AnalysisEdit from './AnalysisEdit'
 import ForecastEditPage from './ForecastEditPage'
-import USerShowPage from './UserShowPage'
+import UserShowPage from './UserShowPage'
+import UserEditPage from './UserEditPage'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -120,8 +121,13 @@ const router = new VueRouter({
      },
      {
        path: '/users/:id',
-       component: USerShowPage,
+       component: UserShowPage,
        name: 'user'
+     },
+     {
+       path: '/users/:id/edit',
+       component: UserEditPage,
+       name: 'user-edit'
      },
      {
        path: '/maps',
