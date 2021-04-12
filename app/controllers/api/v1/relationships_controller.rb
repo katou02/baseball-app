@@ -5,7 +5,7 @@ class Api::V1::RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:relationship][:following_id])
     @login_user.follow!(@user)
-    # @user.create_notification_follow!(current_user)
+    @user.create_notification_follow!(@login_user)
   end
   
   def destroy
