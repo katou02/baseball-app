@@ -122,7 +122,7 @@ const router = new VueRouter({
      {
        path: '/users/:id',
        component: UserShowPage,
-       name: 'user'
+       name: 'user-show'
      },
      {
        path: '/users/:id/edit',
