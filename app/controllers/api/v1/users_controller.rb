@@ -54,6 +54,18 @@ class Api::V1::UsersController < ApiController
     render 'show', formats: 'json', handlers: 'jbuilder'
   end
 
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.followings.order("created_at DESC")
+    render 'follow', formats: 'json', handlers: 'jbuilder'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers.order("created_at DESC")
+    render 'follow', formats: 'json', handlers: 'jbuilder'
+  end
+
   private
   def user_params
     params.permit(:text,:prefecture,:image)
