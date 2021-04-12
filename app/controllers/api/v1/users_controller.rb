@@ -63,7 +63,7 @@ class Api::V1::UsersController < ApiController
   def followers
     @user  = User.find(params[:id])
     @users = @user.followers.order("created_at DESC")
-    render 'follow', formats: 'json', handlers: 'jbuilder'
+    render 'follower', formats: 'json', handlers: 'jbuilder'
   end
 
   private

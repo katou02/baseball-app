@@ -33,6 +33,7 @@ import ForecastEditPage from './ForecastEditPage'
 import UserShowPage from './UserShowPage'
 import UserEditPage from './UserEditPage'
 import FollowingPage from './FollowingPage'
+import FollowerPage from './FollowerPage'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -134,6 +135,11 @@ const router = new VueRouter({
        path: '/users/:id/following',
        component: FollowingPage,
        name: 'following'
+     },
+     {
+       path: '/users/:id/followers',
+       component: FollowerPage,
+       name: 'follower'
      },
      {
        path: '/maps',
