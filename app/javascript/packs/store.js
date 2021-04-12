@@ -11,9 +11,11 @@ const store = new Vuex.Store({
     currentPage_wa: 1,
     currentPage_wf: 1,
     currentPage_follow: 1,
+    currentPage_follower: 1,
     tweets: [],
     keyword: '',
     keyword_follow: '',
+    keyword_follower: '',
     keyword_fcs: '',
     keyword_ays: '',
     keyword_tour: '',
@@ -26,11 +28,13 @@ const store = new Vuex.Store({
       state.currentPage_t = 1
       state.currentPage_wa = 1
       state.currentPage_follow = 1
+      state.currentPage_follower = 1
       state.currentPage_wf = 1
       state.keyword_tour = ''
       state.keyword_wa = ''
       state.keyword_wf = ''
       state.keyword_follow = ''
+      state.keyword_follower = ''
     }
   }
 })
