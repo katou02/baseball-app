@@ -11,10 +11,12 @@
     <!-- フォロー -->
     <div class="stats mb-5">
       <i class="fas fa-user-friends text-info"></i>
-      <strong id="following" class="stat">
-        {{follow_count}}
-      </strong>
-      フォロー
+      <router-link :to="{name: 'following',params: {id: $route.params.id}}">
+        <strong id="following" class="stat">
+          {{follow_count}}
+        </strong>
+        フォロー
+      </router-link>
       <i class="fas fa-user-friends text-info"></i>
       <strong id="followers" class="stat">
         {{follower_count}}
