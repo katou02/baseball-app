@@ -27,6 +27,8 @@ class Api::V1::RoomsController < ApiController
       redirect_back(fallback_location: root_path)
     end
     @member=@entries.where.not(user_id: current_user.id)
+    @user = User.find_by(id: @member[0].user_id)
+    @check = current_user.following?(@user)
     @current_user = User.find_by(id: current_user.id)
     render 'show', formats: 'json', handlers: 'jbuilder'
   end
