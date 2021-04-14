@@ -68,11 +68,15 @@
         <p style="white-space:pre-wrap;">{{user.text}}</p>
       </div>
       <!-- 投稿した -->
-      <v-tabs>
+      <v-tabs v-model="tab">
+        <v-tabs-slider color="yellow"></v-tabs-slider>
         <v-tab href="#tab-1">投稿した試合記事</v-tab>
         <v-tab href="#tab-2">投稿した戦力分析</v-tab>
         <v-tab href="#tab-3">投稿した試合予想</v-tab>
-        <v-tab-item value="tab-1" transition="slide-fade">
+      </v-tabs>
+      <v-tabs-items v-model="tab">
+
+        <v-tab-item value="tab-1">
           <div class="my-post-list">
             <div v-for="e in my_tweets" :key="e.id">
               <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
@@ -126,7 +130,7 @@
           </div>
           </transition>
         </v-tab-item>
-        <v-tab-item value="tab-3" transition="fade-transition">
+        <v-tab-item value="tab-3">
           <div class="my-post-list">
             <div v-for="e in my_forecasts" :key="e.id">
               <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
@@ -156,7 +160,7 @@
             </div>
           </div>
         </v-tab-item>
-      </v-tabs>
+      </v-tabs-items>
     </div>
   </div>
 </template>

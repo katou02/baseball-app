@@ -38,8 +38,8 @@ class Api::V1::TweetsController < ApiController
     @comments = @tweet.comments.includes(:user)
     @comment = current_user.comments.new 
     render 'show',formats: 'json',handlers: 'jbuilder'
-    # @like = Like.new
-    # @like = Like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
+    @like = Like.new
+    @like = Like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
   end
 
   def edit
