@@ -43,12 +43,9 @@
     </div>
     <img :src= tweet.tweet_image.url class="image">
     <!-- いいね -->
-    <!-- <div v-if="isLiked" @click="deleteLike()">
-      いいねを取り消す {{ count }}
+    <div @click="registerLike()">
+      いいね
     </div>
-    <div v-else @click="registerLike()">
-      いいねする {{ count }}
-    </div> -->
     <!-- コメント -->
     <div class="comment-content_tweet">
       <div class="text-format mt-0 mb-4 text-warning">
@@ -157,6 +154,12 @@ export default {
         this.fetchComments();
       })
     },
+    registerLike() {
+      axios.post(`/api/v1/tweets/${this.$route.params.id}/likes`)
+      .then(response =>{
+        alert('uuu')
+      })
+    }
 //いいね
     // fetchLikeByTweetId: async function() {
     //     const res = await axios.get(`/api/v1/tweets/${this.$route.params.id}/likes`)
