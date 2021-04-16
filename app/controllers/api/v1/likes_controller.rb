@@ -7,8 +7,6 @@ class Api::V1::LikesController < ApiController
 
   def create
     current_user.likes.create(likes_params)
-    # @like = current_user.likes.create(tweet_id: 85)
-    # head :created
   end
 
   def destroy
