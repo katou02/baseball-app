@@ -37,17 +37,26 @@
       <i class="fas fa-pen text-info"></i>
       試合評・感想<br><br>
     </div>
-
     <div class=show-text>
        <p style="white-space:pre-wrap;">{{tweet.text}}</p>
     </div>
     <img :src= tweet.tweet_image.url class="image">
     <!-- いいね -->
-    <div @click="registerLike()">
-      いいね
+    <div v-if="like">
+      <div class="d-flex align-center ml-2">
+        <button class="good" @click="deleteLike()">
+          <i class="fas fa-heart" style="color:white;"></i>
+          いいね取り消し
+        </button> 
+      </div>
     </div>
-    <div @click="deleteLike">
-      取り消し
+    <div v-else>
+      <div class="d-flex align-center ml-2">
+        <button class="good" @click="registerLike()">
+          <i class="fas fa-heart" style="color:white;"></i>
+          いいね！
+        </button> 
+      </div>
     </div>
     <!-- コメント -->
     <div class="comment-content_tweet">
@@ -115,7 +124,7 @@ export default {
         .get(`/api/v1/tweets/${this.$route.params.id}.json`)
         .then(response =>{
           this.tweet = response.data
-          this.like = response.data.like.id
+          this.like = response.data.like
         })
     },
     deleteTweet(id) {
@@ -155,13 +164,27 @@ export default {
       axios
         .post(`/api/v1/tweets/${this.$route.params.id}/likes`)
         .then(response =>{
-          alert('uuu')
+          this.fetchTweets()
+          this.fetchComments()
         })
     },
     deleteLike() {
       axios
-        .delete(`/api/v1/tweets/${this.$route.params.id}/likes/${this.like}`)
+        .delete(`/api/v1/tweets/${this.$route.params.id}/likes/${this.like.id}`)
+        .then(response =>{
+          this.fetchTweets()
+          this.fetchComments()
+        })
     }
   }
 }
 </script>
+<style scoped>
+.good {
+  background-color: #e91e63;
+  border-color: #e91e63;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+</style>
