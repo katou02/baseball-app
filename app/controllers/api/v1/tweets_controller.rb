@@ -38,7 +38,7 @@ class Api::V1::TweetsController < ApiController
     @comments = @tweet.comments.includes(:user)
     @comment = current_user.comments.new 
     @like = Like.find_by(tweet_id: params[:id], user_id: current_user.id)
-    @likes = Like.all
+    @likes = Like.where(tweet_id: params[:id])
     render 'show',formats: 'json',handlers: 'jbuilder'
   end
 
