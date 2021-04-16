@@ -78,7 +78,7 @@
 
         <v-tab-item value="tab-1">
           <div class="my-post-list">
-            <div v-for="e in my_tweets" :key="e.id">
+            <div v-for="e in listTweets" :key="e.id">
               <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
                 <div class="my-article mt-5">
                   <div class="article-title">
@@ -101,11 +101,18 @@
               </router-link>
             </div>
           </div>
+          <button
+              class="list-item-button"
+              v-if="(listTweets.length - count_t) >= 0"
+              type="button"
+              @click="isMore_t"
+          >
+              もっと見る
+          </button>
         </v-tab-item>
         <v-tab-item value="tab-2">
-          <transition>
           <div class="my-post-list">
-            <div v-for="e in my_analyses" :key="e.id">
+            <div v-for="e in listAnalyses" :key="e.id">
               <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
                 <div class="my-analysis mt-5">
                   <div class="school_ays-name">
@@ -128,11 +135,18 @@
               </router-link>
             </div>
           </div>
-          </transition>
+          <button
+              class="list-item-button"
+              v-if="(listAnalyses.length - count_a) >= 0"
+              type="button"
+              @click="isMore_a"
+          >
+              もっと見る
+          </button>
         </v-tab-item>
         <v-tab-item value="tab-3">
           <div class="my-post-list">
-            <div v-for="e in my_forecasts" :key="e.id">
+            <div v-for="e in listForecasts" :key="e.id">
               <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
                 <div class="my-forecast mt-5">
                   <div class="school-fcs">
@@ -160,6 +174,14 @@
             </div>
           </div>
         </v-tab-item>
+          <button
+              class="list-item-button"
+              v-if="(listForecasts.length - count_f) >= 0"
+              type="button"
+              @click="isMore_f"
+          >
+              もっと見る
+          </button>
       </v-tabs-items>
     </div>
   </div>
@@ -176,10 +198,27 @@ export default {
       my_forecasts: [],
       follow_count: [],
       follower_count: [],
+      count_t: 10,
+      count_a: 10,
+      count_f: 10
     }
   },
   mounted() {
     this.fetchUser()
+  },
+  computed: {
+    listTweets() {
+      const list = this.my_tweets
+      return list.slice(0, this.count_t)
+    },
+    listAnalyses() {
+      const list = this.my_analyses
+      return list.slice(0, this.count_a)
+    },
+    listForecasts() {
+      const list = this.my_forecasts
+      return list.slice(0, this.count_f)
+    }
   },
   methods: {
     fetchUser() {
@@ -215,6 +254,15 @@ export default {
           this.fetchUser()
           this.$router.push({name: 'room'})
         })
+    },
+    isMore_t() {
+      this.count_t += 10
+    },
+    isMore_a() {
+      this.count_a += 10
+    },
+    isMore_f() {
+      this.count_f += 10
     }
   }
 }
@@ -231,5 +279,18 @@ export default {
 }
 .v-leave-to {
   transform: translateX(100%);
+}
+
+.list-item-button {
+    display: block;
+    font-size: 18px;
+    color: rgb(99, 113, 233);
+    margin: 50px auto;
+    border: 0;
+    background: none;
+    transition: .5s;
+}
+.list-item-button:hover {
+    color: rgb(246, 81, 81);
 }
 </style>
