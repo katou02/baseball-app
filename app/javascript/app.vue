@@ -34,8 +34,10 @@ import UserShowPage from './UserShowPage'
 import UserEditPage from './UserEditPage'
 import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
+import VueStar from 'vue-star'
 // import { component } from 'vue/types/umd'
 
+Vue.component('VueStar', VueStar);
 Vue.use(VueRouter)
 
 const router = new VueRouter({
