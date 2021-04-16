@@ -48,6 +48,7 @@
           <i class="fas fa-heart" style="color:white;"></i>
           いいね取り消し
         </button> 
+        <span class="like-count">{{count}}</span>
       </div>
     </div>
     <div v-else>
@@ -56,6 +57,7 @@
           <i class="fas fa-heart" style="color:white;"></i>
           いいね！
         </button> 
+        <span class="like-count">{{count}}</span>
       </div>
     </div>
     <!-- コメント -->
@@ -100,7 +102,8 @@ export default {
       text: "",
       tweet: [],
       errors: '',
-      like: ''
+      like: '',
+      count: ''
     }
   },
   mounted() {
@@ -125,6 +128,7 @@ export default {
         .then(response =>{
           this.tweet = response.data
           this.like = response.data.like
+          this.count = response.data.like_count
         })
     },
     deleteTweet(id) {
@@ -186,5 +190,10 @@ export default {
   color: white;
   font-weight: bold;
   border-radius: 5px;
+}
+
+.like-count {
+  padding: 5px 7px;
+  color: #2196f3;
 }
 </style>
