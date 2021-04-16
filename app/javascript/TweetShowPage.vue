@@ -46,6 +46,9 @@
     <div @click="registerLike()">
       いいね
     </div>
+    <div @click="deleteLike">
+      取り消し
+    </div>
     <!-- コメント -->
     <div class="comment-content_tweet">
       <div class="text-format mt-0 mb-4 text-warning">
@@ -80,17 +83,15 @@
 </template>
 <script>
 import axios from 'axios'
-// import { csrfToken } from 'rails-ujs'
-// axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken()
 export default {
-  // props: ['userId', 'tweetId'],
   data() {
     return {
       likeList: [] ,
       comment: "",
       text: "",
       tweet: [],
-      errors: ''
+      errors: '',
+      like: ''
     }
   },
   mounted() {
@@ -107,18 +108,14 @@ export default {
   //     return Boolean(this.findLikeId())
   //   }
   // },
-  // created: function() {
-  //   this.fetchLikeByTweetId().then(result => {
-  //     this.likeList = result
-  //   })
-  // },
   //いいね
   methods: {
     fetchTweets() {
       axios
         .get(`/api/v1/tweets/${this.$route.params.id}.json`)
         .then(response =>{
-          this.tweet = response.data;
+          this.tweet = response.data
+          this.like = response.data.like.id
         })
     },
     deleteTweet(id) {
@@ -155,36 +152,16 @@ export default {
       })
     },
     registerLike() {
-      axios.post(`/api/v1/tweets/${this.$route.params.id}/likes`)
-      .then(response =>{
-        alert('uuu')
-      })
+      axios
+        .post(`/api/v1/tweets/${this.$route.params.id}/likes`)
+        .then(response =>{
+          alert('uuu')
+        })
+    },
+    deleteLike() {
+      axios
+        .delete(`/api/v1/tweets/${this.$route.params.id}/likes/${this.like}`)
     }
-//いいね
-    // fetchLikeByTweetId: async function() {
-    //     const res = await axios.get(`/api/v1/tweets/${this.$route.params.id}/likes`)
-    //   if (res.status !== 200) { process.exit() }
-    //   return res.data
-    // },
-    // registerLike: async function() {
-    //     const res = await axios.post(`/api/v1/tweets/${this.$route.params.id}/likes`, { tweet_id: this.$route.params.id})
-    //   if (res.status !== 201) { process.exit() }
-    //   this.fetchLikeByPostId().then(result => {
-    //       this.likeList = result
-    //   })
-    // },
-    // deleteLike: async function() {
-    //   const likeId = this.findLikeId()
-    //   const res = await axios.delete(`/api/v1/tweets/${this.$route.params.id}/likes/${likeId}`)
-    //   if (res.status !== 200) { process.exit() }
-    //   this.likeList = this.likeList.filter(n => n.id !== likeId)
-    // },
-    // findLikeId: function() {
-    //     const like = this.likeList.find((like) => {
-    //         return (like.user_id === this.userId)
-    //   })
-    //   if (like) { return like.id }
-    // }
   }
 }
 </script>
