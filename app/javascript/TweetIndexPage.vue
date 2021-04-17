@@ -11,7 +11,7 @@
       </div>
     </div>-->
     <div class="main-content-btn">
-      <a :href= "'/tweets/new'" class="send-btn">投稿する</a>
+      <router-link :to="{name: 'tweet-new'}" class="send-btn">投稿する</router-link>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-primary">
