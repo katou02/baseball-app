@@ -1,8 +1,9 @@
 <template>
 <div class="main-content">
+  <Header></Header>
   <div class="main-content-btn">
-    <router-link :to= "'/analyses'" class="return-top">分析一覧へ戻る</router-link>
     <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
+    <a :href= "'/'" class="return-top">トップページへ戻る</a>
   </div>
   <div class="text-format mt-5 text-primary">
     <div v-for="e in categories" :key="e.id">
@@ -14,7 +15,8 @@
   <div class="go-avg text-center mt-4">
     <div class="avg-ays">
       みんなの分析を元にした平均評価を見る<br>
-      <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a>
+      <router-link :to="{name: 'average',params: {id: $route.params.id}}" class="ays-avg">平均評価を見る</router-link>
+      <!-- <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a> -->
     </div>
     <div class="homedown">
       甲子園でお馴染みのふるさと紹介<br>
@@ -26,10 +28,14 @@
   <div class="text-format mt-5 mb-3 text-warning">
     大会別
   </div>
-  <div class="title mt-5">
+  <div class="title mt-5 ml-5">
+    <router-link :to= "'/analyses'" class="title-child text-white">
+      全ての分析
+      <i class="fa fa-baseball-ball text-white"></i>
+    </router-link>
     <div v-for="e in categories" :key="e.id">
       <div v-if="$route.params.id!=e.id">
-        <router-link :to="{name: 'watch_ays',params: {id: e.id}}" @click.native="fetchAnalyses();" class="title-child ml-5">
+        <router-link :to="{name: 'watch_ays',params: {id: e.id}}" @click.native="fetchAnalyses();" class="title-child text-white ml-5">
           <i class="fa fa-baseball-ball text-white"></i>
           {{e.category}}
         </router-link>
@@ -87,7 +93,11 @@
 
 <script>
 import axios from 'axios'
+import Header from './components/Header.vue'
 export default {
+  components: {
+    Header
+  },
   data() {
     return {
       keyword: this.$store.state.keyword_wa,

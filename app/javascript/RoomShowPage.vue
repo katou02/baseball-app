@@ -13,15 +13,15 @@
     </div>
     <div class="dmMain">
       <div v-for="e in messages" :key="e.id">
-        <div v-if="e.user_id == current_user.id ">
+        <div v-if="e.user_id == data.current_user.id ">
           <div class="my-messages">
             <div class="my-message mt-5 ml-5">{{e.body}}</div>
           </div>
         </div>
         <div v-else>
           <div class="messages">
-            <div v-if="current_user.image.url">
-              <img :src= current_user.image.url class="room-user-icon">
+            <div v-if="data.current_user.image.url">
+              <img :src= data.current_user.image.url class="room-user-icon">
             </div>
             <div v-else>
               <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
@@ -38,13 +38,18 @@
             <li><font color="red">{{ e }}</font></li>
           </ul>
         </div>-->
-        <div class="message-form">
-          <div class="mx-auto d-flex w-50 pb-2">
-            <textarea v-model="body" type="text" class="message-detail"></textarea>
-            <button type="submit" class="message-btn ml-2" >
-              <i class="fas fa-paper-plane"></i>
-            </button>
+        <div v-if="data.check!=null">
+          <div class="message-form">
+            <div class="mx-auto d-flex w-50 pb-2">
+              <textarea v-model="body" type="text" class="message-detail"></textarea>
+              <button type="submit" class="message-btn ml-2" >
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
           </div>
+        </div>
+        <div v-else>
+          <h4>フォローするとメッセージが送信できます</h4>
         </div>
       </form>
     </div>
@@ -58,8 +63,9 @@ export default {
       messages: [],
       member: '',
       id: '',
-      current_user: '',
+      data: '',
       body: '',
+      check: '',
       errors: ''
     }
   },
@@ -74,7 +80,8 @@ export default {
           this.messages = response.data.message
           this.member = response.data.member[0]
           this.id = response.data.member[0].user.id
-          this.current_user = response.data.current_user
+          this.data = response.data
+          // this.check = response
         })
     },
     createMessage() {

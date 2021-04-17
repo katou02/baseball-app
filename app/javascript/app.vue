@@ -22,7 +22,22 @@ import MapShowPage from './MapShowPage'
 import ChampionPage from './ChampionPage'
 import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
+import Average from './Average'
+import ChampionNewPage from './ChampionNewPage'
+import TweetNewPage from './TweetNewPage'
+import AnalysisNewPage from './AnalysisNewPage'
+import ForecastNewPage from './ForecastNewPage'
+import TweetEditPage from './TweetEditPage'
+import AnalysisEdit from './AnalysisEdit'
+import ForecastEditPage from './ForecastEditPage'
+import UserShowPage from './UserShowPage'
+import UserEditPage from './UserEditPage'
+import FollowingPage from './FollowingPage'
+import FollowerPage from './FollowerPage'
+import VueStar from 'vue-star'
+// import { component } from 'vue/types/umd'
 
+Vue.component('VueStar', VueStar);
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -39,6 +54,16 @@ const router = new VueRouter({
        name: 'tweetshow'
      },
      {
+       path: '/tweets/new',
+       component: TweetNewPage,
+       name: 'tweet-new'
+     },
+     {
+       path: '/tweets/:id/edit',
+       component: TweetEditPage,
+       name: 'tweet-edit'
+     },
+     {
        path: '/tournaments/:id',
        component: TournamentPage,
        name: 'tournament'
@@ -48,10 +73,20 @@ const router = new VueRouter({
        component: AnalysisPage,
        name: 'analysis'
      },
+     {
+       path: '/analyses/new',
+       component: AnalysisNewPage,
+       name: 'analysis-new'
+     },
+     {
+       path: '/analyses/:id/edit',
+       component: AnalysisEdit,
+       name: 'analysis-edit'
+     },
     {
       path: '/analyses/:id(\\d+)',
       component: AnalysisShowPage,
-      name: 'analysisshow'
+      name: 'analysis-show'
      },
      {
        path: '/tournaments/:id/watch_ays',
@@ -66,7 +101,17 @@ const router = new VueRouter({
     {
       path: '/forecasts/:id(\\d+)',
       component: ForecastShowPage,
-      name: 'forecastshow'
+      name: 'forecast-show'
+     },
+     {
+       path: '/forecasts/:id/edit',
+       component: ForecastEditPage,
+       name: 'forecast-edit'
+     },
+     {
+       path: '/forecasts/new',
+       component: ForecastNewPage,
+       name: 'forecast-new'
      },
      {
        path: '/tournaments/:id/watch_fcs',
@@ -79,6 +124,26 @@ const router = new VueRouter({
        name: 'user'
      },
      {
+       path: '/users/:id',
+       component: UserShowPage,
+       name: 'user-show'
+     },
+     {
+       path: '/users/:id/edit',
+       component: UserEditPage,
+       name: 'user-edit'
+     },
+     {
+       path: '/users/:id/following',
+       component: FollowingPage,
+       name: 'following'
+     },
+     {
+       path: '/users/:id/followers',
+       component: FollowerPage,
+       name: 'follower'
+     },
+     {
        path: '/maps',
        component: MapPage,
        name: 'map'
@@ -89,7 +154,7 @@ const router = new VueRouter({
        name: 'mapshow'
      },
      {
-       path: '/champions/:id',
+       path: '/champions/:id(\\d+)',
        component: ChampionPage,
        name: 'champion'
      },
@@ -101,7 +166,17 @@ const router = new VueRouter({
      {
        path: '/rooms/:id',
        component: RoomShowPage,
-       name: 'roomshow'
+       name: 'room-show'
+     },
+     {
+       path: '/tournaments/:id/watch_avg',
+       component: Average,
+       name: 'average'
+     },
+     {
+       path: '/champions/new',
+       component: ChampionNewPage,
+       name: 'champion-new'
      }
   ],
   scrollBehavior(to, from, savedPosition) {

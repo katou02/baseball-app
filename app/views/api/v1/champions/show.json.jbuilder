@@ -2,9 +2,6 @@
 #   json.school school
 # end
 
-# json.array! @vote do |vote|
-#   json.vote vote
-# end
 
 json.school do
   json.array! @schools
@@ -20,4 +17,8 @@ json.set! :my_champion do
     json.school @my_champion.champion_school.name
     json.id @my_champion.id
   end
+end
+
+json.select_schools do
+  json.array! @select_schools
 end

@@ -1,4 +1,4 @@
-<div class="contents row mt-2">
+<!--<div class="contents row mt-2">
   <div class="form p-4">
     <%= form_with model: @forecast,local: true do |f| %>
       <%= render 'layouts/error_messages_fcs', model: f.object %>
@@ -16,4 +16,5 @@
       <%= link_to "戻る",analyses_path,data: {"turbolinks" => false} %>
     </div>
   </div>
-</div>
+</div>-->
+<%= javascript_pack_tag 'main' %>

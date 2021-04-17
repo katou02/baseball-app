@@ -2,8 +2,10 @@ class Api::V1::MessagesController < ApiController
   before_action :authenticate_user!
 
   def create
-    # message = Message.new(message_params)
-    if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
+    @room = Entry.where(room_id: params[:room_id]).where.not(user_id: current_user.id)
+    @user = User.find_by(id: @room[0].user_id)
+    @check = current_user.following?(@user)
+    if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present? && @check.present?
       @message = Message.new(message_params)
       @room=@message.room
 
