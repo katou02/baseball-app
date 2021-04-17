@@ -27,6 +27,7 @@ class AnalysesController < ApplicationController
         @category_children = Category.find(params[:tournament_id]).children
       end
     end
+    # render layout: "vue"
   end
 
   def create

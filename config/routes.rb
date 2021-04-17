@@ -14,28 +14,34 @@ Rails.application.routes.draw do
 
   namespace :api,{format: 'json'} do
     namespace :v1 do
-      resources :tweets,only:[:index,:show,:destroy] do
+      resources :tweets do
         collection do
           get :category
         end
         resources :comments,only: [:create,:destroy,:index]
         resources :likes, only: [:index, :create, :destroy]
       end
-      resources :users,only:[:index]
-      resources :analyses,only:[:index,:show,:destroy] do
+      resources :users,only:[:index,:show,:edit,:update] do
+        member do
+          get :following,:followers
+        end
+      end
+      resources :analyses do
         resources :comment_analyses,only: [:index,:create,:destroy]
       end
-      resources :forecasts,only:[:index,:show,:destroy] do
+      resources :forecasts do
         resources :comment_forecasts,only: [:index,:create,:destroy]
       end
+      resources :relationships, only: [:create,:destroy]
       resources :maps,only:[:index,:show]
       resources :messages,only: :create
-      resources :champions,only:[:show,:destroy]
-      resources :rooms,only:[:index,:show]
+      resources :champions,only:[:show,:create,:destroy]
+      resources :rooms,only:[:index,:show,:create]
       resources :tournaments,only:[:show] do
         member do
           get :watch_ays
           get :watch_fcs
+          get :watch_avg
         end
       end
     end

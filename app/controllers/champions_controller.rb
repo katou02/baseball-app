@@ -27,6 +27,7 @@ class ChampionsController < ApplicationController
     @n=0
     ranking=ranking(champions)
     graph(ranking)
+    render layout: "vue"
   end
 
   def destroy

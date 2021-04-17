@@ -3,6 +3,8 @@ class Api::V1::ChampionsController < ApiController
     @category = Category.find(params[:id]) 
     champions = Champion.where(tournament_id: params[:id])
     @my_champion = Champion.find_by(user_id: current_user.id,tournament_id: params[:id])
+    @select_schools = Category.where(ancestry: params[:id])
+    # binding.pry
     @n=0
     ranking=ranking(champions)
     # graph(ranking)
@@ -17,6 +19,15 @@ class Api::V1::ChampionsController < ApiController
     end
 # binding.pry
     render 'show', formats: 'json', handlers: 'jbuilder'
+  end
+
+  def create
+    champion = Champion.create(champion_params)
+    if champion.save
+      render json: champion, status: :created
+    else
+      render json: { errors: champion.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def ranking(champions)
@@ -42,6 +53,12 @@ class Api::V1::ChampionsController < ApiController
         render json: @my_champion.errors, status: :unprocessable_entity
       end
     end
+  end
+
+  private
+
+  def champion_params
+    params.require(:champion).permit(:tournament_id,:champion_school_id).merge(user_id: current_user.id)
   end
 
   # def graph(neok)

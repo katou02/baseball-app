@@ -17,11 +17,12 @@ class TournamentsController < ApplicationController
   def watch_avg
     @analyses = Analysis.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
     average(@analyses)
+    render layout: "vue"
   end
 
   def watch_fcs
-    render layout: "vue"
     @forecasts = Forecast.where(tournament_id: params[:id]).includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    render layout: "vue"
   end
   
   def average(num)

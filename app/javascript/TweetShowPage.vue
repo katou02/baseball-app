@@ -4,15 +4,16 @@
     <div class="d-flex">
       <div v-if="tweet.user_id==tweet.current_user">
         <button class="delete-btn" @click="deleteTweet(tweet.id)">記事を削除する</button>
-        <a :href= "'/tweets/' + tweet.id + '/edit'" class="edit-article">記事を編集する</a>
+        <!-- <a :href= "'/tweets/' + tweet.id + '/edit'" class="edit-article">記事を編集する</a> -->
+        <router-link :to="{name: 'tweet-edit',params: {id: tweet.id}}" class="edit-article">記事を編集する</router-link>
       </div>
       <!-- <a :href= "'/tweets'" class="return-btn">記事一覧へ戻る</a> -->
       <router-link :to="{name: 'tweet'}" class="return-btn">記事一覧へ戻る</router-link>
     </div>
     <div class="user_name">
       <h5>投稿者:<a :href= "'/users/' + tweet.user_id">{{tweet.nickname}}</a></h5>
-       <div v-if="tweet.user_image.url"> 
-         <img :src= tweet.user_image.url class="user-icon mt-1 mb-5">
+       <div v-if="user_image"> 
+         <img :src= user_image class="user-icon mt-1 mb-5">
        </div>
        <div v-else>
         <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
@@ -36,18 +37,29 @@
       <i class="fas fa-pen text-info"></i>
       試合評・感想<br><br>
     </div>
-
     <div class=show-text>
        <p style="white-space:pre-wrap;">{{tweet.text}}</p>
     </div>
-    <img :src= tweet.tweet_image.url class="image">
+    <img :src= tweet_image class="image">
     <!-- いいね -->
-    <!-- <div v-if="isLiked" @click="deleteLike()">
-      いいねを取り消す {{ count }}
+    <div v-if="tweet.like">
+      <div class="d-flex align-center ml-2">
+        <button class="good" @click="deleteLike()">
+          <i class="fas fa-heart" style="color:white;"></i>
+          いいね取り消し
+        </button> 
+        <span class="like-count">{{tweet.like_count}}</span>
+      </div>
     </div>
-    <div v-else @click="registerLike()">
-      いいねする {{ count }}
-    </div> -->
+    <div v-else>
+      <div class="d-flex align-center ml-2">
+        <button class="good" @click="registerLike()">
+          <i class="fas fa-heart" style="color:white;"></i>
+          いいね！
+        </button> 
+        <span class="like-count">{{tweet.like_count}}</span>
+      </div>
+    </div>
     <!-- コメント -->
     <div class="comment-content_tweet">
       <div class="text-format mt-0 mb-4 text-warning">
@@ -82,45 +94,29 @@
 </template>
 <script>
 import axios from 'axios'
-// import { csrfToken } from 'rails-ujs'
-// axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken()
 export default {
-  // props: ['userId', 'tweetId'],
   data() {
     return {
-      likeList: [] ,
       comment: "",
       text: "",
       tweet: [],
-      errors: ''
+      errors: '',
+      user_image: '',
+      tweet_image: ''
     }
   },
   mounted() {
     this.fetchTweets()
     this.fetchComments()
   },
-  //いいね
-  // computed: {
-  //   count() {
-  //     return this.likeList.length
-  //   },
-  //   isLiked() {
-  //     if (this.likeList.length === 0) { return false }
-  //     return Boolean(this.findLikeId())
-  //   }
-  // },
-  // created: function() {
-  //   this.fetchLikeByTweetId().then(result => {
-  //     this.likeList = result
-  //   })
-  // },
-  //いいね
   methods: {
     fetchTweets() {
       axios
         .get(`/api/v1/tweets/${this.$route.params.id}.json`)
         .then(response =>{
-          this.tweet = response.data;
+          this.tweet = response.data
+          this.user_image = response.data.user_image.url
+          this.tweet_image = response.data.tweet_image.url
         })
     },
     deleteTweet(id) {
@@ -156,31 +152,36 @@ export default {
         this.fetchComments();
       })
     },
-//いいね
-    // fetchLikeByTweetId: async function() {
-    //     const res = await axios.get(`/api/v1/tweets/${this.$route.params.id}/likes`)
-    //   if (res.status !== 200) { process.exit() }
-    //   return res.data
-    // },
-    // registerLike: async function() {
-    //     const res = await axios.post(`/api/v1/tweets/${this.$route.params.id}/likes`, { tweet_id: this.$route.params.id})
-    //   if (res.status !== 201) { process.exit() }
-    //   this.fetchLikeByPostId().then(result => {
-    //       this.likeList = result
-    //   })
-    // },
-    // deleteLike: async function() {
-    //   const likeId = this.findLikeId()
-    //   const res = await axios.delete(`/api/v1/tweets/${this.$route.params.id}/likes/${likeId}`)
-    //   if (res.status !== 200) { process.exit() }
-    //   this.likeList = this.likeList.filter(n => n.id !== likeId)
-    // },
-    // findLikeId: function() {
-    //     const like = this.likeList.find((like) => {
-    //         return (like.user_id === this.userId)
-    //   })
-    //   if (like) { return like.id }
-    // }
+    registerLike() {
+      axios
+        .post(`/api/v1/tweets/${this.$route.params.id}/likes`)
+        .then(response =>{
+          this.fetchTweets()
+          this.fetchComments()
+        })
+    },
+    deleteLike() {
+      axios
+        .delete(`/api/v1/tweets/${this.$route.params.id}/likes/${this.tweet.like.id}`)
+        .then(response =>{
+          this.fetchTweets()
+          this.fetchComments()
+        })
+    }
   }
 }
 </script>
+<style scoped>
+.good {
+  background-color: #e91e63;
+  border-color: #e91e63;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.like-count {
+  padding: 5px 7px;
+  color: #2196f3;
+}
+</style>

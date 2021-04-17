@@ -4,14 +4,15 @@
       <div class="d-flex">
         <div v-if="analysis.user_id==analysis.current_user">
           <button class="delete-btn" @click="deleteAnalysis(analysis.id)">記事を削除する</button>
-          <a :href= "'/analyses/' + analysis.id + '/edit'" class="edit-article">記事を編集する</a>
+          <!-- <a :href= "'/analyses/' + analysis.id + '/edit'" class="edit-article">記事を編集する</a> -->
+          <router-link :to="{name: 'analysis-edit',params: {id: analysis.id}}" class="edit-article">記事を編集する</router-link>
         </div>
         <router-link :to="{name: 'analysis'}" class="return-btn">記事一覧へ戻る</router-link>
       </div>
       <div class="user_name">
         <h5>投稿者:<a :href= "'/users/' + analysis.user_id">{{analysis.nickname}}</a></h5>
-        <div v-if="analysis.user_image.url"> 
-          <img :src= analysis.user_image.url class="user-icon mt-1 mb-5">
+        <div v-if="user_image"> 
+          <img :src= user_image class="user-icon mt-1 mb-5">
         </div>
         <div v-else>
           <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
@@ -100,7 +101,8 @@ export default {
       comment: "",
       text: "",
       errors: '',
-      chart_data: []
+      chart_data: [],
+      user_image: ''
     }
   },
   mounted() {
@@ -114,6 +116,7 @@ export default {
         .get(`/api/v1/analyses/${this.$route.params.id}.json`)
         .then(response =>{
           this.analysis = response.data;
+          this.user_image = response.data.user_image.url
         })
     },
     fetchComments() {

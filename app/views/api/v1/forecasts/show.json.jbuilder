@@ -2,7 +2,9 @@ json.text @forecast.text
 json.tournament @forecast.tournament.name
 json.nickname @forecast.user.nickname
 json.win_school @forecast.win_school.name
+json.win_school_id @forecast.win_school_id
 json.lose_school @forecast.lose_school.name
+json.lose_school_id @forecast.lose_school.id
 json.round @forecast.round
 json.probability @forecast.probability
 json.id @forecast.id

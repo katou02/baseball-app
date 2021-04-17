@@ -1,4 +1,4 @@
-class Api::LikesController < ActionController::API
+class Api::V1::LikesController < ApiController
   before_action :authenticate_user!
 
   def index
@@ -6,8 +6,7 @@ class Api::LikesController < ActionController::API
   end
 
   def create
-    current_user.likes.create!(likes_params)
-    head :created
+    current_user.likes.create(likes_params)
   end
 
   def destroy
@@ -18,6 +17,6 @@ class Api::LikesController < ActionController::API
   private
 
   def likes_params
-    params.require(:like).permit(:tweet_id)
+    params.permit(:tweet_id)
   end
 end

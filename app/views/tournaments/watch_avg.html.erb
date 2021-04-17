@@ -1,4 +1,4 @@
-<div class="average-content">
+<!--<div class="average-content">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
   <%= link_to "大会別ページへ戻る",watch_ays_tournament_path,class: "return-btn d-inline-block mt-1", data: {"turbolinks" => false}%>
   <h3>戦力分析の平均評価</h3>
@@ -27,4 +27,5 @@
   <% unless @avgs.present? %>
   <div class="text-center mt-5">投稿はありません</div>
   <% end %>
-</div>
+</div>-->
+<%= javascript_pack_tag 'main' %>

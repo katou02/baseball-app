@@ -10,7 +10,8 @@
     </div>
   </div>
   <div class="main-content-btn">
-    <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
+    <!-- <a :href= "'/analyses/new'" class="send-btn">投稿する</a> -->
+    <router-link :to="{name: 'analysis-new'}" class="send-btn">投稿する</router-link>
     <a :href= "'/'" class="return-top">トップページへ戻る</a>
   </div>
   <div class="text-format mt-5 text-success">
@@ -39,7 +40,7 @@
     <div v-for="e in getLists" :key="e.id">
       <div class="analysis mt-5">
         <!-- <a :href= "'analyses/' + e.id"> -->
-        <router-link :to="{name: 'analysisshow',params: {id: e.id}}">
+        <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
           <div class="school_ays-name">
             {{e.school}}
           </div>

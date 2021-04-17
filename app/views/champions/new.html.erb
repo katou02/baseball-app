@@ -1,4 +1,4 @@
-<div class="contents row mt-2">
+<!--<div class="contents row mt-2">
   <div class="form p-4">
     <%= form_with model: @champion,local: true do |f| %>
       <%= render 'layouts/error_messages_cp', model: f.object %>
@@ -7,4 +7,5 @@
       <%=f.submit value: "SENT",class: "game_record"%>
     <% end %>
   </div>
-</div>
+</div>-->
+<%= javascript_pack_tag 'main' %>

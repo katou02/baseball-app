@@ -1,5 +1,5 @@
 class Api::V1::AnalysesController < ApiController
-  before_action :search_analysis,only:[:show,:destroy]
+  before_action :search_analysis,only:[:show,:destroy,:edit,:update]
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404
@@ -8,6 +8,38 @@ class Api::V1::AnalysesController < ApiController
   def index
     @analyses = Analysis.all.order(created_at: "DESC")
     render 'index', formats: 'json', handlers: 'jbuilder'
+  end
+
+  def new
+    @roots = Category.roots
+    root_id = params[:root_id]
+    child_id = params[:child_id]
+    @children = root_id ? @roots.find(root_id).children : []
+    @grand_children = child_id ? @children.find(child_id).children : []
+    render 'new', formats: 'json', handlers: 'jbuilder'
+  end
+
+  def create
+    analysis = Analysis.create(analysis_params)
+    if analysis.save
+      render json: analysis, status: :created
+    else
+      render json: { errors: analysis.errors.keys.map { |key| [key, analysis.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @schools = Category.where(ancestry: @analysis.tournament_id)
+  end
+  
+  def update
+    if @analysis.user_id == current_user.id || current_user.admin
+      if @analysis.update(update_params) 
+        head :no_content
+      else
+        render json: { errors: @analysis.errors.keys.map { |key| [key, @analysis.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
+      end
+    end
   end
 
   def show
@@ -33,5 +65,15 @@ class Api::V1::AnalysesController < ApiController
 
   def search_analysis
     @analysis = Analysis.find(params[:id])
+  end
+
+  private
+
+  def analysis_params
+    params.require(:analysis).permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:analysis).permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations)
   end
 end

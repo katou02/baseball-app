@@ -15,9 +15,11 @@
         <button class="delete-btn mt-2" @click="deleteChampion($route.params.id)">投票を取り消す</button>
       </div>
       <div v-else>
-      <a :href= "'/champions/new?tournament_id=' + num" class="btn btn-warning champ-btn">
+      <router-link :to="{name: 'champion-new',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn">
+      <!-- <a :href= "'/champions/new?tournament_id=' + num" class="btn btn-warning champ-btn"> -->
         優勝予想をする
-      </a>
+      <!-- </a> -->
+      </router-link>
       </div>
     </div>
     <div class="text-format mt-5 text-primary">
@@ -30,10 +32,10 @@
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
-    <div class="title pb-5 mt-5">
+    <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="fetchChampion()" class="title-child text-white">
+          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="fetchChampion()" class="title-child text-white ml-5">
             <i class="fa fa-baseball-ball text-white"></i> 
             {{e.category}}
           </router-link>

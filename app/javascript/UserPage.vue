@@ -6,39 +6,37 @@
     </div>
     <div class="user-list row mx-auto">
       <div v-for="e in getLists" :key="e.id" class="col-xs-12 col-md-6 col-lg-3 mt-3 card">
-        <!-- <div class="col-xs-12 col-md-6 col-lg-3 mt-3 card"> -->
-          <a :href = "'users/' + e.id" class="user-card">
-            <div class="user-list-image">
-              <div v-if="e.image.url">
-                <img :src= e.image.url class="user-icon mt-3 mb-5">
+        <router-link :to="{name: 'user-show',params: {id: e.id}}" class="user-card">
+          <div class="user-list-image">
+            <div v-if="e.image.url">
+              <img :src= e.image.url class="user-icon mt-3 mb-5">
+            </div>
+            <div v-else>
+              <img src="../assets/images/no-image.png" class="user-icon mt-3 mb-5">
+            </div>
+          </div>
+          <div class="user-list_body">
+            <div class="user-list_name">
+              {{e.name}}
+            </div>
+            <div class="user-list_text mt-5">
+              <div v-if="e.text">
+                {{e.text}}
               </div>
               <div v-else>
-                <img src="../assets/images/no-image.png" class="user-icon mt-3 mb-5">
+                自己紹介未記入
               </div>
             </div>
-            <div class="user-list_body">
-              <div class="user-list_name">
-                {{e.name}}
+            <div class="user-address mt-5 pb-3">
+              <div v-if="e.prefecture">
+                {{e.prefecture}}
               </div>
-              <div class="user-list_text mt-5">
-                <div v-if="e.text">
-                  {{e.text}}
-                </div>
-                <div v-else>
-                  自己紹介未記入
-                </div>
-              </div>
-              <div class="user-address mt-5 pb-3">
-                <div v-if="e.prefecture">
-                  {{e.prefecture}}
-                </div>
-                <div v-else>
-                  未選択
-                </div>
+              <div v-else>
+                未選択
               </div>
             </div>
-          </a>
-        <!-- </div> -->
+          </div>
+        </router-link>
       </div>
     </div>
     <div class="text-center">
