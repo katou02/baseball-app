@@ -12,8 +12,8 @@
     </div>
     <div class="user_name">
       <h5>投稿者:<a :href= "'/users/' + tweet.user_id">{{tweet.nickname}}</a></h5>
-       <div v-if="tweet.user_image.url"> 
-         <img :src= tweet.user_image.url class="user-icon mt-1 mb-5">
+       <div v-if="user_image"> 
+         <img :src= user_image class="user-icon mt-1 mb-5">
        </div>
        <div v-else>
         <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
@@ -40,15 +40,15 @@
     <div class=show-text>
        <p style="white-space:pre-wrap;">{{tweet.text}}</p>
     </div>
-    <img :src= tweet.tweet_image.url class="image">
+    <img :src= tweet_image class="image">
     <!-- いいね -->
-    <div v-if="like">
+    <div v-if="tweet.like">
       <div class="d-flex align-center ml-2">
         <button class="good" @click="deleteLike()">
           <i class="fas fa-heart" style="color:white;"></i>
           いいね取り消し
         </button> 
-        <span class="like-count">{{count}}</span>
+        <span class="like-count">{{tweet.like_count}}</span>
       </div>
     </div>
     <div v-else>
@@ -57,7 +57,7 @@
           <i class="fas fa-heart" style="color:white;"></i>
           いいね！
         </button> 
-        <span class="like-count">{{count}}</span>
+        <span class="like-count">{{tweet.like_count}}</span>
       </div>
     </div>
     <!-- コメント -->
@@ -97,38 +97,26 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      likeList: [] ,
       comment: "",
       text: "",
       tweet: [],
       errors: '',
-      like: '',
-      count: ''
+      user_image: '',
+      tweet_image: ''
     }
   },
   mounted() {
     this.fetchTweets()
     this.fetchComments()
   },
-  //いいね
-  // computed: {
-  //   count() {
-  //     return this.likeList.length
-  //   },
-  //   isLiked() {
-  //     if (this.likeList.length === 0) { return false }
-  //     return Boolean(this.findLikeId())
-  //   }
-  // },
-  //いいね
   methods: {
     fetchTweets() {
       axios
         .get(`/api/v1/tweets/${this.$route.params.id}.json`)
         .then(response =>{
           this.tweet = response.data
-          this.like = response.data.like
-          this.count = response.data.like_count
+          this.user_image = response.data.user_image.url
+          this.tweet_image = response.data.tweet_image.url
         })
     },
     deleteTweet(id) {
@@ -174,7 +162,7 @@ export default {
     },
     deleteLike() {
       axios
-        .delete(`/api/v1/tweets/${this.$route.params.id}/likes/${this.like.id}`)
+        .delete(`/api/v1/tweets/${this.$route.params.id}/likes/${this.tweet.like.id}`)
         .then(response =>{
           this.fetchTweets()
           this.fetchComments()

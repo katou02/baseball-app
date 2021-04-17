@@ -12,8 +12,8 @@
       </div>
       <div class="user_name">
         <h5>投稿者:<a :href= "'/users/' + forecast.user_id">{{forecast.nickname}}</a></h5>
-        <div v-if="forecast.user_image.url"> 
-          <img :src= forecast.user_image.url class="user-icon mt-1 mb-5">
+        <div v-if="user_image"> 
+          <img :src= user_image class="user-icon mt-1 mb-5">
         </div>
         <div v-else>
           <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
@@ -93,7 +93,8 @@ export default {
       errors: "",
       chart_data: '',
       labels: [],
-      probability: ''
+      probability: '',
+      user_image: ''
     }
   },
   mounted() {
@@ -107,6 +108,7 @@ export default {
         .get(`/api/v1/forecasts/${this.$route.params.id}.json`)
         .then(response =>{
           this.forecast = response.data
+          this.user_image = response.data.user_image.url
         })
     },
     deleteForecast(id) {

@@ -52,8 +52,8 @@
     <!-- プロフィール -->
     <div class="myprof mt-5">
       <div class="user-info">
-        <div v-if="user.image.url"> 
-          <img :src= user.image.url class="user-icon mt-1 mb-5">
+        <div v-if="user_image"> 
+          <img :src= user_image class="user-icon mt-1 mb-5">
         </div>
         <div v-else>
           <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
@@ -173,7 +173,6 @@
               </router-link>
             </div>
           </div>
-        </v-tab-item>
           <button
               class="list-item-button"
               v-if="(listForecasts.length - count_f) >= 0"
@@ -182,6 +181,7 @@
           >
               もっと見る
           </button>
+        </v-tab-item>
       </v-tabs-items>
     </div>
   </div>
@@ -200,7 +200,8 @@ export default {
       follower_count: [],
       count_t: 10,
       count_a: 10,
-      count_f: 10
+      count_f: 10,
+      user_image: ''
     }
   },
   mounted() {
@@ -231,6 +232,7 @@ export default {
           this.my_forecasts = response.data.forecast
           this.follow_count = response.data.follow_count
           this.follower_count = response.data.follower_count
+          this.user_image = response.data.image.url
         })
     },
     followUser() {
