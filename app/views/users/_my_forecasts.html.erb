@@ -4,7 +4,7 @@
 <div class="my-post-list">
   <% @my_forecasts.each do |forecast| %>
     <div class="my-forecast mt-5">
-      <%= link_to forecast do %>
+      <%# <%= link_to forecast do %> %>
         <div class="school-fcs">
           <div class="fcs-icon">
             <i class="fa fa-balance-scale text-white"></i>
@@ -25,7 +25,7 @@
         <div class="tweets_at">
           <%= forecast.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
         </div>
-      <% end %>
+      <%# <% end %> %>
     </div>
   <% end %>
 </div>
