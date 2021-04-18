@@ -4,13 +4,13 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in',to: 'users/sessions#new_guest'
   end
-  # resources :tweets do
-  #   # collection do
-  #   #   get :search
-  #   # end
-  #   resources :comments,only:[:create,:destroy]
-  #   resources :likes,only:[:create,:destroy]
-  # end
+  resources :tweets do
+    # collection do
+    #   get :search
+    # end
+    resources :comments,only:[:create,:destroy]
+    resources :likes,only:[:create,:destroy]
+  end
 
   namespace :api,{format: 'json'} do
     namespace :v1 do
