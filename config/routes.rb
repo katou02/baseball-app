@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       resources :maps,only:[:index,:show]
       resources :messages,only: :create
       resources :champions,only:[:show,:create,:destroy]
+      resources :notifications, only: :index
       resources :rooms,only:[:index,:show,:create]
       resources :tournaments,only:[:show] do
         member do

@@ -35,6 +35,7 @@ import UserShowPage from './UserShowPage'
 import UserEditPage from './UserEditPage'
 import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
+import NotificationPage from './NotificationPage'
 import VueStar from 'vue-star'
 // import { component } from 'vue/types/umd'
 
@@ -183,6 +184,11 @@ const router = new VueRouter({
       path: '/champions/new',
       component: ChampionNewPage,
       name: 'champion-new'
+    },
+    {
+      path: '/notifications',
+      component: NotificationPage,
+      name: 'notification'
     }
   ],
   scrollBehavior(to, from, savedPosition) {
