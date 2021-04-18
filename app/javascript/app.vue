@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <router-link :to="{name: 'tweet'}">ここ</router-link>
   </div>
 </template>
 
