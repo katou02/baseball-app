@@ -1,17 +1,18 @@
-<div class="notification-content">
-  <div class="notification-title pt-5">
-    <i class="fas fa-envelope"></i>
-    通知
-  </div>
-      <hr>
-  <% if @notifications.exists? %>
-    <div class="notification">
-      <div class="users-index">
-        <%= render @notifications %>
-        <%= paginate @notifications %>
-      </div>
-    </div>
-  <% else %>
-      <p>通知はありません</p>
-  <% end %>
-</div>
+<%# <div class="notification-content"> %>
+  <%# <div class="notification-title pt-5"> %>
+    <%# <i class="fas fa-envelope"></i> %>
+    <%# 通知 %>
+  <%# </div> %>
+      <%# <hr> %>
+  <%# <% if @notifications.exists? %> 
+    <%# <div class="notification"> %>
+      <%# <div class="users-index"> %>
+        <%# <%= render @notifications %> 
+        <%# <%= paginate @notifications %>
+      <%# </div> %>
+    <%# </div> %>
+  <%# <% else %>
+      <%# <p>通知はありません</p> %>
+  <%# <% end %>
+<%# </div> %>
+<%= javascript_pack_tag 'main'%>
