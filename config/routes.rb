@@ -33,7 +33,7 @@ Rails.application.routes.draw do
         resources :comment_forecasts,only: [:index,:create,:destroy]
       end
       resources :relationships, only: [:create,:destroy]
-      resources :maps,only:[:index,:show]
+      resources :maps,only:[:index,:show,:new,:create]
       resources :messages,only: :create
       resources :champions,only:[:show,:create,:destroy]
       resources :notifications, only: :index
