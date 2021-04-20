@@ -11,8 +11,8 @@
         </div>
       </div>
       <div class="map-image">
-        <div v-if="map.image.url">
-          <img :src= map.image.url class="map-image_content">
+        <div v-if="image">
+          <img :src= image class="map-image_content">
         </div>
         <div v-else>
           <img src="../assets/images/map-no-image.png" class="map-image_content">
@@ -44,7 +44,8 @@ export default {
   data() {
     return {
       map: [],
-      markers: []
+      markers: [],
+      image: []
     }
   },
   mounted() {
@@ -56,6 +57,7 @@ export default {
         .get(`/api/v1/maps/${this.$route.params.id}.json`)
         .then(response =>{
           this.map = response.data;
+          this.image = response.data.image.url;
           this.markers.push({position: { lat:this.map.latitude, lng:this.map.longitude } })
         })
     }
