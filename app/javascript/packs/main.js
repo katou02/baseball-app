@@ -43,7 +43,6 @@ const slide = new Vue({
       }).$mount();
       document.body.appendChild(app.$el);
     })
-
     import * as VueGoogleMaps from 'vue2-google-maps'
 
     Vue.use(VueGoogleMaps, {
@@ -55,4 +54,5 @@ const slide = new Vue({
       },
     });
     
+
     // Vue.use(window["vue-js-modal"].default);

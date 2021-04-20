@@ -20,6 +20,7 @@ import WatchfcsPage from './WatchfcsPage.vue'
 import UserPage from './UserPage.vue'
 import MapPage from './MapPage.vue'
 import MapShowPage from './MapShowPage'
+import MapNewPage from './MapNewPage'
 import ChampionPage from './ChampionPage'
 import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
@@ -156,9 +157,14 @@ const router = new VueRouter({
       name: 'map'
     },
     {
-      path: '/maps/:id',
+      path: '/maps/:id(\\d+)',
       component: MapShowPage,
       name: 'mapshow'
+    },
+    {
+      path: '/maps/new',
+      component: MapNewPage,
+      name: 'map-new'
     },
     {
       path: '/champions/:id(\\d+)',
