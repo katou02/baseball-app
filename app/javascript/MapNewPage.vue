@@ -2,14 +2,14 @@
   <div class="contents row mt-2">
     <div class="containe_r p-4">
       <form @submit.prevent="createMap">
-        <input v-model="address" type="text" placeholder="市町村 住所など" class="game_title text-center">
-        <textarea v-model="text" type="text" placeholder="紹介"></textarea>
-        <label>学校選択</label><br>
         <select v-model="school">
+          <option disabled value="">学校を選択</option>
           <option v-for="school in schools" :value="school.id" :key="school.id">
             {{ school.name }}
           </option>
         </select><br>
+        <input v-model="address" type="text" placeholder="市町村 住所など" class="game_title text-center">
+        <textarea v-model="text" type="text" placeholder="紹介"></textarea>
         <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
         <button type="submit">投稿</button>
       </form>
