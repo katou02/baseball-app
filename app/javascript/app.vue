@@ -206,7 +206,8 @@ const router = new VueRouter({
     {
       path: '/contact/check',
       component: ContactCheckPage,
-      name: 'contact-check'
+      name: 'contact-check',
+      props: true
     }
   ],
   scrollBehavior(to, from, savedPosition) {
