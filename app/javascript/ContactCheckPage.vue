@@ -30,15 +30,10 @@ export default {
   props: ['name','email','text'],
   data() {
     return {
-      sender: '',
-      mail: '',
-      content: ''
+      sender: this.name,
+      mail: this.email,
+      content: this.text
     }
-  },
-  mounted() {
-    this.sender = this.name
-    this.mail = this.email
-    this.content = this.text
   },
   methods: {
     sendMail() {
