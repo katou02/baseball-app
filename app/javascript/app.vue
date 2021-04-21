@@ -37,6 +37,7 @@ import UserEditPage from './UserEditPage'
 import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
+import ContactPage from './ContactPage'
 import VueStar from 'vue-star'
 // import { component } from 'vue/types/umd'
 
@@ -195,6 +196,11 @@ const router = new VueRouter({
       path: '/notifications',
       component: NotificationPage,
       name: 'notification'
+    },
+    {
+      path: '/contacts',
+      component: ContactPage,
+      name: 'contact'
     }
   ],
   scrollBehavior(to, from, savedPosition) {
