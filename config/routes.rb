@@ -45,6 +45,12 @@ Rails.application.routes.draw do
           get :watch_avg
         end
       end
+      resources :contacts,only:[:index] do
+        collection do
+          post :check
+          post :done
+        end
+      end
     end
   end
   
