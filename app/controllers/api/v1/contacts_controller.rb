@@ -1,14 +1,14 @@
-class ContactsController < ApplicationController
+class Api::V1::ContactsController < ApiController
   def index
     @contact = Contact.new
   end
 
   def check
-    @contact = Contact.new(contact_params)
-    if @contact.valid?
-      render :action => 'check'
+    contact = Contact.new(contact_params)
+    if contact.valid?
+      ContactMailer.send_email(contact).deliver
     else
-      render :action => 'index'
+      render json: { errors: contact.errors.keys.map { |key| [key, contact.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
 
@@ -24,6 +24,6 @@ class ContactsController < ApplicationController
 
   private
   def contact_params
-    params.require(:contact).permit(:name, :email, :content)
+    params.permit(:name, :email, :content)
   end
 end
