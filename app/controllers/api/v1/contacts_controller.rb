@@ -12,16 +12,6 @@ class Api::V1::ContactsController < ApiController
     end
   end
 
-  def done
-    @contact = Contact.new(contact_params)
-    if params[:back]
-      render :action => 'index'
-    else
-      ContactMailer.send_email(@contact).deliver
-      render :action => 'done'
-    end
-  end
-
   private
   def contact_params
     params.permit(:name, :email, :content)

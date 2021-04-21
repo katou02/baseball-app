@@ -48,7 +48,6 @@ Rails.application.routes.draw do
       resources :contacts,only:[:index] do
         collection do
           post :check
-          post :done
         end
       end
     end
