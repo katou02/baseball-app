@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="text-center">
-      <a :href= "'/maps/new?tournament_id=' + id" class="ays-avg">紹介する</a>
+      <router-link :to="{name: 'map-new',query: {tournament_id: $route.query.tournament_id}}" class="ays-avg">紹介する</router-link>
       <router-link :to="{name: 'watch_ays',params: {id: $route.query.tournament_id}}" class="ays-avg">戻る</router-link>
     </div>
     <h3 class="pt-4">出場校ふるさとを紹介</h3>
@@ -30,7 +30,8 @@
     </div>
     <div class="map-list row mt-5 mx-auto">
       <div v-for="e in getLists" :key="e.id" class="col-xs-12 col-md-6 col-lg-3 mt-3 mb-5 map-card">
-        <a :href = "'maps/' + e.id" class="user-card">
+        <router-link :to="{name: 'mapshow',params: {id: e.id}}">
+        <!-- <a :href = "'maps/' + e.id" class="user-card"> -->
           <div class="map-name bg-white pt-2">
             {{e.school}}
           </div>
@@ -46,7 +47,8 @@
               <img src="../assets/images/no-image.png" class="map-user_icon mt-3">
             </div>
           </div>
-        </a>
+        <!-- </a> -->
+        </router-link>
       </div>
     </div>
     <div class="text-center">
