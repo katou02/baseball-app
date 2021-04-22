@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="text-center">
-      <a :href= "'/maps/new?tournament_id=' + id" class="ays-avg">紹介する</a>
+      <router-link :to="{name: 'map-new',query: {tournament_id: $route.query.tournament_id}}" class="ays-avg">紹介する</router-link>
       <router-link :to="{name: 'watch_ays',params: {id: $route.query.tournament_id}}" class="ays-avg">戻る</router-link>
     </div>
     <h3 class="pt-4">出場校ふるさとを紹介</h3>
