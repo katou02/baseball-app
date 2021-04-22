@@ -38,20 +38,27 @@
       <div v-for="e in getLists" :key="e.id">
         <div class="article mt-5">
           <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
-            <div class="article-title">
-              {{e.school_a}}vs{{e.school_b}}
-            </div>
-            <div class="article-image">
-              <i class="fa fa-baseball-ball text-white"></i>
-            </div>
-            <div class="sub-title">
-              {{e.title}}
-            </div>
-            <div class="name">
-              投稿者 {{e.nickname}}
-            </div>
-            <div class="tweets_at">
-              {{e.time}}
+            <div class="d-flex">
+              <img src="../assets/images/no-image.png" class="article-icon">
+              <div class="article-heading mx-auto">
+                <div class="article-title">
+                  {{e.school_a}}vs{{e.school_b}}
+                </div>
+                <!-- <div class="article-image">
+                  <i class="fa fa-baseball-ball text-white"></i>
+                </div> -->
+                <div class="sub-title mt-5">
+                  {{e.title}}
+                </div>
+              </div>
+              <div class="who">
+                <div class="name">
+                  投稿者 {{e.nickname}}
+                </div>
+                <div class="tweets_at">
+                  {{e.time}}
+                </div>
+              </div>
             </div>
           </router-link>
         </div>
