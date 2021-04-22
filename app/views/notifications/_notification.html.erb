@@ -2,15 +2,15 @@
 <% tweet = notification.tweet %>
 <div class="user-view">
   <div class="notification-info">
-    <%= link_to users_path(notification.visiter) do %>
+    <%# <%= link_to users_path(notification.visiter) do %> %>
       <% if notification.visiter.image.present?%>
         <%= link_to image_tag("#{notification.visiter.image}",class: "user-icon mt-3"),"/users/#{notification.visiter.id}" %>
       <% else %>
         <%= link_to image_tag("no-image.png",class: "user-icon mt-3"),"/users/#{notification.visiter.id}" %>
       <% end %>
-    <% end %>
+    <%# <% end %> %>
     <div class="notification-deta mt-5 ml-5">
-      <%= notification_form(notification) %><span class="moderate-font ml-2"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+      <%# <%= notification_form(notification) %><span class="moderate-font ml-2"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span> %>
     </div>
   </div>
   <% if @comment.nil? %>

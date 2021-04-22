@@ -5,7 +5,7 @@
   <% @likes.each do |like|%>
     <% tweet = Tweet.find_by(id: like.tweet_id) %>
     <div class="my-article mt-5">
-      <%= link_to tweet do %>
+      <%# <%= link_to tweet do %> %>
         <div class="article-title">
           <%= tweet.school_a.name %>
           vs
@@ -24,7 +24,7 @@
         <div class="tweets_at">
           <%= tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")%>
         </div>
-      <% end %>
+      <%# <% end %> %>
     </div>
   <% end %>
 </div>

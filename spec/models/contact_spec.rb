@@ -47,10 +47,10 @@ RSpec.describe Contact, type: :model do
         expect(contact.errors[:email]).to include('を入力してください')
       end
 
-      it '31文字以上なら保存できない' do
-        contact.email = 'a' * 31
+      it '41文字以上なら保存できない' do
+        contact.email = 'a' * 41
         contact.valid?
-        expect(contact.errors).to be_added(:email, :too_long, count: 30)
+        expect(contact.errors).to be_added(:email, :too_long, count: 40)
       end
 
       it '30文字以下なら保存できる' do

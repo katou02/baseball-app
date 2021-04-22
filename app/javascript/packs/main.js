@@ -43,5 +43,16 @@ const slide = new Vue({
       }).$mount();
       document.body.appendChild(app.$el);
     })
+    import * as VueGoogleMaps from 'vue2-google-maps'
+
+    Vue.use(VueGoogleMaps, {
+      load: {
+        key: process.env.GOOGLE_MAP_API_KEY,
+        libraries: "places",
+        region: "JP",
+        language: "ja",
+      },
+    });
     
+
     // Vue.use(window["vue-js-modal"].default);
