@@ -38,7 +38,6 @@ import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
-import ContactCheckPage from './ContactCheckPage'
 import VueStar from 'vue-star'
 // import { component } from 'vue/types/umd'
 
@@ -202,12 +201,6 @@ const router = new VueRouter({
       path: '/contacts',
       component: ContactPage,
       name: 'contact',
-    },
-    {
-      path: '/contact/check',
-      component: ContactCheckPage,
-      name: 'contact-check',
-      props: true
     }
   ],
   scrollBehavior(to, from, savedPosition) {
