@@ -54,8 +54,9 @@
 }
 
 .article {
-  width: 800px;
-  max-width: 100%;
+  // // width: 800px;
+  min-width: 600px;
+  display: inline-block;
   margin: 0 auto;
   background-color: #68ccf9;
   text-align: center;
@@ -78,6 +79,7 @@
     opacity: 0.7;
   }
   &-main {
+    text-align: center;
     max-height: 1700px;
     width: 100%;
     background-image: image-url("sky.jpg");
@@ -85,6 +87,11 @@
     background-color:rgba(255,255,255,0.8);
     background-blend-mode:lighten;
     flex: 1 1 100%;
+  }
+  &-icon {
+    width: 160px;
+    height: 100%;
+    border: 2px solid  rgb(192, 189, 189);
   }
 }
 
@@ -107,11 +114,11 @@
 .tweets_at,.analyses_at {
   color: black;
   font-size: 11px;
-  text-align: right;
+  text-align: center;
 }
 
 .name {
-  font-size: 15px;
+  font-size: 11px;
   margin-bottom: 2px;
   color: black;
   text-align: right;
