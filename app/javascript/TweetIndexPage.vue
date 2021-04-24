@@ -1,15 +1,6 @@
 <template>
   <div class="main-content">
     <Header></Header>
-    <!--<div id="slide">
-      <div class="header">
-        <transition name="fade">
-        <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
-          <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
-        </div>
-        </transition>
-      </div>
-    </div>-->
     <div class="main-content-btn">
       <router-link :to="{name: 'tweet-new'}" class="send-btn">投稿する</router-link>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
@@ -35,34 +26,38 @@
       <div class="search-area mt-3">
         <input type="text" v-model="keyword" placeholder="検索">
       </div>
-      <div v-for="e in getLists" :key="e.id">
-        <div class="article mt-5">
-          <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
-            <div class="d-flex">
-              <img src="../assets/images/no-image.png" class="article-icon">
-              <div class="article-heading mx-auto">
-                <div class="article-title">
-                  {{e.school_a}}vs{{e.school_b}}
-                </div>
-                <!-- <div class="article-image">
-                  <i class="fa fa-baseball-ball text-white"></i>
-                </div> -->
-                <div class="sub-title mt-5">
-                  {{e.title}}
+      <!-- 記事 -->
+      <v-row>
+        <v-col cols="12"  sm="6" md="6" lg="6"  v-for="e in getLists" :key="e.id">
+          <div class="article mt-5">
+            <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
+              <div class="d-flex h-100">
+                <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                <div v-else><img src="../assets/images/no-image.png" class="article-icon"></div>
+                <div class="article-heading mx-auto">
+                  <div class="article-title">
+                    {{e.school_a}}vs{{e.school_b}}
+                  </div>
+                  <!-- <div class="article-image">
+                    <i class="fa fa-baseball-ball text-white"></i>
+                  </div> -->
+                  <div class="sub-title mt-5">
+                    {{e.title}}
+                  </div>
+                  <div class="who">
+                    <div class="name">
+                      投稿者 {{e.nickname}}
+                    </div>
+                    <div class="tweets_at">
+                      {{e.time}}
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="who">
-                <div class="name">
-                  投稿者 {{e.nickname}}
-                </div>
-                <div class="tweets_at">
-                  {{e.time}}
-                </div>
-              </div>
-            </div>
-          </router-link>
-        </div>
-      </div>
+            </router-link>
+          </div>
+        </v-col>
+      </v-row>
       <div class="text-center">
         <paginate
           :v-model="currentPage" 
@@ -97,20 +92,9 @@ export default {
       categories: [],
       currentPage: this.$store.state.currentPage,
       parPage: 10,
-      // current_slide: 0,
-      // slides: [
-      //   {img: "/images/81573810.jpeg"},
-      //   {img: "/images/ball.jpg"},
-      //   {img: "/images/thumb_ground.jpg"},
-      //   {img: "/images/thumb_front.jpg"},
-      //   {img: "/images/mykosien.JPG"}
-      // ],
     }
   },
   mounted() {
-    // setInterval(() => {
-    //     this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
-    //   }, 3000)
     this.fetchTweets()
     this.fetchCategory()
     if (this.keyword == '') {
