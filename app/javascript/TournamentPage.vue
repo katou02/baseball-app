@@ -6,11 +6,7 @@
     <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-primary">
-      <div v-for="e in categories" :key="e.id">
-        <div v-if="$route.params.id==e.id">
-          {{e.category}}
-        </div>
-      </div>
+      観た試合の感想をみんなに発信してみましょう！
     </div>
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
@@ -26,6 +22,13 @@
             <i class="fa fa-baseball-ball text-white"></i>
             {{e.category}}
           </router-link>
+        </div>
+      </div>
+    </div>
+    <div class="text-format mt-5 text-primary">
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.params.id==e.id">
+          {{e.category}}
         </div>
       </div>
     </div>
