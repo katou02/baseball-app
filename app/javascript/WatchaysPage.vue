@@ -1,102 +1,109 @@
 <template>
-<div class="main-content">
-  <Header></Header>
-  <div class="main-content-btn">
-    <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
-    <a :href= "'/'" class="return-top">トップページへ戻る</a>
-  </div>
-  <div class="text-format mt-5 text-primary">
-    <div v-for="e in categories" :key="e.id">
-      <div v-if="$route.params.id==e.id">
-        {{e.category}}
-      </div>
+  <div class="main-content">
+    <Header></Header>
+    <div class="main-content-btn">
+      <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
+      <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
-  </div>
-  <div class="go-avg text-center mt-4">
-    <div class="avg-ays">
-      みんなの分析を元にした平均評価を見る<br>
-      <router-link :to="{name: 'average',params: {id: $route.params.id}}" class="ays-avg">平均評価を見る</router-link>
-      <!-- <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a> -->
-    </div>
-    <div class="homedown">
-      甲子園でお馴染みのふるさと紹介<br>
-      <router-link :to="{name: 'map',query: {tournament_id: num}}" class="ays-avg">ふるさと</router-link>
-      <a :href= "'/maps?tournament_id=' + num" class="ays-avg">ふるさと紹介</a>
-    </div>
-  </div>
-  <!-- 大会 -->
-  <div class="text-format mt-5 mb-3 text-warning">
-    大会別
-  </div>
-  <div class="title mt-5 ml-5">
-    <router-link :to= "'/analyses'" class="title-child text-white">
-      全ての分析
-      <i class="fa fa-baseball-ball text-white"></i>
-    </router-link>
-    <div v-for="e in categories" :key="e.id">
-      <div v-if="$route.params.id!=e.id">
-        <router-link :to="{name: 'watch_ays',params: {id: e.id}}" @click.native="fetchAnalyses();" class="title-child text-white ml-5">
-          <i class="fa fa-baseball-ball text-white"></i>
+    <div class="text-format mt-5 text-primary">
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.params.id==e.id">
           {{e.category}}
-        </router-link>
+        </div>
+      </div>
+    </div>
+    <div class="go-avg text-center mt-4">
+      <div class="avg-ays">
+        みんなの分析を元にした平均評価を見る<br>
+        <router-link :to="{name: 'average',params: {id: $route.params.id}}" class="ays-avg">平均評価を見る</router-link>
+        <!-- <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a> -->
+      </div>
+      <div class="homedown">
+        甲子園でお馴染みのふるさと紹介<br>
+        <router-link :to="{name: 'map',query: {tournament_id: num}}" class="ays-avg">ふるさと</router-link>
+        <a :href= "'/maps?tournament_id=' + num" class="ays-avg">ふるさと紹介</a>
+      </div>
+    </div>
+    <!-- 大会 -->
+    <div class="text-format mt-5 mb-3 text-warning">
+      大会別
+    </div>
+    <div class="title mt-5 ml-5">
+      <router-link :to= "'/analyses'" class="title-child text-white">
+        全ての分析
+        <i class="fa fa-baseball-ball text-white"></i>
+      </router-link>
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.params.id!=e.id">
+          <router-link :to="{name: 'watch_ays',params: {id: e.id}}" @click.native="fetchAnalyses();" class="title-child text-white ml-5">
+            <i class="fa fa-baseball-ball text-white"></i>
+            {{e.category}}
+          </router-link>
+        </div>
+      </div>
+    </div>
+    <div class="analysis-main">
+      <div class="text-format pt-5 text-warning">
+        みんなの戦力分析
+      </div>
+      <div class="search-area mt-3">
+        <input type="text" v-model="keyword" placeholder="検索">
+      </div>
+      <div class="d-flex">
+        <Side></Side>
+        <v-row>
+          <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+            <div class="analysis mt-5">
+              <router-link :to= "'/analyses/' + e.id">
+                <div class="d-flex h-100">
+                  <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                  <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                  <div class="article-heading mx-auto">
+                    <div class="name">
+                      投稿者{{e.nickname}}
+                      {{e.time}}
+                    </div>
+                    <div class="school_ays-name mt-3">
+                      {{e.school}}
+                    </div>
+                    <div class="sub-title text-center mt-3">
+                      {{e.title}}
+                    </div>
+                  </div>
+                </div>
+              </router-link>
+            </div>
+          </v-col>
+        </v-row>
+      </div>
+      <div class="text-center">
+        <paginate
+          :v-model="currentPage" 
+          :page-count="getPageCount"
+          :click-handler="clickCallback"
+          :page-range="3"
+          :margin-pages="2"
+          :force-page="currentPage"
+          :prev-text="'＜'"
+          :next-text="'＞'"
+          :next-link-class="'page-link'"
+          :prev-link-class="'page-link'"
+          :container-class="'pagination'"
+          :page-link-class="'page-link'">
+        </paginate>
       </div>
     </div>
   </div>
-  <div class="analysis-main">
-    <div class="text-format pt-5 text-warning">
-      みんなの戦力分析
-    </div>
-    <div class="search-area mt-3">
-      <input type="text" v-model="keyword" placeholder="検索">
-    </div>
-    <div v-for="e in getLists" :key="e.id">
-      <div class="analysis mt-5">
-        <router-link :to= "'/analyses/' + e.id">
-          <div class="school_ays-name">
-            {{e.school}}
-          </div>
-          <div class="analysis-image">
-            <i class="fa fa-search"></i>
-          </div>
-          <div class="sub-title text-center">
-            {{e.title}}
-          </div>
-          <div class="name">
-            <span>投稿者</span>
-            {{e.nickname}}
-          </div>
-          <div class="analyses_at">
-            {{e.time}}
-          </div>
-        </router-link>
-      </div>
-    </div>
-    <div class="text-center">
-      <paginate
-        :v-model="currentPage" 
-        :page-count="getPageCount"
-        :click-handler="clickCallback"
-        :page-range="3"
-        :margin-pages="2"
-        :force-page="currentPage"
-        :prev-text="'＜'"
-        :next-text="'＞'"
-        :next-link-class="'page-link'"
-        :prev-link-class="'page-link'"
-        :container-class="'pagination'"
-        :page-link-class="'page-link'">
-      </paginate>
-    </div>
-  </div>
-</div>
 </template>
 
 <script>
 import axios from 'axios'
 import Header from './components/Header.vue'
+import Side from './components/Side.vue'
 export default {
   components: {
-    Header
+    Header,
+    Side
   },
   data() {
     return {
