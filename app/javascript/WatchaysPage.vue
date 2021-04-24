@@ -79,25 +79,24 @@
           </v-col>
         </v-row>
       </div>
-      <div v-if="analyses.length">
-        <div class="text-center">
-          <paginate
-            :v-model="currentPage" 
-            :page-count="getPageCount"
-            :click-handler="clickCallback"
-            :page-range="3"
-            :margin-pages="2"
-            :force-page="currentPage"
-            :prev-text="'＜'"
-            :next-text="'＞'"
-            :next-link-class="'page-link'"
-            :prev-link-class="'page-link'"
-            :container-class="'pagination'"
-            :page-link-class="'page-link'">
-          </paginate>
-        </div>
+      <div class="text-center">
+        <paginate
+          :v-model="currentPage" 
+          :page-count="getPageCount"
+          :click-handler="clickCallback"
+          :page-range="3"
+          :margin-pages="2"
+          :force-page="currentPage"
+          :prev-text="'＜'"
+          :next-text="'＞'"
+          :hide-prev-next="true"
+          :next-link-class="'page-link'"
+          :prev-link-class="'page-link'"
+          :container-class="'pagination'"
+          :page-link-class="'page-link'">
+        </paginate>
       </div>
-      <div v-else class="text-center">
+      <div v-if="!analyses.length" class="text-center">
         <p>投稿された分析はありません</p>
       </div>
     </div>
