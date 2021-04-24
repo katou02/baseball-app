@@ -9,7 +9,7 @@
           <v-divider></v-divider>
 
           <v-list-item-title>
-            <router-link :to="{name: 'analysis'}">
+            <router-link :to="{name: 'tweet'}">
               <v-icon class="mr-4">fa fa-pen-alt</v-icon>試合記事
             </router-link>
           </v-list-item-title>
