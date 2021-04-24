@@ -54,13 +54,11 @@
 }
 
 .article {
-  min-width: 600px;
-  display: inline-block;
-  margin: 0 auto;
+  width: 400px;
+  height: 140px;
   background-color: #68ccf9;
-  text-align: center;
   border: solid 1px rgb(255, 255, 255);
-  height: auto;
+  // height: auto;
   &-title {
     font-size: 25px;
     color: white;
@@ -88,7 +86,7 @@
     flex: 1 1 100%;
   }
   &-icon {
-    width: 160px;
+    width: 140px;
     height: 100%;
     border: 2px solid  rgb(192, 189, 189);
   }
