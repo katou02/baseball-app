@@ -37,31 +37,38 @@
         <div class="search-area mt-3">
           <input  type="text" v-model="keyword" placeholder="検索">
         </div>
-        <div v-if="tweets.length">
-          <div v-for="e in getLists" :key="e.id">
-            <div class="article mt-5">
-              <router-link :to= "'/tweets/' + e.id">
-                <div class="article-title">
-                  {{e.school_a}}vs{{e.school_b}}
+        <!-- 記事 -->
+        <div class="d-flex">
+          <Side></Side>
+          <div v-if="tweets.length">
+            <v-row>
+              <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+                <div class="article mt-5">
+                  <router-link :to= "'/tweets/' + e.id">
+                    <div class="d-flex h-100">
+                      <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                      <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                      <div class="article-heading mx-auto">
+                        <div class="name">
+                          投稿者 {{e.nickname}}
+                          {{e.time}}
+                        </div>
+                        <div class="article-title mt-3">
+                          {{e.school_a}}vs{{e.school_b}}
+                        </div>
+                        <div class="sub-title mt-3">
+                          {{e.title}}
+                        </div>
+                      </div>
+                    </div>
+                  </router-link>
                 </div>
-                <div class="article-image">
-                  <i class="fa fa-baseball-ball text-white"></i>
-                </div>
-                <div class="sub-title">
-                  {{e.title}}
-                </div>
-                <div class="name">
-                  投稿者 {{e.nickname}}
-                </div>
-                <div class="tweets_at">
-                  {{e.time}}
-                </div>
-              </router-link>
-            </div>
+              </v-col>
+            </v-row>
           </div>
-        </div>
-        <div v-else>
-          <p class="text-center mt-5">試合記事はありません</p>
+          <div v-else>
+            <p class="text-center mt-5">試合記事はありません</p>
+          </div>
         </div>
         <div class="text-center">
           <paginate
@@ -87,9 +94,11 @@
 <script>
 import axios from 'axios'
 import Header from './components/Header.vue'
+import Side from './components/Side.vue'
 export default {
   components: {
-    Header
+    Header,
+    Side
   },
   data() {
     return {
