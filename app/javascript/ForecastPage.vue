@@ -33,9 +33,9 @@
       <div class="search-area mt-3">
         <input type="text" v-model="keyword" placeholder="検索">
       </div>
-      <div v-for="e in getLists" :key="e.id">
+      <!-- 記事 -->
+      <div v-col cols="12"  sm="12" md="12" lg="6"   v-for="e in getLists" :key="e.id">
         <div class="forecast mt-5">
-          <!-- <a :href= "'forecasts/' + e.id"> -->
           <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
             <div class="school-fcs">
             <div class="fcs-icon">
