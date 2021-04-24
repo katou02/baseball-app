@@ -5,6 +5,26 @@
       <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
+    <div class="text-format mt-5 text-success">
+      戦力分析をみんなで共有してみましょう！
+    </div>
+    <div class="text-format mt-5 mb-3 text-warning">
+      大会別
+    </div>
+    <div class="title mt-5 ml-5">
+      <router-link :to= "'/analyses'" class="title-child text-white">
+        全ての分析
+        <i class="fa fa-baseball-ball text-white"></i>
+      </router-link>
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.params.id!=e.id">
+          <router-link :to="{name: 'watch_ays',params: {id: e.id}}" @click.native="fetchAnalyses();" class="title-child text-white ml-5">
+            <i class="fa fa-baseball-ball text-white"></i>
+            {{e.category}}
+          </router-link>
+        </div>
+      </div>
+    </div>
     <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id==e.id">
@@ -25,23 +45,6 @@
       </div>
     </div>
     <!-- 大会 -->
-    <div class="text-format mt-5 mb-3 text-warning">
-      大会別
-    </div>
-    <div class="title mt-5 ml-5">
-      <router-link :to= "'/analyses'" class="title-child text-white">
-        全ての分析
-        <i class="fa fa-baseball-ball text-white"></i>
-      </router-link>
-      <div v-for="e in categories" :key="e.id">
-        <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'watch_ays',params: {id: e.id}}" @click.native="fetchAnalyses();" class="title-child text-white ml-5">
-            <i class="fa fa-baseball-ball text-white"></i>
-            {{e.category}}
-          </router-link>
-        </div>
-      </div>
-    </div>
     <div class="analysis-main">
       <div class="text-format pt-5 text-warning">
         みんなの戦力分析
