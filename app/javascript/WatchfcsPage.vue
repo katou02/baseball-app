@@ -5,20 +5,6 @@
       <a :href= "'/forecasts/new'" class="send-btn">投稿する</a>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
-    <div class="text-format mt-5 text-primary">
-      <div v-for="e in categories" :key="e.id">
-        <div v-if="$route.params.id==e.id">
-          {{e.category}}
-        </div>
-      </div>
-    </div>
-    <p class="text-center h4 mb-3 mt-5">優勝校を予想してみよう</p>
-    <div class="champ center-block">
-      <i class="fas fa-crown text-warning"></i>
-      <router-link :to="{name: 'champion',params: {id: num}}">優勝予想</router-link>
-      <i class="fas fa-crown text-warning"></i>
-    </div>
-    <!-- 大会 -->
     <div class="text-format mt-5 mb-3 text-warning">
       大会別
     </div>
@@ -36,6 +22,20 @@
         </div>
       </div>
     </div>
+    <div class="text-format mt-5 text-primary">
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.params.id==e.id">
+          {{e.category}}
+        </div>
+      </div>
+    </div>
+    <p class="text-center h4 mb-3 mt-5">優勝校を予想してみよう</p>
+    <div class="champ center-block">
+      <i class="fas fa-crown text-warning"></i>
+      <router-link :to="{name: 'champion',params: {id: num}}">優勝予想</router-link>
+      <i class="fas fa-crown text-warning"></i>
+    </div>
+    <!-- 大会 -->
     <!--予想  -->
     <div class="forecast-main">
       <div class="text-format pt-5 text-primary">
@@ -44,53 +44,58 @@
       <div class="search-area mt-3">
         <input type="text" v-model="keyword" placeholder="検索">
       </div>
-      <div v-if="forecasts.length">
-        <div v-for="e in getLists" :key="e.id">
-          <div class="forecast mt-5">
-            <!-- <a :href= "'forecasts/' + e.id"> -->
-            <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
-              <div class="school-fcs">
-                <div class="win-school_fcs">
-                  勝利予想
-                  <br><br>
-                  {{e.win_school}}
-                </div>
-                <div class="lose-school_fcs">
-                  敗退予想
-                  <br><br>
-                  {{e.lose_school}}
-                </div>
+      <div class="d-flex">
+        <Side></Side>
+        <div v-if="forecasts.length">
+          <v-row>
+            <v-col cols="12" sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+              <div class="forecast mt-5">
+                <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
+                  <div class="d-flex h-100">
+                    <img src="/images/ball.jpg" class="article-icon">
+                    <div class="article-heading mx-auto">
+                      <div class="name">
+                        投稿者{{e.nickname}}
+                        {{e.time}}
+                      </div>
+                      <div class="school-fcs mt-4">
+                        <div class="win-school_fcs">
+                          勝利予想
+                          <br><br>
+                          {{e.win_school}}
+                        </div>
+                        <div class="lose-school_fcs ml-3">
+                          敗退予想
+                          <br><br>
+                          {{e.lose_school}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </router-link>
               </div>
-              <div class="name">
-                投稿者
-                {{e.nickname}}
-              </div>
-              <div class="tweets_at">
-                {{e.time}}
-              </div>
-            <!-- </a> -->
-            </router-link>
-          </div>
+            </v-col>
+          </v-row>
+        <paginate
+          :v-model="currentPage" 
+          :page-count="getPageCount"
+          :click-handler="clickCallback"
+          :page-range="3"
+          :margin-pages="2"
+          :prev-text="'＜'"
+          :next-text="'＞'"
+          :force-page="currentPage"
+          :next-link-class="'page-link'"
+          :prev-link-class="'page-link'"
+          :container-class="'pagination'"
+          :page-link-class="'page-link'">
+        </paginate>
         </div>
-      </div>
-      <div v-else>
-        <p class="text-center mt-5">投稿された予想はありません</p>
-      </div>
-      <div class="text-center">
-      <paginate
-        :v-model="currentPage" 
-        :page-count="getPageCount"
-        :click-handler="clickCallback"
-        :page-range="3"
-        :margin-pages="2"
-        :prev-text="'＜'"
-        :next-text="'＞'"
-        :force-page="currentPage"
-        :next-link-class="'page-link'"
-        :prev-link-class="'page-link'"
-        :container-class="'pagination'"
-        :page-link-class="'page-link'">
-      </paginate>
+        <div v-else>
+          <p class="text-center mt-5">投稿された予想はありません</p>
+        </div>
+        <div class="text-center">
+        </div>
       </div>
     </div>
   </div>
@@ -98,9 +103,11 @@
 <script>
 import axios from 'axios'
 import Header from './components/Header.vue'
+import Side from './components/Side.vue'
 export default {
   components: {
-    Header
+    Header,
+    Side
   },
   data() {
     return {
