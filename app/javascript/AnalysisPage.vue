@@ -1,14 +1,6 @@
 <template>
 <div class="main-content">
-  <div id="slide">
-    <div class="header">
-      <transition name="fade">
-      <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
-        <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
-      </div>
-      </transition>
-    </div>
-  </div>
+  <Header></Header>
   <div class="main-content-btn">
     <!-- <a :href= "'/analyses/new'" class="send-btn">投稿する</a> -->
     <router-link :to="{name: 'analysis-new'}" class="send-btn">投稿する</router-link>
@@ -37,29 +29,32 @@
     <div class="search-area mt-3">
       <input type="text" v-model="keyword" placeholder="検索">
     </div>
-    <div v-for="e in getLists" :key="e.id">
-      <div class="analysis mt-5">
-        <!-- <a :href= "'analyses/' + e.id"> -->
-        <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
-          <div class="school_ays-name">
-            {{e.school}}
+    <div class="d-flex">
+      <Side></Side>
+      <v-row>
+        <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+          <div class="article mt-5">
+            <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
+              <div class="d-flex h-100">
+                <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                <div class="article-heading mx-auto">
+                  <div class="name">
+                    投稿者{{e.nickname}}
+                    {{e.time}}
+                  </div>
+                  <div class="school_ays-name mt-3">
+                    {{e.school}}
+                  </div>
+                  <div class="sub-title mt-3">
+                    {{e.title}}
+                  </div>
+                </div>
+              </div>
+            </router-link>
           </div>
-          <div class="analysis-image">
-            <i class="fa fa-search"></i>
-          </div>
-          <div class="sub-title text-center">
-            {{e.title}}
-          </div>
-          <div class="name">
-            <span>投稿者</span>
-            {{e.nickname}}
-          </div>
-          <div class="analyses_at">
-            {{e.time}}
-          </div>
-        <!-- </a> -->
-        </router-link>
-      </div>
+        </v-col>
+      </v-row>
     </div>
     <div class="text-center">
       <paginate
@@ -82,7 +77,13 @@
 </template>
 <script>
 import axios from 'axios';
+import Header from './components/Header.vue'
+import Side from './components/Side.vue'
 export default {
+  components: {
+    Header,
+    Side
+  },
   data() {
     return {
       keyword: this.$store.state.keyword_ays,
@@ -91,19 +92,9 @@ export default {
       currentPage: this.$store.state.currentPage,
       parPage: 10,
       current_slide: 0,
-      slides: [
-        {img: "/images/81573810.jpeg"},
-        {img: "/images/ball.jpg"},
-        {img: "/images/thumb_ground.jpg"},
-        {img: "/images/thumb_front.jpg"},
-        {img: "/images/mykosien.JPG"}
-      ],
     }
   },
   mounted() {
-    setInterval(() => {
-      this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
-    }, 3000)
     this.fetchAnayses()
     this.fetchCategory()
     if (this.keyword == '') {
