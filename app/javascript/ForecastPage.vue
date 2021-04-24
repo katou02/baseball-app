@@ -58,21 +58,26 @@
           </v-col>
         </v-row>
       </div>
-      <div class="text-center">
-        <paginate
-          :v-model="currentPage" 
-          :page-count="getPageCount"
-          :click-handler="clickCallback"
-          :page-range="3"
-          :margin-pages="2"
-          :prev-text="'＜'"
-          :next-text="'＞'"
-          :force-page="currentPage"
-          :next-link-class="'page-link'"
-          :prev-link-class="'page-link'"
-          :container-class="'pagination'"
-          :page-link-class="'page-link'">
-        </paginate>
+      <div v-if="forecasts.length">
+        <div class="text-center">
+          <paginate
+            :v-model="currentPage" 
+            :page-count="getPageCount"
+            :click-handler="clickCallback"
+            :page-range="3"
+            :margin-pages="2"
+            :prev-text="'＜'"
+            :next-text="'＞'"
+            :force-page="currentPage"
+            :next-link-class="'page-link'"
+            :prev-link-class="'page-link'"
+            :container-class="'pagination'"
+            :page-link-class="'page-link'">
+          </paginate>
+        </div>
+      </div>
+      <div v-else class="text-center mt-5">
+        <p>投稿された予想はありません</p>
       </div>
     </div>
   </div>
