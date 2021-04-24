@@ -30,7 +30,7 @@
 }
 
 .main-content {
-  background-color: rgba(236, 236, 206,0.4);
+  // background-color: rgba(236, 236, 206,0.4);
   position: relative;
   // height: 100%;
   &-btn{
@@ -56,12 +56,13 @@
 .article {
   width: 400px;
   height: 140px;
-  background-color: #68ccf9;
+  // background-color: #68ccf9;
+  background-color: #f3f3f3;
   border: solid 1px rgb(255, 255, 255);
   // height: auto;
   &-title {
-    font-size: 25px;
-    color: white;
+    font-size: 20px;
+    color: black;
     font-weight: bold;
   }
   &-image {
@@ -79,26 +80,26 @@
     text-align: center;
     max-height: 1700px;
     width: 100%;
-    background-image: image-url("sky.jpg");
-    background-size: cover;
-    background-color:rgba(255,255,255,0.8);
-    background-blend-mode:lighten;
+    // background-image: image-url("sky.jpg");
+    // background-size: cover;
+    // background-color:rgba(255,255,255,0.8);
+    // background-blend-mode:lighten;
     flex: 1 1 100%;
   }
   &-icon {
     width: 140px;
     height: 100%;
-    border: 2px solid  rgb(192, 189, 189);
+    border: 1.8px solid  rgb(192, 189, 189);
   }
 }
 
 .search-tweet {
   min-height: 100%;
   width: 100%;
-  background-image: image-url("sky_00010.jpg");
-  background-size: cover;
-  background-color:rgba(255,255,255,0.8);
-  background-blend-mode:lighten;
+  // background-image: image-url("sky_00010.jpg");
+  // background-size: cover;
+  // background-color:rgba(255,255,255,0.8);
+  // background-blend-mode:lighten;
   flex: 1 1 100%;
 }
 
@@ -118,7 +119,6 @@
   font-size: 11px;
   margin-bottom: 2px;
   color: black;
-  text-align: right;
 }
 
 .pagination {
