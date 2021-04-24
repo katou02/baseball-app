@@ -33,24 +33,20 @@
             <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
               <div class="d-flex h-100">
                 <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
-                <div v-else><img src="../assets/images/no-image.png" class="article-icon"></div>
+                <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                 <div class="article-heading mx-auto">
-                  <div class="article-title">
+                  <div class="name">
+                    投稿者 {{e.nickname}}
+                    {{e.time}}
+                  </div>
+                  <div class="article-title mt-3">
                     {{e.school_a}}vs{{e.school_b}}
                   </div>
                   <!-- <div class="article-image">
                     <i class="fa fa-baseball-ball text-white"></i>
                   </div> -->
-                  <div class="sub-title mt-5">
+                  <div class="sub-title mt-3">
                     {{e.title}}
-                  </div>
-                  <div class="who">
-                    <div class="name">
-                      投稿者 {{e.nickname}}
-                    </div>
-                    <div class="tweets_at">
-                      {{e.time}}
-                    </div>
                   </div>
                 </div>
               </div>
