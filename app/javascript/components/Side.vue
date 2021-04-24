@@ -15,7 +15,7 @@
           </v-list-item-title>
           <v-list-item-title class="mt-4">
             <router-link :to="{name: 'analysis'}">
-              <v-icon class="mr-4">fa fa-search</v-icon>試合分析
+              <v-icon class="mr-4">fa fa-search</v-icon>戦力分析
             </router-link>
           </v-list-item-title>
           <v-list-item-title class="mt-4">
