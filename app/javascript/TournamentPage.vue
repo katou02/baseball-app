@@ -43,52 +43,52 @@
         <!-- 記事 -->
         <div class="d-flex">
           <Side></Side>
-          <div v-if="tweets.length">
-            <v-row>
-              <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
-                <div class="article mt-5">
-                  <router-link :to= "'/tweets/' + e.id">
-                    <div class="d-flex h-100">
-                      <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
-                      <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
-                      <div class="article-heading mx-auto">
-                        <div class="name">
-                          投稿者 {{e.nickname}}
-                          {{e.time}}
-                        </div>
-                        <div class="article-title mt-3">
-                          {{e.school_a}}vs{{e.school_b}}
-                        </div>
-                        <div class="sub-title mt-3">
-                          {{e.title}}
-                        </div>
+          <v-row>
+            <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+              <div class="article mt-5">
+                <router-link :to= "'/tweets/' + e.id">
+                  <div class="d-flex h-100">
+                    <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                    <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                    <div class="article-heading mx-auto">
+                      <div class="name">
+                        投稿者 {{e.nickname}}
+                        {{e.time}}
+                      </div>
+                      <div class="article-title mt-3">
+                        {{e.school_a}}vs{{e.school_b}}
+                      </div>
+                      <div class="sub-title mt-3">
+                        {{e.title}}
                       </div>
                     </div>
-                  </router-link>
-                </div>
-              </v-col>
-            </v-row>
-          </div>
-          <div v-else>
-            <p class="text-center mt-5">試合記事はありません</p>
+                  </div>
+                </router-link>
+              </div>
+            </v-col>
+          </v-row>
+        </div>
+        <div v-if="tweets.length">
+          <div class="text-center">
+            <paginate
+              :v-model="currentPage" 
+              :page-count="getPageCount"
+              :click-handler="clickCallback"
+              :page-range="3"
+              :margin-pages="2"
+              :prev-text="'＜'"
+              :next-text="'＞'"
+              :force-page="currentPage"
+              :hide-prev-next="true"
+              :next-link-class="'page-link'"
+              :prev-link-class="'page-link'"
+              :container-class="'pagination'"
+              :page-link-class="'page-link'">
+            </paginate>
           </div>
         </div>
-        <div class="text-center">
-          <paginate
-            :v-model="currentPage" 
-            :page-count="getPageCount"
-            :click-handler="clickCallback"
-            :page-range="3"
-            :margin-pages="2"
-            :prev-text="'＜'"
-            :next-text="'＞'"
-            :force-page="currentPage"
-            :hide-prev-next="true"
-            :next-link-class="'page-link'"
-            :prev-link-class="'page-link'"
-            :container-class="'pagination'"
-            :page-link-class="'page-link'">
-          </paginate>
+        <div v-else class="text-center mt-5">
+          <p>投稿された試合記事がありません</p>
         </div>
       </div>
     </div>
