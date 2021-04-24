@@ -1,14 +1,6 @@
 <template>
   <div class="main-content">
-    <div id="slide">
-      <div class="header">
-        <transition name="fade">
-        <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
-          <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
-        </div>
-        </transition>
-      </div>
-    </div>
+    <Header></Header>
     <div class="main-content-btn">
       <!-- <a :href= "'/forecasts/new'" class="send-btn">投稿する</a> -->
       <router-link :to="{name: 'forecast-new'}" class="send-btn">投稿する</router-link>
@@ -34,34 +26,37 @@
         <input type="text" v-model="keyword" placeholder="検索">
       </div>
       <!-- 記事 -->
-      <div v-col cols="12"  sm="12" md="12" lg="6"   v-for="e in getLists" :key="e.id">
-        <div class="forecast mt-5">
-          <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
-            <div class="school-fcs">
-            <div class="fcs-icon">
-              <i class="fa fa-balance-scale text-white"></i>
+      <div class="d-flex">
+        <Side></Side>
+        <v-row>
+          <v-col cols="12"  sm="12" md="12" lg="6"   v-for="e in getLists" :key="e.id">
+            <div class="forecast mt-5">
+              <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
+                <div class="d-flex h-100">
+                  <img src="/images/ball.jpg" class="article-icon">
+                  <div class="article-heading mx-auto">
+                    <div class="name">
+                      投稿者{{e.nickname}}
+                      {{e.time}}
+                    </div>
+                    <div class="school-fcs mt-4">
+                      <div class="win-school_fcs">
+                        勝利予想
+                        <br><br>
+                        {{e.win_school}}
+                      </div>
+                      <div class="lose-school_fcs ml-3">
+                        敗退予想
+                        <br><br>
+                        {{e.lose_school}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </router-link>
             </div>
-              <div class="win-school_fcs">
-                勝利予想
-                <br>
-                {{e.win_school}}
-              </div>
-              <div class="lose-school_fcs">
-                敗退予想
-                <br>
-                {{e.lose_school}}
-              </div>
-            </div>
-            <div class="name">
-              投稿者
-              {{e.nickname}}
-            </div>
-            <div class="tweets_at">
-              {{e.time}}
-            </div>
-          <!-- </a> -->
-          </router-link>
-        </div>
+          </v-col>
+        </v-row>
       </div>
       <div class="text-center">
         <paginate
@@ -83,8 +78,14 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
+import axios from 'axios'
+import Header from './components/Header.vue'
+import Side from './components/Side.vue'
 export default {
+  components: {
+    Header,
+    Side
+  },
   data() {
     return {
       keyword: this.$store.state.keyword_fcs,
@@ -93,13 +94,6 @@ export default {
       parPage: 10,
       categories: [],
       current_slide: 0,
-      slides: [
-        {img: "/images/81573810.jpeg"},
-        {img: "/images/ball.jpg"},
-        {img: "/images/thumb_ground.jpg"},
-        {img: "/images/thumb_front.jpg"},
-        {img: "/images/mykosien.JPG"}
-      ],
     }
   },
   mounted() {
