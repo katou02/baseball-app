@@ -54,25 +54,23 @@
           </v-col>
         </v-row>
       </div>
-      <div v-if="tweets.length">
-        <div class="text-center">
-          <paginate
-            :v-model="currentPage" 
-            :page-count="getPageCount"
-            :click-handler="clickCallback"
-            :page-range="3"
-            :margin-pages="2"
-            :prev-text="'＜'"
-            :next-text="'＞'"
-            :force-page="currentPage"
-            :next-link-class="'page-link'"
-            :prev-link-class="'page-link'"
-            :container-class="'pagination'"
-            :page-link-class="'page-link'">
-          </paginate>
-        </div>
+      <div class="text-center">
+        <paginate
+          :v-model="currentPage" 
+          :page-count="getPageCount"
+          :click-handler="clickCallback"
+          :page-range="3"
+          :margin-pages="2"
+          :prev-text="'＜'"
+          :next-text="'＞'"
+          :force-page="currentPage"
+          :next-link-class="'page-link'"
+          :prev-link-class="'page-link'"
+          :container-class="'pagination'"
+          :page-link-class="'page-link'">
+        </paginate>
       </div>
-      <div v-else class="text-center mt-5">
+      <div v-if="!tweets.length" class="text-center mt-5">
         <p>投稿された試合記事がありません</p>
       </div>
     </div>
