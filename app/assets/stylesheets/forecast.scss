@@ -16,6 +16,7 @@
   height: 140px;
   background-color: #f3f3f3;
   border: solid 1px rgb(255, 255, 255);
+  text-align: center;
   // background: -moz-linear-gradient(#ffb03c, #ff708d);
   // background: -webkit-linear-gradient(#ffb03c, #ff708d);
   // background: linear-gradient(to right, #ffb03c, #ff708d);
@@ -31,7 +32,6 @@
   // background-size: cover;
   // background-blend-mode:lighten;
   // background-color:rgba(255,255,255,0.5);
-  text-align: center;
   min-height: 1100px;
   flex: 1 1 100%;
 }

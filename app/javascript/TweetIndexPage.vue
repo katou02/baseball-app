@@ -30,7 +30,7 @@
       <div class="d-flex">
         <Side></Side>
         <v-row>
-          <v-col cols="12"  sm="12" md="12" lg="6"  v-for="e in getLists" :key="e.id">
+          <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
             <div class="article mt-5">
               <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
                 <div class="d-flex h-100">
