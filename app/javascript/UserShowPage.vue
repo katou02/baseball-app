@@ -77,30 +77,30 @@
       <v-tabs-items v-model="tab">
 
         <v-tab-item value="tab-1">
-          <div class="my-post-list">
-            <div v-for="e in listTweets" :key="e.id">
-              <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
-                <div class="my-article mt-5">
-                  <div class="article-title">
-                    {{e.school_a}}vs{{e.school_b}}
+          <v-row>
+            <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in listTweets" :key="e.id">
+              <div class="article mt-5">
+                <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
+                  <div class="d-flex h-100">
+                    <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                    <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                    <div class="article-heading mx-auto">
+                      <div class="name">
+                        投稿者 {{e.nickname}}
+                        {{e.time}}
+                      </div>
+                      <div class="article-title mt-3">
+                        {{e.school_a}}vs{{e.school_b}}
+                      </div>
+                      <div class="sub-title mt-3">
+                        {{e.title}}
+                      </div>
+                    </div>
                   </div>
-                  <div class="article-image">
-                    <i class="fa fa-baseball-ball text-white"></i>
-                  </div>
-                  <div class="sub-title">
-                    {{e.title_info}}
-                  </div>
-                  <div class="name">
-                    <span>投稿者</span>
-                    {{e.nickname}}
-                  </div>
-                  <div class="tweets_at">
-                    {{e.time}}
-                  </div>
-                </div>
-              </router-link>
-            </div>
-          </div>
+                </router-link>
+              </div>
+            </v-col>
+          </v-row>
           <button
               class="list-item-button"
               v-if="(listTweets.length - count_t) >= 0"
@@ -111,30 +111,30 @@
           </button>
         </v-tab-item>
         <v-tab-item value="tab-2">
-          <div class="my-post-list">
-            <div v-for="e in listAnalyses" :key="e.id">
-              <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
-                <div class="my-analysis mt-5">
-                  <div class="school_ays-name">
-                    {{e.school}}
+          <v-row>
+            <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in listAnalyses" :key="e.id">
+              <div class="article mt-5">
+                <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
+                  <div class="d-flex h-100">
+                    <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                    <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                    <div class="article-heading mx-auto">
+                      <div class="name">
+                        投稿者{{e.nickname}}
+                        {{e.time}}
+                      </div>
+                      <div class="school_ays-name mt-3">
+                        {{e.school}}
+                      </div>
+                      <div class="sub-title mt-3">
+                        {{e.title}}
+                      </div>
+                    </div>
                   </div>
-                  <div class="analysis-image">
-                    <i class="fa fa-search"></i>
-                  </div>
-                  <div class="title_ays text-center">
-                    {{e.title}}
-                  </div>
-                  <div class="name">
-                    <span>投稿者</span>
-                    {{e.nickname}}
-                  </div>
-                  <div class="analyses_at">
-                    {{e.time}}
-                  </div>
-                </div>
-              </router-link>
-            </div>
-          </div>
+                </router-link>
+              </div>
+            </v-col>
+          </v-row>
           <button
               class="list-item-button"
               v-if="(listAnalyses.length - count_a) >= 0"
@@ -145,34 +145,35 @@
           </button>
         </v-tab-item>
         <v-tab-item value="tab-3">
-          <div class="my-post-list">
-            <div v-for="e in listForecasts" :key="e.id">
-              <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
-                <div class="my-forecast mt-5">
-                  <div class="school-fcs">
-                    <div class="fcs-icon">
-                      <i class="fa fa-balance-scale text-white"></i>
-                    </div>
-                    <div class="win-school_fcs">
-                      勝利予想<br>
-                      {{e.win_school}}
-                    </div>
-                    <div class="lose-school_fcs">
-                      敗退予想<br>
-                      {{e.lose_school}}
+          <v-row>
+            <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in listForecasts" :key="e.id">
+              <div class="forecast mt-5">
+                <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
+                  <div class="d-flex h-100">
+                    <img src="/images/ball.jpg" class="article-icon">
+                    <div class="article-heading mx-auto">
+                      <div class="name">
+                        投稿者{{e.nickname}}
+                        {{e.time}}
+                      </div>
+                      <div class="school-fcs mt-4">
+                        <div class="win-school_fcs">
+                          勝利予想
+                          <br><br>
+                          {{e.win_school}}
+                        </div>
+                        <div class="lose-school_fcs ml-3">
+                          敗退予想
+                          <br><br>
+                          {{e.lose_school}}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="name">
-                    <span>投稿者</span>
-                    {{e.nickname}}
-                  </div>
-                  <div class="tweets_at">
-                    {{e.time}}
-                  </div>
-                </div>
-              </router-link>
-            </div>
-          </div>
+                </router-link>
+              </div>
+            </v-col>
+          </v-row>
           <button
               class="list-item-button"
               v-if="(listForecasts.length - count_f) >= 0"
