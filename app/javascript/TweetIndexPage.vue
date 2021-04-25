@@ -24,7 +24,7 @@
         みんなの試合記事
       </div>
       <div class="search-area mt-3">
-        <input type="text" v-model="keyword" placeholder="検索">
+        <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
       </div>
       <!-- 記事 -->
       <div class="d-flex">
