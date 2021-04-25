@@ -41,6 +41,7 @@ import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
 import "vuetify/dist/vuetify.min.css"
+import '@mdi/font/css/materialdesignicons.css'
 
 Vue.use(VueRouter)
 
