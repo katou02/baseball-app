@@ -1,6 +1,6 @@
 <template>
   <div class="main-content">
-    <Header></Header>
+    <!-- <Header></Header> -->
     <div class="main-content-btn">
       <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
