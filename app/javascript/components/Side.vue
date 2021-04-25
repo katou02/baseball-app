@@ -23,6 +23,16 @@
               <v-icon class="mr-4">fa fa-baseball-ball</v-icon>試合予想
             </router-link>
           </v-list-item-title>
+          <v-list-item-title class="mt-4">
+            <router-link :to="{name: 'map',query: {tournament_id: 108}}">
+              <v-icon class="mr-4">fa fa-city</v-icon>ふるさと紹介
+            </router-link>
+          </v-list-item-title>
+          <v-list-item-title class="mt-4">
+            <router-link :to="{name: 'champion',params: {id: 108}}">
+              <v-icon class="mr-4">fa fa-crown</v-icon>優勝予想
+            </router-link>
+          </v-list-item-title>
         </v-list-item>
       </v-list>
     </v-container>
