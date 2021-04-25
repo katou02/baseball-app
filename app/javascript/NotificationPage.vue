@@ -20,10 +20,10 @@
               あなたをフォローしました
             </span>
             <span v-else-if="e.action==='like'">
-              あなたの<router-link :to="{name: 'tweetshow',params: {id: e.tweet}}">投稿</router-link>にいいねをしました
+              あなたの<router-link :to="{name: 'tweet-show',params: {id: e.tweet}}">投稿</router-link>にいいねをしました
             </span>
             <span v-else-if="e.action==='comment'">
-              あなたの<router-link :to="{name: 'tweetshow',params: {id: e.tweet}}">投稿</router-link>にコメントをしました
+              あなたの<router-link :to="{name: 'tweet-show',params: {id: e.tweet}}">投稿</router-link>にコメントをしました
             </span>
             <span v-else-if="e.action==='comment_analysis'">
               あなたの<router-link :to="{name: 'analysis-show',params: {id: e.analysis}}">投稿</router-link>にコメントをしました

@@ -61,7 +61,7 @@ const router = new VueRouter({
     {
       path: '/tweets/:id(\\d+)',
       component: TweetShowPage,
-      name: 'tweetshow'
+      name: 'tweet-show'
     },
     {
       path: '/tweets/new',
