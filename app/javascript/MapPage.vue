@@ -11,14 +11,14 @@
       <router-link :to="{name: 'map-new',query: {tournament_id: $route.query.tournament_id}}" class="ays-avg">紹介する</router-link>
       <router-link :to="{name: 'watch_ays',params: {id: $route.query.tournament_id}}" class="ays-avg">戻る</router-link>
     </div>
-    <h3 class="pt-4">出場校ふるさとを紹介</h3>
+    <h3 class="pt-4">出場校のふるさとを紹介</h3>
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
     <div class="title pb-5 mt-5">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.query.tournament_id!=e.id">
-          <router-link :to="{name: 'map',query: {tournament_id: e.id}}" @click.native="fetchMaps()" class="title-child text-white">
+          <router-link :to="{name: 'map',query: {tournament_id: e.id}}" @click.native="fetchMaps()" class="title-child text-white ml-5">
             <i class="fa fa-baseball-ball text-white"></i> 
             {{e.category}}
           </router-link>
@@ -28,28 +28,36 @@
     <div class="search-area">
       <input type="text" v-model="keyword" placeholder="検索">
     </div>
-    <div class="map-list row mt-5 mx-auto">
-      <div v-for="e in getLists" :key="e.id" class="col-xs-12 col-md-6 col-lg-3 mt-3 mb-5 map-card">
-        <router-link :to="{name: 'mapshow',params: {id: e.id}}">
-        <!-- <a :href = "'maps/' + e.id" class="user-card"> -->
-          <div class="map-name bg-white pt-2">
-            {{e.school}}
-          </div>
-          <div class="map-user pt-5">
-            投稿者
-            {{e.nickname}}
-          </div>
-          <div class="map-user_image">
-            <div v-if="e.image.url">
-              <img :src= e.image.url class="map-user_icon mt-3">
+    <div class="d-flex">
+      <Side></Side>
+      <!-- <div class="map-list row mt-5 mx-auto"> -->
+        <v-row>
+          <v-col cols="12"  sm="6" md="6" lg="4" v-for="e in getLists" :key="e.id" class="mt-3">
+            <div class="map-deta">
+              <router-link :to="{name: 'mapshow',params: {id: e.id}}">
+                <div class="d-flex h-100">
+                  <!-- <div class="map-user_image"> -->
+                  <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                  <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                  <div class="article-heading mx-auto bg-white">
+                    <div class="name">
+                      投稿者
+                      {{e.nickname}}<br>
+                      {{e.time}}
+                    </div>
+                    <div class="sub-title">
+                      {{e.school}}のふるさと
+                    </div>
+                    <div class="text-center">
+                      <img src="/images/hurusato.jpeg" width="50px" height="auto" >
+                    </div>
+                  </div>
+                </div>
+              </router-link>
             </div>
-            <div v-else>
-              <img src="../assets/images/no-image.png" class="map-user_icon mt-3">
-            </div>
-          </div>
-        <!-- </a> -->
-        </router-link>
-      </div>
+          </v-col>
+        </v-row>
+      <!-- </div> -->
     </div>
     <div class="text-center">
       <paginate
@@ -60,17 +68,25 @@
         :margin-pages="2"
         :prev-text="'＜'"
         :next-text="'＞'"
+        :hide-prev-next="true"
         :next-link-class="'page-link'"
         :prev-link-class="'page-link'"
         :container-class="'pagination'"
         :page-link-class="'page-link'">
       </paginate>
+    <div v-if="!maps.length" class="text-center mt-5">
+      <p>投稿された紹介がありません</p>
+    </div>
     </div>
   </div>
 </template>
 <script>
 import axios from 'axios'
+import Side from './components/Side.vue'
 export default {
+  components: {
+    Side
+  },
   data() {
     return {
       keyword: '',
