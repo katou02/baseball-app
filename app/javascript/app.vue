@@ -38,10 +38,8 @@ import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
-// import VueStar from 'vue-star'
-// import { component } from 'vue/types/umd'
+import "vuetify/dist/vuetify.min.css"
 
-// Vue.component('VueStar', VueStar);
 Vue.use(VueRouter)
 
 const router = new VueRouter({
