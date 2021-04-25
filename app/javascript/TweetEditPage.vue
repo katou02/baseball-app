@@ -85,7 +85,7 @@ export default {
       axios
         .patch(`/api/v1/tweets/${this.$route.params.id}`,{text: this.text,title_info: this.title,school_a_score: this.school_a_score,school_b_score: this.school_b_score,school_a_id: this.school_a,school_b_id: this.school_b})
         .then(response => {
-          this.$router.push({ name: 'tweetshow',params: {id: this.$route.params.id}});
+          this.$router.push({ name: 'tweet-show',params: {id: this.$route.params.id}});
         })
         .catch(error => {
           if (error.response.data && error.response.data.errors) {
