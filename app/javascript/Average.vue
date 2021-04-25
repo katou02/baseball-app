@@ -1,31 +1,33 @@
 <template>
   <div class="average-content">
     <h3 class="pt-5 mt-0">戦力分析の平均評価</h3>
-    <div class="search-area mt-3">
+    <div class="search-area mt-3 mb-5">
       <input type="text mt-5" v-model="keyword" placeholder="検索">
     </div>
-    <div v-for=" (e,index) in getLists" :key="e.id">
-      <div class="avg-name text-center">{{e.name}}</div>
-      <div class="data-title mt-3 ml-5">
-        戦力
-      </div>
-      <div class="average">
-        <p class="avg-font">攻撃力<p>
-        <div class="avg-attack">{{Math.floor(e.attack_num)}}</div>
-        <p class="avg-font">守備力<p>
-        <div class="avg-defense">{{Math.floor(e.defense_num)}}</div>
-        <p class="avg-font">投手力<p>
-        <div class="avg-pitch">{{Math.floor(e.pitch_num)}}</div>
-        <p class="avg-font">総合力<p>
-        <div class="avg-total">{{Math.floor(e.total_num)}}</div>
-        <p class="avg-font">期待度</p>
-        <div class="avg-expec">{{Math.floor(e.expectations_num)}}</div>
-      </div>
-      {{fetchchart(index)}}
-      <div style="width:900px; height:500px;" >
-        <canvas class="RaderChart"></canvas>
-      </div>
-    </div>
+    <v-row>
+      <v-col cols="12"  sm="12" md="12" lg="6" v-for=" (e,index) in getLists" :key="e.id">
+        <div class="avg-name text-center mt-3">{{e.name}}</div>
+        <div class="data-title mt-3 ml-5">
+          戦力
+        </div>
+        <div class="average">
+          <p class="avg-font">攻撃力<p>
+          <div class="avg-attack">{{Math.floor(e.attack_num)}}</div>
+          <p class="avg-font">守備力<p>
+          <div class="avg-defense">{{Math.floor(e.defense_num)}}</div>
+          <p class="avg-font">投手力<p>
+          <div class="avg-pitch">{{Math.floor(e.pitch_num)}}</div>
+          <p class="avg-font">総合力<p>
+          <div class="avg-total">{{Math.floor(e.total_num)}}</div>
+          <p class="avg-font">期待度</p>
+          <div class="avg-expec">{{Math.floor(e.expectations_num)}}</div>
+        </div>
+        {{fetchchart(index)}}
+        <div style="width:460px; height:400px;" >
+          <canvas class="RaderChart"></canvas>
+        </div>
+      </v-col>
+    </v-row>
     <div class="text-center">
       <paginate
         :v-model="currentPage" 
