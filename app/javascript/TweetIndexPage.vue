@@ -1,6 +1,6 @@
 <template>
   <div class="main-content">
-    <Header></Header>
+    <!-- <Header></Header> -->
     <div class="main-content-btn">
       <router-link :to="{name: 'tweet-new'}" class="send-btn">投稿する</router-link>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>

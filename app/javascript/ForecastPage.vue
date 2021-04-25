@@ -1,6 +1,6 @@
 <template>
   <div class="main-content">
-    <Header></Header>
+    <!-- <Header></Header> -->
     <div class="main-content-btn">
       <!-- <a :href= "'/forecasts/new'" class="send-btn">投稿する</a> -->
       <router-link :to="{name: 'forecast-new'}" class="send-btn">投稿する</router-link>
