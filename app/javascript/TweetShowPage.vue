@@ -81,11 +81,10 @@
               <li><font color="red">{{ e }}</font></li>
             </ul>
           </div>
-          <div class="tweet-comment_form">
-            <!-- <textarea v-model="comment.text" type="text" rows="2" cols="30"></textarea> -->
-            <textarea v-model="text" type="text" rows="2" cols="30"></textarea>
+          <div class="tweet-comment_form text-center">
+            <v-textarea solo v-model="text" type="text" rows="2" cols="30"></v-textarea>
+            <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
           </div>
-        <button type="submit" class="game_record" >投稿する</button>
         </form>
       </div>
     </div>
