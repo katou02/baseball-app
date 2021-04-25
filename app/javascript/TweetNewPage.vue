@@ -1,58 +1,63 @@
 <template>
   <div class="contents row mt-2">
-    <h2>試合記事の投稿</h2>
-    <form @submit.prevent="createTweet">
-      <div class="select-from">
-        <div class="containe_r p-4">
-          <div class="select-tournament">
-            <label>大会名</label><br>
-            <select @change="findChildren" v-model="tournament">
-              <option disabled value="">大会を選択</option>
-              <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
-            </select>
-          </div>
-          <p v-if="!!errors['tournament']" class="error" style="color: red;">{{ errors['tournament'][0]}}</p>
-          <div class="select-school mt-3">
-            <ul>
-              <label>高校A</label><br>
-              <select @change="findGrandChildren" v-model="school_a">
-                <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
-             </select>
-            </ul>
-          </div>
-          <div class="select-school mt-3">
-            <ul>
-              <label>高校B</label><br>
-              <select @change="findGrandChildren" v-model="school_b">
-                <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+    <v-container>
+    <h2 class="text-primary">試合記事の投稿</h2>
+    <v-divider></v-divider>
+    <v-app>
+      <form @submit.prevent="createTweet">
+        <div class="select-from">
+          <div class="containe_r p-4">
+            <div class="select-tournament">
+              <label>大会名</label><br>
+              <select @change="findChildren" v-model="tournament">
+                <option disabled value="">大会を選択</option>
+                <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
               </select>
-            </ul>
+            </div>
+            <p v-if="!!errors['tournament']" class="error" style="color: red;">{{ errors['tournament'][0]}}</p>
+            <div class="select-school mt-3">
+              <ul>
+                <label>高校A</label><br>
+                <select @change="findGrandChildren" v-model="school_a">
+                  <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+              </select>
+              </ul>
+            </div>
+            <div class="select-school mt-3">
+              <ul>
+                <label>高校B</label><br>
+                <select @change="findGrandChildren" v-model="school_b">
+                  <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+                </select>
+              </ul>
+            </div>
+            <div class="school-a_score mt-3">
+              <label>高校A 得点</label><br>
+              <select v-model="school_a_score">
+                <option v-for="school_a_score in 50" :value="school_a_score" :key="school_a_score.id">{{ school_a_score }}</option>
+              </select>
+            </div>
+            <div class="school-b_score mt-3">
+              <label>高校B 得点</label><br>
+              <select v-model="school_b_score">
+                <option v-for="school_b_score in 50" :value="school_b_score" :key="school_b_score.id">{{ school_b_score }}</option>
+              </select>
+            </div>
           </div>
-          <div class="school-a_score mt-3">
-            <label>高校A 得点</label><br>
-            <select v-model="school_a_score">
-              <option v-for="school_a_score in 50" :value="school_a_score" :key="school_a_score.id">{{ school_a_score }}</option>
-            </select>
+          <input v-model="title" type="text" rows="2" cols="30" placeholder="タイトル 30字以内" class="game_title">
+          <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
+          <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文" class="rounded"></textarea>
+          <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
+          <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+          <div v-if="url">
+            <img :src="url" width="320px" height="300px">
+            <button type="submit" @click="deleteImage">削除</button>
           </div>
-          <div class="school-b_score mt-3">
-            <label>高校B 得点</label><br>
-            <select v-model="school_b_score">
-              <option v-for="school_b_score in 50" :value="school_b_score" :key="school_b_score.id">{{ school_b_score }}</option>
-            </select>
-          </div>
+          <v-btn type="submit" color="primary" class="text-white mt-5">投稿する</v-btn>
         </div>
-        <input v-model="title" type="text" rows="2" cols="30" placeholder="タイトル 30字以内" class="game_title">
-        <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
-        <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
-        <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
-        <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
-        <div v-if="url">
-          <img :src="url" width="320px" height="300px">
-          <button type="submit" @click="deleteImage">削除</button>
-        </div>
-        <button type="submit" class="game_record">投稿する</button>
-      </div>
-    </form>
+      </form>
+    </v-app>
+    </v-container>
   </div>
 </template>
 <script>
