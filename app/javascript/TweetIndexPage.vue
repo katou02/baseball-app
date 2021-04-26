@@ -29,7 +29,7 @@
       <!-- 記事 -->
       <div class="d-flex">
         <Side></Side>
-        <v-row>
+        <v-row class="ml-5">
           <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
             <div class="article mt-5">
               <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
