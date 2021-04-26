@@ -1,5 +1,5 @@
 <template>
-  <div class="slide">
+  <div class="slide mr-5">
     <v-card class="mx-auto" width="300">
       <v-list>
         <v-list-item>
