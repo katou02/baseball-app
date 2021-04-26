@@ -144,6 +144,11 @@ export default {
   watch: {
     keyword: function(){
       this.currentPage = 1;
+    },
+    '$route'(to, from) {
+      this.fetchMaps()
+      this.currentPage=1
+      this.keyword = ''
     }
   }
 } 
