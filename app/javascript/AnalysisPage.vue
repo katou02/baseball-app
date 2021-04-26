@@ -9,19 +9,17 @@
   <div class="text-format mt-5 text-success">
     戦力分析をみんなで共有してみましょう！
   </div>
-  <div class="text-format mt-5 mb-4 text-warning">
+  <!-- <div class="text-format mt-5 mb-4 text-warning">
     大会別
   </div>
   <div class="title mt-5">
     <div v-for="e in categories" :key="e.id">
-      <!-- <a :href= "'/tournaments/' + e.id + '/watch_ays'" class="title-child text-white"> -->
       <router-link :to="{name: 'watch_ays',params: {id: e.id}}" class="title-child text-white ml-5">
         <i class="fa fa-baseball-ball text-white"></i> 
         {{e.category}}
-      <!-- </a> -->
       </router-link>
     </div>
-  </div>
+  </div> -->
   <div class="analysis-main">
     <div class="text-format pt-5 text-warning">
       みんなの戦力分析

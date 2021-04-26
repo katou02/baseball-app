@@ -8,7 +8,7 @@
     <div class="text-format mt-5 text-primary">
       観た試合の感想をみんなに発信してみましょう！
     </div>
-    <div class="text-format mt-5 mb-4 text-warning">
+    <!-- <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
     <div class="title mt-5">
@@ -18,7 +18,7 @@
           {{e.category}}
         </router-link>
       </div>
-    </div>
+    </div> -->
     <div class="article-main">
       <div class="text-format pt-5 text-primary">
         みんなの試合記事
