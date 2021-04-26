@@ -8,7 +8,7 @@
     <div class="text-format mt-5 text-primary">
       観た試合の感想をみんなに発信してみましょう！
     </div>
-    <div class="text-format mt-5 mb-4 text-warning">
+    <!-- <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
     <div class="title mt-5 ml-5">
@@ -24,7 +24,7 @@
           </router-link>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id==e.id">

@@ -5,7 +5,7 @@
       <a :href= "'/forecasts/new'" class="send-btn">投稿する</a>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
-    <div class="text-format mt-5 mb-3 text-warning">
+    <!-- <div class="text-format mt-5 mb-3 text-warning">
       大会別
     </div>
     <div class="title mt-5 ml-5">
@@ -21,7 +21,7 @@
           </router-link>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id==e.id">

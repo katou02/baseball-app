@@ -8,16 +8,15 @@
     </div>
     <div class="text-format mt-5 text-warning">
       試合予想をしてみましょう！<br><br>
-      大会別
     </div>
-    <div class="title mt-5">
+    <!-- <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">
         <router-link :to="{name: 'watch_fcs',params: {id: e.id}}"  class="title-child text-white ml-5">
           <i class="fa fa-baseball-ball text-white"></i> 
           {{e.category}}
         </router-link>
       </div>
-    </div>
+    </div> -->
     <div class="forecast-main">
       <div class="text-format pt-5 text-primary">
         みんなの試合予想
