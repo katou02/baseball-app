@@ -15,7 +15,7 @@
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
-    <div class="title pb-5 mt-5">
+    <!--<div class="title pb-5 mt-5">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.query.tournament_id!=e.id">
           <router-link :to="{name: 'map',query: {tournament_id: e.id}}" @click.native="fetchMaps()" class="title-child text-white ml-5">
@@ -24,7 +24,7 @@
           </router-link>
         </div>
       </div>
-    </div>
+    </div>-->
     <div class="search-area mt-5">
       <input type="text" v-model="keyword" placeholder="検索">
     </div>
@@ -47,7 +47,7 @@
                     {{e.school}}のふるさと
                   </div>
                   <div class="text-center">
-                    <img src="/images/hurusato.jpeg" width="50px" height="auto" >
+                    <img src="/images/hurusato.jpeg" width="50px" height="40px" >
                   </div>
                 </div>
               </div>
