@@ -11,19 +11,19 @@
     <!-- フォロー -->
     <div class="stats mb-5">
       <i class="fas fa-user-friends text-info"></i>
-      <router-link :to="{name: 'following',params: {id: $route.params.id}}">
+      <!-- <router-link :to="{name: 'following',params: {id: $route.params.id}}"> -->
         <strong id="following" class="stat">
           {{follow_count}}
         </strong>
         フォロー
-      </router-link>
+      <!-- </router-link> -->
       <i class="fas fa-user-friends text-info"></i>
-      <router-link :to="{name: 'follower',params: {id: $route.params.id}}">
+      <!-- <router-link :to="{name: 'follower',params: {id: $route.params.id}}"> -->
         <strong id="followers" class="stat">
           {{follower_count}}
         </strong>
         フォロワー
-      </router-link>
+      <!-- </router-link> -->
     </div>
     <!-- フォローボタン -->
     <div v-if="user.current_user.id !== user.id">
@@ -68,17 +68,18 @@
         <p style="white-space:pre-wrap;">{{user.text}}</p>
       </div>
       <!-- 投稿した -->
-      <v-tabs v-model="tab">
+      <v-tabs v-model="tab" centered>
         <v-tabs-slider color="yellow"></v-tabs-slider>
         <v-tab href="#tab-1">投稿した試合記事</v-tab>
         <v-tab href="#tab-2">投稿した戦力分析</v-tab>
         <v-tab href="#tab-3">投稿した試合予想</v-tab>
+        <v-tab href="#tab-4">フォロー</v-tab>
+        <v-tab href="#tab-5">フォロワー</v-tab>
       </v-tabs>
-      <v-tabs-items v-model="tab">
-
+      <v-tabs-items v-model="tab" class="d-flex justify-center">
         <v-tab-item value="tab-1">
           <v-row>
-            <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in listTweets" :key="e.id">
+            <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listTweets" :key="e.id" class="mx-auto">
               <div class="article mt-5">
                 <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
@@ -112,7 +113,7 @@
         </v-tab-item>
         <v-tab-item value="tab-2">
           <v-row>
-            <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in listAnalyses" :key="e.id">
+            <v-col cols="12"  sm="6" md="6" lg="6" v-for="e in listAnalyses" :key="e.id">
               <div class="article mt-5">
                 <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
@@ -146,7 +147,7 @@
         </v-tab-item>
         <v-tab-item value="tab-3">
           <v-row>
-            <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in listForecasts" :key="e.id">
+            <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listForecasts" :key="e.id">
               <div class="forecast mt-5">
                 <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
@@ -183,13 +184,26 @@
               もっと見る
           </button>
         </v-tab-item>
+
+        <v-tab-item value="tab-4">
+          <Follow></Follow>
+        </v-tab-item>
+        <v-tab-item value="tab-5">
+          <Follower></Follower>
+        </v-tab-item>
       </v-tabs-items>
     </div>
   </div>
 </template>
 <script>
 import axios from 'axios'
+import Follow from './FollowingPage.vue'
+import Follower from './FollowerPage.vue'
 export default {
+  components: {
+    Follow,
+    Follower
+  },
   data() {
     return {
       tab: null,
@@ -274,26 +288,8 @@ export default {
 .follow_form {
   text-align: center;
 }
-.v-leave-active {
-  position: absolute;
-}
-.v-enter {
-  transform: translateX(-100%);
-}
-.v-leave-to {
-  transform: translateX(100%);
-}
 
-.list-item-button {
-    display: block;
-    font-size: 18px;
-    color: rgb(99, 113, 233);
-    margin: 50px auto;
-    border: 0;
-    background: none;
-    transition: .5s;
-}
-.list-item-button:hover {
-    color: rgb(246, 81, 81);
-}
+.theme--light.v-tabs-items {
+  background-color: transparent;
+} 
 </style>
