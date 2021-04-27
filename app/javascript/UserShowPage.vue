@@ -6,7 +6,7 @@
     <router-link :to="{name: 'room'}" class="dm-btn">DM</router-link>
     <p class="text-center">ID:{{user.id}}</p>
     <div class="myname mt-5">
-      <h2>{{user.nickname}}さんのプロフィール</h2>
+      <h2>{{user.nickname}}</h2>
     </div>
     <!-- フォロー -->
     <div class="stats mb-5">
@@ -59,17 +59,18 @@
           <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
         </div>
       </div>
-      <div class="residence">
+      <!--<div class="residence">
         <p class="text-primary font-weight-bold">住んでる場所</p>
         <br>{{user.prefecture}}
       </div>
       <div class="text-myname">
         <p class="text-primary font-weight-bold">自己紹介</p>
         <p style="white-space:pre-wrap;">{{user.text}}</p>
-      </div>
+      </div>-->
       <!-- 投稿した -->
       <v-tabs v-model="tab" centered>
         <v-tabs-slider color="yellow"></v-tabs-slider>
+        <v-tab href="#tab-m">プロフィール</v-tab>
         <v-tab href="#tab-1">投稿した試合記事</v-tab>
         <v-tab href="#tab-2">投稿した戦力分析</v-tab>
         <v-tab href="#tab-3">投稿した試合予想</v-tab>
@@ -77,6 +78,16 @@
         <v-tab href="#tab-5">フォロワー</v-tab>
       </v-tabs>
       <v-tabs-items v-model="tab" class="d-flex justify-center">
+        <v-tab-item value="tab-m">
+          <div class="residence">
+            <p class="text-primary font-weight-bold">住んでる場所</p>
+            <br>{{user.prefecture}}
+          </div>
+          <div class="text-myname">
+            <p class="text-primary font-weight-bold">自己紹介</p>
+            <p style="white-space:pre-wrap;">{{user.text}}</p>
+          </div>
+        </v-tab-item>
         <v-tab-item value="tab-1">
           <v-row>
             <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listTweets" :key="e.id" class="mx-auto">
