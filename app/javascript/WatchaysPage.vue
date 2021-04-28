@@ -2,8 +2,8 @@
   <div class="main-content">
     <!-- <Header></Header> -->
     <div class="main-content-btn">
-      <a :href= "'/analyses/new'" class="send-btn">投稿する</a>
-      <a :href= "'/'" class="return-top">トップページへ戻る</a>
+      <a :href= "'/analyses/new'" class="send-btn text-white">投稿する</a>
+      <a :href= "'/'" class="return-top text-white">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-success">
       戦力分析をみんなで共有してみましょう！
