@@ -170,4 +170,8 @@ export default {
 a.page-link {
   background-color: aqua;
 }
+
+.v-application a {
+  color: white;
+}
 </style>
