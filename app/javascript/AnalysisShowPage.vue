@@ -22,23 +22,20 @@
         <div class="game_result mt-5">
           {{analysis.tournament}}
         </div>
-        <div class="text-format mt-1 text-info">
-          <i class="fas fa-search mt-5">分析内容</i>
+        <div class="school_name-ays">
+          {{analysis.school}}
         </div>
         <div class="sub_title text-white mt-5">
           <i class="fa fa-baseball-ball"></i>
           {{analysis.title}}
         </div>
-        <div class="school_name-ays">
-          {{analysis.school}}
-        </div>
-        <div class="data-title mt-5 ml-5">
-          分析詳細
+        <div class="data-title ml-5">
+          <i class="fas fa-search">分析詳細</i>
         </div>
         <div class="ays-text mt-5 ml-5">
           <p style="white-space:pre-wrap;">{{analysis.text}}</p>
         </div>
-        <div class="data-title mt-5 ml-5">
+        <div class="data-title ml-5">
           戦力
         </div>
         <div class="select_main-show mt-5">    
