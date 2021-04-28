@@ -5,10 +5,10 @@
       <div v-if="tweet.user_id==tweet.current_user">
         <button class="delete-btn" @click="deleteTweet(tweet.id)">記事を削除する</button>
         <!-- <a :href= "'/tweets/' + tweet.id + '/edit'" class="edit-article">記事を編集する</a> -->
-        <router-link :to="{name: 'tweet-edit',params: {id: tweet.id}}" class="edit-article">記事を編集する</router-link>
+        <router-link :to="{name: 'tweet-edit',params: {id: tweet.id}}" class="edit-article text-white p-2">記事を編集する</router-link>
       </div>
+      <router-link :to="{name: 'tweet'}" class="return-btn text-white">記事一覧へ戻る</router-link>
       <!-- <a :href= "'/tweets'" class="return-btn">記事一覧へ戻る</a> -->
-      <router-link :to="{name: 'tweet'}" class="return-btn">記事一覧へ戻る</router-link>
     </div>
     <div class="user_name">
       <h5>投稿者:<a :href= "'/users/' + tweet.user_id">{{tweet.nickname}}</a></h5>
