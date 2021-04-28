@@ -7,7 +7,7 @@
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-warning">
-      試合予想をしてみましょう！<br><br>
+      試合予想をしてみましょう！<br>
     </div>
     <!-- <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">

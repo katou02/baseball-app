@@ -22,6 +22,9 @@
         </div>
       </div>
     </div> -->
+    <div class="text-format mt-5 text-warning">
+      試合予想をしてみましょう！
+    </div>
     <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id==e.id">
@@ -29,12 +32,12 @@
         </div>
       </div>
     </div>
-    <p class="text-center h4 mb-3 mt-5">優勝校を予想してみよう</p>
+    <!-- <p class="text-center h4 mb-3 mt-5">優勝校を予想してみよう</p>
     <div class="champ center-block">
       <i class="fas fa-crown text-warning"></i>
       <router-link :to="{name: 'champion',params: {id: num}}">優勝予想</router-link>
       <i class="fas fa-crown text-warning"></i>
-    </div>
+    </div> -->
     <!-- 大会 -->
     <!--予想  -->
     <div class="forecast-main">
