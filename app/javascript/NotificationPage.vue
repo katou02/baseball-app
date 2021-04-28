@@ -6,7 +6,7 @@
     </div>
     <div class="notification">
       <div class="mx-auto">
-        <div v-for="e in notifications" :key="e.id">
+        <div v-for="e in listNotifications" :key="e.id">
           <div class="notification-info mt-5">
             <div v-if="e.visiter_image.url"> 
               <img :src= e.visiter_image.url class="user-icon mt-1 mb-5">
@@ -38,6 +38,14 @@
             </div>
           </div>
         </div>
+        <button
+          class="list-item-button text-center"
+          v-if="(listNotifications.length - count) >= 0"
+          type="button"
+          @click="isMore"
+        >
+          もっと見る
+      </button>
       </div>
     </div>
   </div>
@@ -47,7 +55,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      notifications: []
+      notifications: [],
+      count: 10
     }
   },
   mounted() {
@@ -60,6 +69,15 @@ export default {
         .then(response =>{
           this.notifications = response.data.notification;
         })
+    },
+    isMore() {
+      this.count += 10
+    }
+  },
+  computed: {
+    listNotifications() {
+      const list = this.notifications
+      return list.slice(0, this.count)
     }
   }
 }
