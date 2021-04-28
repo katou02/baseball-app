@@ -1,9 +1,9 @@
 <template>
   <div class="mypage-content pt-3">
-    <a :href= "'/'" class="return-top-mypage">トップページへ戻る</a>
-    <router-link :to="{name: 'user'}" class="users-btn">ユーザー一覧</router-link>
-    <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit-article">編集する</router-link>
-    <router-link :to="{name: 'room'}" class="dm-btn">DM</router-link>
+    <a :href= "'/'" class="return-top-mypage text-white">トップページへ戻る</a>
+    <router-link :to="{name: 'user'}" class="users-btn text-white">ユーザー一覧</router-link>
+    <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit-article text-white">編集する</router-link>
+    <router-link :to="{name: 'room'}" class="dm-btn text-white">DM</router-link>
     <p class="text-center">ID:{{user.id}}</p>
     <div class="myname mt-5">
       <h2>{{user.nickname}}</h2>
