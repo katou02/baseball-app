@@ -1,24 +1,24 @@
 .contact {
-  background-color: #EEEEEE;
+  // background-color: #EEEEEE;
   width: 100%;
   display: flex;
   &-main{
     width: 45%;
     margin: 0 auto;
   }
-  &-sent {
-    margin: 0 auto;
-    margin-top: auto;
-  }
-  &-return {
-    margin-left: 48%;
-    display: inline-block;
-    font-weight: bold;
-    padding: 0.25em 0.5em;
-    color: #00BCD4;
-    background: #ECECEC;
-    transition: .4s;
-  }
+  // &-sent {
+  //   margin: 0 auto;
+  //   margin-top: auto;
+  // }
+  // &-return {
+  //   margin-left: 48%;
+  //   display: inline-block;
+  //   font-weight: bold;
+  //   padding: 0.25em 0.5em;
+  //   color: #00BCD4;
+  //   background: #ECECEC;
+  //   transition: .4s;
+  // }
 }
 
 @media screen and (min-width: 200px) {
