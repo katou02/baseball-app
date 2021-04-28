@@ -26,7 +26,7 @@
       </div>
     </div>-->
     <div class="search-area mt-5">
-      <input type="text" v-model="keyword" placeholder="検索">
+      <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
     <div class="d-flex">
       <Side></Side>
