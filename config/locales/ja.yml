@@ -9,10 +9,10 @@ ja:
         school_a: "高校A"
         school_b: "高校B"
         school_a_score: "高校Aの得点"
-        school_b_score: "高校Bの特点"
+        school_b_score: "高校Bの得点"
         title_info: "タイトル"
         text: "テキスト"
-        tournament_id: "大会"
+        tournament: "大会"
       analysis:
         attack: "攻撃力"
         defensive: "守備力"
