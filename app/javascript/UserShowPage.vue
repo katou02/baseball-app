@@ -28,20 +28,20 @@
     <!-- フォローボタン -->
     <div v-if="user.current_user.id !== user.id">
       <div class="follow_form mt-2">
-      <v-btn
+      <button
           v-if="user.check"
           min-width="135px"
           class="unfollow-btn mx-auto"
           @click="unfollowUser"
         >フォロー中
-      </v-btn>
-        <v-btn
+      </button>
+        <button
           v-else
           min-width="135px"
           class="follow-btn"
           @click="followUser"
         >フォロー
-        </v-btn>
+        </button>
       </div>
       <div v-if="user.check && user.room == null">
         <form @submit.prevent="createRoom">

@@ -48,13 +48,15 @@
 .follow-btn {
   color:rgb(13, 150, 241);
   background-color: white;
+  min-width: 135px;
   border-radius: 9999px;
   font-weight: bold;
-  border-color: rgb(13, 150, 241);
+  border:  2px solid rgb(13, 150, 241);
 }
 
 .unfollow-btn {
   color: white;
+  min-width: 135px;
   background-color: rgb(13, 150, 241);
   border-radius: 9999px;
   font-weight: bold;
