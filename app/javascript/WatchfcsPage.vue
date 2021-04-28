@@ -192,3 +192,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .v-application a {
+    color: white;
+  }
+</style>
