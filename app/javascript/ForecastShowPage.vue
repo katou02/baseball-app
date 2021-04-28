@@ -19,8 +19,10 @@
           <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
         </div>
       </div>
+      <div class="game_result mt-5">
+        {{forecast.tournament}}
+      </div>
       <div class="text-format text-danger">
-        {{forecast.tournament}}<br>
         <i class="fas fa-fire mt-5 mb-5">試合予想</i>
       </div>
       <div class="data-title mt-5 ml-5">
@@ -71,10 +73,10 @@
               <li><font color="red">{{ e }}</font></li>
             </ul>
           </div>
-          <div class="tweet-comment_form">
-            <textarea v-model="text" type="text" rows="2" cols="30"></textarea>
+          <div class="text-center">
+            <v-textarea solo v-model="text" type="text" rows="2" cols="30"></v-textarea>
+            <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
           </div>
-          <button type="submit" class="game_record" >投稿する</button>
           </form>
         </div>
       </div>
