@@ -2,7 +2,7 @@
   <div class="room-content">
     <div class="user-in">
       <div class="room-member mr-5 pt-2">
-      <a :href= "'/users/' + id">{{member.user.nickname}}</a>
+      <router-link :to="{name: 'user-show',params: {id: id}}">{{member.user.nickname}}</router-link>
         <div v-if="member.user.image.url"> 
          <img :src= member.user.image.url class="room-user-icon mt-1 mb-5">
         </div>

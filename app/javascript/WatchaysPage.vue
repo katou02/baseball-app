@@ -2,7 +2,8 @@
   <div class="main-content">
     <!-- <Header></Header> -->
     <div class="main-content-btn">
-      <a :href= "'/analyses/new'" class="send-btn text-white">投稿する</a>
+      <!-- <a :href= "'/analyses/new'" class="send-btn text-white">投稿する</a> -->
+      <router-link :to="{name: 'analysis-new'}" class="send-btn text-white">投稿する</router-link>
       <a :href= "'/'" class="return-top text-white">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-success">
