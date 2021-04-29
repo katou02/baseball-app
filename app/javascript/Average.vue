@@ -38,6 +38,7 @@
         :prev-text="'＜'"
         :next-text="'＞'"
         :force-page="currentPage"
+        :hide-prev-next="true"
         :next-link-class="'page-link'"
         :prev-link-class="'page-link'"
         :container-class="'pagination'"
