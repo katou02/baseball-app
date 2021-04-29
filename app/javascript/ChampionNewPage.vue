@@ -1,16 +1,27 @@
 <template>
-  <div class="contents row">
-   <form @submit.prevent="createChampion">
-    <div class="form p-4">
-      <select v-model="selected">
-        <option disabled value="">優勝予想を選択</option>
-        <option v-for="school in schools" :value="school.id" :key="school.id">
-          {{ school.name }}
-        </option>
-      </select>
-      <button type="submit">投票</button>
-    </div>
-   </form>
+  <div class="contents w-50 mx-auto">
+    <form @submit.prevent="createChampion">
+      <v-card>
+        <v-card-title><h3>優勝予想に投票！</h3></v-card-title>
+        <div class="form mx-auto p-4">
+          <!-- <select v-model="selected">
+            <option disabled value="">優勝予想を選択</option>
+            <option v-for="school in schools" :value="school.id" :key="school.id">
+              {{ school.name }}
+            </option>
+          </select> -->
+          <v-select
+            v-model="selected"
+            item-text="name"
+            item-value="id"
+            label="優勝予想"
+            :items="schools"
+            outlined>
+          </v-select>
+          <v-btn color="warning" dark type="submit">投票</v-btn>
+        </div>
+      </v-card>
+    </form>
   </div>
 </template>
 <script>
