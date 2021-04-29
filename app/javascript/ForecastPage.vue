@@ -105,9 +105,7 @@ export default {
       }, 3000)
     this.fetchForecasts()
     this.fetchCategory()
-    if (this.keyword == '') {
-    }
-    else {
+    if (this.keyword !== '') {
       this.currentPage = 1
     }
   },

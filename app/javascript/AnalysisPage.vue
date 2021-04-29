@@ -99,9 +99,7 @@ export default {
   mounted() {
     this.fetchAnayses()
     this.fetchCategory()
-    if (this.keyword == '') {
-    }
-    else {
+    if (this.keyword !== '') {
       this.currentPage = 1
     }
   },
