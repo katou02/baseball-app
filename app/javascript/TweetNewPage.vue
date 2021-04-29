@@ -1,12 +1,12 @@
 <template>
   <div class="contents row mx-auto">
     <v-container>
-      <h2 class="text-primary">試合記事の投稿</h2>
+      <h2 class="text-primary font-weight-bold">試合記事の投稿</h2>
       <v-divider></v-divider>
       <form @submit.prevent="createTweet">
         <div class="select-from">
           <div class="containe_r p-4">
-              <label>大会名</label><br>
+            <label>大会名</label><br>
             <div class="select-tournament w-50 mx-auto">
               <select @change="findChildren" v-model="tournament" class="border">
                 <option disabled value="">大会を選択</option>
@@ -14,64 +14,68 @@
               </select>
             </div>
             <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
-            <div class="select-school w-25 mx-auto mt-3">
-              <ul>
-                <label>高校A</label><br>
-                <!-- <select @change="findGrandChildren" v-model="school_a">
-                  <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+            <div class="d-flex">
+              <div class="select-school w-25 mx-auto mt-3">
+                <ul>
+                  <label>高校A</label><br>
+                  <!-- <select @change="findGrandChildren" v-model="school_a">
+                    <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+                  </select> -->
+                  <v-select
+                    v-model="school_a"
+                    @change="findGrandChildren" 
+                    item-text="name"
+                    item-value="id"
+                    :items="children"
+                    label="高校を選択"
+                    outlined>
+                  </v-select>
+                </ul>
+              </div>
+              <div class="select-school w-25 mx-auto mt-3">
+                <ul>
+                  <label>高校B</label><br>
+                  <!-- <select @change="findGrandChildren" v-model="school_b">
+                    <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+                  </select> -->
+                  <v-select
+                    v-model="school_b"
+                    @change="findGrandChildren" 
+                    item-text="name"
+                    item-value="id"
+                    :items="children"
+                    label="高校を選択"
+                    outlined>
+                  </v-select>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="school-a_score w-25 mx-auto mt-3">
+                <label>高校A 得点</label><br>
+                <!-- <select v-model="school_a_score">
+                  <option v-for="school_a_score in 50" :value="school_a_score" :key="school_a_score.id">{{ school_a_score }}</option>
                 </select> -->
                 <v-select
-                  v-model="school_a"
-                  @change="findGrandChildren" 
-                  item-text="name"
-                  item-value="id"
-                  :items="children"
-                  label="高校を選択"
-                  outlined>
+                  v-model="school_a_score"
+                  :items="score"
+                  label="スコア"
+                  solo>
                 </v-select>
-              </ul>
-            </div>
-            <div class="select-school w-25 mx-auto mt-3">
-              <ul>
-                <label>高校B</label><br>
-                <!-- <select @change="findGrandChildren" v-model="school_b">
-                  <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+                <p v-if="!!errors['school_a_score']" style="color: red;">{{ errors['school_a_score'][0]}}</p>
+              </div>
+              <div class="school-b_score w-25 mx-auto mt-3">
+                <label>高校B 得点</label><br>
+                <!-- <select v-model="school_b_score">
+                  <option v-for="school_b_score in 50" :value="school_b_score" :key="school_b_score.id">{{ school_b_score }}</option>
                 </select> -->
                 <v-select
-                  v-model="school_b"
-                  @change="findGrandChildren" 
-                  item-text="name"
-                  item-value="id"
-                  :items="children"
-                  label="高校を選択"
-                  outlined>
+                  v-model="school_b_score"
+                  :items="score"
+                  label="スコア"
+                  solo>
                 </v-select>
-              </ul>
-            </div>
-            <div class="school-a_score w-25 mx-auto mt-3">
-              <label>高校A 得点</label><br>
-              <!-- <select v-model="school_a_score">
-                <option v-for="school_a_score in 50" :value="school_a_score" :key="school_a_score.id">{{ school_a_score }}</option>
-              </select> -->
-              <v-select
-                v-model="school_a_score"
-                :items="score"
-                label="スコア"
-                solo>
-              </v-select>
-              <p v-if="!!errors['school_a_score']" style="color: red;">{{ errors['school_a_score'][0]}}</p>
-            </div>
-            <div class="school-b_score w-25 mx-auto mt-3">
-              <label>高校B 得点</label><br>
-              <!-- <select v-model="school_b_score">
-                <option v-for="school_b_score in 50" :value="school_b_score" :key="school_b_score.id">{{ school_b_score }}</option>
-              </select> -->
-              <v-select
-                v-model="school_b_score"
-                :items="score"
-                label="スコア"
-                solo>
-              </v-select>
+              </div>
             </div>
             <p v-if="!!errors['school_b_score']" style="color: red;">{{ errors['school_b_score'][0]}}</p>
           </div>
