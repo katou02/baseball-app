@@ -1,19 +1,20 @@
 <template>
-  <div class="contents row mt-2">
-    <div class="containe_r p-4">
-      <form @submit.prevent="createMap">
-        <select v-model="school">
-          <option disabled value="">学校を選択</option>
-          <option v-for="school in schools" :value="school.id" :key="school.id">
-            {{ school.name }}
-          </option>
-        </select><br>
-        <input v-model="address" type="text" placeholder="市町村 住所など" class="game_title text-center">
-        <textarea v-model="text" type="text" placeholder="紹介"></textarea>
-        <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
-        <button type="submit">投稿</button>
-      </form>
-    </div>
+  <div class="contents row mx-auto mt-5">
+    <h3>ふるさとを紹介</h3>
+    <form @submit.prevent="createMap">
+      <v-select
+        v-model="school"
+        item-text="name"
+        item-value="id"
+        :items="schools"
+        label="学校を選択"
+        outlined>
+      </v-select>
+      <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
+      <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
+      <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+      <v-btn type="submit" color="info">投稿</v-btn>
+    </form>
   </div>
 </template>
 <script>
