@@ -1,7 +1,7 @@
 <template>
   <div class="contents row mx-auto mt-2">
-    <!-- <router-link :to="{name: 'analysis'}" class="return-btn">戻る</router-link> -->
-    <h2>予想の投稿</h2>
+    <h2 class="text-primary font-weight-bold">試合分析の投稿</h2>
+    <v-divider></v-divider>
     <form @submit.prevent="createAnalysis">
       <div class="select-from">
         <div class="containe_r p-4">
