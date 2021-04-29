@@ -24,7 +24,7 @@
               <img :src= image class="room-user-icon">
             </div>
             <div v-else>
-              <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
+              <img src="../assets/images/no-image.png" class="room-user-icon">
             </div>
             <div class="message ml-5">{{e.body}}</div>
           </div>
