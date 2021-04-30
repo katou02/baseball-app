@@ -83,6 +83,7 @@ export default {
     deleteImage(){
       this.url = '';
       URL.revokeObjectURL(this.url);
+      this.image = ''
     },
     deleteUserImage(){
       this.image = ''
