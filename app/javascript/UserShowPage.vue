@@ -308,9 +308,6 @@ export default {
 }
 </script>
 <style scoped>
-.follow_form {
-  text-align: center;
-}
 
 .theme--light.v-tabs-items {
   background-color: transparent;
