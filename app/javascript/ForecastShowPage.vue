@@ -51,7 +51,7 @@
       <div class="pie mt-5 pb-5">
         <div style="width:60%; height:60%"><canvas id="PieChart"></canvas></div>
       </div>
-      <div class="comment-content_tweet">
+      <div class="comment-content_common">
         <div class="text-format mt-0 mb-4 text-warning">
           <i class="fa fa-baseball-ball text-warning"></i>
           コメント

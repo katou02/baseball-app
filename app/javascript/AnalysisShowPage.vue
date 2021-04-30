@@ -55,7 +55,7 @@
          <div style="width:70%; height:70%;" ><canvas id="myChart"></canvas></div>
        </div>
     </div>
-    <div class="comment-content">
+    <div class="comment-content_common">
       <div class="text-format mt-0 mb-4 text-warning">
         <i class="fa fa-baseball-ball text-warning"></i>
         コメント

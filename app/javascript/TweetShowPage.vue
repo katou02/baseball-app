@@ -61,7 +61,7 @@
       </div>
     </div>
     <!-- コメント -->
-    <div class="comment-content_tweet">
+    <div class="comment-content_common">
       <div class="text-format mt-0 mb-4 text-warning">
         <i class="fa fa-baseball-ball text-warning"></i>
         コメント
