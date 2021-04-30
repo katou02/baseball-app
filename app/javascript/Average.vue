@@ -4,7 +4,7 @@
     <div class="search-area mt-3 mb-5">
       <input type="text mt-5" v-model="keyword" placeholder="検索">
     </div>
-    <v-row>
+    <v-row class="mx-auto">
       <v-col cols="12"  sm="12" md="12" lg="6" v-for=" (e,index) in getLists" :key="e.id">
         <div class="avg-name text-center mt-3">{{e.name}}</div>
         <div class="data-title mt-3 ml-5">
