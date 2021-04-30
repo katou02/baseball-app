@@ -1,5 +1,5 @@
 <template>
-  <div class="user-content pt-5">
+  <div class="follow-user-content pt-5">
     <div v-if="users.length">
       <h2>フォロー:{{users[0].count}}人</h2>
     </div>
