@@ -35,7 +35,7 @@
                   <img src="/images/ball.jpg" class="article-icon">
                   <div class="article-heading mx-auto">
                     <div class="name">
-                      投稿者{{e.nickname}}
+                      投稿者 {{e.nickname}}<br>
                       {{e.time}}
                     </div>
                     <div class="school-fcs mt-4">

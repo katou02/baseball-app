@@ -61,15 +61,15 @@
                 <div class="d-flex h-100">
                   <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                   <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
-                  <div class="article-heading mx-auto">
+                  <div class="article-heading mx-auto text-center">
                     <div class="name">
-                      投稿者{{e.nickname}}
+                      投稿者 {{e.nickname}}<br>
                       {{e.time}}
                     </div>
                     <div class="school_ays-name mt-3">
                       {{e.school}}
                     </div>
-                    <div class="sub-title text-center mt-3">
+                    <div class="sub-title mt-3">
                       {{e.title}}
                     </div>
                   </div>
