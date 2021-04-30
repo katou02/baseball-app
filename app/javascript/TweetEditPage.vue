@@ -16,7 +16,6 @@
                   </select> -->
                   <v-select
                     v-model="school_a"
-                    @change="findGrandChildren" 
                     item-text="name"
                     item-value="id"
                     :items="children"
@@ -33,7 +32,6 @@
                   </select> -->
                   <v-select
                     v-model="school_b"
-                    @change="findGrandChildren" 
                     item-text="name"
                     item-value="id"
                     :items="children"
@@ -67,6 +65,15 @@
           <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
           <v-textarea v-model="text" type="text" label="本文" outlined></v-textarea>
           <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
+          <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+          <div v-if="url">
+            <img :src="url" width="320px" height="300px">
+            <button type="submit" @click="deleteImage">削除</button>
+          </div>
+          <div v-if="image.url">
+            <img :src="image.url" width="320px" height="300px">
+            <button type="submit" @click="deleteTweetImage">削除</button>
+          </div>
           <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
         </div>
       </form>
@@ -92,7 +99,9 @@ export default {
       school_b: '',
       title: '',
       text: '',
-      errors: ''
+      errors: '',
+      image: '',
+      url: ''
     }
   },
   mounted() {
@@ -111,12 +120,27 @@ export default {
         this.title = response.data.title
         this.text = response.data.text
         this.tournament = response.data.tournament
+        this.image = response.data.tweet_image
       })
   },
   methods: {
     editTweet() {
+      let formData = new FormData();
+      formData.append("title_info", this.title);
+      formData.append("text", this.text);
+      formData.append("school_a_score",this.school_a_score);
+      formData.append("school_b_score",this.school_b_score);
+      formData.append("school_a_id",this.school_a);
+      formData.append("school_b_id",this.school_b);
+      const config = {
+        headers: {"content-type": "multipart/form-data",}
+      };
+      if (this.image !== null) {
+        formData.append("image", this.image);
+      }
       axios
-        .patch(`/api/v1/tweets/${this.$route.params.id}`,{text: this.text,title_info: this.title,school_a_score: this.school_a_score,school_b_score: this.school_b_score,school_a_id: this.school_a,school_b_id: this.school_b})
+        // .patch(`/api/v1/tweets/${this.$route.params.id}`,{text: this.text,title_info: this.title,school_a_score: this.school_a_score,school_b_score: this.school_b_score,school_a_id: this.school_a,school_b_id: this.school_b})
+        .patch(`/api/v1/tweets/${this.$route.params.id}`,formData,config)
         .then(response => {
           this.$router.push({ name: 'tweet-show',params: {id: this.$route.params.id}});
         })
@@ -126,6 +150,21 @@ export default {
           }
           console.log(this.errors)
         });
+    },
+    setImage(e){
+      e.preventDefault();
+      this.image = e.target.files[0];
+      const file = this.$refs.preview.files[0];
+      this.url = URL.createObjectURL(file)
+      this.$refs.preview.value = "";
+    },
+    deleteImage(){
+      this.url = '';
+      URL.revokeObjectURL(this.url);
+      this.image = ''
+    },
+    deleteTweetImage(){
+      this.image = ''
     }
   }
 }
