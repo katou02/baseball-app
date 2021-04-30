@@ -91,7 +91,7 @@ export default {
       keyword: this.$store.state.keyword_ays,
       analyses: [],
       categories: [],
-      currentPage: this.$store.state.currentPage,
+      currentPage: this.$store.state.currentPage_ays,
       parPage: 10,
       current_slide: 0,
     }
@@ -120,7 +120,7 @@ export default {
     },
     clickCallback: function (pageNum) {
        this.currentPage = Number(pageNum);
-       this.$store.state.currentPage = Number(pageNum);
+       this.$store.state.currentPage_ays = Number(pageNum);
     },
     pageback() {
       this.$nextTick(() => {
