@@ -3,8 +3,8 @@
     <!-- <Header></Header> -->
     <div class="main-content-btn">
       <!-- <a :href= "'/forecasts/new'" class="send-btn">投稿する</a> -->
-      <router-link :to="{name: 'forecast-new'}" class="send-btn">投稿する</router-link>
-      <a :href= "'/'" class="return-top">トップページへ戻る</a>
+      <router-link :to="{name: 'forecast-new'}" class="send-btn text-white">投稿する</router-link>
+      <a :href= "'/'" class="return-top text-white">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-warning">
       試合予想をしてみましょう！<br>
@@ -168,8 +168,3 @@ export default {
   // },
 }
 </script>
-<style scoped>
-  .v-application a {
-    color: white;
-  }
-</style>
