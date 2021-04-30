@@ -5,7 +5,7 @@
       通知
     </div>
     <div class="notification">
-      <div class="mx-auto">
+      <div class="mx-auto text-center">
         <div v-for="e in listNotifications" :key="e.id">
           <div class="notification-info mt-5">
             <div v-if="e.visiter_image.url"> 
