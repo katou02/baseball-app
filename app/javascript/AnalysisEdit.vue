@@ -64,6 +64,15 @@
         </div>
         <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
         <v-textarea v-model="text" type="text" label="本文"></v-textarea>
+        <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+        <div v-if="url">
+          <img :src="url" width="320px" height="300px">
+          <button type="submit" @click="deleteImage">削除</button>
+        </div>
+        <div v-if="image.url">
+          <img :src="image.url" width="320px" height="300px">
+          <button type="submit" @click="deleteForecastImage">削除</button>
+        </div>
         <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
       </div>
     </form>
@@ -90,6 +99,7 @@ export default {
       comprehensive: '',
       expectation: '',
       title: '',
+      image: '',
       text: '',
       score: score,
       errors: ''
@@ -105,6 +115,7 @@ export default {
       .get(`/api/v1/analyses/${this.$route.params.id}.json`)
       .then(response =>{
         this.school = response.data.school_id;
+        this.image = response.data.fcs_image
         this.attack = response.data.attack;
         this.defensive = response.data.defensive
         this.pitcher = response.data.pitcher
@@ -117,8 +128,23 @@ export default {
   },
   methods: {
     editAnalysis() {
+      let formData = new FormData();
+      formData.append("title", this.title);
+      formData.append("text", this.text);
+      formData.append("school_id",this.school);
+      formData.append("attack",this.attack);
+      formData.append("defensive",this.defensive);
+      formData.append("pitcher",this.pitcher);
+      formData.append("comprehensive",this.comprehensive);
+      formData.append("expectations",this.expectation);
+      const config = {
+        headers: {"content-type": "multipart/form-data",}
+      };
+      if (this.image !== null) {
+        formData.append("image", this.image);
+      }
       axios
-        .patch(`/api/v1/analyses/${this.$route.params.id}`,{title: this.title,text: this.text,school_id: this.school,attack: this.attack,defensive: this.defensive,pitcher: this.pitcher,comprehensive: this.comprehensive,expectations: this.expectation})
+        .patch(`/api/v1/analyses/${this.$route.params.id}`,formData,config)
         .then(response => {
           this.$router.push({ name: 'analysis-show',params: {id: this.$route.params.id}});
         })
@@ -128,6 +154,21 @@ export default {
             this.errors = error.response.data.errors;
           }
         });
+    },
+    setImage(e){
+      e.preventDefault();
+      this.image = e.target.files[0];
+      const file = this.$refs.preview.files[0];
+      this.url = URL.createObjectURL(file)
+      this.$refs.preview.value = "";
+    },
+    deleteImage(){
+      this.url = '';
+      URL.revokeObjectURL(this.url);
+      this.image = ''
+    },
+    deleteForecastImage(){
+      this.image = ''
     }
   }
 }
