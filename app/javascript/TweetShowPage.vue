@@ -170,17 +170,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.good {
-  background-color: #e91e63;
-  border-color: #e91e63;
-  color: white;
-  font-weight: bold;
-  border-radius: 5px;
-}
-
-.like-count {
-  padding: 5px 7px;
-  color: #2196f3;
-}
-</style>
