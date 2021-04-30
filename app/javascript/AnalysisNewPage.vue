@@ -16,7 +16,7 @@
         <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
         <div class="select-school w-25 mx-auto mt-3">
           <ul>
-            <label>学校</label><br>
+            <label>高校</label><br>
             <!-- <select @change="findGrandChildren" v-model="school">
               <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
             </select> -->
