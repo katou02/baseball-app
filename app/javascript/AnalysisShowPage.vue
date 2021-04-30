@@ -4,13 +4,12 @@
       <div class="d-flex">
         <div v-if="analysis.user_id==analysis.current_user">
           <button class="delete-btn" @click="deleteAnalysis(analysis.id)">記事を削除する</button>
-          <!-- <a :href= "'/analyses/' + analysis.id + '/edit'" class="edit-article">記事を編集する</a> -->
-          <router-link :to="{name: 'analysis-edit',params: {id: analysis.id}}" class="edit-article">記事を編集する</router-link>
+          <router-link :to="{name: 'analysis-edit',params: {id: analysis.id}}" class="edit-article text-white p-2">記事を編集する</router-link>
         </div>
-        <router-link :to="{name: 'analysis'}" class="return-btn">記事一覧へ戻る</router-link>
+        <router-link :to="{name: 'analysis'}" class="return-btn text-white">記事一覧へ戻る</router-link>
       </div>
       <div class="user_name">
-        <h5>投稿者:<a :href= "'/users/' + analysis.user_id">{{analysis.nickname}}</a></h5>
+        <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: analysis.user_id}}">{{analysis.nickname}}</router-link></h5>
         <div v-if="user_image"> 
           <img :src= user_image class="user-icon mt-1 mb-5">
         </div>
@@ -23,23 +22,20 @@
         <div class="game_result mt-5">
           {{analysis.tournament}}
         </div>
-        <div class="text-format mt-1 text-info">
-          <i class="fas fa-search mt-5">分析内容</i>
+        <div class="school_name-ays">
+          {{analysis.school}}
         </div>
         <div class="sub_title text-white mt-5">
           <i class="fa fa-baseball-ball"></i>
           {{analysis.title}}
         </div>
-        <div class="school_name-ays">
-          {{analysis.school}}
-        </div>
-        <div class="data-title mt-5 ml-5">
-          分析詳細
+        <div class="data-title ml-5">
+          <i class="fas fa-search">分析詳細</i>
         </div>
         <div class="ays-text mt-5 ml-5">
           <p style="white-space:pre-wrap;">{{analysis.text}}</p>
         </div>
-        <div class="data-title mt-5 ml-5">
+        <div class="data-title ml-5">
           戦力
         </div>
         <div class="select_main-show mt-5">    
@@ -59,7 +55,7 @@
          <div style="width:70%; height:70%;" ><canvas id="myChart"></canvas></div>
        </div>
     </div>
-    <div class="comment-content">
+    <div class="comment-content_common">
       <div class="text-format mt-0 mb-4 text-warning">
         <i class="fa fa-baseball-ball text-warning"></i>
         コメント
@@ -79,11 +75,10 @@
               <li><font color="red">{{ e }}</font></li>
             </ul>
           </div>
-          <div class="tweet-comment_form">
-            <!-- <textarea v-model="comment.text" type="text" rows="2" cols="30"></textarea> -->
-            <textarea v-model="text" type="text" rows="2" cols="30"></textarea>
+          <div class="text-center">
+            <v-textarea solo v-model="text" type="text" rows="2" cols="30"></v-textarea>
+            <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
           </div>
-        <button type="submit" class="game_record" >投稿する</button>
         </form>
       </div>
     </div>

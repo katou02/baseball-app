@@ -2,7 +2,6 @@
   <div class="champion-content">
     <div class="main-content-btn">
       <!-- <a :href= "'/tournaments/' + num + '/watch_fcs'" class="return-top ml-1">予想一覧へ戻る</a> -->
-      <router-link :to="{name: 'watch_fcs',params: {id: num}}" class="return-top ml-1">予想一覧へ戻る</router-link>
     </div>
     <div class="champion-title">
       <i class="fas fa-crown text-warning"></i>
@@ -10,15 +9,14 @@
       <i class="fas fa-crown text-warning"></i>
     </div>
     <div class="text-center">
-      <div v-if="my_champion">
+      <router-link :to="{name: 'watch_fcs',params: {id: num}}" class="return-top mx-auto">戻る</router-link>
+      <div class="mt-3" v-if="my_champion">
         {{my_champion.school}}に投票しています<br>
         <button class="delete-btn mt-2" @click="deleteChampion($route.params.id)">投票を取り消す</button>
       </div>
       <div v-else>
       <router-link :to="{name: 'champion-new',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn">
-      <!-- <a :href= "'/champions/new?tournament_id=' + num" class="btn btn-warning champ-btn"> -->
         優勝予想をする
-      <!-- </a> -->
       </router-link>
       </div>
     </div>
@@ -32,7 +30,7 @@
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
-    <div class="title mt-5">
+    <div class="title mt-5 d-flex">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
           <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="fetchChampion()" class="title-child text-white ml-5">
@@ -139,3 +137,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .v-application a {
+    color: white;
+  }
+</style>

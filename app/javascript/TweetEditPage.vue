@@ -1,50 +1,89 @@
 <template>
-  <div class="contents row mt-2">
-    <h2>試合記事の編集</h2>
-    <form @submit.prevent="editTweet">
-      <div class="select-from">
-        {{tournament}}
-        <div class="containe_r p-4">
-          <div class="select-school mt-3">
-            <ul>
-              <label>高校A</label><br>
-              <select v-model="school_a">
-                <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
-             </select>
-            </ul>
+  <div class="contents row mx-auto">
+    <v-container>
+      <h2 class="text-primary font-weight-bold">試合記事の編集</h2>
+      <v-divider></v-divider>
+      <form @submit.prevent="editTweet">
+        <div class="select-from">
+          {{tournament}}
+          <div class="containe_r p-4">
+            <div class="d-flex">
+              <div class="select-school w-25 mx-auto mt-3">
+                <ul>
+                  <label>高校A</label><br>
+                  <!-- <select @change="findGrandChildren" v-model="school_a">
+                    <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+                  </select> -->
+                  <v-select
+                    v-model="school_a"
+                    item-text="name"
+                    item-value="id"
+                    :items="children"
+                    label="高校を選択"
+                    outlined>
+                  </v-select>
+                </ul>
+              </div>
+              <div class="select-school w-25 mx-auto mt-3">
+                <ul>
+                  <label>高校B</label><br>
+                  <!-- <select @change="findGrandChildren" v-model="school_b">
+                    <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
+                  </select> -->
+                  <v-select
+                    v-model="school_b"
+                    item-text="name"
+                    item-value="id"
+                    :items="children"
+                    label="高校を選択"
+                    outlined>
+                  </v-select>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="school-a_score w-25 mx-auto mt-3">
+                <label>高校A 得点</label><br>
+                <v-select
+                  v-model="school_a_score"
+                  :items="score"
+                  solo>
+                </v-select>
+                <p v-if="!!errors['school_a_score']" style="color: red;">{{ errors['school_a_score'][0]}}</p>
+              </div>
+              <div class="school-b_score w-25 mx-auto mt-3">
+                <label>高校B 得点</label><br>
+                <v-select
+                  v-model="school_b_score"
+                  :items="score"
+                  solo>
+                </v-select>
+              </div>
+            </div>
           </div>
-          <div class="select-school mt-3">
-            <ul>
-              <label>高校B</label><br>
-              <select v-model="school_b">
-                <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
-              </select>
-            </ul>
+          <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
+          <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
+          <v-textarea v-model="text" type="text" label="本文" outlined></v-textarea>
+          <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
+          <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+          <div v-if="url">
+            <img :src="url" width="320px" height="300px">
+            <button type="submit" @click="deleteImage">削除</button>
           </div>
-          <div class="school-a_score mt-3">
-            <label>高校A 得点</label><br>
-            <select v-model="school_a_score">
-              <option v-for="school_a_score in 50" :value="school_a_score" :key="school_a_score.id">{{ school_a_score }}</option>
-            </select>
+          <div v-if="image.url">
+            <img :src="image.url" width="320px" height="300px">
+            <button type="submit" @click="deleteTweetImage">削除</button>
           </div>
-          <div class="school-b_score mt-3">
-            <label>高校B 得点</label><br>
-            <select v-model="school_b_score">
-              <option v-for="school_b_score in 50" :value="school_b_score" :key="school_b_score.id">{{ school_b_score }}</option>
-            </select>
-          </div>
+          <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
         </div>
-        <input v-model="title" type="text" rows="2" cols="30" placeholder="タイトル 30字以内" class="game_title">
-        <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
-        <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
-        <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
-        <button type="submit" class="game_record" >編集する</button>
-      </div>
-    </form>
+      </form>
+    </v-container>
   </div>
 </template>
 <script>
 import axios from 'axios';
+const maxscore = 51;
+const score = [...Array(maxscore).keys()]
 export default {
   data: function() {
     return {
@@ -55,11 +94,14 @@ export default {
       child_id: '',
       school_a_score: '',
       school_b_score: '',
+      score: score,
       school_a: '',
       school_b: '',
       title: '',
       text: '',
-      errors: ''
+      errors: '',
+      image: '',
+      url: ''
     }
   },
   mounted() {
@@ -78,14 +120,29 @@ export default {
         this.title = response.data.title
         this.text = response.data.text
         this.tournament = response.data.tournament
+        this.image = response.data.tweet_image
       })
   },
   methods: {
     editTweet() {
+      let formData = new FormData();
+      formData.append("title_info", this.title);
+      formData.append("text", this.text);
+      formData.append("school_a_score",this.school_a_score);
+      formData.append("school_b_score",this.school_b_score);
+      formData.append("school_a_id",this.school_a);
+      formData.append("school_b_id",this.school_b);
+      const config = {
+        headers: {"content-type": "multipart/form-data",}
+      };
+      if (this.image !== null) {
+        formData.append("image", this.image);
+      }
       axios
-        .patch(`/api/v1/tweets/${this.$route.params.id}`,{text: this.text,title_info: this.title,school_a_score: this.school_a_score,school_b_score: this.school_b_score,school_a_id: this.school_a,school_b_id: this.school_b})
+        // .patch(`/api/v1/tweets/${this.$route.params.id}`,{text: this.text,title_info: this.title,school_a_score: this.school_a_score,school_b_score: this.school_b_score,school_a_id: this.school_a,school_b_id: this.school_b})
+        .patch(`/api/v1/tweets/${this.$route.params.id}`,formData,config)
         .then(response => {
-          this.$router.push({ name: 'tweetshow',params: {id: this.$route.params.id}});
+          this.$router.push({ name: 'tweet-show',params: {id: this.$route.params.id}});
         })
         .catch(error => {
           if (error.response.data && error.response.data.errors) {
@@ -93,6 +150,21 @@ export default {
           }
           console.log(this.errors)
         });
+    },
+    setImage(e){
+      e.preventDefault();
+      this.image = e.target.files[0];
+      const file = this.$refs.preview.files[0];
+      this.url = URL.createObjectURL(file)
+      this.$refs.preview.value = "";
+    },
+    deleteImage(){
+      this.url = '';
+      URL.revokeObjectURL(this.url);
+      this.image = ''
+    },
+    deleteTweetImage(){
+      this.image = ''
     }
   }
 }

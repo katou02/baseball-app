@@ -58,24 +58,25 @@
 
 .title {
   padding-bottom: 5%;
-  justify-content: space-evenly;
+  justify-content: center;
   &-child {
     float: left;
-    background-color: #68ccf9;
+    // background-color: #68ccf9;
+    background-color: rgb(195, 194, 194);
     font-weight: bold;
     overflow: hidden;
     font-size: 15px;
   }
 }
 
-.tournament-main{
-  background-image: image-url("sky.jpg");
-   background-size: cover;
-   background-color:rgba(255,255,255,0.8);
-   background-blend-mode:lighten;
-   flex: 1 1 100%;
-   min-height: 900px;
-}
+// .tournament-main{
+//   // background-image: image-url("sky.jpg");
+//   //  background-size: cover;
+//   //  background-color:rgba(255,255,255,0.8);
+//   //  background-blend-mode:lighten;
+//   //  flex: 1 1 100%;
+//   //  min-height: 900px;
+// }
 
 @media screen and (max-width: 679px) {
   .analysis-image {

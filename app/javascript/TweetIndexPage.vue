@@ -1,15 +1,6 @@
 <template>
   <div class="main-content">
-    <Header></Header>
-    <!--<div id="slide">
-      <div class="header">
-        <transition name="fade">
-        <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
-          <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
-        </div>
-        </transition>
-      </div>
-    </div>-->
+    <!-- <Header></Header> -->
     <div class="main-content-btn">
       <router-link :to="{name: 'tweet-new'}" class="send-btn">投稿する</router-link>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
@@ -17,7 +8,7 @@
     <div class="text-format mt-5 text-primary">
       観た試合の感想をみんなに発信してみましょう！
     </div>
-    <div class="text-format mt-5 mb-4 text-warning">
+    <!-- <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
     <div class="title mt-5">
@@ -27,34 +18,41 @@
           {{e.category}}
         </router-link>
       </div>
-    </div>
+    </div> -->
     <div class="article-main">
       <div class="text-format pt-5 text-primary">
         みんなの試合記事
       </div>
       <div class="search-area mt-3">
-        <input type="text" v-model="keyword" placeholder="検索">
+        <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
       </div>
-      <div v-for="e in getLists" :key="e.id">
-        <div class="article mt-5">
-          <router-link :to="{name: 'tweetshow',params: {id: e.id}}">
-            <div class="article-title">
-              {{e.school_a}}vs{{e.school_b}}
+      <!-- 記事 -->
+      <div class="d-flex">
+        <Side></Side>
+        <v-row class="ml-5">
+          <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+            <div class="article mt-5">
+              <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
+                <div class="d-flex h-100">
+                  <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                  <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                  <div class="article-heading mx-auto">
+                    <div class="name">
+                      投稿者 {{e.nickname}}<br>
+                      {{e.time}}
+                    </div>
+                    <div class="article-title mt-3">
+                      {{e.school_a}}vs{{e.school_b}}
+                    </div>
+                    <div class="sub-title mt-3">
+                      {{e.title}}
+                    </div>
+                  </div>
+                </div>
+              </router-link>
             </div>
-            <div class="article-image">
-              <i class="fa fa-baseball-ball text-white"></i>
-            </div>
-            <div class="sub-title">
-              {{e.title}}
-            </div>
-            <div class="name">
-              投稿者 {{e.nickname}}
-            </div>
-            <div class="tweets_at">
-              {{e.time}}
-            </div>
-          </router-link>
-        </div>
+          </v-col>
+        </v-row>
       </div>
       <div class="text-center">
         <paginate
@@ -66,11 +64,15 @@
           :prev-text="'＜'"
           :next-text="'＞'"
           :force-page="currentPage"
+          :hide-prev-next="true"
           :next-link-class="'page-link'"
           :prev-link-class="'page-link'"
           :container-class="'pagination'"
           :page-link-class="'page-link'">
         </paginate>
+      </div>
+      <div v-if="!tweets.length" class="text-center mt-5">
+        <p>投稿された試合記事がありません</p>
       </div>
     </div>
   </div>
@@ -78,10 +80,12 @@
 <script>
 import axios from 'axios';
 import Header from './components/Header.vue'
+import Side from './components/Side.vue'
 
 export default {
   components: {
-    Header
+    Header,
+    Side
   },
   data() {
     return {
@@ -90,25 +94,12 @@ export default {
       categories: [],
       currentPage: this.$store.state.currentPage,
       parPage: 10,
-      // current_slide: 0,
-      // slides: [
-      //   {img: "/images/81573810.jpeg"},
-      //   {img: "/images/ball.jpg"},
-      //   {img: "/images/thumb_ground.jpg"},
-      //   {img: "/images/thumb_front.jpg"},
-      //   {img: "/images/mykosien.JPG"}
-      // ],
     }
   },
   mounted() {
-    // setInterval(() => {
-    //     this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
-    //   }, 3000)
     this.fetchTweets()
     this.fetchCategory()
-    if (this.keyword == '') {
-    }
-    else {
+    if (this.keyword !== '') {
       this.currentPage = 1
     }
   },
@@ -174,8 +165,13 @@ export default {
       this.$store.state.keyword = this.keyword
     }
   },
-  beforeDestroy() {
-    this.$store.commit('increment')
-  },
+  // beforeDestroy() {
+  //   this.$store.commit('increment')
+  // },
 }
 </script>
+<style scoped>
+  .v-application a {
+    color: white;
+  }
+</style>

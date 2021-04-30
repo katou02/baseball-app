@@ -2,7 +2,7 @@
   <div class="user-content pt-5">
     <h2>ユーザー一覧</h2>
     <div class="search-area mt-5">
-      <input type="text" v-model="keyword" placeholder="検索">
+      <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
     <div class="user-list row mx-auto">
       <div v-for="e in getLists" :key="e.id" class="col-xs-12 col-md-6 col-lg-3 mt-3 card">
@@ -48,6 +48,7 @@
         :margin-pages="2"
         :prev-text="'＜'"
         :next-text="'＞'"
+        :hide-prev-next="true"
         :next-link-class="'page-link'"
         :prev-link-class="'page-link'"
         :container-class="'pagination'"

@@ -1,14 +1,6 @@
 <template>
 <div class="main-content">
-  <div id="slide">
-    <div class="header">
-      <transition name="fade">
-      <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
-        <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
-      </div>
-      </transition>
-    </div>
-  </div>
+  <!-- <Header></Header> -->
   <div class="main-content-btn">
     <!-- <a :href= "'/analyses/new'" class="send-btn">投稿する</a> -->
     <router-link :to="{name: 'analysis-new'}" class="send-btn">投稿する</router-link>
@@ -17,49 +9,50 @@
   <div class="text-format mt-5 text-success">
     戦力分析をみんなで共有してみましょう！
   </div>
-  <div class="text-format mt-5 mb-4 text-warning">
+  <!-- <div class="text-format mt-5 mb-4 text-warning">
     大会別
   </div>
   <div class="title mt-5">
     <div v-for="e in categories" :key="e.id">
-      <!-- <a :href= "'/tournaments/' + e.id + '/watch_ays'" class="title-child text-white"> -->
       <router-link :to="{name: 'watch_ays',params: {id: e.id}}" class="title-child text-white ml-5">
         <i class="fa fa-baseball-ball text-white"></i> 
         {{e.category}}
-      <!-- </a> -->
       </router-link>
     </div>
-  </div>
+  </div> -->
   <div class="analysis-main">
     <div class="text-format pt-5 text-warning">
       みんなの戦力分析
     </div>
     <div class="search-area mt-3">
-      <input type="text" v-model="keyword" placeholder="検索">
+      <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
-    <div v-for="e in getLists" :key="e.id">
-      <div class="analysis mt-5">
-        <!-- <a :href= "'analyses/' + e.id"> -->
-        <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
-          <div class="school_ays-name">
-            {{e.school}}
+    <div class="d-flex">
+      <Side></Side>
+      <v-row class="ml-5">
+        <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+          <div class="article mt-5">
+            <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
+              <div class="d-flex h-100">
+                <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                <div class="article-heading mx-auto">
+                  <div class="name">
+                    投稿者 {{e.nickname}}<br>
+                    {{e.time}}
+                  </div>
+                  <div class="school_ays-name mt-3">
+                    {{e.school}}
+                  </div>
+                  <div class="sub-title mt-3">
+                    {{e.title}}
+                  </div>
+                </div>
+              </div>
+            </router-link>
           </div>
-          <div class="analysis-image">
-            <i class="fa fa-search"></i>
-          </div>
-          <div class="sub-title text-center">
-            {{e.title}}
-          </div>
-          <div class="name">
-            <span>投稿者</span>
-            {{e.nickname}}
-          </div>
-          <div class="analyses_at">
-            {{e.time}}
-          </div>
-        <!-- </a> -->
-        </router-link>
-      </div>
+        </v-col>
+      </v-row>
     </div>
     <div class="text-center">
       <paginate
@@ -70,6 +63,7 @@
         :margin-pages="2"
         :prev-text="'＜'"
         :next-text="'＞'"
+        :hide-prev-next="true"
         :force-page="currentPage"
         :next-link-class="'page-link'"
         :prev-link-class="'page-link'"
@@ -77,38 +71,35 @@
         :page-link-class="'page-link'">
       </paginate>
     </div>
+    <div v-if="!analyses.length" class="text-center">
+      <p>投稿された分析はありません</p>
+    </div>
   </div>
 </div>
 </template>
 <script>
 import axios from 'axios';
+import Header from './components/Header.vue'
+import Side from './components/Side.vue'
 export default {
+  components: {
+    Header,
+    Side
+  },
   data() {
     return {
       keyword: this.$store.state.keyword_ays,
       analyses: [],
       categories: [],
-      currentPage: this.$store.state.currentPage,
+      currentPage: this.$store.state.currentPage_ays,
       parPage: 10,
       current_slide: 0,
-      slides: [
-        {img: "/images/81573810.jpeg"},
-        {img: "/images/ball.jpg"},
-        {img: "/images/thumb_ground.jpg"},
-        {img: "/images/thumb_front.jpg"},
-        {img: "/images/mykosien.JPG"}
-      ],
     }
   },
   mounted() {
-    setInterval(() => {
-      this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
-    }, 3000)
     this.fetchAnayses()
     this.fetchCategory()
-    if (this.keyword == '') {
-    }
-    else {
+    if (this.keyword !== '') {
       this.currentPage = 1
     }
   },
@@ -129,7 +120,7 @@ export default {
     },
     clickCallback: function (pageNum) {
        this.currentPage = Number(pageNum);
-       this.$store.state.currentPage = Number(pageNum);
+       this.$store.state.currentPage_ays = Number(pageNum);
     },
     pageback() {
       this.$nextTick(() => {
@@ -168,13 +159,17 @@ export default {
       this.$store.state.keyword_ays = this.keyword
     }
   },
-  beforeDestroy() {
-    this.$store.commit('increment')
-  },
+  // beforeDestroy() {
+  //   this.$store.commit('increment')
+  // },
 }
 </script>
 <style scoped>
 a.page-link {
   background-color: aqua;
+}
+
+.v-application a {
+  color: white;
 }
 </style>
