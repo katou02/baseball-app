@@ -14,7 +14,7 @@
           </div>
           <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
           <div class="d-flex">
-            <div class="win-school w-25 mx-auto mt-3">
+            <div class="w-25 mx-auto mt-3">
               <ul>
                 <label>勝利予想</label><br>
                 <!-- <select @change="findGrandChildren" v-model="win_school">
@@ -30,7 +30,7 @@
                 </v-select>
               </ul>
             </div>
-            <div class="lose-school w-25 mx-auto mt-3">
+            <div class="w-25 mx-auto mt-3">
               <ul>
                 <label>敗退予想</label><br>
                 <!-- <select @change="findGrandChildren" v-model="lose_school">
@@ -162,12 +162,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-ul {
-  display: none;
-}
-
-.active {
-  display: block;
-}
-</style>
