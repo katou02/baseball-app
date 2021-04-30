@@ -199,12 +199,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-ul {
-  display: none;
-}
-
-.active {
-  display: block;
-}
-</style>
