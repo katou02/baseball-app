@@ -2,7 +2,7 @@
   <div class="contents w-50 mx-auto">
     <form @submit.prevent="createChampion">
       <v-card>
-        <v-card-title><h3>優勝予想に投票！</h3></v-card-title>
+        <v-card-title><h3>優勝すると思うチームに投票！</h3></v-card-title>
         <div class="form mx-auto p-4">
           <!-- <select v-model="selected">
             <option disabled value="">優勝予想を選択</option>
