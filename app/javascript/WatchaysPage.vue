@@ -39,10 +39,10 @@
         <router-link :to="{name: 'average',params: {id: $route.params.id}}" class="ays-avg">平均評価を見る</router-link>
         <!-- <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a> -->
       </div>
-      <div class="homedown">
+      <!-- <div class="homedown">
         甲子園でお馴染みのふるさと紹介<br>
         <router-link :to="{name: 'map',query: {tournament_id: num}}" class="ays-avg">ふるさと紹介</router-link>
-      </div>
+      </div> -->
     </div>
     <!-- 大会 -->
     <div class="analysis-main">

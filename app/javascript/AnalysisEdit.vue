@@ -1,81 +1,83 @@
 <template>
   <div class="contents row mx-auto mt-2">
-    <h2 class="text-primary font-weight-bold">戦力分析の編集</h2>
-    <v-divider></v-divider>
-    <form @submit.prevent="editAnalysis">
-      {{tournament}}
-      <div class="select-from">
-        <div class="select-school w-25 mx-auto mt-3">
-          <ul>
-            <label>学校</label><br>
-            <v-select
-              v-model="school"
-              @change="findGrandChildren" 
-              item-text="name"
-              item-value="id"
-              :items="children"
-              outlined>
-            </v-select>
-          </ul>
-          <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
+    <v-container>
+      <h2 class="text-primary font-weight-bold">戦力分析の編集</h2>
+      <v-divider></v-divider>
+      <form @submit.prevent="editAnalysis">
+        {{tournament}}
+        <div class="select-from">
+          <div class="select-school w-25 mx-auto mt-3">
+            <ul>
+              <label>学校</label><br>
+              <v-select
+                v-model="school"
+                @change="findGrandChildren" 
+                item-text="name"
+                item-value="id"
+                :items="children"
+                outlined>
+              </v-select>
+            </ul>
+            <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
+          </div>
+          <br><p>5段階評価</p>
+          <div class="select">
+            <div class="attack w-25">
+              <label>攻撃力</label><br>
+              <v-select
+                v-model="attack"
+                :items="score"
+                solo>
+              </v-select>
+            </div>
+            <div class="defensive w-25">
+              <label>守備力</label><br>
+              <v-select
+                v-model="defensive"
+                :items="score"
+                solo>
+              </v-select>
+            </div>
+            <div class="pitcher w-25">
+              <label>投手力</label><br>
+              <v-select
+                v-model="pitcher"
+                :items="score"
+                solo>
+              </v-select>
+            </div>
+            <div class="comprehensive w-25">
+              <label>総合力</label><br>
+              <v-select
+                v-model="comprehensive"
+                :items="score"
+                solo>
+              </v-select>
+            </div>
+            <div class="expectations w-25">
+              <label>期待度</label><br>
+              <v-select
+                v-model="expectation"
+                :items="score"
+                solo>
+              </v-select>
+            </div>
+          </div>
+          <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
+          <v-textarea v-model="text" type="text" label="本文"></v-textarea>
+          <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+          <div v-if="url">
+            <img :src="url" width="320px" height="300px">
+            <button type="submit" @click="deleteImage">削除</button>
+          </div>
+          <div v-if="image.url">
+            <img :src="image.url" width="320px" height="300px">
+            <button type="submit" @click="deleteForecastImage">削除</button>
+          </div>
+          <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
         </div>
-        <br><p>5段階評価</p>
-        <div class="select">
-          <div class="attack w-25">
-            <label>攻撃力</label><br>
-            <v-select
-              v-model="attack"
-              :items="score"
-              solo>
-            </v-select>
-          </div>
-          <div class="defensive w-25">
-            <label>守備力</label><br>
-            <v-select
-              v-model="defensive"
-              :items="score"
-              solo>
-            </v-select>
-          </div>
-          <div class="pitcher w-25">
-            <label>投手力</label><br>
-            <v-select
-              v-model="pitcher"
-              :items="score"
-              solo>
-            </v-select>
-          </div>
-           <div class="comprehensive w-25">
-            <label>総合力</label><br>
-            <v-select
-              v-model="comprehensive"
-              :items="score"
-              solo>
-            </v-select>
-          </div>
-          <div class="expectations w-25">
-            <label>期待度</label><br>
-            <v-select
-              v-model="expectation"
-              :items="score"
-              solo>
-            </v-select>
-          </div>
-        </div>
-        <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
-        <v-textarea v-model="text" type="text" label="本文"></v-textarea>
-        <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
-        <div v-if="url">
-          <img :src="url" width="320px" height="300px">
-          <button type="submit" @click="deleteImage">削除</button>
-        </div>
-        <div v-if="image.url">
-          <img :src="image.url" width="320px" height="300px">
-          <button type="submit" @click="deleteForecastImage">削除</button>
-        </div>
-        <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
-      </div>
-    </form>
+      </form>
+    </v-container>
   </div>
 </template>
 

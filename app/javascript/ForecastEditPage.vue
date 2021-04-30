@@ -1,7 +1,7 @@
 <template>
   <div class="contents row mx-auto mt-2">
     <v-container>
-    <h2 class="text-primary font-weight-bold">試合記事の編集</h2>
+    <h2 class="text-primary font-weight-bold">試合予想の編集</h2>
     <v-divider></v-divider>
     <form @submit.prevent="editForecast">
       <div class="form p-4">
