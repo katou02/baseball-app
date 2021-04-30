@@ -2,8 +2,10 @@
   <div class="mypage-content pt-3">
     <a :href= "'/'" class="return-top-mypage text-white">トップページへ戻る</a>
     <router-link :to="{name: 'user'}" class="users-btn text-white">ユーザー一覧</router-link>
-    <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit-article text-white">編集する</router-link>
     <router-link :to="{name: 'room'}" class="dm-btn text-white">DM</router-link>
+    <span v-if="user_id==current_id">
+      <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit-article text-white">編集する</router-link>
+    </span>
     <p class="text-center">ID:{{user.id}}</p>
     <div class="myname mt-5">
       <h2>{{user.nickname}}</h2>
@@ -26,7 +28,7 @@
       <!-- </router-link> -->
     </div>
     <!-- フォローボタン -->
-    <div v-if="user.current_user.id !== user.id">
+    <div v-if="current_id !== user_id">
       <div class="follow_form mt-2">
       <button
           v-if="user.check"
@@ -219,6 +221,8 @@ export default {
     return {
       tab: null,
       user: [],
+      user_id: '',
+      current_id: [],
       my_tweets: [],
       my_analyses: [],
       my_forecasts: [],
@@ -253,6 +257,8 @@ export default {
         .get(`/api/v1/users/${this.$route.params.id}.json`)
         .then(response =>{
           this.user = response.data
+          this.current_id = response.data.current_user.id
+          this.user_id = response.data.id
           this.my_tweets = response.data.tweet
           this.my_analyses = response.data.analysis
           this.my_forecasts = response.data.forecast
@@ -291,6 +297,12 @@ export default {
     },
     isMore_f() {
       this.count_f += 10
+    }
+  },
+  watch: {
+    '$route'(to, from) {
+      // this.fetchUser()
+      this.$router.go({name: 'user-show', params: {id: 1}})
     }
   }
 }
