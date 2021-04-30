@@ -25,6 +25,9 @@ const store = new Vuex.Store({
   },
   mutations: {
     increment(state) {
+      state.keyword = ''
+      state.keyword_fcs = ''
+      state.keyword_ays = ''
       state.currentPage_t = 1
       state.currentPage_wa = 1
       state.currentPage_follow = 1

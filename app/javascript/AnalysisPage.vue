@@ -159,9 +159,9 @@ export default {
       this.$store.state.keyword_ays = this.keyword
     }
   },
-  beforeDestroy() {
-    this.$store.commit('increment')
-  },
+  // beforeDestroy() {
+  //   this.$store.commit('increment')
+  // },
 }
 </script>
 <style scoped>
