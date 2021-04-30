@@ -3,6 +3,7 @@ class CreateAnalyses < ActiveRecord::Migration[5.2]
     create_table :analyses do |t|
       t.text :title
       t.text :text
+      t.text   :image
       t.integer :attack
       t.integer :defensive
       t.integer :pitcher

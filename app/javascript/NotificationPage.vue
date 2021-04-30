@@ -5,8 +5,8 @@
       通知
     </div>
     <div class="notification">
-      <div class="mx-auto">
-        <div v-for="e in notifications" :key="e.id">
+      <div class="mx-auto text-center">
+        <div v-for="e in listNotifications" :key="e.id">
           <div class="notification-info mt-5">
             <div v-if="e.visiter_image.url"> 
               <img :src= e.visiter_image.url class="user-icon mt-1 mb-5">
@@ -20,10 +20,10 @@
               あなたをフォローしました
             </span>
             <span v-else-if="e.action==='like'">
-              あなたの<router-link :to="{name: 'tweetshow',params: {id: e.tweet}}">投稿</router-link>にいいねをしました
+              あなたの<router-link :to="{name: 'tweet-show',params: {id: e.tweet}}">投稿</router-link>にいいねをしました
             </span>
             <span v-else-if="e.action==='comment'">
-              あなたの<router-link :to="{name: 'tweetshow',params: {id: e.tweet}}">投稿</router-link>にコメントをしました
+              あなたの<router-link :to="{name: 'tweet-show',params: {id: e.tweet}}">投稿</router-link>にコメントをしました
             </span>
             <span v-else-if="e.action==='comment_analysis'">
               あなたの<router-link :to="{name: 'analysis-show',params: {id: e.analysis}}">投稿</router-link>にコメントをしました
@@ -38,6 +38,14 @@
             </div>
           </div>
         </div>
+        <button
+          class="list-item-button text-center"
+          v-if="(listNotifications.length - count) >= 0"
+          type="button"
+          @click="isMore"
+        >
+          もっと見る
+      </button>
       </div>
     </div>
   </div>
@@ -47,7 +55,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      notifications: []
+      notifications: [],
+      count: 10
     }
   },
   mounted() {
@@ -60,6 +69,15 @@ export default {
         .then(response =>{
           this.notifications = response.data.notification;
         })
+    },
+    isMore() {
+      this.count += 10
+    }
+  },
+  computed: {
+    listNotifications() {
+      const list = this.notifications
+      return list.slice(0, this.count)
     }
   }
 }

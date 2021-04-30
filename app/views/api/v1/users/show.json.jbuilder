@@ -20,7 +20,8 @@ json.set! :tweet do
     json.school_b tweet.school_b.name
     json.title tweet.title_info
     json.id tweet.id
-    json.time tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")
+    json.image tweet.image
+    json.time tweet.created_at.strftime("%Y年%m月%d日")
   end
 end
 
@@ -31,7 +32,8 @@ json.set! :analysis do
     json.school analysis.school.name
     json.title analysis.title
     json.id analysis.id
-    json.time analysis.created_at.strftime("%Y年%m月%d日 %H時%M分")
+    json.image analysis.image
+    json.time analysis.created_at.strftime("%Y年%m月%d日")
   end
 end
 
@@ -42,7 +44,7 @@ json.set! :forecast do
     json.win_school forecast.win_school.name
     json.lose_school forecast.lose_school.name
     json.id forecast.id
-    json.time forecast.created_at.strftime("%Y年%m月%d日 %H時%M分")
+    json.time forecast.created_at.strftime("%Y年%m月%d日")
   end
 end
 

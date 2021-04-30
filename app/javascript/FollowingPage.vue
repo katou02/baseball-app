@@ -1,5 +1,5 @@
 <template>
-  <div class="user-content pt-5">
+  <div class="follow-user-content pt-5">
     <div v-if="users.length">
       <h2>フォロー:{{users[0].count}}人</h2>
     </div>
@@ -7,10 +7,10 @@
       <h2>フォロー:0人</h2>
     </div>
     <div class="search-area mt-5">
-      <input type="text" v-model="keyword" placeholder="検索">
+      <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
-    <div class="user-list row">
-      <div v-for="e in getLists" :key="e.id" class="col-xs-12 col-md-6 col-lg-3 mt-3 card">
+    <div class="user-list row mt-5">
+      <v-col v-for="e in getLists" :key="e.id" cols="12"  sm="12" md="4" lg="3">
         <router-link :to="{name: 'user-show',params: {id: e.id}}">
           <div class="user-list-image pb-3">
             <div v-if="e.image.url">
@@ -34,7 +34,7 @@
             </div>
           </div>
         </router-link>
-      </div>
+      </v-col>
     </div>
     <div class="text-center">
       <paginate
@@ -46,6 +46,7 @@
         :prev-text="'＜'"
         :next-text="'＞'"
         :force-page="currentPage"
+        :hide-prev-next="true"
         :next-link-class="'page-link'"
         :prev-link-class="'page-link'"
         :container-class="'pagination'"

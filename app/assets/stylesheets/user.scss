@@ -1,7 +1,7 @@
 .user {
   &-content {
     background-color: #EEFFFF;
-    height: 100vh;
+    height: 100%;
   }
   &-list {
     margin-top: 10%;
@@ -43,6 +43,12 @@
   &-info {
     font-size: 18px;
   }
+}
+
+.follow-user-content {
+  width: 900px;
+  background-color: #EEFFFF;
+  height: 100%;
 }
 
 .stats {

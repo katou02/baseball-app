@@ -4,14 +4,12 @@
       <div class="d-flex">
         <div v-if="forecast.user_id==forecast.current_user">
           <button class="delete-btn" @click="deleteForecast(forecast.id)">記事を削除する</button>
-          <!-- <a :href= "'/forecasts/' + forecast.id + '/edit'" class="edit-article">記事を編集する</a> -->
-          <router-link :to="{name: 'forecast-edit',params: {id: forecast.id}}" class="edit-article">記事を編集する</router-link>
+          <router-link :to="{name: 'forecast-edit',params: {id: forecast.id}}" class="edit-article text-white p-2">記事を編集する</router-link>
         </div>
-        <!-- <a :href= "'/tweets'" class="return-btn">記事一覧へ戻る</a> -->
-        <router-link :to="{name: 'forecast'}" class="return-btn">記事一覧へ戻る</router-link>
+        <router-link :to="{name: 'forecast'}" class="return-btn text-white">記事一覧へ戻る</router-link>
       </div>
       <div class="user_name">
-        <h5>投稿者:<a :href= "'/users/' + forecast.user_id">{{forecast.nickname}}</a></h5>
+        <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: forecast.user_id}}">{{forecast.nickname}}</router-link></h5>
         <div v-if="user_image"> 
           <img :src= user_image class="user-icon mt-1 mb-5">
         </div>
@@ -19,8 +17,10 @@
           <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
         </div>
       </div>
+      <div class="game_result mt-5">
+        {{forecast.tournament}}
+      </div>
       <div class="text-format text-danger">
-        {{forecast.tournament}}<br>
         <i class="fas fa-fire mt-5 mb-5">試合予想</i>
       </div>
       <div class="data-title mt-5 ml-5">
@@ -51,7 +51,7 @@
       <div class="pie mt-5 pb-5">
         <div style="width:60%; height:60%"><canvas id="PieChart"></canvas></div>
       </div>
-      <div class="comment-content_tweet">
+      <div class="comment-content_common">
         <div class="text-format mt-0 mb-4 text-warning">
           <i class="fa fa-baseball-ball text-warning"></i>
           コメント
@@ -71,14 +71,13 @@
               <li><font color="red">{{ e }}</font></li>
             </ul>
           </div>
-          <div class="tweet-comment_form">
-            <textarea v-model="text" type="text" rows="2" cols="30"></textarea>
+          <div class="text-center">
+            <v-textarea solo v-model="text" type="text" rows="2" cols="30"></v-textarea>
+            <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
           </div>
-          <button type="submit" class="game_record" >投稿する</button>
           </form>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </template>

@@ -2,9 +2,9 @@
   <div class="room-content">
     <div class="user-in">
       <div class="room-member mr-5 pt-2">
-      <a :href= "'/users/' + id">{{member.user.nickname}}</a>
-        <div v-if="member.user.image.url"> 
-         <img :src= member.user.image.url class="room-user-icon mt-1 mb-5">
+        <router-link :to="{name: 'user-show',params: {id: user.id}}">{{user.nickname}}</router-link>
+        <div v-if="image"> 
+          <img :src= image class="room-user-icon mt-1 mb-5">
         </div>
         <div v-else>
           <img src="../assets/images/no-image.png" class="room-user-icon mt-1 mb-5">
@@ -20,11 +20,11 @@
         </div>
         <div v-else>
           <div class="messages">
-            <div v-if="data.current_user.image.url">
-              <img :src= data.current_user.image.url class="room-user-icon">
+            <div v-if="image">
+              <img :src= image class="room-user-icon">
             </div>
             <div v-else>
-              <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
+              <img src="../assets/images/no-image.png" class="room-user-icon">
             </div>
             <div class="message ml-5">{{e.body}}</div>
           </div>
@@ -40,11 +40,12 @@
         </div>-->
         <div v-if="data.check!=null">
           <div class="message-form">
-            <div class="mx-auto d-flex w-50 pb-2">
-              <textarea v-model="body" type="text" class="message-detail"></textarea>
-              <button type="submit" class="message-btn ml-2" >
+            <div class="mx-auto d-flex w-50">
+              <!-- <textarea v-model="body" type="text" class="message-detail"></textarea> -->
+              <v-text-field v-model="body" solo label="メッセージ" clearable></v-text-field>
+              <v-btn type="submit" class="message-btn ml-2 info" >
                 <i class="fas fa-paper-plane"></i>
-              </button>
+              </v-btn>
             </div>
           </div>
         </div>
@@ -61,11 +62,10 @@ export default {
   data() {
     return {
       messages: [],
-      member: '',
-      id: '',
+      image: '',
+      user: '',
       data: '',
       body: '',
-      check: '',
       errors: ''
     }
   },
@@ -78,10 +78,9 @@ export default {
         .get(`/api/v1/rooms/${this.$route.params.id}.json`)
         .then(response =>{
           this.messages = response.data.message
-          this.member = response.data.member[0]
-          this.id = response.data.member[0].user.id
+          this.image = response.data.member[0].user.image.url
+          this.user = response.data.member[0].user
           this.data = response.data
-          // this.check = response
         })
     },
     createMessage() {
@@ -101,3 +100,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.v-btn:not(.v-btn--round).v-size--default {
+  height: 45px;
+}
+</style>

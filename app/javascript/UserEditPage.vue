@@ -1,11 +1,23 @@
 <template>
-  <div class="contents row pt-3">
-    <div class="container">
+  <div class="contents row mx-auto pt-5">
+    <v-container>
+    <h2 class="text-primary font-weight-bold">プロフィールの編集</h2>
+    <p>※ゲストユーザーは編集できません</p>
+    <v-divider></v-divider>
+    <div class="profile">
       <form @submit.prevent="editUser">
-        <select name="input_pref" v-model="prefecture" class="form-control input-lg">
+        <!-- <select name="input_pref" v-model="prefecture" class="form-control input-lg">
           <option v-for="(item, index) in getPref" :value="item.name">{{item.name}}</option>
-        </select>
-        <textarea v-model="text" type="text" rows="2" cols="30" placeholder="本文"></textarea>
+        </select> -->
+        <v-select
+          v-model="prefecture"
+          item-text="name"
+          item-value="name"
+          :items="pref"
+          label="お住まい"
+          solo>
+        </v-select>
+        <v-textarea v-model="text" type="text" label="自己紹介" outlined></v-textarea>
         <div class="s3">
         </div>
         <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
@@ -13,9 +25,14 @@
           <img :src="url" width="320px" height="300px">
           <button type="submit" @click="deleteImage">削除</button>
         </div>
-        <button type="submit" class="game_record" >編集する</button>
+        <div v-if="image.url">
+          <img :src="image.url" width="320px" height="300px">
+          <button type="submit" @click="deleteUserImage">削除</button>
+        </div>
+        <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
       </form>
     </div>
+    </v-container>
   </div>
 </template>
 <script>
@@ -66,6 +83,10 @@ export default {
     deleteImage(){
       this.url = '';
       URL.revokeObjectURL(this.url);
+      this.image = ''
+    },
+    deleteUserImage(){
+      this.image = ''
     }
   },
   computed: {

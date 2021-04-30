@@ -1,67 +1,61 @@
 <template>
   <div class="main-content">
-    <div id="slide">
-      <div class="header">
-        <transition name="fade">
-        <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
-          <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">
-        </div>
-        </transition>
-      </div>
-    </div>
+    <!-- <Header></Header> -->
     <div class="main-content-btn">
       <!-- <a :href= "'/forecasts/new'" class="send-btn">投稿する</a> -->
       <router-link :to="{name: 'forecast-new'}" class="send-btn">投稿する</router-link>
       <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-warning">
-      試合予想をしてみましょう！<br><br>
-      大会別
+      試合予想をしてみましょう！<br>
     </div>
-    <div class="title mt-5">
+    <!-- <div class="title mt-5">
       <div v-for="e in categories" :key="e.id">
         <router-link :to="{name: 'watch_fcs',params: {id: e.id}}"  class="title-child text-white ml-5">
           <i class="fa fa-baseball-ball text-white"></i> 
           {{e.category}}
         </router-link>
       </div>
-    </div>
+    </div> -->
     <div class="forecast-main">
       <div class="text-format pt-5 text-primary">
         みんなの試合予想
       </div>
       <div class="search-area mt-3">
-        <input type="text" v-model="keyword" placeholder="検索">
+        <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
       </div>
-      <div v-for="e in getLists" :key="e.id">
-        <div class="forecast mt-5">
-          <!-- <a :href= "'forecasts/' + e.id"> -->
-          <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
-            <div class="school-fcs">
-            <div class="fcs-icon">
-              <i class="fa fa-balance-scale text-white"></i>
+      <!-- 記事 -->
+      <div class="d-flex">
+        <Side></Side>
+        <v-row class="ml-5">
+          <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+            <div class="forecast mt-5">
+              <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
+                <div class="d-flex h-100">
+                  <img src="/images/ball.jpg" class="article-icon">
+                  <div class="article-heading mx-auto">
+                    <div class="name">
+                      投稿者 {{e.nickname}}<br>
+                      {{e.time}}
+                    </div>
+                    <div class="school-fcs mt-4">
+                      <div class="win-school_fcs">
+                        勝利予想
+                        <br><br>
+                        {{e.win_school}}
+                      </div>
+                      <div class="lose-school_fcs ml-3">
+                        敗退予想
+                        <br><br>
+                        {{e.lose_school}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </router-link>
             </div>
-              <div class="win-school_fcs">
-                勝利予想
-                <br>
-                {{e.win_school}}
-              </div>
-              <div class="lose-school_fcs">
-                敗退予想
-                <br>
-                {{e.lose_school}}
-              </div>
-            </div>
-            <div class="name">
-              投稿者
-              {{e.nickname}}
-            </div>
-            <div class="tweets_at">
-              {{e.time}}
-            </div>
-          <!-- </a> -->
-          </router-link>
-        </div>
+          </v-col>
+        </v-row>
       </div>
       <div class="text-center">
         <paginate
@@ -72,6 +66,7 @@
           :margin-pages="2"
           :prev-text="'＜'"
           :next-text="'＞'"
+          :hide-prev-next="true"
           :force-page="currentPage"
           :next-link-class="'page-link'"
           :prev-link-class="'page-link'"
@@ -79,38 +74,35 @@
           :page-link-class="'page-link'">
         </paginate>
       </div>
+      <div v-if="!forecasts.length" class="text-center mt-5">
+        <p>投稿された予想はありません</p>
+      </div>
     </div>
   </div>
 </template>
 <script>
-import axios from 'axios';
+import axios from 'axios'
+import Header from './components/Header.vue'
+import Side from './components/Side.vue'
 export default {
+  components: {
+    Header,
+    Side
+  },
   data() {
     return {
       keyword: this.$store.state.keyword_fcs,
       forecasts: [],
-      currentPage: this.$store.state.currentPage,
+      currentPage: this.$store.state.currentPage_fcs,
       parPage: 10,
       categories: [],
       current_slide: 0,
-      slides: [
-        {img: "/images/81573810.jpeg"},
-        {img: "/images/ball.jpg"},
-        {img: "/images/thumb_ground.jpg"},
-        {img: "/images/thumb_front.jpg"},
-        {img: "/images/mykosien.JPG"}
-      ],
     }
   },
   mounted() {
-    setInterval(() => {
-        this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
-      }, 3000)
     this.fetchForecasts()
     this.fetchCategory()
-    if (this.keyword == '') {
-    }
-    else {
+    if (this.keyword !== '') {
       this.currentPage = 1
     }
   },
@@ -131,8 +123,7 @@ export default {
     },
     clickCallback(pageNum) {
        this.currentPage = Number(pageNum);
-       this.$store.state.currentPage = Number(pageNum);
-       console.log(this.$store.state.currentPage)
+       this.$store.state.currentPage_fcs = Number(pageNum);
     },
     pageback() {
       this.$nextTick(() => {
@@ -142,11 +133,6 @@ export default {
             scrollTo(0, positionY);
           }, 500);
       })
-    },
-    reset() {
-      return {
-        currentPage: 1
-      }
     }
   },
   computed: {
@@ -177,8 +163,13 @@ export default {
       this.$store.state.keyword_fcs = this.keyword
     }
   },
-  beforeDestroy() {
-    this.$store.commit('increment')
-  },
+  // beforeDestroy() {
+  //   this.$store.commit('increment')
+  // },
 }
 </script>
+<style scoped>
+  .v-application a {
+    color: white;
+  }
+</style>

@@ -1,18 +1,14 @@
 <template>
   <div class="main-content">
-    <Header></Header>
+    <!-- <Header></Header> -->
     <div class="main-content-btn">
-    <a :href= "'/tweets/new'" class="send-btn">投稿する</a>
+    <router-link :to="{name: 'tweet-new'}" class="send-btn">投稿する</router-link>
     <a :href= "'/'" class="return-top">トップページへ戻る</a>
     </div>
     <div class="text-format mt-5 text-primary">
-      <div v-for="e in categories" :key="e.id">
-        <div v-if="$route.params.id==e.id">
-          {{e.category}}
-        </div>
-      </div>
+      観た試合の感想をみんなに発信してみましょう！
     </div>
-    <div class="text-format mt-5 mb-4 text-warning">
+    <!-- <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
     <div class="title mt-5 ml-5">
@@ -28,6 +24,13 @@
           </router-link>
         </div>
       </div>
+    </div> -->
+    <div class="text-format mt-5 text-primary">
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.params.id==e.id">
+          {{e.category}}
+        </div>
+      </div>
     </div>
     <div class="tournament-main">
       <div class="text-format pt-5 text-primary">
@@ -35,33 +38,35 @@
       </div>
       <div class="tournament-content pt-5">
         <div class="search-area mt-3">
-          <input  type="text" v-model="keyword" placeholder="検索">
+          <v-text-field  type="text" v-model="keyword" label="検索"></v-text-field>
         </div>
-        <div v-if="tweets.length">
-          <div v-for="e in getLists" :key="e.id">
-            <div class="article mt-5">
-              <router-link :to= "'/tweets/' + e.id">
-                <div class="article-title">
-                  {{e.school_a}}vs{{e.school_b}}
-                </div>
-                <div class="article-image">
-                  <i class="fa fa-baseball-ball text-white"></i>
-                </div>
-                <div class="sub-title">
-                  {{e.title}}
-                </div>
-                <div class="name">
-                  投稿者 {{e.nickname}}
-                </div>
-                <div class="tweets_at">
-                  {{e.time}}
-                </div>
-              </router-link>
-            </div>
-          </div>
-        </div>
-        <div v-else>
-          <p class="text-center mt-5">試合記事はありません</p>
+        <!-- 記事 -->
+        <div class="d-flex">
+          <Side></Side>
+          <v-row class="ml-5">
+            <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+              <div class="article mt-5">
+                <router-link :to= "'/tweets/' + e.id">
+                  <div class="d-flex h-100">
+                    <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                    <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                    <div class="article-heading mx-auto">
+                      <div class="name">
+                        投稿者 {{e.nickname}}<br>
+                        {{e.time}}
+                      </div>
+                      <div class="article-title mt-3">
+                        {{e.school_a}}vs{{e.school_b}}
+                      </div>
+                      <div class="sub-title mt-3">
+                        {{e.title}}
+                      </div>
+                    </div>
+                  </div>
+                </router-link>
+              </div>
+            </v-col>
+          </v-row>
         </div>
         <div class="text-center">
           <paginate
@@ -80,6 +85,9 @@
             :page-link-class="'page-link'">
           </paginate>
         </div>
+        <div v-if="!tweets.length" class="text-center mt-5">
+          <p>投稿された試合記事がありません</p>
+        </div>
       </div>
     </div>
   </div>
@@ -87,9 +95,11 @@
 <script>
 import axios from 'axios'
 import Header from './components/Header.vue'
+import Side from './components/Side.vue'
 export default {
   components: {
-    Header
+    Header,
+    Side
   },
   data() {
     return {
@@ -178,3 +188,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .v-application a {
+    color: white;
+  }
+</style>

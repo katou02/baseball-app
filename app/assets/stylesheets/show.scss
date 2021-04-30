@@ -1,5 +1,5 @@
 .edit-article,.return-btn,.return-top,.return-top-mypage,.return-btn_watch,.return-fcs,.users-btn,.dm-btn {
-  padding: 5px;
+  padding: 4px;
   color: #fff;
   border-top: 4px solid #48ecc4;
   border-right: 4px solid #0a5f4a;
@@ -13,7 +13,7 @@
 }
 
 .delete-btn {
-  padding: 5px;
+  padding: 4px;
   color: #fff;
   border-top: 4px solid #f07373;
   border-right: 4px solid #ca0b05;
@@ -62,7 +62,7 @@ input {
   &-content {
     background-color: rgba(236, 236, 206,0.4);
     // min-height: 780px;
-    &_tweet {
+    &_common {
       background-color: rgba(236, 236, 206,0.4);
       min-height: 780px;
     }

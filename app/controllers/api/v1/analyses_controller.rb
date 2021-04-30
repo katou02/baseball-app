@@ -70,10 +70,10 @@ class Api::V1::AnalysesController < ApiController
   private
 
   def analysis_params
-    params.require(:analysis).permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations).merge(user_id: current_user.id)
+    params.permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations,:image).merge(user_id: current_user.id)
   end
 
   def update_params
-    params.require(:analysis).permit(:title,:text,:tournament_id,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations)
+    params.permit(:title,:text,:school_id,:attack,:defensive,:pitcher,:comprehensive,:expectations,:image)
   end
 end

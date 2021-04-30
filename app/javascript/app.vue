@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <v-app>
+      <router-view></router-view>
+    </v-app>
   </div>
 </template>
 
@@ -38,10 +40,9 @@ import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
-import VueStar from 'vue-star'
-// import { component } from 'vue/types/umd'
+import "vuetify/dist/vuetify.min.css"
+import '@mdi/font/css/materialdesignicons.css'
 
-Vue.component('VueStar', VueStar);
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -60,7 +61,7 @@ const router = new VueRouter({
     {
       path: '/tweets/:id(\\d+)',
       component: TweetShowPage,
-      name: 'tweetshow'
+      name: 'tweet-show'
     },
     {
       path: '/tweets/new',
