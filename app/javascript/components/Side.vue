@@ -16,7 +16,7 @@
 
           <v-list-item>
             <v-list-item-title>
-              <router-link :to="{name: 'tweet'}">
+              <router-link @click.native="reset()" :to="{name: 'tweet'}">
                 <v-icon>mdi-pencil</v-icon>全ての記事
               </router-link>
             </v-list-item-title>
@@ -62,7 +62,7 @@
 
           <v-list-item>
             <v-list-item-title>
-              <router-link :to="{name: 'analysis'}">
+              <router-link @click.native="reset()" :to="{name: 'analysis'}">
                 <v-icon>mdi-magnify</v-icon>全ての戦力分析
               </router-link>
             </v-list-item-title>
@@ -108,7 +108,7 @@
 
           <v-list-item>
             <v-list-item-title>
-              <router-link :to="{name: 'forecast'}">
+              <router-link @click.native="reset()" :to="{name: 'forecast'}">
                 <v-icon>mdi-scale-balance</v-icon>全ての試合予想
               </router-link>
             </v-list-item-title>
@@ -226,3 +226,12 @@
     </v-card>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    reset() {
+      this.$store.commit('increment')
+    }
+  }
+}
+</script>

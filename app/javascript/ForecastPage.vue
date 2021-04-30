@@ -100,9 +100,6 @@ export default {
     }
   },
   mounted() {
-    setInterval(() => {
-        this.current_slide = this.current_slide < this.slides.length -1 ? this.current_slide +1 : 0
-      }, 3000)
     this.fetchForecasts()
     this.fetchCategory()
     if (this.keyword !== '') {
@@ -137,11 +134,6 @@ export default {
             scrollTo(0, positionY);
           }, 500);
       })
-    },
-    reset() {
-      return {
-        currentPage: 1
-      }
     }
   },
   computed: {
@@ -172,9 +164,9 @@ export default {
       this.$store.state.keyword_fcs = this.keyword
     }
   },
-  beforeDestroy() {
-    this.$store.commit('increment')
-  },
+  // beforeDestroy() {
+  //   this.$store.commit('increment')
+  // },
 }
 </script>
 <style scoped>
