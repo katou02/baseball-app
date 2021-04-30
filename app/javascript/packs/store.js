@@ -7,6 +7,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     currentPage: 1,
+    currentPage_fcs: 1,
+    currentPage_ays: 1,
     currentPage_t: 1,
     currentPage_wa: 1,
     currentPage_wf: 1,
@@ -28,6 +30,9 @@ const store = new Vuex.Store({
       state.keyword = ''
       state.keyword_fcs = ''
       state.keyword_ays = ''
+      state.currentPage_fcs = 1
+      state.currentPage_ays = 1
+      state.currentPage = 1
       state.currentPage_t = 1
       state.currentPage_wa = 1
       state.currentPage_follow = 1

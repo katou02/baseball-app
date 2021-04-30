@@ -93,7 +93,7 @@ export default {
     return {
       keyword: this.$store.state.keyword_fcs,
       forecasts: [],
-      currentPage: this.$store.state.currentPage,
+      currentPage: this.$store.state.currentPage_fcs,
       parPage: 10,
       categories: [],
       current_slide: 0,
@@ -123,8 +123,7 @@ export default {
     },
     clickCallback(pageNum) {
        this.currentPage = Number(pageNum);
-       this.$store.state.currentPage = Number(pageNum);
-       console.log(this.$store.state.currentPage)
+       this.$store.state.currentPage_fcs = Number(pageNum);
     },
     pageback() {
       this.$nextTick(() => {
