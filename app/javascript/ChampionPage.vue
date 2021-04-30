@@ -9,13 +9,13 @@
       <i class="fas fa-crown text-warning"></i>
     </div>
     <div class="text-center">
-      <router-link :to="{name: 'watch_fcs',params: {id: num}}" class="return-top mx-auto">戻る</router-link>
+      <router-link :to="{name: 'watch_fcs',params: {id: num}}" class="return-top mx-auto text-white">戻る</router-link>
       <div class="mt-3" v-if="my_champion">
         {{my_champion.school}}に投票しています<br>
         <button class="delete-btn mt-2" @click="deleteChampion($route.params.id)">投票を取り消す</button>
       </div>
       <div v-else>
-      <router-link :to="{name: 'champion-new',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn">
+      <router-link :to="{name: 'champion-new text-white',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn">
         優勝予想をする
       </router-link>
       </div>
@@ -137,8 +137,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-  .v-application a {
-    color: white;
-  }
-</style>
