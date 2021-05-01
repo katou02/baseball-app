@@ -118,7 +118,8 @@
 <script>
 import axios from 'axios';
 const maxscore = 6;
-const score = [...Array(maxscore).keys()]
+const array = [...Array(maxscore).keys()]
+const score = array.splice(1, 5)
 export default {
   data: function() {
     return {
