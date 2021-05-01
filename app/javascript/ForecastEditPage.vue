@@ -6,29 +6,25 @@
     <form @submit.prevent="editForecast">
       <div class="form p-4">
         <div class="d-flex">
-          <div class="win-school w-25 mx-auto mt-3">
-            <ul>
-              <label>勝利予想</label><br>
-              <v-select
-                v-model="win_school"
-                item-text="name"
-                item-value="id"
-                :items="children"
-                outlined>
-              </v-select>
-            </ul>
+          <div class="w-25 mx-auto mt-3">
+            <label>勝利予想</label><br>
+            <v-select
+              v-model="win_school"
+              item-text="name"
+              item-value="id"
+              :items="children"
+              outlined>
+            </v-select>
           </div>
-          <div class="lose-school w-25 mx-auto mt-3">
-            <ul>
-              <label>敗退予想</label><br>
-              <v-select
-                v-model="lose_school"
-                item-text="name"
-                item-value="id"
-                :items="children"
-                outlined>
-              </v-select>
-            </ul>
+          <div class="w-25 mx-auto mt-3">
+            <label>敗退予想</label><br>
+            <v-select
+              v-model="lose_school"
+              item-text="name"
+              item-value="id"
+              :items="children"
+              outlined>
+            </v-select>
           </div>
         </div>
         <div class="round w-25 mx-auto mt-3">
