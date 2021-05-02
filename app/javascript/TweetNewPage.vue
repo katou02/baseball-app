@@ -125,15 +125,15 @@ export default {
                        this.grandChildren = response.data.grandChildren))
   },
   methods: {
-    // findChildren: function(event) {
-    //   let rootValue = event.target.value;
-    //   this.active()
-    //   return this.root_id = rootValue;
-    // },
-    findGrandChildren: function(event) {
-      let childValue = event.target.value;
-      return this.child_id = childValue;
+    findChildren: function(event) {
+      let rootValue = event.target.value;
+      this.active()
+      return this.root_id = rootValue;
     },
+    // findGrandChildren: function(event) {
+    //   let childValue = event.target.value;
+    //   return this.child_id = childValue;
+    // },
     createTweet() {
       let formData = new FormData();
       formData.append("title_info", this.title);
