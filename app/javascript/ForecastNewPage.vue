@@ -22,7 +22,6 @@
                 </select> -->
                 <v-select
                   v-model="win_school"
-                  @change="findGrandChildren" 
                   item-text="name"
                   item-value="id"
                   :items="children"
@@ -38,7 +37,6 @@
                 </select> -->
                 <v-select
                   v-model="lose_school"
-                  @change="findGrandChildren" 
                   item-text="name"
                   item-value="id"
                   :items="children"
@@ -123,11 +121,11 @@ export default {
                        this.grandChildren = response.data.grandChildren))
   },
   methods: {
-    findChildren: function(event) {
-      let rootValue = event.target.value;
-      this.active()
-      return this.root_id = rootValue;
-    },
+    // findChildren: function(event) {
+    //   let rootValue = event.target.value;
+    //   this.active()
+    //   return this.root_id = rootValue;
+    // },
     findGrandChildren: function(event) {
       let childValue = event.target.value;
       return this.child_id = childValue;
