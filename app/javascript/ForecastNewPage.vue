@@ -121,15 +121,15 @@ export default {
                        this.grandChildren = response.data.grandChildren))
   },
   methods: {
-    // findChildren: function(event) {
-    //   let rootValue = event.target.value;
-    //   this.active()
-    //   return this.root_id = rootValue;
-    // },
-    findGrandChildren: function(event) {
-      let childValue = event.target.value;
-      return this.child_id = childValue;
+    findChildren: function(event) {
+      let rootValue = event.target.value;
+      this.active()
+      return this.root_id = rootValue;
     },
+    // findGrandChildren: function(event) {
+    //   let childValue = event.target.value;
+    //   return this.child_id = childValue;
+    // },
     createForecast() {
       axios
         .post('/api/v1/forecasts',{text: this.text,title_info: this.title,win_school_id: this.win_school,lose_school_id: this.lose_school,tournament_id: this.tournament,probability: this.probability,round: this.round})
