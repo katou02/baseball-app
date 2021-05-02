@@ -23,7 +23,6 @@
               </select> -->
               <v-select
                 v-model="school"
-                @change="findGrandChildren" 
                 item-text="name"
                 item-value="id"
                 :items="children"
@@ -118,7 +117,8 @@
 <script>
 import axios from 'axios';
 const maxscore = 6;
-const score = [...Array(maxscore).keys()]
+const array = [...Array(maxscore).keys()]
+const score = array.splice(1, 5)
 export default {
   data: function() {
     return {
@@ -154,10 +154,10 @@ export default {
       this.active()
       return this.root_id = rootValue;
     },
-    findGrandChildren: function(event) {
-      let childValue = event.target.value;
-      return this.child_id = childValue;
-    },
+    // findGrandChildren: function(event) {
+    //   let childValue = event.target.value;
+    //   return this.child_id = childValue;
+    // },
     createAnalysis() {
       let formData = new FormData();
       formData.append("title", this.title);
@@ -215,12 +215,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-ul {
-  display: none;
-}
-
-.active {
-  display: block;
-}
-</style>

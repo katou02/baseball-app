@@ -129,6 +129,19 @@
   letter-spacing: 0.15em;
 }
 
+.good {
+  background-color: #e91e63;
+  border-color: #e91e63;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.like-count {
+  padding: 5px 7px;
+  color: #2196f3;
+}
+
 .user_name {
   position: absolute;
   margin: 40px 20px 20px;
@@ -172,11 +185,11 @@
 }
 
 // 詳細
-.good,.good-after {
-  border: 2px solid #EEFFFF;
-  color: #C0C0C0;
-  background-color: #EEFFFF;
-}
+// .good,.good-after {
+//   border: 2px solid #EEFFFF;
+//   color: #C0C0C0;
+//   background-color: #EEFFFF;
+// }
 
 .good:hover + .fukidashi {
   display: block;
