@@ -14,7 +14,7 @@
           </div>
           <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
           <div class="d-flex">
-            <div class="win-school w-25 mx-auto mt-3">
+            <div class="w-25 mx-auto mt-3">
               <ul>
                 <label>勝利予想</label><br>
                 <!-- <select @change="findGrandChildren" v-model="win_school">
@@ -22,7 +22,6 @@
                 </select> -->
                 <v-select
                   v-model="win_school"
-                  @change="findGrandChildren" 
                   item-text="name"
                   item-value="id"
                   :items="children"
@@ -30,7 +29,7 @@
                 </v-select>
               </ul>
             </div>
-            <div class="lose-school w-25 mx-auto mt-3">
+            <div class="w-25 mx-auto mt-3">
               <ul>
                 <label>敗退予想</label><br>
                 <!-- <select @change="findGrandChildren" v-model="lose_school">
@@ -38,7 +37,6 @@
                 </select> -->
                 <v-select
                   v-model="lose_school"
-                  @change="findGrandChildren" 
                   item-text="name"
                   item-value="id"
                   :items="children"
@@ -128,10 +126,10 @@ export default {
       this.active()
       return this.root_id = rootValue;
     },
-    findGrandChildren: function(event) {
-      let childValue = event.target.value;
-      return this.child_id = childValue;
-    },
+    // findGrandChildren: function(event) {
+    //   let childValue = event.target.value;
+    //   return this.child_id = childValue;
+    // },
     createForecast() {
       axios
         .post('/api/v1/forecasts',{text: this.text,title_info: this.title,win_school_id: this.win_school,lose_school_id: this.lose_school,tournament_id: this.tournament,probability: this.probability,round: this.round})
@@ -162,12 +160,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-ul {
-  display: none;
-}
-
-.active {
-  display: block;
-}
-</style>

@@ -13,6 +13,10 @@
       <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
       <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
       <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+      <div v-if="url">
+        <img :src="url" width="320px" height="300px">
+        <button type="submit" @click="deleteImage">削除</button>
+      </div>
       <v-btn type="submit" color="info">投稿</v-btn>
     </form>
   </div>
@@ -27,6 +31,7 @@ export default {
       schools: [],
       school: '',
       image: '',
+      url: '',
       selected: ''
     }
   },
@@ -47,6 +52,11 @@ export default {
       const file = this.$refs.preview.files[0];
       this.url = URL.createObjectURL(file)
       this.$refs.preview.value = "";
+    },
+    deleteImage(){
+      this.url = '';
+      URL.revokeObjectURL(this.url);
+      this.image = ''
     },
     createMap() {
       let formData = new FormData();

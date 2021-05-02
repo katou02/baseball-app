@@ -23,7 +23,6 @@
                   </select> -->
                   <v-select
                     v-model="school_a"
-                    @change="findGrandChildren" 
                     item-text="name"
                     item-value="id"
                     :items="children"
@@ -39,8 +38,7 @@
                     <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
                   </select> -->
                   <v-select
-                    v-model="school_b"
-                    @change="findGrandChildren" 
+                    v-model="school_b" 
                     item-text="name"
                     item-value="id"
                     :items="children"
@@ -132,10 +130,10 @@ export default {
       this.active()
       return this.root_id = rootValue;
     },
-    findGrandChildren: function(event) {
-      let childValue = event.target.value;
-      return this.child_id = childValue;
-    },
+    // findGrandChildren: function(event) {
+    //   let childValue = event.target.value;
+    //   return this.child_id = childValue;
+    // },
     createTweet() {
       let formData = new FormData();
       formData.append("title_info", this.title);
@@ -199,12 +197,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-ul {
-  display: none;
-}
-
-.active {
-  display: block;
-}
-</style>
