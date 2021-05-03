@@ -42,8 +42,10 @@ import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
 import "vuetify/dist/vuetify.min.css"
 import '@mdi/font/css/materialdesignicons.css'
+import VuejsDialog from 'vuejs-dialog';
 
 Vue.use(VueRouter)
+Vue.use(VuejsDialog);
 
 const router = new VueRouter({
   mode: 'history',
