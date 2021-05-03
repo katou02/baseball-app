@@ -7616,6 +7616,11 @@
     "babel-runtime" "^6.26.0"
     "marker-clusterer-plus" "^2.1.4"
 
+"vuejs-dialog@^1.4.2":
+  "integrity" "sha512-6kRse144WXDFBMKdeuqE43rHy0ZJ81uLOFh62r2d80ICKavQYHIvr+GlTFmoR23190lC4f2w+ZJ8cS4ljkCDMw=="
+  "resolved" "https://registry.npmjs.org/vuejs-dialog/-/vuejs-dialog-1.4.2.tgz"
+  "version" "1.4.2"
+
 "vuejs-paginate@^2.1.0":
   "integrity" "sha512-gnwyXlmCiDOu9MLWxN5UJ4PGijKGNOMpHG8ujsrynCzTJljn/rp7Jq0WiDGDAMi5/u0AHuYIHhced+tUW4jblA=="
   "resolved" "https://registry.npmjs.org/vuejs-paginate/-/vuejs-paginate-2.1.0.tgz"
