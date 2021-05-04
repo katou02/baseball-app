@@ -64,7 +64,7 @@
         <div class="comment-user text-center">
           <em class="pr-4">{{e.comment_nickname}}</em>
           {{e.time}}
-          <button class="comment-delete_button" @click="deleteComment(e.id)">削除</button><br>
+          <button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button><br>
         </div>
         <div class="mt-4 mb-4 text-center" style="white-space:pre-wrap;">{{e.comment}}</div>
       </div>
@@ -197,6 +197,15 @@ export default {
       )
       if(rt==true) {
         this.deleteAnalysis(this.$route.params.id)
+      }
+    },
+    onAlertComment(id){
+      this.$dialog
+      var rt =confirm(
+      '削除してもよろしいですか？'
+      )
+      if(rt==true) {
+        this.deleteComment(id)
       }
     }
   }
