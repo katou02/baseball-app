@@ -3,7 +3,7 @@
     <div class="data-info pb-5">
       <div class="d-flex">
         <div v-if="analysis.user_id==analysis.current_user">
-          <button class="delete-btn" @click="deleteAnalysis(analysis.id)">記事を削除する</button>
+          <button class="delete-btn" @click="onAlert()">記事を削除する</button>
           <router-link :to="{name: 'analysis-edit',params: {id: analysis.id}}" class="edit-article text-white p-2">記事を編集する</router-link>
         </div>
         <router-link :to="{name: 'analysis'}" class="return-btn text-white">記事一覧へ戻る</router-link>
@@ -189,6 +189,15 @@ export default {
           }
         }
       })
+    },
+    onAlert:function(){
+      this.$dialog
+      var rt =confirm(
+      '削除してもよろしいですか？'
+      )
+      if(rt==true) {
+        this.deleteAnalysis(this.$route.params.id)
+      }
     }
   }
 }
