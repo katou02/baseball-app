@@ -36,6 +36,7 @@ class Api::V1::MapsController < ApiController
   end
   
   def update
+    @map = Map.find(params[:id])
     if @map.user_id == current_user.id || current_user.admin
       if @map.update(update_params) 
         head :no_content
@@ -48,6 +49,10 @@ class Api::V1::MapsController < ApiController
   private
 
   def map_params
+    params.permit(:address,:school_id,:text,:tournament_id,:image).merge(user_id: current_user.id)
+  end
+
+  def update_params
     params.permit(:address,:school_id,:text,:tournament_id,:image).merge(user_id: current_user.id)
   end
 end

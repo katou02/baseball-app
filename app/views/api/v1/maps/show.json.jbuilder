@@ -1,7 +1,8 @@
 json.nickname @map.user.nickname
 json.user_image @map.user.image
 json.school @map.school.name
-json.id @map.id
+json.tournament @map.tournament_id
+json.school_id @map.school_id
 json.text @map.text
 json.image @map.image
 json.address @map.address
