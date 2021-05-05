@@ -30,6 +30,21 @@ class Api::V1::MapsController < ApiController
     render 'show',formats: 'json', handlers: 'jbuilder'
   end
 
+  def edit
+    @map = Map.find(params[:id])
+    @schools = Category.where(ancestry: @map.tournament_id)
+  end
+  
+  def update
+    if @map.user_id == current_user.id || current_user.admin
+      if @map.update(update_params) 
+        head :no_content
+      else
+        render json: { errors: @map.errors.keys.map { |key| [key, @map.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
+      end
+    end
+  end
+
   private
 
   def map_params
