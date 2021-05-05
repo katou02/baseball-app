@@ -164,7 +164,7 @@ const router = new VueRouter({
     {
       path: '/maps/:id(\\d+)',
       component: MapShowPage,
-      name: 'mapshow'
+      name: 'map-show'
     },
     {
       path: '/maps/new',
