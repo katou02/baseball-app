@@ -1,7 +1,7 @@
 <template>
   <div class="contents row mx-auto mt-5">
     <h3>ふるさとを紹介</h3>
-    <h3>{{}}
+    <h3>{{name}}</h3>
     <form @submit.prevent="editMap">
       <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
       <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
@@ -29,6 +29,7 @@ export default {
       image: '',
       url: '',
       tournament: '',
+      name: '',
       selected: ''
     }
   },
@@ -68,6 +69,7 @@ export default {
         this.address = response.data.address
         this.text = response.data.text
         this.image = response.data.image
+        this.name = response.data.school
         this.tournament = response.data.tournament
       })
     },
