@@ -1,5 +1,10 @@
 <template>
   <div class="map">
+    <div class="d-flex mt-2">
+      <div v-if="map.user_id==map.current_user">
+        <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit-article text-white">編集する</router-link>
+      </div>
+    </div>
     <div class="map-info">
       <div class="map-school">
         {{map.school}}のふるさと
@@ -47,7 +52,7 @@ export default {
     return {
       map: [],
       markers: [],
-      image: []
+      image: [],
     }
   },
   mounted() {
