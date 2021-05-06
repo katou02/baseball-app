@@ -65,7 +65,7 @@
           </div>
           <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
           <v-textarea v-model="text" type="text" label="本文"></v-textarea>
-          <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+          <input v-if="!url && !image.url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
           <div v-if="url">
             <img :src="url" width="320px" height="300px">
             <button type="submit" @click="deleteImage">削除</button>

@@ -12,7 +12,7 @@
       </v-select>
       <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
       <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
-      <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+      <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
       <div v-if="url">
         <img :src="url" width="320px" height="300px">
         <button type="submit" @click="deleteImage">削除</button>
