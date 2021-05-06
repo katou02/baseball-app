@@ -14,7 +14,6 @@
   }
   &-content {
   background-color: #f6f6d1;
-  // height: 100%;
   }
   &-card {
   border: none;
@@ -39,6 +38,7 @@
     text-align: center;
   }
   &-adress {
+    position: relative;
     border-width: 0 2px 2px 2px;
     font-size: 1.2rem;
     min-height: 100px;
@@ -71,16 +71,27 @@
 }
 
 #map {
+  position: relative;
   height: 100%;
   width: 100%;
   margin-left:auto;
   margin-right:auto;
   text-align:left;
-  // border: solid;
   border-width: 0 2px 2px 2px;
 }
 
 .map-contenta {
   min-height: 70vh;
   background-color: #f6f6d1;
+}
+
+.vue-map-container.vue-map {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.vue-map {
+  position: absolute;
 }
