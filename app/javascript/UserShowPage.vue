@@ -46,8 +46,8 @@
         </button>
       </div>
       <div v-if="user.check && user.room == null">
-        <form @submit.prevent="createRoom">
-          <button type="submit" class="text-white bg-primary" >DMをはじめる</button>
+        <form @submit.prevent="createRoom" class="text-center mt-3">
+          <v-btn type="submit" class="text-white primary" small>DMをはじめる</v-btn>
         </form>
       </div>
     </div>
