@@ -3,7 +3,22 @@
   <div class="data-info"> 
     <div class="d-flex">
       <div v-if="tweet.user_id==tweet.current_user">
-        <button class="delete-btn" @click="onAlert()">記事を削除する</button>
+        <!-- <button class="delete-btn" @click="onAlert()">記事を削除する</button> -->
+        <v-dialog v-model="dialog" persistent max-width="290">
+          <template v-slot:activator="{ on, attrs }">
+            <button class="delete-btn text-white" v-bind="attrs" v-on="on">
+              記事を削除する
+            </button>
+          </template>
+          <v-card>
+            <v-card-title class="headline">本当に削除しますか?</v-card-title>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="green darken-1" text @click="deleteTweet($route.params.id)">はい</v-btn>
+              <v-btn color="green darken-1" text @click="dialog = false">キャンセル</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
         <router-link :to="{name: 'tweet-edit',params: {id: tweet.id}}" class="edit-article text-white p-2">記事を編集する</router-link>
       </div>
       <router-link :to="{name: 'tweet'}" class="return-btn text-white">記事一覧へ戻る</router-link>
@@ -101,6 +116,7 @@ export default {
       errors: '',
       user_image: '',
       tweet_image: '',
+      dialog: false,
     }
   },
   mounted() {
@@ -167,15 +183,15 @@ export default {
           this.fetchComments()
         })
     },
-    onAlert:function(){
-      this.$dialog
-      var rt =confirm(
-      '削除してもよろしいですか？'
-      )
-      if(rt==true) {
-        this.deleteTweet(this.$route.params.id)
-      }
-    },
+    // onAlert:function(){
+    //   this.$dialog
+    //   var rt =confirm(
+    //   '削除してもよろしいですか？'
+    //   )
+    //   if(rt==true) {
+    //     this.deleteTweet(this.$route.params.id)
+    //   }
+    // },
     onAlertComment(id){
       this.$dialog
       var rt =confirm(

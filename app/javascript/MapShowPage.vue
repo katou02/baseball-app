@@ -2,7 +2,22 @@
   <div class="map">
     <div class="d-flex mt-1">
       <div v-if="map.user_id==map.current_user">
-        <button class="delete-btn p-0" @click="onAlert()">記事を削除する</button>
+        <!-- <button class="delete-btn p-0" @click="onAlert()">記事を削除する</button> -->
+        <v-dialog v-model="dialog" persistent max-width="290">
+          <template v-slot:activator="{ on, attrs }">
+            <button class="delete-btn text-white" v-bind="attrs" v-on="on">
+              記事を削除する
+            </button>
+          </template>
+          <v-card>
+            <v-card-title class="headline">本当に削除しますか?</v-card-title>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="green darken-1" text @click="deleteMap($route.params.id)">はい</v-btn>
+              <v-btn color="green darken-1" text @click="dialog = false">キャンセル</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
         <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit-article text-white">編集する</router-link>
       </div>
     </div>
@@ -54,6 +69,7 @@ export default {
       map: [],
       markers: [],
       image: [],
+      dialog: false
     }
   },
   mounted() {
@@ -74,15 +90,15 @@ export default {
         this.$router.push({ name: 'map',query: {tournament_id: this.map.tournament} });
       })
     },
-    onAlert:function(){
-      this.$dialog
-      var rt =confirm(
-      '削除してもよろしいですか？'
-      )
-      if(rt==true) {
-        this.deleteMap(this.$route.params.id)
-      }
-    },
+    // onAlert:function(){
+    //   this.$dialog
+    //   var rt =confirm(
+    //   '削除してもよろしいですか？'
+    //   )
+    //   if(rt==true) {
+    //     this.deleteMap(this.$route.params.id)
+    //   }
+    // },
   }
 }
 </script>
