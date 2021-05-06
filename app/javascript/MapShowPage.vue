@@ -6,7 +6,7 @@
         <v-dialog v-model="dialog" persistent max-width="290">
           <template v-slot:activator="{ on, attrs }">
             <button class="delete-btn text-white" v-bind="attrs" v-on="on">
-              記事を削除する
+              削除する
             </button>
           </template>
           <v-card>
@@ -18,7 +18,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit-article text-white">編集する</router-link>
+        <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit-article text-white p-2">編集する</router-link>
       </div>
     </div>
     <div class="map-info">
