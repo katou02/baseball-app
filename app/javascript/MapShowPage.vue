@@ -1,7 +1,8 @@
 <template>
   <div class="map">
-    <div class="d-flex mt-2">
+    <div class="d-flex mt-1">
       <div v-if="map.user_id==map.current_user">
+        <button class="delete-btn p-0" @click="onAlert()">記事を削除する</button>
         <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit-article text-white">編集する</router-link>
       </div>
     </div>
@@ -67,7 +68,21 @@ export default {
           this.image = response.data.image.url;
           this.markers.push({position: { lat:this.map.latitude, lng:this.map.longitude } })
         })
-    }
+    },
+    deleteMap(id) {
+      axios.delete(`/api/v1/maps/${id}`).then(response => {
+        this.$router.push({ name: 'map',query: {tournament_id: this.map.tournament} });
+      })
+    },
+    onAlert:function(){
+      this.$dialog
+      var rt =confirm(
+      '削除してもよろしいですか？'
+      )
+      if(rt==true) {
+        this.deleteMap(this.$route.params.id)
+      }
+    },
   }
 }
 </script>
