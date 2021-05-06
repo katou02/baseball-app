@@ -20,7 +20,7 @@
         <v-textarea v-model="text" type="text" label="自己紹介" outlined></v-textarea>
         <div class="s3">
         </div>
-        <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+        <input v-if="!image.url && !url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
         <div v-if="url">
           <img :src="url" width="320px" height="300px">
           <button type="submit" @click="deleteImage">削除</button>

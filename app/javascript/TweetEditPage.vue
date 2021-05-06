@@ -65,7 +65,7 @@
           <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
           <v-textarea v-model="text" type="text" label="本文" outlined></v-textarea>
           <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
-          <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+          <input v-if="!image.url && !url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
           <div v-if="url">
             <img :src="url" width="320px" height="300px">
             <button type="submit" @click="deleteImage">削除</button>
@@ -100,7 +100,7 @@ export default {
       title: '',
       text: '',
       errors: '',
-      image: '',
+      image: null,
       url: ''
     }
   },
