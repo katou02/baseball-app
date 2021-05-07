@@ -54,7 +54,7 @@ class Api::V1::AnalysesController < ApiController
   end
 
   def destroy
-    if @analysis.user_id == current_user.id
+    if @analysis.user_id == current_user.id || current_user.admin
       if @analysis.destroy
         head :no_content
       else
