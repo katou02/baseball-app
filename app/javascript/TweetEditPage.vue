@@ -11,9 +11,6 @@
               <div class="select-school w-25 mx-auto mt-3">
                 <!-- <ul> -->
                   <label>高校A</label><br>
-                  <!-- <select @change="findGrandChildren" v-model="school_a">
-                    <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
-                  </select> -->
                   <v-select
                     v-model="school_a"
                     item-text="name"
@@ -27,9 +24,6 @@
               <div class="select-school w-25 mx-auto mt-3">
                 <!-- <ul> -->
                   <label>高校B</label><br>
-                  <!-- <select @change="findGrandChildren" v-model="school_b">
-                    <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
-                  </select> -->
                   <v-select
                     v-model="school_b"
                     item-text="name"
@@ -89,7 +83,6 @@ export default {
     return {
       tournament: '',
       children: [],
-      grandChildren: [],
       data: '',
       child_id: '',
       school_a_score: '',
@@ -101,7 +94,8 @@ export default {
       text: '',
       errors: '',
       image: null,
-      url: ''
+      url: '',
+      n: ''
     }
   },
   mounted() {
@@ -136,7 +130,7 @@ export default {
       const config = {
         headers: {"content-type": "multipart/form-data",}
       };
-      if (this.image !== null) {
+      if (this.image !== null && this.n==1) {
         formData.append("image", this.image);
       }
       axios
@@ -149,10 +143,10 @@ export default {
           if (error.response.data && error.response.data.errors) {
             this.errors = error.response.data.errors;
           }
-          console.log(this.errors)
         });
     },
     setImage(e){
+      this.n = 1
       e.preventDefault();
       this.image = e.target.files[0];
       const file = this.$refs.preview.files[0];
@@ -165,6 +159,7 @@ export default {
       this.image = ''
     },
     deleteTweetImage(){
+      this.n = 1
       this.image = ''
     }
   }
