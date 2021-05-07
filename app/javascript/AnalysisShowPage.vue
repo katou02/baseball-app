@@ -32,7 +32,7 @@
           <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
         </div>
       </div>
-
+      <p class="text-right">{{analysis.time}}</p>
       <div class="content-fcs_show">
         <div class="game_result mt-5">
           {{analysis.tournament}}
