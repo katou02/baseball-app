@@ -32,6 +32,7 @@
       <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
       </div>
     </div>
+    <p class="text-right">{{tweet.time}}</p>
     <div class="game_result">
       {{tweet.tournament}}<br><br>
       {{tweet.school_a}}
