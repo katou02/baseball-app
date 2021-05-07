@@ -46,7 +46,7 @@ class Api::V1::MapsController < ApiController
   end
 
   def destroy
-    if @map.user_id == current_user.id
+    if @map.user_id == current_user.id || current_user.admin
       if @map.destroy
         head :no_content
       else

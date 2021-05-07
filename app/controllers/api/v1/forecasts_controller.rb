@@ -50,7 +50,7 @@ class Api::V1::ForecastsController < ApiController
   end
 
   def destroy
-    if @forecast.user_id == current_user.id
+    if @forecast.user_id == current_user.id || current_user.admin
       if @forecast.destroy
         head :no_content
       else
