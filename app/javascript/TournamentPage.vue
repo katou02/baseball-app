@@ -66,6 +66,9 @@
                 </router-link>
               </div>
             </v-col>
+          <div v-if="!tweets.length" class="text-center mt-5">
+            <p>投稿された試合記事がありません</p>
+          </div>
           </v-row>
         </div>
         <div class="text-center">
@@ -84,9 +87,6 @@
             :container-class="'pagination'"
             :page-link-class="'page-link'">
           </paginate>
-        </div>
-        <div v-if="!tweets.length" class="text-center mt-5">
-          <p>投稿された試合記事がありません</p>
         </div>
       </div>
     </div>

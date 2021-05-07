@@ -77,6 +77,9 @@
               </router-link>
             </div>
           </v-col>
+        <div v-if="!forecasts.length" class="text-center mt-5">
+          <p>投稿された予想はありません</p>
+        </div>
         </v-row>
       </div>
       <div class="text-center">
@@ -95,9 +98,6 @@
           :container-class="'pagination'"
           :page-link-class="'page-link'">
         </paginate>
-      </div>
-      <div v-if="!forecasts.length" class="text-center mt-5">
-        <p>投稿された予想はありません</p>
       </div>
     </div>
   </div>
