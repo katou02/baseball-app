@@ -43,6 +43,7 @@
     <div class="reader">
       <div style="width:75%; height:75%;" ><canvas id="myBarChart"></canvas></div>
     </div>
+    <p>カーソルをグラフに合わせると票数を確認できます</p>
   </div>
 </template>
 <script>
@@ -52,7 +53,7 @@ export default {
     return {
       schools: [],
       my_champion: [],
-      vote: [],
+      votes: [],
       categories: [],
       num: 1
     }
@@ -68,7 +69,7 @@ export default {
         .then(response =>{
           this.my_champion = response.data.my_champion
           this.schools = response.data.school
-          this.vote = response.data.vote
+          this.votes = response.data.vote
           this.num = this.$route.params.id
           this.chart()
         })
@@ -94,7 +95,7 @@ export default {
           labels: this.schools,
           datasets: [
             {
-              data: this.vote,
+              data: this.votes,
               backgroundColor: ["red", "yellow", "lime", "aqua", "orange"]
             }
           ]
@@ -121,18 +122,12 @@ export default {
               ticks: {
                 suggestedMax: 100,
                 suggestedMin: 0,
-                stepSize: 10,
+                stepSize: 5,
               }
             }],
           },
         }
       });
-    }
-  },
-  computed: {
-    manko() {
-      a = this.num + 1
-      return a
     }
   }
 }
