@@ -4,7 +4,9 @@
     <h3>{{name}}</h3>
     <form @submit.prevent="editMap">
       <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
+      <p v-if="!!errors['address']" style="color: red;">{{ errors['address'][0]}}</p>
       <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
+      <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
       <input v-if="!url && !image.url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
       <div v-if="url">
         <img :src="url" width="320px" height="300px">
@@ -30,7 +32,8 @@ export default {
       url: '',
       tournament: '',
       name: '',
-      selected: ''
+      selected: '',
+      errors: ''
     }
   },
   mounted() {
