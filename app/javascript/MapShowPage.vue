@@ -19,9 +19,19 @@
           </v-card>
         </v-dialog>
         <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit-article text-white p-2">編集する</router-link>
-        <router-link :to="{name: 'map',query: {tournament_id: map.tournament}}" class="return-top mx-auto text-white p-2">戻る</router-link>
+      </div>
+      <router-link :to="{name: 'map',query: {tournament_id: map.tournament}}" class="return-btn text-white">戻る</router-link>
+    </div>
+    <div class="user_name">
+      <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{map.nickname}}</router-link></h5>
+      <div v-if="user_image"> 
+        <img :src= user_image class="user-icon mt-1 mb-5">
+      </div>
+      <div v-else>
+        <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
       </div>
     </div>
+    <p class="text-right">{{map.time}}</p>
     <div class="map-info">
       <div class="map-school">
         {{map.school}}のふるさと
@@ -70,6 +80,8 @@ export default {
       map: [],
       markers: [],
       image: [],
+      user: '',
+      user_image: '',
       dialog: false
     }
   },
@@ -81,8 +93,10 @@ export default {
       axios
         .get(`/api/v1/maps/${this.$route.params.id}.json`)
         .then(response =>{
-          this.map = response.data;
-          this.image = response.data.image.url;
+          this.map = response.data
+          this.image = response.data.image.url
+          this.user = response.data.user_id
+          this.user_image = response.data.user_image.url
           this.markers.push({position: { lat:this.map.latitude, lng:this.map.longitude } })
         })
     },
