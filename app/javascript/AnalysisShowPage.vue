@@ -2,7 +2,7 @@
   <div class="analysis-show_content">
     <div class="data-info pb-5">
       <div class="d-flex">
-        <div v-if="analysis.user_id==analysis.current_user">
+        <div v-if="analysis.user_id==analysis.current_user || analysis.admin==true">
           <!-- <button class="delete-btn" @click="onAlert()">記事を削除する</button> -->
           <v-dialog v-model="dialog" persistent max-width="290">
             <template v-slot:activator="{ on, attrs }">

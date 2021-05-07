@@ -1,8 +1,7 @@
 <template>
   <div class="map">
     <div class="d-flex mt-1">
-      <div v-if="map.user_id==map.current_user">
-        <!-- <button class="delete-btn p-0" @click="onAlert()">記事を削除する</button> -->
+      <div v-if="map.user_id==map.current_user || map.admin==true">
         <v-dialog v-model="dialog" persistent max-width="290">
           <template v-slot:activator="{ on, attrs }">
             <button class="delete-btn text-white" v-bind="attrs" v-on="on">
