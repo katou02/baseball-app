@@ -107,7 +107,8 @@ export default {
       image: '',
       text: '',
       score: score,
-      errors: ''
+      errors: '',
+      n: ''
     }
   },
   mounted() {
@@ -145,7 +146,7 @@ export default {
       const config = {
         headers: {"content-type": "multipart/form-data",}
       };
-      if (this.image !== null) {
+      if (this.image !== null && this.n==1) {
         formData.append("image", this.image);
       }
       axios
@@ -161,6 +162,7 @@ export default {
         });
     },
     setImage(e){
+      this.n = 1
       e.preventDefault();
       this.image = e.target.files[0];
       const file = this.$refs.preview.files[0];
@@ -173,6 +175,7 @@ export default {
       this.image = ''
     },
     deleteForecastImage(){
+      this.n = 1
       this.image = ''
     }
   }
