@@ -49,7 +49,7 @@
         </div>
       </div>
       <v-textarea v-model="text" type="text" rows="2" cols="30" label="本文" outlined></v-textarea>
-      <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
+      <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
       <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
     </form>
     </v-container>
