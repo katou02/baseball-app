@@ -28,7 +28,6 @@ class Api::V1::MapsController < ApiController
   end
 
   def show
-    @current_user = current_user.id
     render 'show',formats: 'json', handlers: 'jbuilder'
   end
 

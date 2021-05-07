@@ -2,7 +2,7 @@
   <div class="game-article">
     <div class="data-info">
       <div class="d-flex">
-        <div v-if="forecast.user_id==forecast.current_user">
+        <div v-if="forecast.user_id==forecast.current_user || forecast.admin==true">
           <!-- <button class="delete-btn" @click="onAlert">記事を削除する</button> -->
           <v-dialog v-model="dialog" persistent max-width="290">
             <template v-slot:activator="{ on, attrs }">
