@@ -57,7 +57,7 @@ class Api::V1::TweetsController < ApiController
   end
   
   def destroy
-    if @tweet.user_id == current_user.id
+    if @tweet.user_id == current_user.id || current_user.admin
       if @tweet.destroy
         head :no_content
       else
