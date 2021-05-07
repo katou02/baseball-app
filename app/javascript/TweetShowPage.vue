@@ -193,7 +193,6 @@ export default {
     //   }
     // },
     onAlertComment(id){
-      this.$dialog
       var rt =confirm(
       '削除してもよろしいですか？'
       )
