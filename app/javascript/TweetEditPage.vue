@@ -9,7 +9,7 @@
           <div class="containe_r p-4">
             <div class="d-flex">
               <div class="select-school w-25 mx-auto mt-3">
-                <ul>
+                <!-- <ul> -->
                   <label>高校A</label><br>
                   <!-- <select @change="findGrandChildren" v-model="school_a">
                     <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
@@ -22,10 +22,10 @@
                     label="高校を選択"
                     outlined>
                   </v-select>
-                </ul>
+                <!-- </ul> -->
               </div>
               <div class="select-school w-25 mx-auto mt-3">
-                <ul>
+                <!-- <ul> -->
                   <label>高校B</label><br>
                   <!-- <select @change="findGrandChildren" v-model="school_b">
                     <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
@@ -38,7 +38,7 @@
                     label="高校を選択"
                     outlined>
                   </v-select>
-                </ul>
+                <!-- </ul> -->
               </div>
             </div>
             <div class="d-flex">
@@ -62,9 +62,9 @@
             </div>
           </div>
           <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
-          <p v-if="!!errors['title_info']" class="error" style="color: red;">{{ errors['title_info'][0]}}</p>
+          <p v-if="!!errors['title_info']" style="color: red;">{{ errors['title_info'][0]}}</p>
           <v-textarea v-model="text" type="text" label="本文" outlined></v-textarea>
-          <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
+          <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
           <input v-if="!image.url && !url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
           <div v-if="url">
             <img :src="url" width="320px" height="300px">
@@ -90,7 +90,7 @@ export default {
       tournament: '',
       children: [],
       grandChildren: [],
-      // root_id: '',
+      data: '',
       child_id: '',
       school_a_score: '',
       school_b_score: '',
@@ -113,6 +113,7 @@ export default {
     axios
       .get(`/api/v1/tweets/${this.$route.params.id}.json`)
       .then(response =>{
+        this.data = response.data
         this.school_a = response.data.school_a_id;
         this.school_b = response.data.school_b_id;
         this.school_a_score = response.data.school_a_score
