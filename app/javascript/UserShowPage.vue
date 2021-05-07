@@ -1,5 +1,5 @@
 <template>
-  <div class="mypage-content pt-3">
+  <div class="mypage-content pt-2">
     <a :href= "'/'" class="return-top-mypage text-white">トップページへ戻る</a>
     <router-link :to="{name: 'user'}" class="users-btn text-white">ユーザー一覧</router-link>
     <router-link :to="{name: 'room'}" class="dm-btn text-white">DM</router-link>
