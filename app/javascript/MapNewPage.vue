@@ -7,17 +7,20 @@
         item-text="name"
         item-value="id"
         :items="schools"
-        label="学校を選択"
+        label="高校を選択"
         outlined>
       </v-select>
+      <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
       <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
+      <p v-if="!!errors['address']" style="color: red;">{{ errors['address'][0]}}</p>
       <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
+      <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
       <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
       <div v-if="url">
         <img :src="url" width="320px" height="300px">
         <button type="submit" @click="deleteImage">削除</button>
       </div>
-      <v-btn type="submit" color="info">投稿</v-btn>
+      <v-btn type="submit" color="info">投稿する</v-btn>
     </form>
   </div>
 </template>
@@ -32,6 +35,7 @@ export default {
       school: '',
       image: '',
       url: '',
+      errors: '',
       selected: ''
     }
   },
@@ -75,6 +79,11 @@ export default {
         .then(response =>{
           this.$router.push({ name: 'map',query: {tournament_id: this.$route.query.tournament_id}});
         })
+        .catch(error => {
+          if (error.response.data && error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
+        });
     }
   }
 }
