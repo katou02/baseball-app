@@ -2,8 +2,23 @@
   <div class="analysis-show_content">
     <div class="data-info pb-5">
       <div class="d-flex">
-        <div v-if="analysis.user_id==analysis.current_user">
-          <button class="delete-btn" @click="deleteAnalysis(analysis.id)">記事を削除する</button>
+        <div v-if="analysis.user_id==analysis.current_user || analysis.admin==true">
+          <!-- <button class="delete-btn" @click="onAlert()">記事を削除する</button> -->
+          <v-dialog v-model="dialog" persistent max-width="290">
+            <template v-slot:activator="{ on, attrs }">
+              <button class="delete-btn text-white" v-bind="attrs" v-on="on">
+                記事を削除する
+              </button>
+            </template>
+            <v-card>
+              <v-card-title class="headline">本当に削除しますか?</v-card-title>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="green darken-1" text @click="deleteAnalysis($route.params.id)">はい</v-btn>
+                <v-btn color="green darken-1" text @click="dialog = false">キャンセル</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
           <router-link :to="{name: 'analysis-edit',params: {id: analysis.id}}" class="edit-article text-white p-2">記事を編集する</router-link>
         </div>
         <router-link :to="{name: 'analysis'}" class="return-btn text-white">記事一覧へ戻る</router-link>
@@ -17,7 +32,7 @@
           <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
         </div>
       </div>
-
+      <p class="text-right">{{analysis.time}}</p>
       <div class="content-fcs_show">
         <div class="game_result mt-5">
           {{analysis.tournament}}
@@ -64,7 +79,7 @@
         <div class="comment-user text-center">
           <em class="pr-4">{{e.comment_nickname}}</em>
           {{e.time}}
-          <button class="comment-delete_button" @click="deleteComment(e.id)">削除</button><br>
+          <button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button><br>
         </div>
         <div class="mt-4 mb-4 text-center" style="white-space:pre-wrap;">{{e.comment}}</div>
       </div>
@@ -97,7 +112,8 @@ export default {
       text: "",
       errors: '',
       chart_data: [],
-      user_image: ''
+      user_image: '',
+      dialog: false,
     }
   },
   mounted() {
@@ -189,6 +205,24 @@ export default {
           }
         }
       })
+    },
+    // onAlert:function(){
+    //   this.$dialog
+    //   var rt =confirm(
+    //   '削除してもよろしいですか？'
+    //   )
+    //   if(rt==true) {
+    //     this.deleteAnalysis(this.$route.params.id)
+    //   }
+    // },
+    onAlertComment(id){
+      this.$dialog
+      var rt =confirm(
+      '削除してもよろしいですか？'
+      )
+      if(rt==true) {
+        this.deleteComment(id)
+      }
     }
   }
 }

@@ -14,7 +14,7 @@ class Api::V1::UsersController < ApiController
   
   def update
     @user = User.find(params[:id])
-    if (@user.id == current_user.id || current_user.admin) && current_user.nickname!="ゲスト"
+    if (@user.id == current_user.id || current_user.admin) && current_user.nickname!="ゲスト" || current_user.admin
       @user.update(user_params)
       head :no_content
     else
@@ -27,7 +27,6 @@ class Api::V1::UsersController < ApiController
     @follow = Relationship.where(follower_id: params[:id])
     @user = User.find(params[:id])
     @check = current_user.following?(@user)
-    @current = User.find_by(id: current_user.id)
     @likes = Like.where(user_id: @user.id)
     @myEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)

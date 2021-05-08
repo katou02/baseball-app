@@ -34,6 +34,20 @@
   display: flex;
 }
 
+.pair-messages img {
+  display: inline-block;
+  vertical-align: middle;
+  *zoom: 1; /* for IE6-7 */
+  *display: inline; /* for IE6-7 */
+}
+
+.pair-messages .message {
+  display: inline-block;
+  vertical-align: middle;
+  *zoom: 1; /* for IE6-7 */
+  *display: inline;
+}
+
 .my-messages {
   margin-left: 70%;
 }
@@ -41,10 +55,10 @@
 .message {
   position: relative;
   // display: inline-block;
-  margin: 1.4em 0 1.4em 15px;
-  padding-top: 1%;
-  min-width: 8%;
-  max-width: 100%;
+  margin: 10px 0 4px 15px;
+  padding: 1% 0% 1% 0%;
+  min-width: 7%;
+  max-width: 30%;
   font-size: 16px;
   background: rgb(192, 189, 189);
   // box-sizing: border-box;
@@ -62,6 +76,14 @@
   &-detail {
     height: 30px;
   }
+  &-time {
+    margin-left: 72%;
+    font-size: 10px;
+    &-pair {
+      margin-left: 10%;
+      font-size: 10px;
+    }
+  }
 }
 
 .message:before {
@@ -77,8 +99,8 @@
 
 .my-message {
   position: relative;
-  // display: inline-block;
-  margin: 1.4em 0 1.4em 15px;
+  // display: flex;
+  margin: 10px 0 4px 15px;
   padding: 3% 0% 3% 0%;
   min-width: 30%;
   max-width: 100%;

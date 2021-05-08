@@ -7,6 +7,7 @@ json.title @analysis.title
 json.id @analysis.id
 json.user_id @analysis.user.id
 json.user_image @analysis.user.image
+json.admin current_user.admin
 json.fcs_image @analysis.image
 json.time @analysis.created_at.strftime("%Y年%m月%d日 %H時%M分")
 json.current_user @current_user.id

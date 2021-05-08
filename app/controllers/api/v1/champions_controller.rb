@@ -17,7 +17,6 @@ class Api::V1::ChampionsController < ApiController
       @schools<<date[0][n].champion_school.name
       @vote<<@num[0][n][1]
     end
-# binding.pry
     render 'show', formats: 'json', handlers: 'jbuilder'
   end
 

@@ -7,17 +7,15 @@
         {{tournament}}
         <div class="select-from">
           <div class="select-school w-25 mx-auto mt-3">
-            <ul>
-              <label>学校</label><br>
-              <v-select
-                v-model="school"
-                @change="findGrandChildren" 
-                item-text="name"
-                item-value="id"
-                :items="children"
-                outlined>
-              </v-select>
-            </ul>
+            <label>学校</label><br>
+            <v-select
+              v-model="school"
+              @change="findGrandChildren" 
+              item-text="name"
+              item-value="id"
+              :items="children"
+              outlined>
+            </v-select>
             <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
           </div>
           <br><p>5段階評価</p>
@@ -64,17 +62,19 @@
             </div>
           </div>
           <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
+          <p v-if="!!errors['title']" style="color: red;">{{ errors['title'][0]}}</p>
           <v-textarea v-model="text" type="text" label="本文"></v-textarea>
-          <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+          <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
+          <input v-if="!url && !image.url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
           <div v-if="url">
             <img :src="url" width="320px" height="300px">
-            <button type="submit" @click="deleteImage">削除</button>
+            <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
           </div>
           <div v-if="image.url">
             <img :src="image.url" width="320px" height="300px">
-            <button type="submit" @click="deleteForecastImage">削除</button>
+            <v-btn color="error" type="submit" @click="deleteForecastImage" small>削除</v-btn>
           </div>
-          <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
+          <v-btn type="submit" color="info" class="text-white mt-5">編集する</v-btn>
         </div>
       </form>
     </v-container>
@@ -105,7 +105,8 @@ export default {
       image: '',
       text: '',
       score: score,
-      errors: ''
+      errors: '',
+      n: ''
     }
   },
   mounted() {
@@ -143,7 +144,7 @@ export default {
       const config = {
         headers: {"content-type": "multipart/form-data",}
       };
-      if (this.image !== null) {
+      if (this.image !== null && this.n==1) {
         formData.append("image", this.image);
       }
       axios
@@ -159,6 +160,7 @@ export default {
         });
     },
     setImage(e){
+      this.n = 1
       e.preventDefault();
       this.image = e.target.files[0];
       const file = this.$refs.preview.files[0];
@@ -171,6 +173,7 @@ export default {
       this.image = ''
     },
     deleteForecastImage(){
+      this.n = 1
       this.image = ''
     }
   }

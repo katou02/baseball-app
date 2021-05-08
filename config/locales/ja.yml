@@ -31,6 +31,10 @@ ja:
       champion:
         champion_school: "高校" 
         tournament: "大会"
+      map:
+        text: "本文"
+        address: "市町村、住所"
+        school: "高校"
     activerecord:
       attributes:
         user:

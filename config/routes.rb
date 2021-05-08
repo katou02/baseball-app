@@ -33,11 +33,12 @@ Rails.application.routes.draw do
         resources :comment_forecasts,only: [:index,:create,:destroy]
       end
       resources :relationships, only: [:create,:destroy]
-      resources :maps,only:[:index,:show,:new,:create]
+      resources :maps
       resources :messages,only: :create
       resources :champions,only:[:show,:create,:destroy]
       resources :notifications, only: :index
       resources :rooms,only:[:index,:show,:create]
+      resources :tops,only:[:index]
       resources :tournaments,only:[:show] do
         member do
           get :watch_ays

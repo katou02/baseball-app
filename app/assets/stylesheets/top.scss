@@ -32,6 +32,10 @@
   font-size: 30px;
 }
 
+.menu-child {
+  font-size: 17px;
+}
+
 .top-main {
   background-size: cover;
   background-position: center center;
@@ -167,6 +171,15 @@
       height: auto;
     }
   }
+}
+
+.v-toolbar__content {
+  justify-content: space-between;
+  background-color: #003366;
+}
+
+.menu-child {
+  color: #1da1f2;
 }
 
 

@@ -1,9 +1,9 @@
 <template>
-  <div class="mypage-content pt-3">
+  <div class="mypage-content pt-2">
     <a :href= "'/'" class="return-top-mypage text-white">トップページへ戻る</a>
     <router-link :to="{name: 'user'}" class="users-btn text-white">ユーザー一覧</router-link>
     <router-link :to="{name: 'room'}" class="dm-btn text-white">DM</router-link>
-    <span v-if="user_id==current_id">
+    <span v-if="user_id==current_id || user.current_user.admin==true">
       <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit-article text-white">編集する</router-link>
     </span>
     <p class="text-center">ID:{{user.id}}</p>
@@ -46,8 +46,8 @@
         </button>
       </div>
       <div v-if="user.check && user.room == null">
-        <form @submit.prevent="createRoom">
-          <button type="submit" class="text-white bg-primary" >DMをはじめる</button>
+        <form @submit.prevent="createRoom" class="text-center mt-3">
+          <v-btn type="submit" class="text-white primary" small>DMをはじめる</v-btn>
         </form>
       </div>
     </div>
