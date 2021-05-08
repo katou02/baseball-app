@@ -8,11 +8,8 @@
       <router-link :to="{name: 'notification'}">
         <v-icon color="blue lighten-1">mdi-bell</v-icon>
         通知
-        <span v-if="notifications.length>0">
+        <span class="fa fa-circle fa-xs" style="color: gold;" v-if="notifications.length>0">
           新着あり
-        </span>
-        <span v-else>
-          ない
         </span>
       </router-link>
       <router-link :to="{name: 'user-show',params: {id: current_user}}">
