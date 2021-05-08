@@ -25,7 +25,7 @@
         </div>
       </div>
     </div> -->
-    <div class="text-format mt-5 text-primary">
+    <div class="text-format mt-5 text-success">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id==e.id">
           {{e.category}}
