@@ -1,7 +1,7 @@
 <template>
   <div class="map">
     <div class="d-flex mt-1">
-      <div v-if="map.user_id==map.current_user || map.admin==true">
+      <div v-if="map.user_id==current_user || map.admin==true">
         <v-dialog v-model="dialog" persistent max-width="290">
           <template v-slot:activator="{ on, attrs }">
             <button class="delete-btn text-white" v-bind="attrs" v-on="on">
@@ -80,6 +80,7 @@ export default {
       markers: [],
       image: [],
       user: '',
+      current_user: '',
       user_image: '',
       dialog: false
     }
@@ -95,6 +96,7 @@ export default {
           this.map = response.data
           this.image = response.data.image.url
           this.user = response.data.user_id
+          this.current_user = response.data.current_user.id
           this.user_image = response.data.user_image.url
           this.markers.push({position: { lat:this.map.latitude, lng:this.map.longitude } })
         })
