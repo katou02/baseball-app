@@ -3,6 +3,7 @@
     <v-container>
     <h2 class="text-primary font-weight-bold">試合予想の編集</h2>
     <v-divider></v-divider>
+    {{tournament}}
     <form @submit.prevent="editForecast">
       <div class="form p-4">
         <div class="d-flex">
@@ -49,8 +50,8 @@
         </div>
       </div>
       <v-textarea v-model="text" type="text" rows="2" cols="30" label="本文" outlined></v-textarea>
-      <p v-if="!!errors['text']" class="error" style="color: red;">{{ errors['text'][0]}}</p>
-      <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
+      <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
+      <v-btn type="submit" color="info" class="text-white mt-5">編集する</v-btn>
     </form>
     </v-container>
   </div>

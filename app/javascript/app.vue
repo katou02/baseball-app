@@ -23,6 +23,7 @@ import UserPage from './UserPage.vue'
 import MapPage from './MapPage.vue'
 import MapShowPage from './MapShowPage'
 import MapNewPage from './MapNewPage'
+import MapEditPage from './MapEditPage'
 import ChampionPage from './ChampionPage'
 import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
@@ -42,8 +43,10 @@ import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
 import "vuetify/dist/vuetify.min.css"
 import '@mdi/font/css/materialdesignicons.css'
+import VuejsDialog from 'vuejs-dialog';
 
 Vue.use(VueRouter)
+Vue.use(VuejsDialog);
 
 const router = new VueRouter({
   mode: 'history',
@@ -161,12 +164,17 @@ const router = new VueRouter({
     {
       path: '/maps/:id(\\d+)',
       component: MapShowPage,
-      name: 'mapshow'
+      name: 'map-show'
     },
     {
       path: '/maps/new',
       component: MapNewPage,
       name: 'map-new'
+    },
+    {
+      path: '/maps/:id(\\d+)/edit',
+      component: MapEditPage,
+      name: 'map-edit'
     },
     {
       path: '/champions/:id(\\d+)',

@@ -1,24 +1,31 @@
 <template>
   <div class="contents row mx-auto mt-5">
-    <h3>ふるさとを紹介</h3>
-    <form @submit.prevent="createMap">
-      <v-select
-        v-model="school"
-        item-text="name"
-        item-value="id"
-        :items="schools"
-        label="学校を選択"
-        outlined>
-      </v-select>
-      <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
-      <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
-      <input type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
-      <div v-if="url">
-        <img :src="url" width="320px" height="300px">
-        <button type="submit" @click="deleteImage">削除</button>
-      </div>
-      <v-btn type="submit" color="info">投稿</v-btn>
-    </form>
+    <v-container>
+      <h2 class="text-primary font-weight-bold">ふるさとを紹介</h2>
+      <v-divider></v-divider><br>
+      <h4>{{tournament}}</h4>
+      <form @submit.prevent="createMap">
+        <v-select
+          v-model="school"
+          item-text="name"
+          item-value="id"
+          :items="schools"
+          label="高校を選択"
+          outlined>
+        </v-select>
+        <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
+        <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
+        <p v-if="!!errors['address']" style="color: red;">{{ errors['address'][0]}}</p>
+        <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
+        <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
+        <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+        <div v-if="url">
+          <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
+          <img :src="url" width="320px" height="300px">
+        </div>
+        <v-btn type="submit" color="info" class="mt-5">投稿する</v-btn>
+      </form>
+    </v-container>
   </div>
 </template>
 <script>
@@ -31,7 +38,9 @@ export default {
       schools: [],
       school: '',
       image: '',
+      tournament: '',
       url: '',
+      errors: '',
       selected: ''
     }
   },
@@ -44,6 +53,7 @@ export default {
       .get(`/api/v1/maps/new?tournament_id=${this.$route.query.tournament_id}`)
       .then(response => {
         this.schools = response.data.school
+        this.tournament = response.data.tournament
       })
     },
     setImage(e){
@@ -75,6 +85,11 @@ export default {
         .then(response =>{
           this.$router.push({ name: 'map',query: {tournament_id: this.$route.query.tournament_id}});
         })
+        .catch(error => {
+          if (error.response.data && error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
+        });
     }
   }
 }

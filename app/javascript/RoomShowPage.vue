@@ -17,17 +17,19 @@
           <div class="my-messages">
             <div class="my-message mt-5 ml-5">{{e.body}}</div>
           </div>
+          <div class="message-time">{{e.time}}</div>
         </div>
         <div v-else>
-          <div class="messages">
-            <div v-if="image">
+          <div class="pair-messages">
+            <span v-if="image">
               <img :src= image class="room-user-icon">
-            </div>
-            <div v-else>
+            </span>
+            <span v-else>
               <img src="../assets/images/no-image.png" class="room-user-icon">
-            </div>
-            <div class="message ml-5">{{e.body}}</div>
+            </span>
+            <div class="message mt-5 ml-5">{{e.body}}</div>
           </div>
+          <div class="message-time-pair">{{e.time}}</div>
         </div>
       </div>
     </div>
