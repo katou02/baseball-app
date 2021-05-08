@@ -8,6 +8,12 @@
       <router-link :to="{name: 'notification'}">
         <v-icon color="blue lighten-1">mdi-bell</v-icon>
         通知
+        <span v-if="notifications.length>0">
+          新着あり
+        </span>
+        <span v-else>
+          ない
+        </span>
       </router-link>
       <router-link :to="{name: 'user-show',params: {id: current_user}}">
         <v-icon color="blue lighten-1">mdi-account</v-icon>
@@ -25,18 +31,27 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      current_user: ''
+      current_user: '',
+      notifications: []
     }
   },
   mounted() {
     this.fetchUser()
+    this.fetchNotification()
   },
   methods: {
     fetchUser() {
       axios
-        .get(`/api/v1/users.json`)
+        .get('/api/v1/users.json')
         .then(response =>{
           this.current_user = response.data[0].current_user
+        })
+    },
+    fetchNotification() {
+      axios
+        .get('/api/v1/tops')
+        .then(response =>{
+          this.notifications = response.data.unchecked
         })
     }
   }
