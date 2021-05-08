@@ -3,6 +3,7 @@
     <v-container>
     <h2 class="text-primary font-weight-bold">試合予想の編集</h2>
     <v-divider></v-divider>
+    {{tournament}}
     <form @submit.prevent="editForecast">
       <div class="form p-4">
         <div class="d-flex">
