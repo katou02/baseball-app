@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       resources :champions,only:[:show,:create,:destroy]
       resources :notifications, only: :index
       resources :rooms,only:[:index,:show,:create]
+      resources :tops,only:[:index]
       resources :tournaments,only:[:show] do
         member do
           get :watch_ays
