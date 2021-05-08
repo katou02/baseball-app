@@ -7,6 +7,7 @@ class Api::V1::MapsController < ApiController
 
   def new
     @school = Category.where(ancestry: params[:tournament_id])
+    @tournament = Category.find_by(id: params[:tournament_id])
     render 'new', formats: 'json', handlers: 'jbuilder'
   end
 

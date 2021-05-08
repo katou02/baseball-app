@@ -106,9 +106,9 @@
           <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
           <div v-if="url">
             <img :src="url" width="320px" height="300px">
-            <button type="submit" @click="deleteImage">削除</button>
+            <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
           </div>
-          <v-btn type="submit" color="primary" class="text-white mt-5">投稿する</v-btn>
+          <v-btn type="submit" color="info" class="text-white mt-5">投稿する</v-btn>
         </div>
       </form>
     </v-container>
