@@ -10,13 +10,13 @@
       <input v-if="!url && !image.url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
       <div v-if="url">
         <img :src="url" width="320px" height="300px">
-        <button type="submit" @click="deleteImage">削除</button>
+        <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
       </div>
       <div v-if="image.url">
         <img :src="image.url" width="320px" height="300px">
-        <button type="submit" @click="deleteMapImage">削除</button>
+        <v-btn color="error" type="submit" @click="deleteMapImage" small>削除</v-btn>
       </div>
-      <v-btn type="submit" color="info">投稿</v-btn>
+      <v-btn type="submit" color="info" class="mt-5">投稿</v-btn>
     </form>
   </div>
 </template>

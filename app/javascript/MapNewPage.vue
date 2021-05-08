@@ -1,6 +1,7 @@
 <template>
   <div class="contents row mx-auto mt-5">
     <h3>ふるさとを紹介</h3>
+    <h4>{{tournament}}</h4>
     <form @submit.prevent="createMap">
       <v-select
         v-model="school"
@@ -17,10 +18,10 @@
       <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
       <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
       <div v-if="url">
+        <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
         <img :src="url" width="320px" height="300px">
-        <button type="submit" @click="deleteImage">削除</button>
       </div>
-      <v-btn type="submit" color="info">投稿する</v-btn>
+      <v-btn type="submit" color="info" class="mt-5">投稿する</v-btn>
     </form>
   </div>
 </template>
@@ -34,6 +35,7 @@ export default {
       schools: [],
       school: '',
       image: '',
+      tournament: '',
       url: '',
       errors: '',
       selected: ''
@@ -48,6 +50,7 @@ export default {
       .get(`/api/v1/maps/new?tournament_id=${this.$route.query.tournament_id}`)
       .then(response => {
         this.schools = response.data.school
+        this.tournament = response.data.tournament
       })
     },
     setImage(e){

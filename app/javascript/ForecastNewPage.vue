@@ -74,7 +74,7 @@
         </div>
         <v-textarea v-model="text" type="text" label="本文" outlined></v-textarea>
         <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
-        <v-btn type="submit" color="primary" class="text-white mt-5">投稿する</v-btn>
+        <v-btn type="submit" color="info" class="text-white mt-5">投稿する</v-btn>
       </form>
     </v-container>
   </div>
