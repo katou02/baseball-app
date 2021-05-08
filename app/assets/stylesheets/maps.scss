@@ -71,7 +71,7 @@
 }
 
 #map {
-  position: relative;
+  // position: relative;
   height: 100%;
   width: 100%;
   margin-left:auto;
@@ -85,13 +85,19 @@
   background-color: #f6f6d1;
 }
 
-.vue-map-container.vue-map {
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+// .vue-map-container.vue-map {
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   bottom: 0;
+// }
+
+.vue-map-container {
+  position: relative;
 }
 
 .vue-map {
   position: absolute;
+  height: 100%;
+  width: 100%;
 }
