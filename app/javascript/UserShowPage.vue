@@ -79,7 +79,7 @@
         <v-tab href="#tab-4">フォロー</v-tab>
         <v-tab href="#tab-5">フォロワー</v-tab>
       </v-tabs>
-      <v-tabs-items v-model="tab" class="d-flex justify-center">
+      <v-tabs-items v-model="tab" :style="{ background: '#EEFFFF' }" class="d-flex justify-center">
         <v-tab-item value="tab-m">
           <div class="residence">
             <p class="text-primary font-weight-bold">住んでる場所</p>
@@ -307,9 +307,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-
-.theme--light.v-tabs-items {
-  background-color: transparent;
-} 
-</style>
