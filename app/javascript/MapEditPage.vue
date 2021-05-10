@@ -18,7 +18,7 @@
           <img :src="image.url" width="320px" height="300px">
           <v-btn color="error" type="submit" @click="deleteMapImage" small>削除</v-btn>
         </div>
-        <v-btn type="submit" color="info" class="mt-5">投稿</v-btn>
+        <v-btn type="submit" color="info" class="mt-5">編集する</v-btn>
       </form>
     </v-container>
   </div>

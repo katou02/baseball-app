@@ -20,8 +20,8 @@
         <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
         <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
         <div v-if="url">
-          <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
           <img :src="url" width="320px" height="300px">
+          <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
         </div>
         <v-btn type="submit" color="info" class="mt-5">投稿する</v-btn>
       </form>
