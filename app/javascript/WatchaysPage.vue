@@ -33,9 +33,9 @@
         </div>
       </div>
     </div>
-    <div class="go-avg text-center mt-4">
+    <div class="go-avg text-center mt-5">
       <div class="avg-ays">
-        みんなの分析を元にした平均評価を見る<br>
+        みんなの分析を元にした平均評価<br>
         <router-link :to="{name: 'average',params: {id: $route.params.id}}" class="ays-avg">平均評価を見る</router-link>
         <!-- <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a> -->
       </div>
@@ -45,7 +45,7 @@
       </div> -->
     </div>
     <!-- 大会 -->
-    <div class="analysis-main">
+    <div class="analysis-main mt-5">
       <div class="text-format pt-5 text-warning">
         みんなの戦力分析
       </div>
