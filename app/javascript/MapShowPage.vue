@@ -17,7 +17,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit-article text-white p-2">編集する</router-link>
+        <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit text-white p-2">編集する</router-link>
       </div>
       <router-link :to="{name: 'map',query: {tournament_id: map.tournament}}" class="return-btn text-white">戻る</router-link>
     </div>
