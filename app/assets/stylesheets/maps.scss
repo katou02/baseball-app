@@ -7,6 +7,7 @@
   &-info {
     width: 55%;
     margin: 0 auto;
+    margin-top: 10px;
   }
   &-deta {
     height: 140px;
@@ -38,14 +39,17 @@
     text-align: center;
   }
   &-adress {
+    background-color: white;
+    border: solid white;
     position: relative;
-    border-width: 0 2px 2px 2px;
+    text-align: center;
+    // border-width: 0 2px 2px 2px;
     font-size: 1.2rem;
     min-height: 100px;
   }
   &-text {
-    margin-top: 10%;
     display: flex;
+    border: solid 0.1px;
   }
   &-school {
     margin-top: 10%;
