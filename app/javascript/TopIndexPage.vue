@@ -1,6 +1,5 @@
 <template>
   <div class="top">
-    <!-- <Header></Header> -->
     <div class="top-title">
       タイトルが入る
     </div>
@@ -39,10 +38,4 @@
   </div>
 </template>
 <script>
-import Header from './components/Header.vue'
-export default {
-  components: {
-    Header
-  }
-}
 </script>
