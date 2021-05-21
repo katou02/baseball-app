@@ -19,7 +19,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <router-link :to="{name: 'tweet-edit',params: {id: tweet.id}}" class="edit-article text-white p-2">記事を編集する</router-link>
+        <router-link :to="{name: 'tweet-edit',params: {id: tweet.id}}" class="edit text-white p-2">記事を編集する</router-link>
       </div>
       <router-link :to="{name: 'tweet'}" class="return-btn text-white">記事一覧へ戻る</router-link>
     </div>

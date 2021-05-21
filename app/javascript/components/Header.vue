@@ -1,6 +1,6 @@
 <template>
   <div id="slide">
-    <div class="header">
+    <div class="header mb-5">
       <transition name="fade">
       <div class="slider-inner" :key="idx" v-for="(slide, idx) in slides" v-if="current_slide == idx">
         <img class="slide-img" v-bind:src="slides[idx].img" :key="slides[idx].img">

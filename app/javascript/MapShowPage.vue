@@ -17,7 +17,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit-article text-white p-2">編集する</router-link>
+        <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit text-white p-2">編集する</router-link>
       </div>
       <router-link :to="{name: 'map',query: {tournament_id: map.tournament}}" class="return-btn text-white">戻る</router-link>
     </div>
@@ -31,12 +31,26 @@
       </div>
     </div>
     <p class="text-right">{{map.time}}</p>
-    <div class="map-info">
       <div class="map-school">
         {{map.school}}のふるさと
+        <p class="text-center pt-1">{{map.address}}</p>
+      </div>
+    <div class="map-info">
+      <div class="map-text">
+        <div class="mt-4 mb-4 w-100" style="white-space:pre-wrap;">
+          {{map.text}}
+        </div>
+        <div class="map-image">
+          <div class="h-100" v-if="image">
+            <img :src= image class="map-image_content">
+          </div>
+          <div class="h-100" v-else>
+            <img src="../assets/images/map-no-image.png" class="map-image_content">
+          </div>
+        </div>
       </div>
       <div class="map-adress">
-        <p class="text-center pt-1">{{map.address}}</p>
+        マップ
         <div id="map">
           <GmapMap
           :center="{lat: map.latitude, lng:map.longitude}"
@@ -53,19 +67,6 @@
           @click="center=m.position"
           />
           </GmapMap>
-        </div>
-      </div>
-      <div class="map-text">
-        <div class="mt-4 mb-4 w-100" style="white-space:pre-wrap;">
-          {{map.text}}
-        </div>
-        <div class="map-image">
-          <div class="h-100" v-if="image">
-            <img :src= image class="map-image_content">
-          </div>
-          <div class="h-100" v-else>
-            <img src="../assets/images/map-no-image.png" class="map-image_content">
-          </div>
         </div>
       </div>
     </div>
