@@ -27,13 +27,13 @@ class Api::V1::UsersController < ApiController
     @follow = Relationship.where(follower_id: params[:id])
     @user = User.find(params[:id])
     @check = current_user.following?(@user)
-    @likes = Like.where(user_id: @user.id)
     @myEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     @my_tweets = @user.tweets.order("created_at DESC")
     @my_analyses = @user.analyses.order("created_at DESC")
     @my_forecasts = @user.forecasts.order("created_at DESC")
-    @likes = @user.likes.page(params[:page]).per(5).order("created_at DESC")
+    @likes = @user.likes.order("created_at DESC")
+    my_likes(@likes)
     if @user.id == current_user.id
     else
       @myEntry.each do |cu|
@@ -63,6 +63,14 @@ class Api::V1::UsersController < ApiController
     @user  = User.find(params[:id])
     @users = @user.followers.order("created_at DESC")
     render 'follower', formats: 'json', handlers: 'jbuilder'
+  end
+
+  def my_likes(likes)
+    my_likes = []
+    likes.each do |like|
+      my_likes << Tweet.find_by(id: like.tweet_id)
+    end
+    @my_likes = my_likes
   end
 
   private
