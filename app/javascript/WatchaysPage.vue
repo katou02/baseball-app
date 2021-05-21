@@ -4,7 +4,7 @@
     <div class="main-content-btn">
       <!-- <a :href= "'/analyses/new'" class="send-btn text-white">投稿する</a> -->
       <router-link :to="{name: 'analysis-new'}" class="send-btn text-white">投稿する</router-link>
-      <a :href= "'/'" class="return-top text-white">トップページへ戻る</a>
+      <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
     <div class="text-format mt-5 text-success">
       戦力分析をみんなで共有してみましょう！
