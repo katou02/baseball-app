@@ -77,8 +77,9 @@
         <v-tab href="#tab-1">投稿した試合記事</v-tab>
         <v-tab href="#tab-2">投稿した戦力分析</v-tab>
         <v-tab href="#tab-3">投稿した試合予想</v-tab>
-        <v-tab href="#tab-4">フォロー</v-tab>
-        <v-tab href="#tab-5">フォロワー</v-tab>
+        <v-tab href="#tab-4">いいねした試合記事</v-tab>
+        <v-tab href="#tab-5">フォロー</v-tab>
+        <v-tab href="#tab-6">フォロワー</v-tab>
       </v-tabs>
       <v-tabs-items v-model="tab" :style="{ background: '#EEFFFF' }" class="d-flex justify-center">
         <v-tab-item value="tab-m">
@@ -198,11 +199,45 @@
               もっと見る
           </button>
         </v-tab-item>
-
         <v-tab-item value="tab-4">
+          <v-row>
+            <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listLikes" :key="e.id" class="mx-auto">
+              <div class="article mt-5">
+                <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
+                  <div class="d-flex h-100">
+                    <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                    <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                    <div class="article-heading mx-auto">
+                      <div class="name">
+                        投稿者 {{e.nickname}}
+                        {{e.time}}
+                      </div>
+                      <div class="article-title mt-3">
+                        {{e.school_a}}vs{{e.school_b}}
+                      </div>
+                      <div class="sub-title mt-3">
+                        {{e.title}}
+                      </div>
+                    </div>
+                  </div>
+                </router-link>
+              </div>
+            </v-col>
+          </v-row>
+          <!-- <button
+              class="list-item-button"
+              v-if="(listTweets.length - count_t) >= 0"
+              type="button"
+              @click="isMore_t"
+          >
+              もっと見る
+          </button> -->
+        </v-tab-item>
+
+        <v-tab-item value="tab-5">
           <Follow></Follow>
         </v-tab-item>
-        <v-tab-item value="tab-5">
+        <v-tab-item value="tab-6">
           <Follower></Follower>
         </v-tab-item>
       </v-tabs-items>
@@ -229,11 +264,13 @@ export default {
       my_tweets: [],
       my_analyses: [],
       my_forecasts: [],
+      my_likes: [],
       follow_count: [],
       follower_count: [],
       count_t: 10,
       count_a: 10,
       count_f: 10,
+      count_l: 10,
       user_image: ''
     }
   },
@@ -252,7 +289,12 @@ export default {
     listForecasts() {
       const list = this.my_forecasts
       return list.slice(0, this.count_f)
-    }
+    },
+    listLikes() {
+      const list = this.my_likes
+      return list.slice(0, this.count_l)
+    },
+    
   },
   methods: {
     fetchUser() {
@@ -262,6 +304,7 @@ export default {
           this.user = response.data
           this.current_id = response.data.current_user.id
           this.user_id = response.data.id
+          this.my_likes = response.data.likes
           this.my_tweets = response.data.tweet
           this.my_analyses = response.data.analysis
           this.my_forecasts = response.data.forecast
