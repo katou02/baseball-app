@@ -61,6 +61,7 @@
           <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
         </div>
       </div>
+      <Header></Header>
       <!--<div class="residence">
         <p class="text-primary font-weight-bold">住んでる場所</p>
         <br>{{user.prefecture}}
@@ -212,8 +213,10 @@
 import axios from 'axios'
 import Follow from './FollowingPage.vue'
 import Follower from './FollowerPage.vue'
+import Header from './components/Header.vue'
 export default {
   components: {
+    Header,
     Follow,
     Follower
   },
