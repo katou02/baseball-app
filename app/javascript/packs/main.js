@@ -47,7 +47,7 @@ const slide = new Vue({
 
     Vue.use(VueGoogleMaps, {
       load: {
-        key: process.env.VUE_APP_GOOGLE_MAP_API_KEY,
+        key: process.env.GOOGLE_MAP_API_KEY,
         libraries: "places",
         region: "JP",
         language: "ja",
