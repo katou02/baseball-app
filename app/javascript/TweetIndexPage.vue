@@ -2,7 +2,9 @@
   <div class="main-content">
     <!-- <Header></Header> -->
     <div class="main-content-btn">
-      <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link>
+      <div v-if="tweets.current_user">
+        <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link>
+      </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
     <div class="text-format mt-5 text-primary">

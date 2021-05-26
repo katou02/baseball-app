@@ -16,8 +16,6 @@ json.time @tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")
 if @current_user.present?
   json.admin current_user.admin
   json.current_user @current_user.id
-else
-#   json.current_user ''
+  json.like @like
 end
-json.like @like
 json.like_count @likes.count
