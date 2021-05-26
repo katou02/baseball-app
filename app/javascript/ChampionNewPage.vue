@@ -30,11 +30,17 @@ export default {
   data() {
     return {
       schools: [],
-      selected: ''
+      selected: '',
+      current_user: ''
     }
   },
   mounted() {
     this.fetchSchools()
+  },
+  beforeUpdate() {
+    if(this.current_user===null) {
+      this.$router.push({ name: 'champion', params: { id: this.$route.query.tournament_id } })
+    }
   },
   methods: {
     fetchSchools() {
@@ -42,6 +48,7 @@ export default {
         .get(`/api/v1/champions/${this.$route.query.tournament_id}.json`)
         .then(response => {
           this.schools = response.data.select_schools
+          this.current_user = response.data.current_user
         })
     },
     createChampion() {
