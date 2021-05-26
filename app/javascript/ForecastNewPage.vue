@@ -92,6 +92,7 @@ export default {
       child_id: '',
       win_school: '',
       lose_school: '',
+      current_user: '',
       text: '',
       title: '',
       errors: '',
@@ -118,7 +119,13 @@ export default {
     axios.get('/api/v1/forecasts/new.json')
     .then(response => (this.roots = response.data.roots,
                        this.children = response.data.children,
-                       this.grandChildren = response.data.grandChildren))
+                       this.grandChildren = response.data.grandChildren,
+                       this.current_user = response.data.current_user))
+  },
+  beforeUpdate() {
+    if(this.current_user===null) {
+      this.$router.push({ name: 'forecast'});
+    }
   },
   methods: {
     findChildren: function(event) {
@@ -126,10 +133,6 @@ export default {
       this.active()
       return this.root_id = rootValue;
     },
-    // findGrandChildren: function(event) {
-    //   let childValue = event.target.value;
-    //   return this.child_id = childValue;
-    // },
     createForecast() {
       axios
         .post('/api/v1/forecasts',{text: this.text,title_info: this.title,win_school_id: this.win_school,lose_school_id: this.lose_school,tournament_id: this.tournament,probability: this.probability,round: this.round})
