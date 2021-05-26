@@ -7,4 +7,7 @@ json.array! @tweets do |tweet|
   json.id tweet.id
   json.image tweet.image
   json.time tweet.created_at.strftime("%Y年%m月%d日")
+  if @current_user.present?
+    json.current_user @current_user.id
+  end
 end
