@@ -56,25 +56,27 @@
     </div>
     <img :src= tweet_image class="image">
     <!-- いいね -->
-    <div v-if="tweet.like">
-      <div class="d-flex align-center ml-2">
-        <button class="good" @click="deleteLike()">
-          <i class="fas fa-heart" style="color:white;"></i>
-          いいね取り消し
-        </button> 
-        <span class="like-count">{{tweet.like_count}}</span>
+    <div v-if="tweet.current_user">
+      <div v-if="tweet.like">
+        <div class="d-flex align-center ml-2">
+          <button class="good" @click="deleteLike()">
+            <i class="fas fa-heart" style="color:white;"></i>
+            いいね取り消し
+          </button> 
+          <span class="like-count">{{tweet.like_count}}</span>
+        </div>
+      </div>
+      <div v-else>
+        <div class="d-flex align-center ml-2">
+          <button class="good" @click="registerLike()">
+            <i class="fas fa-heart" style="color:white;"></i>
+            いいね！
+          </button> 
+          <span class="like-count">{{tweet.like_count}}</span>
+        </div>
       </div>
     </div>
-    <div v-else>
-      <div class="d-flex align-center ml-2">
-        <button class="good" @click="registerLike()">
-          <i class="fas fa-heart" style="color:white;"></i>
-          いいね！
-        </button> 
-        <span class="like-count">{{tweet.like_count}}</span>
-      </div>
-    </div>
-    <!-- コメント -->
+      <!-- コメント -->
     <div class="comment-content_common">
       <div class="text-format mt-0 mb-4 text-warning">
         <i class="fa fa-baseball-ball text-warning"></i>
@@ -84,22 +86,24 @@
         <div class="comment-user text-center">
           <em class="pr-4">{{e.comment_nickname}}</em>
           {{e.time}}
-          <button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button><br>
+          <span v-if="tweet.current_user==e.user_id"><button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button></span>
         </div>
         <div class="mt-4 mb-4 text-center" style="white-space:pre-wrap;">{{e.comment}}</div>
       </div>
-      <div class="comment-form">
-        <form @submit.prevent="createComment">
-          <!-- <div  v-if="errors.length != 0">
-            <ul v-for="e in errors" :key="e">
-              <li><font color="red">{{ e }}</font></li>
-            </ul>
-          </div> -->
-          <div class="tweet-comment_form text-center">
-            <v-textarea solo v-model="text" type="text"></v-textarea>
-            <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
-          </div>
-        </form>
+      <div v-if="tweet.current_user">
+        <div class="comment-form">
+          <form @submit.prevent="createComment">
+            <!-- <div  v-if="errors.length != 0">
+              <ul v-for="e in errors" :key="e">
+                <li><font color="red">{{ e }}</font></li>
+              </ul>
+            </div> -->
+            <div class="tweet-comment_form text-center">
+              <v-textarea solo v-model="text" type="text"></v-textarea>
+              <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
