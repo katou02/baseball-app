@@ -8,6 +8,7 @@ class Api::V1::TweetsController < ApiController
 
   def index
     @tweets = Tweet.all.order(created_at: "DESC")
+    @current_user = current_user
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 
@@ -34,11 +35,13 @@ class Api::V1::TweetsController < ApiController
   def show
     @current_user = current_user
     @user = User.find_by(id: @tweet.user.id)
-    @nickname = current_user.nickname
     @comments = @tweet.comments.includes(:user)
-    @comment = current_user.comments.new 
-    @like = Like.find_by(tweet_id: params[:id], user_id: current_user.id)
     @likes = Like.where(tweet_id: params[:id])
+    if current_user.present?
+      @nickname = current_user.nickname
+      @comment = current_user.comments.new
+      @like = Like.find_by(tweet_id: params[:id], user_id: current_user.id)
+    end
     render 'show',formats: 'json',handlers: 'jbuilder'
   end
 
