@@ -46,7 +46,6 @@ class Api::V1::ForecastsController < ApiController
   def show
     @current_user = current_user
     @user = User.find_by(id: @forecast.user.id)
-    @nickname = current_user.nickname
     render 'show',formats: 'json',handlers: 'jbuilder'
   end
 
