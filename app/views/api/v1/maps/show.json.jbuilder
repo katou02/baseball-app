@@ -9,6 +9,6 @@ json.image @map.image
 json.address @map.address
 json.latitude @map.latitude
 json.longitude @map.longitude
-json.admin current_user.admin
+json.admin current_user.admin if current_user
 json.current_user current_user
 json.time @map.created_at.strftime("%Y年%m月%d日 %H時%M分")
