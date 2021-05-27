@@ -8,8 +8,10 @@
       </div>
     </div>
     <div class="text-center">
-      <router-link :to="{name: 'map-new',query: {tournament_id: $route.query.tournament_id}}" class="ays-avg">紹介する</router-link>
       <router-link :to="{name: 'watch_ays',params: {id: $route.query.tournament_id}}" class="ays-avg">戻る</router-link>
+      <span v-if="current_user!=null">
+        <router-link :to="{name: 'map-new',query: {tournament_id: $route.query.tournament_id}}" class="ays-avg">紹介する</router-link>
+      </span>
     </div>
     <h3 class="pt-4">出場校のふるさとを紹介</h3>
     <div class="text-format mt-5 mb-4 text-warning">
@@ -91,7 +93,7 @@ export default {
       categories: [],
       currentPage: 1,
       parPage: 10,
-      // totalPages: null,
+      current_user: '',
       current_slide: 0,
       id: ''
     }
@@ -107,6 +109,11 @@ export default {
         .then(response =>{
           this.maps = response.data;
           this.id = this.$route.query.tournament_id
+        }),
+      axios
+        .get(`/api/v1/maps/new?tournament_id=1`)
+        .then(response => {
+          this.current_user = response.data.current_user
         })
     },
     clickCallback: function (pageNum) {

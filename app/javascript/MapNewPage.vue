@@ -39,6 +39,7 @@ export default {
       school: '',
       image: '',
       tournament: '',
+      current_user: '',
       url: '',
       errors: '',
       selected: ''
@@ -47,6 +48,11 @@ export default {
   mounted() {
     this.fetchSchools()
   },
+  beforeUpdate() {
+    if(this.current_user===null) {
+      this.$router.push({ name: 'map',query: {tournament_id: this.$route.query.tournament_id}});
+    }
+  },
   methods: {
     fetchSchools() {
       axios
@@ -54,6 +60,7 @@ export default {
       .then(response => {
         this.schools = response.data.school
         this.tournament = response.data.tournament
+        this.current_user = response.data.current_user
       })
     },
     setImage(e){
