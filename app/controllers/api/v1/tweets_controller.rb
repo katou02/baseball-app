@@ -33,7 +33,6 @@ class Api::V1::TweetsController < ApiController
   end
   
   def show
-    @current_user = current_user
     @user = User.find_by(id: @tweet.user.id)
     @comments = @tweet.comments.includes(:user)
     @likes = Like.where(tweet_id: params[:id])
