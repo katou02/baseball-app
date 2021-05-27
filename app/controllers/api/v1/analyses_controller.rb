@@ -11,7 +11,6 @@ class Api::V1::AnalysesController < ApiController
   end
 
   def new
-    # @current_user = current_user.id if current_user.present?
     @roots = Category.roots
     root_id = params[:root_id]
     child_id = params[:child_id]
