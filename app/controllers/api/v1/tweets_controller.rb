@@ -8,7 +8,6 @@ class Api::V1::TweetsController < ApiController
 
   def index
     @tweets = Tweet.all.order(created_at: "DESC")
-    @current_user = current_user
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 
