@@ -5,5 +5,7 @@ json.array! @forecasts do |forecast|
   json.lose_school forecast.lose_school.name
   json.id forecast.id
   json.time forecast.created_at.strftime("%Y年%m月%d日")
-  # json.total_page @total_pages
+  if current_user.present?
+    json.current_user current_user.id
+  end
 end

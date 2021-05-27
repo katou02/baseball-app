@@ -2,8 +2,9 @@
   <div class="main-content">
     <!-- <Header></Header> -->
     <div class="main-content-btn">
-      <!-- <a :href= "'/forecasts/new'" class="send-btn">投稿する</a> -->
-      <router-link :to="{name: 'forecast-new'}" class="send-btn text-white">投稿する</router-link>
+      <div v-if="current_user">
+        <router-link :to="{name: 'forecast-new'}" class="send-btn text-white">投稿する</router-link>
+      </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
     <div class="text-format mt-5 text-warning">
@@ -94,6 +95,7 @@ export default {
       keyword: this.$store.state.keyword_fcs,
       forecasts: [],
       currentPage: this.$store.state.currentPage_fcs,
+      current_user: '',
       parPage: 10,
       categories: [],
       current_slide: 0,
@@ -112,6 +114,7 @@ export default {
         .get('api/v1/forecasts.json')
         .then(response =>{
         this.forecasts = response.data;
+        this.current_user = response.data[0].current_user
         })
     },
     fetchCategory() {
