@@ -2,7 +2,7 @@
   <div class="main-content">
     <!-- <Header></Header> -->
     <div class="main-content-btn">
-      <div v-if="tweets[0].current_user">
+      <div v-if="current_user">
         <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link>
       </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
@@ -94,6 +94,7 @@ export default {
       keyword: this.$store.state.keyword,
       tweets: [],
       categories: [],
+      current_user: '',
       currentPage: this.$store.state.currentPage,
       parPage: 10,
     }
@@ -111,6 +112,7 @@ export default {
         .get('api/v1/tweets.json')
         .then(response =>{
           this.tweets = response.data;
+          this.current_user = response.data[0].current_user
           this.pageback()
         })
     },
