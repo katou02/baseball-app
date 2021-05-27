@@ -6,5 +6,7 @@ json.array! @analyses do |analysis|
   json.id analysis.id
   json.image analysis.image
   json.time analysis.created_at.strftime("%Y年%m月%d日")
-  # json.total_page @total_pages
+  if current_user.present?
+    json.current_user current_user.id
+  end
 end
