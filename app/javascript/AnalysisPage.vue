@@ -2,8 +2,9 @@
 <div class="main-content">
   <!-- <Header></Header> -->
   <div class="main-content-btn">
-    <!-- <a :href= "'/analyses/new'" class="send-btn">投稿する</a> -->
-    <router-link :to="{name: 'analysis-new'}" class="send-btn text-white">投稿する</router-link>
+    <div v-if="current_user">
+      <router-link :to="{name: 'analysis-new'}" class="send-btn text-white">投稿する</router-link>
+    </div>
     <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
   </div>
   <div class="text-format mt-5 text-success">
@@ -92,6 +93,7 @@ export default {
       analyses: [],
       categories: [],
       currentPage: this.$store.state.currentPage_ays,
+      current_user: '',
       parPage: 10,
       current_slide: 0,
     }
@@ -109,6 +111,7 @@ export default {
         .get('api/v1/analyses.json')
         .then(response =>{
         this.analyses = response.data;
+        this.current_user = response.data[0].current_user
         })
     },
     fetchCategory() {
