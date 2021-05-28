@@ -111,8 +111,8 @@ export default {
       axios
         .get('api/v1/tweets.json')
         .then(response =>{
-          this.tweets = response.data;
-          this.current_user = response.data[0].current_user
+          this.tweets = response.data.tweets;
+          this.current_user = response.data.current_user
           this.pageback()
         })
     },
