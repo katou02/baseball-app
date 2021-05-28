@@ -93,6 +93,7 @@ export default {
       // roots: [],
       children: [],
       grandChildren: [],
+      current_user: '',
       root_id: '',
       child_id: '',
       school: '',
@@ -114,6 +115,7 @@ export default {
       .get(`/api/v1/analyses/${this.$route.params.id}/edit.json`)
       .then(response =>{
         this.children = response.data;
+        this.current_user = response.data.current_user.current_user
       })
     axios
       .get(`/api/v1/analyses/${this.$route.params.id}.json`)
@@ -129,6 +131,11 @@ export default {
         this.text = response.data.text
         this.title = response.data.title
       })
+  },
+  beforeUpdate() {
+    if(this.current_user===null) {
+      this.$router.push({ name: 'analysis'});
+    }
   },
   methods: {
     editAnalysis() {
