@@ -12,8 +12,10 @@ json.tweet_image @tweet.image
 json.id @tweet.id
 json.user_id @tweet.user.id
 json.user_image @tweet.user.image
-json.admin current_user.admin
 json.time @tweet.created_at.strftime("%Y年%m月%d日 %H時%M分")
-json.current_user @current_user.id
-json.like @like
+if current_user.present?
+  json.admin current_user.admin
+  json.current_user current_user.id
+  json.like @like
+end
 json.like_count @likes.count

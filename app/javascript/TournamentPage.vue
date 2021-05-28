@@ -2,8 +2,10 @@
   <div class="main-content">
     <!-- <Header></Header> -->
     <div class="main-content-btn">
-    <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link>
-    <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
+      <div v-if="current_user">
+        <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link>
+      </div>
+      <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
     <div class="text-format mt-5 text-primary">
       観た試合の感想をみんなに発信してみましょう！
@@ -106,6 +108,7 @@ export default {
       keyword: this.$store.state.keyword_tour,
       tweets: [],
       categories: [],
+      current_user: '',
       currentPage: this.$store.state.currentPage_t,
       parPage: 10,
     }
@@ -126,7 +129,8 @@ export default {
       axios
         .get(`/api/v1/tournaments/${this.$route.params.id}.json`)
         .then(response =>{
-          this.tweets = response.data;
+          this.tweets = response.data.tweets;
+          this.current_user = response.data.current_user
         })
     },
     fetchCategory() {

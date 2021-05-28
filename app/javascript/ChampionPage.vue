@@ -8,16 +8,18 @@
       優勝予想
       <i class="fas fa-crown text-warning"></i>
     </div>
-    <div class="text-center">
-      <router-link :to="{name: 'watch_fcs',params: {id: num}}" class="return-top mx-auto text-white">戻る</router-link>
-      <div class="mt-3" v-if="my_champion">
-        {{my_champion.school}}に投票しています<br>
-        <button class="delete-btn mt-2" @click="deleteChampion($route.params.id)">投票を取り消す</button>
-      </div>
-      <div v-else>
-      <router-link :to="{name: 'champion-new',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn text-white">
-        優勝予想をする
-      </router-link>
+    <router-link :to="{name: 'watch_fcs',params: {id: num}}" class="return-top mx-auto text-white">戻る</router-link>
+    <div v-if="current_user!=null">
+      <div class="text-center">
+        <div class="mt-3" v-if="my_champion">
+          {{my_champion.school}}に投票しています<br>
+          <button class="delete-btn mt-2" @click="deleteChampion($route.params.id)">投票を取り消す</button>
+        </div>
+        <div v-else>
+        <router-link :to="{name: 'champion-new',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn text-white">
+          優勝予想をする
+        </router-link>
+        </div>
       </div>
     </div>
     <div class="text-format mt-5 text-primary">
@@ -55,6 +57,7 @@ export default {
       my_champion: [],
       votes: [],
       categories: [],
+      current_user: '',
       num: 1
     }
   },
@@ -68,6 +71,7 @@ export default {
         .get(`/api/v1/champions/${this.$route.params.id}`)
         .then(response =>{
           this.my_champion = response.data.my_champion
+          this.current_user = response.data.current_user
           this.schools = response.data.school
           this.votes = response.data.vote
           this.num = this.$route.params.id

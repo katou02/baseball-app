@@ -79,22 +79,24 @@
         <div class="comment-user text-center">
           <em class="pr-4">{{e.comment_nickname}}</em>
           {{e.time}}
-          <button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button><br>
+          <span v-if="analysis.current_user==e.user_id"><button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button></span>
         </div>
         <div class="mt-4 mb-4 text-center" style="white-space:pre-wrap;">{{e.comment}}</div>
       </div>
-      <div class="comment-form">
-        <form @submit.prevent="createComment">
-          <div  v-if="errors.length != 0">
-            <ul v-for="e in errors" :key="e">
-              <li><font color="red">{{ e }}</font></li>
-            </ul>
-          </div>
-          <div class="text-center">
-            <v-textarea solo v-model="text" type="text" rows="2" cols="30"></v-textarea>
-            <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
-          </div>
-        </form>
+      <div v-if="analysis.current_user">
+        <div class="comment-form">
+          <form @submit.prevent="createComment">
+            <div  v-if="errors.length != 0">
+              <ul v-for="e in errors" :key="e">
+                <li><font color="red">{{ e }}</font></li>
+              </ul>
+            </div>
+            <div class="text-center">
+              <v-textarea solo v-model="text" type="text" rows="2" cols="30"></v-textarea>
+              <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

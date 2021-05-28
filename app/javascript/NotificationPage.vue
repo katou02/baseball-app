@@ -56,11 +56,17 @@ export default {
   data() {
     return {
       notifications: [],
+      current_user: '',
       count: 10
     }
   },
   mounted() {
     this.fetchNotifications()
+  },
+  beforeUpdate() {
+    if(this.current_user===9999) {
+      this.$router.push({ name: 'top'});
+    }
   },
   methods: {
     fetchNotifications() {
@@ -68,6 +74,7 @@ export default {
         .get('api/v1/notifications')
         .then(response =>{
           this.notifications = response.data.notification;
+          this.current_user = response.data.current_user
         })
     },
     isMore() {
