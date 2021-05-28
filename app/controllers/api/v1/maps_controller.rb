@@ -36,6 +36,7 @@ class Api::V1::MapsController < ApiController
 
   def edit
     @schools = Category.where(ancestry: @map.tournament_id)
+    render 'edit',formats: 'json', handlers: 'jbuilder'
   end
   
   def update
