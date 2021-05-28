@@ -34,6 +34,7 @@ export default {
       image: '',
       url: '',
       tournament: '',
+      current_user: '',
       name: '',
       selected: '',
       errors: '',
@@ -42,6 +43,11 @@ export default {
   },
   mounted() {
     this.fetchSchools()
+  },
+  beforeUpdate() {
+    if(this.current_user===null) {
+      this.$router.push({ name: 'map',query: {tournament_id: 1}});
+    }
   },
   methods: {
     editMap() {
@@ -70,15 +76,20 @@ export default {
     },
     fetchSchools() {
       axios
-      .get(`/api/v1/maps/${this.$route.params.id}.json`)
-      .then(response =>{
-        this.school = response.data.school_id
-        this.address = response.data.address
-        this.text = response.data.text
-        this.image = response.data.image
-        this.name = response.data.school
-        this.tournament = response.data.tournament
-      })
+        .get(`/api/v1/maps/${this.$route.params.id}.json`)
+        .then(response =>{
+          this.school = response.data.school_id
+          this.address = response.data.address
+          this.text = response.data.text
+          this.image = response.data.image
+          this.name = response.data.school
+          this.tournament = response.data.tournament
+        })
+      axios
+        .get(`/api/v1/maps/${this.$route.params.id}/edit.json`)
+        .then(response =>{
+          this.current_user = response.data.current_user
+        })
     },
     setImage(e){
       this.n = 1

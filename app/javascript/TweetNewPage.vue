@@ -112,6 +112,7 @@ export default {
       school_b_score: '',
       school_a: '',
       school_b: '',
+      current_user: '',
       title: '',
       text: '',
       errors: '',
@@ -123,7 +124,13 @@ export default {
     axios.get('/api/v1/tweets/new.json')
     .then(response => (this.roots = response.data.roots,
                        this.children = response.data.children,
-                       this.grandChildren = response.data.grandChildren))
+                       this.grandChildren = response.data.grandChildren,
+                       this.current_user = response.data.current_user))
+  },
+  beforeUpdate() {
+    if(this.current_user===null) {
+      this.$router.push({ name: 'tweet'});
+    }
   },
   methods: {
     findChildren: function(event) {

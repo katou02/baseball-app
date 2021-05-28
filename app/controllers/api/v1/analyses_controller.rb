@@ -43,10 +43,8 @@ class Api::V1::AnalysesController < ApiController
   end
 
   def show
-    @current_user = current_user
     # @analysis = Analysis.find(params[:id])
     @user = User.find_by(id: @analysis.user.id)
-    @nickname = current_user.nickname
     @num = 1
     # gon.data = []
     # gon.data.push(@analysis.attack,@analysis.defensive,@analysis.pitcher,@analysis.comprehensive,@analysis.expectations)

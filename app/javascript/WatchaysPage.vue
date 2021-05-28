@@ -2,8 +2,9 @@
   <div class="main-content">
     <!-- <Header></Header> -->
     <div class="main-content-btn">
-      <!-- <a :href= "'/analyses/new'" class="send-btn text-white">投稿する</a> -->
-      <router-link :to="{name: 'analysis-new'}" class="send-btn text-white">投稿する</router-link>
+      <div v-if="current_user">
+        <router-link :to="{name: 'analysis-new'}" class="send-btn text-white">投稿する</router-link>
+      </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
     <div class="text-format mt-5 text-success">
@@ -118,6 +119,7 @@ export default {
       analyses: [],
       currentPage: this.$store.state.currentPage_wa,
       parPage: 10,
+      current_user: '',
       categories: [],
       current_slide: 0,
       num: ''
@@ -139,7 +141,8 @@ export default {
       axios
         .get(`/api/v1/tournaments/${this.$route.params.id}/watch_ays.json`)
         .then(response =>{
-          this.analyses = response.data;
+          this.analyses = response.data.analyses;
+          this.current_user = response.data.current_user
           this.num = this.$route.params.id
         })
     },

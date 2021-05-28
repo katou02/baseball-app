@@ -6,6 +6,7 @@ class Api::V1::MapsController < ApiController
   end
 
   def new
+    @current_user = current_user.id if current_user.present?
     @school = Category.where(ancestry: params[:tournament_id])
     @tournament = Category.find_by(id: params[:tournament_id])
     render 'new', formats: 'json', handlers: 'jbuilder'
@@ -21,6 +22,7 @@ class Api::V1::MapsController < ApiController
   end
 
   def index
+    @current_user = current_user.id if current_user.present?
     @maps = Map.where(tournament_id: params[:tournament_id]).includes(:user).order("created_at DESC")
     @id = params[:tournament_id]
     @categories = Category.where(ancestry: nil)
@@ -34,6 +36,7 @@ class Api::V1::MapsController < ApiController
 
   def edit
     @schools = Category.where(ancestry: @map.tournament_id)
+    render 'edit',formats: 'json', handlers: 'jbuilder'
   end
   
   def update

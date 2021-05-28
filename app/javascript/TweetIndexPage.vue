@@ -2,7 +2,9 @@
   <div class="main-content">
     <!-- <Header></Header> -->
     <div class="main-content-btn">
-      <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link>
+      <div v-if="current_user">
+        <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link>
+      </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
     <div class="text-format mt-5 text-primary">
@@ -44,7 +46,7 @@
                     <div class="article-title mt-3">
                       {{e.school_a}}vs{{e.school_b}}
                     </div>
-                    <div class="sub-title mt-3">
+                    <div class="sub-title">
                       {{e.title}}
                     </div>
                   </div>
@@ -92,6 +94,7 @@ export default {
       keyword: this.$store.state.keyword,
       tweets: [],
       categories: [],
+      current_user: '',
       currentPage: this.$store.state.currentPage,
       parPage: 10,
     }
@@ -108,7 +111,8 @@ export default {
       axios
         .get('api/v1/tweets.json')
         .then(response =>{
-          this.tweets = response.data;
+          this.tweets = response.data.tweets;
+          this.current_user = response.data.current_user
           this.pageback()
         })
     },

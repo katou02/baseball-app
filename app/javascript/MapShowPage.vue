@@ -97,7 +97,7 @@ export default {
           this.map = response.data
           this.image = response.data.image.url
           this.user = response.data.user_id
-          this.current_user = response.data.current_user.id
+          this.current_user = response.data.current_user
           this.user_image = response.data.user_image.url
           this.markers.push({position: { lat:this.map.latitude, lng:this.map.longitude } })
         })
