@@ -65,6 +65,7 @@ export default {
       // roots: [],
       children: [],
       grandChildren: [],
+      current_user: '',
       root_id: '',
       child_id: '',
       win_school: '',
@@ -95,7 +96,8 @@ export default {
     axios
       .get(`/api/v1/forecasts/${this.$route.params.id}/edit.json`)
       .then(response =>{
-        this.children = response.data;
+        this.children = response.data.schools;
+        this.current_user = response.data.current_user.current_user
       })
     axios
       .get(`/api/v1/forecasts/${this.$route.params.id}.json`)
@@ -107,6 +109,11 @@ export default {
         this.probability = response.data.probability
         this.round = response.data.round
       })
+  },
+  beforeUpdate() {
+    if(this.current_user===null) {
+      this.$router.push({ name: 'forecast'});
+    }
   },
   methods: {
     editForecast() {

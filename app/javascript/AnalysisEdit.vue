@@ -114,7 +114,7 @@ export default {
     axios
       .get(`/api/v1/analyses/${this.$route.params.id}/edit.json`)
       .then(response =>{
-        this.children = response.data;
+        this.children = response.data.schools;
         this.current_user = response.data.current_user.current_user
       })
     axios
