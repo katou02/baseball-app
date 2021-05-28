@@ -110,8 +110,8 @@ export default {
       axios
         .get('api/v1/analyses.json')
         .then(response =>{
-        this.analyses = response.data;
-        this.current_user = response.data[0].current_user
+        this.analyses = response.data.analyses;
+        this.current_user = response.data.current_user
         })
     },
     fetchCategory() {

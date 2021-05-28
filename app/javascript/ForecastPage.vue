@@ -113,8 +113,8 @@ export default {
       axios
         .get('api/v1/forecasts.json')
         .then(response =>{
-        this.forecasts = response.data;
-        this.current_user = response.data[0].current_user
+        this.forecasts = response.data.forecasts;
+        this.current_user = response.data.current_user
         })
     },
     fetchCategory() {
