@@ -86,6 +86,7 @@ export default {
       data: '',
       child_id: '',
       school_a_score: '',
+      current_user: '',
       school_b_score: '',
       score: score,
       school_a: '',
@@ -102,7 +103,8 @@ export default {
     axios
       .get(`/api/v1/tweets/${this.$route.params.id}/edit.json`)
       .then(response =>{
-        this.children = response.data;
+        this.children = response.data.schools;
+        this.current_user = response.data.current_user.current_user
       })
     axios
       .get(`/api/v1/tweets/${this.$route.params.id}.json`)
@@ -117,6 +119,11 @@ export default {
         this.tournament = response.data.tournament
         this.image = response.data.tweet_image
       })
+  },
+  beforeUpdate() {
+    if(this.current_user===null) {
+      this.$router.push({ name: 'tweet'});
+    }
   },
   methods: {
     editTweet() {
