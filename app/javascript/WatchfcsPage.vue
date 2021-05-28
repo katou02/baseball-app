@@ -2,7 +2,9 @@
   <div class="main-content">
     <!-- <Header></Header> -->
     <div class="main-content-btn">
-      <router-link :to="{name: 'forecast-new'}" class="send-btn text-white">投稿する</router-link>
+      <div v-if="current_user">
+        <router-link :to="{name: 'forecast-new'}" class="send-btn text-white">投稿する</router-link>
+      </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
     <!-- <div class="text-format mt-5 mb-3 text-warning">
@@ -116,6 +118,7 @@ export default {
       keyword: this.$store.state.keyword_wf,
       forecasts: [],
       currentPage: this.$store.state.currentPage_wf,
+      current_user: '',
       parPage: 10,
       categories: [],
       num: ''
@@ -137,7 +140,8 @@ export default {
       axios
         .get(`/api/v1/tournaments/${this.$route.params.id}/watch_fcs.json`)
         .then(response =>{
-        this.forecasts = response.data;
+        this.forecasts = response.data.forecasts;
+        this.current_user = response.data.current_user
         this.num = this.$route.params.id
         })
     },
