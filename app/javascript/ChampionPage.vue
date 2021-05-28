@@ -8,9 +8,9 @@
       優勝予想
       <i class="fas fa-crown text-warning"></i>
     </div>
+    <router-link :to="{name: 'watch_fcs',params: {id: num}}" class="return-top mx-auto text-white">戻る</router-link>
     <div v-if="current_user!=null">
       <div class="text-center">
-        <router-link :to="{name: 'watch_fcs',params: {id: num}}" class="return-top mx-auto text-white">戻る</router-link>
         <div class="mt-3" v-if="my_champion">
           {{my_champion.school}}に投票しています<br>
           <button class="delete-btn mt-2" @click="deleteChampion($route.params.id)">投票を取り消す</button>
