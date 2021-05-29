@@ -1,8 +1,5 @@
 <template>
   <div class="champion-content">
-    <div class="main-content-btn">
-      <!-- <a :href= "'/tournaments/' + num + '/watch_fcs'" class="return-top ml-1">予想一覧へ戻る</a> -->
-    </div>
     <div class="champion-title">
       <i class="fas fa-crown text-warning"></i>
       優勝予想

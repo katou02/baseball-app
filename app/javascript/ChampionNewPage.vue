@@ -4,12 +4,6 @@
       <v-card>
         <v-card-title><h3>優勝すると思うチームに投票！</h3></v-card-title>
         <div class="form mx-auto p-4">
-          <!-- <select v-model="selected">
-            <option disabled value="">優勝予想を選択</option>
-            <option v-for="school in schools" :value="school.id" :key="school.id">
-              {{ school.name }}
-            </option>
-          </select> -->
           <v-select
             v-model="selected"
             item-text="name"
