@@ -83,7 +83,7 @@
         コメント
       </div>
       <div v-for="e in comment" :key="e.id">
-        <div class="comment-user text-center">
+        <div class="comment-user">
           <em class="pr-4">{{e.comment_nickname}}</em>
           {{e.time}}
           <span v-if="tweet.current_user==e.user_id"><button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button></span>
@@ -154,7 +154,6 @@ export default {
     },
     createComment: function() {
       axios
-        // .post(`/api/v1/tweets/${this.$route.params.id}/comments`,this.comment)
         .post(`/api/v1/tweets/${this.$route.params.id}/comments`,{text: this.text})
         .then(response => {
           this.text = "";
@@ -188,15 +187,6 @@ export default {
           this.fetchComments()
         })
     },
-    // onAlert:function(){
-    //   this.$dialog
-    //   var rt =confirm(
-    //   '削除してもよろしいですか？'
-    //   )
-    //   if(rt==true) {
-    //     this.deleteTweet(this.$route.params.id)
-    //   }
-    // },
     onAlertComment(id){
       var rt =confirm(
       '削除してもよろしいですか？'
