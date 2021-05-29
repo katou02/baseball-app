@@ -45,13 +45,6 @@
   margin-left: 100px;
 }
 
-.text-format{
-  // padding-top: 70px;
-  font-size: 25px;
-  text-align: center;
-  font-weight: bold;
-}
-
 .tournament-info {
   color: #68ccf9;
 }
@@ -118,12 +111,6 @@
   text-align: center;
 }
 
-.name {
-  font-size: 11px;
-  margin-bottom: 2px;
-  color: black;
-}
-
 .pagination {
   font-size: 20px;
   margin-left: 42%;
@@ -143,11 +130,6 @@
 .like-count {
   padding: 5px 7px;
   color: #2196f3;
-}
-
-.user_name {
-  position: absolute;
-  margin: 40px 20px 20px;
 }
 
 /* 検索 */
@@ -208,11 +190,4 @@
   text-align: center;
   padding-top: 30px;
   font-weight: bold;
-}
-
-.search-area {
-  background-color: white;
-  width: 20%;
-  margin: 0 auto;
-  border-radius: 10px;
 }
