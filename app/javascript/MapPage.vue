@@ -17,16 +17,6 @@
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
-    <!--<div class="title pb-5 mt-5">
-      <div v-for="e in categories" :key="e.id">
-        <div v-if="$route.query.tournament_id!=e.id">
-          <router-link :to="{name: 'map',query: {tournament_id: e.id}}" @click.native="fetchMaps()" class="title-child text-white ml-5">
-            <i class="fa fa-baseball-ball text-white"></i> 
-            {{e.category}}
-          </router-link>
-        </div>
-      </div>
-    </div>-->
     <div class="search-area mt-5">
       <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
@@ -34,7 +24,7 @@
       <Side></Side>
       <v-row>
         <v-col cols="12"  sm="6" md="6" lg="4" v-for="e in getLists" :key="e.id">
-          <div class="map-deta mt-5">
+          <div class="map-data mt-5">
             <router-link :to="{name: 'map-show',params: {id: e.id}}">
               <div class="d-flex h-100">
                 <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
