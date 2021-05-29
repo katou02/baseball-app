@@ -31,6 +31,11 @@
   background-color: #68ccf9;
 }
 
+.user_name {
+  position: absolute;
+  margin: 40px 20px 20px;
+}
+
 .show-text {
   margin: 0 0 0 50px;
   font-size: 20px;
@@ -68,6 +73,7 @@ input {
     }
   }
   &-user {
+    text-align: center;
     font-size: 15px;
     text-decoration: underline;
   }
