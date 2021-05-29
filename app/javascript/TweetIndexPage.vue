@@ -1,6 +1,5 @@
 <template>
   <div class="main-content">
-    <!-- <Header></Header> -->
     <div class="main-content-btn">
       <div v-if="current_user">
         <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link>
@@ -10,17 +9,6 @@
     <div class="text-format mt-5 text-primary">
       観た試合の感想をみんなに発信してみましょう！
     </div>
-    <!-- <div class="text-format mt-5 mb-4 text-warning">
-      大会別
-    </div>
-    <div class="title mt-5">
-      <div v-for="e in categories" :key="e.id">
-        <router-link :to="{name: 'tournament',params: {id: e.id}}"  class="title-child text-white ml-5">
-          <i class="fa fa-baseball-ball text-white"></i> 
-          {{e.category}}
-        </router-link>
-      </div>
-    </div> -->
     <div class="article-main">
       <div class="text-format pt-5 text-primary">
         みんなの試合記事

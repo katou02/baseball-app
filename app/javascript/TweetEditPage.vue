@@ -9,30 +9,26 @@
           <div class="containe_r p-4">
             <div class="d-flex">
               <div class="select-school w-25 mx-auto mt-3">
-                <!-- <ul> -->
-                  <label>高校A</label><br>
-                  <v-select
-                    v-model="school_a"
-                    item-text="name"
-                    item-value="id"
-                    :items="children"
-                    label="高校を選択"
-                    outlined>
-                  </v-select>
-                <!-- </ul> -->
+                <label>高校A</label><br>
+                <v-select
+                  v-model="school_a"
+                  item-text="name"
+                  item-value="id"
+                  :items="children"
+                  label="高校を選択"
+                  outlined>
+                </v-select>
               </div>
               <div class="select-school w-25 mx-auto mt-3">
-                <!-- <ul> -->
-                  <label>高校B</label><br>
-                  <v-select
-                    v-model="school_b"
-                    item-text="name"
-                    item-value="id"
-                    :items="children"
-                    label="高校を選択"
-                    outlined>
-                  </v-select>
-                <!-- </ul> -->
+                <label>高校B</label><br>
+                <v-select
+                  v-model="school_b"
+                  item-text="name"
+                  item-value="id"
+                  :items="children"
+                  label="高校を選択"
+                  outlined>
+                </v-select>
               </div>
             </div>
             <div class="d-flex">

@@ -1,7 +1,6 @@
 class Api::V1::TweetsController < ApiController
   before_action :search_tweet,only:[:show,:destroy,:edit,:update]
 
-
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404
   end
@@ -12,7 +11,6 @@ class Api::V1::TweetsController < ApiController
   end
 
   def new
-    current_user = current_user.id if current_user.present?
     @roots = Category.roots
     root_id = params[:root_id]
     child_id = params[:child_id]
@@ -23,11 +21,9 @@ class Api::V1::TweetsController < ApiController
 
   def create
     tweet = Tweet.create(tweet_params)
-    # binding.pry
     if tweet.save
       render json: tweet, status: :created
     else
-      # render json: { errors: tweet.errors.full_messages }, status: :unprocessable_entity
       render json: { errors: tweet.errors.keys.map { |key| [key, tweet.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
