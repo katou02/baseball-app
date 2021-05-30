@@ -8,6 +8,7 @@
     "chart.js": "^2.9.4",
     "rails-ujs": "^5.2.4-5",
     "vue": "^2.6.12",
+    "vue-axios": "^3.2.4",
     "vue-chartjs": "^3.5.1",
     "vue-loader": "^15.9.5",
     "vue-router": "^3.5.1",
