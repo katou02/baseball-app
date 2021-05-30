@@ -139,7 +139,7 @@
                         投稿者{{e.nickname}}
                         {{e.time}}
                       </div>
-                      <div class="school_ays-name mt-3">
+                      <div class="school-ays-name mt-3">
                         {{e.school}}
                       </div>
                       <div class="sub-title mt-3">

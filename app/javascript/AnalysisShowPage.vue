@@ -33,14 +33,14 @@
         </div>
       </div>
       <p class="text-right">{{analysis.time}}</p>
-      <div class="content-fcs_show">
-        <div class="game_result mt-5">
+      <div class="content-ays-show">
+        <div class="game-result mt-5">
           {{analysis.tournament}}
         </div>
-        <div class="school_name-ays">
+        <div class="school-name-ays">
           {{analysis.school}}
         </div>
-        <div class="sub_title text-white mt-5">
+        <div class="caption text-white mt-5">
           <i class="fa fa-baseball-ball"></i>
           {{analysis.title}}
         </div>
@@ -70,7 +70,7 @@
          <div style="width:70%; height:70%;" ><canvas id="myChart"></canvas></div>
        </div>
     </div>
-    <div class="comment-content_common">
+    <div class="comment-content-common">
       <div class="text-format mt-0 mb-4 text-warning">
         <i class="fa fa-baseball-ball text-warning"></i>
         コメント
@@ -208,15 +208,6 @@ export default {
         }
       })
     },
-    // onAlert:function(){
-    //   this.$dialog
-    //   var rt =confirm(
-    //   '削除してもよろしいですか？'
-    //   )
-    //   if(rt==true) {
-    //     this.deleteAnalysis(this.$route.params.id)
-    //   }
-    // },
     onAlertComment(id){
       this.$dialog
       var rt =confirm(

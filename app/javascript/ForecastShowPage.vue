@@ -33,7 +33,7 @@
         </div>
       </div>
       <p class="text-right">{{forecast.time}}</p>
-      <div class="game_result mt-5">
+      <div class="game-result mt-5">
         {{forecast.tournament}}
       </div>
       <div class="text-format text-danger">
@@ -67,7 +67,7 @@
       <div class="pie mt-5 pb-5">
         <div style="width:60%; height:60%"><canvas id="PieChart"></canvas></div>
       </div>
-      <div class="comment-content_common">
+      <div class="comment-content-common">
         <div class="text-format mt-0 mb-4 text-warning">
           <i class="fa fa-baseball-ball text-warning"></i>
           コメント

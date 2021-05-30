@@ -33,7 +33,7 @@
       </div>
     </div>
     <p class="text-right">{{tweet.time}}</p>
-    <div class="game_result">
+    <div class="game-result">
       {{tweet.tournament}}<br><br>
       {{tweet.school_a}}
       {{tweet.school_a_score}}
@@ -42,7 +42,7 @@
       {{tweet.school_b}}
     </div>
 
-    <div class="sub_title pb-2 mt-5">
+    <div class="caption pb-2 mt-5">
       <i class="fa fa-baseball-ball text-white"></i>
       {{tweet.title}}
     </div>
@@ -77,7 +77,7 @@
       </div>
     </div>
       <!-- コメント -->
-    <div class="comment-content_common">
+    <div class="comment-content-common">
       <div class="text-format mt-0 mb-4 text-warning">
         <i class="fa fa-baseball-ball text-warning"></i>
         コメント
