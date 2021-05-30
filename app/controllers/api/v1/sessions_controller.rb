@@ -4,7 +4,8 @@ class Api::V1::SessionsController < ApiController
 
   def create
     user = User.find_by!(email: params[:email])
-    if user.authenticate(params[:password])
+    # binding.pry
+    if user.valid_password?(params[:password])
       payload = { user_id: user.id }
       session = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true)
       tokens = session.login
