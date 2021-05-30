@@ -41,6 +41,8 @@ import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
+import Signup from './Signup'
+import Signin from './Signin'
 import "vuetify/dist/vuetify.min.css"
 import '@mdi/font/css/materialdesignicons.css'
 import VuejsDialog from 'vuejs-dialog';
@@ -210,7 +212,9 @@ const router = new VueRouter({
       path: '/contacts',
       component: ContactPage,
       name: 'contact',
-    }
+    },
+    { path: '/signup',    name: 'Signup',      component: Signup },
+    { path: '/signin',    name: 'Signin',      component: Signin }
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
