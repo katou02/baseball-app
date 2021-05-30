@@ -13,7 +13,7 @@ import TopIndexPage from './TopIndexPage.vue'
 import TweetIndexPage from './TweetIndexPage.vue'
 import TweetShowPage from './TweetShowPage.vue'
 import TournamentPage from './TournamentPage.vue'
-import AnalysisPage from './AnalysisPage.vue'
+import AnalysisIndexPage from './AnalysisIndexPage.vue'
 import AnalysisShowPage from './AnalysisShowPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
 import ForecastPage from './ForecastPage.vue'
@@ -83,7 +83,7 @@ const router = new VueRouter({
     },
     {
       path: '/analyses',
-      component: AnalysisPage,
+      component: AnalysisIndexPage,
       name: 'analysis'
     },
     {
