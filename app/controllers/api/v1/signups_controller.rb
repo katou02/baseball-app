@@ -1,4 +1,4 @@
-class Api::SignupsController < ApiController
+class Api::V1::SignupsController < ApplicationController
   protect_from_forgery except: [:create]
 
   def create

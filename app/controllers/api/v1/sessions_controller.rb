@@ -1,4 +1,4 @@
-class Api::SessionsController < ApiController
+class Api::V1::SessionsController < ApiController
   before_action :authorize_access_request!, only: [:destroy]
   protect_from_forgery except: [:create, :destroy]
 
