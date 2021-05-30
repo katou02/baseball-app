@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -23,7 +24,8 @@ const store = new Vuex.Store({
     keyword_tour: '',
     keyword_wa: '',
     keyword_wf: '',
-    keyword_dm: ''
+    keyword_dm: '',
+    signedIn: ''
   },
   mutations: {
     increment(state) {
@@ -43,6 +45,14 @@ const store = new Vuex.Store({
       state.keyword_wf = ''
       state.keyword_follow = ''
       state.keyword_follower = ''
+    },
+    fetchSignedIn(state) {
+      state.signedIn = !!localStorage.signedIn
+    },
+  },
+  actions: {
+    doFetchSignedIn({ commit }) {
+      commit('fetchSignedIn')
     }
   }
 })
