@@ -24,7 +24,6 @@ class User < ApplicationRecord
   validates :nickname,:email,:password,presence: true, on: :create
   validates :nickname,length: {maximum: 10}
   validates :email, uniqueness: true
-  has_secure_password
 
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
