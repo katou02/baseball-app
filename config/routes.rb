@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   namespace :api,{format: 'json'} do
     namespace :v1 do
-      post   'signup',  controller: :signups, action: :create
+      post   'signups',  controller: :signups, action: :create
       post   'signin',  controller: :sessions, action: :create
       delete 'signin', controller: :sessions, action: :destroy
       post   'refresh', controller: :refresh,  action: :create
