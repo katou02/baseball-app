@@ -40,7 +40,7 @@
         <div class="school-name-ays">
           {{analysis.school}}
         </div>
-        <div class="caption text-white mt-5">
+        <div class="show-title text-white mt-5">
           <i class="fa fa-baseball-ball"></i>
           {{analysis.title}}
         </div>
