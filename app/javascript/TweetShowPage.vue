@@ -42,7 +42,7 @@
       {{tweet.school_b}}
     </div>
 
-    <div class="caption pb-2 mt-5">
+    <div class="show-title pb-2 mt-5">
       <i class="fa fa-baseball-ball text-white"></i>
       {{tweet.title}}
     </div>
