@@ -12,7 +12,7 @@
           新着あり
         </span>
       </router-link>
-      <router-link :to="{name: 'user-show',params: {id: current_user}}">
+      <router-link :to="{name: 'user-show',params: {id: current_user}}" v-if="signedIn">
         <v-icon color="blue lighten-1">mdi-account</v-icon>
         マイページ
       </router-link>
