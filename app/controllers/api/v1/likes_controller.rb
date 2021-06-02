@@ -1,6 +1,6 @@
 class Api::V1::LikesController < ApiController
   protect_from_forgery
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     render json: Like.filter_by_post(params[:tweet_id]).select(:id, :user_id, :tweet_id)

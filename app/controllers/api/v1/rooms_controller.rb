@@ -1,5 +1,6 @@
 class Api::V1::RoomsController < ApiController
-
+  protect_from_forgery
+  
   def index
     @currentEntries = current_user.entries
     myRoomIds = []
