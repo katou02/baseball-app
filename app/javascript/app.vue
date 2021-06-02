@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <v-app>
+      <Menu></Menu>
       <router-view></router-view>
     </v-app>
   </div>
@@ -46,6 +47,7 @@ import Signin from './Signin'
 import "vuetify/dist/vuetify.min.css"
 import '@mdi/font/css/materialdesignicons.css'
 import VuejsDialog from 'vuejs-dialog';
+import Menu from './components/Menu'
 
 Vue.use(VueRouter)
 Vue.use(VuejsDialog);
@@ -228,7 +230,10 @@ const router = new VueRouter({
 })
 
 export default {
-  router
+  router,
+  components: {
+    Menu
+  }
 }
 </script>
 
