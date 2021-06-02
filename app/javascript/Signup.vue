@@ -1,32 +1,25 @@
 <template>
   <div class="container">
-    <h1 class="#f3e5f5 purple lighten-5 center">Sign UP</h1>
-    <form class="col" @submit.prevent="signup">
-      <div class="text-red" v-if="error">{{ error }}</div>
-      <div class="row">
-        <div class="input-field">
-          <input placeholder="Name" type="text" class="validate" v-model="name" required="required"></br>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field">
-          <input placeholder="Email" type="text" class="validate" v-model="email" required="required">
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field">
-          <input placeholder="Password" type="text" class="validate" v-model="password" required="required">
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field">
-          <input placeholder="Password_confirmation" type="text" class="validate" v-model="password_confirmation" required="required">
-        </div>
-      </div>
-
-      <button type="submit" class="btn waves-effect waves-light">Sign Up</button>
-      <div><router-link to="/signin" class="btn link-grey">Sign In</router-link></div>
-    </form>
+    <v-card width="400px" class="mx-auto mt-5">
+      <v-card-title>
+        <h1 class="display-1">
+          新規登録
+        </h1>
+      </v-card-title>
+      <v-card-text>
+        <v-form class="col" @submit.prevent="signup" lazy-validation>
+          <div class="text-red" v-if="error">{{ error }}</div>
+          <v-text-field label="ユーザー名" prepend-icon="mdi-user" v-model="name" required="required"/>
+          <v-text-field label="メールアドレス" prepend-icon="mdi-email" v-model="email" required="required"/>
+          <v-text-field label="パスワード" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password" required="required"/>
+          <v-text-field label="パスワード確認" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password_confirmation" required="required"/>
+          <v-card-actions>
+            <v-btn type="submit" color="light-green darken-1" class="white--text">新規登録</v-btn>
+            <div><router-link to="/signin" class="btn link-grey">ログインページへ</router-link></div>
+          </v-card-actions>
+        </v-form>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
