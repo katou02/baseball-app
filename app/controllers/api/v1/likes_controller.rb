@@ -1,4 +1,5 @@
 class Api::V1::LikesController < ApiController
+  protect_from_forgery
   before_action :authenticate_user!
 
   def index

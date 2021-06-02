@@ -1,6 +1,7 @@
 class Api::V1::MapsController < ApiController
+  protect_from_forgery
   before_action :search_map,only:[:show,:destroy,:edit,:update]
-
+  
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404
   end
