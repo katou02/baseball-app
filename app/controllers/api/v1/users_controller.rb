@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApiController
+  protect_from_forgery
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404
   end
