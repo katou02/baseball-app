@@ -1,23 +1,21 @@
 <template>
   <div class="container">
-    <h1 class="#f3e5f5 purple lighten-5 center">Sign In</h1>
-    <form class="col" @submit.prevent="signin">
-      <div class="text-red" v-if="error">{{ error }}</div>
-
-      <div class="row">
-        <div class="input-field">
-          <input placeholder="Email" type="text" class="validate" v-model="email" required="required">
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field">
-          <input placeholder="Password" type="text" class="validate" v-model="password" required="required">
-        </div>
-      </div>
-
-      <button type="submit" class="btn waves-effect waves-light">Sign In</button>
-      <div><router-link to="/signup" class="btn link-grey">Sign Up</router-link></div>
-    </form>
+    <v-card width="700px" class="mx-auto mt-5">
+      <v-card-title>
+        <h1 class="display-1">
+          ログイン
+        </h1>
+      </v-card-title>
+      <v-card-text>
+        <v-form class="col" @submit.prevent="signin" lazy-validation>
+          <div class="text-red" v-if="error">{{ error }}</div>
+          <v-text-field label="メールアドレス" v-model="email" required="required" prepend-icon="mdi-email"/>
+          <v-text-field label="パスワード" v-model="password" required="required" prepend-icon="mdi-lock"/>
+          <v-card-actions><v-btn type="submit" class="white--text" color="light-green darken-1">ログイン</v-btn></v-card-actions>
+          <div><router-link to="/signup" class="btn link-grey">Sign Up</router-link></div>
+        </v-form>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
