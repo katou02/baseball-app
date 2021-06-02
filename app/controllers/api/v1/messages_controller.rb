@@ -1,5 +1,6 @@
 class Api::V1::MessagesController < ApiController
-  before_action :authenticate_user!
+  protect_from_forgery
+  # before_action :authenticate_user!
 
   def create
     @room = Entry.where(room_id: params[:room_id]).where.not(user_id: current_user.id)
