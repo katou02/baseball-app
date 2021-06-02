@@ -1,4 +1,6 @@
 class Api::V1::ContactsController < ApiController
+  protect_from_forgery
+  
   def index
     @contact = Contact.new
   end
