@@ -18,9 +18,6 @@
           <div class="select-school w-25 mx-auto mt-3">
             <ul>
               <label>高校</label><br>
-              <!-- <select @change="findGrandChildren" v-model="school">
-                <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
-              </select> -->
               <v-select
                 v-model="school"
                 item-text="name"

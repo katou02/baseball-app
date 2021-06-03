@@ -6,6 +6,8 @@ import Paginate from 'vuejs-paginate'
 import store from './store.js'
 Vue.use(Vuetify);
 Vue.component('paginate', Paginate)
+import VueAxios from 'vue-axios'
+import { securedAxiosInstance, plainAxiosInstance } from './axios.js'
 // const store = new Vuex.Store(_store);
 
 const slide = new Vue({
@@ -27,6 +29,12 @@ const slide = new Vue({
     }
   })
 
+  Vue.config.productionTip = false
+  Vue.use(VueAxios, {
+    secured: securedAxiosInstance,
+    plain: plainAxiosInstance
+  })
+
     const mypage= new Vue({
       el: '#radio',
       data: {
@@ -38,6 +46,8 @@ const slide = new Vue({
       const app = new Vue({
         el: "#app",
         store,
+        securedAxiosInstance,
+        plainAxiosInstance,
         vuetify: new Vuetify(),
         render: h => h(App)
       }).$mount();

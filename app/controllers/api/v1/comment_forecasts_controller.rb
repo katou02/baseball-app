@@ -1,4 +1,5 @@
 class Api::V1::CommentForecastsController < ApiController
+  skip_before_action :verify_authenticity_token
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404
   end

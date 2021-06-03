@@ -23,7 +23,7 @@
       </div>
       <router-link :to="{name: 'tweet'}" class="return-btn text-white">記事一覧へ戻る</router-link>
     </div>
-    <div class="user_name">
+    <div class="post-user-name">
       <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{tweet.nickname}}</router-link></h5>
       <div v-if="user_image"> 
         <img :src= user_image class="user-icon mt-1 mb-5">
@@ -33,7 +33,7 @@
       </div>
     </div>
     <p class="text-right">{{tweet.time}}</p>
-    <div class="game_result">
+    <div class="game-result">
       {{tweet.tournament}}<br><br>
       {{tweet.school_a}}
       {{tweet.school_a_score}}
@@ -42,7 +42,7 @@
       {{tweet.school_b}}
     </div>
 
-    <div class="sub_title pb-2 mt-5">
+    <div class="show-title pb-2 mt-5">
       <i class="fa fa-baseball-ball text-white"></i>
       {{tweet.title}}
     </div>
@@ -77,13 +77,13 @@
       </div>
     </div>
       <!-- コメント -->
-    <div class="comment-content_common">
+    <div class="comment-content-common">
       <div class="text-format mt-0 mb-4 text-warning">
         <i class="fa fa-baseball-ball text-warning"></i>
         コメント
       </div>
       <div v-for="e in comment" :key="e.id">
-        <div class="comment-user text-center">
+        <div class="comment-user">
           <em class="pr-4">{{e.comment_nickname}}</em>
           {{e.time}}
           <span v-if="tweet.current_user==e.user_id"><button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button></span>
@@ -154,7 +154,6 @@ export default {
     },
     createComment: function() {
       axios
-        // .post(`/api/v1/tweets/${this.$route.params.id}/comments`,this.comment)
         .post(`/api/v1/tweets/${this.$route.params.id}/comments`,{text: this.text})
         .then(response => {
           this.text = "";
@@ -188,15 +187,6 @@ export default {
           this.fetchComments()
         })
     },
-    // onAlert:function(){
-    //   this.$dialog
-    //   var rt =confirm(
-    //   '削除してもよろしいですか？'
-    //   )
-    //   if(rt==true) {
-    //     this.deleteTweet(this.$route.params.id)
-    //   }
-    // },
     onAlertComment(id){
       var rt =confirm(
       '削除してもよろしいですか？'

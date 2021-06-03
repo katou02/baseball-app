@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <v-app>
+      <Menu v-if="this.$route.path!='/'"></Menu>
       <router-view></router-view>
     </v-app>
   </div>
@@ -13,7 +14,7 @@ import TopIndexPage from './TopIndexPage.vue'
 import TweetIndexPage from './TweetIndexPage.vue'
 import TweetShowPage from './TweetShowPage.vue'
 import TournamentPage from './TournamentPage.vue'
-import AnalysisPage from './AnalysisPage.vue'
+import AnalysisIndexPage from './AnalysisIndexPage.vue'
 import AnalysisShowPage from './AnalysisShowPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
 import ForecastPage from './ForecastPage.vue'
@@ -41,9 +42,12 @@ import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
+import Signup from './Signup'
+import Signin from './Signin'
 import "vuetify/dist/vuetify.min.css"
 import '@mdi/font/css/materialdesignicons.css'
 import VuejsDialog from 'vuejs-dialog';
+import Menu from './components/Menu'
 
 Vue.use(VueRouter)
 Vue.use(VuejsDialog);
@@ -83,7 +87,7 @@ const router = new VueRouter({
     },
     {
       path: '/analyses',
-      component: AnalysisPage,
+      component: AnalysisIndexPage,
       name: 'analysis'
     },
     {
@@ -210,7 +214,9 @@ const router = new VueRouter({
       path: '/contacts',
       component: ContactPage,
       name: 'contact',
-    }
+    },
+    { path: '/signup',    name: 'Signup',      component: Signup },
+    { path: '/signin',    name: 'Signin',      component: Signin }
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -224,7 +230,10 @@ const router = new VueRouter({
 })
 
 export default {
-  router
+  router,
+  components: {
+    Menu
+  }
 }
 </script>
 

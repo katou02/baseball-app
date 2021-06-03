@@ -1,5 +1,6 @@
 class Api::V1::RoomsController < ApiController
-
+  skip_before_action :verify_authenticity_token
+  
   def index
     @currentEntries = current_user.entries
     myRoomIds = []

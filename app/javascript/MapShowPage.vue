@@ -21,7 +21,7 @@
       </div>
       <router-link :to="{name: 'map',query: {tournament_id: map.tournament}}" class="return-btn text-white">戻る</router-link>
     </div>
-    <div class="user_name">
+    <div class="post-user-name">
       <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{map.nickname}}</router-link></h5>
       <div v-if="user_image"> 
         <img :src= user_image class="user-icon mt-1 mb-5">

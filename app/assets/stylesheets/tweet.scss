@@ -45,13 +45,6 @@
   margin-left: 100px;
 }
 
-.text-format{
-  // padding-top: 70px;
-  font-size: 25px;
-  text-align: center;
-  font-weight: bold;
-}
-
 .tournament-info {
   color: #68ccf9;
 }
@@ -106,22 +99,10 @@
   flex: 1 1 100%;
 }
 
-.sub-title {
-  color: black;
-  padding-top: 13px;
-  font-size: 18px;
-}
-
 .tweets_at,.analyses_at {
   color: black;
   font-size: 11px;
   text-align: center;
-}
-
-.name {
-  font-size: 11px;
-  margin-bottom: 2px;
-  color: black;
 }
 
 .pagination {
@@ -143,11 +124,6 @@
 .like-count {
   padding: 5px 7px;
   color: #2196f3;
-}
-
-.user_name {
-  position: absolute;
-  margin: 40px 20px 20px;
 }
 
 /* 検索 */
@@ -203,16 +179,9 @@
   // height: 100%;
 }
 
-.game_result {
+.game-result {
   font-size: 30px;
   text-align: center;
   padding-top: 30px;
   font-weight: bold;
-}
-
-.search-area {
-  background-color: white;
-  width: 20%;
-  margin: 0 auto;
-  border-radius: 10px;
 }
