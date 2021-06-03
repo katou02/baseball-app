@@ -22,6 +22,7 @@ class Api::V1::SessionsController < ApiController
   def destroy
     session = JWTSessions::Session.new(payload: payload)
     session.flush_by_access_payload
+    response.delete_cookie(JWTSessions.access_cookie)
     render json: :ok
   end
 
