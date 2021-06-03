@@ -3,12 +3,14 @@
     <!-- <v-app-bar> -->
       <div class="d-flex">
         <v-icon color="blue lighten-1">mdi-baseball</v-icon>
-        <v-toolbar-title class="text-h4 font-weight-bold logo">高校野球</v-toolbar-title>
+        <router-link :to="{name: 'top'}">
+          <v-toolbar-title class="text-h4 font-weight-bold logo">高校野球</v-toolbar-title>
+        </router-link>
       </div>
-      <router-link :to="{name: 'notification'}">
+      <router-link :to="{name: 'notification'}" v-if="signedIn">
         <v-icon color="blue lighten-1">mdi-bell</v-icon>
         通知
-        <span class="fa fa-circle fa-xs" style="color: gold;" v-if="notifications.length>0">
+        <span class="fa fa-circle fa-xs" style="color: gold;" v-if="notifications.length>0 && signedIn">
           新着あり
         </span>
       </router-link>
