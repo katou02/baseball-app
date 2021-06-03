@@ -1,5 +1,5 @@
 class Api::V1::ContactsController < ApiController
-  protect_from_forgery
+  skip_before_action :verify_authenticity_token
   
   def index
     @contact = Contact.new

@@ -1,5 +1,5 @@
 class Api::V1::RelationshipsController < ApiController
-  protect_from_forgery
+  skip_before_action :verify_authenticity_token
   before_action :login
 
   def create
