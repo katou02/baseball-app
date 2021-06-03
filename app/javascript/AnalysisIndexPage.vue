@@ -1,6 +1,5 @@
 <template>
 <div class="main-content">
-  <!-- <Header></Header> -->
   <div class="main-content-btn">
     <div v-if="current_user">
       <router-link :to="{name: 'analysis-new'}" class="send-btn text-white">投稿する</router-link>
@@ -10,17 +9,6 @@
   <div class="text-format mt-5 text-success">
     戦力分析をみんなで共有してみましょう！
   </div>
-  <!-- <div class="text-format mt-5 mb-4 text-warning">
-    大会別
-  </div>
-  <div class="title mt-5">
-    <div v-for="e in categories" :key="e.id">
-      <router-link :to="{name: 'watch_ays',params: {id: e.id}}" class="title-child text-white ml-5">
-        <i class="fa fa-baseball-ball text-white"></i> 
-        {{e.category}}
-      </router-link>
-    </div>
-  </div> -->
   <div class="analysis-main">
     <div class="text-format pt-5 text-warning">
       みんなの戦力分析
@@ -42,7 +30,7 @@
                     投稿者 {{e.nickname}}<br>
                     {{e.time}}
                   </div>
-                  <div class="school_ays-name mt-3">
+                  <div class="school-ays-name mt-3">
                     {{e.school}}
                   </div>
                   <div class="sub-title mt-3">

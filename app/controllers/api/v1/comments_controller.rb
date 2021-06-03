@@ -1,5 +1,5 @@
 class Api::V1::CommentsController < ApiController
-
+  skip_before_action :verify_authenticity_token
   # ActiveRecordのレコードが見つからなければ404 not foundを応答する
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404

@@ -18,9 +18,6 @@
               <div class="select-school w-25 mx-auto mt-3">
                 <ul>
                   <label>高校A</label><br>
-                  <!-- <select @change="findGrandChildren" v-model="school_a">
-                    <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
-                  </select> -->
                   <v-select
                     v-model="school_a"
                     item-text="name"
@@ -34,9 +31,6 @@
               <div class="select-school w-25 mx-auto mt-3">
                 <ul>
                   <label>高校B</label><br>
-                  <!-- <select @change="findGrandChildren" v-model="school_b">
-                    <option v-for="child in children" :value="child.id" :key="child.id">{{ child.name }}</option>
-                  </select> -->
                   <v-select
                     v-model="school_b" 
                     item-text="name"
@@ -51,9 +45,6 @@
             <div class="d-flex">
               <div class="school-a_score w-25 mx-auto mt-3">
                 <label>高校A 得点</label><br>
-                <!-- <select v-model="school_a_score">
-                  <option v-for="school_a_score in 50" :value="school_a_score" :key="school_a_score.id">{{ school_a_score }}</option>
-                </select> -->
                 <v-select
                   v-model="school_a_score"
                   :items="score"
@@ -64,9 +55,6 @@
               </div>
               <div class="school-b_score w-25 mx-auto mt-3">
                 <label>高校B 得点</label><br>
-                <!-- <select v-model="school_b_score">
-                  <option v-for="school_b_score in 50" :value="school_b_score" :key="school_b_score.id">{{ school_b_score }}</option>
-                </select> -->
                 <v-select
                   v-model="school_b_score"
                   :items="score"
@@ -82,7 +70,6 @@
           <v-textarea v-model="text" type="text" label="本文" outlined class="mt-5"></v-textarea>
           <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
           <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
-          <!-- <v-file-input label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp" outlined dense></v-file-input> -->
           <div v-if="url">
             <img :src="url" width="320px" height="300px">
             <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
@@ -138,10 +125,6 @@ export default {
       this.active()
       return this.root_id = rootValue;
     },
-    // findGrandChildren: function(event) {
-    //   let childValue = event.target.value;
-    //   return this.child_id = childValue;
-    // },
     createTweet() {
       let formData = new FormData();
       formData.append("title_info", this.title);
@@ -158,7 +141,6 @@ export default {
         formData.append("image", this.image);
       }
       axios
-        // .post('/api/v1/tweets',{image: this.image,text: this.text,title_info: this.title,school_a_score: this.school_a_score,school_b_score: this.school_b_score,tournament_id: this.tournament,school_a_id: this.school_a,school_b_id: this.school_b})
         .post('/api/v1/tweets',formData,config)
         .then(response => {
           this.$router.push({ name: 'tweet'});
@@ -193,15 +175,9 @@ export default {
         axios.get('/api/v1/tweets/new.json', { params: { root_id: this.root_id } }).then(
           response => (this.children = response.data.children,
                        this.school_a = response.data.children[0].id,
-                       this.school_b = response.data.children[0].id))
-                       
+                       this.school_b = response.data.children[0].id))    
       }
     },
-    // child_id: function() {
-    //   if (this.child_id !== "" ) {
-    //     axios.get('/api/v1/tweets/new.json', { params: { root_id: this.root_id, child_id: this.child_id } }).then(response => (this.grandChildren = response.data.grandChildren))
-    //   }
-    // }
   }
 }
 </script>
