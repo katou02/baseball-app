@@ -1,6 +1,6 @@
 <template>
   <div class="top">
-    <!-- <Menu></Menu> -->
+    <Menu></Menu>
     <div class="top-title">
       タイトルが入る
     </div>
@@ -43,13 +43,13 @@
 </template>
 <script>
 // import { mapState } from 'vuex'
-// import Menu from './components/Menu.vue'
+import Menu from './components/Menu.vue'
 
 export default {
   name: 'Header',
-  // components: {
-  //   Menu
-  // },
+  components: {
+    Menu
+  }
   // computed: mapState([
   //   'signedIn'
   // ]),
