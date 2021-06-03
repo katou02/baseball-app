@@ -1,5 +1,5 @@
 class Api::V1::TweetsController < ApiController
-  protect_from_forgery
+  skip_before_action :verify_authenticity_token
   before_action :search_tweet,only:[:show,:destroy,:edit,:update]
   
   rescue_from ActiveRecord::RecordNotFound do |exception|
@@ -22,6 +22,7 @@ class Api::V1::TweetsController < ApiController
 
   def create
     tweet = Tweet.create(tweet_params)
+    # binding.pry
     if tweet.save
       render json: tweet, status: :created
     else

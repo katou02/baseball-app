@@ -1,5 +1,5 @@
 class Api::V1::MessagesController < ApiController
-  protect_from_forgery
+  skip_before_action :verify_authenticity_token
   # before_action :authenticate_user!
 
   def create
