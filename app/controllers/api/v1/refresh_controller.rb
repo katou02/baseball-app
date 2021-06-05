@@ -1,4 +1,4 @@
-class Api::RefreshController < ApiController
+class Api::V1::RefreshController < ApiController
   before_action :authorize_refresh_by_access_request!
 
   def create
