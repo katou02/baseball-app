@@ -1,4 +1,5 @@
 class Api::V1::RefreshController < ApiController
+  skip_before_action :verify_authenticity_token
   before_action :authorize_refresh_by_access_request!
 
   def create
