@@ -32,7 +32,7 @@ securedAxiosInstance.interceptors.request.use(config => {
 securedAxiosInstance.interceptors.response.use(null, error => {
   if (error.response && error.response.config && error.response.status === 401) {
     // If 401 by expired access cookie, we do a refresh request
-    return plainAxiosInstance.post('/api/refresh', {}, { headers: { 'X-CSRF-TOKEN': localStorage.csrf } })
+    return plainAxiosInstance.post('/api/v1/refresh', {}, { headers: { 'X-CSRF-TOKEN': localStorage.csrf } })
       .then(response => {
         localStorage.csrf = response.data.csrf
         localStorage.signedIn = true
