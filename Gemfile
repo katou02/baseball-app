@@ -92,7 +92,7 @@ gem 'gon', '~> 6.2.0'
 gem 'geocoder', '~> 1.6', '>= 1.6.2'
 gem "dotenv-rails"
 gem 'jwt_sessions'
-gem 'redis'
+gem 'redis-rails'
 gem 'bcrypt'
  
 group :production do
