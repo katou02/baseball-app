@@ -40,19 +40,19 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
-  # if Rails.root.join('tmp', 'caching-dev.txt').exist?
-    # config.action_controller.perform_caching = true
+  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
 
-    # config.cache_store = :memory_store
-    # config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }
-    # config.public_file_server.headers = {
-    #   'Cache-Control' => "public, max-age=#{2.days.to_i}"
-    # }
-  # else
-    # config.action_controller.perform_caching = false
+    config.cache_store = :memory_store
+    config.public_file_server.headers = {
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+    }
+  else
+    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }
+    config.action_controller.perform_caching = false
 
-    # config.cache_store = :null_store
-  # end
+    config.cache_store = :null_store
+  end
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
