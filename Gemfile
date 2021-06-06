@@ -88,7 +88,7 @@ gem 'webpacker'
 gem 'chart-js-rails', '~> 0.1.4'
 gem 'bootstrap', '~> 5.0.0.alpha2'
 # js + rails
-gem 'gon', '~> 6.2.0'
+gem 'gon', '~> 6.4.0'
 gem 'geocoder', '~> 1.6', '>= 1.6.2'
 gem "dotenv-rails"
 gem 'jwt_sessions'
