@@ -75,7 +75,7 @@ export default {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     },
     signOut() {
-      this.$http.secured.delete(`/api/v1/signin`)
+      this.$http.secured.delete('/api/v1/signin')
         .then(response => {
           delete localStorage.csrf
           delete localStorage.signedIn
