@@ -15,8 +15,9 @@ class ApiController < ApplicationController
       logger.info("else")
       @current_user  ||= User.find(payload['user_id'])
     end
-  rescue
-    logger.info("nil")
+  rescue => e
+    logger.warn(e)
+    logger.warn(e.backtrace.join("\n"))
     nil
   end
   
