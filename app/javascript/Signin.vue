@@ -49,7 +49,6 @@
         }
         localStorage.csrf = response.data.csrf
         localStorage.signedIn = true
-        alert('ログイン成功')
         this.$store.dispatch('doFetchSignedIn')
         this.error = ''
         this.$router.replace('/')
