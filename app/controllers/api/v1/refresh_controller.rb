@@ -12,5 +12,6 @@ class Api::V1::RefreshController < ApiController
                         httponly: true,
                         secure: Rails.env.production?)
     render json: { csrf: tokens[:csrf] }
+    logger.info("リフレッシュ")
   end
 end
