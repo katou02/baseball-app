@@ -15,7 +15,7 @@ class Api::V1::SessionsController < ApiController
       response.set_cookie(JWTSessions.access_cookie,
                         value: tokens[:access],
                         httponly: true,
-                        secure: Rails.env.production?)
+                        secure: false)
       render json: { csrf: tokens[:csrf] }
       logger.info("ログイン成功")
     else
