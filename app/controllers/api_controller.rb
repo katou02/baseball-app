@@ -12,12 +12,9 @@ class ApiController < ApplicationController
       @current_user  ||= User.find(payload['user_id'])
     else
       cookie_based_auth(:access)
-      logger.info("else")
       @current_user  ||= User.find(payload['user_id'])
     end
-  rescue => e
-    logger.warn(e)
-    logger.warn(e.backtrace.join("\n"))
+  rescue
     nil
   end
   
