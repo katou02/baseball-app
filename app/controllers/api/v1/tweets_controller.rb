@@ -44,6 +44,7 @@ class Api::V1::TweetsController < ApiController
 
   def edit
     @schools = Category.where(ancestry: @tweet.tournament_id)
+    render 'edit',formats: 'json',handlers: 'jbuilder'
   end
   
   def update
