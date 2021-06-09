@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::TweetsController, type: :controller do
+RSpec.describe Api::V1::AnalysesController,type: :controller do
   before do
     @user = create(:user)
-    @tweet = create(:tweet,user_id: @user.id)
+    @analysis = create(:analysis,user_id: @user.id)
   end
-  
+
   describe 'index' do
     context 'ログイン済み' do
       it "正常なレスポンスを返す" do
         sign_in @user
-        get :index,params: {id: @tweet.id}
+        get :index,params: {id: @analysis.id}
         expect(response).to be_success
       end
 
@@ -26,13 +26,13 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
     context 'ログイン済み' do
       it "正常なレスポンスを返す" do
         sign_in @user
-        get :show,params: {id: @tweet.id}
+        get :show,params: {id: @analysis.id}
         expect(response).to be_success
       end
 
       it 'レスポンコード200を返す' do
         sign_in @user
-        get :show,params: {id: @tweet.id}
+        get :show,params: {id: @analysis.id}
         expect(response).to have_http_status '200'
       end
     end
@@ -48,7 +48,7 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
 
       it 'レスポンスコード200を返す' do
         sign_in @user
-        get :new,params: {id: @tweet.id}
+        get :new,params: {id: @analysis.id}
         expect(response).to have_http_status '200'
       end
     end
@@ -58,13 +58,13 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
     context 'ログイン済み' do
       it "正常なレスポンスを返す" do
         sign_in @user
-        get :edit,params: {id: @tweet.id}
+        get :edit,params: {id: @analysis.id}
         expect(response).to be_success
       end
 
       it 'レスポンスコード200を返す' do
         sign_in @user
-        get :edit,params: {id: @tweet.id}
+        get :edit,params: {id: @analysis.id}
         expect(response).to have_http_status '200'
       end
     end
@@ -75,7 +75,7 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
       it '保存できること' do
         sign_in @user
         expect {
-          post :create,params: @tweet
+          post :create,params: @analysis
           expect(response).to
         }
       end
@@ -86,8 +86,8 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
     context 'ログイン済み' do
       it '更新できること' do
         sign_in @user
-        tweet_params = {text: '更新'}
-        patch :update,params: {id: @tweet.user_id,tweet: tweet_params}
+        analysis_params = {text: '更新'}
+        patch :update,params: {id: @analysis.user_id,tweet: analysis_params}
       end
     end
   end
@@ -96,7 +96,7 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
     context 'ログイン済み' do
       it '削除できること' do
         sign_in @user
-        delete :destroy,params: {id: @tweet.user_id}
+        delete :destroy,params: {id: @analysis.user_id}
       end
     end
   end
