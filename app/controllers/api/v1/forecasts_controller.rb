@@ -32,6 +32,7 @@ class Api::V1::ForecastsController < ApiController
 
   def edit
     @schools = Category.where(ancestry: @forecast.tournament_id)
+    render 'edit', formats: 'json', handlers: 'jbuilder'
   end
   
   def update
