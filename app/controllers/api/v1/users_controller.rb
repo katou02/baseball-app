@@ -11,6 +11,7 @@ class Api::V1::UsersController < ApiController
 
   def edit
     @user = User.find(params[:id])
+    render 'edit', formats: 'json', handlers: 'jbuilder'
   end
   
   def update
