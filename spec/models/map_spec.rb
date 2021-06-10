@@ -124,7 +124,7 @@ RSpec.describe Map, type: :model do
         end
   
         it '外部キーが存在するなら保存できる' do
-          map.user_id = 1
+          map.user_id = map.user_id
           expect(map).to be_valid
         end
       end
