@@ -10,7 +10,7 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
     context 'ログイン済み' do
       it "正常なレスポンスを返す" do
         sign_in @user
-        get :index,params: {id: @tweet.id}
+        get :index
         expect(response).to be_success
       end
 
