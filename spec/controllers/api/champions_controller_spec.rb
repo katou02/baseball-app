@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ChampionsController,type: :controller do
-#   let(:user){build(:user)}
-#   let(:champion){build(:champion)}
   before do
     @user = create(:user)
-    allow(controller)
-    .to receive(:current_user)
-    .and_return(@user)
+      allow(controller)
+      .to receive(:current_user)
+      .and_return(@user)
     @champion = create(:champion,user_id: @user.id)
   end
 
