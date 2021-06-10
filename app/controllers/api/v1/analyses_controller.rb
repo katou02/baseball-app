@@ -31,6 +31,7 @@ class Api::V1::AnalysesController < ApiController
 
   def edit
     @schools = Category.where(ancestry: @analysis.tournament_id)
+    render 'edit', formats: 'json', handlers: 'jbuilder'
   end
   
   def update

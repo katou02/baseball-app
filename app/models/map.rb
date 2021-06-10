@@ -4,6 +4,7 @@ class Map < ApplicationRecord
   belongs_to :tournament,class_name: 'Category', foreign_key: 'tournament_id'
   has_many :categories
   validates :text,length: {maximum: 2000}
+  validates :address,length: {maximum: 100}
   validates :text,:address,presence: true
   mount_uploader :image, ImageUploader
   # 緯度経度
