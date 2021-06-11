@@ -48,6 +48,16 @@ json.set! :forecast do
   end
 end
 
+json.set! :map do
+  json.array! @my_maps do |map|
+    json.nickname map.user.nickname
+    json.school map.school.name
+    json.image map.image
+    json.id map.id
+    json.time map.created_at.strftime("%Y年%m月%d日")
+  end
+end
+
 json.set! :likes do
   json.array! @my_likes do |tweet|
     json.nickname tweet.user.nickname

@@ -77,9 +77,10 @@
         <v-tab href="#tab-1">投稿した試合記事</v-tab>
         <v-tab href="#tab-2">投稿した戦力分析</v-tab>
         <v-tab href="#tab-3">投稿した試合予想</v-tab>
-        <v-tab href="#tab-4">いいねした試合記事</v-tab>
-        <v-tab href="#tab-5">フォロー</v-tab>
-        <v-tab href="#tab-6">フォロワー</v-tab>
+        <v-tab href="#tab-4">投稿したふるさと紹介</v-tab>
+        <v-tab href="#tab-5">いいねした試合記事</v-tab>
+        <v-tab href="#tab-6">フォロー</v-tab>
+        <v-tab href="#tab-7">フォロワー</v-tab>
       </v-tabs>
       <v-tabs-items v-model="tab" :style="{ background: '#EEFFFF' }" class="d-flex justify-center">
         <v-tab-item value="tab-m">
@@ -118,12 +119,12 @@
             </v-col>
           </v-row>
           <button
-              class="list-item-button"
-              v-if="(listTweets.length - count_t) >= 0"
-              type="button"
-              @click="isMore_t"
+            class="list-item-button"
+            v-if="(listTweets.length - count_t) >= 0"
+            type="button"
+            @click="isMore_t"
           >
-              もっと見る
+            もっと見る
           </button>
         </v-tab-item>
         <v-tab-item value="tab-2">
@@ -152,12 +153,12 @@
             </v-col>
           </v-row>
           <button
-              class="list-item-button"
-              v-if="(listAnalyses.length - count_a) >= 0"
-              type="button"
-              @click="isMore_a"
+            class="list-item-button"
+            v-if="(listAnalyses.length - count_a) >= 0"
+            type="button"
+            @click="isMore_a"
           >
-              もっと見る
+            もっと見る
           </button>
         </v-tab-item>
         <v-tab-item value="tab-3">
@@ -191,15 +192,50 @@
             </v-col>
           </v-row>
           <button
-              class="list-item-button"
-              v-if="(listForecasts.length - count_f) >= 0"
-              type="button"
-              @click="isMore_f"
+            class="list-item-button"
+            v-if="(listForecasts.length - count_f) >= 0"
+            type="button"
+            @click="isMore_f"
           >
-              もっと見る
+            もっと見る
           </button>
         </v-tab-item>
         <v-tab-item value="tab-4">
+          <v-row>
+            <v-col cols="12"  sm="6" md="6" lg="6" v-for="e in listMaps" :key="e.id">
+              <div class="map-data mt-5">
+                <router-link :to="{name: 'map-show',params: {id: e.id}}">
+                  <div class="d-flex h-100">
+                    <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                    <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                    <div class="article-heading mx-auto bg-white">
+                      <div class="name">
+                        投稿者
+                        {{e.nickname}}<br>
+                        {{e.time}}
+                      </div>
+                      <div class="sub-title">
+                        {{e.school}}のふるさと
+                      </div>
+                      <div class="text-center">
+                        <img src="/images/hurusato.jpeg" width="50px" height="40px" >
+                      </div>
+                    </div>
+                  </div>
+                </router-link>
+              </div>
+            </v-col>
+          </v-row>
+          <button
+            class="list-item-button"
+            v-if="(listMaps.length - count_m) >= 0"
+            type="button"
+            @click="isMore_m"
+          >
+            もっと見る
+          </button>
+        </v-tab-item>
+        <v-tab-item value="tab-5">
           <v-row>
             <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listLikes" :key="e.id" class="mx-auto">
               <div class="article mt-5">
@@ -224,20 +260,20 @@
               </div>
             </v-col>
           </v-row>
-          <!-- <button
-              class="list-item-button"
-              v-if="(listTweets.length - count_t) >= 0"
-              type="button"
-              @click="isMore_t"
+          <button
+            class="list-item-button"
+            v-if="(listLikes.length - count_l) >= 0"
+            type="button"
+            @click="isMore_l"
           >
-              もっと見る
-          </button> -->
+            もっと見る
+          </button>
         </v-tab-item>
 
-        <v-tab-item value="tab-5">
+        <v-tab-item value="tab-6">
           <Follow></Follow>
         </v-tab-item>
-        <v-tab-item value="tab-6">
+        <v-tab-item value="tab-7">
           <Follower></Follower>
         </v-tab-item>
       </v-tabs-items>
@@ -264,6 +300,7 @@ export default {
       my_tweets: [],
       my_analyses: [],
       my_forecasts: [],
+      my_maps: [],
       my_likes: [],
       follow_count: [],
       follower_count: [],
@@ -271,6 +308,7 @@ export default {
       count_a: 10,
       count_f: 10,
       count_l: 10,
+      count_m: 10,
       user_image: ''
     }
   },
@@ -290,6 +328,10 @@ export default {
       const list = this.my_forecasts
       return list.slice(0, this.count_f)
     },
+    listMaps() {
+      const list = this.my_maps
+      return list.slice(0,this.count_m)
+    },
     listLikes() {
       const list = this.my_likes
       return list.slice(0, this.count_l)
@@ -308,6 +350,7 @@ export default {
           this.my_tweets = response.data.tweet
           this.my_analyses = response.data.analysis
           this.my_forecasts = response.data.forecast
+          this.my_maps = response.data.map
           this.follow_count = response.data.follow_count
           this.follower_count = response.data.follower_count
           this.user_image = response.data.image.url
@@ -343,6 +386,12 @@ export default {
     },
     isMore_f() {
       this.count_f += 10
+    },
+    isMore_l() {
+      this.count_l += 10
+    },
+    isMore_m() {
+      this.count_m += 10
     }
   },
   watch: {
