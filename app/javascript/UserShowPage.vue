@@ -107,6 +107,7 @@
                         {{e.time}}
                       </div>
                       <div class="article-title mt-3">
+                        <p class="h4">{{e.round}}</p>
                         {{e.school_a}}vs{{e.school_b}}
                       </div>
                       <div class="sub-title mt-3">
