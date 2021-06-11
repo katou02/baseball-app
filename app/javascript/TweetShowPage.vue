@@ -35,6 +35,7 @@
     <p class="text-right">{{tweet.time}}</p>
     <div class="game-result">
       {{tweet.tournament}}<br><br>
+      {{tweet.round}}<br>
       {{tweet.school_a}}
       {{tweet.school_a_score}}
       -
