@@ -21,8 +21,4 @@ end
 json.check do
   json.array! @check
 end
-if current_user.present?
-  json.current_user current_user
-else
-  json.current_user 9999
-end
+json.current_user current_user
