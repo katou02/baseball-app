@@ -26,6 +26,9 @@
         <v-icon color="blue lighten-1">mdi-login</v-icon>
         ログイン
       </router-link>
+      <div v-if="!signedIn">
+        <Gest></Gest>
+      </div>
       <a href="/" v-if="signedIn" @click="signOut">
         <v-icon color="blue lighten-1">mdi-logout</v-icon>
         ログアウト
@@ -40,8 +43,12 @@
 <script>
 import axios from 'axios'
 import { mapState } from 'vuex'
+import Gest from './Gest.vue'
 
 export default {
+  components: {
+    Gest
+  },
   data() {
     return {
       current_user: '',
