@@ -64,11 +64,11 @@ export default {
       .get('/api/v1/tops')
       .then(response =>{
         this.current_user = response.data.current_user
+        if(this.current_user === null && this.$store.state.signedIn == true) {
+          delete localStorage.csrf
+          delete localStorage.signedIn
+        }
       })
-      if(this.current_user == null && this.$store.state.signedIn == true) {
-        delete localStorage.csrf
-        delete localStorage.signedIn
-      }
     }
   }
   // computed: mapState([
