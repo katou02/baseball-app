@@ -26,9 +26,6 @@
         <v-icon color="blue lighten-1">mdi-login</v-icon>
         ログイン
       </router-link>
-      <div v-if="!signedIn">
-        <Gest></Gest>
-      </div>
       <a href="/" v-if="signedIn" @click="signOut">
         <v-icon color="blue lighten-1">mdi-logout</v-icon>
         ログアウト
@@ -37,6 +34,9 @@
         <v-icon color="blue lighten-1">mdi-email</v-icon>
         お問い合わせ
       </router-link>
+      <div v-if="!signedIn">
+        <Gest></Gest>
+      </div>
     <!-- </v-app-bar> -->
   </div>
 </template>
