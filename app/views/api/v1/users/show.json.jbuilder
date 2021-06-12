@@ -16,6 +16,7 @@ json.set! :tweet do
   json.array! @my_tweets do |tweet|
     json.nickname tweet.user.nickname
     json.text  tweet.text
+    json.round tweet.round
     json.school_a tweet.school_a.name
     json.school_b tweet.school_b.name
     json.title tweet.title_info
@@ -45,6 +46,16 @@ json.set! :forecast do
     json.lose_school forecast.lose_school.name
     json.id forecast.id
     json.time forecast.created_at.strftime("%Y年%m月%d日")
+  end
+end
+
+json.set! :map do
+  json.array! @my_maps do |map|
+    json.nickname map.user.nickname
+    json.school map.school.name
+    json.image map.image
+    json.id map.id
+    json.time map.created_at.strftime("%Y年%m月%d日")
   end
 end
 

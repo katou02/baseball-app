@@ -64,12 +64,26 @@
               </div>
             </div>
             <p v-if="!!errors['school_b_score']" style="color: red;">{{ errors['school_b_score'][0]}}</p>
+            <div class="round w-25 mx-auto mt-3">
+              <label>ラウンド</label><br>
+              <v-select
+                v-model="round"
+                item-text="round"
+                item-value="round"
+                :items="round_list"
+                outlined>
+              </v-select>
+            </div>
           </div>
           <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="mb-5"></v-text-field>
           <p v-if="!!errors['title_info']" style="color: red;">{{ errors['title_info'][0]}}</p>
           <v-textarea v-model="text" type="text" label="本文" outlined class="mt-5"></v-textarea>
           <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
-          <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+          <!-- <input v-if="!url" class="w-25" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
+          <label v-if="!url" class="photo w-25">
+            ＋写真を選択
+            <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+          </label>
           <div v-if="url">
             <img :src="url" width="320px" height="300px">
             <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
@@ -104,7 +118,16 @@ export default {
       text: '',
       errors: '',
       image: '',
-      url: ''
+      url: '',
+      round: '1回戦',
+      round_list: [
+        {round: '1回戦'},
+        {round: '2回戦'},
+        {round: '3回戦'},
+        {round: '準々決勝'},
+        {round: '準決勝'},
+        {round: '決勝'}
+      ],
     }
   },
   mounted() {
@@ -134,6 +157,7 @@ export default {
       formData.append("tournament_id",this.tournament);
       formData.append("school_a_id",this.school_a);
       formData.append("school_b_id",this.school_b);
+      formData.append("round",this.round);
     const config = {
       headers: {"content-type": "multipart/form-data",}
     };

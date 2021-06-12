@@ -20,14 +20,18 @@
         <v-textarea v-model="text" type="text" label="自己紹介" outlined></v-textarea>
         <div class="s3">
         </div>
-        <input v-if="!image.url && !url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+        <!-- <input v-if="!image.url && !url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
+        <label v-if="!url && !image.url" class="photo w-25">
+          ＋写真を選択
+          <input type="file" id="file_photo" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+        </label>
         <div v-if="url">
           <img :src="url" width="320px" height="300px">
-          <button type="submit" @click="deleteImage">削除</button>
+          <v-btn color="error" type="submit" @click="deleteImage">削除</v-btn>
         </div>
         <div v-if="image.url">
           <img :src="image.url" width="320px" height="300px">
-          <button type="submit" @click="deleteUserImage">削除</button>
+          <v-btn color="error" type="submit" @click="deleteUserImage">削除</v-btn>
         </div>
         <v-btn type="submit" color="primary" class="text-white mt-5">編集する</v-btn>
       </form>
@@ -41,7 +45,7 @@ export default {
   data: function() {
     return {
       text: '',
-      prefecture: [],
+      prefecture: '',
       image: '',
       url: '',
       n: '',
@@ -60,13 +64,17 @@ export default {
   methods: {
     editUser() {
       let formData = new FormData()
-      formData.append("text", this.text)
-      formData.append("prefecture", this.prefecture)
       const config = {
         headers: {"content-type": "multipart/form-data",}
       }
       if (this.image !== null && this.n==1) {
         formData.append("image", this.image);
+      }
+      if (this.prefecture !== null) {
+        formData.append("prefecture", this.prefecture)
+      }
+      if (this.text !== null) {
+        formData.append("text", this.text)
       }
       axios
         .patch(`/api/v1/users/${this.$route.params.id}`,formData,config)

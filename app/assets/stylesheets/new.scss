@@ -60,6 +60,15 @@ input{
   font-size: 20px;
 }
 
+.photo {
+  color: white;  
+  background-color: red;
+  padding: 6px;
+  border-radius: 12px;
+  margin-right: 100%;
+  // float: left;
+}
+
 .input-box_image_file{
   display: none;
 }

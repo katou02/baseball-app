@@ -34,6 +34,7 @@ class Api::V1::UsersController < ApiController
     @my_tweets = @user.tweets.order("created_at DESC")
     @my_analyses = @user.analyses.order("created_at DESC")
     @my_forecasts = @user.forecasts.order("created_at DESC")
+    @my_maps = @user.maps.order("created_at DESC")
     @likes = @user.likes.order("created_at DESC")
     my_likes(@likes)
     if @user.id == current_user.id

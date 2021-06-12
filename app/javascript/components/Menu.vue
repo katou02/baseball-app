@@ -34,14 +34,21 @@
         <v-icon color="blue lighten-1">mdi-email</v-icon>
         お問い合わせ
       </router-link>
+      <div v-if="!signedIn">
+        <Gest></Gest>
+      </div>
     <!-- </v-app-bar> -->
   </div>
 </template>
 <script>
 import axios from 'axios'
 import { mapState } from 'vuex'
+import Gest from './Gest.vue'
 
 export default {
+  components: {
+    Gest
+  },
   data() {
     return {
       current_user: '',
