@@ -31,12 +31,6 @@
         error: ''
       }
     },
-    created() {
-      this.checkSignedIn()
-    },
-    updated() {
-      this.checkSignedIn()
-    },
     methods: {
       signin() {
         this.$http.plain.post('/api/v1/signin', { email: 'gest@gmail.com', password: 'gest2021' })
@@ -52,17 +46,12 @@
         localStorage.signedIn = true
         this.$store.dispatch('doFetchSignedIn')
         this.error = ''
-        this.$router.go('/')
+        this.$router.replace('/')
       },
       signinFailed(error) {
         this.error = (error.response && error.response.data && error.response.data.error) || ''
         delete localStorage.csrf
         delete localStorage.signedIn
-      },
-      checkSignedIn() {
-        if (localStorage.signedIn) {
-          this.$router.replace('/')
-        }
       }
     }
   }
