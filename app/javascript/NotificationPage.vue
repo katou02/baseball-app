@@ -1,5 +1,6 @@
 <template>
   <div class="notification-content">
+    <Menu></Menu>
     <div class="notification-title pt-5">
       <i class="fas fa-envelope"></i>
       通知
@@ -52,7 +53,11 @@
 </template>
 <script>
 import axios from 'axios';
+import Menu from './components/Menu.vue'
 export default {
+  components: {
+    Menu
+  },
   data() {
     return {
       notifications: [],
@@ -86,6 +91,14 @@ export default {
       const list = this.notifications
       return list.slice(0, this.count)
     }
+  },
+  beforeDestroy() {
+    axios
+      .get('api/v1/notifications')
+      .then(response =>{
+        this.notifications = response.data.notification;
+        this.current_user = response.data.current_user
+      })
   }
 }
 </script>
