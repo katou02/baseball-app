@@ -13,6 +13,7 @@ json.notification do
     json.visiter notification.visiter.nickname
     json.visiter_image notification.visiter.image
     json.visiter_id notification.visiter.id
+    json.visited_id notification.visited_id
     json.time time_ago_in_words(notification.created_at)
   end
 end
