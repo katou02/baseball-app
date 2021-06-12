@@ -60,6 +60,24 @@ RSpec.describe Tweet, type: :model do
       end
     end
 
+    context 'roundカラム' do
+      it '未入力だと保存できない' do
+        tweet.round = ''
+        is_expected.to eq false
+      end
+
+      it 'ラウンドが未入力であればエラー' do
+        tweet.round = ''
+        tweet.valid?
+        expect(tweet.errors[:round]).to include('を入力してください')
+      end
+
+      it '入力されていれば保存できる' do
+        tweet.round = '2回戦'
+        expect(tweet).to be_valid
+      end
+    end
+
     context 'school_aカラム' do
       
       it '未入力だと保存できない' do
