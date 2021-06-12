@@ -46,7 +46,7 @@
         localStorage.signedIn = true
         this.$store.dispatch('doFetchSignedIn')
         this.error = ''
-        this.$router.replace('/')
+        this.$router.go('/')
       },
       signinFailed(error) {
         this.error = (error.response && error.response.data && error.response.data.error) || ''
