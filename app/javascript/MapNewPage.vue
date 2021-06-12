@@ -18,7 +18,11 @@
         <p v-if="!!errors['address']" style="color: red;">{{ errors['address'][0]}}</p>
         <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
         <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
-        <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+        <!-- <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
+        <label v-if="!url" class="photo w-25">
+          ＋写真を選択
+          <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+        </label>
         <div v-if="url">
           <img :src="url" width="320px" height="300px">
           <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
