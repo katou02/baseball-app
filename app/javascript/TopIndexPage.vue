@@ -42,13 +42,34 @@
   </div>
 </template>
 <script>
-// import { mapState } from 'vuex'
+import axios from 'axios';
 import Menu from './components/Menu.vue'
 
 export default {
   name: 'Header',
   components: {
     Menu
+  },
+  data() {
+    return {
+      current_user: ''
+    }
+  },
+  mounted() {
+    this.signin()
+  },
+  methods: {
+    signin() {
+      axios
+      .get('/api/v1/tops')
+      .then(response =>{
+        this.current_user = response.data.current_user
+        if(this.current_user === null && this.$store.state.signedIn == true) {
+          delete localStorage.csrf
+          delete localStorage.signedIn
+        }
+      })
+    }
   }
   // computed: mapState([
   //   'signedIn'

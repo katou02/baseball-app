@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-app>
-      <Menu v-if="this.$route.path!='/'"></Menu>
+      <Menu v-if="this.$route.path!='/' && this.$route.path!='/notifications'"></Menu>
       <router-view></router-view>
     </v-app>
   </div>

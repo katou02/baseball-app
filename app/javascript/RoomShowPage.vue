@@ -83,6 +83,9 @@ export default {
           this.image = response.data.member[0].user.image.url
           this.user = response.data.member[0].user
           this.data = response.data
+          var element = document.documentElement;
+          var bottom = element.scrollHeight - element.clientHeight;
+          window.scroll(0, bottom);
         })
     },
     createMessage() {
