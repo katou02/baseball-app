@@ -95,7 +95,7 @@
         </v-tab-item>
         <v-tab-item value="tab-1">
           <v-row>
-            <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listTweets" :key="e.id" class="mx-auto">
+            <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listTweets" :key="e.id">
               <div class="article mt-5">
                 <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
