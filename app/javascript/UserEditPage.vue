@@ -45,7 +45,7 @@ export default {
   data: function() {
     return {
       text: '',
-      prefecture: [],
+      prefecture: '',
       image: '',
       url: '',
       n: '',
@@ -64,13 +64,17 @@ export default {
   methods: {
     editUser() {
       let formData = new FormData()
-      formData.append("text", this.text)
-      formData.append("prefecture", this.prefecture)
       const config = {
         headers: {"content-type": "multipart/form-data",}
       }
       if (this.image !== null && this.n==1) {
         formData.append("image", this.image);
+      }
+      if (this.prefecture !== null) {
+        formData.append("prefecture", this.prefecture)
+      }
+      if (this.text !== null) {
+        formData.append("text", this.text)
       }
       axios
         .patch(`/api/v1/users/${this.$route.params.id}`,formData,config)
