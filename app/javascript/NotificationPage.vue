@@ -71,7 +71,7 @@ export default {
     this.fetchNotifications()
   },
   beforeUpdate() {
-    if(this.current_user===9999) {
+    if(this.current_user) {
       this.$router.push({ name: 'top'});
     }
   },
