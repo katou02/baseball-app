@@ -76,7 +76,7 @@
         コメント
       </div>
       <div v-for="e in comment" :key="e.id">
-        <div class="comment-user text-center">
+        <div class="comment-user">
           <em class="pr-4">{{e.comment_nickname}}</em>
           {{e.time}}
           <span v-if="analysis.current_user==e.user_id"><button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button></span>
