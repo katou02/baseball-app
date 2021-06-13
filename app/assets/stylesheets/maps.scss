@@ -1,13 +1,13 @@
 .map{
-  background-image: image-url('sky.jpg');
+  // background-image: image-url('sky.jpg');
   background-size: cover;
-  background-color: rgba(255,255,255,0.8);
+  background-color: #f6f6d1;
   background-blend-mode: lighten;
   flex: 1 1 100%;
   &-info {
     width: 55%;
-    margin: 0 auto;
     margin-top: 10px;
+    font-size: 1.2rem;
   }
   &-data {
     height: 140px;
@@ -43,14 +43,13 @@
     background-color: white;
     border: solid white;
     position: relative;
-    text-align: center;
-    // border-width: 0 2px 2px 2px;
+    width: 60%;
+    margin: 0 auto;
     font-size: 1.2rem;
     min-height: 100px;
   }
   &-text {
-    display: flex;
-    border: solid 0.1px;
+
   }
   &-school {
     margin-top: 10%;
@@ -62,11 +61,11 @@
     font-family: Times New Roman, "ＭＳ Ｐゴシック";
   }
   &-image {
-    // border: solid;
+    margin: 0 auto;
     border-width: 0 2px 2px 2px;
     background-size: cover;
     margin: initial;
-    // width: 100%;
+    width: 60%;
     height: auto;
     &_content {
       width: 100%;
