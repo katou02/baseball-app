@@ -31,43 +31,48 @@
       </div>
     </div>
     <p class="text-right">{{map.time}}</p>
-      <div class="map-school">
-        {{map.school}}のふるさと
-        <p class="text-center pt-1">{{map.address}}</p>
+    <div class="map-school">
+      {{map.school}}高校のふるさと
+    </div>
+    <div class="map-title ml-5 mb-5">
+      {{map.address}}
+    </div>
+    <div class="map-adress">
+      <div id="map">
+        <GmapMap
+        :center="{lat: map.latitude, lng:map.longitude}"
+        :zoom="15"
+        map-type-id="terrain"
+        style="width: 100%; height: 300px"
+        >
+        <GmapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="center=m.position"
+        />
+        </GmapMap>
       </div>
+    </div>
+    <div class="map-title ml-5 mb-5">
+      ふるさと紹介
+    </div>
     <div class="map-info">
       <div class="map-text">
-        <div class="mt-4 mb-4 w-100" style="white-space:pre-wrap;">
+        <div class="mt-4 mb-4" style="white-space:pre-wrap;">
           {{map.text}}
+          <img :src= image class="mt-3">
         </div>
-        <div class="map-image">
+        <!-- <div class="map-image">
           <div class="h-100" v-if="image">
             <img :src= image class="map-image_content">
-          </div>
-          <div class="h-100" v-else>
+          </div> -->
+          <!-- <div class="h-100" v-else>
             <img src="../assets/images/map-no-image.png" class="map-image_content">
-          </div>
-        </div>
-      </div>
-      <div class="map-adress">
-        マップ
-        <div id="map">
-          <GmapMap
-          :center="{lat: map.latitude, lng:map.longitude}"
-          :zoom="15"
-          map-type-id="terrain"
-          style="width: 100%; height: 300px"
-          >
-          <GmapMarker
-          :key="index"
-          v-for="(m, index) in markers"
-          :position="m.position"
-          :clickable="true"
-          :draggable="true"
-          @click="center=m.position"
-          />
-          </GmapMap>
-        </div>
+          </div> -->
+        <!-- </div> -->
       </div>
     </div>
   </div>
