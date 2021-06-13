@@ -33,7 +33,7 @@
             <div class="forecast mt-5">
               <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
                 <div class="d-flex h-100">
-                  <img src="/images/ball.jpg" class="article-icon">
+                  <div class="forecast-image"><img src="/images/ball.jpg" class="article-icon"></div>
                   <div class="article-heading mx-auto">
                     <div class="name">
                       投稿者 {{e.nickname}}<br>
