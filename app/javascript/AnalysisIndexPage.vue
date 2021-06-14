@@ -98,8 +98,13 @@ export default {
       axios
         .get('api/v1/analyses.json')
         .then(response =>{
-        this.analyses = response.data.analyses;
-        this.current_user = response.data.current_user
+          this.analyses = response.data.analyses;
+          this.current_user = response.data.current_user
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go('/analyses')
+          }
         })
     },
     fetchCategory() {
