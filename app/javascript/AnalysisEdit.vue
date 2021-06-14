@@ -104,6 +104,7 @@ export default {
       attack: '',
       defensive: '',
       pitcher: '',
+      user_id: '',
       comprehensive: '',
       expectation: '',
       title: '',
@@ -119,7 +120,8 @@ export default {
       .get(`/api/v1/analyses/${this.$route.params.id}/edit.json`)
       .then(response =>{
         this.children = response.data.schools;
-        this.current_user = response.data.current_user.current_user
+        this.current_user = response.data.current_user.id
+        this.user_id = response.data.user_id
       })
     axios
       .get(`/api/v1/analyses/${this.$route.params.id}.json`)
@@ -137,7 +139,7 @@ export default {
       })
   },
   beforeUpdate() {
-    if(this.current_user===null) {
+    if(this.current_user===null || this.current_user!==this.user_id) {
       this.$router.push({ name: 'analysis'});
     }
   },
