@@ -62,12 +62,12 @@ export default {
   data: function() {
     return {
       tournament: '',
-      // roots: [],
       children: [],
       grandChildren: [],
       current_user: '',
       root_id: '',
       child_id: '',
+      user_id: '',
       win_school: '',
       lose_school: '',
       text: '',
@@ -97,7 +97,8 @@ export default {
       .get(`/api/v1/forecasts/${this.$route.params.id}/edit.json`)
       .then(response =>{
         this.children = response.data.schools;
-        this.current_user = response.data.current_user.current_user
+        this.current_user = response.data.current_user.id
+        this.user_id = response.data.user_id
       })
     axios
       .get(`/api/v1/forecasts/${this.$route.params.id}.json`)
@@ -111,8 +112,8 @@ export default {
       })
   },
   beforeUpdate() {
-    if(this.current_user===null) {
-      this.$router.push({ name: 'forecast'});
+    if(!this.current_user || this.current_user!==this.user_id) {
+      this.$router.push({ name: 'forecast-show'});
     }
   },
   methods: {
