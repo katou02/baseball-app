@@ -73,6 +73,11 @@ export default {
           this.votes = response.data.vote
           this.num = this.$route.params.id
           this.chart()
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/champions/${this.$route.params.id}`)
+          }
         })
     },
     fetchCategory() {

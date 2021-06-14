@@ -131,6 +131,11 @@ export default {
         .then(response =>{
           this.tweets = response.data.tweets;
           this.current_user = response.data.current_user
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/tournaments/${this.$route.params.id}`)
+          }
         })
     },
     fetchCategory() {

@@ -168,6 +168,11 @@ export default {
           this.labels = [response.data.win_school,response.data.lose_school]
           this.probability = response.data.probability
           this.chart();
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/forecasts/${this.$route.params.id}`)
+          }
         })
     },
     chart() {

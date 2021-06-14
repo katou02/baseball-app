@@ -105,6 +105,11 @@ export default {
           this.current_user = response.data.current_user
           this.user_image = response.data.user_image.url
           this.markers.push({position: { lat:this.map.latitude, lng:this.map.longitude } })
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/maps/${this.$route.params.id}`)
+          }
         })
     },
     deleteMap(id) {
