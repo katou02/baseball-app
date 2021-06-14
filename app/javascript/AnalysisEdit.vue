@@ -139,7 +139,7 @@ export default {
       })
   },
   beforeUpdate() {
-    if(this.current_user===null || this.current_user!==this.user_id) {
+    if(!this.current_user || this.current_user!==this.user_id) {
       this.$router.push({ name: 'analysis'});
     }
   },
