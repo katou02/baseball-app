@@ -113,8 +113,13 @@ export default {
       axios
         .get('api/v1/forecasts.json')
         .then(response =>{
-        this.forecasts = response.data.forecasts;
-        this.current_user = response.data.current_user
+          this.forecasts = response.data.forecasts;
+          this.current_user = response.data.current_user
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go('/forecasts')
+          }
         })
     },
     fetchCategory() {

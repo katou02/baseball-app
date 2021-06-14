@@ -104,6 +104,11 @@ export default {
         .get(`/api/v1/maps/new?tournament_id=1`)
         .then(response => {
           this.current_user = response.data.current_user
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/champions/${this.$route.query.tournament_id}`)
+          }
         })
     },
     clickCallback: function (pageNum) {
