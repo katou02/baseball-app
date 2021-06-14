@@ -130,6 +130,11 @@ export default {
         .then(response =>{
           this.analysis = response.data;
           this.user_image = response.data.user_image.url
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/analyses/${this.$route.params.id}`)
+          }
         })
     },
     fetchComments() {

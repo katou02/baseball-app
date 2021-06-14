@@ -140,9 +140,14 @@ export default {
       axios
         .get(`/api/v1/tournaments/${this.$route.params.id}/watch_fcs.json`)
         .then(response =>{
-        this.forecasts = response.data.forecasts;
-        this.current_user = response.data.current_user
-        this.num = this.$route.params.id
+          this.forecasts = response.data.forecasts;
+          this.current_user = response.data.current_user
+          this.num = this.$route.params.id
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/tournaments/${this.$route.params.id}/watch_fcs`)
+          }
         })
     },
     fetchCategory() {

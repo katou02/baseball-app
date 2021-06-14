@@ -144,6 +144,11 @@ export default {
           this.analyses = response.data.analyses;
           this.current_user = response.data.current_user
           this.num = this.$route.params.id
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/tournaments/${this.$route.params.id}/watch_ays`)
+          }
         })
     },
     fetchCategory() {

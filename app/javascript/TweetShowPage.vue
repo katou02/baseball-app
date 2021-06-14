@@ -138,6 +138,11 @@ export default {
           this.user = response.data.user_id
           this.user_image = response.data.user_image.url
           this.tweet_image = response.data.tweet_image.url
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/tweets/${this.$route.params.id}`)
+          }
         })
     },
     deleteTweet(id) {
