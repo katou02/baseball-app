@@ -68,7 +68,7 @@ export default {
       axios
         .get('/api/v1/users.json')
         .then(response =>{
-          this.current_user = response.data[0].current_user
+          this.current_user = response.data.current_user
         })
     },
     fetchNotification() {
