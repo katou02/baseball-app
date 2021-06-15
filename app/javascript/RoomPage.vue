@@ -62,7 +62,7 @@ export default {
   methods: {
     fetchRooms() {
       axios
-        .get('api/v1/rooms')
+        .get('/api/v1/rooms')
         .then(response =>{
           this.rooms = response.data.entry;
           if(!response.data.current_user) {
