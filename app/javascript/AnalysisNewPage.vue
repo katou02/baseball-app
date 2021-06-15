@@ -98,7 +98,7 @@
           </div>
           <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="mb-5"></v-text-field>
           <p v-if="!!errors['title']" style="color: red;">{{ errors['title'][0]}}</p>
-          <v-textarea v-model="text" type="text" rows="2" cols="30" label="分析内容" class="mt-5" outlined></v-textarea>
+          <v-textarea v-model="text" type="text" rows="2" cols="30" label="本文" class="mt-5" outlined></v-textarea>
           <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
           <!-- <input v-if="!url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
           <label v-if="!url" class="photo w-25">
