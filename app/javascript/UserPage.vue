@@ -77,7 +77,7 @@ export default {
       axios
         .get('api/v1/users.json')
         .then(response =>{
-          this.users = response.data;
+          this.users = response.data.users;
         })
     },
     clickCallback: function (pageNum) {
