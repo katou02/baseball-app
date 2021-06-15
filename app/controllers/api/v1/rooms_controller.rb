@@ -2,14 +2,16 @@ class Api::V1::RoomsController < ApiController
   skip_before_action :verify_authenticity_token
   
   def index
-    @currentEntries = current_user.entries
-    myRoomIds = []
-  
-    @currentEntries.each do | entry |
-      myRoomIds << entry.room.id
+    if current_user.present?
+      @currentEntries = current_user.entries
+      myRoomIds = []
+    
+      @currentEntries.each do | entry |
+        myRoomIds << entry.room.id
+      end
+      @anotherEntries = Entry.where(room_id: myRoomIds).where.not(user_id: current_user.id).order(id: "DESC")
+      render 'index', formats: 'json', handlers: 'jbuilder'
     end
-    @anotherEntries = Entry.where(room_id: myRoomIds).where.not(user_id: current_user.id).order(id: "DESC")
-    render 'index', formats: 'json', handlers: 'jbuilder'
   end
 
   def create
