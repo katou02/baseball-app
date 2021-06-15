@@ -24,7 +24,8 @@
       <router-link :to="{name: 'tweet'}" class="return-btn text-white">記事一覧へ戻る</router-link>
     </div>
     <div class="post-user-name">
-      <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{tweet.nickname}}</router-link></h5>
+      <div v-if="tweet.current_user"><h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{tweet.nickname}}</router-link></h5></div>
+      <div v-else><h5>投稿者:未ログインにより非表示</h5></div>
       <div v-if="user_image"> 
         <img :src= user_image class="user-icon mt-1 mb-5">
       </div>
