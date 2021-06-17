@@ -25,7 +25,8 @@ export default {
     return {
       schools: [],
       selected: '',
-      current_user: ''
+      current_user: '',
+      my_champion: ''
     }
   },
   mounted() {
@@ -43,6 +44,10 @@ export default {
         .then(response => {
           this.schools = response.data.select_schools
           this.current_user = response.data.current_user
+          this.my_champion = response.data.my_champion
+          if(response.data.my_champion || !response.data.current_user) {
+            this.$router.push({ name: 'top'});
+          }
         })
     },
     createChampion() {
