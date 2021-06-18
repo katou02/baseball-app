@@ -61,9 +61,9 @@
                   label="スコア"
                   solo>
                 </v-select>
+                <p v-if="!!errors['school_b_score']" style="color: red;">{{ errors['school_b_score'][0]}}</p>
               </div>
             </div>
-            <p v-if="!!errors['school_b_score']" style="color: red;">{{ errors['school_b_score'][0]}}</p>
             <div class="round w-25 mx-auto mt-3">
               <label>ラウンド</label><br>
               <v-select
