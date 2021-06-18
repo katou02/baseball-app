@@ -26,7 +26,7 @@
                 outlined>
               </v-select>
             </ul>
-            <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
+            <!-- <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p> -->
           </div>
           <br><p>5段階評価</p>
           <div class="select">
