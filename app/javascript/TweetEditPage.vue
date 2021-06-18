@@ -91,6 +91,7 @@ export default {
       score: score,
       school_a: '',
       school_b: '',
+      user_id: '',
       title: '',
       text: '',
       errors: '',
@@ -104,7 +105,8 @@ export default {
       .get(`/api/v1/tweets/${this.$route.params.id}/edit.json`)
       .then(response =>{
         this.children = response.data.schools;
-        this.current_user = response.data.current_user.current_user
+        this.current_user = response.data.current_user.id
+        this.user_id = response.data.user_id
       })
     axios
       .get(`/api/v1/tweets/${this.$route.params.id}.json`)
@@ -121,8 +123,8 @@ export default {
       })
   },
   beforeUpdate() {
-    if(this.current_user===null) {
-      this.$router.push({ name: 'tweet'});
+    if(!this.current_user || this.current_user!==this.user_id) {
+      this.$router.push({ name: 'tweet-show'});
     }
   },
   methods: {

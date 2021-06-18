@@ -77,7 +77,12 @@ export default {
       axios
         .get('api/v1/users.json')
         .then(response =>{
-          this.users = response.data;
+          this.users = response.data.users;
+          if(!response.data.current_user) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.push({ name: 'top'});
+          }
         })
     },
     clickCallback: function (pageNum) {

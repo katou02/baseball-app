@@ -12,6 +12,7 @@
             :items="schools"
             outlined>
           </v-select>
+          <p v-if="!!error['champion_school']" style="color: red;">{{ error['champion_school'][0]}}</p>
           <v-btn color="warning" dark type="submit">投票</v-btn>
         </div>
       </v-card>
@@ -25,7 +26,9 @@ export default {
     return {
       schools: [],
       selected: '',
-      current_user: ''
+      current_user: '',
+      my_champion: '',
+      error: ''
     }
   },
   mounted() {
@@ -43,6 +46,10 @@ export default {
         .then(response => {
           this.schools = response.data.select_schools
           this.current_user = response.data.current_user
+          this.my_champion = response.data.my_champion
+          if(response.data.my_champion || !response.data.current_user) {
+            this.$router.push({ name: 'top'});
+          }
         })
     },
     createChampion() {
@@ -51,6 +58,11 @@ export default {
         .then(response => {
           this.$router.push({ name: 'champion', params: { id: this.$route.query.tournament_id } });
         })
+        .catch(error => {
+          if (error.response.data && error.response.data.errors) {
+            this.error = error.response.data.errors;
+          }
+        });
     }
   }
 }

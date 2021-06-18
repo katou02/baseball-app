@@ -3,7 +3,7 @@
     <router-link :to="{name: 'top'}" class="return-top-mypage text-white">トップページ</router-link>
     <router-link :to="{name: 'user'}" class="users-btn text-white">ユーザー一覧</router-link>
     <router-link :to="{name: 'room'}" class="dm-btn text-white">DM</router-link>
-    <span v-if="user_id==current_id || user.current_user.admin==true">
+    <span v-if="user_id==current_user || user.current_user.admin==true">
       <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit text-white">編集する</router-link>
     </span>
     <p class="text-center">ID:{{user.id}}</p>
@@ -28,7 +28,7 @@
       <!-- </router-link> -->
     </div>
     <!-- フォローボタン -->
-    <div v-if="current_id !== user_id">
+    <div v-if="current_user !== user_id">
       <div class="follow_form mt-2">
       <button
           v-if="user.check"
@@ -297,7 +297,7 @@ export default {
       tab: null,
       user: [],
       user_id: '',
-      current_id: [],
+      current_user: [],
       my_tweets: [],
       my_analyses: [],
       my_forecasts: [],
@@ -342,10 +342,19 @@ export default {
   methods: {
     fetchUser() {
       axios
+        .get('/api/v1/users')
+        .then(response =>{
+          if(!response.data.current_user) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.push({ name: 'top'});
+          }
+        })
+      axios
         .get(`/api/v1/users/${this.$route.params.id}.json`)
         .then(response =>{
           this.user = response.data
-          this.current_id = response.data.current_user.id
+          this.current_user = response.data.current_user.id
           this.user_id = response.data.id
           this.my_likes = response.data.likes
           this.my_tweets = response.data.tweet

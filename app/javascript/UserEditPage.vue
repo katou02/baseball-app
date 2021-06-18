@@ -53,6 +53,7 @@ export default {
     }
   },
   mounted() {
+    this.UserCheck()
     axios
       .get(`/api/v1/users/${this.$route.params.id}.json`)
       .then(response =>{
@@ -62,6 +63,15 @@ export default {
       })
   },
   methods: {
+    UserCheck() {
+      axios
+        .get(`/api/v1/users/${this.$route.params.id}/edit.json`)
+        .then(response => {
+          if(response.data.current_user===null || response.data.current_user.id != this.$route.params.id) {
+            this.$router.push({ name: 'top'});
+          }
+        })
+    },
     editUser() {
       let formData = new FormData()
       const config = {
@@ -111,7 +121,7 @@ export default {
         set: function (v) {
             this.pref = v;
         }
-    },
+    }
   }
 }
 </script>

@@ -24,7 +24,8 @@
         <router-link :to="{name: 'forecast'}" class="return-btn text-white">記事一覧へ戻る</router-link>
       </div>
       <div class="post-user-name">
-        <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: forecast.user_id}}">{{forecast.nickname}}</router-link></h5>
+        <div v-if="forecast.current_user"><h5>投稿者:<router-link :to="{name: 'user-show',params: {id: forecast.user_id}}">{{forecast.nickname}}</router-link></h5></div>
+        <div v-else><h5>投稿者:未ログインにより非表示</h5></div>
         <div v-if="user_image"> 
           <img :src= user_image class="user-icon mt-1 mb-5">
         </div>
@@ -168,6 +169,11 @@ export default {
           this.labels = [response.data.win_school,response.data.lose_school]
           this.probability = response.data.probability
           this.chart();
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/forecasts/${this.$route.params.id}`)
+          }
         })
     },
     chart() {

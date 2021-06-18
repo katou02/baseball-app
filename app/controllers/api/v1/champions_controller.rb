@@ -33,7 +33,7 @@ class Api::V1::ChampionsController < ApiController
     if champion.save
       render json: champion, status: :created
     else
-      render json: { errors: champion.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: champion.errors.keys.map { |key| [key, champion.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
 

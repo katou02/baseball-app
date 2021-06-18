@@ -4,7 +4,5 @@ json.schools do
     json.id school.id
   end
 end
-
-json.current_user do
-  json.current_user current_user
-end
+json.current_user current_user
+json.user_id @tweet.user_id

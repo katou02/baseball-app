@@ -17,7 +17,7 @@
         <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
       </div>
       <!-- 記事 -->
-      <div class="d-flex">
+      <div class="d-flex list">
         <Side></Side>
         <v-row class="ml-5">
           <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
@@ -32,7 +32,7 @@
                       {{e.time}}
                     </div>
                     <div class="article-title mt-3">
-                      <p class="h4">{{e.round}}</p>
+                      <p class="h5">{{e.round}}</p>
                       {{e.school_a}}vs{{e.school_b}}
                     </div>
                     <div class="sub-title">
@@ -102,6 +102,11 @@ export default {
         .then(response =>{
           this.tweets = response.data.tweets;
           this.current_user = response.data.current_user
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go('/tweets')
+          }
           this.pageback()
         })
     },

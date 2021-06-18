@@ -22,7 +22,8 @@
       <router-link :to="{name: 'map',query: {tournament_id: map.tournament}}" class="return-btn text-white">戻る</router-link>
     </div>
     <div class="post-user-name">
-      <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{map.nickname}}</router-link></h5>
+      <div v-if="current_user"><h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{map.nickname}}</router-link></h5></div>
+      <div v-else><h5>投稿者:未ログインにより非表示</h5></div>
       <div v-if="user_image"> 
         <img :src= user_image class="user-icon mt-1 mb-5">
       </div>
@@ -31,43 +32,48 @@
       </div>
     </div>
     <p class="text-right">{{map.time}}</p>
-      <div class="map-school">
-        {{map.school}}のふるさと
-        <p class="text-center pt-1">{{map.address}}</p>
+    <div class="map-school">
+      {{map.school}}高校のふるさと
+    </div>
+    <div class="map-title ml-5 mb-5">
+      {{map.address}}
+    </div>
+    <div class="map-adress">
+      <div id="map">
+        <GmapMap
+        :center="{lat: map.latitude, lng:map.longitude}"
+        :zoom="15"
+        map-type-id="terrain"
+        style="width: 100%; height: 300px"
+        >
+        <GmapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="center=m.position"
+        />
+        </GmapMap>
       </div>
+    </div>
+    <div class="map-title ml-5 mb-5">
+      ふるさと紹介
+    </div>
     <div class="map-info">
       <div class="map-text">
-        <div class="mt-4 mb-4 w-100" style="white-space:pre-wrap;">
+        <div class="mt-4 mb-4" style="white-space:pre-wrap;">
           {{map.text}}
+          <img :src= image class="mt-3">
         </div>
-        <div class="map-image">
+        <!-- <div class="map-image">
           <div class="h-100" v-if="image">
             <img :src= image class="map-image_content">
-          </div>
-          <div class="h-100" v-else>
+          </div> -->
+          <!-- <div class="h-100" v-else>
             <img src="../assets/images/map-no-image.png" class="map-image_content">
-          </div>
-        </div>
-      </div>
-      <div class="map-adress">
-        マップ
-        <div id="map">
-          <GmapMap
-          :center="{lat: map.latitude, lng:map.longitude}"
-          :zoom="15"
-          map-type-id="terrain"
-          style="width: 100%; height: 300px"
-          >
-          <GmapMarker
-          :key="index"
-          v-for="(m, index) in markers"
-          :position="m.position"
-          :clickable="true"
-          :draggable="true"
-          @click="center=m.position"
-          />
-          </GmapMap>
-        </div>
+          </div> -->
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -100,6 +106,11 @@ export default {
           this.current_user = response.data.current_user
           this.user_image = response.data.user_image.url
           this.markers.push({position: { lat:this.map.latitude, lng:this.map.longitude } })
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/maps/${this.$route.params.id}`)
+          }
         })
     },
     deleteMap(id) {
