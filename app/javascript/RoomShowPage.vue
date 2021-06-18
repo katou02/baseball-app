@@ -68,13 +68,30 @@ export default {
       user: '',
       data: '',
       body: '',
-      errors: ''
+      errors: '',
+      current_user: ''
     }
   },
   mounted() {
+    this.fetchUser()
     this.fetchMember()
   },
   methods: {
+    fetchUser() {
+      axios
+        .get('/api/v1/rooms')
+        .then(response =>{
+          this.current_user = response.data.current_user
+          if(!response.data.current_user) {
+            this.$router.push({ name: 'top'});
+          }
+          if(!response.data.current_user) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.push({ name: 'top'});
+          }
+        })
+    },
     fetchMember() {
       axios
         .get(`/api/v1/rooms/${this.$route.params.id}.json`)

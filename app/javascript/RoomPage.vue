@@ -62,9 +62,17 @@ export default {
   methods: {
     fetchRooms() {
       axios
-        .get('api/v1/rooms')
+        .get('/api/v1/rooms')
         .then(response =>{
-          this.rooms = response.data;
+          this.rooms = response.data.entry;
+          if(!response.data.current_user) {
+            this.$router.push({ name: 'top'});
+          }
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.push({ name: 'top'});
+          }
         })
     },
     clickCallback(pageNum) {

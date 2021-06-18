@@ -24,7 +24,8 @@
       <router-link :to="{name: 'tweet'}" class="return-btn text-white">記事一覧へ戻る</router-link>
     </div>
     <div class="post-user-name">
-      <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{tweet.nickname}}</router-link></h5>
+      <div v-if="tweet.current_user"><h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{tweet.nickname}}</router-link></h5></div>
+      <div v-else><h5>投稿者:未ログインにより非表示</h5></div>
       <div v-if="user_image"> 
         <img :src= user_image class="user-icon mt-1 mb-5">
       </div>
@@ -138,6 +139,11 @@ export default {
           this.user = response.data.user_id
           this.user_image = response.data.user_image.url
           this.tweet_image = response.data.tweet_image.url
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/tweets/${this.$route.params.id}`)
+          }
         })
     },
     deleteTweet(id) {

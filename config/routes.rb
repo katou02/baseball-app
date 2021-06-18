@@ -91,7 +91,7 @@ Rails.application.routes.draw do
   #   end
   # end
   # resources :relationships, only: [:create,:destroy]
-  resources :notifications, only: :index
+  # resources :notifications, only: :index
   # resources :messages, only: :create
   # resources :rooms,only: [:index,:create,:show]
   # resources :champions,only: [:new,:create,:destroy,:show]

@@ -24,7 +24,8 @@
         <router-link :to="{name: 'analysis'}" class="return-btn text-white">記事一覧へ戻る</router-link>
       </div>
       <div class="post-user-name">
-        <h5>投稿者:<router-link :to="{name: 'user-show',params: {id: analysis.user_id}}">{{analysis.nickname}}</router-link></h5>
+        <div v-if="analysis.current_user"><h5>投稿者:<router-link :to="{name: 'user-show',params: {id: analysis.user_id}}">{{analysis.nickname}}</router-link></h5></div>
+        <div v-else><h5>投稿者:未ログインにより非表示</h5></div>
         <div v-if="user_image"> 
           <img :src= user_image class="user-icon mt-1 mb-5">
         </div>
@@ -76,7 +77,7 @@
         コメント
       </div>
       <div v-for="e in comment" :key="e.id">
-        <div class="comment-user text-center">
+        <div class="comment-user">
           <em class="pr-4">{{e.comment_nickname}}</em>
           {{e.time}}
           <span v-if="analysis.current_user==e.user_id"><button class="comment-delete_button" @click="onAlertComment(e.id)">削除</button></span>
@@ -130,6 +131,11 @@ export default {
         .then(response =>{
           this.analysis = response.data;
           this.user_image = response.data.user_image.url
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/analyses/${this.$route.params.id}`)
+          }
         })
     },
     fetchComments() {

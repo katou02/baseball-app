@@ -10,7 +10,7 @@ end
 json.vote do
   json.array! @vote
 end
-json.current_user @current_user
+json.current_user current_user
 # json.my_champion @my_champion.champion_school.name
 json.set! :my_champion do
   if @my_champion.present?

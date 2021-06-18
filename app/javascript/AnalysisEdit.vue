@@ -63,7 +63,7 @@
           </div>
           <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
           <p v-if="!!errors['title']" style="color: red;">{{ errors['title'][0]}}</p>
-          <v-textarea v-model="text" type="text" label="本文"></v-textarea>
+          <v-textarea v-model="text" type="text" label="本文" class="mt-5" outlined></v-textarea>
           <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
           <!-- <input v-if="!url && !image.url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
           <label v-if="!url && !image.url" class="photo w-25">
@@ -104,6 +104,7 @@ export default {
       attack: '',
       defensive: '',
       pitcher: '',
+      user_id: '',
       comprehensive: '',
       expectation: '',
       title: '',
@@ -119,7 +120,8 @@ export default {
       .get(`/api/v1/analyses/${this.$route.params.id}/edit.json`)
       .then(response =>{
         this.children = response.data.schools;
-        this.current_user = response.data.current_user.current_user
+        this.current_user = response.data.current_user.id
+        this.user_id = response.data.user_id
       })
     axios
       .get(`/api/v1/analyses/${this.$route.params.id}.json`)
@@ -137,8 +139,8 @@ export default {
       })
   },
   beforeUpdate() {
-    if(this.current_user===null) {
-      this.$router.push({ name: 'analysis'});
+    if(!this.current_user || this.current_user!==this.user_id) {
+      this.$router.push({ name: 'analysis-show'});
     }
   },
   methods: {

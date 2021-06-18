@@ -67,6 +67,7 @@ export default {
         if(this.current_user === null && this.$store.state.signedIn == true) {
           delete localStorage.csrf
           delete localStorage.signedIn
+          this.$router.go('/')
         }
       })
     }

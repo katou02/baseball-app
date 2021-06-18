@@ -10,11 +10,11 @@
 <script>
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TopIndexPage from './TopIndexPage.vue'
-import TweetIndexPage from './TweetIndexPage.vue'
+import TopPage from './TopPage.vue'
+import TweetPage from './TweetPage.vue'
 import TweetShowPage from './TweetShowPage.vue'
-import TournamentPage from './TournamentPage.vue'
-import AnalysisIndexPage from './AnalysisIndexPage.vue'
+import WatchtwsPage from './WatchtwsPage.vue'
+import AnalysisPage from './AnalysisPage.vue'
 import AnalysisShowPage from './AnalysisShowPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
 import ForecastPage from './ForecastPage.vue'
@@ -57,37 +57,12 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: TopIndexPage,
+      component: TopPage,
       name: 'top'
     },
     {
-      path: '/tweets',
-      component: TweetIndexPage,
-      name: 'tweet'
-    },
-    {
-      path: '/tweets/:id(\\d+)',
-      component: TweetShowPage,
-      name: 'tweet-show'
-    },
-    {
-      path: '/tweets/new',
-      component: TweetNewPage,
-      name: 'tweet-new'
-    },
-    {
-      path: '/tweets/:id/edit',
-      component: TweetEditPage,
-      name: 'tweet-edit'
-    },
-    {
-      path: '/tournaments/:id',
-      component: TournamentPage,
-      name: 'tournament'
-    },
-    {
       path: '/analyses',
-      component: AnalysisIndexPage,
+      component: AnalysisPage,
       name: 'analysis'
     },
     {
@@ -96,7 +71,7 @@ const router = new VueRouter({
       name: 'analysis-new'
     },
     {
-      path: '/analyses/:id/edit',
+      path: '/analyses/:id(\\d+)/edit',
       component: AnalysisEdit,
       name: 'analysis-edit'
     },
@@ -106,9 +81,19 @@ const router = new VueRouter({
       name: 'analysis-show'
     },
     {
-      path: '/tournaments/:id/watch_ays',
-      component: WatchaysPage,
-      name: 'watch_ays'
+      path: '/champions/:id(\\d+)',
+      component: ChampionPage,
+      name: 'champion'
+    },
+    {
+      path: '/contacts',
+      component: ContactPage,
+      name: 'contact',
+    },
+    {
+      path: '/champions/new',
+      component: ChampionNewPage,
+      name: 'champion-new'
     },
     {
       path: '/forecasts',
@@ -121,7 +106,7 @@ const router = new VueRouter({
       name: 'forecast-show'
     },
     {
-      path: '/forecasts/:id/edit',
+      path: '/forecasts/:id(\\d+)/edit',
       component: ForecastEditPage,
       name: 'forecast-edit'
     },
@@ -129,36 +114,6 @@ const router = new VueRouter({
       path: '/forecasts/new',
       component: ForecastNewPage,
       name: 'forecast-new'
-    },
-    {
-      path: '/tournaments/:id/watch_fcs',
-      component: WatchfcsPage,
-      name: 'watch_fcs'
-    },
-    {
-      path: '/users',
-      component: UserPage,
-      name: 'user'
-    },
-    {
-      path: '/users/:id',
-      component: UserShowPage,
-      name: 'user-show'
-    },
-    {
-      path: '/users/:id/edit',
-      component: UserEditPage,
-      name: 'user-edit'
-    },
-    {
-      path: '/users/:id/following',
-      component: FollowingPage,
-      name: 'following'
-    },
-    {
-      path: '/users/:id/followers',
-      component: FollowerPage,
-      name: 'follower'
     },
     {
       path: '/maps',
@@ -181,9 +136,9 @@ const router = new VueRouter({
       name: 'map-edit'
     },
     {
-      path: '/champions/:id(\\d+)',
-      component: ChampionPage,
-      name: 'champion'
+      path: '/notifications',
+      component: NotificationPage,
+      name: 'notification'
     },
     {
       path: '/rooms',
@@ -191,32 +146,85 @@ const router = new VueRouter({
       name: 'room'
     },
     {
-      path: '/rooms/:id',
+      path: '/rooms/:id(\\d+)',
       component: RoomShowPage,
       name: 'room-show'
     },
+    { 
+      path: '/signup',  
+      name: 'Signup',     
+      component: Signup 
+    },
+    { 
+      path: '/signin',   
+      name: 'Signin',      
+      component: Signin 
+    },
     {
-      path: '/tournaments/:id/watch_avg',
+      path: '/tweets',
+      component: TweetPage,
+      name: 'tweet'
+    },
+    {
+      path: '/tweets/:id(\\d+)',
+      component: TweetShowPage,
+      name: 'tweet-show'
+    },
+    {
+      path: '/tweets/new',
+      component: TweetNewPage,
+      name: 'tweet-new'
+    },
+    {
+      path: '/tweets/:id(\\d+)/edit',
+      component: TweetEditPage,
+      name: 'tweet-edit'
+    },
+    {
+      path: '/tournaments/:id(\\d+)',
+      component: WatchtwsPage,
+      name: 'tournament'
+    },
+    {
+      path: '/tournaments/:id(\\d+)/watch_ays',
+      component: WatchaysPage,
+      name: 'watch_ays'
+    },
+    {
+      path: '/tournaments/:id(\\d+)/watch_fcs',
+      component: WatchfcsPage,
+      name: 'watch_fcs'
+    },
+    {
+      path: '/tournaments/:id(\\d+)/watch_avg',
       component: Average,
       name: 'average'
     },
     {
-      path: '/champions/new',
-      component: ChampionNewPage,
-      name: 'champion-new'
+      path: '/users',
+      component: UserPage,
+      name: 'user'
     },
     {
-      path: '/notifications',
-      component: NotificationPage,
-      name: 'notification'
+      path: '/users/:id(\\d+)',
+      component: UserShowPage,
+      name: 'user-show'
     },
     {
-      path: '/contacts',
-      component: ContactPage,
-      name: 'contact',
+      path: '/users/:id(\\d+)/edit',
+      component: UserEditPage,
+      name: 'user-edit'
     },
-    { path: '/signup',    name: 'Signup',      component: Signup },
-    { path: '/signin',    name: 'Signin',      component: Signin }
+    {
+      path: '/users/:id(\\d+)/following',
+      component: FollowingPage,
+      name: 'following'
+    },
+    {
+      path: '/users/:id(\\d+)/followers',
+      component: FollowerPage,
+      name: 'follower'
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

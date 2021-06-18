@@ -53,7 +53,7 @@
       <div class="search-area mt-3">
         <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
       </div>
-      <div class="d-flex">
+      <div class="d-flex list">
         <Side></Side>
         <v-row class="ml-5">
           <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
@@ -144,6 +144,11 @@ export default {
           this.analyses = response.data.analyses;
           this.current_user = response.data.current_user
           this.num = this.$route.params.id
+          if(!response.data.current_user && this.$store.state.signedIn == true) {
+            delete localStorage.csrf
+            delete localStorage.signedIn
+            this.$router.go(`/tournaments/${this.$route.params.id}/watch_ays`)
+          }
         })
     },
     fetchCategory() {
