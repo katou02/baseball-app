@@ -41,6 +41,7 @@ export default {
       current_user: '',
       name: '',
       selected: '',
+      user: '',
       errors: '',
       n: ''
     }
@@ -49,7 +50,7 @@ export default {
     this.fetchSchools()
   },
   beforeUpdate() {
-    if(this.current_user===null) {
+    if(this.current_user===null || this.current_user.id != this.user) {
       this.$router.push({ name: 'map',query: {tournament_id: 1}});
     }
   },
@@ -93,6 +94,7 @@ export default {
         .get(`/api/v1/maps/${this.$route.params.id}/edit.json`)
         .then(response =>{
           this.current_user = response.data.current_user
+          this.user = response.data.user
         })
     },
     setImage(e){
