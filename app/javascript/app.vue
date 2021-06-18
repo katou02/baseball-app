@@ -10,11 +10,11 @@
 <script>
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TopIndexPage from './TopIndexPage.vue'
-import TweetIndexPage from './TweetIndexPage.vue'
+import TopPage from './TopPage.vue'
+import TweetPage from './TweetPage.vue'
 import TweetShowPage from './TweetShowPage.vue'
 import WatchtwsPage from './WatchtwsPage.vue'
-import AnalysisIndexPage from './AnalysisIndexPage.vue'
+import AnalysisPage from './AnalysisPage.vue'
 import AnalysisShowPage from './AnalysisShowPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
 import ForecastPage from './ForecastPage.vue'
@@ -57,12 +57,12 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: TopIndexPage,
+      component: TopPage,
       name: 'top'
     },
     {
       path: '/analyses',
-      component: AnalysisIndexPage,
+      component: AnalysisPage,
       name: 'analysis'
     },
     {
@@ -162,7 +162,7 @@ const router = new VueRouter({
     },
     {
       path: '/tweets',
-      component: TweetIndexPage,
+      component: TweetPage,
       name: 'tweet'
     },
     {
