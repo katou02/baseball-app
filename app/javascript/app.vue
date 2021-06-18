@@ -13,7 +13,7 @@ import VueRouter from 'vue-router'
 import TopIndexPage from './TopIndexPage.vue'
 import TweetIndexPage from './TweetIndexPage.vue'
 import TweetShowPage from './TweetShowPage.vue'
-import TournamentPage from './TournamentPage.vue'
+import WatchtwsPage from './WatchtwsPage.vue'
 import AnalysisIndexPage from './AnalysisIndexPage.vue'
 import AnalysisShowPage from './AnalysisShowPage.vue'
 import WatchaysPage from './WatchaysPage.vue'
@@ -182,7 +182,7 @@ const router = new VueRouter({
     },
     {
       path: '/tournaments/:id(\\d+)',
-      component: TournamentPage,
+      component: WatchtwsPage,
       name: 'tournament'
     },
     {
