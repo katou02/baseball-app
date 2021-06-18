@@ -20,9 +20,9 @@
     <div class="search-area mt-5">
       <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
-    <div class="d-flex">
+    <div class="d-flex list">
       <Side></Side>
-      <v-row>
+      <v-row class="ml-5">
         <v-col cols="12"  sm="6" md="6" lg="4" v-for="e in getLists" :key="e.id">
           <div class="map-data mt-5">
             <router-link :to="{name: 'map-show',params: {id: e.id}}">

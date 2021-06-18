@@ -17,7 +17,7 @@
         <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
       </div>
       <!-- 記事 -->
-      <div class="d-flex">
+      <div class="d-flex list">
         <Side></Side>
         <v-row class="ml-5">
           <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
