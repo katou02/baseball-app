@@ -10,23 +10,6 @@
     <div class="text-format mt-5 text-primary">
       観た試合の感想をみんなに発信してみましょう！
     </div>
-    <!-- <div class="text-format mt-5 mb-4 text-warning">
-      大会別
-    </div>
-    <div class="title mt-5 ml-5">
-      <router-link :to= "'/tweets'" class="title-child text-white">
-        全ての試合記事
-        <i class="fa fa-baseball-ball text-white"></i>
-      </router-link>
-      <div v-for="e in categories" :key="e.id">
-        <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'tournament',params: {id: e.id}}" @click.native="fetchTweets()" class="title-child text-white ml-5">
-            <i class="fa fa-baseball-ball text-white"></i>
-            {{e.category}}
-          </router-link>
-        </div>
-      </div>
-    </div> -->
     <div class="text-format mt-5 text-success">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id==e.id">
@@ -43,7 +26,7 @@
           <v-text-field  type="text" v-model="keyword" label="検索"></v-text-field>
         </div>
         <!-- 記事 -->
-        <div class="d-flex">
+        <div class="d-flex list">
           <Side></Side>
           <v-row class="ml-5">
             <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
