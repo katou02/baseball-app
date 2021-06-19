@@ -36,12 +36,10 @@ class Api::V1::ForecastsController < ApiController
   end
   
   def update
-    if @forecast.user_id == current_user.id || current_user.admin
-      if @forecast.update(update_params) 
+    if (@forecast.user_id == current_user.id || current_user.admin) && @forecast.update(update_params) 
         head :no_content
-      else
-        render json: { errors: @forecast.errors.keys.map { |key| [key, @forecast.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
-      end
+    else
+      render json: { errors: @forecast.errors.keys.map { |key| [key, @forecast.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
 
@@ -52,12 +50,10 @@ class Api::V1::ForecastsController < ApiController
   end
 
   def destroy
-    if @forecast.user_id == current_user.id || current_user.admin
-      if @forecast.destroy
-        head :no_content
-      else
-        render json: @forecast.errors, status: :unprocessable_entity
-      end
+    if (@forecast.user_id == current_user.id || current_user.admin) && @forecast.destroy
+      head :no_content
+    else
+      render json: @forecast.errors, status: :unprocessable_entity
     end
   end
 
