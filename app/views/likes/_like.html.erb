@@ -1,9 +1,0 @@
-<% if current_user.already_liked?(tweet)%>
-  <%=link_to tweet_like_path(tweet,tweet.likes), method: :delete,class: "good-after text-danger",remote: true do %>
-    <i class="fas fa-heart"></i><%= tweet.likes.count %>
-  <% end %>
-<% else %>
-  <%=link_to tweet_likes_path(tweet), method: :post,class: "good mb-2",remote: true do %>
-    <i class="fas fa-heart"></i><%= tweet.likes.count %>
-  <% end %>
-<% end %>
