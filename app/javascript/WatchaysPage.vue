@@ -57,7 +57,7 @@
         <Side></Side>
         <v-row class="ml-5">
           <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
-            <div class="analysis mt-5">
+            <div class="article mt-5">
               <router-link :to= "'/analyses/' + e.id">
                 <div class="d-flex h-100">
                   <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
