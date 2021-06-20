@@ -21,7 +21,7 @@
 #### インフラ
 • AWS(EC2,S3)  
 • Docker/Docker-compose  
-• CircleCI(CI) 　
+• CircleCI(CI/CD) 　
 
     
 ## 工夫点
