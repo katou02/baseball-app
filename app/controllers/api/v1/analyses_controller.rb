@@ -35,12 +35,10 @@ class Api::V1::AnalysesController < ApiController
   end
   
   def update
-    if @analysis.user_id == current_user.id || current_user.admin
-      if @analysis.update(update_params) 
+    if (@analysis.user_id == current_user.id || current_user.admin) && @analysis.update(update_params) 
         head :no_content
-      else
-        render json: { errors: @analysis.errors.keys.map { |key| [key, @analysis.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
-      end
+    else
+      render json: { errors: @analysis.errors.keys.map { |key| [key, @analysis.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
 
@@ -54,12 +52,10 @@ class Api::V1::AnalysesController < ApiController
   end
 
   def destroy
-    if @analysis.user_id == current_user.id || current_user.admin
-      if @analysis.destroy
-        head :no_content
-      else
-        render json: @analysis.errors, status: :unprocessable_entity
-      end
+    if (@analysis.user_id == current_user.id || current_user.admin) && @analysis.destroy
+      head :no_content
+    else
+      render json: @analysis.errors, status: :unprocessable_entity
     end
   end
 
