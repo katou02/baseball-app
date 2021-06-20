@@ -13,20 +13,20 @@
   background-image: url("https://pics.prcm.jp/d1c2e60537af9/78615919/jpeg/78615919.jpeg");
 }
 
-.analysis {
-  width: 400px;
-  height: 140px;
-  background-color: #f3f3f3;
-  border: solid 1px rgb(255, 255, 255);
-  &-image {
-    position: absolute;
-    width: 10%;
-  }
+// .analysis {
+//   width: 400px;
+//   height: 140px;
+//   background-color: #f3f3f3;
+//   border: solid 1px rgb(255, 255, 255);
+//   &-image {
+//     position: absolute;
+//     width: 10%;
+//   }
   
-  &:hover {
-    opacity: 0.5;
-  }
-}
+//   &:hover {
+//     opacity: 0.5;
+//   }
+// }
 
 .data-info {
   background-color: #EEFFFF;
