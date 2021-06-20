@@ -26,11 +26,11 @@
         <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
       </div>
       <!-- 記事 -->
-      <div class="d-flex list">
+      <div class="d-md-flex list">
         <Side></Side>
         <v-row class="ml-5">
           <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
-            <div class="forecast mt-5">
+            <div class="article mt-5">
               <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
                 <div class="d-flex h-100">
                   <div class="forecast-image"><img src="/images/ball.jpg" class="article-icon"></div>

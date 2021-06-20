@@ -1,6 +1,0 @@
-<%= form_for(current_user.following_relationships.find_by(following_id: user.id),remote: true, html: { method: :delete }) do |f| %>
-  <%# <%binding.pry%> %>
-  <div class="unfollow-user">
-    <%= f.submit "フォローを外す",class: "unfollow-btn" %>
-  </div>
-<% end %>

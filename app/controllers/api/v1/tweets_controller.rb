@@ -47,22 +47,18 @@ class Api::V1::TweetsController < ApiController
   end
   
   def update
-    if @tweet.user_id == current_user.id || current_user.admin
-      if @tweet.update(update_params) 
-        head :no_content
-      else
-        render json: { errors: @tweet.errors.keys.map { |key| [key, @tweet.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
-      end
+    if (@tweet.user_id == current_user.id || current_user.admin) && @tweet.update(update_params) 
+      head :no_content
+    else
+      render json: { errors: @tweet.errors.keys.map { |key| [key, @tweet.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
   
   def destroy
-    if @tweet.user_id == current_user.id || current_user.admin
-      if @tweet.destroy
-        head :no_content
-      else
-        render json: @tweet.errors, status: :unprocessable_entity
-      end
+    if (@tweet.user_id == current_user.id || current_user.admin) && @tweet.destroy
+      head :no_content
+    else
+      render json: @tweet.errors, status: :unprocessable_entity
     end
   end
   
