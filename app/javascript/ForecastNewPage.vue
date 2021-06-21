@@ -92,7 +92,6 @@ export default {
       child_id: '',
       win_school: '',
       lose_school: '',
-      current_user: '',
       text: '',
       title: '',
       errors: '',
@@ -119,12 +118,11 @@ export default {
     axios.get('/api/v1/forecasts/new.json')
     .then(response => (this.roots = response.data.roots,
                        this.children = response.data.children,
-                       this.grandChildren = response.data.grandChildren,
-                       this.current_user = response.data.current_user))
+                       this.grandChildren = response.data.grandChildren))
   },
-  beforeUpdate() {
-    if(this.current_user===null) {
-      this.$router.push({ name: 'forecast'});
+  created() {
+    if(!localStorage.signedIn) {
+      this.$router.replace('/forecasts')
     }
   },
   methods: {
