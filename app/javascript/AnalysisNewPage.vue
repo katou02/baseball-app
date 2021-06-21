@@ -136,7 +136,6 @@ export default {
       pitcher: '',
       comprehensive: '',
       expectation: '',
-      current_user: '',
       image: '',
       title: '',
       text: '',
@@ -148,12 +147,11 @@ export default {
   axios.get('/api/v1/analyses/new.json')
   .then(response => (this.roots = response.data.roots,
                       this.children = response.data.children,
-                      this.grandChildren = response.data.grandChildren,
-                      this.current_user = response.data.current_user))
+                      this.grandChildren = response.data.grandChildren))
   },
-  beforeUpdate() {
-    if(this.current_user===null) {
-      this.$router.push({ name: 'analysis'});
+  created() {
+    if(!localStorage.signedIn) {
+      this.$router.replace('/analyses')
     }
   },
   methods: {
