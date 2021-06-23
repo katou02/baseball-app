@@ -4,11 +4,12 @@
   height: 100%;
   width: 100%;
   &-menu {
-    margin-top: 50%;
     text-align: center;
     padding: 10px 30px;
-    background:rgba(176, 248, 253, 0.2);
+    // background:rgba(176, 248, 253, 0.2);
+    background-color: #66ccff;
     &-list {
+      padding-top: 100px;
       width: 70%;
       display: flex;
       margin: 0 auto;
@@ -22,7 +23,7 @@
     // color: white;
     text-align: center;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 60px;
     color: #000;
     text-shadow:1px 1px 0 rgb(255, 255, 255), -1px -1px 0 #FFF,
                 -1px 1px 0 #FFF, 1px -1px 0 #FFF,
