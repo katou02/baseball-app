@@ -56,7 +56,7 @@
           <v-textarea v-model="text" type="text" label="本文" outlined></v-textarea>
           <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
           <!-- <input v-if="!image.url && !url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
-          <label v-if="!url && !image.url" class="photo w-25">
+          <label v-if="!url && !image" class="photo w-25">
             ＋写真を選択
             <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
           </label>
@@ -64,8 +64,8 @@
             <img :src="url" width="320px" height="300px">
             <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
           </div>
-          <div v-if="image.url">
-            <img :src="image.url" width="320px" height="300px">
+          <div v-if="image">
+            <img :src="image" width="320px" height="300px">
             <v-btn color="error" type="submit" @click="deleteTweetImage" small>削除</v-btn>
           </div>
           <v-btn type="submit" color="info" class="text-white mt-5">編集する</v-btn>
@@ -119,7 +119,7 @@ export default {
         this.title = response.data.title
         this.text = response.data.text
         this.tournament = response.data.tournament
-        this.image = response.data.tweet_image
+        this.image = response.data.tweet_image.url
       })
   },
   beforeUpdate() {
