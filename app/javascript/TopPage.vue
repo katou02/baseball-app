@@ -2,7 +2,7 @@
   <div class="top">
     <Menu></Menu>
     <div class="top-title">
-      タイトルが入る
+      甲子園.com
     </div>
     <div class="top-menu-list">
       <router-link :to="{name: 'tweet'}" class="text-white">
