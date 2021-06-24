@@ -48,9 +48,11 @@ import "vuetify/dist/vuetify.min.css"
 import '@mdi/font/css/materialdesignicons.css'
 import VuejsDialog from 'vuejs-dialog';
 import Menu from './components/Menu'
+import VModal from 'vue-js-modal'
 
 Vue.use(VueRouter)
 Vue.use(VuejsDialog);
+Vue.use(VModal)
 
 const router = new VueRouter({
   mode: 'history',

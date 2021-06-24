@@ -10,7 +10,6 @@
             <label>学校</label><br>
             <v-select
               v-model="school"
-              @change="findGrandChildren" 
               item-text="name"
               item-value="id"
               :items="children"
@@ -66,7 +65,7 @@
           <v-textarea v-model="text" type="text" label="本文" class="mt-5" outlined></v-textarea>
           <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
           <!-- <input v-if="!url && !image.url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
-          <label v-if="!url && !image.url" class="photo w-25">
+          <label v-if="!url && !image" class="photo w-25">
             ＋写真を選択
             <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
           </label>
@@ -74,8 +73,8 @@
             <img :src="url" width="320px" height="300px">
             <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
           </div>
-          <div v-if="image.url">
-            <img :src="image.url" width="320px" height="300px">
+          <div v-if="image">
+            <img :src="image" width="320px" height="300px">
             <v-btn color="error" type="submit" @click="deleteForecastImage" small>削除</v-btn>
           </div>
           <v-btn type="submit" color="info" class="text-white mt-5">編集する</v-btn>
@@ -112,6 +111,7 @@ export default {
       text: '',
       score: score,
       errors: '',
+      url: '',
       n: ''
     }
   },
@@ -127,7 +127,7 @@ export default {
       .get(`/api/v1/analyses/${this.$route.params.id}.json`)
       .then(response =>{
         this.school = response.data.school_id;
-        this.image = response.data.fcs_image
+        this.image = response.data.fcs_image.url
         this.attack = response.data.attack;
         this.defensive = response.data.defensive
         this.pitcher = response.data.pitcher

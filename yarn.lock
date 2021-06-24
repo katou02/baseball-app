@@ -14,7 +14,7 @@
   "resolved" "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.12.5.tgz"
   "version" "7.12.5"
 
-"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.11.1":
+"@babel/core@^7.11.1":
   "integrity" "sha512-0qXcZYKZp3/6N2jKYVxZv0aNCsxTSVCiK72DTiTYZAu7sjg73W0/aynWjMbiGd87EQL4WyA8reiJVh92AVla9g=="
   "resolved" "https://registry.yarnpkg.com/@babel/core/-/core-7.12.3.tgz"
   "version" "7.12.3"
@@ -1142,7 +1142,7 @@
   "resolved" "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.5.2.tgz"
   "version" "3.5.2"
 
-"ajv@^6.1.0", "ajv@^6.10.2", "ajv@^6.12.3", "ajv@^6.12.4", "ajv@^6.12.5", "ajv@^6.9.1", "ajv@>=5.0.0":
+"ajv@^6.1.0", "ajv@^6.10.2", "ajv@^6.12.3", "ajv@^6.12.4", "ajv@^6.12.5":
   "integrity" "sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g=="
   "resolved" "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz"
   "version" "6.12.6"
@@ -1372,7 +1372,7 @@
   "resolved" "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz"
   "version" "1.11.0"
 
-"axios@^0.21.1", "axios@>= 0.20.0":
+"axios@^0.21.1":
   "integrity" "sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA=="
   "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz"
   "version" "0.21.1"
@@ -1827,7 +1827,7 @@
     "escape-string-regexp" "^1.0.5"
     "supports-color" "^5.3.0"
 
-"chart.js@^2.9.4", "chart.js@>= 2.5":
+"chart.js@^2.9.4":
   "integrity" "sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A=="
   "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-2.9.4.tgz"
   "version" "2.9.4"
@@ -2277,7 +2277,7 @@
     "postcss" "^7.0.6"
     "postcss-selector-parser" "^5.0.0-rc.4"
 
-"css-loader@*", "css-loader@^3.5.3":
+"css-loader@^3.5.3":
   "integrity" "sha512-M5lSukoWi1If8dhQAUCvj4H8vUt3vOnwbQBH9DdTm/s4Ym2B/3dPMtYZeJmq7Q3S3Pa+I94DcZ7pc9bP14cWIQ=="
   "resolved" "https://registry.yarnpkg.com/css-loader/-/css-loader-3.6.0.tgz"
   "version" "3.6.0"
@@ -4785,7 +4785,7 @@
   "resolved" "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.66.tgz"
   "version" "1.1.66"
 
-"node-sass@^4.0.0", "node-sass@^4.14.1":
+"node-sass@^4.14.1":
   "integrity" "sha512-sjCuOlvGyCJS40R8BscF5vhVlQjNN069NtQ1gSxyK1u9iqvn6tf7O1R4GNowVZfiZUCRt5MmMs1xd+4V/7Yr0g=="
   "resolved" "https://registry.yarnpkg.com/node-sass/-/node-sass-4.14.1.tgz"
   "version" "4.14.1"
@@ -6360,6 +6360,11 @@
   "resolved" "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz"
   "version" "1.0.0"
 
+"resize-observer-polyfill@^1.5.1":
+  "integrity" "sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg=="
+  "resolved" "https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz"
+  "version" "1.5.1"
+
 "resolve-cwd@^2.0.0":
   "integrity" "sha1-AKn3OHVW4nA46uIyyqNypqWbZlo="
   "resolved" "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz"
@@ -7563,6 +7568,13 @@
   "resolved" "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz"
   "version" "2.3.4"
 
+"vue-js-modal@*":
+  "integrity" "sha512-bJOm7Yhrl0ur/QyXjoC3gMMmE7UxiVEcS2rl8v9iPXIe9QLvjiCSZElSOvvyps8LNuG1X0rPifZGxI/CWKCFaw=="
+  "resolved" "https://registry.npmjs.org/vue-js-modal/-/vue-js-modal-2.0.0-rc.6.tgz"
+  "version" "2.0.0-rc.6"
+  dependencies:
+    "resize-observer-polyfill" "^1.5.1"
+
 "vue-loader@^15.9.5":
   "integrity" "sha512-oeMOs2b5o5gRqkxfds10bCx6JeXYTwivRgbb8hzOrcThD2z1+GqEKE3EX9A2SGbsYDf4rXwRg6D5n1w0jO5SwA=="
   "resolved" "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.9.5.tgz"
@@ -7605,7 +7617,7 @@
   "resolved" "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz"
   "version" "1.9.1"
 
-"vue@^ 3.0.0 || ^ 2.0.0", "vue@^2.0.0", "vue@^2.6.12", "vue@^2.6.4", "vue@2.x":
+"vue@^2.6.12":
   "integrity" "sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg=="
   "resolved" "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz"
   "version" "2.6.12"
@@ -7759,7 +7771,7 @@
     "source-list-map" "^2.0.0"
     "source-map" "~0.6.1"
 
-"webpack@^3.0.0 || ^4.1.0 || ^5.0.0-0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.36.0 || ^5.0.0", "webpack@^4.4.0", "webpack@^4.44.1", "webpack@>=2", "webpack@>=4.4.0", "webpack@4.x.x":
+"webpack@^4.44.1":
   "integrity" "sha512-6KJVGlCxYdISyurpQ0IPTklv+DULv05rs2hseIXer6D7KrUicRDLFb4IUM1S6LUAKypPM/nSiVSuv8jHu1m3/Q=="
   "resolved" "https://registry.yarnpkg.com/webpack/-/webpack-4.44.2.tgz"
   "version" "4.44.2"

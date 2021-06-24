@@ -96,7 +96,7 @@
         <v-tab-item value="tab-1">
           <v-row>
             <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listTweets" :key="e.id">
-              <div class="article mt-5">
+              <div class="user-article mt-5">
                 <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
@@ -131,7 +131,7 @@
         <v-tab-item value="tab-2">
           <v-row>
             <v-col cols="12"  sm="6" md="6" lg="6" v-for="e in listAnalyses" :key="e.id">
-              <div class="article mt-5">
+              <div class="user-article mt-5">
                 <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
@@ -165,7 +165,7 @@
         <v-tab-item value="tab-3">
           <v-row>
             <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listForecasts" :key="e.id">
-              <div class="forecast mt-5">
+              <div class="user-article mt-5">
                 <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
                     <img src="/images/ball.jpg" class="article-icon">

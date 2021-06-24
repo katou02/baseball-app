@@ -24,9 +24,9 @@ services:
     volumes:
       - .:/workdir 
   redis:
-    image: "redis:latest"
+    image: redis
     ports:
-      - "6379:6379"
+      - 6379:6379
     volumes:
-      - "./data/redis:/data"
-    command: bundle exec redis-server /usr/local/etc/redis.conf
+      - ./redis:/data
+    command: redis-server --appendonly yes

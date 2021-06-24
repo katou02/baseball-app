@@ -13,9 +13,16 @@
           <button class="delete-btn mt-2" @click="deleteChampion($route.params.id)">投票を取り消す</button>
         </div>
         <div v-else>
-        <router-link :to="{name: 'champion-new',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn text-white">
-          優勝予想をする
-        </router-link>
+          <!-- <router-link :to="{name: 'champion-new',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn text-white">
+            優勝予想をする
+          </router-link> -->
+          <button class="btn btn-warning champ-btn text-white" @click="openModal">優勝予想をする</button>
+          <modal name="select">
+            <div id="content">
+              <Champion @parent-event="fetchChampion"></Champion>
+              <button @click="closeModal">閉じる</button>
+            </div>
+          </modal>
         </div>
       </div>
     </div>
@@ -32,7 +39,7 @@
     <div class="title mt-5 d-flex">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="fetchChampion()" class="title-child text-white ml-5">
+          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="DeleteChart(); fetchChampion()" class="title-child text-white ml-5">
             <i class="fa fa-baseball-ball text-white"></i> 
             {{e.category}}
           </router-link>
@@ -47,7 +54,11 @@
 </template>
 <script>
 import axios from 'axios';
+import Champion from './components/Champion.vue'
 export default {
+  components: {
+    Champion
+  },
   data() {
     return {
       schools: [],
@@ -90,12 +101,22 @@ export default {
     deleteChampion(id) {
       axios.delete(`/api/v1/champions/${id}`)
       .then(response => {
-        this.fetchChampion();
+        this.DeleteChart()
+        this.fetchChampion()
       })
+    },
+    openModal(){
+      this.$modal.show('select');
+    },
+    closeModal(){
+      this.$modal.hide('select');
+    },
+    DeleteChart() {
+      myBarChart.destroy()
     },
     chart() {
       var ctx = document.getElementById("myBarChart");
-      var myBarChart = new Chart(ctx, {
+      window.myBarChart = new Chart(ctx, {
         type: 'horizontalBar',
         data: {
           labels: this.schools,
