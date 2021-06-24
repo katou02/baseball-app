@@ -26,7 +26,6 @@ export default {
     return {
       schools: [],
       selected: '',
-      current_user: '',
       my_champion: '',
       error: ''
     }
@@ -34,9 +33,9 @@ export default {
   mounted() {
     this.fetchSchools()
   },
-  beforeUpdate() {
-    if(this.current_user===null) {
-      this.$router.push({ name: 'champion', params: { id: this.$route.query.tournament_id } })
+  created() {
+    if(!localStorage.signedIn) {
+      this.$router.push({ name: 'champion', params: { id: this.$route.query.tournament_id}})
     }
   },
   methods: {
@@ -45,7 +44,6 @@ export default {
         .get(`/api/v1/champions/${this.$route.query.tournament_id}.json`)
         .then(response => {
           this.schools = response.data.select_schools
-          this.current_user = response.data.current_user
           this.my_champion = response.data.my_champion
           if(response.data.my_champion || !response.data.current_user) {
             this.$router.push({ name: 'top'});

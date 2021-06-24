@@ -4,7 +4,7 @@
       <div class="d-flex">
         <v-icon color="blue lighten-1">mdi-baseball</v-icon>
         <router-link :to="{name: 'top'}">
-          <v-toolbar-title class="text-h4 font-weight-bold logo">高校野球</v-toolbar-title>
+          <v-toolbar-title class="text-h4 font-weight-bold logo">甲子園.com</v-toolbar-title>
         </router-link>
       </div>
       <router-link :to="{name: 'notification'}" v-if="signedIn">
