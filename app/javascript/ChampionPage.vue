@@ -39,7 +39,7 @@
     <div class="title mt-5 d-flex">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="fetchChampion()" class="title-child text-white ml-5">
+          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="DeleteChart(); fetchChampion()" class="title-child text-white ml-5">
             <i class="fa fa-baseball-ball text-white"></i> 
             {{e.category}}
           </router-link>
@@ -101,8 +101,8 @@ export default {
     deleteChampion(id) {
       axios.delete(`/api/v1/champions/${id}`)
       .then(response => {
-        myBarChart.destroy()
-        this.fetchChampion();
+        this.DeleteChart()
+        this.fetchChampion()
       })
     },
     openModal(){
@@ -110,6 +110,9 @@ export default {
     },
     closeModal(){
       this.$modal.hide('select');
+    },
+    DeleteChart() {
+      myBarChart.destroy()
     },
     chart() {
       var ctx = document.getElementById("myBarChart");
