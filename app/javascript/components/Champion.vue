@@ -43,6 +43,9 @@ export default {
         .then(response => {
           this.schools = response.data.select_schools
           this.my_champion = response.data.my_champion
+          if(response.data.my_champion || !response.data.current_user) {
+            this.$router.push({ name: 'top'});
+          }
         })
     },
     createChampion() {
