@@ -63,6 +63,3 @@ const slide = new Vue({
         language: "ja",
       },
     });
-    
-
-    // Vue.use(window["vue-js-modal"].default);
