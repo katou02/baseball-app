@@ -36,3 +36,4 @@ yarn-debug.log*
 /.env
 /.env.production
 /terraform/.envrc
+/terraform/keypair.tf
