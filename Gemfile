@@ -94,6 +94,8 @@ gem "dotenv-rails"
 gem 'jwt_sessions'
 gem 'redis-rails'
 gem 'bcrypt'
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
  
 group :production do
   gem 'unicorn', '5.4.1'
