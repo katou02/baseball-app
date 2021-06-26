@@ -3,7 +3,7 @@
     <form @submit.prevent="sendMail">
       <div class="contact-main text-center pt-2">
         <h2>お問い合わせ</h2><br>
-        問い合わせ・要望など
+        お問い合わせ・要望など
         <div class="contact-user-input mt-5">
           <v-text-field type="text" label='名前' v-model="name"></v-text-field>
           <p v-if="!!errors['name']" style="color: red;">{{ errors['name'][0]}}</p>
