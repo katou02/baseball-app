@@ -49,7 +49,7 @@
     <div class="reader">
       <div style="width:75%; height:75%;" ><canvas id="myBarChart"></canvas></div>
     </div>
-    <p>カーソルをグラフに合わせると票数を確認できます</p>
+    <p>カーソルをグラフに合わせると投票数を確認できます</p>
   </div>
 </template>
 <script>
