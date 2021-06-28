@@ -69,11 +69,13 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "tweet_id"
-    t.text "text"
+    t.bigint "user_id", null: false
+    t.bigint "tweet_id", null: false
+    t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tweet_id"], name: "index_comments_on_tweet_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -210,6 +212,8 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
   add_foreign_key "comment_analyses", "users"
   add_foreign_key "comment_forecasts", "forecasts"
   add_foreign_key "comment_forecasts", "users"
+  add_foreign_key "comments", "tweets"
+  add_foreign_key "comments", "users"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
   add_foreign_key "forecasts", "categories", column: "lose_school_id"
