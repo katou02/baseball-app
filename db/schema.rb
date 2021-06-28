@@ -21,13 +21,14 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
     t.integer "pitcher"
     t.integer "comprehensive"
     t.integer "expectations"
-    t.integer "user_id"
+    t.bigint "user_id", null: false
     t.bigint "school_id", null: false
     t.bigint "tournament_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["school_id"], name: "index_analyses_on_school_id"
     t.index ["tournament_id"], name: "index_analyses_on_tournament_id"
+    t.index ["user_id"], name: "index_analyses_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -170,7 +171,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
   end
 
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title_info"
+    t.string "title"
     t.string "round"
     t.text "text"
     t.text "image"
@@ -181,10 +182,11 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
     t.bigint "school_a_id", null: false
     t.bigint "school_b_id", null: false
     t.bigint "tournament_id", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["school_a_id"], name: "index_tweets_on_school_a_id"
     t.index ["school_b_id"], name: "index_tweets_on_school_b_id"
     t.index ["tournament_id"], name: "index_tweets_on_tournament_id"
+    t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -206,6 +208,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
 
   add_foreign_key "analyses", "categories", column: "school_id"
   add_foreign_key "analyses", "categories", column: "tournament_id"
+  add_foreign_key "analyses", "users"
   add_foreign_key "champions", "categories", column: "champion_school_id"
   add_foreign_key "champions", "categories", column: "tournament_id"
   add_foreign_key "champions", "users"
@@ -230,4 +233,5 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
   add_foreign_key "tweets", "categories", column: "school_a_id"
   add_foreign_key "tweets", "categories", column: "school_b_id"
   add_foreign_key "tweets", "categories", column: "tournament_id"
+  add_foreign_key "tweets", "users"
 end
