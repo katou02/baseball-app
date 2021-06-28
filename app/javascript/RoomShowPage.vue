@@ -15,7 +15,7 @@
       <div v-for="e in messages" :key="e.id">
         <div v-if="e.user_id == data.current_user.id ">
           <div class="my-messages">
-            <div class="my-message mt-5 ml-5">{{e.body}}</div>
+            <div class="my-message mt-5 ml-5">{{e.text}}</div>
           </div>
           <div class="message-time">{{e.time}}</div>
         </div>
@@ -27,7 +27,7 @@
             <span v-else>
               <img src="../assets/images/no-image.png" class="room-user-icon">
             </span>
-            <div class="message mt-5 ml-5">{{e.body}}</div>
+            <div class="message mt-5 ml-5">{{e.text}}</div>
           </div>
           <div class="message-time-pair">{{e.time}}</div>
         </div>
@@ -44,7 +44,7 @@
           <div class="message-form">
             <div class="mx-auto d-flex w-50">
               <!-- <textarea v-model="body" type="text" class="message-detail"></textarea> -->
-              <v-text-field v-model="body" solo label="メッセージ" clearable></v-text-field>
+              <v-text-field v-model="text" solo label="メッセージ" clearable></v-text-field>
               <v-btn type="submit" class="message-btn ml-2 info" >
                 <i class="fas fa-paper-plane"></i>
               </v-btn>
@@ -67,7 +67,7 @@ export default {
       image: '',
       user: '',
       data: '',
-      body: '',
+      text: '',
       errors: '',
       current_user: ''
     }
@@ -107,9 +107,9 @@ export default {
     },
     createMessage() {
       axios
-        .post('/api/v1/messages',{body: this.body,room_id: this.$route.params.id})
+        .post('/api/v1/messages',{text: this.text,room_id: this.$route.params.id})
         .then(response => {
-          this.body = "";
+          this.text = "";
           this.fetchMember()
         })
         .catch(error => {
