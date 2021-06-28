@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # belongs_to :champion
   has_many :tweets,dependent: :destroy
+  has_many :champions,dependent: :destroy
   has_many :comments,dependent: :destroy
   has_many :comment_analyses,dependent: :destroy
   has_many :comment_forecasts,dependent: :destroy

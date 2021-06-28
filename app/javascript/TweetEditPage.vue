@@ -52,7 +52,7 @@
             </div>
           </div>
           <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
-          <p v-if="!!errors['title_info']" style="color: red;">{{ errors['title_info'][0]}}</p>
+          <p v-if="!!errors['title']" style="color: red;">{{ errors['title'][0]}}</p>
           <v-textarea v-model="text" type="text" label="本文" outlined></v-textarea>
           <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
           <!-- <input v-if="!image.url && !url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
@@ -130,7 +130,7 @@ export default {
   methods: {
     editTweet() {
       let formData = new FormData();
-      formData.append("title_info", this.title);
+      formData.append("title", this.title);
       formData.append("text", this.text);
       formData.append("school_a_score",this.school_a_score);
       formData.append("school_b_score",this.school_b_score);

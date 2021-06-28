@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Message, type: :model do
   describe 'バリデーションのテスト' do
-    context 'bodyカラム' do
-      message = Message.new(body: '')
+    context 'textカラム' do
+      message = Message.new(text: '')
 
       it '未入力だと保存できない' do
         expect(message.valid?).to eq false
@@ -12,13 +12,13 @@ RSpec.describe Message, type: :model do
       it 'メッセージが未入力であればエラー' do
         message
         message.valid?
-        expect(message.errors[:body]).to include('を入力してください')
+        expect(message.errors[:text]).to include('を入力してください')
       end
 
       it '301文字以上だと保存できない' do
-        message.body = 'a' * 301
+        message.text = 'a' * 301
         message.valid?
-        expect(message.errors).to be_added(:body, :too_long, count: 300)
+        expect(message.errors).to be_added(:text, :too_long, count: 300)
       end
     end
   end
