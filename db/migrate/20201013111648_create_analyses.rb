@@ -9,7 +9,7 @@ class CreateAnalyses < ActiveRecord::Migration[5.2]
       t.integer :pitcher
       t.integer :comprehensive
       t.integer :expectations
-      t.integer :user_id
+      t.integer :user_id,foreign_key: true
       t.references :school, foreign_key: { to_table: :categories }, null: false
       t.references :tournament, foreign_key: { to_table: :categories }, null: false
       t.timestamps
