@@ -12,25 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_12_25_050329) do
 
-  create_table "analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "title"
-    t.text "text"
-    t.text "image"
-    t.integer "attack"
-    t.integer "defensive"
-    t.integer "pitcher"
-    t.integer "comprehensive"
-    t.integer "expectations"
-    t.bigint "user_id", null: false
-    t.bigint "school_id", null: false
-    t.bigint "tournament_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_analyses_on_school_id"
-    t.index ["tournament_id"], name: "index_analyses_on_tournament_id"
-    t.index ["user_id"], name: "index_analyses_on_user_id"
-  end
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "ancestry"
@@ -47,16 +28,6 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
     t.index ["champion_school_id"], name: "index_champions_on_champion_school_id"
     t.index ["tournament_id"], name: "index_champions_on_tournament_id"
     t.index ["user_id"], name: "index_champions_on_user_id"
-  end
-
-  create_table "comment_analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "analysis_id", null: false
-    t.text "text", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["analysis_id"], name: "index_comment_analyses_on_analysis_id"
-    t.index ["user_id"], name: "index_comment_analyses_on_user_id"
   end
 
   create_table "comment_forecasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -207,14 +178,9 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "analyses", "categories", column: "school_id"
-  add_foreign_key "analyses", "categories", column: "tournament_id"
-  add_foreign_key "analyses", "users"
   add_foreign_key "champions", "categories", column: "champion_school_id"
   add_foreign_key "champions", "categories", column: "tournament_id"
   add_foreign_key "champions", "users"
-  add_foreign_key "comment_analyses", "analyses"
-  add_foreign_key "comment_analyses", "users"
   add_foreign_key "comment_forecasts", "forecasts"
   add_foreign_key "comment_forecasts", "users"
   add_foreign_key "comments", "tweets"
