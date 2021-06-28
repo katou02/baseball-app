@@ -89,10 +89,10 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
   end
 
   create_table "forecasts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "text"
-    t.string "round"
-    t.integer "probability"
-    t.integer "user_id"
+    t.text "text", null: false
+    t.string "round", null: false
+    t.integer "probability", null: false
+    t.bigint "user_id", null: false
     t.bigint "win_school_id", null: false
     t.bigint "lose_school_id", null: false
     t.bigint "tournament_id", null: false
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
     t.datetime "updated_at", null: false
     t.index ["lose_school_id"], name: "index_forecasts_on_lose_school_id"
     t.index ["tournament_id"], name: "index_forecasts_on_tournament_id"
+    t.index ["user_id"], name: "index_forecasts_on_user_id"
     t.index ["win_school_id"], name: "index_forecasts_on_win_school_id"
   end
 
@@ -223,6 +224,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_050329) do
   add_foreign_key "forecasts", "categories", column: "lose_school_id"
   add_foreign_key "forecasts", "categories", column: "tournament_id"
   add_foreign_key "forecasts", "categories", column: "win_school_id"
+  add_foreign_key "forecasts", "users"
   add_foreign_key "likes", "tweets"
   add_foreign_key "likes", "users"
   add_foreign_key "maps", "categories", column: "school_id"
