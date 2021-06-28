@@ -1,16 +1,17 @@
 class CreateNotifications < ActiveRecord::Migration[5.2]
   def change
     create_table :notifications do |t|
-      t.integer :visiter_id
-      t.integer :visited_id
-      t.integer :tweet_id
-      t.integer :analysis_id
-      t.integer :forecast_id
-      t.integer :room_id
-      t.integer :message_id
-      t.integer :comment_id
-      t.integer :comment_analysis_id
-      t.integer :comment_forecast_id
+      # t.integer :visiter_id
+      t.references :visiter, foreign_key: {to_table: :users}, null: false
+      t.references :visited, foreign_key: {to_table: :users}, null: false
+      t.references :tweet, foreign_key: {to_table: :tweets}
+      t.references :analysis, foreign_key: {to_table: :analyses}
+      t.references :forecast, foreign_key: {to_table: :forecasts}
+      t.references :room, foreign_key: {to_table: :rooms}
+      t.references :message,foreign_key: {to_table: :messages}
+      t.references :comment,foreign_key: {to_table: :comments}
+      t.references :comment_analysis,foreign_key: {to_table: :comment_analyses}
+      t.references :comment_forecast,foreign_key: {to_table: :comment_forecasts}
       t.string :action
       t.boolean :checked, default: false, null: false
 
