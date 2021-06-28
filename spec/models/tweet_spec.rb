@@ -10,27 +10,27 @@ RSpec.describe Tweet, type: :model do
       expect(tweet).to be_valid
     end
 
-    context 'title_infoカラム' do
+    context 'titleカラム' do
 
       it '未入力だと保存できない' do
-        tweet.title_info = ''
+        tweet.title = ''
         is_expected.to eq false
       end
 
       it 'タイトルが未入力であればエラー' do
-        tweet.title_info = nil
+        tweet.title = nil
         tweet.valid?
-        expect(tweet.errors[:title_info]).to include('を入力してください')
+        expect(tweet.errors[:title]).to include('を入力してください')
       end
 
       it '31文字以上だと保存できない' do
-        tweet.title_info = 'a' * 31
+        tweet.title = 'a' * 31
         tweet.valid?
-        expect(tweet.errors).to be_added(:title_info, :too_long, count: 30)
+        expect(tweet.errors).to be_added(:title, :too_long, count: 30)
       end
 
       it '30文字以下なら保存できる' do
-        tweet.title_info = 'a' * 30
+        tweet.title = 'a' * 30
         expect(tweet).to be_valid
       end
     end

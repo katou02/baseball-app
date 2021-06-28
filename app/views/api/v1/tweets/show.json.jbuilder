@@ -7,7 +7,7 @@ json.school_b @tweet.school_b.name
 json.school_b_id @tweet.school_b.id
 json.school_a_score @tweet.school_a_score
 json.school_b_score @tweet.school_b_score
-json.title @tweet.title_info
+json.title @tweet.title
 json.round @tweet.round
 json.tweet_image @tweet.image
 json.id @tweet.id

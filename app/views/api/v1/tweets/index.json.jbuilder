@@ -5,7 +5,7 @@ json.tweets do
     json.round tweet.round
     json.school_a tweet.school_a.name
     json.school_b tweet.school_b.name
-    json.title tweet.title_info
+    json.title tweet.title
     json.id tweet.id
     json.image tweet.image
     json.time tweet.created_at.strftime("%Y年%m月%d日")

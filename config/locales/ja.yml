@@ -10,7 +10,7 @@ ja:
         school_b: "高校B"
         school_a_score: "高校Aの得点"
         school_b_score: "高校Bの得点"
-        title_info: "タイトル"
+        title: "タイトル"
         text: "テキスト"
         tournament: "大会"
       analysis:
