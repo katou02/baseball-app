@@ -10,7 +10,7 @@ class Tweet < ApplicationRecord
   validates :tournament_id,:school_a,:school_b,:school_a_score,:school_b_score,:text,:title_info,:round ,presence: true
   mount_uploader :image, ImageUploader
   belongs_to :user
-  has_many :comments
+  has_many :comments,dependent: :destroy
   has_many :categories
   has_many :likes,dependent: :destroy
   has_many :liked_users,through: :likes,source: :user

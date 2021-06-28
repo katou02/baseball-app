@@ -3,7 +3,7 @@ class Analysis < ApplicationRecord
   belongs_to :school,class_name: 'Category', foreign_key: 'school_id'
   has_many :notifications, dependent: :destroy
   belongs_to :user
-  has_many :comment_analyses
+  has_many :comment_analyses,dependent: :destroy
   has_many :categories
   validates :title,:text,:attack,:defensive,:pitcher,:comprehensive,:expectations,:school,:tournament,presence: true
   validates :title,length: {maximum: 30}
