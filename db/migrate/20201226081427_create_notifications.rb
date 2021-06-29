@@ -7,7 +7,7 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
       t.references :tweet, foreign_key: {to_table: :tweets}
       t.references :analysis, foreign_key: {to_table: :analyses}
       t.references :forecast, foreign_key: {to_table: :forecasts}
-      t.references :room, foreign_key: {to_table: :rooms}
+      t.integer :room
       t.references :message,foreign_key: {to_table: :messages}
       t.references :comment,foreign_key: {to_table: :comments}
       t.references :comment_analysis,foreign_key: {to_table: :comment_analyses}
