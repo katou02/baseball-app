@@ -38,6 +38,10 @@
         <v-icon color="white">mdi-account-plus</v-icon>
         新規登録
       </v-btn>
+      <v-btn color="primary" @click="childEvent2" v-if="!signedIn">
+        <v-icon color="white">mdi-login</v-icon>
+        ログイン
+      </v-btn>
       <div v-if="!signedIn">
         <Gest></Gest>
       </div>
@@ -94,7 +98,10 @@ export default {
         .catch(error => this.setError(error, 'Cannot sign out'))
     },
     childEvent() {
-      this.$emit('parent-event')
+      this.$emit('parent-event','parent-event2')
+    },
+    childEvent2() {
+      this.$emit('parent-event2')
     }
   }
 }

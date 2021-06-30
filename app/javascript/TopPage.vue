@@ -1,6 +1,6 @@
 <template>
   <div class="top">
-    <Menu @parent-event="openModal"></Menu>
+    <Menu @parent-event="openModal" @parent-event2="openModal2"></Menu>
     <div class="top-title">
       甲子園.com
     </div>
@@ -41,18 +41,25 @@
         <Signup @parent-event="closeModal"></Signup>
       </div>
     </modal>
+    <modal height="50%" name="select2">
+      <div id="modal">
+        <Signin @parent-event2="closeModal2"></Signin>
+      </div>
+    </modal>
   </div>
 </template>
 <script>
 import axios from 'axios';
 import Menu from './components/Menu.vue'
 import Signup from './components/Signup.vue'
+import Signin from './components/Signin.vue'
 
 export default {
   name: 'Header',
   components: {
     Menu,
-    Signup
+    Signup,
+    Signin
   },
   data() {
     return {
@@ -80,6 +87,12 @@ export default {
     },
     closeModal(){
       this.$modal.hide('select');
+    },
+    openModal2(){
+      this.$modal.show('select2');
+    },
+    closeModal2(){
+      this.$modal.hide('select2');
     },
   }
   // computed: mapState([
