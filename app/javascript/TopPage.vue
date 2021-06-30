@@ -1,6 +1,6 @@
 <template>
   <div class="top">
-    <Menu></Menu>
+    <Menu @parent-event="openModal"></Menu>
     <div class="top-title">
       甲子園.com
     </div>
@@ -36,10 +36,9 @@
         </div>
       </router-link>
     </div>
-    <modal name="select">
+    <modal height="63%" name="select">
       <div id="modal">
-        <Signup></Signup>
-        <button @click="closeModal">閉じる</button>
+        <Signup @parent-event="closeModal"></Signup>
       </div>
     </modal>
   </div>

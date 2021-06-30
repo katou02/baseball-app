@@ -34,6 +34,10 @@
         <v-icon color="blue lighten-1">mdi-email</v-icon>
         お問い合わせ
       </router-link>
+      <v-btn color="primary" @click="childEvent" v-if="!signedIn">
+        <v-icon color="white">mdi-account-plus</v-icon>
+        新規登録
+      </v-btn>
       <div v-if="!signedIn">
         <Gest></Gest>
       </div>
@@ -88,6 +92,9 @@ export default {
           delete localStorage.signedIn
         })
         .catch(error => this.setError(error, 'Cannot sign out'))
+    },
+    childEvent() {
+      this.$emit('parent-event')
     }
   }
 }

@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <v-card width="400px" class="mx-auto mt-5">
-      <v-card-title>
+    <div width="400px" class="mx-auto mt-5">
+      <!-- <v-card-title> -->
         <h1 class="display-1">
           新規登録
         </h1>
-      </v-card-title>
-      <v-card-text>
+      <!-- </v-card-title> -->
+      <!-- <v-card-text> -->
         <v-form class="col" @submit.prevent="signup" lazy-validation>
           <div class="text-red" v-if="error">{{ error }}</div>
           <v-text-field label="ユーザー名" prepend-icon="mdi-user" v-model="name" required="required"/>
@@ -18,8 +18,9 @@
             <div><router-link to="/signin" class="btn link-grey">ログインページへ</router-link></div>
           </v-card-actions>
         </v-form>
-      </v-card-text>
-    </v-card>
+      <!-- </v-card-text> -->
+    </div>
+    <button @click="childEvent">閉じる</button>
   </div>
 </template>
 
@@ -67,6 +68,9 @@
         if (localStorage.signedIn) {
           this.$router.replace('/')
         }
+      },
+      childEvent() {
+        this.$emit('parent-event')
       }
     }
   }
