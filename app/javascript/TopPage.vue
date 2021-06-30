@@ -36,19 +36,24 @@
         </div>
       </router-link>
     </div>
-           <!-- <li><router-link to="/signup" v-if="!signedIn">Sign up</router-link></li>
-           <li><router-link to="/signin" v-if="!signedIn">Sign in</router-link></li>
-           <li><a href="/" v-if="signedIn" @click="signOut">Sign out</a></li> -->
+    <modal name="select">
+      <div id="modal">
+        <Signup></Signup>
+        <button @click="closeModal">閉じる</button>
+      </div>
+    </modal>
   </div>
 </template>
 <script>
 import axios from 'axios';
 import Menu from './components/Menu.vue'
+import Signup from './components/Signup.vue'
 
 export default {
   name: 'Header',
   components: {
-    Menu
+    Menu,
+    Signup
   },
   data() {
     return {
@@ -70,7 +75,13 @@ export default {
           this.$router.go('/')
         }
       })
-    }
+    },
+    openModal(){
+      this.$modal.show('select');
+    },
+    closeModal(){
+      this.$modal.hide('select');
+    },
   }
   // computed: mapState([
   //   'signedIn'
