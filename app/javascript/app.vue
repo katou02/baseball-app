@@ -36,7 +36,7 @@ import TweetEditPage from './TweetEditPage'
 import AnalysisEdit from './AnalysisEdit'
 import ForecastEditPage from './ForecastEditPage'
 import UserShowPage from './UserShowPage'
-import UserEditPage from './UserEditPage'
+// import UserEditPage from './UserEditPage'
 import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
@@ -211,11 +211,11 @@ const router = new VueRouter({
       component: UserShowPage,
       name: 'user-show'
     },
-    {
-      path: '/users/:id(\\d+)/edit',
-      component: UserEditPage,
-      name: 'user-edit'
-    },
+    // {
+    //   path: '/users/:id(\\d+)/edit',
+    //   component: UserEditPage,
+    //   name: 'user-edit'
+    // },
     {
       path: '/users/:id(\\d+)/following',
       component: FollowingPage,

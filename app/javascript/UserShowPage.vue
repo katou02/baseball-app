@@ -4,7 +4,8 @@
     <router-link :to="{name: 'user'}" class="users-btn text-white">ユーザー一覧</router-link>
     <router-link :to="{name: 'room'}" class="dm-btn text-white">DM</router-link>
     <span v-if="user_id==current_user || user.current_user.admin==true">
-      <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit text-white">編集する</router-link>
+      <!-- <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit text-white">編集する</router-link> -->
+      <button class="edit text-white" @click="openModal">編集する</button>
     </span>
     <p class="text-center">ID:{{user.id}}</p>
     <div class="myname mt-5">
@@ -279,6 +280,12 @@
         </v-tab-item>
       </v-tabs-items>
     </div>
+    <modal name="select" height="auto" width="65%" :scrollable="true">
+      <div id="modal">
+        <Edit @parent-event="fetchUser"></Edit>
+        <button @click="closeModal">閉じる</button>
+      </div>
+    </modal>
   </div>
 </template>
 <script>
@@ -286,11 +293,13 @@ import axios from 'axios'
 import Follow from './FollowingPage.vue'
 import Follower from './FollowerPage.vue'
 import Header from './components/Header.vue'
+import Edit from './components/UserEdit.vue'
 export default {
   components: {
     Header,
     Follow,
-    Follower
+    Follower,
+    Edit
   },
   data() {
     return {
@@ -341,6 +350,7 @@ export default {
   },
   methods: {
     fetchUser() {
+      this.closeModal()
       axios
         .get('/api/v1/users')
         .then(response =>{
@@ -402,7 +412,13 @@ export default {
     },
     isMore_m() {
       this.count_m += 10
-    }
+    },
+    openModal(){
+      this.$modal.show('select');
+    },
+    closeModal(){
+      this.$modal.hide('select');
+    },
   },
   watch: {
     '$route'(to, from) {
