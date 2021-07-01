@@ -31,7 +31,7 @@ import Average from './Average'
 // import ChampionNewPage from './ChampionNewPage'
 // import TweetNewPage from './TweetNewPage'
 // import AnalysisNewPage from './AnalysisNewPage'
-import ForecastNewPage from './ForecastNewPage'
+// import ForecastNewPage from './ForecastNewPage'
 import TweetEditPage from './TweetEditPage'
 import AnalysisEdit from './AnalysisEdit'
 import ForecastEditPage from './ForecastEditPage'
@@ -111,11 +111,11 @@ const router = new VueRouter({
       component: ForecastEditPage,
       name: 'forecast-edit'
     },
-    {
-      path: '/forecasts/new',
-      component: ForecastNewPage,
-      name: 'forecast-new'
-    },
+    // {
+    //   path: '/forecasts/new',
+    //   component: ForecastNewPage,
+    //   name: 'forecast-new'
+    // },
     {
       path: '/maps',
       component: MapPage,
