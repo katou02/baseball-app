@@ -6,7 +6,6 @@
     </v-app>
   </div>
 </template>
-
 <script>
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -30,7 +29,7 @@ import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
 import Average from './Average'
 // import ChampionNewPage from './ChampionNewPage'
-import TweetNewPage from './TweetNewPage'
+// import TweetNewPage from './TweetNewPage'
 import AnalysisNewPage from './AnalysisNewPage'
 import ForecastNewPage from './ForecastNewPage'
 import TweetEditPage from './TweetEditPage'
@@ -172,11 +171,11 @@ const router = new VueRouter({
       component: TweetShowPage,
       name: 'tweet-show'
     },
-    {
-      path: '/tweets/new',
-      component: TweetNewPage,
-      name: 'tweet-new'
-    },
+    // {
+    //   path: '/tweets/new',
+    //   component: TweetNewPage,
+    //   name: 'tweet-new'
+    // },
     {
       path: '/tweets/:id(\\d+)/edit',
       component: TweetEditPage,
