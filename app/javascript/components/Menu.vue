@@ -18,22 +18,18 @@
         <v-icon color="blue lighten-1">mdi-account</v-icon>
         マイページ
       </router-link>
-      <router-link to="/signup" v-if="!signedIn">
+      <!-- <router-link to="/signup" v-if="!signedIn">
         <v-icon color="blue lighten-1">mdi-account-plus</v-icon>
         新規登録
       </router-link>
       <router-link to="/signin" v-if="!signedIn">
         <v-icon color="blue lighten-1">mdi-login</v-icon>
         ログイン
-      </router-link>
+      </router-link> -->
       <a href="/" v-if="signedIn" @click="signOut">
         <v-icon color="blue lighten-1">mdi-logout</v-icon>
         ログアウト
       </a>
-      <router-link :to="{name: 'contact'}">
-        <v-icon color="blue lighten-1">mdi-email</v-icon>
-        お問い合わせ
-      </router-link>
       <v-btn color="primary" @click="childEvent" v-if="!signedIn">
         <v-icon color="white">mdi-account-plus</v-icon>
         新規登録
@@ -45,6 +41,10 @@
       <div v-if="!signedIn">
         <Gest></Gest>
       </div>
+      <router-link :to="{name: 'contact'}">
+        <v-icon color="blue lighten-1">mdi-email</v-icon>
+        お問い合わせ
+      </router-link>
     <!-- </v-app-bar> -->
   </div>
 </template>

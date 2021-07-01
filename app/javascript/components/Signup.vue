@@ -14,8 +14,8 @@
           <v-text-field label="パスワード" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password" required="required"/>
           <v-text-field label="パスワード確認" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password_confirmation" required="required"/>
           <v-card-actions>
-            <v-btn type="submit" color="light-green darken-1" class="white--text">新規登録</v-btn>
-            <div><router-link to="/signin" class="btn link-grey">ログインページへ</router-link></div>
+            <v-btn type="submit" color="light-green darken-1" class="white--text mx-auto">新規登録</v-btn>
+            <!-- <div><router-link to="/signin" class="btn link-grey">ログインページへ</router-link></div> -->
           </v-card-actions>
         </v-form>
       <!-- </v-card-text> -->

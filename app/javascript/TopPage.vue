@@ -36,12 +36,12 @@
         </div>
       </router-link>
     </div>
-    <modal height="63%" name="select">
+    <modal height="60%" name="select">
       <div id="modal">
         <Signup @parent-event="closeModal"></Signup>
       </div>
     </modal>
-    <modal height="50%" name="select2">
+    <modal height="42%" name="select2">
       <div id="modal">
         <Signin @parent-event2="closeModal2"></Signin>
       </div>
