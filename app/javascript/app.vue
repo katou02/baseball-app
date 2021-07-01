@@ -29,7 +29,7 @@ import ChampionPage from './ChampionPage'
 import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
 import Average from './Average'
-import ChampionNewPage from './ChampionNewPage'
+// import ChampionNewPage from './ChampionNewPage'
 import TweetNewPage from './TweetNewPage'
 import AnalysisNewPage from './AnalysisNewPage'
 import ForecastNewPage from './ForecastNewPage'
@@ -42,8 +42,8 @@ import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
-import Signup from './Signup'
-import Signin from './Signin'
+// import Signup from './Signup'
+// import Signin from './Signin'
 import "vuetify/dist/vuetify.min.css"
 import '@mdi/font/css/materialdesignicons.css'
 import VuejsDialog from 'vuejs-dialog';
@@ -92,11 +92,11 @@ const router = new VueRouter({
       component: ContactPage,
       name: 'contact',
     },
-    {
-      path: '/champions/new',
-      component: ChampionNewPage,
-      name: 'champion-new'
-    },
+    // {
+    //   path: '/champions/new',
+    //   component: ChampionNewPage,
+    //   name: 'champion-new'
+    // },
     {
       path: '/forecasts',
       component: ForecastPage,
@@ -152,16 +152,16 @@ const router = new VueRouter({
       component: RoomShowPage,
       name: 'room-show'
     },
-    { 
-      path: '/signup',  
-      name: 'Signup',     
-      component: Signup 
-    },
-    { 
-      path: '/signin',   
-      name: 'Signin',      
-      component: Signin 
-    },
+    // { 
+    //   path: '/signup',  
+    //   name: 'Signup',     
+    //   component: Signup 
+    // },
+    // { 
+    //   path: '/signin',   
+    //   name: 'Signin',      
+    //   component: Signin 
+    // },
     {
       path: '/tweets',
       component: TweetPage,
