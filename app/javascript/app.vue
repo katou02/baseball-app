@@ -30,7 +30,7 @@ import RoomShowPage from './RoomShowPage'
 import Average from './Average'
 // import ChampionNewPage from './ChampionNewPage'
 // import TweetNewPage from './TweetNewPage'
-import AnalysisNewPage from './AnalysisNewPage'
+// import AnalysisNewPage from './AnalysisNewPage'
 import ForecastNewPage from './ForecastNewPage'
 import TweetEditPage from './TweetEditPage'
 import AnalysisEdit from './AnalysisEdit'
@@ -66,11 +66,11 @@ const router = new VueRouter({
       component: AnalysisPage,
       name: 'analysis'
     },
-    {
-      path: '/analyses/new',
-      component: AnalysisNewPage,
-      name: 'analysis-new'
-    },
+    // {
+    //   path: '/analyses/new',
+    //   component: AnalysisNewPage,
+    //   name: 'analysis-new'
+    // },
     {
       path: '/analyses/:id(\\d+)/edit',
       component: AnalysisEdit,
