@@ -51,7 +51,7 @@
       </div>
       <modal name="select" height="auto" width="65%" :scrollable="true">
         <div id="modal">
-          <Tweet @parent-event="fetchTweets"></Tweet>
+          <New @parent-event="fetchTweets"></New>
           <button @click="closeModal">閉じる</button>
         </div>
       </modal>
@@ -79,13 +79,13 @@
 import axios from 'axios';
 import Header from './components/Header.vue'
 import Side from './components/Side.vue'
-import Tweet from './components/TweetNew.vue'
+import New from './components/TweetNew.vue'
 
 export default {
   components: {
     Header,
     Side,
-    Tweet
+    New
   },
   data() {
     return {
