@@ -3,7 +3,8 @@
     <!-- <Header></Header> -->
     <div class="main-content-btn">
       <div v-if="current_user">
-        <router-link :to="{name: 'analysis-new'}" class="send-btn text-white">投稿する</router-link>
+        <!-- <router-link :to="{name: 'analysis-new'}" class="send-btn text-white">投稿する</router-link> -->
+        <button class="send-btn text-white" @click="openModal">投稿する</button>
       </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
@@ -83,6 +84,12 @@
         </div>
         </v-row>
       </div>
+      <modal name="select" height="auto" width="65%" :scrollable="true">
+        <div id="modal">
+          <New @parent-event="fetchAnalyses"></New>
+          <button @click="closeModal">閉じる</button>
+        </div>
+      </modal>
       <div class="text-center">
         <paginate
           :v-model="currentPage" 
@@ -108,10 +115,12 @@
 import axios from 'axios'
 import Header from './components/Header.vue'
 import Side from './components/Side.vue'
+import New from './components/AnalysisNew.vue'
 export default {
   components: {
     Header,
-    Side
+    Side,
+    New
   },
   data() {
     return {
@@ -138,6 +147,7 @@ export default {
   },
   methods: {
     fetchAnalyses() {
+      this.closeModal()
       axios
         .get(`/api/v1/tournaments/${this.$route.params.id}/watch_ays.json`)
         .then(response =>{
@@ -170,7 +180,13 @@ export default {
             scrollTo(0, positionY);
           }, 500);
       })
-    }
+    },
+    openModal(){
+      this.$modal.show('select');
+    },
+    closeModal(){
+      this.$modal.hide('select');
+    },
   },
   computed: {
     getAnalyses: function() {
