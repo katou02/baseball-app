@@ -32,9 +32,9 @@ import Average from './Average'
 // import TweetNewPage from './TweetNewPage'
 // import AnalysisNewPage from './AnalysisNewPage'
 // import ForecastNewPage from './ForecastNewPage'
-import TweetEditPage from './TweetEditPage'
-import AnalysisEdit from './AnalysisEdit'
-import ForecastEditPage from './ForecastEditPage'
+// import TweetEditPage from './TweetEditPage'
+// import AnalysisEdit from './AnalysisEdit'
+// import ForecastEditPage from './ForecastEditPage'
 import UserShowPage from './UserShowPage'
 // import UserEditPage from './UserEditPage'
 import FollowingPage from './FollowingPage'
@@ -71,11 +71,11 @@ const router = new VueRouter({
     //   component: AnalysisNewPage,
     //   name: 'analysis-new'
     // },
-    {
-      path: '/analyses/:id(\\d+)/edit',
-      component: AnalysisEdit,
-      name: 'analysis-edit'
-    },
+    // {
+    //   path: '/analyses/:id(\\d+)/edit',
+    //   component: AnalysisEdit,
+    //   name: 'analysis-edit'
+    // },
     {
       path: '/analyses/:id(\\d+)',
       component: AnalysisShowPage,
@@ -106,11 +106,11 @@ const router = new VueRouter({
       component: ForecastShowPage,
       name: 'forecast-show'
     },
-    {
-      path: '/forecasts/:id(\\d+)/edit',
-      component: ForecastEditPage,
-      name: 'forecast-edit'
-    },
+    // {
+    //   path: '/forecasts/:id(\\d+)/edit',
+    //   component: ForecastEditPage,
+    //   name: 'forecast-edit'
+    // },
     // {
     //   path: '/forecasts/new',
     //   component: ForecastNewPage,
@@ -176,11 +176,11 @@ const router = new VueRouter({
     //   component: TweetNewPage,
     //   name: 'tweet-new'
     // },
-    {
-      path: '/tweets/:id(\\d+)/edit',
-      component: TweetEditPage,
-      name: 'tweet-edit'
-    },
+    // {
+    //   path: '/tweets/:id(\\d+)/edit',
+    //   component: TweetEditPage,
+    //   name: 'tweet-edit'
+    // },
     {
       path: '/tournaments/:id(\\d+)',
       component: WatchtwsPage,
