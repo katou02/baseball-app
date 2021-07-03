@@ -161,6 +161,7 @@ export default {
       axios
         .patch(`/api/v1/analyses/${this.$route.params.id}`,formData,config)
         .then(response => {
+          myChart.destroy()
           this.$emit('parent-event')
         })
         .catch(error => {

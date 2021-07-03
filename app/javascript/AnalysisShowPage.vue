@@ -137,6 +137,7 @@ export default {
   },
   methods: {
     fetchAnalysis() {
+      this.fetchchart()
       this.closeModal()
       axios
         .get(`/api/v1/analyses/${this.$route.params.id}.json`)
@@ -191,7 +192,7 @@ export default {
     },
     chart() {
       var ctx = document.getElementById('myChart')
-      var myChart = new Chart(ctx, {
+      window.myChart = new Chart(ctx, {
         type: 'radar',
         data: {
           labels: ["攻撃力","守備力","投手力","総合力","期待度"],
