@@ -23,7 +23,7 @@
           <div class="avg-expec">{{Math.floor(e.expectations_num)}}</div>
         </div>
         {{fetchchart(index)}}
-        <div id="canvas_wrapper" style="width:460px; height:400px;" >
+        <div id="canvas_wrapper" style="width:660px; height:590px;" >
           <canvas class="RaderChart"></canvas>
         </div>
       </v-col>
