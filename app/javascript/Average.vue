@@ -1,8 +1,8 @@
 <template>
   <div class="average-content">
-    <h3 class="pt-5 mt-0">戦力分析の平均評価</h3>
-    <div class="search-area mt-3 mb-5">
-      <v-text-field type="text mt-5" v-model="keyword" label="検索"></v-text-field>
+    <h2 class="pt-5 pb-5">戦力分析の平均評価</h2>
+    <div class="search-area mt-5 mb-5">
+      <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
     <v-row class="mx-auto">
       <v-col cols="12"  sm="12" md="12" lg="12" v-for=" (e,index) in getLists" :key="e.id">
