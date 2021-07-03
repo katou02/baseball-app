@@ -11,7 +11,7 @@ ja:
         school_a_score: "高校Aの得点"
         school_b_score: "高校Bの得点"
         title: "タイトル"
-        text: "テキスト"
+        text: "本文"
         tournament: "大会"
       analysis:
         attack: "攻撃力"
@@ -21,7 +21,7 @@ ja:
         expectations: "期待度"
         tournament: "大会"
         school: "学校"
-        text: "分析内容"
+        text: "本文"
         title: "タイトル"
       forecast:
         tournament: "大会"
