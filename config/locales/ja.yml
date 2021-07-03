@@ -36,14 +36,11 @@ ja:
         address: "市町村、住所"
         latitude: "入力した市町村、住所"
         school: "高校"
-    activerecord:
-      attributes:
-        user:
-          name: 名前
-          password: パスワード
-          password_confirmation: パスワード再入力
-          email: メールアドレス
-          nickname: ユーザー名
+      user:
+        nickname: "ユーザー名"
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード再入力
   views:
     pagination:
       first: "&laquo; 最初"
