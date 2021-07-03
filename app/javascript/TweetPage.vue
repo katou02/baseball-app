@@ -36,9 +36,10 @@
                       <p class="h5">{{e.round}}</p>
                       {{e.school_a}}vs{{e.school_b}}
                     </div>
-                    <div class="sub-title">
+                    <div v-if="e.title.length<=15" class="sub-title">
                       {{e.title}}
                     </div>
+                    <div v-else class="sub-title">{{e.title.slice(0,15) + '...'}}</div>
                   </div>
                 </div>
               </router-link>
