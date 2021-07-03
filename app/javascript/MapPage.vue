@@ -91,7 +91,7 @@ export default {
       maps: [],
       categories: [],
       currentPage: 1,
-      parPage: 10,
+      parPage: 12,
       current_user: '',
       current_slide: 0,
       id: ''
