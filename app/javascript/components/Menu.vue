@@ -30,11 +30,11 @@
         <v-icon color="blue lighten-1">mdi-logout</v-icon>
         ログアウト
       </a>
-      <v-btn color="primary" @click="childEvent" v-if="!signedIn">
+      <v-btn color="primary" @click="childEvent" v-if="!signedIn && this.$route.path=='/'">
         <v-icon color="white">mdi-account-plus</v-icon>
         新規登録
       </v-btn>
-      <v-btn color="primary" @click="childEvent2" v-if="!signedIn">
+      <v-btn color="primary" @click="childEvent2" v-if="!signedIn && this.$route.path=='/'">
         <v-icon color="white">mdi-login</v-icon>
         ログイン
       </v-btn>
