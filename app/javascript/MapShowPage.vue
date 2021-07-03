@@ -111,6 +111,7 @@ export default {
       axios
         .get(`/api/v1/maps/${this.$route.params.id}.json`)
         .then(response =>{
+          this.markers = []
           this.map = response.data
           this.image = response.data.image.url
           this.user = response.data.user_id
