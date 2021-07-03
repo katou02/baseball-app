@@ -240,7 +240,7 @@
         <v-tab-item value="tab-5">
           <v-row>
             <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listLikes" :key="e.id" class="mx-auto">
-              <div class="article mt-5">
+              <div class="user-article mt-5">
                 <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
@@ -251,6 +251,7 @@
                         {{e.time}}
                       </div>
                       <div class="article-title mt-3">
+                        <p class="h4">{{e.round}}</p>
                         {{e.school_a}}vs{{e.school_b}}
                       </div>
                       <div class="sub-title mt-3">
