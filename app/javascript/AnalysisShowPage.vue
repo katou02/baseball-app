@@ -158,6 +158,7 @@ export default {
         .then(response => {
           this.comment = response.data
         })
+      this.errors = ''
     },
     deleteAnalysis(id) {
       axios.delete(`/api/v1/analyses/${id}`).then(response => {

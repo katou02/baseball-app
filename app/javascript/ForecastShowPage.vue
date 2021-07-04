@@ -155,6 +155,7 @@ export default {
         .then(response => {
           this.comment = response.data
         })
+      this.errors = ''
     },
     createComment: function() {
       axios
