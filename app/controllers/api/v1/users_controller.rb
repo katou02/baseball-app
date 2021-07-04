@@ -16,8 +16,7 @@ class Api::V1::UsersController < ApiController
   
   def update
     @user = User.find(params[:id])
-    if (@user.id == current_user.id || current_user.admin) && current_user.nickname!="ゲスト" || current_user.admin
-      @user.update(user_params)
+    if (@user.id == current_user.id || current_user.admin) && @user.update(user_params) && current_user.nickname!="ゲスト" || current_user.admin
       head :no_content
     else
       render json: { errors: @user.errors.keys.map { |key| [key, @user.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
