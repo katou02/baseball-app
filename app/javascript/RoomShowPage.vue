@@ -50,6 +50,7 @@
               </v-btn>
             </div>
           </div>
+        <p v-if="!!errors['text']" style="color: red;" class="text-center">{{ errors['text'][0]}}</p>
         </div>
         <div v-else>
           <h4>フォローするとメッセージが送信できます</h4>

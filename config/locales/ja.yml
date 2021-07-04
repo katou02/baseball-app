@@ -42,6 +42,8 @@ ja:
         address: "市町村、住所"
         latitude: "入力した市町村、住所"
         school: "高校"
+      message:
+        text: メッセージ
       user:
         nickname: "ユーザー名"
         email: メールアドレス
