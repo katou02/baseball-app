@@ -92,6 +92,7 @@
             </div>
             <div class="text-center">
               <v-textarea solo v-model="text" type="text" rows="2" cols="30"></v-textarea>
+              <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
               <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
             </div>
             </form>

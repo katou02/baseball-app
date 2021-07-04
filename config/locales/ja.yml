@@ -13,6 +13,8 @@ ja:
         title: "タイトル"
         text: "本文"
         tournament: "大会"
+      comment:
+        text: コメント
       analysis:
         attack: "攻撃力"
         defensive: "守備力"
@@ -23,11 +25,15 @@ ja:
         school: "学校"
         text: "本文"
         title: "タイトル"
+      comment_analysis:
+        text: コメント
       forecast:
         tournament: "大会"
         win_school: "勝利予想"
         lose_school: "敗退予想"
         text: "本文"
+      comment_forecast:
+        text: コメント
       champion:
         champion_school: "高校" 
         tournament: "大会"

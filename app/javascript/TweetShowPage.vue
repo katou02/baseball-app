@@ -103,6 +103,7 @@
             </div> -->
             <div class="tweet-comment_form text-center">
               <v-textarea solo v-model="text" type="text"></v-textarea>
+              <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
               <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
             </div>
           </form>

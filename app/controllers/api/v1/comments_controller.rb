@@ -17,7 +17,7 @@ class Api::V1::CommentsController < ApiController
       @tweet.create_notification_comment!(current_user, comment.id)
       render json: comment,status: :created
     else
-      render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: comment.errors.keys.map { |key| [key, comment.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
 
