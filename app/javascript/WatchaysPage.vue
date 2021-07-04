@@ -71,9 +71,10 @@
                     <div class="school-ays-name mt-3">
                       {{e.school}}
                     </div>
-                    <div class="sub-title mt-3">
+                    <div v-if="e.title.length <=15" class="sub-title mt-3">
                       {{e.title}}
                     </div>
+                    <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
                   </div>
                 </div>
               </router-link>
