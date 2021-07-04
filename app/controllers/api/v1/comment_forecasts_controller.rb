@@ -13,10 +13,12 @@ class Api::V1::CommentForecastsController < ApiController
     comment = CommentForecast.new(comment_params)
     @forecast = comment.forecast
     if comment.save
-      @forecast.create_notification_comment_forecast!(current_user, comment.id)
+      if current_user.id != @forecast.user_id
+        @forecast.create_notification_comment_forecast!(current_user, comment.id)
+      end
       render json: comment,status: :created
     else
-      render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: comment.errors.keys.map { |key| [key, comment.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
 

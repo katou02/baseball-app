@@ -1,6 +1,6 @@
 class Forecast < ApplicationRecord
   has_many :categories
-  has_many :comment_forecasts
+  has_many :comment_forecasts, dependent: :destroy
   has_many :notifications, dependent: :destroy
   belongs_to :user
   belongs_to :win_school,class_name: 'Category', foreign_key: 'win_school_id'

@@ -11,8 +11,10 @@ ja:
         school_a_score: "高校Aの得点"
         school_b_score: "高校Bの得点"
         title: "タイトル"
-        text: "テキスト"
+        text: "本文"
         tournament: "大会"
+      comment:
+        text: コメント
       analysis:
         attack: "攻撃力"
         defensive: "守備力"
@@ -21,28 +23,32 @@ ja:
         expectations: "期待度"
         tournament: "大会"
         school: "学校"
-        text: "分析内容"
+        text: "本文"
         title: "タイトル"
+      comment_analysis:
+        text: コメント
       forecast:
         tournament: "大会"
         win_school: "勝利予想"
         lose_school: "敗退予想"
         text: "本文"
+      comment_forecast:
+        text: コメント
       champion:
         champion_school: "高校" 
         tournament: "大会"
       map:
         text: "本文"
         address: "市町村、住所"
+        latitude: "入力した市町村、住所"
         school: "高校"
-    activerecord:
-      attributes:
-        user:
-          name: 名前
-          password: パスワード
-          password_confirmation: パスワード再入力
-          email: メールアドレス
-          nickname: ユーザー名
+      message:
+        text: メッセージ
+      user:
+        nickname: "ユーザー名"
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード再入力
   views:
     pagination:
       first: "&laquo; 最初"

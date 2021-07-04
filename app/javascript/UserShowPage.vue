@@ -4,7 +4,8 @@
     <router-link :to="{name: 'user'}" class="users-btn text-white">ユーザー一覧</router-link>
     <router-link :to="{name: 'room'}" class="dm-btn text-white">DM</router-link>
     <span v-if="user_id==current_user || user.current_user.admin==true">
-      <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit text-white">編集する</router-link>
+      <!-- <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit text-white">編集する</router-link> -->
+      <button class="edit text-white" @click="openModal">編集する</button>
     </span>
     <p class="text-center">ID:{{user.id}}</p>
     <div class="myname mt-5">
@@ -110,9 +111,10 @@
                         <p class="h4">{{e.round}}</p>
                         {{e.school_a}}vs{{e.school_b}}
                       </div>
-                      <div class="sub-title mt-3">
+                      <div v-if="e.title.length<=15" class="sub-title mt-3">
                         {{e.title}}
                       </div>
+                      <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
                     </div>
                   </div>
                 </router-link>
@@ -144,9 +146,10 @@
                       <div class="school-ays-name mt-3">
                         {{e.school}}
                       </div>
-                      <div class="sub-title mt-3">
+                      <div v-if="e.title.length <=15" class="sub-title mt-3">
                         {{e.title}}
                       </div>
+                      <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
                     </div>
                   </div>
                 </router-link>
@@ -203,7 +206,7 @@
         </v-tab-item>
         <v-tab-item value="tab-4">
           <v-row>
-            <v-col cols="12"  sm="6" md="6" lg="6" v-for="e in listMaps" :key="e.id">
+            <v-col cols="12"  sm="6" md="4" lg="4" v-for="e in listMaps" :key="e.id">
               <div class="map-data mt-5">
                 <router-link :to="{name: 'map-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
@@ -239,7 +242,7 @@
         <v-tab-item value="tab-5">
           <v-row>
             <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listLikes" :key="e.id" class="mx-auto">
-              <div class="article mt-5">
+              <div class="user-article mt-5">
                 <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
@@ -250,11 +253,13 @@
                         {{e.time}}
                       </div>
                       <div class="article-title mt-3">
+                        <p class="h4">{{e.round}}</p>
                         {{e.school_a}}vs{{e.school_b}}
                       </div>
-                      <div class="sub-title mt-3">
+                      <div v-if="e.title.length <= 15" class="sub-title mt-3">
                         {{e.title}}
                       </div>
+                      <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
                     </div>
                   </div>
                 </router-link>
@@ -279,6 +284,12 @@
         </v-tab-item>
       </v-tabs-items>
     </div>
+    <modal name="select" height="auto" width="65%" :scrollable="true">
+      <div id="modal">
+        <Edit @parent-event="fetchUser"></Edit>
+        <button @click="closeModal">閉じる</button>
+      </div>
+    </modal>
   </div>
 </template>
 <script>
@@ -286,11 +297,13 @@ import axios from 'axios'
 import Follow from './FollowingPage.vue'
 import Follower from './FollowerPage.vue'
 import Header from './components/Header.vue'
+import Edit from './components/UserEdit.vue'
 export default {
   components: {
     Header,
     Follow,
-    Follower
+    Follower,
+    Edit
   },
   data() {
     return {
@@ -341,6 +354,7 @@ export default {
   },
   methods: {
     fetchUser() {
+      this.closeModal()
       axios
         .get('/api/v1/users')
         .then(response =>{
@@ -402,7 +416,13 @@ export default {
     },
     isMore_m() {
       this.count_m += 10
-    }
+    },
+    openModal(){
+      this.$modal.show('select');
+    },
+    closeModal(){
+      this.$modal.hide('select');
+    },
   },
   watch: {
     '$route'(to, from) {

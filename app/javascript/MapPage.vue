@@ -8,9 +8,10 @@
       </div>
     </div>
     <div class="text-center">
-      <router-link :to="{name: 'watch_ays',params: {id: $route.query.tournament_id}}" class="ays-avg">戻る</router-link>
+      <!-- <router-link :to="{name: 'watch_ays',params: {id: $route.query.tournament_id}}" class="ays-avg">戻る</router-link> -->
       <span v-if="current_user!=null">
-        <router-link :to="{name: 'map-new',query: {tournament_id: $route.query.tournament_id}}" class="ays-avg">紹介する</router-link>
+        <!-- <router-link :to="{name: 'map-new',query: {tournament_id: $route.query.tournament_id}}" class="ays-avg">紹介する</router-link> -->
+        <button class="ays-avg" @click="openModal">紹介する</button>
       </span>
     </div>
     <h3 class="pt-4">出場校のふるさとを紹介</h3>
@@ -48,6 +49,12 @@
         </v-col>
       </v-row>
     </div>
+    <modal name="select" height="auto" width="65%" :scrollable="true">
+      <div id="modal">
+        <New @parent-event="fetchMaps"></New>
+        <button @click="closeModal">閉じる</button>
+      </div>
+    </modal>
     <div class="text-center">
       <paginate
         :v-model="currentPage" 
@@ -72,9 +79,11 @@
 <script>
 import axios from 'axios'
 import Side from './components/Side.vue'
+import New from './components/MapNew.vue'
 export default {
   components: {
-    Side
+    Side,
+    New
   },
   data() {
     return {
@@ -82,7 +91,7 @@ export default {
       maps: [],
       categories: [],
       currentPage: 1,
-      parPage: 10,
+      parPage: 12,
       current_user: '',
       current_slide: 0,
       id: ''
@@ -94,6 +103,7 @@ export default {
   },
   methods: {
     fetchMaps() {
+      this.closeModal()
       axios
         .get(`api/v1/maps.json?tournament_id=${this.$route.query.tournament_id}`)
         .then(response =>{
@@ -120,6 +130,12 @@ export default {
         .then(response =>{
           this.categories = response.data;
         })
+    },
+    openModal(){
+      this.$modal.show('select');
+    },
+    closeModal(){
+      this.$modal.hide('select');
     },
   },
   computed: {

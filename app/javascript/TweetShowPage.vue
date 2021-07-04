@@ -19,9 +19,10 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <router-link :to="{name: 'tweet-edit',params: {id: tweet.id}}" class="edit text-white p-2">記事を編集する</router-link>
+        <!-- <router-link :to="{name: 'tweet-edit',params: {id: tweet.id}}" class="edit text-white p-2">記事を編集する</router-link> -->
+        <button class="edit text-white p-1" @click="openModal">記事を編集する</button>
       </div>
-      <router-link :to="{name: 'tweet'}" class="return-btn text-white">記事一覧へ戻る</router-link>
+      <router-link :to="{name: 'tweet'}" class="return-btn text-white pt-1">記事一覧へ戻る</router-link>
     </div>
     <div class="post-user-name">
       <div v-if="tweet.current_user"><h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{tweet.nickname}}</router-link></h5></div>
@@ -102,6 +103,7 @@
             </div> -->
             <div class="tweet-comment_form text-center">
               <v-textarea solo v-model="text" type="text"></v-textarea>
+              <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
               <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
             </div>
           </form>
@@ -109,11 +111,21 @@
       </div>
     </div>
   </div>
+  <modal name="select" height="auto" width="65%" :scrollable="true">
+    <div id="modal">
+      <Edit @parent-event="fetchTweets"></Edit>
+      <button @click="closeModal">閉じる</button>
+    </div>
+  </modal>
 </div>
 </template>
 <script>
 import axios from 'axios'
+import Edit from './components/TweetEdit.vue'
 export default {
+  components: {
+    Edit
+  },
   data() {
     return {
       comment: "",
@@ -132,6 +144,7 @@ export default {
   },
   methods: {
     fetchTweets() {
+      this.closeModal()
       axios
         .get(`/api/v1/tweets/${this.$route.params.id}.json`)
         .then(response =>{
@@ -158,6 +171,7 @@ export default {
         .then(response => {
           this.comment = response.data
         })
+        this.errors = ''
     },
     createComment: function() {
       axios
@@ -201,7 +215,13 @@ export default {
       if(rt==true) {
         this.deleteComment(id)
       }
-    }
+    },
+    openModal(){
+      this.$modal.show('select');
+    },
+    closeModal(){
+      this.$modal.hide('select');
+    },
   }
 }
 </script>

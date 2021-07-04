@@ -17,9 +17,9 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <router-link :to="{name: 'map-edit',params: {id: $route.params.id}}" class="edit text-white p-2">編集する</router-link>
+        <button class="edit text-white p-1" @click="openModal">編集する</button>
       </div>
-      <router-link :to="{name: 'map',query: {tournament_id: map.tournament}}" class="return-btn text-white">戻る</router-link>
+      <router-link :to="{name: 'map',query: {tournament_id: map.tournament}}" class="return-btn text-white pt-1">戻る</router-link>
     </div>
     <div class="post-user-name">
       <div v-if="current_user"><h5>投稿者:<router-link :to="{name: 'user-show',params: {id: user}}">{{map.nickname}}</router-link></h5></div>
@@ -76,11 +76,21 @@
         <!-- </div> -->
       </div>
     </div>
+    <modal name="select" height="auto" width="65%" :scrollable="true">
+      <div id="modal">
+        <Edit @parent-event="fetchMap"></Edit>
+        <button @click="closeModal">閉じる</button>
+      </div>
+    </modal>
   </div>
 </template>
 <script>
 import axios from 'axios'
+import Edit from './components/MapEdit.vue'
 export default {
+  components: {
+    Edit
+  },
   data() {
     return {
       map: [],
@@ -97,9 +107,11 @@ export default {
   },
   methods: {
     fetchMap() {
+      this.closeModal()
       axios
         .get(`/api/v1/maps/${this.$route.params.id}.json`)
         .then(response =>{
+          this.markers = []
           this.map = response.data
           this.image = response.data.image.url
           this.user = response.data.user_id
@@ -117,6 +129,12 @@ export default {
       axios.delete(`/api/v1/maps/${id}`).then(response => {
         this.$router.push({ name: 'map',query: {tournament_id: this.map.tournament} });
       })
+    },
+    openModal(){
+      this.$modal.show('select');
+    },
+    closeModal(){
+      this.$modal.hide('select');
     },
     // onAlert:function(){
     //   this.$dialog

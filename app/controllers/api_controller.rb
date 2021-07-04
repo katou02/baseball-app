@@ -19,6 +19,6 @@ class ApiController < ApplicationController
   end
   
   def not_authorized
-    render json: { error: 'Not Authorized' }, status: :unauthorized
+    render json: { error: 'ログインに失敗しました 入力情報を確認してください' }, status: :unauthorized
   end
 end

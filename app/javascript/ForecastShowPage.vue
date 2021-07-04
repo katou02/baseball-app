@@ -19,9 +19,10 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
-          <router-link :to="{name: 'forecast-edit',params: {id: forecast.id}}" class="edit text-white p-2">記事を編集する</router-link>
+          <!-- <router-link :to="{name: 'forecast-edit',params: {id: forecast.id}}" class="edit text-white p-2">記事を編集する</router-link> -->
+          <button class="edit text-white p-1" @click="openModal">記事を編集する</button>
         </div>
-        <router-link :to="{name: 'forecast'}" class="return-btn text-white">記事一覧へ戻る</router-link>
+        <router-link :to="{name: 'forecast'}" class="return-btn text-white pt-1">記事一覧へ戻る</router-link>
       </div>
       <div class="post-user-name">
         <div v-if="forecast.current_user"><h5>投稿者:<router-link :to="{name: 'user-show',params: {id: forecast.user_id}}">{{forecast.nickname}}</router-link></h5></div>
@@ -91,6 +92,7 @@
             </div>
             <div class="text-center">
               <v-textarea solo v-model="text" type="text" rows="2" cols="30"></v-textarea>
+              <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
               <v-btn small type="submit" color="info" class="text-center">投稿する</v-btn>
             </div>
             </form>
@@ -98,11 +100,21 @@
         </div>
       </div>
     </div>
+    <modal name="select" height="auto" width="65%" :scrollable="true">
+      <div id="modal">
+        <Edit @parent-event="fetchForecasts"></Edit>
+        <button @click="closeModal">閉じる</button>
+      </div>
+    </modal>
   </div>
 </template>
 <script>
 import axios from 'axios'
+import Edit from './components/ForecastEdit.vue'
 export default {
+  components: {
+    Edit
+  },
   data() {
     return {
       forecast: [],
@@ -123,6 +135,8 @@ export default {
   },
   methods: {
     fetchForecasts() {
+      this.fetchchart()
+      this.closeModal()
       axios
         .get(`/api/v1/forecasts/${this.$route.params.id}.json`)
         .then(response =>{
@@ -141,6 +155,7 @@ export default {
         .then(response => {
           this.comment = response.data
         })
+      this.errors = ''
     },
     createComment: function() {
       axios
@@ -178,7 +193,7 @@ export default {
     },
     chart() {
       var ctx = document.getElementById("PieChart");
-      var PieChart = new Chart(ctx, {
+      window.PieChart = new Chart(ctx, {
         type: 'pie',
         data: {
           labels: this.labels,
@@ -215,7 +230,13 @@ export default {
       if(rt==true) {
         this.deleteComment(id)
       }
-    }
+    },
+    openModal(){
+      this.$modal.show('select');
+    },
+    closeModal(){
+      this.$modal.hide('select');
+    },
   }
 }
 </script>

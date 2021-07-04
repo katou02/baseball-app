@@ -10,9 +10,13 @@
         <v-form class="col" @submit.prevent="signup" lazy-validation>
           <div class="text-red" v-if="error">{{ error }}</div>
           <v-text-field label="ユーザー名" prepend-icon="mdi-user" v-model="name" required="required"/>
+          <p v-if="!!errors['nickname']" style="color: red;">{{ errors['nickname'][0]}}</p>
           <v-text-field label="メールアドレス" prepend-icon="mdi-email" v-model="email" required="required"/>
+          <p v-if="!!errors['email']" style="color: red;">{{ errors['email'][0]}}</p>
           <v-text-field label="パスワード" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password" required="required"/>
+          <p v-if="!!errors['password']" style="color: red;">{{ errors['password'][0]}}</p>
           <v-text-field label="パスワード確認" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password_confirmation" required="required"/>
+          <p v-if="!!errors['password_confirmation']" style="color: red;">{{ errors['password_confirmation'][0]}}</p>
           <v-card-actions>
             <v-btn type="submit" color="light-green darken-1" class="white--text mx-auto">新規登録</v-btn>
             <!-- <div><router-link to="/signin" class="btn link-grey">ログインページへ</router-link></div> -->
@@ -33,7 +37,7 @@
         email: '',
         password: '',
         password_confirmation: '',
-        error: ''
+        errors: ''
       }
     },
     created() {
@@ -46,7 +50,12 @@
       signup() {
         this.$http.plain.post('/api/v1/signups', { nickname: this.name, email: this.email, password: this.password, password_confirmation: this.password_confirmation })
           .then(response => this.signupSuccessful(response))
-          .catch(error => this.signupFailed(error))
+          // .catch(error => this.signupFailed(error))
+        .catch(error => {
+          if (error.response.data && error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
+        });
       },
       signupSuccessful(response) {
         if (!response.data.csrf) {

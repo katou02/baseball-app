@@ -27,7 +27,7 @@ class Api::V1::MessagesController < ApiController
         notification.save if notification.valid?
 
       else
-        render json: { errors: message.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: @message.errors.keys.map { |key| [key, @message.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
       end
       
     else

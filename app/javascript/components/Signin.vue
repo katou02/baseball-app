@@ -8,7 +8,7 @@
       <!-- </v-card-title> -->
       <!-- <v-card-text> -->
         <v-form class="col" @submit.prevent="signin" lazy-validation>
-          <div class="text-red" v-if="error">{{ error }}</div>
+          <div class="text-red" style="color: red;" v-if="error">{{ error }}</div>
           <v-text-field label="メールアドレス" v-model="email" required="required" prepend-icon="mdi-email"/>
           <v-text-field label="パスワード" v-model="password" required="required" prepend-icon="mdi-lock"/>
           <v-card-actions><v-btn type="submit" class="white--text mx-auto" color="light-green darken-1">ログイン</v-btn></v-card-actions>

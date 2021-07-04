@@ -9,7 +9,7 @@ class Api::V1::LikesController < ApiController
   def create
     current_user.likes.create(likes_params)
     @tweet = Tweet.find(params[:tweet_id])
-    @tweet.create_notification_like!(current_user)
+    @tweet.create_notification_like!(current_user) if @tweet.user_id != current_user.id
   end
 
   def destroy
