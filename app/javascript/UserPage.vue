@@ -20,12 +20,9 @@
               {{e.name}}
             </div>
             <div class="user-list_text mt-5">
-              <div v-if="e.text">
-                {{e.text}}
-              </div>
-              <div v-else>
-                自己紹介未記入
-              </div>
+              <div v-if="e.text && e.text.length<=11">{{e.text}}</div>
+              <div v-else-if="e.text && e.text.length>11">{{e.text.slice(0,11) + '...'}}</div>
+              <div v-else>自己紹介未記入</div>
             </div>
             <div class="user-address mt-5 pb-3">
               <div v-if="e.prefecture">
