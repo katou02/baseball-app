@@ -15,10 +15,10 @@ RSpec.describe Message, type: :model do
         expect(message.errors[:text]).to include('を入力してください')
       end
 
-      it '301文字以上だと保存できない' do
-        message.text = 'a' * 301
+      it '201文字以上だと保存できない' do
+        message.text = 'a' * 201
         message.valid?
-        expect(message.errors).to be_added(:text, :too_long, count: 300)
+        expect(message.errors).to be_added(:text, :too_long, count: 200)
       end
     end
   end
