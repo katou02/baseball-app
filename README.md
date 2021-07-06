@@ -22,6 +22,7 @@
 • AWS(EC2,S3)  
 • Docker/Docker-compose  
 • CircleCI(CI/CD) 　
+• Terraform(インフラのコード化)
 
     
 ## 工夫点
