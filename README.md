@@ -21,7 +21,7 @@
 #### インフラ
 • AWS(EC2,S3)  
 • Docker/Docker-compose  
-• CircleCI(CI/CD) 　
+• CircleCI(CI/CD)  
 • Terraform(インフラのコード化)
 
     
@@ -35,6 +35,9 @@
 • Vue.jsを採用し、SPA（シングルページアプリケーション）で配信している点  
 • UIフレームワークにVuetifyを使用し、整ったUIを意識している点  
 • Chart.jsを使用しデータをグラフ化している点
+
+#### インフラ
+• Terraformを使い、本番環境インフラをコードで管理している点
 
 ## 機能一覧
 |  機能名  |  説明  |
