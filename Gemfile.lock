@@ -139,7 +139,6 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    ed25519 (1.2.4)
     erubi (1.10.0)
     excon (0.81.0)
     execjs (2.7.0)
@@ -403,7 +402,6 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
-  bcrypt
   bcrypt_pbkdf
   bootsnap (>= 1.1.0)
   bootstrap (~> 5.0.0.alpha2)
@@ -421,7 +419,6 @@ DEPENDENCIES
   compass-rails (= 3.1.0)
   devise
   dotenv-rails
-  ed25519
   factory_bot_rails
   fog-aws
   font-awesome-sass

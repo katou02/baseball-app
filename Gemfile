@@ -93,8 +93,8 @@ gem 'geocoder', '~> 1.6', '>= 1.6.2'
 gem "dotenv-rails"
 gem 'jwt_sessions'
 gem 'redis-rails'
-gem 'bcrypt'
-gem 'ed25519'
+# gem 'bcrypt'
+# gem 'ed25519'
 gem 'bcrypt_pbkdf'
  
 group :production do
