@@ -30,3 +30,15 @@ services:
     volumes:
       - ./redis:/data
     command: redis-server --appendonly yes
+  front:
+    build: ./front
+    volumes:
+      - ./front:/app
+    ports:
+      - '8080:8080'
+    tty: true
+    stdin_open: true
+    command: npm run serve
+volumes:
+  mysql_data:
+  bundle:

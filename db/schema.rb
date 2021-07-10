@@ -114,11 +114,11 @@ ActiveRecord::Schema.define(version: 2020_12_27_081427) do
   end
 
   create_table "maps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "text"
+    t.text "text", null: false
     t.text "image"
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
+    t.string "address", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.bigint "school_id", null: false
     t.bigint "tournament_id", null: false
     t.bigint "user_id", null: false
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 2020_12_27_081427) do
     t.integer "following_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
     t.index ["following_id"], name: "index_relationships_on_following_id"
   end
