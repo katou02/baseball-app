@@ -22,8 +22,8 @@ import WatchfcsPage from './WatchfcsPage.vue'
 import UserPage from './UserPage.vue'
 import MapPage from './MapPage.vue'
 import MapShowPage from './MapShowPage'
-import MapNewPage from './MapNewPage'
-import MapEditPage from './MapEditPage'
+// import MapNewPage from './MapNewPage'
+// import MapEditPage from './MapEditPage'
 import ChampionPage from './ChampionPage'
 import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
@@ -126,16 +126,16 @@ const router = new VueRouter({
       component: MapShowPage,
       name: 'map-show'
     },
-    {
-      path: '/maps/new',
-      component: MapNewPage,
-      name: 'map-new'
-    },
-    {
-      path: '/maps/:id(\\d+)/edit',
-      component: MapEditPage,
-      name: 'map-edit'
-    },
+    // {
+    //   path: '/maps/new',
+    //   component: MapNewPage,
+    //   name: 'map-new'
+    // },
+    // {
+    //   path: '/maps/:id(\\d+)/edit',
+    //   component: MapEditPage,
+    //   name: 'map-edit'
+    // },
     {
       path: '/notifications',
       component: NotificationPage,
