@@ -67,6 +67,6 @@ class Api::V1::MapsController < ApiController
   end
 
   def update_params
-    params.permit(:address,:school_id,:text,:tournament_id,:image).merge(user_id: current_user.id)
+    params.permit(:address,:school_id,:text,:tournament_id,:image)
   end
 end
