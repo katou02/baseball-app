@@ -1,7 +1,0 @@
-<%if @forecast.errors.any?%> 
-  <div class="alert">
-    <ul>
-      <%@forecast.errors.full_messages.each do |message|%> 
-        <li><%= message%></li>
-      <%end%>
-<%end%>

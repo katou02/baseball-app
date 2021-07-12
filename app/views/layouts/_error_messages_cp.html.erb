@@ -1,7 +1,0 @@
-<%if @champion.errors.any?%> 
-  <div class="alert">
-    <ul>
-      <%@champion.errors.full_messages.each do |message|%> 
-        <li><%= message%></li>
-      <%end%>
-<%end%>

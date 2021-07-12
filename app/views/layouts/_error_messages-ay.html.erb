@@ -1,7 +1,0 @@
-<%if @analysis.errors.any?%> 
-  <div class="alert">
-    <ul>
-      <%@analysis.errors.full_messages.each do |message|%> 
-        <li><%= message%></li>
-      <%end%>
-<%end%>
