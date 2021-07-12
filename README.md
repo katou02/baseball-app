@@ -1,7 +1,9 @@
-# 野球アプリ
+# 甲子園ドットコム
+高校野球の試合記事、戦力分析、試合予想などを投稿できるアプリです！  
+<br>
 
-高校野球の試合記事、戦力分析、試合予想などを投稿できるアプリです！
-
+<img src="https://user-images.githubusercontent.com/56467807/125239544-c3024b00-e323-11eb-9be5-0e39a949006c.png" height="600" width="1000">
+<br>
 
 ## 使用した技術
 
@@ -22,9 +24,8 @@
 • AWS(EC2,S3,VPC,Route53,ALB,ACM,SSM)  
 • Docker/Docker-compose  
 • CircleCI(CI/CD)  
-• Terraform(インフラの一部をコード化)
-
-    
+• Terraform(インフラの一部をコード化)  
+<br>
 ## 工夫点
 
 #### バックエンド
@@ -37,7 +38,14 @@
 • Chart.jsを使用しデータをグラフ化している点
 
 #### インフラ
-• Terraformを使い、本番環境インフラをコードで管理している点
+• Terraformを使い、本番環境インフラをコードで管理している点  
+<br>
+## ER図
+<img src="https://user-images.githubusercontent.com/56467807/125237618-f099c500-e320-11eb-8dab-d00d10b988aa.png" height="900" width="900">
+
+## AWS構成図
+<img src="https://user-images.githubusercontent.com/56467807/125237831-453d4000-e321-11eb-824b-06c80378c390.png" height="600" width="600">  
+<br>
 
 ## 機能一覧
 |  機能名  |  説明  |
