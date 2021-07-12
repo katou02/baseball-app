@@ -206,7 +206,7 @@
         </v-tab-item>
         <v-tab-item value="tab-4">
           <v-row>
-            <v-col cols="12"  sm="6" md="4" lg="4" v-for="e in listMaps" :key="e.id">
+            <v-col cols="12"  sm="6" md="6" lg="6" v-for="e in listMaps" :key="e.id">
               <div class="map-data mt-5">
                 <router-link :to="{name: 'map-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
