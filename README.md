@@ -19,10 +19,10 @@
 • JsonWebToken
 
 #### インフラ
-• AWS(EC2,S3)  
+• AWS(EC2,S3,VPC,Route53,ALB,ACM,SSM)  
 • Docker/Docker-compose  
 • CircleCI(CI/CD)  
-• Terraform(インフラのコード化)
+• Terraform(インフラの一部をコード化)
 
     
 ## 工夫点
