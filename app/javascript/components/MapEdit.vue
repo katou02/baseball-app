@@ -47,11 +47,11 @@ export default {
   mounted() {
     this.fetchSchools()
   },
-  beforeUpdate() {
-    if(this.current_user===null || this.current_user.id != this.user) {
-      this.$router.push({ name: 'map',query: {tournament_id: 1}});
-    }
-  },
+  // beforeUpdate() {
+  //   if(this.current_user===null || this.current_user.id != this.user) {
+  //     this.$router.push({ name: 'map',query: {tournament_id: 1}});
+  //   }
+  // },
   methods: {
     editMap() {
       let formData = new FormData();
