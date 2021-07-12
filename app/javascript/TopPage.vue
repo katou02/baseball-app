@@ -2,7 +2,7 @@
   <div class="top">
     <Menu @parent-event="openModal" @parent-event2="openModal2"></Menu>
     <div class="top-title">
-      甲子園.com
+      甲子園ドットコム
     </div>
     <div class="top-menu-list">
       <router-link :to="{name: 'tweet'}" class="text-white">
