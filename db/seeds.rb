@@ -87,4 +87,7 @@ Forecast.create(text: "ここまで不安視された「投手」で好調を維
                 round: "準決勝",probability: "60",win_school_id: 12,lose_school_id: 19,tournament_id: 1,user_id: 1)
 
 Map.create(text: "商業施設も多く、買い物や飲食する場所にも困りません。例えば、横浜駅周辺であれば駅と直結している商業施設が複数ありますし、その中に飲食店や雑貨屋といったお店が揃っています。横浜駅に行けば大抵のものは揃うでしょう。横浜市内であれば大抵の駅は横浜駅につながっていますので、栄えた横浜駅周辺にまで足を延ばすのは苦ではありません。飲食店だけでなく、ボーリング場やカラオケ、映画館といった施設も揃っているので、遊ぶ場所にも困りません。",
-                address: "横浜市",latitude: 35.4437,longitude: 139.638,school_id: 10,tournament_id: 1,user_id: 1)
+           address: "横浜市",latitude: 35.4437,longitude: 139.638,school_id: 10,tournament_id: 1,user_id: 1)
+
+Map.create(text: "上田市（うえだし）は、長野県の東部（東信地方）にある市です。東信地方および上田地域の中心都市で、長野県内では長野市、松本市に次ぐ3番目の規模の都市です。上田城、別所温泉などがあります。",
+           address: "上田市",latitude: 36.4019,longitude: 138.249,school_id: 130,tournament_id: 117,user_id: 1)
