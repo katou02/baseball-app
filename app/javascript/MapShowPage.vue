@@ -62,18 +62,8 @@
     </div>
     <div class="map-info">
       <div class="map-text">
-        <div class="mt-4 mb-4" style="white-space:pre-wrap;">
-          {{map.text}}
-          <img :src= image class="mt-3">
-        </div>
-        <!-- <div class="map-image">
-          <div class="h-100" v-if="image">
-            <img :src= image class="map-image_content">
-          </div> -->
-          <!-- <div class="h-100" v-else>
-            <img src="../assets/images/map-no-image.png" class="map-image_content">
-          </div> -->
-        <!-- </div> -->
+        <p style="white-space:pre-wrap;" class="ml-5">{{map.text}}</p>
+        <img :src= image class="mt-3">
       </div>
     </div>
     <modal name="select" height="auto" width="65%" :scrollable="true">
