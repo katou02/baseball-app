@@ -63,7 +63,7 @@
     <div class="map-info">
       <div class="map-text">
         <p style="white-space:pre-wrap;" class="ml-5">{{map.text}}</p>
-        <img :src= image class="mt-3">
+        <img :src= image class="mt-3 ml-5">
       </div>
     </div>
     <modal name="select" height="auto" width="65%" :scrollable="true">
