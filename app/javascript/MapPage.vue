@@ -1,5 +1,6 @@
 <template>
   <div class="map-content">
+    <Img></Img>
     <div class="text-format mt-5 text-warning">出場校のふるさとを紹介</div>
     <div class="text-format pt-4 text-primary">
       <div v-for="e in categories" :key="e.id">
@@ -77,10 +78,12 @@
 import axios from 'axios'
 import Side from './components/Side.vue'
 import New from './components/MapNew.vue'
+import Img from './components/Img.vue'
 export default {
   components: {
     Side,
-    New
+    New,
+    Img
   },
   data() {
     return {
