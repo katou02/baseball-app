@@ -8,10 +8,10 @@
       </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
-    <div class="text-format mt-5 text-primary">
+    <div class="text-format mt-5 text-warning">
       観た試合の感想をみんなに発信してみましょう！
     </div>
-    <div class="text-format mt-5 text-success">
+    <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id==e.id">
           {{e.category}}

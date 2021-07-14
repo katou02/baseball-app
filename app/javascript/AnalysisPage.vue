@@ -7,11 +7,11 @@
     </div>
     <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
   </div>
-  <div class="text-format mt-5 text-success">
+  <div class="text-format mt-5 text-warning">
     戦力分析をみんなで共有してみましょう！
   </div>
   <div class="analysis-main">
-    <div class="text-format pt-5 text-warning">
+    <div class="text-format pt-5 text-primary">
       みんなの戦力分析
     </div>
     <div class="search-area mt-3">
