@@ -129,6 +129,7 @@
           >
             もっと見る
           </button>
+        <div v-if="!my_tweets.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
         <v-tab-item value="tab-2">
           <v-row>
@@ -164,6 +165,7 @@
           >
             もっと見る
           </button>
+          <div v-if="!my_analyses.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
         <v-tab-item value="tab-3">
           <v-row>
@@ -203,6 +205,7 @@
           >
             もっと見る
           </button>
+          <div v-if="!my_forecasts.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
         <v-tab-item value="tab-4">
           <v-row>
@@ -238,6 +241,7 @@
           >
             もっと見る
           </button>
+          <div v-if="!my_maps.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
         <v-tab-item value="tab-5">
           <v-row>
@@ -274,6 +278,7 @@
           >
             もっと見る
           </button>
+          <div v-if="!my_likes.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
 
         <v-tab-item value="tab-6">
