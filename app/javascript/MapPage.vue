@@ -1,5 +1,6 @@
 <template>
   <div class="map-content">
+    <div class="text-format mt-5 text-warning">出場校のふるさとを紹介</div>
     <div class="text-format pt-4 text-primary">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.query.tournament_id==e.id">
@@ -13,10 +14,6 @@
         <!-- <router-link :to="{name: 'map-new',query: {tournament_id: $route.query.tournament_id}}" class="ays-avg">紹介する</router-link> -->
         <button class="ays-avg" @click="openModal">紹介する</button>
       </span>
-    </div>
-    <h3 class="pt-4">出場校のふるさとを紹介</h3>
-    <div class="text-format mt-5 mb-4 text-warning">
-      大会別
     </div>
     <div class="search-area mt-5">
       <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
