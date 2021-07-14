@@ -17,6 +17,7 @@
     <div class="search-area mt-3">
       <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
+    <Img></Img>
     <div class="d-md-flex list">
       <Side></Side>
       <v-row class="ml-5">
@@ -79,11 +80,13 @@ import axios from 'axios';
 import Header from './components/Header.vue'
 import Side from './components/Side.vue'
 import New from './components/AnalysisNew.vue'
+import Img from './components/Img.vue'
 export default {
   components: {
     Header,
     Side,
-    New
+    New,
+    Img
   },
   data() {
     return {

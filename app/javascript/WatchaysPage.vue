@@ -28,6 +28,7 @@
         </div>
       </div>
     </div> -->
+    <Img></Img>
     <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id==e.id">
@@ -117,11 +118,13 @@ import axios from 'axios'
 import Header from './components/Header.vue'
 import Side from './components/Side.vue'
 import New from './components/AnalysisNew.vue'
+import Img from './components/Img.vue'
 export default {
   components: {
     Header,
     Side,
-    New
+    New,
+    Img
   },
   data() {
     return {

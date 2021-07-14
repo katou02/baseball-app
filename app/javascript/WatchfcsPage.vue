@@ -35,14 +35,7 @@
         </div>
       </div>
     </div>
-    <!-- <p class="text-center h4 mb-3 mt-5">優勝校を予想してみよう</p>
-    <div class="champ center-block">
-      <i class="fas fa-crown text-warning"></i>
-      <router-link :to="{name: 'champion',params: {id: num}}">優勝予想</router-link>
-      <i class="fas fa-crown text-warning"></i>
-    </div> -->
-    <!-- 大会 -->
-    <!--予想  -->
+    <Img></Img>
     <div class="forecast-main">
       <div class="text-format pt-5 text-primary">
         みんなの試合予想
@@ -116,11 +109,13 @@ import axios from 'axios'
 import Header from './components/Header.vue'
 import Side from './components/Side.vue'
 import New from './components/ForecastNew.vue'
+import Img from './components/Img.vue'
 export default {
   components: {
     Header,
     Side,
-    New
+    New,
+    Img
   },
   data() {
     return {

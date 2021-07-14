@@ -26,6 +26,7 @@
       <div class="search-area mt-3">
         <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
       </div>
+      <Img></Img>
       <!-- 記事 -->
       <div class="d-md-flex list">
         <Side></Side>
@@ -93,11 +94,13 @@ import axios from 'axios'
 import Header from './components/Header.vue'
 import Side from './components/Side.vue'
 import New from './components/ForecastNew.vue'
+import Img from './components/Img.vue'
 export default {
   components: {
     Header,
     Side,
-    New
+    New,
+    Img
   },
   data() {
     return {
