@@ -50,12 +50,13 @@
 }
 
 .article {
-  // width: 400px;
+  position: relative;
   text-align: center;
   background-color: #f3f3f3;
   border: solid 1px rgb(255, 255, 255);
   &-title {
-    font-size: 1.0rem;
+    margin-top: 45px;
+    font-size: 1.1rem;
     color: black;
     font-weight: bold;
   }
@@ -83,6 +84,10 @@
     width: 140px;
     height: 140px;
     border: 1.8px solid  rgb(192, 189, 189);
+  }
+  &-round {
+    position: absolute;
+    right: 20%;
   }
 }
 
