@@ -144,17 +144,21 @@
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
-                      <div class="name">
-                        投稿者{{e.nickname}}
-                        {{e.time}}
-                      </div>
                       <div class="school-ays-name mt-3">
-                        {{e.school}}
+                        <v-card color="light-green">
+                          <div class="text-white">{{e.school}}</div>
+                        </v-card>
                       </div>
                       <div v-if="e.title.length <=15" class="sub-title mt-3">
                         {{e.title}}
                       </div>
                       <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
+                      <div class="name">
+                        投稿者:{{e.nickname}}
+                        <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                        投稿日:{{e.time}}
+                      </div>
                     </div>
                   </div>
                 </router-link>
