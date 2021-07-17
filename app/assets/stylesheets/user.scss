@@ -37,6 +37,14 @@
     object-fit: cover;
     border: solid;
     border-color: #acafc3;
+    &2 {
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      border: solid;
+      border-color: #acafc3;
+    }
   }
   &-info {
     font-size: 18px;

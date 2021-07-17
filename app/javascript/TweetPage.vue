@@ -35,13 +35,15 @@
                     <div class="article-title">
                       {{e.school_a}}vs{{e.school_b}}
                     </div>
-                    <div v-if="e.title.length<=15" class="sub-title">
+                    <div v-if="e.title.length<=14" class="sub-title">
                       {{e.title}}
                     </div>
-                    <div v-else class="sub-title">{{e.title.slice(0,15) + '...'}}</div>
+                    <div v-else class="sub-title">{{e.title.slice(0,14) + '...'}}</div>
                     <div class="name">
-                      投稿者 {{e.nickname}}
-                      {{e.time}}
+                      投稿者:{{e.nickname}}
+                      <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                      <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                      投稿日:{{e.time}}
                     </div>
                   </div>
                 </div>
