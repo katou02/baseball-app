@@ -103,6 +103,9 @@
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
+                      <div class="post-time">
+                        投稿:{{e.time}}
+                      </div>
                       <div class="article-round">
                         <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
                       </div>
@@ -117,7 +120,6 @@
                         投稿者:{{e.nickname}}
                         <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
                         <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
-                        投稿日:{{e.time}}
                       </div>
                     </div>
                   </div>
@@ -144,6 +146,9 @@
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
+                      <div class="post-time">
+                        投稿:{{e.time}}
+                      </div>
                       <div class="school-ays-name mt-3">
                         <v-card color="light-green">
                           <div class="text-white">{{e.school}}</div>
@@ -157,7 +162,6 @@
                         投稿者:{{e.nickname}}
                         <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
                         <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
-                        投稿日:{{e.time}}
                       </div>
                     </div>
                   </div>
@@ -183,6 +187,9 @@
                   <div class="d-flex h-100">
                     <div class="forecast-image"><img src="/images/ball.jpg" class="forecast-icon"></div>
                     <div class="article-heading mx-auto">
+                      <div class="post-time">
+                        投稿:{{e.time}}
+                      </div>
                       <div class="article-round">
                         <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
                       </div>
@@ -203,7 +210,6 @@
                           投稿者:{{e.nickname}}
                           <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
                           <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
-                          投稿日:{{e.time}}
                         </div>
                       </div>
                     </div>
@@ -232,7 +238,7 @@
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
                       <div class="sub-title">
-                        <v-chip color="light-green" text-color="white">{{e.school}}のふるさと</v-chip>
+                        <v-chip color="light-green" text-color="white" class="font-weight-bold">{{e.school}}のふるさと</v-chip>
                       </div>
                       <div class="name">
                         投稿者:{{e.nickname}}
@@ -265,6 +271,9 @@
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
+                      <div class="post-time">
+                        投稿:{{e.time}}
+                      </div>
                       <div class="article-round">
                         <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
                       </div>
@@ -279,7 +288,6 @@
                         投稿者:{{e.nickname}}
                         <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
                         <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
-                        投稿日:{{e.time}}
                       </div>
                     </div>
                   </div>

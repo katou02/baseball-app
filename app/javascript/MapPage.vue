@@ -30,7 +30,7 @@
                 <div v-else><img src="/images/ball.jpg" class="map-icon"></div>
                 <div class="article-heading mx-auto">
                   <div class="sub-title">
-                    <v-chip color="light-green" text-color="white">{{e.school}}のふるさと</v-chip>
+                    <v-chip color="light-green" text-color="white" class="font-weight-bold">{{e.school}}のふるさと</v-chip>
                   </div>
                   <div class="name">
                     投稿者:{{e.nickname}}

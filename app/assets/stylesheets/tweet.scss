@@ -50,14 +50,15 @@
 }
 
 .article {
-  min-width: 400px;
+  // min-width: 400px;
+  height: 190px;
   position: relative;
   text-align: center;
   background-color: #f3f3f3;
   border: solid 1px rgb(255, 255, 255);
   &-title {
     margin-top: 50px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: black;
     font-weight: bold;
   }
@@ -82,11 +83,12 @@
     flex: 1 1 100%;
   }
   &-icon {
-    width: 175px;
-    height: 175px;
+    width: 185px;
+    height: 185px;
     border: 1.8px solid  rgb(192, 189, 189);
   }
   &-round {
+    font-weight: bold;
     margin-top: 5px;
     position: absolute;
     right: 20%;
