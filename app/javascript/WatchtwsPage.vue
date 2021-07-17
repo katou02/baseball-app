@@ -8,10 +8,10 @@
       </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
-    <div class="text-format mt-5 text-primary">
+    <div class="text-format mt-5 text-warning">
       観た試合の感想をみんなに発信してみましょう！
     </div>
-    <div class="text-format mt-5 text-success">
+    <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id==e.id">
           {{e.category}}
@@ -26,8 +26,9 @@
         <div class="search-area mt-3">
           <v-text-field  type="text" v-model="keyword" label="検索"></v-text-field>
         </div>
+        <Img></Img>
         <!-- 記事 -->
-        <div class="d-md-flex list">
+        <div class="d-md-flex list mt-5">
           <Side></Side>
           <v-row class="ml-5">
             <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
@@ -37,17 +38,24 @@
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
-                      <div class="name">
-                        投稿者 {{e.nickname}}<br>
-                        {{e.time}}
+                      <div class="post-time">
+                        投稿:{{e.time}}
                       </div>
-                      <div class="article-title mt-3">
+                      <div class="article-round">
+                        <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
+                      </div>
+                      <div class="article-title">
                         {{e.school_a}}vs{{e.school_b}}
                       </div>
-                      <div v-if="e.title.length <=15" class="sub-title mt-3">
+                      <div v-if="e.title.length<=15" class="sub-title">
                         {{e.title}}
                       </div>
-                      <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
+                      <div v-else class="sub-title">{{e.title.slice(0,15) + '...'}}</div>
+                      <div class="name">
+                        投稿者:{{e.nickname}}
+                        <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                      </div>
                     </div>
                   </div>
                 </router-link>
@@ -90,11 +98,13 @@ import axios from 'axios'
 import Header from './components/Header.vue'
 import Side from './components/Side.vue'
 import New from './components/TweetNew.vue'
+import Img from './components/Img.vue'
 export default {
   components: {
     Header,
     Side,
-    New
+    New,
+    Img
   },
   data() {
     return {

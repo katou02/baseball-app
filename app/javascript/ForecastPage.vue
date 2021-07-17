@@ -23,34 +23,40 @@
       <div class="text-format pt-5 text-primary">
         みんなの試合予想
       </div>
-      <div class="search-area mt-3">
+      <div class="search-area mt-3 mb-5">
         <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
       </div>
+      <Img></Img>
       <!-- 記事 -->
-      <div class="d-md-flex list">
+      <div class="d-md-flex list mt-5">
         <Side></Side>
         <v-row class="ml-5">
           <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
-            <div class="article mt-5">
+            <div class="forecast mt-5">
               <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
                 <div class="d-flex h-100">
-                  <div class="forecast-image"><img src="/images/ball.jpg" class="article-icon"></div>
+                  <div class="forecast-image"><img src="/images/ball.jpg" class="forecast-icon"></div>
                   <div class="article-heading mx-auto">
-                    <div class="name">
-                      投稿者 {{e.nickname}}<br>
-                      {{e.time}}
+                    <div class="post-time">
+                      投稿:{{e.time}}
                     </div>
-                    <div class="school-fcs mt-4">
+                    <div class="article-round">
+                      <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
+                    </div>
+                    <div class="school-fcs">
                       <div class="win-school_fcs">
-                        勝利予想
-                        <br><br>
+                        <span class="text-danger">勝利予想</span><br>
                         {{e.win_school}}
                       </div>
-                      <div class="lose-school_fcs ml-3">
-                        敗退予想
-                        <br><br>
+                      <div class="lose-school_fcs ml-5">
+                        <span class="text-primary">敗退予想</span><br>
                         {{e.lose_school}}
                       </div>
+                    </div>
+                    <div class="name">
+                      投稿者:{{e.nickname}}
+                      <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                      <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
                     </div>
                   </div>
                 </div>
@@ -93,11 +99,13 @@ import axios from 'axios'
 import Header from './components/Header.vue'
 import Side from './components/Side.vue'
 import New from './components/ForecastNew.vue'
+import Img from './components/Img.vue'
 export default {
   components: {
     Header,
     Side,
-    New
+    New,
+    Img
   },
   data() {
     return {

@@ -7,17 +7,18 @@
     </div>
     <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
   </div>
-  <div class="text-format mt-5 text-success">
+  <div class="text-format mt-5 text-warning">
     戦力分析をみんなで共有してみましょう！
   </div>
   <div class="analysis-main">
-    <div class="text-format pt-5 text-warning">
+    <div class="text-format pt-5 text-primary">
       みんなの戦力分析
     </div>
-    <div class="search-area mt-3">
+    <div class="search-area mt-3 mb-5">
       <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
-    <div class="d-md-flex list">
+    <Img></Img>
+    <div class="d-md-flex list mt-5">
       <Side></Side>
       <v-row class="ml-5">
         <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
@@ -27,17 +28,23 @@
                 <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                 <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                 <div class="article-heading mx-auto">
-                  <div class="name">
-                    投稿者 {{e.nickname}}<br>
-                    {{e.time}}
+                  <div class="post-time">
+                    投稿:{{e.time}}
                   </div>
                   <div class="school-ays-name mt-3">
-                    {{e.school}}
+                    <v-card color="light-green">
+                      <div class="text-white">{{e.school}}</div>
+                    </v-card>
                   </div>
-                  <div v-if="e.title.length <=15" class="sub-title mt-3">
+                  <div v-if="e.title.length <=15" class="sub-title-ays mt-3">
                     {{e.title}}
                   </div>
                   <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
+                  <div class="name">
+                    投稿者:{{e.nickname}}
+                    <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                    <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                  </div>
                 </div>
               </div>
             </router-link>
@@ -79,11 +86,13 @@ import axios from 'axios';
 import Header from './components/Header.vue'
 import Side from './components/Side.vue'
 import New from './components/AnalysisNew.vue'
+import Img from './components/Img.vue'
 export default {
   components: {
     Header,
     Side,
-    New
+    New,
+    Img
   },
   data() {
     return {

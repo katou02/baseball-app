@@ -9,11 +9,11 @@
     margin-top: 10px;
     font-size: 1.2rem;
   }
-  &-data {
-    height: 140px;
-    width: 260px;
-    background-color: white;
-  }
+  // &-data {
+  //   height: 140px;
+  //   width: 260px;
+  //   background-color: white;
+  // }
   &-content {
   background-color: #f6f6d1;
   }
@@ -47,9 +47,6 @@
     margin: 0 auto;
     font-size: 1.2rem;
     min-height: 100px;
-  }
-  &-text {
-
   }
   &-school {
     margin-top: 10%;
@@ -97,4 +94,10 @@
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+.map-icon {
+  width: 140px;
+  height: 140px;
+  border: 1.8px solid  rgb(192, 189, 189);
 }

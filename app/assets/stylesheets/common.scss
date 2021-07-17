@@ -12,9 +12,14 @@
 }
 
 .name {
-  font-size: 11px;
+  font-size: 10px;
+  margin-top: 4px;
   margin-bottom: 2px;
   color: black;
+}
+
+.post-time {
+  font-size: 10px;
 }
 
 .title {
@@ -32,17 +37,40 @@
 
 .sub-title {
   color: black;
-  padding-top: 13px;
-  font-size: 0.9rem;
-}
-
-.school-ays-name {
-  color: black;
-  font-size: 25px;
-  text-align: center;
-  font-weight: bold;
+  padding-top: 10px;
+  font-size: 0.8rem;
 }
 
 .list {
   min-height: 530px;
+}
+
+.img1 {
+  position: absolute;
+  top: 6%;
+  left: 5%;
+}
+
+.img2 {
+  position: absolute;
+  top: 72%;
+  left: 4%;
+}
+
+.img3 {
+  position: absolute;
+  top: 6%;
+  left: 80%;
+}
+
+.img4 {
+  position: absolute;
+  top: 72%;
+  left: 80%;
+}
+
+.img5 {
+  position: absolute;
+  top: 40%;
+  left: 83%;
 }

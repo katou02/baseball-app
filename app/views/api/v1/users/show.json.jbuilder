@@ -14,6 +14,7 @@ json.room_id @roomId
 
 json.set! :tweet do
   json.array! @my_tweets do |tweet|
+    json.user_image tweet.user.image
     json.nickname tweet.user.nickname
     json.text  tweet.text
     json.round tweet.round
@@ -22,13 +23,14 @@ json.set! :tweet do
     json.title tweet.title
     json.id tweet.id
     json.image tweet.image
-    json.time tweet.created_at.strftime("%Y年%m月%d日")
+    json.time tweet.created_at.strftime("%Y/%m/%d")
   end
 end
 
 json.set! :analysis do
   json.array! @my_analyses do |analysis|
     json.nickname analysis.user.nickname
+    json.user_image analysis.user.image
     json.text  analysis.text
     json.school analysis.school.name
     json.title analysis.title
@@ -41,6 +43,7 @@ end
 json.set! :forecast do
   json.array! @my_forecasts do |forecast|
     json.nickname forecast.user.nickname
+    json.user_image forecast.user.image
     json.round  forecast.round
     json.win_school forecast.win_school.name
     json.lose_school forecast.lose_school.name
@@ -52,6 +55,7 @@ end
 json.set! :map do
   json.array! @my_maps do |map|
     json.nickname map.user.nickname
+    json.user_image map.user.image
     json.school map.school.name
     json.image map.image
     json.id map.id
@@ -62,6 +66,7 @@ end
 json.set! :likes do
   json.array! @my_likes do |tweet|
     json.nickname tweet.user.nickname
+    json.user_image tweet.user.image
     json.text  tweet.text
     json.school_a tweet.school_a.name
     json.school_b tweet.school_b.name

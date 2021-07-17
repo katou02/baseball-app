@@ -103,18 +103,24 @@
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
-                      <div class="name">
-                        投稿者 {{e.nickname}}
-                        {{e.time}}
+                      <div class="post-time">
+                        投稿:{{e.time}}
                       </div>
-                      <div class="article-title mt-3">
-                        <p class="h4">{{e.round}}</p>
+                      <div class="article-round">
+                        <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
+                      </div>
+                      <div class="article-title">
                         {{e.school_a}}vs{{e.school_b}}
                       </div>
-                      <div v-if="e.title.length<=15" class="sub-title mt-3">
+                      <div v-if="e.title.length<=15" class="sub-title">
                         {{e.title}}
                       </div>
-                      <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
+                      <div v-else class="sub-title">{{e.title.slice(0,15) + '...'}}</div>
+                      <div class="name">
+                        投稿者:{{e.nickname}}
+                        <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                      </div>
                     </div>
                   </div>
                 </router-link>
@@ -129,6 +135,7 @@
           >
             もっと見る
           </button>
+        <div v-if="!my_tweets.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
         <v-tab-item value="tab-2">
           <v-row>
@@ -139,17 +146,23 @@
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
-                      <div class="name">
-                        投稿者{{e.nickname}}
-                        {{e.time}}
+                      <div class="post-time">
+                        投稿:{{e.time}}
                       </div>
                       <div class="school-ays-name mt-3">
-                        {{e.school}}
+                        <v-card color="light-green">
+                          <div class="text-white">{{e.school}}</div>
+                        </v-card>
                       </div>
                       <div v-if="e.title.length <=15" class="sub-title mt-3">
                         {{e.title}}
                       </div>
                       <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
+                      <div class="name">
+                        投稿者:{{e.nickname}}
+                        <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                      </div>
                     </div>
                   </div>
                 </router-link>
@@ -164,29 +177,37 @@
           >
             もっと見る
           </button>
+          <div v-if="!my_analyses.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
         <v-tab-item value="tab-3">
           <v-row>
             <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listForecasts" :key="e.id">
-              <div class="user-article mt-5">
+              <div class="forecast mt-5">
                 <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
-                    <img src="/images/ball.jpg" class="article-icon">
+                    <div class="forecast-image"><img src="/images/ball.jpg" class="forecast-icon"></div>
                     <div class="article-heading mx-auto">
-                      <div class="name">
-                        投稿者{{e.nickname}}
-                        {{e.time}}
+                      <div class="post-time">
+                        投稿:{{e.time}}
                       </div>
-                      <div class="school-fcs mt-4">
+                      <div class="article-round">
+                        <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
+                      </div>
+                      <div class="school-fcs">
                         <div class="win-school_fcs">
-                          勝利予想
-                          <br><br>
+                          <span class="text-danger">勝利予想</span><br>
                           {{e.win_school}}
                         </div>
                         <div class="lose-school_fcs ml-3">
-                          敗退予想
-                          <br><br>
+                          <span class="text-primary">敗退予想</span><br>
                           {{e.lose_school}}
+                        </div>
+                      </div>
+                      <div class="article-heading mx-auto">
+                        <div class="name">
+                          投稿者:{{e.nickname}}
+                          <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                          <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
                         </div>
                       </div>
                     </div>
@@ -203,26 +224,27 @@
           >
             もっと見る
           </button>
+          <div v-if="!my_forecasts.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
         <v-tab-item value="tab-4">
           <v-row>
             <v-col cols="12"  sm="6" md="6" lg="6" v-for="e in listMaps" :key="e.id">
-              <div class="map-data mt-5">
+              <div class="article mt-5">
                 <router-link :to="{name: 'map-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
-                    <div class="article-heading mx-auto bg-white">
-                      <div class="name">
-                        投稿者
-                        {{e.nickname}}<br>
-                        {{e.time}}
+                    <div class="article-heading mx-auto">
+                      <div class="post-time">
+                        投稿:{{e.time}}
                       </div>
-                      <div class="sub-title">
-                        {{e.school}}のふるさと
+                      <div class="sub-title mt-5">
+                        <v-chip color="light-green" text-color="white" class="font-weight-bold">{{e.school}}のふるさと</v-chip>
                       </div>
-                      <div class="text-center">
-                        <img src="/images/hurusato.jpeg" width="50px" height="40px" >
+                      <div class="name mt-5">
+                        投稿者:{{e.nickname}}
+                        <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
                       </div>
                     </div>
                   </div>
@@ -238,6 +260,7 @@
           >
             もっと見る
           </button>
+          <div v-if="!my_maps.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
         <v-tab-item value="tab-5">
           <v-row>
@@ -248,18 +271,24 @@
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
-                      <div class="name">
-                        投稿者 {{e.nickname}}
-                        {{e.time}}
+                      <div class="post-time">
+                        投稿:{{e.time}}
                       </div>
-                      <div class="article-title mt-3">
-                        <p class="h4">{{e.round}}</p>
+                      <div class="article-round">
+                        <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
+                      </div>
+                      <div class="article-title">
                         {{e.school_a}}vs{{e.school_b}}
                       </div>
-                      <div v-if="e.title.length <= 15" class="sub-title mt-3">
+                      <div v-if="e.title.length<=15" class="sub-title">
                         {{e.title}}
                       </div>
-                      <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
+                      <div v-else class="sub-title">{{e.title.slice(0,15) + '...'}}</div>
+                      <div class="name">
+                        投稿者:{{e.nickname}}
+                        <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                      </div>
                     </div>
                   </div>
                 </router-link>
@@ -274,6 +303,7 @@
           >
             もっと見る
           </button>
+          <div v-if="!my_likes.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
 
         <v-tab-item value="tab-6">

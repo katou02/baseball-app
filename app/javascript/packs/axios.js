@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'https://hs-koshien.com/'
+const API_URL = 'http://localhost:3000/'
 // const API_URL = 'http://54.95.179.208/'
 
 const securedAxiosInstance = axios.create({
