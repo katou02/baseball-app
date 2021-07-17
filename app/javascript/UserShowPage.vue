@@ -182,7 +182,7 @@
         <v-tab-item value="tab-3">
           <v-row>
             <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listForecasts" :key="e.id">
-              <div class="user-article mt-5">
+              <div class="forecast mt-5">
                 <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
                   <div class="d-flex h-100">
                     <div class="forecast-image"><img src="/images/ball.jpg" class="forecast-icon"></div>
@@ -195,13 +195,11 @@
                       </div>
                       <div class="school-fcs">
                         <div class="win-school_fcs">
-                          勝利予想
-                          <br><br>
+                          <span class="text-danger">勝利予想</span><br>
                           {{e.win_school}}
                         </div>
                         <div class="lose-school_fcs ml-3">
-                          敗退予想
-                          <br><br>
+                          <span class="text-primary">敗退予想</span><br>
                           {{e.lose_school}}
                         </div>
                       </div>

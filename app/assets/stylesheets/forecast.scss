@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-evenly;
   font-size: 1.0rem;
-  margin-top: 50px;
+  margin-top: 10px;
   color: black;
   font-weight: bold;
 }
@@ -12,9 +12,16 @@
   padding-bottom: 20px;
 }
 
+.forecast {
+  width: 400px;
+  text-align: center;
+  background-color: #f3f3f3;
+  border: solid 1px rgb(255, 255, 255);
+}
+
 .forecast-icon {
-  width: 186px;
-  height: 186px;
+  width: 143px;
+  height: 143px;
   border: 1.8px solid  rgb(192, 189, 189);
 }
 
