@@ -43,6 +43,7 @@ end
 json.set! :forecast do
   json.array! @my_forecasts do |forecast|
     json.nickname forecast.user.nickname
+    json.user_image forecast.user.image
     json.round  forecast.round
     json.win_school forecast.win_school.name
     json.lose_school forecast.lose_school.name
