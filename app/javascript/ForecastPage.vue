@@ -52,13 +52,11 @@
                         {{e.lose_school}}
                       </div>
                     </div>
-                    <div class="article-heading mx-auto">
-                      <div class="name">
-                        投稿者:{{e.nickname}}
-                        <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
-                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
-                        投稿日:{{e.time}}
-                      </div>
+                    <div class="name">
+                      投稿者:{{e.nickname}}
+                      <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                      <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                      投稿日:{{e.time}}
                     </div>
                   </div>
                 </div>

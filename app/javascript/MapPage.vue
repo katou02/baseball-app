@@ -22,23 +22,21 @@
     <div class="d-flex list">
       <Side></Side>
       <v-row class="ml-5">
-        <v-col cols="12"  sm="6" md="6" lg="4" v-for="e in getLists" :key="e.id">
-          <div class="map-data mt-5">
+        <v-col cols="12"  sm="6" md="6" lg="6" v-for="e in getLists" :key="e.id">
+          <div class="article mt-5">
             <router-link :to="{name: 'map-show',params: {id: e.id}}">
               <div class="d-flex h-100">
-                <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
-                <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
-                <div class="article-heading mx-auto bg-white">
-                  <div class="name">
-                    投稿者
-                    {{e.nickname}}<br>
-                    {{e.time}}
-                  </div>
+                <div v-if="e.image.url"><img :src="e.image.url" class="map-icon"></div>
+                <div v-else><img src="/images/ball.jpg" class="map-icon"></div>
+                <div class="article-heading mx-auto">
                   <div class="sub-title">
-                    {{e.school}}のふるさと
+                    <v-chip color="light-green" text-color="white">{{e.school}}のふるさと</v-chip>
                   </div>
-                  <div class="text-center">
-                    <img src="/images/hurusato.jpeg" width="50px" height="40px" >
+                  <div class="name">
+                    投稿者:{{e.nickname}}
+                    <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                    <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span><br><br>
+                    投稿日:{{e.time}}
                   </div>
                 </div>
               </div>
