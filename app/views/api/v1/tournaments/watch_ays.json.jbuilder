@@ -8,7 +8,7 @@ json.analyses do
     json.title analysis.title
     json.id analysis.id
     json.image analysis.image
-    json.time analysis.created_at.strftime("%Y年%m月%d日")
+    json.time analysis.created_at.strftime("%Y/%m/%d")
   end
 end
 
