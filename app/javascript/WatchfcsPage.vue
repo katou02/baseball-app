@@ -50,13 +50,12 @@
             <div class="article mt-5">
               <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
                 <div class="d-flex h-100">
-                  <img src="/images/ball.jpg" class="article-icon">
+                  <div class="forecast-image"><img src="/images/ball.jpg" class="forecast-icon"></div>
                   <div class="article-heading mx-auto">
-                    <div class="name">
-                      投稿者 {{e.nickname}}<br>
-                      {{e.time}}
+                    <div class="article-round">
+                      <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
                     </div>
-                    <div class="school-fcs mt-4">
+                    <div class="school-fcs">
                       <div class="win-school_fcs">
                         勝利予想
                         <br><br>
@@ -67,6 +66,12 @@
                         <br><br>
                         {{e.lose_school}}
                       </div>
+                    </div>
+                    <div class="name">
+                      投稿者:{{e.nickname}}
+                      <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                      <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                      投稿日:{{e.time}}
                     </div>
                   </div>
                 </div>
