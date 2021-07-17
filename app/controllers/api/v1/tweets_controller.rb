@@ -7,7 +7,7 @@ class Api::V1::TweetsController < ApiController
   end
 
   def index
-    @tweets = Tweet.all.order(created_at: "DESC")
+    @tweets = Tweet.all.order(created_at: "DESC").includes(:user)
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 

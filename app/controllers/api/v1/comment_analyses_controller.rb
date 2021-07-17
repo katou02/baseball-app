@@ -5,7 +5,7 @@ class Api::V1::CommentAnalysesController < ApiController
   end
 
   def index
-    @comments = CommentAnalysis.where(analysis_id: params[:analysis_id])
+    @comments = CommentAnalysis.where(analysis_id: params[:analysis_id]).includes(:user)
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 

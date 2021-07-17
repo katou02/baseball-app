@@ -5,7 +5,7 @@ class Api::V1::CommentForecastsController < ApiController
   end
 
   def index
-    @comments = CommentForecast.where(forecast_id: params[:forecast_id])
+    @comments = CommentForecast.where(forecast_id: params[:forecast_id]).includes(:user)
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 

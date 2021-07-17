@@ -7,7 +7,7 @@ class Api::V1::ForecastsController < ApiController
   end
 
   def index
-    @forecasts = Forecast.all.order(created_at: "DESC")
+    @forecasts = Forecast.all.order(created_at: "DESC").includes(:user)
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 

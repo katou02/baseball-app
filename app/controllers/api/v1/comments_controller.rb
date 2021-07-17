@@ -6,7 +6,7 @@ class Api::V1::CommentsController < ApiController
   end
 
   def index
-    @comments = Comment.where(tweet_id: params[:tweet_id])
+    @comments = Comment.where(tweet_id: params[:tweet_id]).includes(:user)
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 

@@ -9,7 +9,7 @@ class Api::V1::RoomsController < ApiController
       @currentEntries.each do | entry |
         myRoomIds << entry.room.id
       end
-      @anotherEntries = Entry.where(room_id: myRoomIds).where.not(user_id: current_user.id).order(id: "DESC")
+      @anotherEntries = Entry.where(room_id: myRoomIds).where.not(user_id: current_user.id).order(id: "DESC").includes(:user)
       render 'index', formats: 'json', handlers: 'jbuilder'
     end
   end
@@ -23,7 +23,7 @@ class Api::V1::RoomsController < ApiController
   def show
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
-      @messages = @room.messages.all
+      @messages = @room.messages.all.includes(:user)
       @message = Message.new
       @entries = @room.entries
     else
