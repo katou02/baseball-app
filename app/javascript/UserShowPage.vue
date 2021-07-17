@@ -109,7 +109,7 @@
                       <div class="article-title">
                         {{e.school_a}}vs{{e.school_b}}
                       </div>
-                      <div v-if="e.title.length<=15" class="sub-title mt-3">
+                      <div v-if="e.title.length<=15" class="sub-title">
                         {{e.title}}
                       </div>
                       <div v-else class="sub-title">{{e.title.slice(0,15) + '...'}}</div>
