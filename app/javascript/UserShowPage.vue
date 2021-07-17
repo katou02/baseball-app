@@ -235,14 +235,16 @@
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
-                      <div class="sub-title">
+                      <div class="post-time">
+                        投稿:{{e.time}}
+                      </div>
+                      <div class="sub-title mt-5">
                         <v-chip color="light-green" text-color="white" class="font-weight-bold">{{e.school}}のふるさと</v-chip>
                       </div>
-                      <div class="name">
+                      <div class="name mt-5">
                         投稿者:{{e.nickname}}
                         <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
-                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span><br><br>
-                        投稿日:{{e.time}}
+                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
                       </div>
                     </div>
                   </div>
