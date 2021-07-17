@@ -55,6 +55,7 @@ end
 json.set! :map do
   json.array! @my_maps do |map|
     json.nickname map.user.nickname
+    json.user_image map.user.image
     json.school map.school.name
     json.image map.image
     json.id map.id

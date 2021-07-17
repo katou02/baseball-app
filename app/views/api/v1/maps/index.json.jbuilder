@@ -1,5 +1,6 @@
 json.array! @maps do |map|
   json.nickname map.user.nickname
+  json.user_image map.user.image
   json.image map.user.image
   json.school map.school.name
   json.id map.id
