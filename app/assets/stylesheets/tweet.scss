@@ -50,6 +50,7 @@
 }
 
 .article {
+  min-width: 400px;
   position: relative;
   text-align: center;
   background-color: #f3f3f3;
@@ -81,8 +82,8 @@
     flex: 1 1 100%;
   }
   &-icon {
-    width: 160px;
-    height: 160px;
+    width: 175px;
+    height: 175px;
     border: 1.8px solid  rgb(192, 189, 189);
   }
   &-round {

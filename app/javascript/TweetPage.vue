@@ -29,6 +29,9 @@
                   <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                   <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                   <div class="article-heading mx-auto">
+                    <div class="post-time">
+                      投稿:{{e.time}}
+                    </div>
                     <div class="article-round">
                       <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
                     </div>
@@ -42,8 +45,7 @@
                     <div class="name">
                       投稿者:{{e.nickname}}
                       <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
-                      <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
-                      投稿日:{{e.time}}
+                      <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span><br>
                     </div>
                   </div>
                 </div>
