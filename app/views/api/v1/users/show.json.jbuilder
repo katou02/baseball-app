@@ -30,6 +30,7 @@ end
 json.set! :analysis do
   json.array! @my_analyses do |analysis|
     json.nickname analysis.user.nickname
+    json.user_image analysis.user.image
     json.text  analysis.text
     json.school analysis.school.name
     json.title analysis.title
