@@ -9,7 +9,7 @@
       <!-- <v-card-text> -->
         <v-form class="col" @submit.prevent="signup" lazy-validation>
           <div class="text-red" v-if="error">{{ error }}</div>
-          <v-text-field label="ユーザー名" prepend-icon="mdi-user" v-model="name" required="required"/>
+          <v-text-field label="ユーザー名(10文字以内)" prepend-icon="mdi-user" v-model="name" required="required"/>
           <p v-if="!!errors['nickname']" style="color: red;">{{ errors['nickname'][0]}}</p>
           <v-text-field label="メールアドレス" prepend-icon="mdi-email" v-model="email" required="required"/>
           <p v-if="!!errors['email']" style="color: red;">{{ errors['email'][0]}}</p>
