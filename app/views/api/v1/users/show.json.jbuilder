@@ -14,6 +14,7 @@ json.room_id @roomId
 
 json.set! :tweet do
   json.array! @my_tweets do |tweet|
+    json.user_image tweet.user.image
     json.nickname tweet.user.nickname
     json.text  tweet.text
     json.round tweet.round
@@ -22,7 +23,7 @@ json.set! :tweet do
     json.title tweet.title
     json.id tweet.id
     json.image tweet.image
-    json.time tweet.created_at.strftime("%Y年%m月%d日")
+    json.time tweet.created_at.strftime("%Y/%m/%d")
   end
 end
 
