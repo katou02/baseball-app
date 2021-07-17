@@ -65,6 +65,7 @@ end
 json.set! :likes do
   json.array! @my_likes do |tweet|
     json.nickname tweet.user.nickname
+    json.user_image tweet.user.image
     json.text  tweet.text
     json.school_a tweet.school_a.name
     json.school_b tweet.school_b.name
