@@ -11,23 +11,6 @@
     <div class="text-format mt-5 text-warning">
       戦力分析をみんなで共有してみましょう！
     </div>
-    <!-- <div class="text-format mt-5 mb-3 text-warning">
-      大会別
-    </div>
-    <div class="title mt-5 ml-5">
-      <router-link :to= "'/analyses'" class="title-child text-white">
-        全ての分析
-        <i class="fa fa-baseball-ball text-white"></i>
-      </router-link>
-      <div v-for="e in categories" :key="e.id">
-        <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'watch_ays',params: {id: e.id}}" @click.native="fetchAnalyses();" class="title-child text-white ml-5">
-            <i class="fa fa-baseball-ball text-white"></i>
-            {{e.category}}
-          </router-link>
-        </div>
-      </div>
-    </div> -->
     <Img></Img>
     <div class="text-format mt-5 text-primary">
       <div v-for="e in categories" :key="e.id">
@@ -40,12 +23,7 @@
       <div class="avg-ays">
         みんなの分析を元にした平均評価<br>
         <router-link :to="{name: 'average',params: {id: $route.params.id}}" class="ays-avg">平均評価を見る</router-link>
-        <!-- <a :href= "'/tournaments/' + num +'/watch_avg'" class="ays-avg">平均評価を見る</a> -->
       </div>
-      <!-- <div class="homedown">
-        甲子園でお馴染みのふるさと紹介<br>
-        <router-link :to="{name: 'map',query: {tournament_id: num}}" class="ays-avg">ふるさと紹介</router-link>
-      </div> -->
     </div>
     <!-- 大会 -->
     <div class="analysis-main mt-5">
@@ -65,17 +43,21 @@
                   <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                   <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                   <div class="article-heading mx-auto text-center">
-                    <div class="name">
-                      投稿者 {{e.nickname}}<br>
-                      {{e.time}}
-                    </div>
                     <div class="school-ays-name mt-3">
-                      {{e.school}}
+                      <v-card color="light-green">
+                        <div class="text-white">{{e.school}}</div>
+                      </v-card>
                     </div>
-                    <div v-if="e.title.length <=15" class="sub-title mt-3">
+                    <div v-if="e.title.length <=15" class="sub-title-ays mt-3">
                       {{e.title}}
                     </div>
                     <div v-else class="sub-title mt-3">{{e.title.slice(0,15) + '...'}}</div>
+                    <div class="name">
+                      投稿者:{{e.nickname}}
+                      <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                      <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
+                      投稿日:{{e.time}}
+                    </div>
                   </div>
                 </div>
               </router-link>
