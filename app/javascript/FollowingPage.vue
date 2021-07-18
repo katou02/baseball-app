@@ -9,8 +9,8 @@
     <div class="search-area mt-5">
       <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
-    <div class="user-list row mt-5">
-      <v-col v-for="e in getLists" :key="e.id" cols="12"  sm="12" md="4" lg="3">
+    <div class="user-list row mx-auto mt-5">
+      <v-col v-for="e in getLists" :key="e.id" cols="12"  sm="6" md="4" lg="3">
         <router-link :to="{name: 'user-show',params: {id: e.id}}">
           <div class="user-list-image pb-3">
             <div v-if="e.image.url">

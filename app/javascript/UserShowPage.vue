@@ -96,10 +96,10 @@
         </v-tab-item>
         <v-tab-item value="tab-1">
           <v-row>
-            <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listTweets" :key="e.id">
-              <div class="user-article mt-5">
+            <v-col cols="12" sm="12" md="6" lg="6" v-for="e in listTweets" :key="e.id">
+              <div class="article mt-5">
                 <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
-                  <div class="d-flex h-100">
+                  <div class="post-content-tws">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
@@ -139,10 +139,10 @@
         </v-tab-item>
         <v-tab-item value="tab-2">
           <v-row>
-            <v-col cols="12"  sm="6" md="6" lg="6" v-for="e in listAnalyses" :key="e.id">
-              <div class="user-article mt-5">
+            <v-col cols="12"  sm="12" md="6" lg="6" v-for="e in listAnalyses" :key="e.id">
+              <div class="article mt-5">
                 <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
-                  <div class="d-flex h-100">
+                  <div class="post-content-ays">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
@@ -181,10 +181,10 @@
         </v-tab-item>
         <v-tab-item value="tab-3">
           <v-row>
-            <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listForecasts" :key="e.id">
+            <v-col cols="12" sm="12" md="6" lg="6" v-for="e in listForecasts" :key="e.id">
               <div class="forecast mt-5">
                 <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
-                  <div class="d-flex h-100">
+                  <div class="post-content-fcs">
                     <div class="forecast-image"><img src="/images/ball.jpg" class="forecast-icon"></div>
                     <div class="article-heading mx-auto">
                       <div class="post-time">
@@ -228,10 +228,10 @@
         </v-tab-item>
         <v-tab-item value="tab-4">
           <v-row>
-            <v-col cols="12"  sm="6" md="6" lg="6" v-for="e in listMaps" :key="e.id">
+            <v-col cols="12"  sm="12" md="6" lg="6" v-for="e in listMaps" :key="e.id">
               <div class="article mt-5">
                 <router-link :to="{name: 'map-show',params: {id: e.id}}">
-                  <div class="d-flex h-100">
+                  <div class="post-content-tws">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
@@ -264,10 +264,10 @@
         </v-tab-item>
         <v-tab-item value="tab-5">
           <v-row>
-            <v-col cols="12" sm="6" md="6" lg="6" v-for="e in listLikes" :key="e.id" class="mx-auto">
-              <div class="user-article mt-5">
+            <v-col cols="12" sm="12" md="6" lg="6" v-for="e in listLikes" :key="e.id" class="mx-auto">
+              <div class="article mt-5">
                 <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
-                  <div class="d-flex h-100">
+                  <div class="post-content-tws">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
