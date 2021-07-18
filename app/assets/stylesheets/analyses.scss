@@ -155,8 +155,20 @@
     width: 80px;
     font-size: 1.0rem;
   }
-
-  .sub-title-ays {
-    font-size: 0.6rem;
-  }
 }
+
+  // .sub-title-ays {
+  //   font-size: 0.6rem;
+  // }
+
+  @media screen and (max-width: 350px) {
+    .post-content-ays {
+      display: block;
+    }
+  }
+  
+  @media screen and (min-width: 350px) {
+    .post-content-ays {
+      display: flex;
+    }
+  }

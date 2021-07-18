@@ -12,13 +12,6 @@
   padding-bottom: 20px;
 }
 
-.forecast {
-  width: 400px;
-  text-align: center;
-  background-color: #f3f3f3;
-  border: solid 1px rgb(255, 255, 255);
-}
-
 .forecast-icon {
   width: 143px;
   height: 143px;
@@ -50,10 +43,39 @@
   margin-left: 29%;
 }
 
-// .content-fcs-show {
-//   background-color: #EEFFFF;
-// }
+.aaa {
+  display: flex;
+}
 
 .win-school,.lose-school {
   font-size: 27px;
+}
+
+@media screen and (max-width: 900px) {
+  .forecast {
+    text-align: center;
+    background-color: #f3f3f3;
+    border: solid 1px rgb(255, 255, 255);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .forecast {
+    width: 400px;
+    text-align: center;
+    background-color: #f3f3f3;
+    border: solid 1px rgb(255, 255, 255);
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .post-content-fcs {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .post-content-fcs {
+    display: flex;
+  }
 }
