@@ -84,3 +84,9 @@
     font-size: 0.5rem;
   }
 }
+
+@media screen and (max-width: 300px) {
+  .post-time {
+     width: 6px;
+  }
+}
