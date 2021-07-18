@@ -68,6 +68,13 @@
   }
 }
 
+@media screen and (max-width: 520px) {
+  .pie {
+    width: 500px;
+    height: 300px;
+  }
+}
+
 @media screen and (max-width: 420px) {
   .post-content-fcs {
     display: block;
@@ -77,5 +84,12 @@
 @media screen and (min-width: 420px) {
   .post-content-fcs {
     display: flex;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .pie {
+    width: 360px;
+    height: 80%;
   }
 }
