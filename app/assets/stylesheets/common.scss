@@ -74,3 +74,13 @@
   top: 40%;
   left: 83%;
 }
+
+@media screen and (max-width: 900px) {
+  .img1,.img2,.img3,.img4,.img5 {
+    display: none;
+  }
+  
+  .sub-title {
+    font-size: 0.5rem;
+  }
+}
