@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div class="reader">
+    <div class="bar">
       <div style="width:75%; height:75%;" ><canvas id="myBarChart"></canvas></div>
     </div>
     <p>カーソルをグラフに合わせると投票数を確認できます</p>

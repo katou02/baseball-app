@@ -26,3 +26,15 @@
 #modal {
   text-align: center;
 }
+
+.bar {
+  margin-top: 3%;
+  margin-left: 20%;
+}
+
+@media screen and (max-width: 400px) {
+  .bar {
+    height: 340px;
+    width: 340px;
+  }
+}
