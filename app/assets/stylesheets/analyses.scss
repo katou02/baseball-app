@@ -129,7 +129,8 @@
 
 @media screen and (max-width: 966px) {
   .reader {
-    display: block;
+    width: 800px;
+    height: 800px;
   }
   .ays-text {
     min-width: 200px;
@@ -148,6 +149,10 @@
   .comment-form {
     min-width: 250px;
   }
+  .reader {
+    width: 500px;
+    height: 500px;
+  }
 }
 
 @media screen and (max-width: 370px) {
@@ -157,18 +162,18 @@
   }
 }
 
-  // .sub-title-ays {
-  //   font-size: 0.6rem;
-  // }
-
-  @media screen and (max-width: 350px) {
-    .post-content-ays {
-      display: block;
-    }
+@media screen and (max-width: 350px) {
+  .post-content-ays {
+    display: block;
   }
+  .reader {
+    width: 470px;
+    height: 470px;
+  }
+}
   
-  @media screen and (min-width: 350px) {
-    .post-content-ays {
-      display: flex;
-    }
+@media screen and (min-width: 350px) {
+  .post-content-ays {
+    display: flex;
   }
+}
