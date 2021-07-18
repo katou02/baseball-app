@@ -5,7 +5,7 @@
       <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
     <div class="user-list row mx-auto">
-      <div v-for="e in getLists" :key="e.id" class="col-xs-12 col-md-6 col-lg-3 mt-3 card">
+      <v-col cols="12"  sm="6" md="3" lg="3" v-for="e in getLists" :key="e.id">
         <!-- <a :href= "'/rooms/' + e.room_id">{{e.user}}とのDM -->
         <router-link :to="{name: 'room-show',params: {id: e.room_id}}">
           {{e.user}}とのDM
@@ -19,7 +19,7 @@
           </div>
         </router-link>
         <!-- </a> -->
-      </div>
+      </v-col>
     </div>
     <div class="text-center">
       <paginate
