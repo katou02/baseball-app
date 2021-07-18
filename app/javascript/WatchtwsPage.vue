@@ -28,39 +28,39 @@
         </div>
         <Img></Img>
         <!-- 記事 -->
-        <div class="d-md-flex list mt-5">
-          <Side></Side>
-          <v-row class="ml-5">
-            <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
-              <div class="article mt-5">
-                <router-link :to= "'/tweets/' + e.id">
-                  <div class="d-flex h-100">
-                    <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
-                    <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
-                    <div class="article-heading mx-auto">
-                      <div class="post-time">
-                        投稿:{{e.time}}
-                      </div>
-                      <div class="article-round">
-                        <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
-                      </div>
-                      <div class="article-title">
-                        {{e.school_a}}vs{{e.school_b}}
-                      </div>
-                      <div v-if="e.title.length<=15" class="sub-title">
-                        {{e.title}}
-                      </div>
-                      <div v-else class="sub-title">{{e.title.slice(0,15) + '...'}}</div>
-                      <div class="name">
-                        投稿者:{{e.nickname}}
-                        <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
-                        <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span>
-                      </div>
+      <div class="d-md-flex list mt-5">
+        <Side></Side>
+        <v-row class="ml-5">
+          <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+            <div class="article mt-5">
+              <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
+                <div class="post-content-tws">
+                  <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
+                  <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
+                  <div class="article-heading mx-auto">
+                    <div class="post-time">
+                      投稿:{{e.time}}
+                    </div>
+                    <div class="article-round">
+                      <v-chip color="light-green" text-color="white">{{e.round}}</v-chip>
+                    </div>
+                    <div class="article-title">
+                      {{e.school_a}}vs{{e.school_b}}
+                    </div>
+                    <div v-if="e.title.length<=15" class="sub-title">
+                      {{e.title}}
+                    </div>
+                    <div v-else class="sub-title">{{e.title.slice(0,15) + '...'}}</div>
+                    <div class="name">
+                      投稿者:{{e.nickname}}
+                      <span v-if="e.user_image.url"><img :src= e.user_image.url class="user-icon2"></span>
+                      <span v-else><img src="../assets/images/no-image.png" class="user-icon2"></span><br>
                     </div>
                   </div>
-                </router-link>
-              </div>
-            </v-col>
+                </div>
+              </router-link>
+            </div>
+          </v-col>
           <div v-if="!tweets.length" class="text-center mt-5">
             <p>投稿された試合記事がありません</p>
           </div>

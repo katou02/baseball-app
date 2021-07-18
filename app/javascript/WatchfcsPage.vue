@@ -1,30 +1,11 @@
 <template>
   <div class="main-content">
-    <!-- <Header></Header> -->
     <div class="main-content-btn">
       <div v-if="current_user">
-        <!-- <router-link :to="{name: 'forecast-new'}" class="send-btn text-white">投稿する</router-link> -->
         <button class="send-btn text-white" @click="openModal">投稿する</button>
       </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
     </div>
-    <!-- <div class="text-format mt-5 mb-3 text-warning">
-      大会別
-    </div>
-    <div class="title mt-5 ml-5">
-      <router-link :to= "'/forecasts'" class="title-child text-white">
-        全ての予想一覧
-        <i class="fa fa-baseball-ball text-white"></i>
-      </router-link>
-      <div v-for="e in categories" :key="e.id">
-        <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'watch_fcs',params: {id: e.id}}" @click.native="fetchForecasts();" class="title-child text-white ml-5">
-            <i class="fa fa-baseball-ball text-white"></i>
-            {{e.category}}
-          </router-link>
-        </div>
-      </div>
-    </div> -->
     <div class="text-format mt-5 text-warning">
       試合予想をしてみましょう！
     </div>
@@ -46,10 +27,10 @@
       <div class="d-md-flex list mt-5">
         <Side></Side>
         <v-row class="ml-5">
-          <v-col cols="12" sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
+          <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
             <div class="forecast mt-5">
               <router-link :to="{name: 'forecast-show',params: {id: e.id}}">
-                <div class="d-flex h-100">
+                <div class="post-content-fcs">
                   <div class="forecast-image"><img src="/images/ball.jpg" class="forecast-icon"></div>
                   <div class="article-heading mx-auto">
                     <div class="post-time">
@@ -63,7 +44,7 @@
                         <span class="text-danger">勝利予想</span><br>
                         {{e.win_school}}
                       </div>
-                      <div class="lose-school_fcs ml-3">
+                      <div class="lose-school_fcs ml-5">
                         <span class="text-primary">敗退予想</span><br>
                         {{e.lose_school}}
                       </div>
@@ -78,9 +59,9 @@
               </router-link>
             </div>
           </v-col>
-        <div v-if="!forecasts.length" class="text-center mt-5">
-          <p>投稿された予想はありません</p>
-        </div>
+          <div v-if="!forecasts.length" class="text-center mt-5">
+            <p>投稿された予想はありません</p>
+          </div>
         </v-row>
       </div>
       <modal name="select" height="auto" width="65%" :scrollable="true">
