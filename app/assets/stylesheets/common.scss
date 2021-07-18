@@ -92,3 +92,23 @@
     display: none;
   }
 }
+
+.ma {
+  display: block;
+}
+
+@media screen and (max-width: 500px) {
+  .v-btn__content {
+    width: 45px;
+    font-size: 10px;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .v-btn__content {
+    width: 15px;
+    font-size: 10px;
+    display: flex;
+  }
+}
