@@ -87,10 +87,10 @@ input {
   &-content {
     background-color: rgba(236, 236, 206,0.4);
     // min-height: 780px;
-    &-common {
-      background-color: rgba(236, 236, 206,0.4);
-      min-height: 280px;
-    }
+    // &-common {
+    //   background-color: rgba(236, 236, 206,0.4);
+    //   min-height: 280px;
+    // }
   }
   &-user {
     text-align: center;
@@ -142,5 +142,19 @@ input {
   }
   .image {
     max-width: 140px;
+  }
+}
+
+@media screen and (max-height: 1144px) {
+  .comment-content-common {
+    background-color: rgba(236, 236, 206,0.4);
+    min-height: 280px;
+  }
+}
+
+@media screen and (min-height: 1144px) {
+  .comment-content-common {
+    background-color: rgba(236, 236, 206,0.4);
+    margin-top: 25%;
   }
 }

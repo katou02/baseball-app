@@ -170,7 +170,21 @@
     height: 470px;
   }
 }
-  
+
+@media screen and (max-width: 400px) {
+  .avg-reader {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .avg-reader {
+    width: 330px;
+    height: 330px;
+  }
+}
+
 @media screen and (min-width: 350px) {
   .post-content-ays {
     display: flex;

@@ -34,8 +34,8 @@
 }
 
 .avg-font {
-  margin-left: 12%;
-  font-size: 1.0rem;
+  margin-left: 9%;
+  font-size: 1.1rem;
 }
 
 .avg-attack,.avg-defense,.avg-pitch,.avg-total,.avg-expec {
@@ -55,15 +55,6 @@
   justify-content: space-evenly;
   font-size: 16px;
 }
-
-// .tournament-main{
-//   // background-image: image-url("sky.jpg");
-//   //  background-size: cover;
-//   //  background-color:rgba(255,255,255,0.8);
-//   //  background-blend-mode:lighten;
-//   //  flex: 1 1 100%;
-//   //  min-height: 900px;
-// }
 
 @media screen and (max-width: 679px) {
   .analysis-image {

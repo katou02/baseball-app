@@ -38,3 +38,36 @@
     width: 340px;
   }
 }
+
+@media screen and (max-height: 700px) {
+  .description {
+    margin-top: 1%;
+  }
+}
+
+@media screen and (min-height: 700px)  and (max-width: 550px) {
+  .description {
+    margin-top: 35%;
+  }
+  .title-child {
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (min-height: 1000px)  and (max-width: 800px) {
+  .description {
+    margin-top: 40%;
+  }
+  .title-child {
+    margin-bottom: 20%;
+  }
+}
+
+@media screen and (min-height: 1000px)  and (max-width: 1100px) {
+  .description {
+    margin-top: 50%;
+  }
+  .title-child {
+    margin-bottom: 30%;
+  }
+}

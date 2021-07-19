@@ -36,10 +36,10 @@
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
-    <div class="title mt-5 d-md-flex">
+    <div class="category mt-5 d-md-flex">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="DeleteChart(); fetchChampion()" class="title-child text-white ml-5">
+          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="DeleteChart(); fetchChampion()" class="title-child text-white ml-5 mt-5">
             <i class="fa fa-baseball-ball text-white"></i> 
             {{e.category}}
           </router-link>
@@ -49,7 +49,7 @@
     <div class="bar">
       <div style="width:75%; height:75%;" ><canvas id="myBarChart"></canvas></div>
     </div>
-    <p>カーソルをグラフに合わせると投票数を確認できます</p>
+    <p class="description">カーソルをグラフに合わせると投票数を確認できます</p>
   </div>
 </template>
 <script>
