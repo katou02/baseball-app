@@ -16,8 +16,8 @@
           <!-- <router-link :to="{name: 'champion-new',params: {id: $route.params.id},query: {tournament_id: $route.params.id}} " class="btn btn-warning champ-btn text-white">
             優勝予想をする
           </router-link> -->
-          <button class="btn btn-warning champ-btn text-white" @click="openModal">優勝予想をする</button>
-          <modal name="select">
+          <button class="btn btn-warning champ-btn" @click="openModal">優勝予想をする</button>
+          <modal name="select" height="auto" width="65%">
             <div id="modal">
               <Champion @parent-event="fetchChampion"></Champion>
               <button @click="closeModal">閉じる</button>
