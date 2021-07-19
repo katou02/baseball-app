@@ -6,19 +6,17 @@
     </div>
     <div class="user-list row mx-auto">
       <v-col cols="12"  sm="6" md="3" lg="3" v-for="e in getLists" :key="e.id">
-        <!-- <a :href= "'/rooms/' + e.room_id">{{e.user}}とのDM -->
         <router-link :to="{name: 'room-show',params: {id: e.room_id}}">
           {{e.user}}とのDM
           <div class="user-list-image border-bottom">
             <div v-if="e.user_image.url"> 
-              <img :src= e.user_image.url class="user-icon mt-3">
+              <img :src= e.user_image.url class="user-list-icon mt-3">
             </div>
             <div v-else>
-              <img src="../assets/images/no-image.png" class="user-icon mt-3">
+              <img src="../assets/images/no-image.png" class="user-list-icon mt-3">
             </div>
           </div>
         </router-link>
-        <!-- </a> -->
       </v-col>
     </div>
     <div class="text-center">
