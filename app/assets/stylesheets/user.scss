@@ -46,6 +46,14 @@
       border-color: #acafc3;
     }
   }
+  &-page-icon {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: solid;
+    border-color: #acafc3;
+  }
   &-info {
     font-size: 18px;
   }

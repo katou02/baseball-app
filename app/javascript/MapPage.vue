@@ -25,7 +25,7 @@
         <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
           <div class="article mt-5">
             <router-link :to="{name: 'map-show',params: {id: e.id}}">
-              <div class="post-content-tws">
+              <div class="post-content-map">
                 <div v-if="e.image.url"><img :src="e.image.url" class="map-icon"></div>
                 <div v-else><img src="/images/ball.jpg" class="map-icon"></div>
                 <div class="article-heading mx-auto">

@@ -14,19 +14,15 @@
     <!-- フォロー -->
     <div class="stats mb-5">
       <i class="fas fa-user-friends text-info"></i>
-      <!-- <router-link :to="{name: 'following',params: {id: $route.params.id}}"> -->
         <strong id="following" class="stat">
           {{follow_count}}
         </strong>
         フォロー
-      <!-- </router-link> -->
       <i class="fas fa-user-friends text-info"></i>
-      <!-- <router-link :to="{name: 'follower',params: {id: $route.params.id}}"> -->
         <strong id="followers" class="stat">
           {{follower_count}}
         </strong>
         フォロワー
-      <!-- </router-link> -->
     </div>
     <!-- フォローボタン -->
     <div v-if="current_user !== user_id">
@@ -56,10 +52,10 @@
     <div class="myprof mt-5">
       <div class="user-info">
         <div v-if="user_image"> 
-          <img :src= user_image class="user-icon mt-1 mb-5">
+          <img :src= user_image class="user-page-icon mt-1 mb-5">
         </div>
         <div v-else>
-          <img src="../assets/images/no-image.png" class="user-icon mt-1 mb-5">
+          <img src="../assets/images/no-image.png" class="user-page-icon mt-1 mb-5">
         </div>
       </div>
       <Header></Header>
@@ -99,7 +95,7 @@
             <v-col cols="12" sm="12" md="6" lg="6" v-for="e in listTweets" :key="e.id">
               <div class="article mt-5">
                 <router-link :to="{name: 'tweet-show',params: {id: e.id}}">
-                  <div class="post-content-tws">
+                  <div class="post-content-fcs">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
@@ -231,7 +227,7 @@
             <v-col cols="12"  sm="12" md="6" lg="6" v-for="e in listMaps" :key="e.id">
               <div class="article mt-5">
                 <router-link :to="{name: 'map-show',params: {id: e.id}}">
-                  <div class="post-content-tws">
+                  <div class="post-content-map">
                     <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                     <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
                     <div class="article-heading mx-auto">
