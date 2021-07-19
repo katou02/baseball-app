@@ -34,12 +34,12 @@ before_fork do |server, worker|
 
   old_pid = "#{server.config[:pid]}.oldbin"
   if File.exist?(old_pid) && server.pid != old_pid
-    # begin
-    #   sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-    #   Process.kill(sig, File.read(old_pid).to_i)
-    # rescue Errno::ENOENT, Errno::ESRCH => e
-    #   logger.error e
-    # end
+    begin
+      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
+      Process.kill(sig, File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH => e
+      logger.error e
+    end
   end
 end
 
