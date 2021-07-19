@@ -1,3 +1,11 @@
+.main-content {
+  background-color: rgba(236, 236, 206,0.4);
+  position: relative;
+  &-btn{
+    display: flex;
+  }
+}
+
 .text-format {
   font-size: 25px;
   text-align: center;
@@ -73,4 +81,34 @@
   position: absolute;
   top: 40%;
   left: 83%;
+}
+
+@media screen and (max-width: 900px) {
+  .img1,.img2,.img3,.img4,.img5 {
+    display: none;
+  }
+
+  .user-icon {
+    display: none;
+  }
+}
+
+.ma {
+  display: block;
+}
+
+@media screen and (max-width: 500px) {
+  .v-btn__content {
+    width: 45px;
+    font-size: 10px;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .v-btn__content {
+    width: 15px;
+    font-size: 10px;
+    display: flex;
+  }
 }

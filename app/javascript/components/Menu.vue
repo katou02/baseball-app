@@ -1,51 +1,43 @@
 <template>
   <div class="top-header d-flex align-items-center">
-    <!-- <v-app-bar> -->
+    <div v-if="this.$route.path!='/'"> 
       <div class="d-flex">
         <v-icon color="blue lighten-1">mdi-baseball</v-icon>
         <router-link :to="{name: 'top'}">
-          <v-toolbar-title class="text-h4 font-weight-bold logo">甲子園.com</v-toolbar-title>
+          <div class="text-h4 font-weight-bold logo">甲子園.com</div>
         </router-link>
       </div>
-      <router-link :to="{name: 'notification'}" v-if="signedIn">
-        <v-icon color="blue lighten-1">mdi-bell</v-icon>
-        通知
-        <span class="fa fa-circle fa-xs" style="color: gold;" v-if="notifications.length>0 && signedIn">
-          新着あり
-        </span>
-      </router-link>
-      <router-link :to="{name: 'user-show',params: {id: current_user}}" v-if="signedIn">
-        <v-icon color="blue lighten-1">mdi-account</v-icon>
-        マイページ
-      </router-link>
-      <!-- <router-link to="/signup" v-if="!signedIn">
-        <v-icon color="blue lighten-1">mdi-account-plus</v-icon>
-        新規登録
-      </router-link>
-      <router-link to="/signin" v-if="!signedIn">
-        <v-icon color="blue lighten-1">mdi-login</v-icon>
-        ログイン
-      </router-link> -->
-      <a href="/" v-if="signedIn" @click="signOut">
-        <v-icon color="blue lighten-1">mdi-logout</v-icon>
-        ログアウト
-      </a>
-      <v-btn color="primary" @click="childEvent" v-if="!signedIn && this.$route.path=='/'">
-        <v-icon color="white">mdi-account-plus</v-icon>
-        新規登録
-      </v-btn>
-      <v-btn color="primary" @click="childEvent2" v-if="!signedIn && this.$route.path=='/'">
-        <v-icon color="white">mdi-login</v-icon>
-        ログイン
-      </v-btn>
-      <div v-if="!signedIn">
-        <Gest></Gest>
-      </div>
-      <router-link :to="{name: 'contact'}">
-        <v-icon color="blue lighten-1">mdi-email</v-icon>
-        お問い合わせ
-      </router-link>
-    <!-- </v-app-bar> -->
+    </div>
+    <router-link :to="{name: 'notification'}" v-if="signedIn">
+      <v-icon color="blue lighten-1">mdi-bell</v-icon>
+      通知
+      <span class="fa fa-circle fa-xs" style="color: gold;" v-if="notifications.length>0 && signedIn">
+        新着あり
+      </span>
+    </router-link>
+    <router-link :to="{name: 'user-show',params: {id: current_user}}" v-if="signedIn">
+      <v-icon color="blue lighten-1">mdi-account</v-icon>
+      マイページ
+    </router-link>
+    <a href="/" v-if="signedIn" @click="signOut">
+      <v-icon color="blue lighten-1">mdi-logout</v-icon>
+      ログアウト
+    </a>
+    <v-btn color="primary" @click="childEvent" v-if="!signedIn && this.$route.path=='/'">
+      <v-icon color="white">mdi-account-plus</v-icon>
+      新規登録
+    </v-btn>
+    <v-btn color="primary" @click="childEvent2" v-if="!signedIn && this.$route.path=='/'">
+      <v-icon color="white">mdi-login</v-icon>
+      ログイン
+    </v-btn>
+    <div v-if="!signedIn">
+      <Gest></Gest>
+    </div>
+    <router-link :to="{name: 'contact'}">
+      <v-icon color="blue lighten-1">mdi-email</v-icon>
+      お問い合わせ
+    </router-link>
   </div>
 </template>
 <script>

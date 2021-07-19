@@ -7,7 +7,7 @@ class Api::V1::AnalysesController < ApiController
   end
 
   def index
-    @analyses = Analysis.all.order(created_at: "DESC")
+    @analyses = Analysis.all.order(created_at: "DESC").includes(:user)
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 

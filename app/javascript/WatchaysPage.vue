@@ -38,11 +38,11 @@
         <v-row class="ml-5">
           <v-col cols="12"  sm="12" md="12" lg="6" v-for="e in getLists" :key="e.id">
             <div class="article mt-5">
-              <router-link :to= "'/analyses/' + e.id">
-                <div class="d-flex h-100">
+              <router-link :to="{name: 'analysis-show',params: {id: e.id}}">
+                <div class="post-content-ays">
                   <div v-if="e.image.url"><img :src="e.image.url" class="article-icon"></div>
                   <div v-else><img src="/images/ball.jpg" class="article-icon"></div>
-                  <div class="article-heading mx-auto text-center">
+                  <div class="article-heading mx-auto">
                     <div class="post-time">
                       投稿:{{e.time}}
                     </div>
@@ -65,9 +65,9 @@
               </router-link>
             </div>
           </v-col>
-        <div v-if="!analyses.length" class="text-center mt-5">
-          <p>投稿された分析はありません</p>
-        </div>
+          <div v-if="!analyses.length" class="text-center mt-5">
+            <p>投稿された分析はありません</p>
+          </div>
         </v-row>
       </div>
       <modal name="select" height="auto" width="65%" :scrollable="true">

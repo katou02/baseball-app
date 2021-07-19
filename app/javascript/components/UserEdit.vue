@@ -26,11 +26,11 @@
           <input type="file" id="file_photo" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
         </label>
         <div v-if="url">
-          <img :src="url" width="320px" height="300px">
+          <img :src="url" class="w-100" width="320px" height="300px">
           <v-btn color="error" type="submit" @click="deleteImage">削除</v-btn>
         </div>
         <div v-if="image.url">
-          <img :src="image.url" width="320px" height="300px">
+          <img :src="image.url" class="w-100" width="320px" height="300px">
           <v-btn color="error" type="submit" @click="deleteUserImage">削除</v-btn>
         </div>
         <v-btn type="submit" color="primary" class="text-white mt-5 mb-5">編集する</v-btn>

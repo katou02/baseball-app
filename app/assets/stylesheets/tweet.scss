@@ -32,15 +32,6 @@
   object-fit: hidden;
 }
 
-.main-content {
-  background-color: rgba(236, 236, 206,0.4);
-  position: relative;
-  // height: 100%;
-  &-btn{
-    display: flex;
-  }
-}
-
 .return-top {
   margin-left: 100px;
 }
@@ -50,10 +41,6 @@
 }
 
 .article {
-  width: 400px;
-  text-align: center;
-  background-color: #f3f3f3;
-  border: solid 1px rgb(255, 255, 255);
   &-title {
     margin-top: 10px;
     font-size: 1.0rem;
@@ -72,12 +59,7 @@
     opacity: 0.7;
   }
   &-main {
-    max-height: 1700px;
     width: 100%;
-    // background-image: image-url("sky.jpg");
-    // background-size: cover;
-    // background-color:rgba(255,255,255,0.8);
-    // background-blend-mode:lighten;
     flex: 1 1 100%;
   }
   &-icon {
@@ -94,10 +76,6 @@
 .search-tweet {
   min-height: 100%;
   width: 100%;
-  // background-image: image-url("sky_00010.jpg");
-  // background-size: cover;
-  // background-color:rgba(255,255,255,0.8);
-  // background-blend-mode:lighten;
   flex: 1 1 100%;
 }
 
@@ -165,20 +143,12 @@
   margin-left: 0.4%;
 }
 
-// 詳細
-// .good,.good-after {
-//   border: 2px solid #EEFFFF;
-//   color: #C0C0C0;
-//   background-color: #EEFFFF;
-// }
-
 .good:hover + .fukidashi {
   display: block;
 }
 
 .game-article {
   position: relative;
-  // height: 100%;
 }
 
 .game-result {
@@ -186,4 +156,43 @@
   text-align: center;
   padding-top: 30px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 900px) {
+  .article {
+    text-align: center;
+    background-color: #f3f3f3;
+    border: solid 1px rgb(255, 255, 255);
+    &-icon {
+      width: 168px;
+      height: 168px;
+    }
+    // &-title {
+    //   margin-top: 10px;
+    //   font-size: 0.8rem;
+    //   color: black;
+    //   font-weight: bold;
+    // }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .article {
+    width: 400px;
+    text-align: center;
+    background-color: #f3f3f3;
+    border: solid 1px rgb(255, 255, 255);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .post-content-tws {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .post-content-tws {
+    display: flex;
+  }
 }

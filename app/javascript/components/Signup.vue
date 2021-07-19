@@ -1,28 +1,23 @@
 <template>
   <div class="container">
-    <div width="400px" class="mx-auto mt-5">
-      <!-- <v-card-title> -->
-        <h1 class="display-1">
-          新規登録
-        </h1>
-      <!-- </v-card-title> -->
-      <!-- <v-card-text> -->
-        <v-form class="col" @submit.prevent="signup" lazy-validation>
-          <div class="text-red" v-if="error">{{ error }}</div>
-          <v-text-field label="ユーザー名(10文字以内)" prepend-icon="mdi-user" v-model="name" required="required"/>
-          <p v-if="!!errors['nickname']" style="color: red;">{{ errors['nickname'][0]}}</p>
-          <v-text-field label="メールアドレス" prepend-icon="mdi-email" v-model="email" required="required"/>
-          <p v-if="!!errors['email']" style="color: red;">{{ errors['email'][0]}}</p>
-          <v-text-field label="パスワード" :type="'password'" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password" required="required"/>
-          <p v-if="!!errors['password']" style="color: red;">{{ errors['password'][0]}}</p>
-          <v-text-field label="パスワード確認" :type="'password'" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password_confirmation" required="required"/>
-          <p v-if="!!errors['password_confirmation']" style="color: red;">{{ errors['password_confirmation'][0]}}</p>
-          <v-card-actions>
-            <v-btn type="submit" color="light-green darken-1" class="white--text mx-auto">新規登録</v-btn>
-            <!-- <div><router-link to="/signin" class="btn link-grey">ログインページへ</router-link></div> -->
-          </v-card-actions>
-        </v-form>
-      <!-- </v-card-text> -->
+    <div class="mx-auto mt-5">
+      <h1 class="display-1">
+        新規登録
+      </h1>
+      <v-form class="col" @submit.prevent="signup" lazy-validation>
+        <div class="text-red" v-if="error">{{ error }}</div>
+        <v-text-field label="ユーザー名(10文字以内)" prepend-icon="mdi-user" v-model="name" required="required"/>
+        <p v-if="!!errors['nickname']" style="color: red;">{{ errors['nickname'][0]}}</p>
+        <v-text-field label="メールアドレス" prepend-icon="mdi-email" v-model="email" required="required"/>
+        <p v-if="!!errors['email']" style="color: red;">{{ errors['email'][0]}}</p>
+        <v-text-field label="パスワード" :type="'password'" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password" required="required"/>
+        <p v-if="!!errors['password']" style="color: red;">{{ errors['password'][0]}}</p>
+        <v-text-field label="パスワード確認" :type="'password'" prepend-icon="mdi-lock" append-icon="mdi-eye-off" v-model="password_confirmation" required="required"/>
+        <p v-if="!!errors['password_confirmation']" style="color: red;">{{ errors['password_confirmation'][0]}}</p>
+        <v-card-actions>
+          <v-btn type="submit" color="light-green darken-1" class="white--text mx-auto">新規登録</v-btn>
+        </v-card-actions>
+      </v-form>
     </div>
     <button @click="childEvent">閉じる</button>
   </div>

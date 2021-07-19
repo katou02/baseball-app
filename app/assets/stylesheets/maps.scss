@@ -1,5 +1,4 @@
 .map{
-  // background-image: image-url('sky.jpg');
   background-size: cover;
   background-color: #f6f6d1;
   background-blend-mode: lighten;
@@ -9,13 +8,9 @@
     margin-top: 10px;
     font-size: 1.2rem;
   }
-  // &-data {
-  //   height: 140px;
-  //   width: 260px;
-  //   background-color: white;
-  // }
   &-content {
-  background-color: #f6f6d1;
+    position: relative;
+    background-color: #f6f6d1;
   }
   &-card {
   border: none;

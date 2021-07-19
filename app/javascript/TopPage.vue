@@ -36,12 +36,12 @@
         </div>
       </router-link>
     </div>
-    <modal height="auto" name="select">
+    <modal height="auto" name="select" width="45%" :scrollable="true">
       <div id="modal">
         <Signup @parent-event="closeModal"></Signup>
       </div>
     </modal>
-    <modal height="auto" name="select2">
+    <modal height="auto" name="select2" width="45%" :scrollable="true">
       <div id="modal">
         <Signin @parent-event2="closeModal2"></Signin>
       </div>
