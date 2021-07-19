@@ -22,27 +22,15 @@ import WatchfcsPage from './WatchfcsPage.vue'
 import UserPage from './UserPage.vue'
 import MapPage from './MapPage.vue'
 import MapShowPage from './MapShowPage'
-// import MapNewPage from './MapNewPage'
-// import MapEditPage from './MapEditPage'
 import ChampionPage from './ChampionPage'
 import RoomPage from './RoomPage'
 import RoomShowPage from './RoomShowPage'
 import Average from './Average'
-// import ChampionNewPage from './ChampionNewPage'
-// import TweetNewPage from './TweetNewPage'
-// import AnalysisNewPage from './AnalysisNewPage'
-// import ForecastNewPage from './ForecastNewPage'
-// import TweetEditPage from './TweetEditPage'
-// import AnalysisEdit from './AnalysisEdit'
-// import ForecastEditPage from './ForecastEditPage'
 import UserShowPage from './UserShowPage'
-// import UserEditPage from './UserEditPage'
 import FollowingPage from './FollowingPage'
 import FollowerPage from './FollowerPage'
 import NotificationPage from './NotificationPage'
 import ContactPage from './ContactPage'
-// import Signup from './Signup'
-// import Signin from './Signin'
 import "vuetify/dist/vuetify.min.css"
 import '@mdi/font/css/materialdesignicons.css'
 import VuejsDialog from 'vuejs-dialog';
@@ -66,16 +54,6 @@ const router = new VueRouter({
       component: AnalysisPage,
       name: 'analysis'
     },
-    // {
-    //   path: '/analyses/new',
-    //   component: AnalysisNewPage,
-    //   name: 'analysis-new'
-    // },
-    // {
-    //   path: '/analyses/:id(\\d+)/edit',
-    //   component: AnalysisEdit,
-    //   name: 'analysis-edit'
-    // },
     {
       path: '/analyses/:id(\\d+)',
       component: AnalysisShowPage,
@@ -91,11 +69,6 @@ const router = new VueRouter({
       component: ContactPage,
       name: 'contact',
     },
-    // {
-    //   path: '/champions/new',
-    //   component: ChampionNewPage,
-    //   name: 'champion-new'
-    // },
     {
       path: '/forecasts',
       component: ForecastPage,
@@ -106,16 +79,6 @@ const router = new VueRouter({
       component: ForecastShowPage,
       name: 'forecast-show'
     },
-    // {
-    //   path: '/forecasts/:id(\\d+)/edit',
-    //   component: ForecastEditPage,
-    //   name: 'forecast-edit'
-    // },
-    // {
-    //   path: '/forecasts/new',
-    //   component: ForecastNewPage,
-    //   name: 'forecast-new'
-    // },
     {
       path: '/maps',
       component: MapPage,
@@ -151,16 +114,6 @@ const router = new VueRouter({
       component: RoomShowPage,
       name: 'room-show'
     },
-    // { 
-    //   path: '/signup',  
-    //   name: 'Signup',     
-    //   component: Signup 
-    // },
-    // { 
-    //   path: '/signin',   
-    //   name: 'Signin',      
-    //   component: Signin 
-    // },
     {
       path: '/tweets',
       component: TweetPage,
@@ -171,16 +124,6 @@ const router = new VueRouter({
       component: TweetShowPage,
       name: 'tweet-show'
     },
-    // {
-    //   path: '/tweets/new',
-    //   component: TweetNewPage,
-    //   name: 'tweet-new'
-    // },
-    // {
-    //   path: '/tweets/:id(\\d+)/edit',
-    //   component: TweetEditPage,
-    //   name: 'tweet-edit'
-    // },
     {
       path: '/tournaments/:id(\\d+)',
       component: WatchtwsPage,
@@ -211,11 +154,6 @@ const router = new VueRouter({
       component: UserShowPage,
       name: 'user-show'
     },
-    // {
-    //   path: '/users/:id(\\d+)/edit',
-    //   component: UserEditPage,
-    //   name: 'user-edit'
-    // },
     {
       path: '/users/:id(\\d+)/following',
       component: FollowingPage,
