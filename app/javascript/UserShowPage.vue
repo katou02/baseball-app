@@ -7,7 +7,7 @@
       <!-- <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit text-white">編集する</router-link> -->
       <button class="edit text-white" @click="openModal">編集する</button>
     </span>
-    <p class="text-center">ID:{{user.id}}</p>
+    <p class="text-center pt-3">ID:{{user.id}}</p>
     <div class="myname mt-5">
       <h2>{{user.nickname}}</h2>
     </div>
@@ -44,7 +44,8 @@
       </div>
       <div v-if="user.check && user.room == null">
         <form @submit.prevent="createRoom" class="text-center mt-3">
-          <v-btn type="submit" class="text-white primary" small>DMをはじめる</v-btn>
+          <v-btn type="submit" class="text-white primary" small v-if="!$vuetify.breakpoint.xs">ダイレクトメールダイレクトメールをはじめる</v-btn>
+          <v-btn type="submit" class="text-white primary" small v-if="$vuetify.breakpoint.xs">DMをする</v-btn>
         </form>
       </div>
     </div>
