@@ -14,10 +14,10 @@
         <router-link :to="{name: 'user-show',params: {id: e.id}}">
           <div class="user-list-image pb-3">
             <div v-if="e.image.url">
-              <img :src= e.image.url class="user-icon mt-3">
+              <img :src= e.image.url class="user-list-icon mt-3">
             </div>
             <div v-else>
-              <img src="../assets/images/no-image.png" class="user-icon mt-3">
+              <img src="../assets/images/no-image.png" class="user-list-icon mt-3">
             </div>
           </div>
           <div class="user-list_body">
