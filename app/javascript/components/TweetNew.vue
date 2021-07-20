@@ -7,14 +7,14 @@
         <div class="select-from">
           <div class="containe_r p-4">
             <label>大会名</label><br>
-            <div class="select-tournament w-50 mx-auto">
+            <div class="select-tournament mx-auto">
               <select @change="findChildren" v-model="tournament" class="border">
                 <option disabled value="">大会を選択</option>
                 <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
               </select>
             </div>
             <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
-            <div class="d-flex">
+            <div class="select-tab-school">
               <div class="select-school w-25 mx-auto mt-3">
                 <ul>
                   <label>高校A</label><br>
@@ -42,7 +42,7 @@
                 </ul>
               </div>
             </div>
-            <div class="d-flex">
+            <div class="select-tab-score">
               <div class="school-a_score w-25 mx-auto mt-3">
                 <label>高校A 得点</label><br>
                 <v-select
@@ -85,7 +85,7 @@
             <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
           </label>
           <div v-if="url">
-            <img :src="url" class="w-100" width="320px" height="300px">
+            <img :src="url"  width="320px" height="300px">
             <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
           </div>
           <v-btn type="submit" color="info" class="text-white mt-5 mb-5">投稿する</v-btn>

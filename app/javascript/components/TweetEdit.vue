@@ -6,8 +6,8 @@
     <div class="select-from">
         {{tournament}}
         <div class="containe_r p-4">
-        <div class="d-flex">
-            <div class="select-school w-25 mx-auto mt-3">
+        <div class="select-tab-school-edit">
+            <div class="select-school-edit w-25 mx-auto mt-3">
             <label>高校A</label><br>
             <v-select
                 v-model="school_a"
@@ -18,7 +18,7 @@
                 outlined>
             </v-select>
             </div>
-            <div class="select-school w-25 mx-auto mt-3">
+            <div class="select-school-edit w-25 mx-auto mt-3">
             <label>高校B</label><br>
             <v-select
                 v-model="school_b"
@@ -30,7 +30,7 @@
             </v-select>
             </div>
         </div>
-        <div class="d-flex">
+        <div class="select-tab-score">
             <div class="school-a_score w-25 mx-auto mt-3">
             <label>高校A 得点</label><br>
             <v-select
@@ -60,11 +60,11 @@
         <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
         </label>
         <div v-if="url">
-          <img :src="url" class="w-100" width="320px" height="300px">
+          <img :src="url" width="320px" height="300px">
           <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
         </div>
         <div v-if="image">
-          <img :src="image" class="w-100" width="320px" height="300px">
+          <img :src="image" width="320px" height="300px">
           <v-btn color="error" type="submit" @click="deleteTweetImage" small>削除</v-btn>
         </div>
         <v-btn type="submit" color="info" class="text-white mt-5 mb-5">編集する</v-btn>
