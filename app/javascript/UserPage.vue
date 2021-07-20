@@ -4,7 +4,7 @@
     <div class="search-area mt-5">
       <v-text-field type="text" v-model="keyword" label="検索"></v-text-field>
     </div>
-    <div class="user-list row mx-auto">
+    <div class="user-list row mx-auto mt-3">
       <v-col cols="12"  sm="6" md="3" lg="3" v-for="e in getLists" :key="e.id">
         <router-link :to="{name: 'user-show',params: {id: e.id}}" class="user-card">
           <div class="user-list-image">
