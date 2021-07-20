@@ -5,19 +5,19 @@
     <form @submit.prevent="editAnalysis">
         {{tournament}}
         <div class="select-from">
-        <div class="select-school w-25 mx-auto mt-3">
-            <label>学校</label><br>
-            <v-select
-            v-model="school"
-            item-text="name"
-            item-value="id"
-            :items="children"
-            outlined>
-            </v-select>
-            <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
-        </div>
-        <br><p>5段階評価</p>
-        <div class="select">
+          <div class="select-school-edit w-25 mx-auto mt-3">
+              <label>学校</label><br>
+              <v-select
+              v-model="school"
+              item-text="name"
+              item-value="id"
+              :items="children"
+              outlined>
+              </v-select>
+              <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
+          </div>
+          <br><p>5段階評価</p>
+          <div class="select">
             <div class="attack w-25">
             <label>攻撃力</label><br>
             <v-select
@@ -57,7 +57,7 @@
                 :items="score"
                 solo>
             </v-select>
-            </div>
+          </div>
         </div>
         <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
         <p v-if="!!errors['title']" style="color: red;">{{ errors['title'][0]}}</p>

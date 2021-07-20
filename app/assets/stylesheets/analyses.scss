@@ -91,7 +91,6 @@
 .select {
   margin-top: 20px;
   display: flex;
-  // justify-content: space-evenly;
 }
 
 // /*詳細
@@ -188,5 +187,22 @@
 @media screen and (min-width: 350px) {
   .post-content-ays {
     display: flex;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .select {
+    display: block;
+  }
+  .attack,.defensive,.pitcher,.expectations,.comprehensive {
+    margin: 0 auto;
+    min-width: 100px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .active-ays {
+    margin-left: -40px;
+    min-width: 120px;
   }
 }

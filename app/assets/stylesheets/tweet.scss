@@ -196,3 +196,24 @@
     display: flex;
   }
 }
+
+// 投稿
+@media screen and (max-width: 820px) {
+  .select-tab-school {
+    display: block;
+    margin-right: 120px;
+  }
+  .select-tab-score,.select-tab-school-edit {
+    display: block;
+  }
+  .active,.school-a_score,.school-b_score,.round,.select-school-edit {
+    min-width: 130px;
+    padding-left: 1px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .border {
+    width: 120px;
+  }
+}
