@@ -17,7 +17,7 @@
             優勝予想をする
           </router-link> -->
           <button class="btn btn-warning champ-btn" @click="openModal">優勝予想をする</button>
-          <modal name="select" height="auto" width="65%">
+          <modal name="select" height="auto" width="35%">
             <div id="modal">
               <Champion @parent-event="fetchChampion"></Champion>
               <button @click="closeModal">閉じる</button>
