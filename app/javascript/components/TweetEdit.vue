@@ -7,47 +7,47 @@
         {{tournament}}
         <div class="containe_r p-4">
         <div class="select-tab-school-edit">
-            <div class="select-school-edit w-25 mx-auto mt-3">
-            <label>高校A</label><br>
-            <v-select
-                v-model="school_a"
-                item-text="name"
-                item-value="id"
-                :items="children"
-                label="高校を選択"
-                outlined>
-            </v-select>
-            </div>
-            <div class="select-school-edit w-25 mx-auto mt-3">
-            <label>高校B</label><br>
-            <v-select
-                v-model="school_b"
-                item-text="name"
-                item-value="id"
-                :items="children"
-                label="高校を選択"
-                outlined>
-            </v-select>
-            </div>
+          <div class="select-school-edit w-25 mx-auto mt-3">
+          <label>高校A</label><br>
+          <v-select
+              v-model="school_a"
+              item-text="name"
+              item-value="id"
+              :items="children"
+              label="高校を選択"
+              outlined>
+          </v-select>
+          </div>
+          <div class="select-school-edit w-25 mx-auto mt-3">
+          <label>高校B</label><br>
+          <v-select
+              v-model="school_b"
+              item-text="name"
+              item-value="id"
+              :items="children"
+              label="高校を選択"
+              outlined>
+          </v-select>
+          </div>
         </div>
         <div class="select-tab-score">
-            <div class="school-a_score w-25 mx-auto mt-3">
-            <label>高校A 得点</label><br>
-            <v-select
-                v-model="school_a_score"
-                :items="score"
-                solo>
-            </v-select>
-            <p v-if="!!errors['school_a_score']" style="color: red;">{{ errors['school_a_score'][0]}}</p>
-            </div>
-            <div class="school-b_score w-25 mx-auto mt-3">
-            <label>高校B 得点</label><br>
-            <v-select
-                v-model="school_b_score"
-                :items="score"
-                solo>
-            </v-select>
-            </div>
+          <div class="school-a_score w-25 mx-auto mt-3">
+          <label>高校A 得点</label><br>
+          <v-select
+              v-model="school_a_score"
+              :items="score"
+              solo>
+          </v-select>
+          <p v-if="!!errors['school_a_score']" style="color: red;">{{ errors['school_a_score'][0]}}</p>
+          </div>
+          <div class="school-b_score w-25 mx-auto mt-3">
+          <label>高校B 得点</label><br>
+          <v-select
+              v-model="school_b_score"
+              :items="score"
+              solo>
+          </v-select>
+          </div>
         </div>
         </div>
         <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
