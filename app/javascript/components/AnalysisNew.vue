@@ -29,71 +29,71 @@
         </div>
         <br><p>5段階評価</p>
         <div class="select">
-        <div class="attack w-25">
-            <label>攻撃力</label><br>
-            <!-- <select v-model="attack">
-            <option v-for="attack in 5" :value="attack" :key="attack.id">{{ attack }}</option>
-            </select> -->
-            <v-select
-            v-model="attack"
-            :items="score"
-            label="評価を選択"
-            solo>
-            </v-select>
-            <p v-if="!!errors['attack']" style="color: red;">{{ errors['attack'][0]}}</p>
-        </div>
-        <div class="defensive w-25">
-            <label>守備力</label><br>
-            <!-- <select v-model="defensive">
-            <option v-for="defensive in 5" :value="defensive" :key="defensive.id">{{ defensive }}</option>
-            </select> -->
-            <v-select
-            v-model="defensive"
-            :items="score"
-            label="評価を選択"
-            solo>
-            </v-select>
-            <p v-if="!!errors['defensive']" style="color: red;">{{ errors['defensive'][0]}}</p>
-        </div>
-        <div class="pitcher w-25">
-            <label>投手力</label><br>
-            <!-- <select v-model="pitcher">
-            <option v-for="pitcher in 5" :value="pitcher" :key="pitcher.id">{{ pitcher }}</option>
-            </select> -->
-            <v-select
-            v-model="pitcher"
-            :items="score"
-            label="評価を選択"
-            solo>
-            </v-select>
-            <p v-if="!!errors['pitcher']" style="color: red;">{{ errors['pitcher'][0]}}</p>
-        </div>
-        <div class="comprehensive w-25">
-            <label>総合力</label><br>
-            <!-- <select v-model="comprehensive">
-            <option v-for="comprehensive in 5" :value="comprehensive" :key="comprehensive.id">{{ comprehensive }}</option>
-            </select> -->
-            <v-select
-            v-model="comprehensive"
-            :items="score"
-            label="評価を選択"
-            solo>
-            </v-select>
-            <p v-if="!!errors['comprehensive']" style="color: red;">{{ errors['comprehensive'][0]}}</p>
-        </div>
-        <div class="expectations w-25">
-            <label>期待度</label><br>
-            <!-- <select v-model="expectation">
-            <option v-for="expectation in 5" :value="expectation" :key="expectation.id">{{ expectation }}</option>
-            </select> -->
-            <v-select
-            v-model="expectation"
-            :items="score"
-            label="評価を選択"
-            solo>
-            </v-select>
-            <p v-if="!!errors['expectations']" style="color: red;">{{ errors['expectations'][0]}}</p>
-        </div>
+          <div class="attack w-25">
+              <label>攻撃力</label><br>
+              <!-- <select v-model="attack">
+              <option v-for="attack in 5" :value="attack" :key="attack.id">{{ attack }}</option>
+              </select> -->
+              <v-select
+              v-model="attack"
+              :items="score"
+              label="評価を選択"
+              solo>
+              </v-select>
+              <p v-if="!!errors['attack']" style="color: red;">{{ errors['attack'][0]}}</p>
+          </div>
+          <div class="defensive w-25">
+              <label>守備力</label><br>
+              <!-- <select v-model="defensive">
+              <option v-for="defensive in 5" :value="defensive" :key="defensive.id">{{ defensive }}</option>
+              </select> -->
+              <v-select
+              v-model="defensive"
+              :items="score"
+              label="評価を選択"
+              solo>
+              </v-select>
+              <p v-if="!!errors['defensive']" style="color: red;">{{ errors['defensive'][0]}}</p>
+          </div>
+          <div class="pitcher w-25">
+              <label>投手力</label><br>
+              <!-- <select v-model="pitcher">
+              <option v-for="pitcher in 5" :value="pitcher" :key="pitcher.id">{{ pitcher }}</option>
+              </select> -->
+              <v-select
+              v-model="pitcher"
+              :items="score"
+              label="評価を選択"
+              solo>
+              </v-select>
+              <p v-if="!!errors['pitcher']" style="color: red;">{{ errors['pitcher'][0]}}</p>
+          </div>
+          <div class="comprehensive w-25">
+              <label>総合力</label><br>
+              <!-- <select v-model="comprehensive">
+              <option v-for="comprehensive in 5" :value="comprehensive" :key="comprehensive.id">{{ comprehensive }}</option>
+              </select> -->
+              <v-select
+              v-model="comprehensive"
+              :items="score"
+              label="評価を選択"
+              solo>
+              </v-select>
+              <p v-if="!!errors['comprehensive']" style="color: red;">{{ errors['comprehensive'][0]}}</p>
+          </div>
+          <div class="expectations w-25">
+              <label>期待度</label><br>
+              <!-- <select v-model="expectation">
+              <option v-for="expectation in 5" :value="expectation" :key="expectation.id">{{ expectation }}</option>
+              </select> -->
+              <v-select
+              v-model="expectation"
+              :items="score"
+              label="評価を選択"
+              solo>
+              </v-select>
+              <p v-if="!!errors['expectations']" style="color: red;">{{ errors['expectations'][0]}}</p>
+          </div>
         </div>
         <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="mb-5"></v-text-field>
         <p v-if="!!errors['title']" style="color: red;">{{ errors['title'][0]}}</p>
@@ -105,7 +105,7 @@
         <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
         </label>
         <div v-if="url">
-        <img :src="url" class="w-100" width="320px" height="300px">
+        <img :src="url" width="320px" height="300px">
         <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
         </div>
         <v-btn type="submit" color="info" class="text-white mt-5 mb-5">投稿する</v-btn>
@@ -193,7 +193,7 @@ export default {
     },
     active() {
       let school = document.querySelector('ul')
-      school.classList.add('active');
+      school.classList.add('active-ays');
     },
     setImage(e){
       e.preventDefault();

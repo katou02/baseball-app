@@ -5,8 +5,8 @@
     <form @submit.prevent="editForecast">
       {{tournament}}
       <div class="form p-4">
-        <div class="d-flex">
-          <div class="w-25 mx-auto mt-3">
+        <div class="select-school-fcs-edit">
+          <div class="select-fcs-school-edit w-25 mx-auto mt-3">
             <label>勝利予想</label><br>
             <v-select
               v-model="win_school"
@@ -16,7 +16,7 @@
               outlined>
             </v-select>
           </div>
-          <div class="w-25 mx-auto mt-3">
+          <div class="select-fcs-school-edit w-25 mx-auto mt-3">
             <label>敗退予想</label><br>
             <v-select
               v-model="lose_school"
@@ -37,7 +37,7 @@
             outlined>
           </v-select>
         </div>
-        <div class="win-rate w-25 mx-auto mt-3">
+        <div class="win-rate mx-auto mt-3">
           <label>勝利予想チームの勝利確率</label><br>
           <v-select
             v-model="probability"

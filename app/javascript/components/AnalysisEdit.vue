@@ -5,19 +5,19 @@
     <form @submit.prevent="editAnalysis">
         {{tournament}}
         <div class="select-from">
-        <div class="select-school w-25 mx-auto mt-3">
-            <label>学校</label><br>
-            <v-select
-            v-model="school"
-            item-text="name"
-            item-value="id"
-            :items="children"
-            outlined>
-            </v-select>
-            <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
-        </div>
-        <br><p>5段階評価</p>
-        <div class="select">
+          <div class="select-school-edit w-25 mx-auto mt-3">
+              <label>学校</label><br>
+              <v-select
+              v-model="school"
+              item-text="name"
+              item-value="id"
+              :items="children"
+              outlined>
+              </v-select>
+              <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p>
+          </div>
+          <br><p>5段階評価</p>
+          <div class="select">
             <div class="attack w-25">
             <label>攻撃力</label><br>
             <v-select
@@ -57,7 +57,7 @@
                 :items="score"
                 solo>
             </v-select>
-            </div>
+          </div>
         </div>
         <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="game_title"></v-text-field>
         <p v-if="!!errors['title']" style="color: red;">{{ errors['title'][0]}}</p>
@@ -69,11 +69,11 @@
             <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
         </label>
         <div v-if="url">
-            <img :src="url" class="w-100" width="320px" height="300px">
+            <img :src="url" width="320px" height="300px">
             <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
         </div>
         <div v-if="image">
-            <img :src="image" class="w-100" width="320px" height="300px">
+            <img :src="image" width="320px" height="300px">
             <v-btn color="error" type="submit" @click="deleteForecastImage" small>削除</v-btn>
         </div>
         <v-btn type="submit" color="info" class="text-white mt-5 mb-5">編集する</v-btn>
