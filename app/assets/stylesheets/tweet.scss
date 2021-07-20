@@ -212,8 +212,8 @@
   }
 }
 
-@media screen and (max-width: 400px) {
-  .border {
-    width: 120px;
+@media screen and (min-width: 820px) {
+  .select-tab-score,.select-tab-school,.select-tab-school-edit {
+    display: flex;
   }
 }

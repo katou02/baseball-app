@@ -44,11 +44,6 @@ a{
   color: black;
 }
 
-.select-tab-school,.select-tab-school-edit,.select-tab-score {
-  display: flex;
-}
-
-
 input{
   font-size: 20px;
 }
@@ -86,4 +81,10 @@ ul {
 
 .active,.active-ays {
   display: block;
+}
+
+@media screen and (max-width: 470px) {
+  .border {
+    width: 120px;
+  }
 }

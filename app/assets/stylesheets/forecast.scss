@@ -43,12 +43,16 @@
   margin-left: 29%;
 }
 
-.aaa {
+.win-school,.lose-school {
+  font-size: 27px;
+}
+
+.select-school-fcs {
   display: flex;
 }
 
-.win-school,.lose-school {
-  font-size: 27px;
+.win-rate {
+  width: 100px;
 }
 
 @media screen and (max-width: 900px) {
@@ -91,5 +95,26 @@
   .pie {
     width: 360px;
     height: 80%;
+  }
+}
+
+// 投稿
+@media screen and (max-width: 700px) {
+  .select-school-fcs {
+    display: block;
+    margin-left: -80px;
+  }
+  .select-fcs-school-edit {
+    min-width: 130px;
+    margin-left: 20px;
+  }
+  .select-school-fcs-edit {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .select-school-fcs,.select-school-fcs-edit {
+    display: flex;
   }
 }
