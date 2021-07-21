@@ -10,7 +10,6 @@
   position: sticky;
   top: 0;
   background-color: #EEFFFF;
-  // list-style-type: none;
   z-index: 3;
 }
 .dmMain{
@@ -54,14 +53,12 @@
 
 .message {
   position: relative;
-  // display: inline-block;
   margin: 10px 0 4px 15px;
   padding: 1% 0% 1% 0%;
   min-width: 7%;
   max-width: 30%;
   font-size: 16px;
   background: rgb(192, 189, 189);
-  // box-sizing: border-box;
   border-radius: 15px;
   text-align: center;
   &-input {
