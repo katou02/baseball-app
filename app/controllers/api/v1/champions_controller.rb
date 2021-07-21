@@ -12,10 +12,8 @@ class Api::V1::ChampionsController < ApiController
     @category = Category.find(params[:id]) 
     champions = Champion.where(tournament_id: params[:id])
     @select_schools = Category.where(ancestry: params[:id])
-    # binding.pry
     @n=0
     ranking=ranking(champions)
-    # graph(ranking)
     date = []
     @schools = []
     @vote = []
@@ -69,17 +67,4 @@ class Api::V1::ChampionsController < ApiController
   def champion_params
     params.require(:champion).permit(:tournament_id,:champion_school_id).merge(user_id: current_user.id)
   end
-
-  # def graph(neok)
-  #   date = []
-  #   a = []
-  #   b = []
-  #   date.push(@school)
-
-  #   date[0].size.times do |n|
-  #     a<<date[0][n].champion_school.name
-  #     b<<@num[0][n][1]
-  #   end
-  #   # binding.pry
-  # end
 end

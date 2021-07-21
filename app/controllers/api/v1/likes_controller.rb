@@ -1,6 +1,5 @@
 class Api::V1::LikesController < ApiController
   skip_before_action :verify_authenticity_token
-  # before_action :authenticate_user!
 
   def index
     render json: Like.filter_by_post(params[:tweet_id]).select(:id, :user_id, :tweet_id)
