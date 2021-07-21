@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuetify from "vuetify";
-// import "vuetify/dist/vuetify.min.css";
 import App from '../app.vue';
 import Paginate from 'vuejs-paginate'
 import store from './store.js'
@@ -8,7 +7,6 @@ Vue.use(Vuetify);
 Vue.component('paginate', Paginate)
 import VueAxios from 'vue-axios'
 import { securedAxiosInstance, plainAxiosInstance } from './axios.js'
-// const store = new Vuex.Store(_store);
 
 const slide = new Vue({
   el: '#slide',

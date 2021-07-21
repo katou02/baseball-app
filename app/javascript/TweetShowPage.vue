@@ -3,7 +3,6 @@
   <div class="data-info"> 
     <div class="d-flex">
       <div v-if="tweet.user_id==tweet.current_user || tweet.admin==true">
-        <!-- <button class="delete-btn" @click="onAlert()">記事を削除する</button> -->
         <v-dialog v-model="dialog" persistent max-width="290">
           <template v-slot:activator="{ on, attrs }">
             <button class="delete-btn text-white" v-bind="attrs" v-on="on">
@@ -19,7 +18,6 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <!-- <router-link :to="{name: 'tweet-edit',params: {id: tweet.id}}" class="edit text-white p-2">記事を編集する</router-link> -->
         <button class="edit text-white p-1" @click="openModal">記事を編集する</button>
       </div>
       <router-link :to="{name: 'tweet'}" class="return-btn text-white pt-1">記事一覧へ戻る</router-link>
@@ -96,11 +94,6 @@
       <div v-if="tweet.current_user">
         <div class="comment-form">
           <form @submit.prevent="createComment">
-            <!-- <div  v-if="errors.length != 0">
-              <ul v-for="e in errors" :key="e">
-                <li><font color="red">{{ e }}</font></li>
-              </ul>
-            </div> -->
             <div class="tweet-comment_form text-center">
               <v-textarea solo v-model="text" type="text"></v-textarea>
               <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>

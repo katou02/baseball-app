@@ -43,11 +43,8 @@ class Api::V1::AnalysesController < ApiController
   end
 
   def show
-    # @analysis = Analysis.find(params[:id])
     @user = User.find_by(id: @analysis.user.id)
     @num = 1
-    # gon.data = []
-    # gon.data.push(@analysis.attack,@analysis.defensive,@analysis.pitcher,@analysis.comprehensive,@analysis.expectations)
     render 'show',formats: 'json',handlers: 'jbuilder'
   end
 

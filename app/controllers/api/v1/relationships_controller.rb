@@ -9,7 +9,6 @@ class Api::V1::RelationshipsController < ApiController
   end
   
   def destroy
-    # @user = Relationship.find(params[:id]).following_id
     @user = User.find_by(id: params[:id])
     @login_user.unfollow!(@user)
   end

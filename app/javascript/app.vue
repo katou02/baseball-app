@@ -89,16 +89,6 @@ const router = new VueRouter({
       component: MapShowPage,
       name: 'map-show'
     },
-    // {
-    //   path: '/maps/new',
-    //   component: MapNewPage,
-    //   name: 'map-new'
-    // },
-    // {
-    //   path: '/maps/:id(\\d+)/edit',
-    //   component: MapEditPage,
-    //   name: 'map-edit'
-    // },
     {
       path: '/notifications',
       component: NotificationPage,

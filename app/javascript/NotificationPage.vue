@@ -8,7 +8,6 @@
     <div class="notification">
       <div class="mx-auto text-center">
         <div v-for="e in listNotifications" :key="e.id">
-          <!-- <div v-if="e.visiter_id!=e.visited_id"> -->
           <div class="notification-info mt-5">
             <div v-if="e.visiter_image.url"> 
               <img :src= e.visiter_image.url class="user-icon mt-1 mb-5">
@@ -39,7 +38,6 @@
             ({{e.time+"前"}})
             </div>
           </div>
-          <!-- </div> -->
         </div>
         <button
           class="list-item-button text-center"

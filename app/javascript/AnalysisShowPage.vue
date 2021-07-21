@@ -3,7 +3,6 @@
     <div class="data-info pb-5">
       <div class="d-flex">
         <div v-if="analysis.user_id==analysis.current_user || analysis.admin==true">
-          <!-- <button class="delete-btn" @click="onAlert()">記事を削除する</button> -->
           <v-dialog v-model="dialog" persistent max-width="290">
             <template v-slot:activator="{ on, attrs }">
               <button class="delete-btn text-white" v-bind="attrs" v-on="on">
@@ -19,7 +18,6 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
-          <!-- <router-link :to="{name: 'analysis-edit',params: {id: analysis.id}}" class="edit text-white p-2">記事を編集する</router-link> -->
           <button class="edit text-white p-1" @click="openModal">記事を編集する</button>
         </div>
         <router-link :to="{name: 'analysis'}" class="return-btn text-white pt-1">記事一覧へ戻る</router-link>

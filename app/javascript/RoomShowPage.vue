@@ -35,15 +35,9 @@
     </div>
     <div class="message-input">
       <form @submit.prevent="createMessage">
-        <!--<div  v-if="errors.length != 0">
-          <ul v-for="e in errors" :key="e">
-            <li><font color="red">{{ e }}</font></li>
-          </ul>
-        </div>-->
         <div v-if="data.check!=null">
           <div class="message-form">
             <div class="mx-auto d-flex w-50">
-              <!-- <textarea v-model="body" type="text" class="message-detail"></textarea> -->
               <v-text-field v-model="text" solo label="メッセージ" clearable></v-text-field>
               <v-btn type="submit" class="message-btn ml-2 info" >
                 <i class="fas fa-paper-plane"></i>

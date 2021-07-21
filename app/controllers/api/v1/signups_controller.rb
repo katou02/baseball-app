@@ -14,7 +14,6 @@ class Api::V1::SignupsController < ApplicationController
                           secure: false)
       render json: { csrf: tokens[:csrf] }
     else
-      # render json: { error: user.errors.full_messages.join(' ') }, status: :unprocessable_entity
       render json: { errors: user.errors.keys.map { |key| [key, user.errors.full_messages_for(key)]}.to_h, render: 'show.json.jbuilder' }, status: :unprocessable_entity
     end
   end
