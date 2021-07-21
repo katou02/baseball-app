@@ -1,9 +1,7 @@
 <template>
   <div class="main-content">
-    <!-- <Header></Header> -->
     <div class="main-content-btn">
       <div v-if="current_user">
-        <!-- <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link> -->
         <button class="send-btn text-white" @click="openModal">投稿する</button>
       </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>

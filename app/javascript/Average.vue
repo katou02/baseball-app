@@ -63,11 +63,9 @@ export default {
   },
   mounted() {
     this.fetchDeta()
-    // this.fetchchart()
   },
   methods: {
     fetchDeta() {
-      // let aa = document.getElementsByClassName('avg-attack')
       axios
         .get(`/api/v1/tournaments/${this.$route.params.id}/watch_avg`)
         .then(response => {
@@ -78,7 +76,6 @@ export default {
       axios
         .get(`/api/v1/tournaments/${this.$route.params.id}/watch_avg`)
         .then(response =>{
-          // alert(num)
           this.chart_data = [Math.floor(response.data.avgs[num].attack_num),Math.floor(response.data.avgs[num].defense_num),Math.floor(response.data.avgs[num].pitch_num),Math.floor(response.data.avgs[num].total_num),Math.floor(response.data.avgs[num].expectations_num)]
           this.chart(num);
         })
@@ -95,8 +92,6 @@ export default {
             labels: ["攻撃力","守備力","投手力","総合力","期待度"],
             datasets: [{
               label: '戦力',
-              // data: this.chart_data,
-              // data: [attack,attack,attack,attack,attack],
               data: this.chart_data,
               backgroundColor: 'RGBA(225,95,150, 0.5)',
               borderColor: 'RGBA(225,95,150, 1)',
@@ -143,7 +138,6 @@ export default {
     let current = this.currentPage * this.parPage;
     let start = current - this.parPage;
      return this.getAverage.slice(start, current);
-    // return this.$store.state.tweets.slice(start,current)
     },
     getPageCount: function() {
       return Math.ceil(this.getAverage.length / this.parPage);

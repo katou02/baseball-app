@@ -2,7 +2,6 @@
   <div class="main-content">
     <div class="main-content-btn">
       <div v-if="current_user">
-        <!-- <router-link :to="{name: 'tweet-new'}" class="send-btn text-white">投稿する</router-link> -->
         <button class="send-btn text-white" @click="openModal">投稿する</button>
       </div>
       <router-link :to="{name: 'top'}" class="return-top text-white">トップページ</router-link>
@@ -170,13 +169,11 @@ export default {
           }
         }
         this.$store.state.tweets = tweets
-        // return tweets
         return this.$store.state.tweets 
      },
      getLists: function() {
        let current = this.currentPage * this.parPage;
        let start = current - this.parPage;
-      //  return this.getTweets.slice(start, current);
        return this.$store.state.tweets.slice(start,current)
      },
      getPageCount: function() {

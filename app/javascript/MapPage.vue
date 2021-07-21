@@ -10,9 +10,7 @@
       </div>
     </div>
     <div class="text-center">
-      <!-- <router-link :to="{name: 'watch_ays',params: {id: $route.query.tournament_id}}" class="ays-avg">戻る</router-link> -->
       <span v-if="current_user!=null">
-        <!-- <router-link :to="{name: 'map-new',query: {tournament_id: $route.query.tournament_id}}" class="ays-avg">紹介する</router-link> -->
         <button class="ays-avg" @click="openModal">紹介する</button>
       </span>
     </div>

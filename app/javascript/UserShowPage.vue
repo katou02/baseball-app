@@ -4,7 +4,6 @@
     <router-link :to="{name: 'user'}" class="users-btn text-white">ユーザー一覧</router-link>
     <router-link :to="{name: 'room'}" class="dm-btn text-white">DM</router-link>
     <span v-if="user_id==current_user || user.current_user.admin==true">
-      <!-- <router-link :to="{name: 'user-edit',params: {id: $route.params.id}}" class="edit text-white">編集する</router-link> -->
       <button class="edit text-white" @click="openModal">編集する</button>
     </span>
     <p class="text-center pt-3">ID:{{user.id}}</p>
@@ -60,14 +59,6 @@
         </div>
       </div>
       <Header></Header>
-      <!--<div class="residence">
-        <p class="text-primary font-weight-bold">住んでる場所</p>
-        <br>{{user.prefecture}}
-      </div>
-      <div class="text-myname">
-        <p class="text-primary font-weight-bold">自己紹介</p>
-        <p style="white-space:pre-wrap;">{{user.text}}</p>
-      </div>-->
       <!-- 投稿した -->
       <v-tabs v-model="tab" centered>
         <v-tabs-slider color="yellow"></v-tabs-slider>

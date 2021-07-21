@@ -125,16 +125,7 @@ export default {
     },
     closeModal(){
       this.$modal.hide('select');
-    },
-    // onAlert:function(){
-    //   this.$dialog
-    //   var rt =confirm(
-    //   '削除してもよろしいですか？'
-    //   )
-    //   if(rt==true) {
-    //     this.deleteMap(this.$route.params.id)
-    //   }
-    // },
+    }
   }
 }
 </script>

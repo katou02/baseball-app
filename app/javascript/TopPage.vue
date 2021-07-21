@@ -95,24 +95,5 @@ export default {
       this.$modal.hide('select2');
     },
   }
-  // computed: mapState([
-  //   'signedIn'
-  // ]),
-  // mounted: function() {
-  //   this.$store.dispatch('doFetchSignedIn')
-  // },
-  // methods: {
-  //   setError(error, text) {
-  //     this.error = (error.response && error.response.data && error.response.data.error) || text
-  //   },
-  //   signOut() {
-  //     this.$http.secured.delete(`/api/v1/signin`)
-  //       .then(response => {
-  //         delete localStorage.csrf
-  //         delete localStorage.signedIn
-  //       })
-  //       .catch(error => this.setError(error, 'Cannot sign out'))
-  //   }
-  // }
 }
 </script>
