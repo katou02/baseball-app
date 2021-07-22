@@ -104,7 +104,7 @@
       </div>
     </div>
   </div>
-  <modal name="select" height="auto" width="65%" :scrollable="true">
+  <modal name="select" height="auto" width="60%" :scrollable="true">
     <div id="modal">
       <Edit @parent-event="fetchTweets"></Edit>
       <button @click="closeModal">閉じる</button>

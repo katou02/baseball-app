@@ -15,7 +15,7 @@
         </div>
         <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
         <div class="select-school w-25 mx-auto mt-3">
-        <ul>
+          <ul>
             <label>高校</label><br>
             <v-select
             v-model="school"
@@ -24,8 +24,7 @@
             :items="children"
             outlined>
             </v-select>
-        </ul>
-        <!-- <p v-if="!!errors['school']" style="color: red;">{{ errors['school'][0]}}</p> -->
+          </ul>
         </div>
         <br><p>5段階評価</p>
         <div class="select">
