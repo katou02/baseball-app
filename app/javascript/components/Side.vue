@@ -2,13 +2,6 @@
   <div class="slide mr-5">
     <v-card class="mx-auto" width="300">
       <v-list>
-        <!-- <v-list-item>
-          <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Home</v-list-item-title>
-        </v-list-item> -->
-
         <v-list-group :value="false" prepend-icon="mdi-pencil">
           <template v-slot:activator>
             <v-list-item-title>試合記事</v-list-item-title>
