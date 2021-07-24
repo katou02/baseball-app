@@ -3,12 +3,12 @@
     <h2 class="text-primary font-weight-bold">試合予想の投稿</h2>
     <v-divider></v-divider>
     <form @submit.prevent="createForecast">
-    <div class="form p-4">
+      <div class="form p-4">
         <div class="select-tournament mx-auto">
         <label>大会名</label><br>
         <select @change="findChildren" v-model="tournament" class="border">
-            <option disabled value="">大会を選択</option>
-            <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
+          <option disabled value="">大会を選択</option>
+          <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
         </select>
         </div>
         <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
@@ -17,11 +17,11 @@
             <ul>
               <label>勝利予想</label><br>
               <v-select
-                  v-model="win_school"
-                  item-text="name"
-                  item-value="id"
-                  :items="children"
-                  outlined>
+              v-model="win_school"
+              item-text="name"
+              item-value="id"
+              :items="children"
+              outlined>
               </v-select>
             </ul>
           </div>
@@ -29,11 +29,11 @@
             <ul>
               <label>敗退予想</label><br>
               <v-select
-                  v-model="lose_school"
-                  item-text="name"
-                  item-value="id"
-                  :items="children"
-                  outlined>
+              v-model="lose_school"
+              item-text="name"
+              item-value="id"
+              :items="children"
+              outlined>
               </v-select>
             </ul>
           </div>
@@ -51,17 +51,17 @@
         <div class="win-rate mx-auto mt-3">
           <label>勝利予想チームの勝利確率</label><br>
           <v-select
-              v-model="probability"
-              item-text="label"
-              item-value="probability"
-              :items="probability_list"
-              outlined>
+          v-model="probability"
+          item-text="label"
+          item-value="probability"
+          :items="probability_list"
+          outlined>
           </v-select>
         </div>
-    </div>
-    <v-textarea v-model="text" type="text" label="本文" outlined></v-textarea>
-    <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
-    <v-btn type="submit" color="info" class="text-white mt-5 mb-5">投稿する</v-btn>
+      </div>
+      <v-textarea v-model="text" type="text" label="本文" outlined></v-textarea>
+      <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
+      <v-btn type="submit" color="info" class="text-white mt-5 mb-5">投稿する</v-btn>
     </form>
   </div>
 </template>
@@ -122,7 +122,6 @@ export default {
         .post('/api/v1/forecasts',{text: this.text,title_info: this.title,win_school_id: this.win_school,lose_school_id: this.lose_school,tournament_id: this.tournament,probability: this.probability,round: this.round})
         .then(response => {
           this.$emit('parent-event')
-          //this.$router.push({ name: 'forecast'});
         })
         .catch(error => {
           if (error.response.data && error.response.data.errors) {

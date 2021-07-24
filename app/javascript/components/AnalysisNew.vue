@@ -5,13 +5,13 @@
     <form @submit.prevent="createAnalysis">
       <div class="select-from">
         <div class="containe_r p-4">
-        <div class="select-tournament">
+          <div class="select-tournament">
             <label>大会名</label><br>
             <select @change="findChildren" v-model="tournament" class="border">
             <option disabled value="">大会を選択</option>
             <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
             </select>
-        </div>
+          </div>
         </div>
         <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
         <div class="select-school w-25 mx-auto mt-3">

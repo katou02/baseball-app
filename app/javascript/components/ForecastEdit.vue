@@ -9,42 +9,42 @@
           <div class="select-fcs-school-edit w-25 mx-auto mt-3">
             <label>勝利予想</label><br>
             <v-select
-              v-model="win_school"
-              item-text="name"
-              item-value="id"
-              :items="children"
-              outlined>
+            v-model="win_school"
+            item-text="name"
+            item-value="id"
+            :items="children"
+            outlined>
             </v-select>
           </div>
           <div class="select-fcs-school-edit w-25 mx-auto mt-3">
             <label>敗退予想</label><br>
             <v-select
-              v-model="lose_school"
-              item-text="name"
-              item-value="id"
-              :items="children"
-              outlined>
+            v-model="lose_school"
+            item-text="name"
+            item-value="id"
+            :items="children"
+            outlined>
             </v-select>
           </div>
         </div>
         <div class="round w-25 mx-auto mt-3">
           <label>ラウンド</label><br>
           <v-select
-            v-model="round"
-            item-text="round"
-            item-value="round"
-            :items="round_list"
-            outlined>
+          v-model="round"
+          item-text="round"
+          item-value="round"
+          :items="round_list"
+          outlined>
           </v-select>
         </div>
         <div class="win-rate mx-auto mt-3">
           <label>勝利予想チームの勝利確率</label><br>
           <v-select
-            v-model="probability"
-            item-text="label"
-            item-value="probability"
-            :items="probability_list"
-            outlined>
+          v-model="probability"
+          item-text="label"
+          item-value="probability"
+          :items="probability_list"
+          outlined>
           </v-select>
         </div>
       </div>

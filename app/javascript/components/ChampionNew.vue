@@ -31,11 +31,6 @@ export default {
   mounted() {
     this.fetchSchools()
   },
-//   created() {
-//     if(!localStorage.signedIn) {
-//       this.$router.push({ name: 'champion', params: { id: this.$route.params.id}})
-//     }
-//   },
   methods: {
     fetchSchools() {
       axios
