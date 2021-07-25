@@ -4,24 +4,23 @@
     <v-divider></v-divider>
     <h3>{{name}}</h3>
     <form @submit.prevent="editMap">
-    <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
-    <p v-if="!!errors['address']" style="color: red;">{{ errors['address'][0]}}</p>
-    <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
-    <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
-    <!-- <input v-if="!url && !image.url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
-    <label v-if="!url && !image.url" class="photo w-25">
+      <v-text-field v-model="address" type="text" label="市町村 住所など" class="game_title text-center"></v-text-field>
+      <p v-if="!!errors['address']" style="color: red;">{{ errors['address'][0]}}</p>
+      <v-textarea v-model="text" type="text" label="紹介" outlined></v-textarea>
+      <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
+      <label v-if="!url && !image.url" class="photo w-25">
         ＋写真を選択
         <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
-    </label>
-    <div v-if="url">
+      </label>
+      <div v-if="url">
         <img :src="url" width="320px" height="300px">
         <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
-    </div>
-    <div v-if="image.url">
+      </div>
+      <div v-if="image.url">
         <img :src="image.url" width="320px" height="300px">
         <v-btn color="error" type="submit" @click="deleteMapImage" small>削除</v-btn>
-    </div>
-    <v-btn type="submit" color="info" class="mt-5 mb-5">編集する</v-btn>
+      </div>
+      <v-btn type="submit" color="info" class="mt-5 mb-5">編集する</v-btn>
     </form>
   </div>
 </template>
@@ -47,11 +46,6 @@ export default {
   mounted() {
     this.fetchSchools()
   },
-  // beforeUpdate() {
-  //   if(this.current_user===null || this.current_user.id != this.user) {
-  //     this.$router.push({ name: 'map',query: {tournament_id: 1}});
-  //   }
-  // },
   methods: {
     editMap() {
       let formData = new FormData();
