@@ -1,97 +1,94 @@
 <template>
   <div class="contents row mx-auto">
-    <!-- <v-container> -->
-      <h2 class="text-primary font-weight-bold pt-4">試合記事の投稿</h2>
-      <v-divider></v-divider>
-      <form @submit.prevent="createTweet">
-        <div class="select-from">
-          <div class="containe_r p-4">
-            <label>大会名</label><br>
-            <div class="select-tournament mx-auto">
-              <select @change="findChildren" v-model="tournament" class="border">
-                <option disabled value="">大会を選択</option>
-                <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
-              </select>
-            </div>
-            <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
-            <div class="select-tab-school">
-              <div class="select-school w-25 mx-auto mt-3">
-                <ul>
-                  <label>高校A</label><br>
-                  <v-select
-                    v-model="school_a"
-                    item-text="name"
-                    item-value="id"
-                    :items="children"
-                    label="高校を選択"
-                    outlined>
-                  </v-select>
-                </ul>
-              </div>
-              <div class="select-school w-25 mx-auto mt-3">
-                <ul>
-                  <label>高校B</label><br>
-                  <v-select
-                    v-model="school_b" 
-                    item-text="name"
-                    item-value="id"
-                    :items="children"
-                    label="高校を選択"
-                    outlined>
-                  </v-select>
-                </ul>
-              </div>
-            </div>
-            <div class="select-tab-score">
-              <div class="school-a_score w-25 mx-auto mt-3">
-                <label>高校A 得点</label><br>
+    <h2 class="text-primary font-weight-bold pt-4">試合記事の投稿</h2>
+    <v-divider></v-divider>
+    <form @submit.prevent="createTweet">
+      <div class="select-from">
+        <div class="containe_r p-4">
+          <label>大会名</label><br>
+          <div class="select-tournament mx-auto">
+            <select @change="findChildren" v-model="tournament" class="border">
+              <option disabled value="">大会を選択</option>
+              <option v-for="root in roots" :value="root.id" :key="root.id">{{ root.name }}</option>
+            </select>
+          </div>
+          <p v-if="!!errors['tournament']" style="color: red;">{{ errors['tournament'][0]}}</p>
+          <div class="select-tab-school">
+            <div class="select-school w-25 mx-auto mt-3">
+              <ul>
+                <label>高校A</label><br>
                 <v-select
-                  v-model="school_a_score"
-                  :items="score"
-                  label="スコア"
-                  solo>
+                  v-model="school_a"
+                  item-text="name"
+                  item-value="id"
+                  :items="children"
+                  label="高校を選択"
+                  outlined>
                 </v-select>
-                <p v-if="!!errors['school_a_score']" style="color: red;">{{ errors['school_a_score'][0]}}</p>
-              </div>
-              <div class="school-b_score w-25 mx-auto mt-3">
-                <label>高校B 得点</label><br>
-                <v-select
-                  v-model="school_b_score"
-                  :items="score"
-                  label="スコア"
-                  solo>
-                </v-select>
-                <p v-if="!!errors['school_b_score']" style="color: red;">{{ errors['school_b_score'][0]}}</p>
-              </div>
+              </ul>
             </div>
-            <div class="round w-25 mx-auto mt-3">
-              <label>ラウンド</label><br>
+            <div class="select-school w-25 mx-auto mt-3">
+              <ul>
+                <label>高校B</label><br>
+                <v-select
+                  v-model="school_b" 
+                  item-text="name"
+                  item-value="id"
+                  :items="children"
+                  label="高校を選択"
+                  outlined>
+                </v-select>
+              </ul>
+            </div>
+          </div>
+          <div class="select-tab-score">
+            <div class="school-a_score w-25 mx-auto mt-3">
+              <label>高校A 得点</label><br>
               <v-select
-                v-model="round"
-                item-text="round"
-                item-value="round"
-                :items="round_list"
-                outlined>
+                v-model="school_a_score"
+                :items="score"
+                label="スコア"
+                solo>
               </v-select>
+              <p v-if="!!errors['school_a_score']" style="color: red;">{{ errors['school_a_score'][0]}}</p>
+            </div>
+            <div class="school-b_score w-25 mx-auto mt-3">
+              <label>高校B 得点</label><br>
+              <v-select
+                v-model="school_b_score"
+                :items="score"
+                label="スコア"
+                solo>
+              </v-select>
+              <p v-if="!!errors['school_b_score']" style="color: red;">{{ errors['school_b_score'][0]}}</p>
             </div>
           </div>
-          <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="mb-5"></v-text-field>
-          <p v-if="!!errors['title']" style="color: red;">{{ errors['title'][0]}}</p>
-          <v-textarea v-model="text" type="text" label="本文" outlined class="mt-5"></v-textarea>
-          <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
-          <!-- <input v-if="!url" class="w-25" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
-          <label v-if="!url" class="photo w-25">
-            ＋写真を選択
-            <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
-          </label>
-          <div v-if="url">
-            <img :src="url"  width="320px" height="300px">
-            <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
+          <div class="round w-25 mx-auto mt-3">
+            <label>ラウンド</label><br>
+            <v-select
+              v-model="round"
+              item-text="round"
+              item-value="round"
+              :items="round_list"
+              outlined>
+            </v-select>
           </div>
-          <v-btn type="submit" color="info" class="text-white mt-5 mb-5">投稿する</v-btn>
         </div>
-      </form>
-    <!-- </v-container> -->
+        <v-text-field v-model="title" type="text" label="タイトル 30字以内" class="mb-5"></v-text-field>
+        <p v-if="!!errors['title']" style="color: red;">{{ errors['title'][0]}}</p>
+        <v-textarea v-model="text" type="text" label="本文" outlined class="mt-5"></v-textarea>
+        <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
+        <label v-if="!url" class="photo w-25">
+          ＋写真を選択
+          <input type="file" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
+        </label>
+        <div v-if="url">
+          <img :src="url"  width="320px" height="300px">
+          <v-btn color="error" type="submit" @click="deleteImage" small>削除</v-btn>
+        </div>
+        <v-btn type="submit" color="info" class="text-white mt-5 mb-5">投稿する</v-btn>
+      </div>
+    </form>
   </div>
 </template>
 <script>
