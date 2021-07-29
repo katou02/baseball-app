@@ -5,9 +5,6 @@
     <v-divider></v-divider>
     <div class="profile">
       <form @submit.prevent="editUser">
-        <!-- <select name="input_pref" v-model="prefecture" class="form-control input-lg">
-          <option v-for="(item, index) in getPref" :value="item.name">{{item.name}}</option>
-        </select> -->
         <v-select
           v-model="prefecture"
           item-text="name"
@@ -20,7 +17,6 @@
         <p v-if="!!errors['text']" style="color: red;">{{ errors['text'][0]}}</p>
         <div class="s3">
         </div>
-        <!-- <input v-if="!image.url && !url" type="file" label="画像" @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp"> -->
         <label v-if="!url && !image.url" class="photo w-25">
           ＋写真を選択
           <input type="file" id="file_photo" style="display:none;"  @change="setImage" ref="preview" accept="image/png, image/jpeg, image/bmp">
@@ -90,7 +86,6 @@ export default {
         .patch(`/api/v1/users/${this.$route.params.id}`,formData,config)
         .then(response =>{
           this.$emit('parent-event')
-        //   this.$router.push({ name: 'user-show',params: {id: this.$route.params.id}})
         })
         .catch(error => {
           if (error.response.data && error.response.data.errors) {
