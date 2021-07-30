@@ -17,7 +17,6 @@ class Api::V1::LikesController < ApiController
   end
 
   private
-
   def likes_params
     params.permit(:tweet_id)
   end

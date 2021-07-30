@@ -19,7 +19,6 @@ class Api::V1::SignupsController < ApplicationController
   end
 
   private
-
   def user_params
     params.permit(:nickname, :email, :password, :password_confirmation)
   end

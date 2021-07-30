@@ -1,7 +1,6 @@
 class Api::V1::ForecastsController < ApiController
   skip_before_action :verify_authenticity_token
   before_action :search_forecast,only:[:show,:destroy,:edit,:update]
-  
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404
   end

@@ -1,6 +1,5 @@
 class Api::V1::MessagesController < ApiController
   skip_before_action :verify_authenticity_token
-  # before_action :authenticate_user!
 
   def create
     @room = Entry.where(room_id: params[:room_id]).where.not(user_id: current_user.id)

@@ -78,7 +78,6 @@ class Api::V1::TweetsController < ApiController
   end
 
   private
-  
   def tweet_params
     params.permit(:image,:text,:title,:school_a_score,:school_b_score,:school_a_id,:school_b_id,:tournament_id,:round).merge(user_id: current_user.id)
   end

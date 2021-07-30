@@ -43,7 +43,7 @@ class Api::V1::ChampionsController < ApiController
     champion_count = champions.group(:champion_school_id).count
     # 重複が多い順に並び替え
     @num << champion_count.sort {|(k1, v1), (k2, v2)| v2 <=> v1 }
-    # @num = [[[n,m],[n,m]]]
+    # @num = [[n,m],[n,m]]
     # nが学校 mが票数
     @school = []
     # 多い順に格納
