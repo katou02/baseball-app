@@ -88,11 +88,6 @@ input {
   }
   &-content {
     background-color: rgba(236, 236, 206,0.4);
-    // min-height: 780px;
-    // &-common {
-    //   background-color: rgba(236, 236, 206,0.4);
-    //   min-height: 280px;
-    // }
   }
   &-user {
     text-align: center;
@@ -107,7 +102,6 @@ input {
     border-radius: 3px;
     transition: .4s;
     font-size: 14px;
-    // margin: 20px 0 0 40px;
     margin-left: 2%;
     &:hover {
       background: #fffbef;
