@@ -1,6 +1,6 @@
 tournament3 = Category.create(name: "第91回選抜高校野球大会")
 school1 = tournament3.children.create([{name: "札幌大谷"},{name: "札幌第一"},{name: "八戸学院光星"},
-                                      {name: "盛岡大付"},{name: "春日部共栄"},{name: "習志野"},{name: "桐蔭学園"},
+                                      {name: "盛岡大付属"},{name: "春日部共栄"},{name: "習志野"},{name: "桐蔭学園"},
                                       {name: "山梨学院"},{name: "横浜"},{name: "国士舘"},{name: "東邦"},
                                       {name: "津田学園"},{name: "星稜"},{name: "啓新"},{name: "龍谷大平安"},
                                       {name: "福知山成美"},{name: "履正社"},{name: "明石商業"},{name: "市立和歌山"},
@@ -38,10 +38,25 @@ school1 = tournament4.children.create([{name: "北海"},{name: "仙台育英"},{
                                       {name: "常総学院"},{name: "専大松戸"},{name: "東海大菅生"},{name: "東海大相模"},
                                       {name: "東海大甲府"},{name: "中京大中京"},{name: "県岐阜商"},{name: "敦賀気比"},
                                       {name: "上田西"},{name: "智弁学園"},{name: "大阪桐蔭"},{name: "京都国際"},
-                                      {name: "市立和歌山"},{name: "神戸国際大付"},{name: "天理"},{name: "広島新庄"},
+                                      {name: "市立和歌山"},{name: "神戸国際大付属"},{name: "天理"},{name: "広島新庄"},
                                       {name: "下関国際"},{name: "鳥取城北"},{name: "明徳義塾"},{name: "聖カタリナ学園"},{name: "大崎"},
                                       {name: "福岡大大濠"},{name: "明豊"},{name: "宮崎商業"},{name: "八戸西"},
                                       {name: "三島南"},{name: "東播磨"},{name: "具志川商"}])
+
+tournament5 = Category.create(name: "第103回全国高校野球選手権大会")
+school1 = tournament5.children.create([{name: "帯広農業"},{name: "北照"},{name: "弘前学院聖愛"},{name: "盛岡大付属"},
+                                      {name: "明桜"},{name: "日大山形"},{name: "東北学院"},{name: "日大東北"},
+                                      {name: "鹿島学園"},{name: "作新学院"},{name: "前橋育英"},{name: "浦和学院"},
+                                      {name: "専大松戸"},{name: "二松学舎大付属"},{name: "東海大菅生"},{name: "横浜"},
+                                      {name: "日本航空"},{name: "静岡"},{name: "愛工大名電"},{name: "県立岐阜商業"},
+                                      {name: "三重"},{name: "日本文理"},{name: "松商学園"},{name: "高岡商業"},
+                                      {name: "小松大谷"},{name: "敦賀気比"},{name: "近江"},{name: "京都国際"},
+                                      {name: "大阪桐蔭"},{name: "神戸国際大付属"},{name: "智弁学園"},{name: "智弁和歌山"},
+                                      {name: "倉敷商業"},{name: "広島新庄"},{name: "米子東"},{name: "石見智翠館"},
+                                      {name: "高川学園"},{name: "高松商業"},{name: "阿南光"},{name: "新田"},
+                                      {name: "明徳義塾"},{name: "西日本短大付属"},{name: "東明館"},{name: "長崎商業"},
+                                      {name: "熊本工業"},{name: "明豊"},{name: "宮崎商業"},{name: "樟南"},
+                                      {name: "沖縄尚学"}])
                                        
 User.create!(nickname: "yakumo",
              email: ENV['EMAIL'],
