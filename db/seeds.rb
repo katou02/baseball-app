@@ -185,6 +185,21 @@ Analysis.create(title: "公立最強",text: "選抜ベスト４の実力校。�
 Analysis.create(title: "もう一度ミラクルを",text: "89回にがばい旋風を巻き起こし優勝した佐賀北。チーム力は高くないが当時もそうだった。今年も旋風を巻き起こして優勝してほしい。",
                 attack:"3",defensive:"3",pitcher:"3",comprehensive:"2",expectations:"4",school_id: 77,tournament_id: 34,user_id: 1)
 
+Analysis.create(title: "北信越で敵なしの強打",text: "選抜は常総学院に初戦敗退だったが、ひと回り成長して甲子園に戻ってきた。強力打線は健在で春の北信越大会を制した。投手力も上がっており優勝候補の一角だと思う。",
+                attack:"5",defensive:"4",pitcher:"4",comprehensive:"4",expectations:"4",school_id: 176,tournament_id: 150,user_id: 1)
+
+Analysis.create(title: "優勝候補",text: "愛知県大会で私学4強を敗り文句なしの優勝を決めた。ピッチャーの寺嶋は、常時140キロ～144キロ（最速147キロ）の速球は切れがあり、コマンド力も高く、ストライク先行ができるのは非常に強い。",
+                attack:"4",defensive:"4",pitcher:"4",comprehensive:"4",expectations:"5",school_id: 169,tournament_id: 150,user_id: 1)
+
+Analysis.create(title: "選抜準優勝校",text: "選抜準優勝で実績十分。経験豊富な投手が複数いるので短期決戦に強く夏も上位候補である。",
+                attack:"3",defensive:"4",pitcher:"4",comprehensive:"4",expectations:"5",school_id: 196,tournament_id: 150,user_id: 1)
+
+Analysis.create(title: "強力打線で圧倒",text: "何と言っても三重大会で6戦100得点の打力が目立つ。校通算29本塁打の品川ら強打者が並ぶが「打撃を注目されるけど、守備からリズムを作るチーム」と4番でもある池田主将の見方は違う。実際、三重大会での失策はわずか2。宝田、品川の二遊間を中心に、堅守が攻撃につながったと自負している。",
+                attack:"5",defensive:"4",pitcher:"3",comprehensive:"4",expectations:"4",school_id: 171,tournament_id: 150,user_id: 1)
+
+Analysis.create(title: "健大高崎を封じた堅守",text: "毎年好投手を擁し堅守のチーム。エースの外丸は群馬大会決勝で、打撃破壊を掲げる健大高崎を1失点に抑える好投手。簡単には点を取れないチーム。",
+                attack:"3",defensive:"5",pitcher:"4",comprehensive:"4",expectations:"4",school_id: 161,tournament_id: 150,user_id: 1)
+
 Forecast.create(text: "二人の投手による継投、打線が看板というよく似たチームの対戦。大阪ｖｓ東京では例年大阪勢が意地を見せる展開が多いがこの試合では履正社エースの清水の投球がカギを握る。関東一打線にビックイニングを作らせないことが重要。試合展開としては当たっている井上が先陣を切り絶えずリードして展開する試合運びで逃げ切りを図りたい。",
                 round: "準々決勝",probability: "70",win_school_id: 63,lose_school_id: 48,tournament_id: 34,user_id: 1)
 
