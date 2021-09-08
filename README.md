@@ -2,7 +2,7 @@
 高校野球の試合記事、戦力分析、試合予想などを投稿できるアプリです！  
 <br>
 
-<img src="https://user-images.githubusercontent.com/56467807/129364237-af66917d-c188-41bd-954f-273de1b7c5fa.png" height="600" width="1000">
+<img src="https://user-images.githubusercontent.com/56467807/132135325-ba726584-120f-4436-bf9d-1be23133107b.png" height="600" width="1000">
 <br>
 
 ## 使用した技術
