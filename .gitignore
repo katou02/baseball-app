@@ -28,7 +28,7 @@
 config/secrets.yml
 
 /public/packs
-/db/seeds.rb
+# /db/seeds.rb
 /public/packs-test
 /node_modules
 /yarn-error.log
