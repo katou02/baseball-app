@@ -61,25 +61,25 @@ school1 = tournament5.children.create([{name: "帯広農業"},{name: "北照"},{
 User.create!(nickname: "yakumo",
              email: ENV['EMAIL'],
              password: ENV['PASSWORD'],
-             password_confirmation: ENV['PASSWORD'] ,
+             password_confirmation: ENV['PASSWORD'],
              admin: true)
 
 User.create!(nickname: "らんちゃんまる",
-             email: "ran@gmail.com",
-             password: "nintama2021",
-             password_confirmation: "nintama2021" ,
+             email: ENV['EMAIL2'],
+             password: ENV['PASSWORD2'],
+             password_confirmation: ENV['PASSWORD2'],
              admin: false)
 
 User.create!(nickname: "めいとく",
-             email: "meitoku@gmail.com",
-             password: "banto2021",
-             password_confirmation: "banto2021" ,
+             email: ENV['EMAIL3'],
+             password: ENV['PASSWORD3'],
+             password_confirmation: ENV['PASSWORD3'],
              admin: false)
 
 User.create!(nickname: "ぽん！",
-             email: "pon@gmail.com",
-             password: "pon2021",
-             password_confirmation: "pon2021" ,
+             email: ENV['EMAIL4'],
+             password: ENV['PASSWORD4'],
+             password_confirmation: ENV['PASSWORD4'],
              admin: false)
 
 Tweet.create(title: "勝負を分けた初回の攻防",round: "1回戦",text: "1回表の攻防がすべてだった。誉の先発、左腕の杉本 恭一（3年）に対し、八戸学院光星は1番武岡 龍世（3年）が死球で出塁、2番がバントで送り、3番近藤 遼一（3年）が四球、2死後に5番大江 拓輝（3年）が死球で満塁とし、6番下山 昂大（3年）が1ストライク後の2球目を振り抜くと打球は左中間に飛び込む満塁ホームランとなり、早々と4点を先制した。そのまま光星が優位に進め勝利",
