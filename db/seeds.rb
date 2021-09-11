@@ -74,13 +74,13 @@ User.create!(nickname: "めいとく",
              email: "meitoku@gmail.com",
              password: "banto2021",
              password_confirmation: "banto2021" ,
-             admin: true)
+             admin: false)
 
 User.create!(nickname: "ぽん！",
              email: "pon@gmail.com",
              password: "pon2021",
              password_confirmation: "pon2021" ,
-             admin: true)
+             admin: false)
 
 Tweet.create(title: "勝負を分けた初回の攻防",round: "1回戦",text: "1回表の攻防がすべてだった。誉の先発、左腕の杉本 恭一（3年）に対し、八戸学院光星は1番武岡 龍世（3年）が死球で出塁、2番がバントで送り、3番近藤 遼一（3年）が四球、2死後に5番大江 拓輝（3年）が死球で満塁とし、6番下山 昂大（3年）が1ストライク後の2球目を振り抜くと打球は左中間に飛び込む満塁ホームランとなり、早々と4点を先制した。そのまま光星が優位に進め勝利",
              school_a_score: "9",school_b_score: "0",school_a_id: 37,school_b_id: 53,tournament_id: 34,user_id: 1)
