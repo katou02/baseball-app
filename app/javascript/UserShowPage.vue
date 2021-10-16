@@ -215,7 +215,7 @@
           <div v-if="!my_forecasts.length" class="no-posts">投稿がありません</div>
         </v-tab-item>
         <v-tab-item value="tab-4">
-          <v-row>
+          <v-row class="ml-5">
             <v-col cols="12"  sm="12" md="6" lg="6" v-for="e in listMaps" :key="e.id">
               <div class="article mt-5">
                 <router-link :to="{name: 'map-show',params: {id: e.id}}">
