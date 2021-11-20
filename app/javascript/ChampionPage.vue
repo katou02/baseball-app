@@ -6,6 +6,13 @@
       <i class="fas fa-crown text-warning"></i>
     </div>
     <router-link :to="{name: 'watch_fcs',params: {id: num}}" class="return-top mx-auto text-white">戻る</router-link>
+    <div class="text-format mt-5 mb-5 text-primary">
+      <div v-for="e in categories" :key="e.id">
+        <div v-if="$route.params.id==e.id">
+          {{e.category}}
+        </div>
+      </div>
+    </div>
     <div v-if="current_user!=null">
       <div class="text-center">
         <div class="mt-3" v-if="my_champion">
@@ -23,20 +30,13 @@
         </div>
       </div>
     </div>
-    <div class="text-format mt-5 text-primary">
-      <div v-for="e in categories" :key="e.id">
-        <div v-if="$route.params.id==e.id">
-          {{e.category}}
-        </div>
-      </div>
-    </div>
     <div class="text-format mt-5 mb-4 text-warning">
       大会別
     </div>
     <div class="category mt-5 d-md-flex">
       <div v-for="e in categories" :key="e.id">
         <div v-if="$route.params.id!=e.id">
-          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="DeleteChart(); fetchChampion()" class="title-child text-white ml-5 mt-5">
+          <router-link :to="{name: 'champion',params: {id: e.id}}" @click.native="DeleteChart(); fetchChampion()" class="title-child text-white ml-5 mt-5 mb-5">
             <i class="fa fa-baseball-ball text-white"></i> 
             {{e.category}}
           </router-link>
