@@ -1,6 +1,8 @@
 # 甲子園ドットコム
 高校野球の試合記事、戦力分析、試合予想などを投稿できるアプリです！  
 <br>
+紹介記事: https://qiita.com/katou02/private/ba6d18b1e39029bbf774
+<br>
 
 <img src="https://user-images.githubusercontent.com/56467807/132135325-ba726584-120f-4436-bf9d-1be23133107b.png" height="600" width="1000">
 <br>
