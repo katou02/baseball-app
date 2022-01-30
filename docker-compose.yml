@@ -2,43 +2,27 @@ version: '3'
 services:
   db:
     image: mysql:5.6
-    environment:
+    environment: #アクセスするための環境変数
       MYSQL_DATABASE: root
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - ./mysql/mysql_data:/var/lib/mysql
+      - ./mysql/mysql_data:/var/lib/mysql #コンテナの中でのデータの保存先
     ports:
       - "3306:3306"
   web:
     build:
-      context: .
+      context: . #ビルドコンテキストを指定(カレントディレクトリ)
       dockerfile: Dockerfile
     # 一度サーバーが起動すると起動し続けるので、rm -f /workdir/tmp/pids/server.pidで、dockerが起動する度に一旦停止させる
     command: /bin/sh -c "rm -f /workdir/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    tty: true
-    stdin_open: true
+    tty: true #-itのt コマンドの出力結果を綺麗にする
+    stdin_open: true #-itのi 入力チャネル
     depends_on:
       - db # DB側のコンテナが出来上がってからwebを実行する
     ports:
-      - "3000:3000"
-    volumes:
+      - "3000:3000" #ホストのポートとコンテナのポートを繋げる
+    volumes: #-v workdirでホストをマウントする
       - .:/workdir 
-  redis:
-    image: redis
-    ports:
-      - 6379:6379
-    volumes:
-      - ./redis:/data
-    command: redis-server --appendonly yes
-  front:
-    build: ./front
-    volumes:
-      - ./front:/app
-    ports:
-      - '8080:8080'
-    tty: true
-    stdin_open: true
-    command: npm run serve
 volumes:
   mysql_data:
   bundle:
