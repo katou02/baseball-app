@@ -54,7 +54,15 @@
               </router-link>
             </v-list-item-title>
           </v-list-item>
-        </v-list-group>
+
+          <v-list-item>
+            <v-list-item-title>
+              <router-link :to="{name: 'tournament',params: {id: 200}}">
+                <v-icon>mdi-pencil</v-icon>第94回選抜高校野球大会
+              </router-link>
+            </v-list-item-title>
+          </v-list-item>
+         </v-list-group>
 
         <v-list-group :value="false" prepend-icon="mdi-magnify">
           <template v-slot:activator>
@@ -105,6 +113,14 @@
             <v-list-item-title>
               <router-link :to="{name: 'watch_ays',params: {id: 150}}">
                 <v-icon>mdi-magnify</v-icon>第103回全国高校野球選手権大会
+              </router-link>
+            </v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>
+              <router-link :to="{name: 'watch_ays',params: {id: 200}}">
+                <v-icon>mdi-pencil</v-icon>第94回選抜高校野球大会
               </router-link>
             </v-list-item-title>
           </v-list-item>
@@ -162,6 +178,14 @@
               </router-link>
             </v-list-item-title>
           </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>
+              <router-link :to="{name: 'watch_fcs',params: {id: 200}}">
+                <v-icon>mdi-scale-balance</v-icon>第94回選抜高校野球大会
+              </router-link>
+            </v-list-item-title>
+          </v-list-item>
         </v-list-group>
 
         <v-list-group :value="false" prepend-icon="mdi-crown">
@@ -208,6 +232,14 @@
               </router-link>
             </v-list-item-title>
           </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>
+              <router-link :to="{name: 'champion',params: {id: 200}}">
+                <v-icon>mdi-crown</v-icon>第94回選抜高校野球大会
+              </router-link>
+            </v-list-item-title>
+          </v-list-item>
         </v-list-group>
 
         <v-list-group :value="false" prepend-icon="mdi-city">
@@ -251,6 +283,14 @@
             <v-list-item-title>
               <router-link :to="{name: 'map',query: {tournament_id: 150}}">
                 <v-icon>mdi-city</v-icon>第103回全国高校野球選手権大会
+              </router-link>
+            </v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>
+              <router-link :to="{name: 'map',query: {tournament_id: 200}}">
+                <v-icon>mdi-city</v-icon>第94回選抜高校野球大会
               </router-link>
             </v-list-item-title>
           </v-list-item>
