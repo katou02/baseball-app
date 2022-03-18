@@ -57,6 +57,16 @@ school1 = tournament5.children.create([{name: "帯広農業"},{name: "北照"},{
                                       {name: "明徳義塾"},{name: "西日本短大付属"},{name: "東明館"},{name: "長崎商業"},
                                       {name: "熊本工業"},{name: "明豊"},{name: "宮崎商業"},{name: "樟南"},
                                       {name: "沖縄尚学"}])
+
+tournament6 = Category.create(name: "第94回選抜高校野球大会")
+school1 = tournament5.children.create([{name: "クラーク国際"},{name: "花巻東"},{name: "聖光学院"},{name: "明秀日立"},
+                                      {name: "山梨学院"},{name: "木更津総合"},{name: "浦和学院"},{name: "國学院久我山"},
+                                      {name: "二松学舎大付属"},{name: "敦賀気比"},{name: "星稜"},{name: "日大三島"},
+                                      {name: "大垣日大"},{name: "大阪桐蔭"},{name: "和歌山東"},{name: "天理"},
+                                      {name: "金光大阪"},{name: "市立和歌山"},{name: "東洋大姫路"},{name: "近江"},
+                                      {name: "広陵"},{name: "広島商業"},{name: "倉敷工業"},{name: "高知"},
+                                      {name: "鳴門"},{name: "九州国際大付属"},{name: "大島"},{name: "有田工業"},
+                                      {name: "長崎日大"},{name: "丹生"},{name: "大分舞鶴"},{name: "只見"}])
                                        
 User.create!(nickname: "yakumo",
              email: ENV['EMAIL'],
