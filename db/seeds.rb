@@ -59,7 +59,7 @@ school1 = tournament5.children.create([{name: "帯広農業"},{name: "北照"},{
                                       {name: "沖縄尚学"}])
 
 tournament6 = Category.create(name: "第94回選抜高校野球大会")
-school1 = tournament5.children.create([{name: "クラーク国際"},{name: "花巻東"},{name: "聖光学院"},{name: "明秀日立"},
+school1 = tournament6.children.create([{name: "クラーク国際"},{name: "花巻東"},{name: "聖光学院"},{name: "明秀日立"},
                                       {name: "山梨学院"},{name: "木更津総合"},{name: "浦和学院"},{name: "國学院久我山"},
                                       {name: "二松学舎大付属"},{name: "敦賀気比"},{name: "星稜"},{name: "日大三島"},
                                       {name: "大垣日大"},{name: "大阪桐蔭"},{name: "和歌山東"},{name: "天理"},
